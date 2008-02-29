@@ -2,6 +2,7 @@ from django.db import models
 from lxml import etree
 from StringIO import StringIO
 import xapian
+from threepress import settings
 
 class Document(models.Model):
     id      = models.CharField(max_length=1000, primary_key=True)
@@ -81,8 +82,7 @@ class Chapter(models.Model):
     ordinal = models.PositiveIntegerField(default=1)
 
     def render(self):
-        tei_xsl = '/Users/liza/threepress/data/xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'
-        #tei_xsl = '/Users/liza/threepress/data/xsl/tei-simple.xsl'
+        tei_xsl = '%s/data/xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'  % (settings.DIR_ROOT) 
         xslt = etree.parse(tei_xsl)
         f = StringIO(self.content)
         root = etree.parse(f)
@@ -114,7 +114,7 @@ class Page(models.Model):
     content = models.TextField()
 
 
-class Result():
+class Result:
     highlighted_content = None
     def __init__(self, document_id, id, xapian_document):
         self.document_id = document_id
