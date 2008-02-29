@@ -1,0 +1,130 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><title>XML source view</title><link rel="stylesheet" type="text/css" href="../xmlverbatim.css"/></head><body class="xmlverb-default"><tt>
+<!-- converted by xmlverbatim.xsl 1.1, (c) O. Becker -->
+<div xmlns:xd="http://www.pnp-software.com/XSLTdoc" class="xmlverb-default">&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e1">stylesheet</a></span><span class="xmlverb-ns-name"> xmlns:rng</span>="<span class="xmlverb-ns-uri">http://relaxng.org/ns/structure/1.0</span>"<span class="xmlverb-ns-name"> xmlns:xsl</span>="<span class="xmlverb-ns-uri">http://www.w3.org/1999/XSL/Transform</span>"<span class="xmlverb-ns-name"> xmlns:tei</span>="<span class="xmlverb-ns-uri">http://www.tei-c.org/ns/1.0</span>"<span class="xmlverb-ns-name"> xmlns:teix</span>="<span class="xmlverb-ns-uri">http://www.tei-c.org/ns/Examples</span>"<span class="xmlverb-ns-name"> xmlns:a</span>="<span class="xmlverb-ns-uri">http://relaxng.org/ns/compatibility/annotations/1.0</span>"<span class="xmlverb-ns-name"> xmlns:edate</span>="<span class="xmlverb-ns-uri">http://exslt.org/dates-and-times</span>"<span class="xmlverb-ns-name"> xmlns:xd</span>="<span class="xmlverb-ns-uri">http://www.pnp-software.com/XSLTdoc</span>"<span class="xmlverb-ns-name"> xmlns:estr</span>="<span class="xmlverb-ns-uri">http://exslt.org/strings</span>"<span class="xmlverb-ns-name"> xmlns:exsl</span>="<span class="xmlverb-ns-uri">http://exslt.org/common</span>"<span class="xmlverb-ns-name"> xmlns:fo</span>="<span class="xmlverb-ns-uri">http://www.w3.org/1999/XSL/Format</span>"<span class="xmlverb-ns-name"> xmlns:fotex</span>="<span class="xmlverb-ns-uri">http://www.tug.org/fotex</span>" <span class="xmlverb-attr-name">extension-element-prefixes</span>="<span class="xmlverb-attr-content">xd exsl estr edate</span>" <span class="xmlverb-attr-name">exclude-result-prefixes</span>="<span class="xmlverb-attr-content">xd exsl estr edate a fo rng tei teix</span>" <span class="xmlverb-attr-name">version</span>="<span class="xmlverb-attr-content">1.0</span>"&gt;<span class="xmlverb-text"><br/>
+  </span><div class="xd">
+  &lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e3">doc</a></span> <span class="xmlverb-attr-name">type</span>="<span class="xmlverb-attr-content">stylesheet</span>"&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e5">short</a></span>&gt;<span class="xmlverb-text"><br/>
+    TEI stylesheet for making table specifications, making XSL-FO output.<br/>
+      </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">short</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e8">detail</a></span>&gt;<span class="xmlverb-text"><br/>
+    This library is free software; you can redistribute it and/or<br/>
+    modify it under the terms of the GNU Lesser General Public<br/>
+    License as published by the Free Software Foundation; either<br/>
+    version 2.1 of the License, or (at your option) any later version.<br/>
+<br/>
+    This library is distributed in the hope that it will be useful,<br/>
+    but WITHOUT ANY WARRANTY; without even the implied warranty of<br/>
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU<br/>
+    Lesser General Public License for more details.<br/>
+<br/>
+    You should have received a copy of the GNU Lesser General Public<br/>
+    License along with this library; if not, write to the Free Software<br/>
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA<br/>
+<br/>
+   <br/>
+   <br/>
+      </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">detail</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e11">author</a></span>&gt;<span class="xmlverb-text">See AUTHORS</span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">author</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e14">cvsId</a></span>&gt;<span class="xmlverb-text">$Id: tei-makecolspec.xsl 2975 2007-08-27 16:07:29Z rahtz $</span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">cvsId</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e17">copyright</a></span>&gt;<span class="xmlverb-text">2007, TEI Consortium</span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">copyright</span>&gt;<span class="xmlverb-text"><br/>
+  </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">doc</span>&gt;</div><span class="xmlverb-text"><br/>
+  </span><div class="xd">
+  &lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e21">doc</a></span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e23">short</a></span>&gt;<span class="xmlverb-text">[fo] </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">short</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e26">detail</a></span>&gt;<span class="xmlverb-text"> </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">detail</span>&gt;<span class="xmlverb-text"><br/>
+  </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">doc</span>&gt;</div><span class="xmlverb-text"><br/>
+  </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e30">template</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">calculateTableSpecs</span>"&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e32">variable</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">tds</span>"&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e34">for-each</a></span> <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">.//tei:cell</span>"&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e36">variable</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">stuff</span>"&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e38">apply-templates</a></span> /&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">variable</span>&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-name"><a name="d73e41">cell</a></span>&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e43">attribute</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">col</span>"&gt;<span class="xmlverb-text"><br/>
+            </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e45">number</a></span> /&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">attribute</span>&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e48">value-of</a></span> <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">string-length($stuff)</span>" /&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;/<span class="xmlverb-element-name">cell</span>&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">for-each</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">variable</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e53">variable</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">total</span>"&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e55">value-of</a></span> <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">sum(exsl:node-set($tds)/cell)</span>" /&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">variable</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e58">for-each</a></span> <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">exsl:node-set($tds)/cell</span>"&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e60">sort</a></span> <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">@col</span>" <span class="xmlverb-attr-name">data-type</span>="<span class="xmlverb-attr-content">number</span>" /&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e62">variable</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">c</span>" <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">@col</span>" /&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e64">if</a></span> <span class="xmlverb-attr-name">test</span>="<span class="xmlverb-attr-content">not(preceding-sibling::cell[$c=@col])</span>"&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e66">variable</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">len</span>"&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e68">value-of</a></span> <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">sum(following-sibling::cell[$c=@col]) + current()</span>" /&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">variable</span>&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e71">text</a></span>&gt;<span class="xmlverb-text"><br/>
+</span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">text</span>&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-nsprefix">fo</span>:<span class="xmlverb-element-name"><a name="d73e74">table-column</a></span> <span class="xmlverb-attr-name">column-number</span>="<span class="xmlverb-attr-content">{@col}</span>" <span class="xmlverb-attr-name">column-width</span>="<span class="xmlverb-attr-content">{$len div $total * 100}%</span>"&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e76">if</a></span> <span class="xmlverb-attr-name">test</span>="<span class="xmlverb-attr-content">$foEngine='passivetex'</span>"&gt;<span class="xmlverb-text"><br/>
+            </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e78">attribute</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">column-align</span>" <span class="xmlverb-attr-name">namespace</span>="<span class="xmlverb-attr-content">http://www.tug.org/fotex</span>"&gt;<span class="xmlverb-text">L</span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">attribute</span>&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">if</span>&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;/<span class="xmlverb-element-nsprefix">fo</span>:<span class="xmlverb-element-name">table-column</span>&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">if</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">for-each</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e85">text</a></span>&gt;<span class="xmlverb-text"><br/>
+</span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">text</span>&gt;<span class="xmlverb-text"><br/>
+  </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">template</span>&gt;<span class="xmlverb-text"><br/>
+  </span><div class="xd">
+  &lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e89">doc</a></span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e91">short</a></span>&gt;<span class="xmlverb-text">[fo] </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">short</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e94">detail</a></span>&gt;<span class="xmlverb-text"> </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">detail</span>&gt;<span class="xmlverb-text"><br/>
+  </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">doc</span>&gt;</div><span class="xmlverb-text"><br/>
+  </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e98">template</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">deriveColSpecs</span>"&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e100">variable</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">no</span>"&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e102">call-template</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">generateTableID</span>" /&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">variable</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e105">choose</a></span>&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e107">when</a></span> <span class="xmlverb-attr-name">test</span>="<span class="xmlverb-attr-content">$readColSpecFile</span>"&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e109">variable</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">specs</span>"&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e111">value-of</a></span> <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">count(exsl:node-set($tableSpecs)/Info/TableSpec[$no=@xml:id])</span>" /&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">variable</span>&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e114">choose</a></span>&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e116">when</a></span> <span class="xmlverb-attr-name">test</span>="<span class="xmlverb-attr-content">$specs &amp;gt; 0</span>"&gt;<span class="xmlverb-text"><br/>
+            </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e118">for-each</a></span> <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">exsl:node-set($tableSpecs)/Info/TableSpec[$no=@xml:id]/fo:table-column</span>"&gt;<span class="xmlverb-text"><br/>
+              </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e120">copy-of</a></span> <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">.</span>" /&gt;<span class="xmlverb-text"><br/>
+            </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">for-each</span>&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">when</span>&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e124">otherwise</a></span>&gt;<span class="xmlverb-text"><br/>
+</span>&lt;!--<span class="xmlverb-comment"><br/>
+ &lt;xsl:message&gt;Build specs for Table &lt;xsl:value-of select="$no"/&gt;&lt;/xsl:message&gt;<br/>
+</span>--&gt;<span class="xmlverb-text"><br/>
+            </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e128">call-template</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">calculateTableSpecs</span>" /&gt;<span class="xmlverb-text"><br/>
+          </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">otherwise</span>&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">choose</span>&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">when</span>&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e133">otherwise</a></span>&gt;<span class="xmlverb-text"><br/>
+</span>&lt;!--<span class="xmlverb-comment"><br/>
+ &lt;xsl:message&gt;Build specs for Table &lt;xsl:value-of select="$no"/&gt;&lt;/xsl:message&gt;<br/>
+</span>--&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e137">call-template</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">calculateTableSpecs</span>" /&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">otherwise</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">choose</span>&gt;<span class="xmlverb-text"><br/>
+  </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">template</span>&gt;<span class="xmlverb-text"><br/>
+  </span><div class="xd">
+  &lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e143">doc</a></span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e145">short</a></span>&gt;<span class="xmlverb-text">[fo] </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">short</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name"><a name="d73e148">detail</a></span>&gt;<span class="xmlverb-text"> </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">detail</span>&gt;<span class="xmlverb-text"><br/>
+  </span>&lt;/<span class="xmlverb-element-nsprefix">xd</span>:<span class="xmlverb-element-name">doc</span>&gt;</div><span class="xmlverb-text"><br/>
+  </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e152">template</a></span> <span class="xmlverb-attr-name">name</span>="<span class="xmlverb-attr-content">generateTableID</span>"&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e154">choose</a></span>&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e156">when</a></span> <span class="xmlverb-attr-name">test</span>="<span class="xmlverb-attr-content">@xml:id</span>"&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e158">value-of</a></span> <span class="xmlverb-attr-name">select</span>="<span class="xmlverb-attr-content">@xml:id</span>" /&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">when</span>&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e161">otherwise</a></span>&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e163">text</a></span>&gt;<span class="xmlverb-text">Table-</span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">text</span>&gt;<span class="xmlverb-text"><br/>
+        </span>&lt;<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name"><a name="d73e166">number</a></span> <span class="xmlverb-attr-name">level</span>="<span class="xmlverb-attr-content">any</span>" /&gt;<span class="xmlverb-text"><br/>
+      </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">otherwise</span>&gt;<span class="xmlverb-text"><br/>
+    </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">choose</span>&gt;<span class="xmlverb-text"><br/>
+  </span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">template</span>&gt;<span class="xmlverb-text"><br/>
+</span>&lt;/<span class="xmlverb-element-nsprefix">xsl</span>:<span class="xmlverb-element-name">stylesheet</span>&gt;<br/>
+</div>
+</tt><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>v
+         </body></html>

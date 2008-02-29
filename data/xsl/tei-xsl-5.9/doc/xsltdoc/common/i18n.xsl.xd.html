@@ -1,0 +1,74 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      TEI Stylesheet family - i18n.xsl
+    </title>
+    <link href="../XSLTdoc.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div id="hdr">
+      <h2 class="subtitle">The Text Encoding Initiative</h2>
+      <h1 class="maintitle">TEI Consortium XSLT stylesheets</h1>
+    </div>
+    <div id="header">
+    </div>
+
+<div id="hdr2">
+<span class="navbar"><a class="navbar" href="/">Home</a></span> | <span class="navbar"><a class="navbar" href="/Guidelines2/">Guidelines</a></span> | <span class="navbar"><a class="navbar" href="/Applications/">Projects</a></span> | <span class="navbar"><a class="navbar" href="/Tutorials/">Tutorials</a></span> | <span class="navbar"><a class="navbar" href="/Software/">Software</a></span> | <span class="navbar"><a class="navbar" href="/History/">History</a></span> | <span class="navbar"><a class="navbar" href="/Faq/">FAQs</a></span> | <span class="navbar"><a class="navbar" href="/P5/">P5</a></span> | <span class="navbar"><a class="navbar" href="/Consortium/">Consortium</a></span> | <span class="navbar"><a class="navbar" href="/Activities/">Activities</a></span> | <span class="navbar"><a class="navbar" href="/Activities/SIG/">SIGs</a></span> | <span class="navbar"><a class="navbar" href="/Contact/">Join in/Contact</a></span> | <span class="navbar"><a class="navbar" href="/Members/">Members area</a></span>
+</div>
+
+<div>
+<div id="lh-col">
+<form method="get" action="http://www.google.com/search" target="_blank">
+<input type="hidden" name="as_sitesearch" value="www.tei-c.org.uk"/>
+<input type="text" id="query" name="as_q" size="12"/>
+<input type="submit" value="Search" name="Search"/>
+</form>
+       
+ <div id="menuLinks">
+<span class="menuLink">
+<a class="menuLink" href="..">Stylesheet home page</a>
+</span>
+        <span class="menuLink"><a class="menuLink" href="../index.html">Summary</a></span><span class="menuLink"><a class="menuLink" href="../stylesheetList.html">Stylesheet List</a></span><span class="menuLink"><a class="menuLink" href="../functionTemplateList.html">Template List</a></span>
+ </div>
+    
+</div>
+<div id="rh-col">
+    <div id="content">
+      <div id="stylesheetDetail"><h1>i18n.xsl</h1><div class="detailDoc"><div class="shortDescr"> TEI stylesheet definitions common for all of HTML, FO and LaTeX
+      outputs </div><div class="detailDescr"> This library is free software; you can redistribute it and/or
+      modify it under the terms of the GNU Lesser General Public License as
+      published by the Free Software Foundation; either version 2.1 of the
+      License, or (at your option) any later version. This library is
+      distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+      without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+      PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+      details. You should have received a copy of the GNU Lesser General Public
+      License along with this library; if not, write to the Free Software
+      Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA </div><div class="properties"><div class="property"><div class="propertyCaption">Author:</div><div class="propertyContent">See AUTHORS</div></div><div class="property"><div class="propertyCaption">CVS Id:</div><div class="propertyContent"> i18n.xsl 4316 2008-01-29 09:28:44Z rahtz </div></div><div class="property"><div class="propertyCaption">Copyright:</div><div class="propertyContent">2007, TEI Consortium</div></div></div></div></div><div id="parametersSummary"><h2>Parameters Summary</h2><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d32e125">doclang</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e121">source</a></div><div class="shortDoc"><div class="shortDescr"> The language the text is in
+    (use ISO 2-letter codes)</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d32e23">documentationLanguage</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e23">source</a></div><div class="shortDoc"><div class="shortDescr">No short description available</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d32e109">lang</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e106">source</a></div><div class="shortDoc"><div class="shortDescr"> The language to use when
+    generating text (use ISO 2-letter codes)</div></div></div></div><div id="namedTemplatesSummary"><h2>Named Templates Summary</h2><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d32e137">contentsHeading</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e128">source</a></div><div class="shortDoc"><div class="shortDescr">[common] Prefix text before an auto-generated table of contents </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d32e155">contentsWord</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e146">source</a></div><div class="shortDoc"><div class="shortDescr">[common] Title for "Contents"; by default uses language-specific
+      lookup table.</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d32e174">feedbackWords</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e164">source</a></div><div class="shortDoc"><div class="shortDescr">[common] Title for "Feedback"</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d32e38">i18n</a></span> (<span class="declCaption">param: </span><span class="paramName">word</span>) - <a class="sourceLink" href="i18n.xsl.src.html#d32e26">source</a></div><div class="shortDoc"><div class="shortDescr">[common] give language-specific version of a word or phrase</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d32e101">myi18n</a></span> (<span class="declCaption">param: </span><span class="paramName">word</span>) - <a class="sourceLink" href="i18n.xsl.src.html#d32e89">source</a></div><div class="shortDoc"><div class="shortDescr">[localisation] dummy template for overriding in a local system</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d32e192">searchWords</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e183">source</a></div><div class="shortDoc"><div class="shortDescr">[common] Title for "Search"; by default uses language-specific
+      lookup table. </div></div></div></div><div id="parametersDetail"><h2>Parameters Detail</h2><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d32e125">doclang</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e121">source</a></div><div class="detailDoc"><div class="shortDescr"> The language the text is in
+    (use ISO 2-letter codes)</div><div class="detailDescr"> </div>Default: <span class="paramProperties">en</span></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d32e23">documentationLanguage</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e23">source</a></div><div class="detailDoc"><div class="shortDescr">No short description available</div>Default: <span class="paramProperties">en</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d32e109">lang</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e106">source</a></div><div class="detailDoc"><div class="shortDescr"> The language to use when
+    generating text (use ISO 2-letter codes)</div><div class="detailDescr"> </div>Default: <span class="paramProperties">en</span></div></div></div><div id="namedTemplatesDetail"><h2>Named Templates Detail</h2><div class="listItem"><div class="declaration"><span class="declName"><a name="d32e137">contentsHeading</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e128">source</a></div><div class="detailDoc"><div class="shortDescr">[common] Prefix text before an auto-generated table of contents </div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d32e155">contentsWord</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e146">source</a></div><div class="detailDoc"><div class="shortDescr">[common] Title for "Contents"; by default uses language-specific
+      lookup table.</div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d32e174">feedbackWords</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e164">source</a></div><div class="detailDoc"><div class="shortDescr">[common] Title for "Feedback"</div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d32e38">i18n</a></span> (<span class="declCaption">param: </span><span class="paramName">word</span>) - <a class="sourceLink" href="i18n.xsl.src.html#d32e26">source</a></div><div class="detailDoc"><div class="shortDescr">[common] give language-specific version of a word or phrase</div><div class="detailDescr"> </div><div class="properties"><div class="property"><div class="propertyCaption">Parameters:</div><div class="propertyContent"><div class="parameterDetail"><span class="paramName">word</span><span class="paramDescr"> - the word(s) to translate</span></div></div></div></div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d32e101">myi18n</a></span> (<span class="declCaption">param: </span><span class="paramName">word</span>) - <a class="sourceLink" href="i18n.xsl.src.html#d32e89">source</a></div><div class="detailDoc"><div class="shortDescr">[localisation] dummy template for overriding in a local system</div><div class="detailDescr"> </div><div class="properties"><div class="property"><div class="propertyCaption">Parameters:</div><div class="propertyContent"><div class="parameterDetail"><span class="paramName">word</span><span class="paramDescr"> - the word(s) to translate</span></div></div></div></div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d32e192">searchWords</a></span> - <a class="sourceLink" href="i18n.xsl.src.html#d32e183">source</a></div><div class="detailDoc"><div class="shortDescr">[common] Title for "Search"; by default uses language-specific
+      lookup table. </div><div class="detailDescr"> </div></div></div></div>
+    </div>
+</div>
+    <div id="footer">
+      <div style="float:left">Powered By <a target="_blank" href="http://xsltdoc.sf.net">XSLTdoc 1.1</a></div>
+      <div style="float:right">
+        <a href="http://jigsaw.w3.org/css-validator/">CSS</a>
+        |
+        <a href="http://validator.w3.org/check?uri=referer">XHTML</a>
+        | © 2004, <a target="_blank" href="http://www.pnp-software.com/">P&amp;P Software</a>
+      </div>
+      <div> </div>
+    </div>
+</div>
+  </body>
+</html>

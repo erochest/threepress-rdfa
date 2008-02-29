@@ -1,0 +1,140 @@
+# Create your views here.
+from threepress.search.models import *
+from django.http import HttpResponse
+from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
+from django.core.exceptions import *
+from django.newforms import *
+from django.conf import settings
+import os.path
+import xapian
+
+
+def document_view(request, id,chapter_id=None):
+    document = get_object_or_404(Document, pk=id)
+    show_spacing = True if request.GET.has_key('show_spacing') else False
+    chapter = None
+    next = None
+    previous = None
+    if chapter_id:
+        chapter = document.chapter_set.filter(id=chapter_id)[0]
+        next_set = document.chapter_set.filter(ordinal=chapter.ordinal+1)
+        if len(next_set) > 0:
+            next = next_set[0]
+        if chapter.ordinal > 1:
+            previous = document.chapter_set.filter(ordinal=chapter.ordinal-1)[0]
+
+    return render_to_response('documents/view.html', 
+                              {'document':document, 
+                               'chapter':chapter,
+                               'next':next,
+                               'previous':previous
+                               })
+
+def page_view(request, page):
+    try:
+        page = Page.objects.get(name=page)
+    except ObjectDoesNotExist:
+        page_filename = "%s/%s.html" % ('/Users/liza/threepress/threepress/search/templates/pages', page)
+        if os.path.exists(page_filename):
+            content = open(page_filename).read()
+            page = Page(content=content, name=page)
+            #page.save()
+        else:
+            raise Http404
+    return render_to_response('pages/view.html',
+                              {'page':page})
+def index(request):
+    documents = get_list_or_404(Document)
+    return render_to_response('index.html', {'documents':documents})
+
+def search(request):
+    doc_id = 'Pride-and-Prejudice_Jane-Austen'
+    search = request.GET['search']
+    start = int(request.GET['start']) if request.GET.has_key('start') else 1
+    end = int(request.GET['end']) if request.GET.has_key('end') else settings.RESULTS_PAGESIZE
+    
+    sort = settings.SORT_ORDINAL if request.GET.has_key('sort') and request.GET['sort'] == 'appearance' else settings.SORT_RELEVANCE
+
+    # Open the database for searching.
+    database = xapian.Database('%s/%s' % (settings.DB_DIR, doc_id))
+
+    document = Document.objects.get(id=doc_id)
+
+    # Start an enquire session.
+    enquire = xapian.Enquire(database)
+    # Parse the query string to produce a Xapian::Query object.
+    qp = xapian.QueryParser()
+    stemmer = xapian.Stem("english")
+    qp.set_stemmer(stemmer)
+    qp.set_database(database)
+    qp.set_stemming_strategy(xapian.QueryParser.STEM_SOME)
+    query = qp.parse_query(search)
+    stem = stemmer(search)
+    print "Stem is : " + stem
+    for t in qp.unstemlist("Z%s" % stem):
+        print t
+
+    print "Parsed query is: %s" % query.get_description()
+
+    # Find the top 10 results for the query.
+    enquire.set_query(query)
+    
+    if start == 1:
+        set_start = 0
+    else:
+        set_start = start
+
+    if sort == settings.SORT_ORDINAL:
+        enquire.set_sort_by_value(settings.SEARCH_ORDINAL, False)
+
+    matches = enquire.get_mset(set_start, end, 101)
+
+    # Display the results.
+    estimate = matches.get_matches_estimated()
+
+    size = matches.size()
+    if size < end - start:
+        end = start + size
+    next_end = end + settings.RESULTS_PAGESIZE
+
+    show_previous = True if start != 1 else False
+    show_next = True if end < estimate else False
+
+    
+    next_start = start + settings.RESULTS_PAGESIZE
+
+    previous_start = start - settings.RESULTS_PAGESIZE
+    previous_end = previous_start + settings.RESULTS_PAGESIZE
+
+
+    results = [Result(doc_id, match.docid, match.document) for match in matches]
+    import re
+    for r in results:
+        words = []
+        for word in r.xapian_document.get_data().split(" "):
+            term = word.replace('?', '').replace('"', '').replace('.', '').replace(',', '')
+            for t in enquire.matching_terms(r.id):
+                if "Z%s" % stemmer(term) == t or term == t:
+                    print "Match: " + term
+                    word = '<span class="match">%s</span>' % word
+            words.append(word)
+
+        r.highlighted_content = ' '.join(words)
+    return render_to_response('results.html', {'results': results, 
+                                               'settings':settings,
+                                               'estimate': estimate, 
+                                               'document': document,
+                                               'search': search,
+                                               'sort': sort,
+                                               'size': size,
+                                               'multiple_pages': True if show_next or show_previous else False,
+                                               'start': start,
+                                               'next_start': next_start,
+                                               'next_end' : next_end,
+                                               'previous_start': previous_start,
+                                               'previous_end' : previous_end,
+                                               'end': end,
+                                               'show_next': show_next,
+                                               'show_previous': show_previous
+                                               })
+

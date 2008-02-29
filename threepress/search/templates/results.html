@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block header %}
+   <div class="document_title"><h1><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></h1></div>
+{% endblock header%}
+
+{% block main %}
+<h2>Search results</h2>
+<h3 class="results_description"><em>&lsquo;{{ search }}&rsquo;</em> found {{ estimate }} result{{ estimate|pluralize }}</h3>
+
+{% if multiple_pages %}
+<p class="results_listed">Showing result{{ size|pluralize}} {{ start }} &mdash; {{ end }}</p>
+{% endif %}
+
+{% if multiple_pages %}
+<div class="results_nav">
+  <div class="previous">{% if show_previous %} <a href="/search?search={{ search }}&start={{ previous_start }}&end={{ previous_end }}">← previous</a> {% endif %} </div>
+  <div class="next">
+  {% if show_next %} <a href="/search?search={{ search }}&start={{ next_start }}&end={{ next_end }}">next →</a> {% endif %} 
+  </div>
+</div>
+{% endif %}
+
+<ol class="results" start="{{ start }}">
+{% for r in results %}
+ <li> <a href="{% url threepress.search.views.document_view r.document_id,r.get_chapter_id,show_spacing=True %}#id{{ r.id }}"><h4>{{ r.title }}</h4></a>
+      <p>{{ r.highlighted_content|safe }}</p>
+ </li>
+{% endfor %}
+</ol>
+
+{% if multiple_pages %}
+<div class="results_nav">
+  <div class="previous">{% if show_previous %} <a href="/search?search={{ search }}&start={{ previous_start }}&end={{ previous_end }}">← previous</a> {% endif %} </div>
+  <div class="next">
+  {% if show_next %} <a href="/search?search={{ search }}&start={{ next_start }}&end={{ next_end }}">next →</a> {% endif %} 
+  </div>
+</div>
+{% endif %}
+
+{% endblock main %}
+
+{% block leftnav %}
+
+<h4>Order results</h4>
+<ol class="nav">
+{% ifequal sort settings.SORT_RELEVANCE %}
+  <li class="current">by relevance</li>
+  <li><a href="/search?search={{ search }}&amp;sort=appearance">by appearance in document</a></li>
+{% else %}
+  <li> <a href="/search?search={{ search }}&amp;sort=relevance">by relevance</a></li>
+  <li class="current">by appearance in document</li>
+{% endifequal %}
+
+
+
+
+</ol>
+
+{% endblock leftnav %}
+
+

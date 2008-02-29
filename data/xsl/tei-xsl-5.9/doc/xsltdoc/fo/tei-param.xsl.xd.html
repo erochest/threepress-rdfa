@@ -1,0 +1,509 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      TEI Stylesheet family - tei-param.xsl
+    </title>
+    <link href="../XSLTdoc.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div id="hdr">
+      <h2 class="subtitle">The Text Encoding Initiative</h2>
+      <h1 class="maintitle">TEI Consortium XSLT stylesheets</h1>
+    </div>
+    <div id="header">
+    </div>
+
+<div id="hdr2">
+<span class="navbar"><a class="navbar" href="/">Home</a></span> | <span class="navbar"><a class="navbar" href="/Guidelines2/">Guidelines</a></span> | <span class="navbar"><a class="navbar" href="/Applications/">Projects</a></span> | <span class="navbar"><a class="navbar" href="/Tutorials/">Tutorials</a></span> | <span class="navbar"><a class="navbar" href="/Software/">Software</a></span> | <span class="navbar"><a class="navbar" href="/History/">History</a></span> | <span class="navbar"><a class="navbar" href="/Faq/">FAQs</a></span> | <span class="navbar"><a class="navbar" href="/P5/">P5</a></span> | <span class="navbar"><a class="navbar" href="/Consortium/">Consortium</a></span> | <span class="navbar"><a class="navbar" href="/Activities/">Activities</a></span> | <span class="navbar"><a class="navbar" href="/Activities/SIG/">SIGs</a></span> | <span class="navbar"><a class="navbar" href="/Contact/">Join in/Contact</a></span> | <span class="navbar"><a class="navbar" href="/Members/">Members area</a></span>
+</div>
+
+<div>
+<div id="lh-col">
+<form method="get" action="http://www.google.com/search" target="_blank">
+<input type="hidden" name="as_sitesearch" value="www.tei-c.org.uk"/>
+<input type="text" id="query" name="as_q" size="12"/>
+<input type="submit" value="Search" name="Search"/>
+</form>
+       
+ <div id="menuLinks">
+<span class="menuLink">
+<a class="menuLink" href="..">Stylesheet home page</a>
+</span>
+        <span class="menuLink"><a class="menuLink" href="../index.html">Summary</a></span><span class="menuLink"><a class="menuLink" href="../stylesheetList.html">Stylesheet List</a></span><span class="menuLink"><a class="menuLink" href="../functionTemplateList.html">Template List</a></span>
+ </div>
+    
+</div>
+<div id="rh-col">
+    <div id="content">
+      <div id="stylesheetDetail"><h1>tei-param.xsl</h1><div class="detailDoc"><div class="shortDescr">
+    TEI stylesheet
+    customization module for 
+      fo output.</div><div class="detailDescr"> 
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+   
+   
+      </div><div class="properties"><div class="property"><div class="propertyCaption">Author:</div><div class="propertyContent">See AUTHORS</div></div><div class="property"><div class="propertyCaption">CVS Id:</div><div class="propertyContent"> tei-param.xsl 4090 2007-12-05 14:11:57Z rahtz </div></div><div class="property"><div class="propertyCaption">Copyright:</div><div class="propertyContent">2007, TEI Consortium</div></div></div></div></div><div id="parametersSummary"><h2>Parameters Summary</h2><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e492">activeLinebreaks</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e489">source</a></div><div class="shortDoc"><div class="shortDescr">
+Make &lt;lb&gt; active (ie cause a line break)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e498">alignment</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e495">source</a></div><div class="shortDoc"><div class="shortDescr">
+Alignment of text (ie justified or ragged)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e505">authorSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e502">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font size for display of author name 
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e24">autoScaleFigures</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e21">source</a></div><div class="shortDoc"><div class="shortDescr">
+How to scale figures if no width and height specified (pass to XSL FO content-width)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e119">backMulticolumns</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e116">source</a></div><div class="shortDoc"><div class="shortDescr">
+Put back matter in multiple columns
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e511">biblSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e508">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font size for bibliography
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e517">bodyFont</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e514">source</a></div><div class="shortDoc"><div class="shortDescr">
+Default font for body
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e125">bodyMarginBottom</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e122">source</a></div><div class="shortDoc"><div class="shortDescr">
+Margin at bottom of text body
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e132">bodyMarginTop</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e129">source</a></div><div class="shortDoc"><div class="shortDescr">
+Margin at top of text body
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e524">bodyMaster</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e521">source</a></div><div class="shortDoc"><div class="shortDescr">
+Default font size for body (without dimension)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e138">bodyMulticolumns</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e135">source</a></div><div class="shortDoc"><div class="shortDescr">
+Put body matter in multiple columns
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e530">bodySize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e527">source</a></div><div class="shortDoc"><div class="shortDescr">
+Calculation of normal body font size (add dimension)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e144">bulletFour</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e141">source</a></div><div class="shortDoc"><div class="shortDescr">
+Symbol for 4th level itemized list
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e151">bulletOne</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e148">source</a></div><div class="shortDoc"><div class="shortDescr">
+Symbol for top-level itemized list
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e157">bulletThree</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e154">source</a></div><div class="shortDoc"><div class="shortDescr">
+Symbol for 3rd level itemized list
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e163">bulletTwo</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e160">source</a></div><div class="shortDoc"><div class="shortDescr">
+Symbol for 2nd level itemized list
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e29">captionInlineFigures</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e26">source</a></div><div class="shortDoc"><div class="shortDescr">
+Put captions on inline figures
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">integer </span><span class="declName"><a class="declLink" href="#d71e170">columnCount</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e167">source</a></div><div class="shortDoc"><div class="shortDescr">
+Number of columns, when multiple-column work is requested
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e541">dateSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e538">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font size for display of date
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e976">defaultCellLabelBackground</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e973">source</a></div><div class="shortDoc"><div class="shortDescr">
+Default colour for background of table cells which are labelling rows
+or columns</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e189">distanceBetweenBiblStarts</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e186">source</a></div><div class="shortDoc"><div class="shortDescr">
+XSL FO "provisional-distance-between starts" for bibliographies
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e182">distanceBetweenGlossStarts</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e179">source</a></div><div class="shortDoc"><div class="shortDescr">
+XSL FO "provisional-distance-between starts" for gloss lists
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e176">distanceBetweenStarts</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e173">source</a></div><div class="shortDoc"><div class="shortDescr">
+XSL FO "provisional-distance-between starts"
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e1050">div0Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1047">source</a></div><div class="shortDoc"><div class="shortDescr">
+Indentation for level 0 TOC entries
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e1056">div1Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1053">source</a></div><div class="shortDoc"><div class="shortDescr">
+Indentation for level 1 TOC entries
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e1063">div2Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1060">source</a></div><div class="shortDoc"><div class="shortDescr">
+Indentation for level 2 TOC entries
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e1069">div3Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1066">source</a></div><div class="shortDoc"><div class="shortDescr">
+Indentation for level 3 TOC entries
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e1075">div4Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1072">source</a></div><div class="shortDoc"><div class="shortDescr">
+Indentation for level 4 TOC entries
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e1082">div5Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1079">source</a></div><div class="shortDoc"><div class="shortDescr">
+    Indentation for level 5 TOC entries
+  </div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e548">divFont</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e545">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font for section headings
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e195">divRunningheads</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e192">source</a></div><div class="shortDoc"><div class="shortDescr">
+Display section headings in running heads
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e201">exampleAfter</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e198">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space below examples
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e589">exampleBackgroundColor</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e586">source</a></div><div class="shortDoc"><div class="shortDescr">
+Colour for background display of &lt;eg&gt; blocks</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e208">exampleBefore</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e205">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space above examples
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e582">exampleColor</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e579">source</a></div><div class="shortDoc"><div class="shortDescr">
+Colour for display of &lt;eg&gt; blocks</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e214">exampleMargin</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e211">source</a></div><div class="shortDoc"><div class="shortDescr">
+Left margin for examples
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e595">exampleSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e592">source</a></div><div class="shortDoc"><div class="shortDescr">
+Calculation of font size for examples (add dimension)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e220">flowMarginLeft</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e217">source</a></div><div class="shortDoc"><div class="shortDescr">
+Left margin of flow
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e487">foEngine</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e468">source</a></div><div class="shortDoc"><div class="shortDescr">Name of intended XSL FO engine</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e606">footnoteSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e603">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font size for footnotes
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e613">footnotenumSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e610">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font size for footnote numbers
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e226">forcePageMaster</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e223">source</a></div><div class="shortDoc"><div class="shortDescr">
+Which named page master name to use
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e231">formatBackpage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e228">source</a></div><div class="shortDoc"><div class="shortDescr">
+How to format page numbers in back matter (use XSLT number format)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e237">formatBodypage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e234">source</a></div><div class="shortDoc"><div class="shortDescr">
+How to format page numbers in main matter (use XSLT number format)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e244">formatFrontpage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e241">source</a></div><div class="shortDoc"><div class="shortDescr">
+How to format page numbers in front matter (use XSLT number format)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e250">frontMulticolumns</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e247">source</a></div><div class="shortDoc"><div class="shortDescr">
+Put front matter in multiple columns
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e619">giColor</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e616">source</a></div><div class="shortDoc"><div class="shortDescr">
+Colour for display of element names
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e625">headingOutdent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e622">source</a></div><div class="shortDoc"><div class="shortDescr">
+Indentation of headings
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e632">hyphenate</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e629">source</a></div><div class="shortDoc"><div class="shortDescr">
+Hyphenate text
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e638">identColor</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e635">source</a></div><div class="shortDoc"><div class="shortDescr">
+Colour for display of &lt;ident&gt; values
+    Customization parameter</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e982">inlineTables</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e979">source</a></div><div class="shortDoc"><div class="shortDescr">
+Force tables to appear inline
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e256">labelSeparation</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e253">source</a></div><div class="shortDoc"><div class="shortDescr">
+XSL FO "provisional-label-separation"
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e464">language</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e461">source</a></div><div class="shortDoc"><div class="shortDescr">
+Language (for hyphenation)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e263">listAbove-1</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e260">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space above lists at top level
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e269">listAbove-2</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e266">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space above lists at 2nd level
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e275">listAbove-3</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e272">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space above lists at 3rd level
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e282">listAbove-4</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e279">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space above lists at 4th level
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e288">listBelow-1</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e285">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space below lists at top level
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e294">listBelow-2</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e291">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space below lists at 2nd level
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e301">listBelow-3</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e298">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space below lists at 3rd level
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e307">listBelow-4</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e304">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space below lists at 4th level
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e313">listItemsep</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e310">source</a></div><div class="shortDoc"><div class="shortDescr">
+Spacing between list items
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e320">listLeftGlossIndent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e317">source</a></div><div class="shortDoc"><div class="shortDescr">
+Left margin for gloss lists
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e326">listLeftGlossInnerIndent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e323">source</a></div><div class="shortDoc"><div class="shortDescr">
+Left margin for nested gloss lists
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e332">listLeftIndent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e329">source</a></div><div class="shortDoc"><div class="shortDescr">
+Indentation for lists
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e339">listRightMargin</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e336">source</a></div><div class="shortDoc"><div class="shortDescr">
+Right margin for lists
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e989">makeTableCaption</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e986">source</a></div><div class="shortDoc"><div class="shortDescr">
+Put a caption on tables  
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e345">pageHeight</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e342">source</a></div><div class="shortDoc"><div class="shortDescr">
+Paper height
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e351">pageMarginBottom</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e348">source</a></div><div class="shortDoc"><div class="shortDescr">
+Margin at bottom of text area
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e358">pageMarginLeft</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e355">source</a></div><div class="shortDoc"><div class="shortDescr">
+Left margin
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e364">pageMarginRight</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e361">source</a></div><div class="shortDoc"><div class="shortDescr">
+Right margin
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e370">pageMarginTop</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e367">source</a></div><div class="shortDoc"><div class="shortDescr">
+Margin at top of text area
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e377">pageWidth</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e374">source</a></div><div class="shortDoc"><div class="shortDescr">
+Paper width
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e383">parIndent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e380">source</a></div><div class="shortDoc"><div class="shortDescr">
+Paragraph indentation
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e389">parSkip</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e386">source</a></div><div class="shortDoc"><div class="shortDescr">
+Default spacing between paragraphs
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e396">parSkipmax</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e393">source</a></div><div class="shortDoc"><div class="shortDescr">
+Maximum space allowed between paragraphs
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">anyURI </span><span class="declName"><a class="declLink" href="#d71e402">readColSpecFile</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e399">source</a></div><div class="shortDoc"><div class="shortDescr">
+External XML file containing specifications for column sizes for
+tables in document
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e407">regionAfterExtent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e404">source</a></div><div class="shortDoc"><div class="shortDescr">
+Region after
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e414">regionBeforeExtent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e411">source</a></div><div class="shortDoc"><div class="shortDescr">
+Region before
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e660">runFont</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e657">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font family for running header and footer
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e666">runSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e663">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font size for running header and footer
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e672">sansFont</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e669">source</a></div><div class="shortDoc"><div class="shortDescr">
+Sans-serif font
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e420">sectionHeaders</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e417">source</a></div><div class="shortDoc"><div class="shortDescr">
+Construct running headers from page number and section headings
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e66">showFloatHead</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e63">source</a></div><div class="shortDoc"><div class="shortDescr">
+Show the contents of &lt;head&gt; in a cross-reference to table or figure
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e72">showFloatLabel</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e69">source</a></div><div class="shortDoc"><div class="shortDescr">
+Show a title for figures or tables (eg Table or Figure) in a cross-reference
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e934">smallSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e931">source</a></div><div class="shortDoc"><div class="shortDescr">
+Calculation of small font size (add dimension)
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e426">spaceAfterBibl</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e423">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space after bibliography
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e433">spaceAroundTable</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e430">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space above and below a table
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e439">spaceBeforeBibl</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e436">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space above bibliography
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e445">spaceBelowCaption</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e442">source</a></div><div class="shortDoc"><div class="shortDescr">
+Space below caption of figure or table
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e995">tableCaptionAlign</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e992">source</a></div><div class="shortDoc"><div class="shortDescr">
+Alignment of table captions
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e1044">tableCellPadding</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1041">source</a></div><div class="shortDoc"><div class="shortDescr">
+Default padding on table cells
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e946">tableSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e943">source</a></div><div class="shortDoc"><div class="shortDescr">
+Create font size for tables, by reference to $bodyMaster
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e452">titlePage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e449">source</a></div><div class="shortDoc"><div class="shortDescr">
+Make title page
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e957">titleSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e954">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font size for display of title
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e1088">tocBack</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1085">source</a></div><div class="shortDoc"><div class="shortDescr">
+Make TOC for sections in &lt;back&gt;
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e1094">tocFront</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1091">source</a></div><div class="shortDoc"><div class="shortDescr">
+Make TOC for sections in &lt;front&gt;
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e1101">tocNumberSuffix</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1098">source</a></div><div class="shortDoc"><div class="shortDescr">
+Punctuation to insert after a section number in a TOC
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e963">tocSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e960">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font size for TOC heading
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">integer </span><span class="declName"><a class="declLink" href="#d71e1107">tocStartPage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1104">source</a></div><div class="shortDoc"><div class="shortDescr">
+Page number on which TOC should start
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e458">twoSided</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e455">source</a></div><div class="shortDoc"><div class="shortDescr">
+Make 2-page spreads
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d71e970">typewriterFont</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e967">source</a></div><div class="shortDoc"><div class="shortDescr">
+Font for literal code
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d71e79">xrefShowPage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e76">source</a></div><div class="shortDoc"><div class="shortDescr">
+Show the page number in a cross-reference to table or figure
+</div></div></div></div><div id="namedTemplatesSummary"><h2>Named Templates Summary</h2><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e91">afterBodyHook</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e82">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Hook where extra material can be inserted after the
+    &lt;body&gt; has been processed</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e102">blockStartHook</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e93">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Hook where work can be done at the start of each block</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e563">divXRefHeading</a></span> (<span class="declCaption">param: </span><span class="paramName">head</span>) - <a class="sourceLink" href="tei-param.xsl.src.html#d71e551">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] How to display section headings in a cross-reference </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e44">figureCaptionstyle</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e33">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Set attributes for display of figures</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e650">linkStyle</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e641">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Set attributes for display of links</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e114">pageMasterHook</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e105">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Hook where extra page masters can be defined</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e685">setupDiv0</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e676">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Set attributes for display of heading for chapters (level 0)</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e718">setupDiv1</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e709">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Set attributes for display of heading for 1st level sections</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e751">setupDiv2</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e742">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Set attributes for display of heading for 2nd level sections </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e788">setupDiv3</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e779">source</a></div><div class="shortDoc"><div class="shortDescr">[fo]Set attributes for display of heading for 3rd level sections </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e821">setupDiv4</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e812">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Set attributes for display of heading for 4th level sections </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e854">setupDiv5</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e845">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Set attributes for display of heading for 5th level sections </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e888">setupDiv6</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e879">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Set attributes for display of heading for 6th level sections </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e924">showXrefURL</a></span> (<span class="declCaption">param: </span><span class="paramName">dest</span>) - <a class="sourceLink" href="tei-param.xsl.src.html#d71e912">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] How to display the link text of a &lt;ptr&gt;</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d71e1007">tableCaptionstyle</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e998">source</a></div><div class="shortDoc"><div class="shortDescr">[fo] Set attributes for display of table </div></div></div></div><div id="parametersDetail"><h2>Parameters Detail</h2><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e492">activeLinebreaks</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e489">source</a></div><div class="detailDoc"><div class="shortDescr">
+Make &lt;lb&gt; active (ie cause a line break)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">true</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e498">alignment</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e495">source</a></div><div class="detailDoc"><div class="shortDescr">
+Alignment of text (ie justified or ragged)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">justify</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e505">authorSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e502">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font size for display of author name 
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">14pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e24">autoScaleFigures</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e21">source</a></div><div class="detailDoc"><div class="shortDescr">
+How to scale figures if no width and height specified (pass to XSL FO content-width)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties"/></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e119">backMulticolumns</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e116">source</a></div><div class="detailDoc"><div class="shortDescr">
+Put back matter in multiple columns
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">false</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e511">biblSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e508">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font size for bibliography
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">16pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e517">bodyFont</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e514">source</a></div><div class="detailDoc"><div class="shortDescr">
+Default font for body
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">Times</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e125">bodyMarginBottom</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e122">source</a></div><div class="detailDoc"><div class="shortDescr">
+Margin at bottom of text body
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">24pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e132">bodyMarginTop</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e129">source</a></div><div class="detailDoc"><div class="shortDescr">
+Margin at top of text body
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">24pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e524">bodyMaster</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e521">source</a></div><div class="detailDoc"><div class="shortDescr">
+Default font size for body (without dimension)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">10</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e138">bodyMulticolumns</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e135">source</a></div><div class="detailDoc"><div class="shortDescr">
+Put body matter in multiple columns
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">false</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e530">bodySize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e527">source</a></div><div class="detailDoc"><div class="shortDescr">
+Calculation of normal body font size (add dimension)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">
+    &lt;value-of
+select="$bodyMaster"/&gt;
+    &lt;text&gt;pt&lt;/text&gt;
+  </span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e144">bulletFour</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e141">source</a></div><div class="detailDoc"><div class="shortDescr">
+Symbol for 4th level itemized list
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">+</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e151">bulletOne</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e148">source</a></div><div class="detailDoc"><div class="shortDescr">
+Symbol for top-level itemized list
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">&#8226;</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e157">bulletThree</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e154">source</a></div><div class="detailDoc"><div class="shortDescr">
+Symbol for 3rd level itemized list
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">*</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e163">bulletTwo</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e160">source</a></div><div class="detailDoc"><div class="shortDescr">
+Symbol for 2nd level itemized list
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">&#8211;</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e29">captionInlineFigures</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e26">source</a></div><div class="detailDoc"><div class="shortDescr">
+Put captions on inline figures
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">false</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">integer </span><span class="declName"><a name="d71e170">columnCount</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e167">source</a></div><div class="detailDoc"><div class="shortDescr">
+Number of columns, when multiple-column work is requested
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">1</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e541">dateSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e538">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font size for display of date
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">14pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e976">defaultCellLabelBackground</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e973">source</a></div><div class="detailDoc"><div class="shortDescr">
+Default colour for background of table cells which are labelling rows
+or columns</div><div class="detailDescr"> </div>Default: <span class="paramProperties">silver</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e189">distanceBetweenBiblStarts</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e186">source</a></div><div class="detailDoc"><div class="shortDescr">
+XSL FO "provisional-distance-between starts" for bibliographies
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">50pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e182">distanceBetweenGlossStarts</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e179">source</a></div><div class="detailDoc"><div class="shortDescr">
+XSL FO "provisional-distance-between starts" for gloss lists
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">42pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e176">distanceBetweenStarts</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e173">source</a></div><div class="detailDoc"><div class="shortDescr">
+XSL FO "provisional-distance-between starts"
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">18pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e1050">div0Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1047">source</a></div><div class="detailDoc"><div class="shortDescr">
+Indentation for level 0 TOC entries
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0in</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e1056">div1Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1053">source</a></div><div class="detailDoc"><div class="shortDescr">
+Indentation for level 1 TOC entries
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0.25in</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e1063">div2Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1060">source</a></div><div class="detailDoc"><div class="shortDescr">
+Indentation for level 2 TOC entries
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0.5in</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e1069">div3Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1066">source</a></div><div class="detailDoc"><div class="shortDescr">
+Indentation for level 3 TOC entries
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0.75in</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e1075">div4Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1072">source</a></div><div class="detailDoc"><div class="shortDescr">
+Indentation for level 4 TOC entries
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">1in</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e1082">div5Tocindent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1079">source</a></div><div class="detailDoc"><div class="shortDescr">
+    Indentation for level 5 TOC entries
+  </div><div class="detailDescr"> </div>Default: <span class="paramProperties">1.25in</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e548">divFont</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e545">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font for section headings
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">Times</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e195">divRunningheads</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e192">source</a></div><div class="detailDoc"><div class="shortDescr">
+Display section headings in running heads
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">false</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e201">exampleAfter</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e198">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space below examples
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">4pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e589">exampleBackgroundColor</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e586">source</a></div><div class="detailDoc"><div class="shortDescr">
+Colour for background display of &lt;eg&gt; blocks</div><div class="detailDescr">
+</div>Default: <span class="paramProperties">gray</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e208">exampleBefore</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e205">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space above examples
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">4pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e582">exampleColor</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e579">source</a></div><div class="detailDoc"><div class="shortDescr">
+Colour for display of &lt;eg&gt; blocks</div><div class="detailDescr">
+</div>Default: <span class="paramProperties">black</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e214">exampleMargin</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e211">source</a></div><div class="detailDoc"><div class="shortDescr">
+Left margin for examples
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">12pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e595">exampleSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e592">source</a></div><div class="detailDoc"><div class="shortDescr">
+Calculation of font size for examples (add dimension)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">
+    &lt;value-of
+select="$bodyMaster * 0.6"/&gt;
+    &lt;text&gt;pt&lt;/text&gt;
+  </span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e220">flowMarginLeft</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e217">source</a></div><div class="detailDoc"><div class="shortDescr">
+Left margin of flow
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties"/></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e487">foEngine</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e468">source</a></div><div class="detailDoc"><div class="shortDescr">Name of intended XSL FO engine</div><div class="detailDescr">This is used to tailor the result for different XSL FO processors.
+By default, no special measures are taken, so
+there are no bookmarks or other such features. Possible values are
+<ul><li>passivetex (the TeX-based PassiveTeX processor</li><li>xep   (XEP)</li><li>fop (FOP)</li><li>antenna  (Antenna House)</li></ul>
+</div>Default: <span class="paramProperties"/></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e606">footnoteSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e603">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font size for footnotes
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">8pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e613">footnotenumSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e610">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font size for footnote numbers
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">7pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e226">forcePageMaster</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e223">source</a></div><div class="detailDoc"><div class="shortDescr">
+Which named page master name to use
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties"/></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e231">formatBackpage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e228">source</a></div><div class="detailDoc"><div class="shortDescr">
+How to format page numbers in back matter (use XSLT number format)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">1</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e237">formatBodypage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e234">source</a></div><div class="detailDoc"><div class="shortDescr">
+How to format page numbers in main matter (use XSLT number format)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">1</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e244">formatFrontpage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e241">source</a></div><div class="detailDoc"><div class="shortDescr">
+How to format page numbers in front matter (use XSLT number format)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">i</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e250">frontMulticolumns</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e247">source</a></div><div class="detailDoc"><div class="shortDescr">
+Put front matter in multiple columns
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">false</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e619">giColor</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e616">source</a></div><div class="detailDoc"><div class="shortDescr">
+Colour for display of element names
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">black</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e625">headingOutdent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e622">source</a></div><div class="detailDoc"><div class="shortDescr">
+Indentation of headings
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0em</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e632">hyphenate</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e629">source</a></div><div class="detailDoc"><div class="shortDescr">
+Hyphenate text
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">true</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e638">identColor</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e635">source</a></div><div class="detailDoc"><div class="shortDescr">
+Colour for display of &lt;ident&gt; values
+    Customization parameter</div><div class="detailDescr">
+</div>Default: <span class="paramProperties">black</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e982">inlineTables</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e979">source</a></div><div class="detailDoc"><div class="shortDescr">
+Force tables to appear inline
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">false</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e256">labelSeparation</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e253">source</a></div><div class="detailDoc"><div class="shortDescr">
+XSL FO "provisional-label-separation"
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">6pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e464">language</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e461">source</a></div><div class="detailDoc"><div class="shortDescr">
+Language (for hyphenation)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">en_US</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e263">listAbove-1</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e260">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space above lists at top level
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">6pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e269">listAbove-2</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e266">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space above lists at 2nd level
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">4pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e275">listAbove-3</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e272">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space above lists at 3rd level
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e282">listAbove-4</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e279">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space above lists at 4th level
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e288">listBelow-1</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e285">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space below lists at top level
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">6pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e294">listBelow-2</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e291">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space below lists at 2nd level
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">4pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e301">listBelow-3</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e298">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space below lists at 3rd level
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e307">listBelow-4</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e304">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space below lists at 4th level
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e313">listItemsep</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e310">source</a></div><div class="detailDoc"><div class="shortDescr">
+Spacing between list items
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">4pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e320">listLeftGlossIndent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e317">source</a></div><div class="detailDoc"><div class="shortDescr">
+Left margin for gloss lists
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0.5in</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e326">listLeftGlossInnerIndent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e323">source</a></div><div class="detailDoc"><div class="shortDescr">
+Left margin for nested gloss lists
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0.25in</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e332">listLeftIndent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e329">source</a></div><div class="detailDoc"><div class="shortDescr">
+Indentation for lists
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e339">listRightMargin</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e336">source</a></div><div class="detailDoc"><div class="shortDescr">
+Right margin for lists
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">10pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e989">makeTableCaption</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e986">source</a></div><div class="detailDoc"><div class="shortDescr">
+Put a caption on tables  
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">true</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e345">pageHeight</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e342">source</a></div><div class="detailDoc"><div class="shortDescr">
+Paper height
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">297mm</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e351">pageMarginBottom</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e348">source</a></div><div class="detailDoc"><div class="shortDescr">
+Margin at bottom of text area
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">100pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e358">pageMarginLeft</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e355">source</a></div><div class="detailDoc"><div class="shortDescr">
+Left margin
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">80pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e364">pageMarginRight</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e361">source</a></div><div class="detailDoc"><div class="shortDescr">
+Right margin
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">150pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e370">pageMarginTop</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e367">source</a></div><div class="detailDoc"><div class="shortDescr">
+Margin at top of text area
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">75pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e377">pageWidth</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e374">source</a></div><div class="detailDoc"><div class="shortDescr">
+Paper width
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">211mm</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e383">parIndent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e380">source</a></div><div class="detailDoc"><div class="shortDescr">
+Paragraph indentation
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">1em</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e389">parSkip</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e386">source</a></div><div class="detailDoc"><div class="shortDescr">
+Default spacing between paragraphs
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e396">parSkipmax</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e393">source</a></div><div class="detailDoc"><div class="shortDescr">
+Maximum space allowed between paragraphs
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">12pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">anyURI </span><span class="declName"><a name="d71e402">readColSpecFile</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e399">source</a></div><div class="detailDoc"><div class="shortDescr">
+External XML file containing specifications for column sizes for
+tables in document
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties"/></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e407">regionAfterExtent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e404">source</a></div><div class="detailDoc"><div class="shortDescr">
+Region after
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">14pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e414">regionBeforeExtent</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e411">source</a></div><div class="detailDoc"><div class="shortDescr">
+Region before
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">14pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e660">runFont</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e657">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font family for running header and footer
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">sans-serif</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e666">runSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e663">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font size for running header and footer
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">9pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e672">sansFont</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e669">source</a></div><div class="detailDoc"><div class="shortDescr">
+Sans-serif font
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">Helvetica</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e420">sectionHeaders</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e417">source</a></div><div class="detailDoc"><div class="shortDescr">
+Construct running headers from page number and section headings
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">true</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e66">showFloatHead</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e63">source</a></div><div class="detailDoc"><div class="shortDescr">
+Show the contents of &lt;head&gt; in a cross-reference to table or figure
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">false</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e72">showFloatLabel</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e69">source</a></div><div class="detailDoc"><div class="shortDescr">
+Show a title for figures or tables (eg Table or Figure) in a cross-reference
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">false</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e934">smallSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e931">source</a></div><div class="detailDoc"><div class="shortDescr">
+Calculation of small font size (add dimension)
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">
+    &lt;value-of
+select="$bodyMaster * 0.9"/&gt;
+    &lt;text&gt;pt&lt;/text&gt;
+  </span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e426">spaceAfterBibl</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e423">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space after bibliography
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">0pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e433">spaceAroundTable</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e430">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space above and below a table
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">8pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e439">spaceBeforeBibl</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e436">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space above bibliography
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">4pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e445">spaceBelowCaption</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e442">source</a></div><div class="detailDoc"><div class="shortDescr">
+Space below caption of figure or table
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">4pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e995">tableCaptionAlign</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e992">source</a></div><div class="detailDoc"><div class="shortDescr">
+Alignment of table captions
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">center</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e1044">tableCellPadding</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1041">source</a></div><div class="detailDoc"><div class="shortDescr">
+Default padding on table cells
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">2pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e946">tableSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e943">source</a></div><div class="detailDoc"><div class="shortDescr">
+Create font size for tables, by reference to $bodyMaster
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">
+    &lt;value-of
+select="$bodyMaster * 0.9"/&gt;
+    &lt;text&gt;pt&lt;/text&gt;
+  </span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e452">titlePage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e449">source</a></div><div class="detailDoc"><div class="shortDescr">
+Make title page
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">true</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e957">titleSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e954">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font size for display of title
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">16pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e1088">tocBack</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1085">source</a></div><div class="detailDoc"><div class="shortDescr">
+Make TOC for sections in &lt;back&gt;
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">true</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e1094">tocFront</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1091">source</a></div><div class="detailDoc"><div class="shortDescr">
+Make TOC for sections in &lt;front&gt;
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">true</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e1101">tocNumberSuffix</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1098">source</a></div><div class="detailDoc"><div class="shortDescr">
+Punctuation to insert after a section number in a TOC
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">. </span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e963">tocSize</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e960">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font size for TOC heading
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">16pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">integer </span><span class="declName"><a name="d71e1107">tocStartPage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e1104">source</a></div><div class="detailDoc"><div class="shortDescr">
+Page number on which TOC should start
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">1</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e458">twoSided</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e455">source</a></div><div class="detailDoc"><div class="shortDescr">
+Make 2-page spreads
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">true</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d71e970">typewriterFont</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e967">source</a></div><div class="detailDoc"><div class="shortDescr">
+Font for literal code
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">Courier</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d71e79">xrefShowPage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e76">source</a></div><div class="detailDoc"><div class="shortDescr">
+Show the page number in a cross-reference to table or figure
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">false</span></div></div></div><div id="namedTemplatesDetail"><h2>Named Templates Detail</h2><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e91">afterBodyHook</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e82">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Hook where extra material can be inserted after the
+    &lt;body&gt; has been processed</div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e102">blockStartHook</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e93">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Hook where work can be done at the start of each block</div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e563">divXRefHeading</a></span> (<span class="declCaption">param: </span><span class="paramName">head</span>) - <a class="sourceLink" href="tei-param.xsl.src.html#d71e551">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] How to display section headings in a cross-reference </div><div class="detailDescr"> </div><div class="properties"><div class="property"><div class="propertyCaption">Parameters:</div><div class="propertyContent"><div class="parameterDetail"><span class="paramName">head</span><span class="paramDescr"> - section title</span></div></div></div></div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e44">figureCaptionstyle</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e33">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Set attributes for display of figures</div><div class="detailDescr">
+      <p/>
+    </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e650">linkStyle</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e641">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Set attributes for display of links</div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e114">pageMasterHook</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e105">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Hook where extra page masters can be defined</div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e685">setupDiv0</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e676">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Set attributes for display of heading for chapters (level 0)</div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e718">setupDiv1</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e709">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Set attributes for display of heading for 1st level sections</div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e751">setupDiv2</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e742">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Set attributes for display of heading for 2nd level sections </div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e788">setupDiv3</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e779">source</a></div><div class="detailDoc"><div class="shortDescr">[fo]Set attributes for display of heading for 3rd level sections </div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e821">setupDiv4</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e812">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Set attributes for display of heading for 4th level sections </div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e854">setupDiv5</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e845">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Set attributes for display of heading for 5th level sections </div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e888">setupDiv6</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e879">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Set attributes for display of heading for 6th level sections </div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e924">showXrefURL</a></span> (<span class="declCaption">param: </span><span class="paramName">dest</span>) - <a class="sourceLink" href="tei-param.xsl.src.html#d71e912">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] How to display the link text of a &lt;ptr&gt;</div><div class="detailDescr"> </div><div class="properties"><div class="property"><div class="propertyCaption">Parameters:</div><div class="propertyContent"><div class="parameterDetail"><span class="paramName">dest</span><span class="paramDescr"> - the URL being linked to</span></div></div></div></div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d71e1007">tableCaptionstyle</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d71e998">source</a></div><div class="detailDoc"><div class="shortDescr">[fo] Set attributes for display of table </div><div class="detailDescr"> </div></div></div></div>
+    </div>
+</div>
+    <div id="footer">
+      <div style="float:left">Powered By <a target="_blank" href="http://xsltdoc.sf.net">XSLTdoc 1.1</a></div>
+      <div style="float:right">
+        <a href="http://jigsaw.w3.org/css-validator/">CSS</a>
+        |
+        <a href="http://validator.w3.org/check?uri=referer">XHTML</a>
+        | © 2004, <a target="_blank" href="http://www.pnp-software.com/">P&amp;P Software</a>
+      </div>
+      <div> </div>
+    </div>
+</div>
+  </body>
+</html>

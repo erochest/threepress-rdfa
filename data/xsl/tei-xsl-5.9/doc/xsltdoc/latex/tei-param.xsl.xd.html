@@ -1,0 +1,140 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      TEI Stylesheet family - tei-param.xsl
+    </title>
+    <link href="../XSLTdoc.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div id="hdr">
+      <h2 class="subtitle">The Text Encoding Initiative</h2>
+      <h1 class="maintitle">TEI Consortium XSLT stylesheets</h1>
+    </div>
+    <div id="header">
+    </div>
+
+<div id="hdr2">
+<span class="navbar"><a class="navbar" href="/">Home</a></span> | <span class="navbar"><a class="navbar" href="/Guidelines2/">Guidelines</a></span> | <span class="navbar"><a class="navbar" href="/Applications/">Projects</a></span> | <span class="navbar"><a class="navbar" href="/Tutorials/">Tutorials</a></span> | <span class="navbar"><a class="navbar" href="/Software/">Software</a></span> | <span class="navbar"><a class="navbar" href="/History/">History</a></span> | <span class="navbar"><a class="navbar" href="/Faq/">FAQs</a></span> | <span class="navbar"><a class="navbar" href="/P5/">P5</a></span> | <span class="navbar"><a class="navbar" href="/Consortium/">Consortium</a></span> | <span class="navbar"><a class="navbar" href="/Activities/">Activities</a></span> | <span class="navbar"><a class="navbar" href="/Activities/SIG/">SIGs</a></span> | <span class="navbar"><a class="navbar" href="/Contact/">Join in/Contact</a></span> | <span class="navbar"><a class="navbar" href="/Members/">Members area</a></span>
+</div>
+
+<div>
+<div id="lh-col">
+<form method="get" action="http://www.google.com/search" target="_blank">
+<input type="hidden" name="as_sitesearch" value="www.tei-c.org.uk"/>
+<input type="text" id="query" name="as_q" size="12"/>
+<input type="submit" value="Search" name="Search"/>
+</form>
+       
+ <div id="menuLinks">
+<span class="menuLink">
+<a class="menuLink" href="..">Stylesheet home page</a>
+</span>
+        <span class="menuLink"><a class="menuLink" href="../index.html">Summary</a></span><span class="menuLink"><a class="menuLink" href="../stylesheetList.html">Stylesheet List</a></span><span class="menuLink"><a class="menuLink" href="../functionTemplateList.html">Template List</a></span>
+ </div>
+    
+</div>
+<div id="rh-col">
+    <div id="content">
+      <div id="stylesheetDetail"><h1>tei-param.xsl</h1><div class="detailDoc"><div class="shortDescr">TEI stylesheet customization module for LaTeX output.</div><div class="detailDescr">
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+   
+   
+      </div><div class="properties"><div class="property"><div class="propertyCaption">Author:</div><div class="propertyContent">See AUTHORS</div></div><div class="property"><div class="propertyCaption">CVS Id:</div><div class="propertyContent"> tei-param.xsl 4205 2008-01-08 08:20:24Z rahtz </div></div><div class="property"><div class="propertyCaption">Copyright:</div><div class="propertyContent">2007, TEI Consortium</div></div></div></div></div><div id="parametersSummary"><h2>Parameters Summary</h2><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d108e58">baseURL</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e55">source</a></div><div class="shortDoc"><div class="shortDescr">
+URL root where referenced documents are located
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d108e47">classParameters</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e44">source</a></div><div class="shortDoc"><div class="shortDescr">
+Optional parameters for documentclass
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">integer </span><span class="declName"><a class="declLink" href="#d108e135">everyHowManyLines</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e132">source</a></div><div class="shortDoc"><div class="shortDescr">
+When numbering poetry, how often to put in a line number
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d108e148">latexGeometryOptions</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e145">source</a></div><div class="shortDoc"><div class="shortDescr">
+Options to pass to the geometry package to set margins etc
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d108e53">latexLogo</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e50">source</a></div><div class="shortDoc"><div class="shortDescr">
+Logo graphics file
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">float </span><span class="declName"><a class="declLink" href="#d108e117">pagebreakStyle</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e114">source</a></div><div class="shortDoc"><div class="shortDescr">
+When processing a "pb" element, decide what to generate: "active" generates a page break; "visible" genrates a bracketed number (with scissors), and "bracketsonly" generates a bracketed number (without scissors)</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d108e75">realFigures</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e72">source</a></div><div class="shortDoc"><div class="shortDescr">
+Use real name of graphics files rather than pointers
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d108e64">reencode</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e61">source</a></div><div class="shortDoc"><div class="shortDescr">
+Whether or not to load LaTeX packages which attempt to
+process the UTF-8 characters</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d108e141">resetVerseLineNumbering</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e138">source</a></div><div class="shortDoc"><div class="shortDescr">
+When numbering poetry, when to restart the sequence;
+this must be the name of a TEI element
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">float </span><span class="declName"><a class="declLink" href="#d108e122">tableMaxWidth</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e119">source</a></div><div class="shortDoc"><div class="shortDescr">
+When making a table, what width must be constrained to fit,
+as a proportion of the page width</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a class="declLink" href="#d108e70">userpackage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e67">source</a></div><div class="shortDoc"><div class="shortDescr">
+The name of a LaTeX style package which should be loaded
+</div></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a class="declLink" href="#d108e129">verseNumbering</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e126">source</a></div><div class="shortDoc"><div class="shortDescr">
+Whether to number lines of poetry
+</div></div></div></div><div id="namedTemplatesSummary"><h2>Named Templates Summary</h2><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d108e30">beginDocumentHook</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e21">source</a></div><div class="shortDoc"><div class="shortDescr">[latex] Hook where LaTeX commands can be inserted after 
+the beginning of the document</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d108e186">latexBabel</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e177">source</a></div><div class="shortDoc"><div class="shortDescr">LaTeX babel setup</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d108e222">latexBegin</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e213">source</a></div><div class="shortDoc"><div class="shortDescr">LaTeX setup at start of document</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d108e247">latexEnd</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e238">source</a></div><div class="shortDoc"><div class="shortDescr">LaTeX setup at end of document</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d108e199">latexLayout</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e190">source</a></div><div class="shortDoc"><div class="shortDescr">LaTeX layout preamble</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d108e88">latexPackages</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e79">source</a></div><div class="shortDoc"><div class="shortDescr">LaTeX package setup</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d108e41">latexPreambleHook</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e32">source</a></div><div class="shortDoc"><div class="shortDescr">[latex] Hook where LaTeX commands can be inserted in the
+    preamble before the beginning of the document</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d108e160">latexSetup</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e151">source</a></div><div class="shortDoc"><div class="shortDescr">LaTeX setup</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a class="declLink" href="#d108e260">printTitleAndLogo</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e251">source</a></div><div class="shortDoc"><div class="shortDescr">[latex] Title banner </div></div></div></div><div id="parametersDetail"><h2>Parameters Detail</h2><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d108e58">baseURL</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e55">source</a></div><div class="detailDoc"><div class="shortDescr">
+URL root where referenced documents are located
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties"/></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d108e47">classParameters</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e44">source</a></div><div class="detailDoc"><div class="shortDescr">
+Optional parameters for documentclass
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">11pt</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">integer </span><span class="declName"><a name="d108e135">everyHowManyLines</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e132">source</a></div><div class="detailDoc"><div class="shortDescr">
+When numbering poetry, how often to put in a line number
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">5</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d108e148">latexGeometryOptions</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e145">source</a></div><div class="detailDoc"><div class="shortDescr">
+Options to pass to the geometry package to set margins etc
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">twoside,a4paper,lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d108e53">latexLogo</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e50">source</a></div><div class="detailDoc"><div class="shortDescr">
+Logo graphics file
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties"/></div></div><div class="listItem"><div class="declaration"><span class="paramType">float </span><span class="declName"><a name="d108e117">pagebreakStyle</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e114">source</a></div><div class="detailDoc"><div class="shortDescr">
+When processing a "pb" element, decide what to generate: "active" generates a page break; "visible" genrates a bracketed number (with scissors), and "bracketsonly" generates a bracketed number (without scissors)</div><div class="detailDescr">
+</div>Default: <span class="paramProperties"/></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d108e75">realFigures</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e72">source</a></div><div class="detailDoc"><div class="shortDescr">
+Use real name of graphics files rather than pointers
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">true</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d108e64">reencode</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e61">source</a></div><div class="detailDoc"><div class="shortDescr">
+Whether or not to load LaTeX packages which attempt to
+process the UTF-8 characters</div><div class="detailDescr"> Set to "false" if you are
+using XeTeX or similar.
+</div>Default: <span class="paramProperties">true</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d108e141">resetVerseLineNumbering</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e138">source</a></div><div class="detailDoc"><div class="shortDescr">
+When numbering poetry, when to restart the sequence;
+this must be the name of a TEI element
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">div1</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">float </span><span class="declName"><a name="d108e122">tableMaxWidth</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e119">source</a></div><div class="detailDoc"><div class="shortDescr">
+When making a table, what width must be constrained to fit,
+as a proportion of the page width</div><div class="detailDescr">
+</div>Default: <span class="paramProperties">0.85</span></div></div><div class="listItem"><div class="declaration"><span class="paramType">string </span><span class="declName"><a name="d108e70">userpackage</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e67">source</a></div><div class="detailDoc"><div class="shortDescr">
+The name of a LaTeX style package which should be loaded
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties"/></div></div><div class="listItem"><div class="declaration"><span class="paramType">boolean </span><span class="declName"><a name="d108e129">verseNumbering</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e126">source</a></div><div class="detailDoc"><div class="shortDescr">
+Whether to number lines of poetry
+</div><div class="detailDescr"> </div>Default: <span class="paramProperties">false</span></div></div></div><div id="namedTemplatesDetail"><h2>Named Templates Detail</h2><div class="listItem"><div class="declaration"><span class="declName"><a name="d108e30">beginDocumentHook</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e21">source</a></div><div class="detailDoc"><div class="shortDescr">[latex] Hook where LaTeX commands can be inserted after 
+the beginning of the document</div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d108e186">latexBabel</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e177">source</a></div><div class="detailDoc"><div class="shortDescr">LaTeX babel setup</div><div class="detailDescr">LaTeX loading of babel with options</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d108e222">latexBegin</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e213">source</a></div><div class="detailDoc"><div class="shortDescr">LaTeX setup at start of document</div><div class="detailDescr">All the LaTeX setup which are executed at the start of
+    the document</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d108e247">latexEnd</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e238">source</a></div><div class="detailDoc"><div class="shortDescr">LaTeX setup at end of document</div><div class="detailDescr">All the LaTeX setup which are executed at the end of
+    the document</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d108e199">latexLayout</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e190">source</a></div><div class="detailDoc"><div class="shortDescr">LaTeX layout preamble</div><div class="detailDescr">All the LaTeX setup which affects page layout</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d108e88">latexPackages</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e79">source</a></div><div class="detailDoc"><div class="shortDescr">LaTeX package setup</div><div class="detailDescr">Declaration of the LaTeX packages needed to implement
+    this markup</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d108e41">latexPreambleHook</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e32">source</a></div><div class="detailDoc"><div class="shortDescr">[latex] Hook where LaTeX commands can be inserted in the
+    preamble before the beginning of the document</div><div class="detailDescr"> </div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d108e160">latexSetup</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e151">source</a></div><div class="detailDoc"><div class="shortDescr">LaTeX setup</div><div class="detailDescr">The basic LaTeX setup which you should not 
+really tinker with unless you really understand  why and how. Note
+that we need to set up a mapping here for Unicode 8421, 10100 and
+10100 to glyphs for backslash and the two curly brackets, to provide literal
+characters. The normal characters remain active for LaTeX commands.
+Note that if $reencode is set to false, no input or output encoding
+packages are loaded, since it is assumed you are using a TeX variant
+capable of dealing with UTF-8 directly.
+</div></div></div><div class="listItem"><div class="declaration"><span class="declName"><a name="d108e260">printTitleAndLogo</a></span> - <a class="sourceLink" href="tei-param.xsl.src.html#d108e251">source</a></div><div class="detailDoc"><div class="shortDescr">[latex] Title banner </div><div class="detailDescr"> </div></div></div></div>
+    </div>
+</div>
+    <div id="footer">
+      <div style="float:left">Powered By <a target="_blank" href="http://xsltdoc.sf.net">XSLTdoc 1.1</a></div>
+      <div style="float:right">
+        <a href="http://jigsaw.w3.org/css-validator/">CSS</a>
+        |
+        <a href="http://validator.w3.org/check?uri=referer">XHTML</a>
+        | © 2004, <a target="_blank" href="http://www.pnp-software.com/">P&amp;P Software</a>
+      </div>
+      <div> </div>
+    </div>
+</div>
+  </body>
+</html>

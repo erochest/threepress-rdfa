@@ -1,0 +1,73 @@
+{% extends "base.html" %} 
+
+{% spaceless %}
+{% block title %}{{ document.title }} by {{ document.author }}{% endblock title %}
+{% endspaceless %}
+
+{% block header %}
+   <div class="document_title"><h1><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></h1></div>
+{% endblock header%}
+
+
+{% block main %}
+
+   {% if chapter %}
+   <h2>{{ chapter.title }}</h2>
+   <div id="document_content">
+     {{ chapter.render|safe }}
+   </div>
+   {% endif %}
+
+{% endblock main %}
+
+{% block leftnav %}      
+
+{% if document.has_parts %}
+  {% for p in document.part_set.all %}
+     <h4> {{ p.title }} </h4>
+     <ol class="nav">
+     {% for c in p.chapter_set.all %}
+        {% ifequal c.ordinal chapter.ordinal %}
+            {% ifequal p.id chapter.part.id %}
+            <li class="current"> {{ c.title }} </li>
+            {% endifequal %}
+        {% else %}
+          <li>{{ c.link|safe }}</li>
+        {% endifequal %}
+     {% endfor %}     
+     </ol>
+  {% endfor %}
+{% else %}
+   <ol class="nav"">
+     {% for c in document.chapter_set.all %}
+        {% ifequal c.ordinal chapter.ordinal %}
+          <li class="current"> {{ c.title }} </li>
+        {% else %}
+          <li>{{ c.link|safe }}</li>
+        {% endifequal %}
+     {% endfor %}
+   </ol>        
+
+{% endif %}
+{% endblock leftnav %}
+
+{% block rightnav %}
+
+   <div class="rightnav nextprevious">
+    <p> 
+      {% if previous %} <a href="{% url threepress.search.views.document_view document.id,previous.id %}">previous</a> {% endif %} 
+      {% if next and previous %} | {% endif %}
+      {% if next %} <a href="{% url threepress.search.views.document_view document.id,next.id %}">next</a> {% endif %} 
+    </p>
+   </div>
+   <div class="rightnav nextprevious clear">
+     <p> 
+       {% if previous %} <a href="{% url threepress.search.views.document_view document.id,previous.id %}">previous</a> {% endif %} 
+       {% if next and previous %} | {% endif %}
+       {% if next %} <a href="{% url threepress.search.views.document_view document.id,next.id %}">next</a> {% endif %} 
+     </p>
+   </div>
+   {% if show_spacing %}
+     <div id="document_spacing" class="clear">&nbsp;</div>      
+   {% endif %}
+{% endblock rightnav %}

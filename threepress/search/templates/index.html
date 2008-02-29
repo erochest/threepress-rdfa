@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h2> Document list: </h2>
+{% if documents %}
+
+<ul>
+  {% for document in documents %}
+  <li>
+    {{ document.link|safe }}
+    <br/>
+    {{ document.info }}
+  </li>
+{% endfor %}
+</ul>
+{% else %}
+
+ <p>No documents are currently in the system.</p>
+
+{% endif %}
+
+{% endblock %}

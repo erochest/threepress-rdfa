@@ -1,0 +1,98 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from lxml import etree
+
+import os
+import sys
+import xapian
+
+TEI = 'http://www.tei-c.org/ns/1.0'
+
+db_dir = 'db/'
+
+indexer = xapian.TermGenerator()
+stemmer = xapian.Stem("english")
+indexer.set_stemmer(stemmer)
+
+if len(sys.argv) < 3:
+    print "Usage: convert.py xml-file xslt [re-index]"
+    sys.exit(1)
+
+xml = sys.argv[1]
+xsl = sys.argv[2]
+reindex = False
+if len(sys.argv) > 3:
+    reindex = True
+
+tei_xsl = 'xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'
+
+out_file = xml.replace('src', 'tei')
+out = open(out_file, 'w')
+
+schema = 'src/teilite.xsd'
+xmlschema_doc = etree.parse(schema)
+xmlschema = etree.XMLSchema(xmlschema_doc)
+
+tree = etree.parse(xml)
+xslt = etree.parse(xsl)
+root = tree.xslt(xslt)
+
+# Check the document
+xmlschema.assertValid(root)
+    
+for element in root.iter():
+    if element.text:
+        element.text = element.text.replace('--', u'—')
+        element.text = element.text.replace("'", u'’')
+        element.text = element.text.replace('`', u'‘')
+        words = []
+        is_open = False
+        for index, word in enumerate(element.text.split(' ')):
+            if index == 0 and '"' in word:
+                # Definitely an open quote at the beginning
+                word = word.replace('"', u'“')
+                is_open = True
+            else:
+                if '"' in word and is_open:
+                    word = word.replace('"', u'”')
+                    is_open = False
+                elif '"' in word and not is_open:
+                    word = word.replace('"', u'“')
+                    is_open = True
+            words.append(word)
+        element.text = ' '.join([word for word in words]) 
+
+
+if reindex:
+    # Open the database for update, creating a new database if necessary.
+    id = root.xpath('/tei:TEI/@xml:id', namespaces={'tei':TEI})[0]
+    # Delete the old database
+    os.system('rm -rf %s/%s' % (db_dir, id))
+    database = xapian.WritableDatabase('%s/%s' % (db_dir, id), xapian.DB_CREATE_OR_OPEN)
+
+
+    body = root.xpath('//tei:body', namespaces={'tei':TEI})[0]
+    for element in body.iter(tag='{%s}p' % TEI):
+        para = element.text
+        doc = xapian.Document()
+        doc.set_data(para)
+    
+        indexer.set_document(doc)
+        indexer.index_text(para)
+    
+        # Add the document to the database.
+        para_id = element.xpath('@xml:id')[0].replace('id', '')
+        chapter_id = element.xpath('parent::tei:div[@type="chapter"]/@xml:id', namespaces={'tei':TEI})[0]
+        doc.add_value(0, chapter_id)
+        # Create the document with the paragraph ID from the XML
+        database.replace_document(int(para_id), doc)
+else:
+    print "Skipping re-index..."
+    
+out.write(etree.tostring(root, encoding='utf-8', pretty_print=True, xml_declaration=True))
+
+# Also transform it to HTML
+#out_file = out_file.replace('tei/', '')
+#out_file = out_file.replace('xml', 'html')
+
+print "Done."

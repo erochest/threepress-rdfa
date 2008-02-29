@@ -1,0 +1,10 @@
+{% extends "base.html" %} 
+{% spaceless %}
+{% block title %}{{ page.name }} {% endblock title %}
+{% endspaceless %}
+
+{% block main %}
+  {{ page.content|safe }}
+{% endblock main %}
+
+{% block leftnav %}{% endblock %}
