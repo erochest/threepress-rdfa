@@ -1,10 +1,13 @@
 body {
   background: white;
-  font-size: 12pt;
+  font-size: 10pt;
   font-family: georgia, serif;
   padding:0;
-  margin:10%;
+  margin:0;
 }
+
+p { line-height: 12pt; }
+
 #outer {
   margin:0;padding:0;
 }
@@ -13,6 +16,7 @@ body {
   float:none;
   margin:0;
   padding:0;
+  border:none;
 }
 #header {
   background: white;
@@ -29,12 +33,13 @@ a:link, a:visited {
 	font-weight: bold;
 	text-decoration: underline;
 }
+
 a:link:after, #content a:visited:after {
-  content: " (" attr(href) ") ";
+/*  content: " (" attr(href) ") "; */
   font-size: 90%;
 }
 #body a[href^="/"]:after {
-  content: " (http://www.threepress.org" attr(href) ") ";
+  /*  content: " (http://www.threepress.org" attr(href) ") "; */
 }
 #leftnav {
   display:none;
@@ -48,4 +53,8 @@ a:link:after, #content a:visited:after {
   display:block;
   float:none;
   border:none;
+}
+
+#header_nav, .results_nav, #footer {
+ display:none;
 }
