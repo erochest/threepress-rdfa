@@ -16,28 +16,15 @@
         background-color:white;
       } 
 
-      
-      #container {
-        padding-top: 20px;
-        float:left;
-        width:100%;    
-        background-color:white;
-        border-left:150px solid white;
-        border-right:200px solid white;
-        margin-left:-150px;
-        margin-right:-200px;
-        display:inline; /* So IE plays nice */
-      }
-
       p { line-height: 1.7em; }
 
 
       #footer { 
         position:fixed;
-        width:100%;
         bottom:0;
         clear: both;
-        padding: 5px 20px 0px 20px;
+        padding: 5px 20px 1em 20px;
+        height:1em;
         margin:0;
         background-color: rgb(248, 255, 239);
       }
@@ -88,6 +75,7 @@
         color: rgb(248, 255, 239);
       }
       .document_title {
+        margin-top:-5px;padding:0;
       }
       .document_title h1 .by {
         font-size: .7em; 
@@ -128,6 +116,7 @@
       }
       #leftnav h4 {
         text-align:right;
+        padding-right: 2em;
       }
       ol.nav a {
         text-decoration: none;
@@ -142,10 +131,9 @@
         padding-bottom: 10px;
       }
       #leftnav {    
-        float:left;
         width:150px;
-        margin-left:-700px;
-        position:relative;
+        padding-top:1em;
+
       }
       #leftnav form {
 
@@ -157,18 +145,15 @@
       #main {
         float:left;
         width:100%;
-        margin-right:-10px; 
         padding-left: 15px;
+        padding-top: 1em;
         border-left: 1px dotted lightgray;
         padding-bottom:100px;
 
       }
 
       .rightnav {
-        position:relative;
-        float:right;
         width:200px;
-        margin-right:-200px; 
         margin-bottom:100px;
       }
 
@@ -215,7 +200,9 @@
     .results_nav {
        width:100%;
        clear:both;
-       padding: .5em .5em 1.5em .5em;
+      height:1em;
+
+       padding: .5em .5em .5em .5em;
        background-color: rgb(181, 188, 207); 
        border-top: 1px solid rgb(248, 255, 239);
        border-bottom: 1px solid rgb(248, 255, 239);

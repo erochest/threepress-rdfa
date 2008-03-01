@@ -10,7 +10,7 @@
   <body>
     <!-- Header -->
 
-    <div id="header">
+    <div id="header" style="margin-bottom:0">
       <div id="header_logo">
         <h1 class="logo"><a href="{% url threepress.search.views.index %}"><span class="three">three</span><span class="press">press</span></a></h1>
         <h2 class="motto"><a href="{%  url threepress.search.views.index %}">open source publishing software</a></h2>
@@ -22,49 +22,42 @@
           <a href="/page/contact">contact</a>
         </p>
       </div>
-
     </div>
-
-    <table>
+    <table width="100%">
       <tr><td>
         <div id="subheader">
           {% block header %}
           {% endblock header %}
         </div>
       </td></tr>
-      <tr><td>
-    <div id="outer"> 
-      <div id="container">
+    </table>
+    <table style="margin-left: 60px; padding: 2em 60px 100px 0; background-color:white">
+      <tr><td valign="top">
+        <div id="leftnav">
+          <div id="search">
+            <form action="/search" method="get">
+              <h3>Search this work</h3>
+              <div>
+                <input type="text" name="search" size="15" />
+              </div>
+            </form>
+          </div>
+          {% block leftnav %}{% endblock leftnav %}
+        </div>
+      </td>
+      <td valign="top" style="background-color:white; width=100%;padding-right: 50px">
         <!-- Content -->
         <div id="main">
           {% block main %}{% endblock main %}
         </div>
-        <div id="leftnav">
-          <table>
-            <tr><td>
-              <div id="search">
-                
-                <form action="/search" method="get">
-                  <h3>Search this work</h3>
-                  <div>
-                    <input type="text" name="search" />
-                  </div>
-                </form>
-              </div>
-            </td></tr>
-            <tr><td>
-              {% block leftnav %}{% endblock leftnav %}
-            </td></tr>
-          </table>
-        </div>
-
+      </td>
+      <td valign="top">
         <div id="rightnav">
           {% block rightnav %}{% endblock rightnav %}
         </div>
-      </div>
-    </div>
-    </td></tr></table>
-
+      </td>
+      </tr>
+    </table>
     <!-- Footer -->
     <div id="footer">
       {% block footer %}{% endblock footer %}

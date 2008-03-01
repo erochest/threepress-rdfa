@@ -113,6 +113,7 @@ def search(request):
         words = []
         for word in r.xapian_document.get_data().split(" "):
             term = word.replace('?', '').replace('"', '').replace('.', '').replace(',', '')
+            term = term.lower()
             for t in enquire.matching_terms(r.id):
                 if "Z%s" % stemmer(term) == t or term == t:
                     print "Match: " + term

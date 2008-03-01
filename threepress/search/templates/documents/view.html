@@ -13,9 +13,25 @@
 
    {% if chapter %}
    <h2>{{ chapter.title }}</h2>
+
+   <div class="results_nav">
+     <div class="previous"> {% if previous %} <a href="{% url threepress.search.views.document_view document.id,previous.id %}">← previous</a> {% endif %} </div>
+     <div class="next">
+       {% if next %} <a href="{% url threepress.search.views.document_view document.id,next.id %}">next →</a> {% endif %} 
+     </div>
+   </div>
+
    <div id="document_content">
      {{ chapter.render|safe }}
    </div>
+
+   <div class="results_nav">
+     <div class="previous"> {% if previous %} <a href="{% url threepress.search.views.document_view document.id,previous.id %}">← previous</a> {% endif %} </div>
+     <div class="next">
+       {% if next %} <a href="{% url threepress.search.views.document_view document.id,next.id %}">next →</a> {% endif %} 
+     </div>
+   </div>
+
    {% endif %}
 
 {% endblock main %}
@@ -38,7 +54,7 @@
      </ol>
   {% endfor %}
 {% else %}
-   <ol class="nav"">
+   <ol class="nav">
      {% for c in document.chapter_set.all %}
         {% ifequal c.ordinal chapter.ordinal %}
           <li class="current"> {{ c.title }} </li>
@@ -51,23 +67,3 @@
 {% endif %}
 {% endblock leftnav %}
 
-{% block rightnav %}
-
-   <div class="rightnav nextprevious">
-    <p> 
-      {% if previous %} <a href="{% url threepress.search.views.document_view document.id,previous.id %}">previous</a> {% endif %} 
-      {% if next and previous %} | {% endif %}
-      {% if next %} <a href="{% url threepress.search.views.document_view document.id,next.id %}">next</a> {% endif %} 
-    </p>
-   </div>
-   <div class="rightnav nextprevious clear">
-     <p> 
-       {% if previous %} <a href="{% url threepress.search.views.document_view document.id,previous.id %}">previous</a> {% endif %} 
-       {% if next and previous %} | {% endif %}
-       {% if next %} <a href="{% url threepress.search.views.document_view document.id,next.id %}">next</a> {% endif %} 
-     </p>
-   </div>
-   {% if show_spacing %}
-     <div id="document_spacing" class="clear">&nbsp;</div>      
-   {% endif %}
-{% endblock rightnav %}
