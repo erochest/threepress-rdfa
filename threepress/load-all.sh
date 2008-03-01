@@ -16,4 +16,6 @@ cd /Users/liza/threepress/threepress
 ./load-for-search.py ../data/tei/cask.xml
 ./load-for-search.py ../data/tei/2city11.xml
 
+./load-flatpages.py
+
 ./run.sh
