@@ -1,6 +1,6 @@
 # Create your views here.
 from threepress.search.models import *
-from django.http import HttpResponse
+from django.http import *
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.core.exceptions import *
 from django.newforms import *

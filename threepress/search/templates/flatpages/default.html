@@ -1,0 +1,10 @@
+{% extends "base.html" %} 
+{% spaceless %}
+{% block title %}{{ flatpage.title }} {% endblock title %}
+{% endspaceless %}
+
+{% block main %}
+  {{ flatpage.content }}
+{% endblock main %}
+
+{% block leftnav %}{% endblock %}

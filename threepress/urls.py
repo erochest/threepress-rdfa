@@ -9,7 +9,7 @@ urlpatterns = patterns('',
                        (r'^admin/', include('django.contrib.admin.urls')),
                        (r'^document/(?P<id>.+)/(?P<chapter_id>.+)/$', 'threepress.search.views.document_view'),
                        (r'^document/(?P<id>.+)/$', 'threepress.search.views.document_view'),
-                       (r'^page/(?P<page>.+)/$', 'threepress.search.views.page_view'),
+                       #(r'^page/(?P<page>.+)/$', 'threepress.search.views.page_view'),
                        (r'^search/', 'threepress.search.views.search'),
                        (r'^$', 'threepress.search.views.index'), 
 )
