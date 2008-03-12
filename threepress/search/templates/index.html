@@ -7,7 +7,7 @@
 <ul>
   {% for document in documents %}
   <li>
-    {{ document.link|safe }}
+    {{ document.link|safe }} by <em>{{ document.author }}</em>
     <br/>
     {{ document.info }}
   </li>

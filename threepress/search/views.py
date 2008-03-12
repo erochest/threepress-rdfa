@@ -56,7 +56,8 @@ def search(request):
     sort = settings.SORT_ORDINAL if request.GET.has_key('sort') and request.GET['sort'] == 'appearance' else settings.SORT_RELEVANCE
 
     # Open the database for searching.
-    database = xapian.Database('%s/%s' % (settings.DB_DIR, doc_id))
+    #database = xapian.Database('%s/%s' % (settings.DB_DIR, doc_id))
+    database = xapian.Database('%s/%s' % (settings.DB_DIR, 'threepress'))
 
     document = Document.objects.get(id=doc_id)
 
@@ -99,7 +100,6 @@ def search(request):
 
     show_previous = True if start != 1 else False
     show_next = True if end < estimate else False
-
     
     next_start = start + settings.RESULTS_PAGESIZE
 
@@ -116,7 +116,6 @@ def search(request):
             term = term.lower()
             for t in enquire.matching_terms(r.id):
                 if "Z%s" % stemmer(term) == t or term == t:
-                    print "Match: " + term
                     word = '<span class="match">%s</span>' % word
             words.append(word)
 

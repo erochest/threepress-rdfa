@@ -22,8 +22,8 @@
       <tei:teiHeader>
 	<tei:fileDesc>
 	  <tei:titleStmt>
-	    <tei:title><xsl:apply-templates select="//titlepage/title/text()" /></tei:title>
-            <tei:author><xsl:apply-templates select="//titlepage/author/text()" /></tei:author>
+	    <tei:title><xsl:apply-templates select="//frontmatter/titlepage/title/text()" /></tei:title>
+            <tei:author><xsl:apply-templates select="//frontmatter/titlepage/author/text()" /></tei:author>
 	  </tei:titleStmt>
 	  <tei:publicationStmt>
 	    <tei:publisher>threepress 0.1</tei:publisher>
@@ -70,7 +70,6 @@
 	<xsl:attribute name="xml:id">
 	  <xsl:value-of select="generate-id()"/>
 	</xsl:attribute>
-	
 	<xsl:apply-templates />
       </tei:div>
     </xsl:template>
@@ -86,7 +85,12 @@
     </xsl:template>
 
     <xsl:template match="chapnum">
-      <tei:head><xsl:apply-templates /></tei:head>
+      <tei:head>
+        <xsl:if test="not(contains(./text(), 'apter')) and not(contains(./text(), 'APTER'))">
+          Chapter
+        </xsl:if>
+        <xsl:apply-templates />
+      </tei:head>
     </xsl:template>
 
     <xsl:template match="chapnum/title">

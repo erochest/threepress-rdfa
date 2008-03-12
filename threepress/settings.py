@@ -1,9 +1,10 @@
+
 # Django settings for threepress project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-DIR_ROOT = '/Users/liza/threepress'
+DIR_ROOT = '/home/liza/threepress'
 
 ADMINS = (
      ('Liza Daly', 'liza31337@gmail.com'),
@@ -95,6 +96,9 @@ RESULTS_PAGESIZE = 20
 # Xapian settings (values)
 SEARCH_CHAPTER_ID = 0
 SEARCH_ORDINAL = 1
+SEARCH_DOCUMENT_TITLE = 2
+SEARCH_DOCUMENT_ID = 3
+
 
 SORT_RELEVANCE = 0
 SORT_ORDINAL = 1

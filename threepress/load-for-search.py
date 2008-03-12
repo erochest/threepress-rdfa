@@ -14,7 +14,7 @@ if not len(sys.argv) == 2:
 parser = etree.XMLParser(remove_blank_text=True)
 xml = etree.parse(sys.argv[1], parser)
 
-sys.path.append('/Users/liza/threepress')
+sys.path.append('/home/liza/threepress')
 
 import threepress
 

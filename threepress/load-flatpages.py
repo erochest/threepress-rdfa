@@ -4,7 +4,7 @@ import sys
 import os
 from datetime import datetime
 
-path = '/Users/liza/threepress'
+path = '/home/liza/threepress'
 sys.path.append(path)
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'threepress.settings'

@@ -16,5 +16,5 @@ urlpatterns = patterns('',
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/Users/liza/threepress/threepress/search/templates/static'}),
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/liza/threepress/threepress/search/templates/static'}),
     )

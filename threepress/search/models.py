@@ -122,4 +122,7 @@ class Result:
         self.xapian_document = xapian_document
         self.title = Chapter.objects.get(id=self.get_chapter_id()).title
     def get_chapter_id(self):
-        return self.xapian_document.get_value(0)
+        return self.xapian_document.get_value(settings.SEARCH_CHAPTER_ID)
+    def get_document_title(self):
+        return self.xapian_document.get_value(settings.SEARCH_DOCUMENT_TITLE)
+    
