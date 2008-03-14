@@ -75,17 +75,17 @@
   <xd:doc class="links" type="string"> Name of link to home page of application</xd:doc>
   <xsl:param name="homeLabel">Home</xsl:param>
   <xd:doc class="links" type="anyURI">Project Home</xd:doc>
-  <xsl:param name="homeURL">http://www.tei-c.org/</xsl:param>
+  <xsl:param name="homeURL">http://www.threepress.org/</xsl:param>
   <xd:doc class="links" type="string">Project</xd:doc>
-  <xsl:param name="homeWords">TEI</xsl:param>
+  <xsl:param name="homeWords">threepress</xsl:param>
   <xd:doc class="links" type="string"> Institution</xd:doc>
-  <xsl:param name="institution">A TEI Project</xsl:param>
+  <xsl:param name="institution">Published electronically by threepress</xsl:param>
   <xd:doc class="links" type="anyURI"> Institution link</xd:doc>
-  <xsl:param name="parentURL">http://www.tei-c.org/</xsl:param>
+  <xsl:param name="parentURL">http://www.threepress.org//</xsl:param>
   <xd:doc class="links" type="string"> Name of overall institution</xd:doc>
-  <xsl:param name="parentWords">Parent Institution</xsl:param>
+  <xsl:param name="parentWords">threepress: open source publishing software</xsl:param>
   <xd:doc class="links" type="anyURI"> Link to search application</xd:doc>
-  <xsl:param name="searchURL">http://www.google.com</xsl:param>
+  <xsl:param name="searchURL">http://www.threepress.org/</xsl:param>
   <xd:doc class="misc" type="anyURI"> The home page for these stylesheets</xd:doc>
   <xsl:param name="teixslHome">http://www.tei-c.org/Stylesheets/teic/</xsl:param>
   <xd:doc class="misc" type="boolean"> Process elements according to assumptions
@@ -153,7 +153,7 @@
     matter</xd:doc>
   <xsl:param name="numberFrontTables">true</xsl:param>
   <xd:doc class="numbering" type="boolean"> Automatically number sections</xd:doc>
-  <xsl:param name="numberHeadings">true</xsl:param>
+  <xsl:param name="numberHeadings">false</xsl:param>
   <xd:doc class="numbering" type="integer"> Depth to which sections should be
     numbered</xd:doc>
   <xsl:param name="numberHeadingsDepth">9</xsl:param>
@@ -169,7 +169,7 @@
   <xsl:param name="STDOUT">true</xsl:param>
   <xd:doc class="style" type="string"> Display of &lt;pb&gt; element.
     Choices are "visible", "active" and "none".</xd:doc>
-  <xsl:param name="pagebreakStyle">none</xsl:param>
+  <xsl:param name="pagebreakStyle">active</xsl:param>
   <xd:doc class="style" type="string"> How to display Relax NG schema fragments
     (rnc or rng)</xd:doc>
   <xsl:param name="displayMode">rnc</xsl:param>
