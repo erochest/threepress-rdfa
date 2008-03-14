@@ -31,7 +31,13 @@
        {% if next %} <a href="{% url threepress.search.views.document_view document.id,next.id %}">next →</a> {% endif %} 
      </div>
    </div>
+   {% else %}
 
+   <h4>Select a chapter on the left to browse online, or any of the formats listed below for the entire work:</h4>
+   <ul style="list-style-type:none">
+     <li><a style="text-decoration:none" href="/static/pdf/{{ document.id }}.pdf"><img src="/static/images/pdficon_small.gif" alt="PDF" border="0" /> (PDF)</a></li>
+   </ul>
+   
    {% endif %}
 
 {% endblock main %}

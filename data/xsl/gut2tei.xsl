@@ -62,6 +62,7 @@
 	  <xsl:value-of select="generate-id()"/>
 	</xsl:attribute>
 	<xsl:apply-templates />
+        <tei:pb/>
       </tei:div>
     </xsl:template>
 
@@ -71,6 +72,7 @@
 	  <xsl:value-of select="generate-id()"/>
 	</xsl:attribute>
 	<xsl:apply-templates />
+        <tei:pb/>
       </tei:div>
     </xsl:template>
 

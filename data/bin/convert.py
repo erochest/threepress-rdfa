@@ -6,7 +6,8 @@ import os
 import sys
 import xapian
 
-sys.path.append('/home/liza/threepress')
+#sys.path.append('/home/liza/threepress')
+sys.path.append('/Users/liza/threepress')
 from threepress import settings
 
 
@@ -31,6 +32,8 @@ if len(sys.argv) > 3:
     reindex = True
 
 tei_xsl = 'xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'
+fo_xsl  = 'xsl/tei-xsl-5.9/p5/fo/tei.xsl'
+fop = 'fop'
 
 out_file = xml.replace('src', 'tei')
 out = open(out_file, 'w')
@@ -71,9 +74,11 @@ for element in root.iter():
 
 main_database = xapian.WritableDatabase('%s/%s' % (db_dir, main_db), xapian.DB_CREATE_OR_OPEN)
 
+id = root.xpath('/tei:TEI/@xml:id', namespaces={'tei':TEI})[0]
+
 if reindex:
     # Open the database for update, creating a new database if necessary.
-    id = root.xpath('/tei:TEI/@xml:id', namespaces={'tei':TEI})[0]
+
     # Delete the old database
     os.system('rm -rf %s/%s' % (db_dir, id))
     database = xapian.WritableDatabase('%s/%s' % (db_dir, id), xapian.DB_CREATE_OR_OPEN)
@@ -108,8 +113,31 @@ else:
     print "Skipping re-index..."
     
 out.write(etree.tostring(root, encoding='utf-8', pretty_print=True, xml_declaration=True))
+out.close()
 
-# Also transform it to HTML
+
+# Also transform it to FO
+fo_file = out_file
+fo_file = fo_file.replace('tei/', 'fo/')
+fo_file = fo_file.replace('xml', 'fo')
+
+print "Writing out to %s" % fo_file
+
+fo_out = open(fo_file, 'w')
+
+xslt = etree.parse(fo_xsl)
+fo = root.xslt(xslt)
+
+fo_out.write(etree.tostring(fo, encoding='utf-8', pretty_print=True, xml_declaration=True))
+fo_out.close()
+
+pdf_file = "pdf/%s.pdf" % id
+
+print "Converting from FO %s to PDF as %s" % (fo_file, pdf_file)
+cmd = '%s %s -pdf %s &> pdf/log.txt' % (fop, fo_file, pdf_file)
+os.system(cmd)
+
+
 #out_file = out_file.replace('tei/', '')
 #out_file = out_file.replace('xml', 'html')
 
