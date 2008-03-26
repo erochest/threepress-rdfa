@@ -5,10 +5,12 @@ import os, os.path, sys, logging, shutil
 MIMETYPE = 'mimetype'
 META = 'META-INF'
 CONTENT = 'content.opf'
+NAVMAP = 'toc.ncx'
 OEBPS = 'OEBPS'
 FOLDERS  = (META, OEBPS)
 CONTAINER = 'container.xml'
-XSLT='../xsl/tei2opf.xsl'
+TEI2OPF_XSLT='../xsl/tei2opf.xsl'
+TEI2NCX_XSLT='../xsl/tei2ncx.xsl'
 
 CONTAINER_CONTENTS = '''
 <?xml version="1.0"?>
@@ -23,12 +25,24 @@ logging.basicConfig(level=logging.DEBUG)
 
 def create_content(dir, xml_file):
     tree = etree.parse(xml_file)
-    xslt = etree.parse(XSLT)
+    xslt = etree.parse(TEI2OPF_XSLT)
     processed = tree.xslt(xslt)
     file = '%s/%s/%s' % (dir, OEBPS, CONTENT)
+    _output_xml(file, processed)
+
+def create_navmap(dir, xml_file):
+    tree = etree.parse(xml_file)
+    xslt = etree.parse(TEI2NCX_XSLT)
+    processed = tree.xslt(xslt)
+    file = '%s/%s/%s' % (dir, OEBPS, NAVMAP)
+    _output_xml(file, processed)
+
+def _output_xml(file, xml):
+    logging.debug('Outputting file %s' % file)
     content = open(file, 'w')
-    content.write(etree.tostring(processed, encoding='utf-8', pretty_print=True, xml_declaration=True))
+    content.write(etree.tostring(xml, encoding='utf-8', pretty_print=True, xml_declaration=True))
     content.close()
+
 
 
 def create_mimetype(dir):
@@ -71,6 +85,7 @@ def main(*args):
     create_folders(dir)
     create_mimetype(dir)
     create_container(dir)
+    create_navmap(dir, source)
     create_content(dir, source)
 
     return 0
