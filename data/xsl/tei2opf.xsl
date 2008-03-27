@@ -8,7 +8,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     version="2.0">
 
-    <xsl:output method="xml" encoding="utf-8" omit-xml-declaration="no" indent="yes"/>
+  <xsl:import href="epub-common.xsl" />
+  <xsl:output method="xml" encoding="utf-8" omit-xml-declaration="no" indent="yes"/>
 
     <xsl:template match="tei:TEI">
       <opf:package unique-identifier="bookid" version="2.0">
@@ -19,7 +20,7 @@
             <dc:language xsi:type="dcterms:RFC3066">en-US</dc:language> 
             <dc:rights>Public Domain</dc:rights>
             <dc:publisher>threepress.org</dc:publisher>
-            <dc:identifier id="bookid">urn:uuid:<xsl:value-of select="/xml:id"/></dc:identifier>
+            <dc:identifier id="bookid">urn:uuid:<xsl:value-of select="/tei:TEI/@xml:id"/></dc:identifier>
           </dc:metadata>
         </opf:metadata>
         <opf:manifest>
@@ -27,22 +28,35 @@
           <opf:item id="style" href="stylesheet.css" media-type="text/css"/>
           <opf:item id="pagetemplate" href="page-template.xpgt" media-type="application/vnd.adobe-page-template+xml"/>
           <opf:item id="titlepage" href="title_page.html" media-type="text/html"/>
-          <opf:item id="chapter01" href="chap01.html" media-type="text/html"/>
-          <opf:item id="chapter02" href="chap02.html" media-type="text/html"/>
+          <xsl:apply-templates select="//tei:div[@type='chapter']" mode="item"/>
           <!--
           <item id="imgl" href="images/sample.jpg" media-type="image/jpeg"/>          
           -->
         </opf:manifest>
         <opf:spine toc="ncx">
-          <!--
-          <itemref idref="titlepage"/>
-          <itemref idref="chapter01"/>
-          <itemref idref="chapter02"/>
-          -->
+          <xsl:apply-templates select="//tei:div[@type='chapter']" mode="spine"/>
         </opf:spine>
       </opf:package>
 
 
+    </xsl:template>
+
+    <xsl:template match="tei:div[@type='chapter']" mode="item">
+      <xsl:variable name="chapter-name">
+        <xsl:call-template name="chapter-name" />
+      </xsl:variable>
+      <xsl:variable name="chapter-file">
+        <xsl:call-template name="chapter-file" />
+      </xsl:variable>
+
+      <opf:item id="{$chapter-name}" href="{$chapter-file}" media-type="text/html" />
+    </xsl:template>
+
+    <xsl:template match="tei:div[@type='chapter']" mode="spine">
+      <xsl:variable name="chapter-name">
+        <xsl:call-template name="chapter-name" />
+      </xsl:variable>
+      <opf:itemref idref="{$chapter-name}" />
     </xsl:template>
 
 </xsl:stylesheet>
