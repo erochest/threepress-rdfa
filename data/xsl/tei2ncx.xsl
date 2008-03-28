@@ -34,9 +34,7 @@
   </xsl:template>
 
   <xsl:template match="tei:div[@type='chapter']">
-    <xsl:variable name="chapter-name">
-      <xsl:call-template name="chapter-name" />
-    </xsl:variable>
+
     <xsl:variable name="chapter-file">
       <xsl:call-template name="chapter-file" />
     </xsl:variable>
@@ -46,7 +44,7 @@
       <ncx:navLabel>
         <ncx:text><xsl:apply-templates select="tei:head" /></ncx:text>
       </ncx:navLabel>
-      <ncx:content><xsl:value-of select="$chapter-file" /></ncx:content>
+      <ncx:content src="{$chapter-file}" />
     </ncx:navPoint>
   </xsl:template>
 </xsl:stylesheet>
