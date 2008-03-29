@@ -1,0 +1,62 @@
+TEI to EPUB (OPF/OPS) conversion tool
+Provided by threepress (http://www.threepress.org/)
+Contact: <liza@threepress.org> 
+
+Licensed under the GNU Public License v.3.  See LICENSE.txt included
+in this directory for more information.
+
+
+Source code is available at http://code.google.com/p/threepress/
+
+
+ABOUT
+
+tei2epub is a set of tools to convert TEI XML content into OPS/OPF
+format ebooks.  
+
+It should be trivial to adapt to other XML formats by replacing the
+TEI XSLT with other stylesheets, and modifying the create_html()
+method to chunk the output appropriately.
+
+
+See http://www.idpf.org/ for more information about the epub format.
+
+
+
+PREREQUISITES
+
+tei2epub requires one non-standard Python module:
+
+  * lxml (http://codespeak.net/lxml/)
+
+However, feel free to replace it with your favorite Python XML
+library.
+
+It also requires the TEI XSLT which is not included:
+
+  * http://www.tei-c.org/Guidelines/P5/get.xml
+
+and an implementation of ZIP ('zip' by default). 
+
+To configure for your environment, modify:
+
+  bin/settings.py
+
+If you wish to use the project as-is, you should only need to change
+TEI2XHTML_XSLT to point at the directory where you have installed the
+TEI package.  The other pathnames are relative to the project directory.
+
+
+
+USAGE
+
+  bin/convert.py path-to-source-xml [alternate output directory]
+
+Without the second argument, tei2epub will strip any path and file
+extension from our source XML and create a working directory in build/
+and output directory in dist/ with the base name.  Otherwise you can
+override that base name with the second argument.
+
+
+
+
