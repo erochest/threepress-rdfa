@@ -91,9 +91,12 @@ def main(*args):
         if not '.xml' in source:
             logging.error('Source file must have a .xml extension')
             return 1
-        dir = '%s/%s' % (DIST, os.path.basename(source).replace('.xml', ''))
+        dir = '%s/%s' % (BUILD, os.path.basename(source).replace('.xml', ''))
 
     tree = etree.parse(source)
+
+    if not os.path.exists(BUILD):
+        os.mkdir(BUILD)
 
     if not os.path.exists(DIST):
         os.mkdir(DIST)
@@ -105,20 +108,20 @@ def main(*args):
     logging.debug('Creating directory %s' % dir)
     os.mkdir(dir)
 
+    # Create the epub content
     create_folders(dir)
     create_mimetype(dir)
     create_container(dir)
-
-
     create_navmap(dir, tree)
     create_content(dir, tree)
     create_html(dir, tree)
 
     # Create the epub format
     os.chdir(dir)
-    os.system('zip -v0X %s %s' % (dir, MIMETYPE))
-    os.system('zip -vr %s * -x %s.zip %s' % (dir, dir, MIMETYPE))
+    os.system('%s -v0X %s %s' % (ZIP, dir, MIMETYPE))
+    os.system('%s -vr %s * -x %s.zip %s' % (ZIP, dir, dir, MIMETYPE))
     os.rename('%s.zip' % dir, '%s.epub' % dir)
+    shutil.move('%s.epub' % dir, DIST)
 
     return 0
 

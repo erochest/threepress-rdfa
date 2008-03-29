@@ -18,6 +18,12 @@ TEI2NCX_XSLT = '%s/tei2ncx.xsl' % XSLT_DIR
 # Directory where our output will go
 DIST = '%s/../dist' % path
 
+# Working directory
+BUILD = '%s/../build' % path
+
+# zip command
+ZIP = 'zip'
+
 # Name of our OPF mimetype file
 MIMETYPE = 'mimetype'
 MIMETYPE_CONTENT = 'application/epub+zip'
