@@ -2,30 +2,12 @@
 from lxml import etree
 import os, os.path, sys, logging, shutil
 
-TEI = 'http://www.tei-c.org/ns/1.0'
-MIMETYPE = 'mimetype'
-META = 'META-INF'
-CONTENT = 'content.opf'
-NAVMAP = 'toc.ncx'
-OEBPS = 'OEBPS'
-FOLDERS = (META, OEBPS)
-CONTAINER = 'container.xml'
-TEI2OPF_XSLT = '../xsl/tei2opf.xsl'
-TEI2NCX_XSLT = '../xsl/tei2ncx.xsl'
-TEI2XHTML_XSLT = '../xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'
-
-CONTAINER_CONTENTS = '''<?xml version="1.0"?>
-<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
-  <rootfiles>
-    <rootfile full-path="OEBPS/content.opf" media-type="application/oebps-package+xml"/>
-  </rootfiles>
-</container>
-'''
+from settings import *
 
 logging.basicConfig(level=logging.DEBUG)
 
 def create_html(dir, tree):
-
+    '''Generate the HTML files that make up each chapter in the TEI document.'''
     xslt = etree.parse(TEI2XHTML_XSLT)
     shell = tree
 
@@ -37,12 +19,12 @@ def create_html(dir, tree):
 
 def _output_html(file, tree):
     html = '''<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-  <title>%s</title>
-</head>
-<body>
+  <head>
+    <title>%s</title>
+  </head>
+  <body>
 %s
-</body>
+  </body>
 </html>
 ''' % ('test', etree.tostring(tree, encoding='utf-8', pretty_print=True, xml_declaration=False))
     logging.debug('Outputting file %s' % file)
@@ -51,12 +33,14 @@ def _output_html(file, tree):
     content.close()
 
 def create_content(dir, tree):
+    '''Create the content file based on our TEI source'''
     xslt = etree.parse(TEI2OPF_XSLT)
     processed = tree.xslt(xslt)
     file = '%s/%s/%s' % (dir, OEBPS, CONTENT)
     _output_xml(file, processed)
 
 def create_navmap(dir, tree):
+    '''Create the navmap file based on our TEI source'''
     xslt = etree.parse(TEI2NCX_XSLT)
     processed = tree.xslt(xslt)
     file = '%s/%s/%s' % (dir, OEBPS, NAVMAP)
@@ -68,23 +52,23 @@ def _output_xml(file, xml):
     content.write(etree.tostring(xml, encoding='utf-8', pretty_print=True, xml_declaration=True))
     content.close()
 
-
-
 def create_mimetype(dir):
+    '''Create the mimetype file'''
     file = '%s/%s' % (dir, MIMETYPE)
     logging.debug('Creating mimetype file %s' % file)
     f = open(file, 'w')
-    f.write('application/epub+zip')
+    f.write(MIMETYPE_CONTENT)
     f.close()
 
 def create_folders(dir):
-
+    '''Create all the top-level directories in our package'''
     for f in FOLDERS:
         d = '%s/%s' % (dir, f)
         if not os.path.exists(d):
             os.mkdir(d)
 
 def create_container(dir):
+    '''Create the OPF container file'''
     file = '%s/%s/%s' % (dir, META, CONTAINER)
     logging.debug('Creating container file %s' % file)
     f = open(file, 'w')
@@ -95,23 +79,36 @@ def main(*args):
     '''Create an epub-format zip file given a source XML file.
        Based on the tutorial from: http://www.jedisaber.com/eBooks/tutorial.asp
     '''
-    if len(args) < 3:
-        print 'Usage: create-epub.py directory-for-output tei-source-file'
+    if len(args) < 2:
+        print 'Usage: create-epub.py tei-source-file [alternate output directory]'
         return 1
 
-    dir = args[1]
-    source = args[2]
+    source = args[1]
+
+    if len(args) > 2:
+        dir = args[2]
+    else:
+        if not '.xml' in source:
+            logging.error('Source file must have a .xml extension')
+            return 1
+        dir = '%s/%s' % (DIST, os.path.basename(source).replace('.xml', ''))
+
+    tree = etree.parse(source)
+
+    if not os.path.exists(DIST):
+        os.mkdir(DIST)
 
     if os.path.exists(dir):
         logging.debug('Removing previous output directory %s' % dir)
         shutil.rmtree(dir)
-    os.mkdir(dir)
 
+    logging.debug('Creating directory %s' % dir)
+    os.mkdir(dir)
 
     create_folders(dir)
     create_mimetype(dir)
     create_container(dir)
-    tree = etree.parse(source)
+
 
     create_navmap(dir, tree)
     create_content(dir, tree)
@@ -119,10 +116,11 @@ def main(*args):
 
     # Create the epub format
     os.chdir(dir)
-    os.system('zip -v0X pandp mimetype')
-    os.system('zip -vr pandp * -x pandp.zip mimetype')
-    os.system('mv pandp.zip pandp.epub')
+    os.system('zip -v0X %s %s' % (dir, MIMETYPE))
+    os.system('zip -vr %s * -x %s.zip %s' % (dir, dir, MIMETYPE))
+    os.rename('%s.zip' % dir, '%s.epub' % dir)
 
     return 0
+
 if __name__ == '__main__':
     sys.exit(main(*sys.argv))
