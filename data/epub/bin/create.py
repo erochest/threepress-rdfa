@@ -17,8 +17,16 @@ def create_html(dir, tree):
         file = '%s/%s/chapter-%d.html' % (dir, OEBPS, i + 1)
         _output_html(file, processed)
 
-def _output_html(file, tree):
-    html = '''<html xmlns="http://www.w3.org/1999/xhtml">
+    # Create the title page
+    _output_html('%s/%s/title_page.html' % (dir, OEBPS), '<p>Title page</p>', False)
+
+def _output_html(file, content, xml=True):
+    if xml:                     
+        xslt = etree.parse(HTMLFRAG2HTML_XSLT)        
+        processed = content.xslt(xslt)
+        html = etree.tostring(processed, encoding='utf-8', pretty_print=True, xml_declaration=False)                    
+    else:
+        html = '''<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>%s</title>
   </head>
@@ -26,7 +34,7 @@ def _output_html(file, tree):
 %s
   </body>
 </html>
-''' % ('test', etree.tostring(tree, encoding='utf-8', pretty_print=True, xml_declaration=False))
+''' % ('test', content)
     logging.debug('Outputting file %s' % file)
     content = open(file, 'w')    
     content.write(html)
@@ -75,6 +83,15 @@ def create_container(dir):
     f.write(CONTAINER_CONTENTS)
     f.close()
 
+def create_stylesheet(dir):
+    '''Create the stylesheet file'''
+    file = '%s/%s/%s' % (dir, OEBPS, CSS_STYLESHEET)
+    logging.debug('Creating CSS file %s' % file)
+    f = open(file, 'w')
+    f.write(STYLESHEET_CONTENTS)
+    f.close()
+
+
 def main(*args):
     '''Create an epub-format zip file given a source XML file.
        Based on the tutorial from: http://www.jedisaber.com/eBooks/tutorial.asp
@@ -86,7 +103,7 @@ def main(*args):
     source = args[1]
 
     if len(args) > 2:
-        dir = args[2]
+        dir = '%s/%s' % (BUILD, args[2])
     else:
         if not '.xml' in source:
             logging.error('Source file must have a .xml extension')
@@ -112,6 +129,7 @@ def main(*args):
     create_folders(dir)
     create_mimetype(dir)
     create_container(dir)
+    create_stylesheet(dir)
     create_navmap(dir, tree)
     create_content(dir, tree)
     create_html(dir, tree)

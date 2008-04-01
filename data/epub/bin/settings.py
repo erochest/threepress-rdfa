@@ -11,12 +11,13 @@ TEI2XHTML_XSLT = '%s/../../xsl/tei-xsl-5.9/p5/xhtml/tei.xsl' % path
 XSLT_DIR = '%s/../xsl' % path
 TEI2OPF_XSLT = '%s/tei2opf.xsl' % XSLT_DIR
 TEI2NCX_XSLT = '%s/tei2ncx.xsl' % XSLT_DIR
+HTMLFRAG2HTML_XSLT = '%s/htmlfrag2html.xsl' % XSLT_DIR
 
 # You should not have to change any items below this as they are standard
 # OPF filenames
 
 # Directory where our output will go
-DIST = '%s/../dist' % path
+DIST = '%s/../../../threepress/search/templates/static/epub' % path
 
 # Working directory
 BUILD = '%s/../build' % path
@@ -27,6 +28,11 @@ ZIP = 'zip'
 # Name of our OPF mimetype file
 MIMETYPE = 'mimetype'
 MIMETYPE_CONTENT = 'application/epub+zip'
+
+CSS_STYLESHEET = 'stylesheet.css'
+STYLESHEET_CONTENTS = '''
+body { font-family: serif }
+'''
 
 META = 'META-INF'
 

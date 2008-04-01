@@ -14,20 +14,20 @@
     <xsl:template match="tei:TEI">
       <opf:package unique-identifier="bookid" version="2.0">
         <opf:metadata>
-          <dc:metadata>
-            <dc:title><xsl:apply-templates select="//tei:titleStmt/tei:title" /></dc:title>
-            <dc:creator>threepress</dc:creator>
-            <dc:language xsi:type="dcterms:RFC3066">en-US</dc:language> 
-            <dc:rights>Public Domain</dc:rights>
-            <dc:publisher>threepress.org</dc:publisher>
-            <dc:identifier id="bookid">urn:uuid:<xsl:value-of select="/tei:TEI/@xml:id"/></dc:identifier>
-          </dc:metadata>
+          <dc:title><xsl:apply-templates select="//tei:titleStmt/tei:title" /></dc:title>
+          <dc:creator>threepress</dc:creator>
+          <dc:language xsi:type="dcterms:RFC3066">en-US</dc:language> 
+          <dc:rights>Public Domain</dc:rights>
+          <dc:publisher>threepress.org</dc:publisher>
+          <dc:identifier id="bookid">urn:uuid:<xsl:value-of select="/tei:TEI/@xml:id"/></dc:identifier>
         </opf:metadata>
         <opf:manifest>
           <opf:item id="ncx" href="toc.ncx" media-type="text/xml"/>
           <opf:item id="style" href="stylesheet.css" media-type="text/css"/>
+          <!--
           <opf:item id="pagetemplate" href="page-template.xpgt" media-type="application/vnd.adobe-page-template+xml"/>
-          <opf:item id="titlepage" href="title_page.html" media-type="text/html"/>
+          -->
+          <opf:item id="titlepage" href="title_page.html" media-type="application/xhtml+xml"/>
           <xsl:apply-templates select="//tei:div[@type='chapter']" mode="item"/>
           <!--
           <item id="imgl" href="images/sample.jpg" media-type="image/jpeg"/>          
@@ -49,7 +49,7 @@
         <xsl:call-template name="chapter-file" />
       </xsl:variable>
 
-      <opf:item id="{$chapter-name}" href="{$chapter-file}" media-type="text/html" />
+      <opf:item id="{$chapter-name}" href="{$chapter-file}" media-type="application/xhtml+xml" />
     </xsl:template>
 
     <xsl:template match="tei:div[@type='chapter']" mode="spine">

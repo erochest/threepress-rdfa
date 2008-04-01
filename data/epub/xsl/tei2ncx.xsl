@@ -19,7 +19,7 @@
         <ncx:meta name="dtb:maxPageNumber" content="0"/>
       </ncx:head>      
       <ncx:docTitle>
-        <xsl:apply-templates select="//tei:titleStmt/tei:title" />
+        <ncx:text><xsl:apply-templates select="//tei:titleStmt/tei:title" /></ncx:text>
       </ncx:docTitle>
       <ncx:navMap>
         <ncx:navPoint id="navpoint-1" playOrder="1">
@@ -40,7 +40,7 @@
     </xsl:variable>
     
     <!-- Navpoint needs to be +1 on the chapter, to account for the title page -->
-    <ncx:navPoint id="{concat('navpoint-', position() + 1)}" playorder="{position() + 1}">
+    <ncx:navPoint id="{concat('navpoint-', position() + 1)}" playOrder="{position() + 1}">
       <ncx:navLabel>
         <ncx:text><xsl:apply-templates select="tei:head" /></ncx:text>
       </ncx:navLabel>
