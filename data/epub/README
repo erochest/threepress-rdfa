@@ -50,12 +50,25 @@ TEI package.  The other pathnames are relative to the project directory.
 
 USAGE
 
-  bin/convert.py path-to-source-xml [alternate output directory]
+  bin/convert.py path-to-source-xml [alternate output name]
 
 Without the second argument, tei2epub will strip any path and file
 extension from our source XML and create a working directory in build/
 and output directory in dist/ with the base name.  Otherwise you can
 override that base name with the second argument.
+
+
+TESTING
+
+The distribution includes a version of epubcheck, which is officially distributed
+at http://code.google.com/p/epubcheck/
+
+epubcheck is a Java application that can be run from the command line as:
+
+  java -jar epubcheck.jar epub-bundle
+
+You will need to unzip the distribution and have a Java runtime to use it.
+
 
 
 
