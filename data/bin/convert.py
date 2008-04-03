@@ -6,8 +6,7 @@ import os
 import sys
 import xapian
 
-#sys.path.append('/home/liza/threepress')
-sys.path.append('/Users/liza/threepress')
+sys.path.append('/home/liza/threepress')
 from threepress import settings
 
 
