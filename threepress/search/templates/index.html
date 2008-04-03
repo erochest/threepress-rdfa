@@ -1,12 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'base_sitesearch.html' %}
+
 
 {% block main %}
-<h2> Document list: </h2>
+<h2>Book list</h2>
+<p>These public domain books are available for online reading, searching, or downloading as portable ebooks:</p>
 {% if documents %}
 
 <ul>
   {% for document in documents %}
-  <li>
+  <li style="line-height:2em">
     {{ document.link|safe }} by <em>{{ document.author }}</em>
     <br/>
     {{ document.info }}

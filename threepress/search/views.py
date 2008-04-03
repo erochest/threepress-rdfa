@@ -9,7 +9,7 @@ import os.path
 import xapian
 
 
-def document_view(request, id,chapter_id=None):
+def document_view(request, id, chapter_id=None):
     document = get_object_or_404(Document, pk=id)
     show_spacing = True if request.GET.has_key('show_spacing') else False
     chapter = None
@@ -47,8 +47,12 @@ def index(request):
     documents = get_list_or_404(Document)
     return render_to_response('index.html', {'documents':documents})
 
-def search(request):
-    doc_id = 'Pride-and-Prejudice_Jane-Austen'
+def search(request, doc_id=None):
+    if doc_id:
+        document = get_object_or_404(Document, pk=doc_id)
+    else:
+        document = None
+
     search = request.GET['search']
     start = int(request.GET['start']) if request.GET.has_key('start') else 1
     end = int(request.GET['end']) if request.GET.has_key('end') else settings.RESULTS_PAGESIZE
@@ -56,10 +60,12 @@ def search(request):
     sort = settings.SORT_ORDINAL if request.GET.has_key('sort') and request.GET['sort'] == 'appearance' else settings.SORT_RELEVANCE
 
     # Open the database for searching.
-    #database = xapian.Database('%s/%s' % (settings.DB_DIR, doc_id))
-    database = xapian.Database('%s/%s' % (settings.DB_DIR, 'threepress'))
+    if document:
+        database = xapian.Database('%s/%s' % (settings.DB_DIR, doc_id))
+    else:
+        database = xapian.Database('%s/%s' % (settings.DB_DIR, 'threepress'))
 
-    document = Document.objects.get(id=doc_id)
+    #document = Document.objects.get(id=doc_id)
 
     # Start an enquire session.
     enquire = xapian.Enquire(database)
@@ -107,7 +113,7 @@ def search(request):
     previous_end = previous_start + settings.RESULTS_PAGESIZE
 
 
-    results = [Result(doc_id, match.docid, match.document) for match in matches]
+    results = [Result(match.docid, match.document) for match in matches]
     import re
     for r in results:
         words = []

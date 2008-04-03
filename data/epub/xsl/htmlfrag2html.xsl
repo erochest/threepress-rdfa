@@ -19,17 +19,8 @@
   </xsl:template>
 
   <xsl:template match="xhtml:div">
-    <div xmlns="http://www.w3.org/1999/xhtml" >
-      <xsl:for-each select="@*[not(name()='id')]">
-        <xsl:copy-of select="." />
-      </xsl:for-each>
-      <xsl:apply-templates />
-    </div>
+    <xsl:copy-of select="." />
   </xsl:template>
 
-
-  <!-- Delete the useless duplicated ids that TEI generates -->
-  <xsl:template match="@id">
-  </xsl:template>
 
 </xsl:stylesheet>

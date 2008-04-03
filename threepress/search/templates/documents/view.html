@@ -1,11 +1,11 @@
-{% extends "base.html" %} 
+{% extends "base_documents.html" %} 
 
 {% spaceless %}
 {% block title %}{{ document.title }} by {{ document.author }}{% endblock title %}
 {% endspaceless %}
 
 {% block header %}
-   <div class="document_title"><h1><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></h1></div>
+   <div class="document_title"><a href="/document/{{ document.id }}"><h1><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></h1></a></div>
 {% endblock header%}
 
 
@@ -34,15 +34,20 @@
    {% else %}
 
    <h4>Select a chapter on the left to browse online, or any of the formats listed below for the entire work:</h4>
-   <ul style="list-style-type:none">
-     <li><a style="text-decoration:none" href="/static/pdf/{{ document.id }}.pdf"><img src="/static/images/pdficon_small.gif" alt="PDF" border="0" /> (PDF)</a></li>
+   <ul style="list-style-type:none;line-height:2em;">
+     <li><a style="text-decoration:none" href="/static/pdf/{{ document.id }}.pdf">Adobe PDF <img src="/static/images/pdficon_small.gif" alt="PDF" border="0" /></a></li>
+     <li><a style="text-decoration:none" Href="/static/epub/{{ document.id }}.epub">OPS 2.0 digital book format (.epub)</a>
    </ul>
+   <p>
+     OPS 2.0 is an open standard ebook format developed by the <a href="http://www.idpf.org/">International Digital Publishing Forum</a>.  OPS files can be read with <a href="http://www.adobe.com/products/digitaleditions/">Adobe Digital Editions</a> and, in the near future, portable digital readers such as the Kindle. 
    
    {% endif %}
 
 {% endblock main %}
 
 {% block leftnav %}      
+
+{{ block.super }}
 
 {% if document.has_parts %}
   {% for p in document.part_set.all %}

@@ -92,6 +92,11 @@
           Chapter
         </xsl:if>
         <xsl:apply-templates />
+        <!-- Is there a subhead? -->
+        <xsl:if test="following-sibling::title">
+          <xsl:text>: </xsl:text>
+          <xsl:apply-templates select="following-sibling::title" mode="override"/>
+        </xsl:if>
       </tei:head>
     </xsl:template>
 
@@ -99,8 +104,13 @@
       <xsl:apply-templates />
     </xsl:template>
 
-    <xsl:template match="title|partnum|">
+    <xsl:template match="title[not(preceding-sibling::chapnum)]|partnum">
       <tei:head><xsl:apply-templates /></tei:head>
+    </xsl:template>
+
+    <xsl:template match="title[preceding-sibling::chapnum]" />
+    <xsl:template match="title[preceding-sibling::chapnum]" mode="override">
+      <xsl:apply-templates />
     </xsl:template>
 
     <xsl:template match="frontmatter/titlepage">

@@ -10,6 +10,7 @@ urlpatterns = patterns('',
                        (r'^document/(?P<id>.+)/(?P<chapter_id>.+)/$', 'threepress.search.views.document_view'),
                        (r'^document/(?P<id>.+)/$', 'threepress.search.views.document_view'),
                        #(r'^page/(?P<page>.+)/$', 'threepress.search.views.page_view'),
+                       (r'^search/(?P<doc_id>.+)$', 'threepress.search.views.search'),
                        (r'^search/', 'threepress.search.views.search'),
                        (r'^$', 'threepress.search.views.index'), 
 )

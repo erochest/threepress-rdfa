@@ -17,11 +17,14 @@ from threepress import settings
 pages = ('About', 'Contact', 'Download')
 page_dir = '%s/threepress/search/templates/flatpages' % path
 
+FlatPage.objects.all().delete()
+
 loaded = [t for t in FlatPage.objects.all()]
 
 print "Current flatpages loaded: " + ', '.join([t.title for t in loaded])
 
 for p in pages:
+#    if True:
     if p not in [t.title for t in loaded]:
         url = p.lower().replace(' ', '_')
         fp = FlatPage(title=p,
@@ -36,5 +39,6 @@ for p in pages:
         fp.save()
 
 
+loaded = [t for t in FlatPage.objects.all()]
 print "New flatpages loaded: " + ', '.join([t.title for t in loaded])
 

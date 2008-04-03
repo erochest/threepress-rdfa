@@ -79,7 +79,6 @@ using general language pattern en instead.
 [INFO] [43]
 [WARNING] Some static content could not fit in the area.
 [INFO] [44]
-[INFO] Area overflow in line Barsad, gentleman, by name. The story of his pure soul was exactly what Mr. Attorney-Gen-
 [INFO] [45]
 [INFO] [46]
 [WARNING] Some static content could not fit in the area.
@@ -330,85 +329,4 @@ using general language pattern en instead.
 [INFO] [210]
 [WARNING] Some static content could not fit in the area.
 [INFO] [211]
-[WARNING] Some static content could not fit in the area.
-[INFO] [212]
-[INFO] [213]
-[INFO] [214]
-[WARNING] Some static content could not fit in the area.
-[INFO] [215]
-[WARNING] Some static content could not fit in the area.
-[INFO] [216]
-[INFO] [217]
-[INFO] [218]
-[WARNING] Some static content could not fit in the area.
-[INFO] [219]
-[WARNING] Some static content could not fit in the area.
-[INFO] [220]
-[INFO] [221]
-[INFO] [222]
-[WARNING] Some static content could not fit in the area.
-[INFO] [223]
-[WARNING] Some static content could not fit in the area.
-[INFO] [224]
-[INFO] [225]
-[INFO] [226]
-[WARNING] Some static content could not fit in the area.
-[INFO] [227]
-[WARNING] Some static content could not fit in the area.
-[INFO] [228]
-[INFO] [229]
-[INFO] [230]
-[WARNING] Some static content could not fit in the area.
-[INFO] [231]
-[WARNING] Some static content could not fit in the area.
-[INFO] [232]
-[INFO] [233]
-[INFO] [234]
-[WARNING] Some static content could not fit in the area.
-[INFO] [235]
-[WARNING] Some static content could not fit in the area.
-[INFO] [236]
-[INFO] [237]
-[INFO] [238]
-[WARNING] Some static content could not fit in the area.
-[INFO] [239]
-[WARNING] Some static content could not fit in the area.
-[INFO] [240]
-[INFO] [241]
-[INFO] [242]
-[WARNING] Some static content could not fit in the area.
-[INFO] [243]
-[WARNING] Some static content could not fit in the area.
-[INFO] [244]
-[INFO] [245]
-[INFO] [246]
-[WARNING] Some static content could not fit in the area.
-[INFO] [247]
-[WARNING] Some static content could not fit in the area.
-[INFO] [248]
-[INFO] [249]
-[INFO] [250]
-[WARNING] Some static content could not fit in the area.
-[INFO] [251]
-[WARNING] Some static content could not fit in the area.
-[INFO] [252]
-[INFO] [253]
-[INFO] [254]
-[WARNING] Some static content could not fit in the area.
-[INFO] [255]
-[WARNING] Some static content could not fit in the area.
-[INFO] [256]
-[INFO] [257]
-[INFO] [258]
-[WARNING] Some static content could not fit in the area.
-[INFO] [259]
-[WARNING] Some static content could not fit in the area.
-[INFO] [260]
-[INFO] [261]
-[INFO] [262]
-[WARNING] Some static content could not fit in the area.
-[INFO] [263]
-[WARNING] Some static content could not fit in the area.
-[INFO] [264]
-[INFO] [265]
 [INFO] Parsing of document complete, stopping renderer

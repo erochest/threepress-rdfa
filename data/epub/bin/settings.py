@@ -1,5 +1,7 @@
 from os.path import realpath, dirname
-import sys
+import sys, logging
+
+logging.basicConfig(level=logging.WARN)
 
 # Path of the executable
 path = realpath(dirname(sys.argv[0]))

@@ -29,12 +29,13 @@ class Document(models.Model):
         return "%s" % self.id
 
     def info(self):
-        if len([p for p in self.part_set.all()]) > 0:
+        if len([p for p in self.part_set.all()]) > 1:
             parts_text = "%d parts with " % (len([p for p in self.part_set.all()]))
         else:
             parts_text = ""
-        
-        return "%s %d chapters" % (parts_text, len([p for p in self.chapter_set.all()]))
+        if len([p for p in self.chapter_set.all()]) > 1:        
+            return "%s %d chapters" % (parts_text, len([p for p in self.chapter_set.all()]))
+        return ""
 
     def __unicode__(self):
         return "%s by %s" % ( self.title, self.author)
@@ -116,13 +117,12 @@ class Page(models.Model):
 
 class Result:
     highlighted_content = None
-    def __init__(self, document_id, id, xapian_document):
-        self.document_id = document_id
+    def __init__(self, id, xapian_document):
         self.id = id
+        self.document_id = xapian_document.get_value(settings.SEARCH_DOCUMENT_ID)
         self.xapian_document = xapian_document
         self.title = Chapter.objects.get(id=self.get_chapter_id()).title
     def get_chapter_id(self):
         return self.xapian_document.get_value(settings.SEARCH_CHAPTER_ID)
     def get_document_title(self):
         return self.xapian_document.get_value(settings.SEARCH_DOCUMENT_TITLE)
-    

@@ -2133,7 +2133,7 @@
       <xsl:when test="$name and $xhtml='true'">
 	<span>
 	  <xsl:attribute name="id">
-	    <xsl:value-of select="$name"/>
+	    <xsl:value-of select="concat('_', $name)"/>
 	  </xsl:attribute>
 	  <xsl:comment>anchor</xsl:comment>
 	</span>	

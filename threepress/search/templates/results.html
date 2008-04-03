@@ -1,7 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'base_sitesearch.html' %}
 
 {% block header %}
+{% if document %}
    <div class="document_title"><h1><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></h1></div>
+{% endif %}
+
 {% endblock header%}
 
 {% block main %}
@@ -23,7 +26,8 @@
 
 <ol class="results" start="{{ start }}">
 {% for r in results %}
- <li> <a href="{% url threepress.search.views.document_view r.document_id,r.get_chapter_id,show_spacing=True %}#id{{ r.id }}"><h4>{{ r.get_document_title }} : {{ r.title }}</h4></a>
+ <li> <a href="{% url threepress.search.views.document_view r.document_id,r.get_chapter_id,show_spacing=True %}#id{{ r.id }}"><h4>
+   {% if not document %}{{ r.get_document_title }} : {% endif %} {{ r.title }}</h4></a>
       <p>{{ r.highlighted_content|safe }}</p>
  </li>
 {% endfor %}
@@ -41,6 +45,7 @@
 {% endblock main %}
 
 {% block leftnav %}
+{{ block.super }}
 
 <h4>Order results</h4>
 <ol class="nav">
