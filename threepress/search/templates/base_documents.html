@@ -1,0 +1,11 @@
+{% extends "base.html" %} 
+
+{% block leftnav %}
+   <div id="search">
+     <form action="/search/{{document.id}}" method="get">
+     <h3>Search this work</h3>
+     <input type="text" name="search" size="15" />
+     </form>
+   </div>
+
+{% endblock leftnav %}

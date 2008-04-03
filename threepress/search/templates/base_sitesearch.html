@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block leftnav %}
+   <div id="search">
+     <form action="/search" method="get">
+     <h3>Search all books</h3>
+     <input type="text" name="search" size="15" />
+     </form>
+   </div>
+{% endblock leftnav %}
