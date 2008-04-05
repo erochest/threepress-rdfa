@@ -8,6 +8,8 @@ from django.conf import settings
 import os.path
 import xapian
 
+def document_chapter_view(request, id, chapter_id):
+    return document_view(request, id, chapter_id)
 
 def document_view(request, id, chapter_id=None):
     document = get_object_or_404(Document, pk=id)

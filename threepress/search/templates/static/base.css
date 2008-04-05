@@ -20,6 +20,7 @@
 
 
       #footer { 
+        width:100%; /* Otherwise does not span in FF 3 */
         position:fixed;
         bottom:0;
         clear: both;

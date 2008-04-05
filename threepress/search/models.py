@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import permalink
 from lxml import etree
 from StringIO import StringIO
 import xapian
@@ -20,13 +21,14 @@ class Document(models.Model):
             return True
         return False
 
+    @permalink
+    def get_absolute_url(self):
+        return ('threepress.search.views.document_view', [self.id])
+
     def link(self, text=None):
         if not text:
             text = self.title
-        return '<a href="/document/%s">%s</a>' % (self.friendly_url(), self.title)
-
-    def friendly_url(self):
-        return "%s" % self.id
+        return '<a href="%s">%s</a>' % (self.get_absolute_url(), self.title)
 
     def info(self):
         if len([p for p in self.part_set.all()]) > 1:
@@ -89,11 +91,15 @@ class Chapter(models.Model):
         root = etree.parse(f)
         rendered = root.xslt(xslt)
         return etree.tostring(rendered, encoding='utf-8', pretty_print=True, xml_declaration=True)
+    
+    @permalink
+    def get_absolute_url(self):
+        return ('threepress.search.views.document_chapter_view', [self.document.id, self.id])
 
     def link(self, text=None):
         if not text:
             text = self.title
-        return '<a href="/document/%s/%s">%s</a>' % (self.document.friendly_url(), self.id, self.title)
+        return '<a href="%s">%s</a>' % (self.get_absolute_url(), self.title)
 
     def __part_title__(self):
         if self.part:

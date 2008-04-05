@@ -1,5 +1,15 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
+from django.contrib.sitemaps import FlatPageSitemap
+from threepress.search.threepress_sitemap import ThreepressSitemap
+
+sitemaps = {
+    'flatpages' : FlatPageSitemap,
+    'documents': ThreepressSitemap,
+}
+
+
+
 urlpatterns = patterns('',
 
                        # Example:
@@ -7,9 +17,15 @@ urlpatterns = patterns('',
                        
                        # Uncomment this for admin:
                        (r'^admin/', include('django.contrib.admin.urls')),
-                       (r'^document/(?P<id>.+)/(?P<chapter_id>.+)/$', 'threepress.search.views.document_view'),
-                       (r'^document/(?P<id>.+)/$', 'threepress.search.views.document_view'),
-                       #(r'^page/(?P<page>.+)/$', 'threepress.search.views.page_view'),
+
+                       # Sitemaps
+                       (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+
+                       # Threepress
+                       (r'^document/(?P<id>[^/]+)/$', 'threepress.search.views.document_view'),
+                       (r'^document/(?P<id>.+)/(?P<chapter_id>.+)/$', 'threepress.search.views.document_chapter_view'),
+
+
                        (r'^search/(?P<doc_id>.+)$', 'threepress.search.views.search'),
                        (r'^search/', 'threepress.search.views.search'),
                        (r'^$', 'threepress.search.views.index'), 
