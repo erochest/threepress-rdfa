@@ -20,6 +20,7 @@
 
 
       #footer { 
+        border-top: 1px solid lightgrey;
         width:100%; /* Otherwise does not span in FF 3 */
         position:fixed;
         bottom:0;
@@ -36,8 +37,7 @@
 
       /* Header */
       #header {
-
-        background-color: rgb(198, 223, 167);
+        background-color: rgb(198, 223, 167); 
         padding: 15px 0 10px 60px;
         overflow:hidden;      
       }
@@ -51,7 +51,7 @@
         font-weight: bold;
       }
       #header_nav a {
-        color: rgb(248, 255, 239);
+        color: rgb(248, 255, 239); 
         padding: 10px;
       }
       #header_logo {
@@ -77,6 +77,8 @@
       }
       .document_title {
         margin-top:-5px;padding:0;
+         border-bottom: 1px solid lightgrey; /*rgb(95, 91, 75); */
+
       }
       .document_title h1 .by {
         font-size: .7em; 
@@ -150,7 +152,7 @@
         float:left;
         width:100%;
         padding-left: 15px;
-        padding-top: 1em;
+        padding-top: 0;
         border-left: 1px dotted lightgray;
         padding-bottom:100px;
 
