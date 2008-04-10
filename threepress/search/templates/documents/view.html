@@ -15,9 +15,9 @@
    <h2>{{ chapter.title }}</h2>
 
    <div class="results_nav">
-     <div class="previous"> {% if previous %} <a href="{% url threepress.search.views.document_view document.id,previous.id %}">← previous</a> {% endif %} </div>
+     <div class="previous"> {% if previous %} <a href="{% url threepress.search.views.document_chapter_view document.id,previous.id %}">← previous</a> {% endif %} </div>
      <div class="next">
-       {% if next %} <a href="{% url threepress.search.views.document_view document.id,next.id %}">next →</a> {% endif %} 
+       {% if next %} <a href="{% url threepress.search.views.document_chapter_view document.id,next.id %}">next →</a> {% endif %} 
      </div>
    </div>
 
@@ -26,9 +26,9 @@
    </div>
 
    <div class="results_nav">
-     <div class="previous"> {% if previous %} <a href="{% url threepress.search.views.document_view document.id,previous.id %}">← previous</a> {% endif %} </div>
+     <div class="previous"> {% if previous %} <a href="{% url threepress.search.views.document_chapter_view document.id,previous.id %}">← previous</a> {% endif %} </div>
      <div class="next">
-       {% if next %} <a href="{% url threepress.search.views.document_view document.id,next.id %}">next →</a> {% endif %} 
+       {% if next %} <a href="{% url threepress.search.views.document_chapter_view document.id,next.id %}">next →</a> {% endif %} 
      </div>
    </div>
    {% else %}
@@ -40,6 +40,11 @@
    </ul>
    <p>
      OPS 2.0 is an open standard ebook format developed by the <a href="http://www.idpf.org/">International Digital Publishing Forum</a>.  OPS files can be read with <a href="http://www.adobe.com/products/digitaleditions/">Adobe Digital Editions</a> and, in the near future, portable digital readers such as the Kindle. 
+   </p>
+   <h4>Preview:</h4>
+   <div id="document_content">
+     <blockquote>{{ chapter_preview.render_preview|safe }}[ . . . ]</blockquote>
+   </div>
    
    {% endif %}
 

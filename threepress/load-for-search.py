@@ -4,8 +4,8 @@ import sys
 import os
 from lxml import etree
 from datetime import datetime
+from settings import *
 
-TEI = 'http://www.tei-c.org/ns/1.0'
 
 if not len(sys.argv) == 2:
     print "Usage: load-for-search path-to-tei-xml"

@@ -17,6 +17,8 @@ def document_view(request, id, chapter_id=None):
     chapter = None
     next = None
     previous = None
+    chapter_preview = None
+
     if chapter_id:
         chapter = document.chapter_set.filter(id=chapter_id)[0]
         next_set = document.chapter_set.filter(ordinal=chapter.ordinal+1)
@@ -24,10 +26,13 @@ def document_view(request, id, chapter_id=None):
             next = next_set[0]
         if chapter.ordinal > 1:
             previous = document.chapter_set.filter(ordinal=chapter.ordinal-1)[0]
+    else:
+        chapter_preview = document.chapter_set.all()[0]
 
     return render_to_response('documents/view.html', 
                               {'document':document, 
                                'chapter':chapter,
+                               'chapter_preview':chapter_preview,
                                'next':next,
                                'previous':previous
                                })

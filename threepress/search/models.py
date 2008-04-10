@@ -4,6 +4,10 @@ from lxml import etree
 from StringIO import StringIO
 import xapian
 from threepress import settings
+from lxml import etree
+
+TEI = 'http://www.tei-c.org/ns/1.0'    
+TEI_XSLT = etree.XSLT(etree.parse('%s/data/xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'  % (settings.DIR_ROOT)))
 
 class Document(models.Model):
     id      = models.CharField(max_length=1000, primary_key=True)
@@ -85,12 +89,18 @@ class Chapter(models.Model):
     ordinal = models.PositiveIntegerField(default=1)
 
     def render(self):
-        tei_xsl = '%s/data/xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'  % (settings.DIR_ROOT) 
-        xslt = etree.parse(tei_xsl)
         f = StringIO(self.content)
         root = etree.parse(f)
-        rendered = root.xslt(xslt)
-        return etree.tostring(rendered, encoding='utf-8', pretty_print=True, xml_declaration=True)
+        rendered = TEI_XSLT(root)
+        return etree.tostring(rendered, encoding='utf-8', pretty_print=True, xml_declaration=False)
+
+    def render_preview(self):
+        f = StringIO(self.content)
+        root = etree.parse(f)
+        rendered = None
+        preview = (root.xpath('(//tei:p)[1]', namespaces= {'tei': TEI }))[0]
+        rendered = TEI_XSLT(preview)
+        return etree.tostring(rendered, encoding='utf-8', pretty_print=True, xml_declaration=False)        
     
     @permalink
     def get_absolute_url(self):
