@@ -1,0 +1,16 @@
+debug commands 0
+go http://www.threepress.org/
+code 200
+
+go /search/?search=amiable
+code 200
+
+find 'Emma'
+
+go /document/Emma_Jane-Austen/id2287201/#id2287549
+code 200
+find 'Knightley'
+
+go /search/Emma_Jane-Austen?search=knightley
+code 200
+find 'Elton'

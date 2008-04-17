@@ -5,7 +5,7 @@
 {% endspaceless %}
 
 {% block header %}
-<div class="document_title"><a href="/document/{{ document.id }}"><h1><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></h1></a></div>
+<div class="document_title"><a href="{% url threepress.search.views.document_view document.id %}"><h1><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></h1></a></div>
 {% endblock header%}
 
 
