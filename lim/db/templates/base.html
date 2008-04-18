@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />    
+    {% spaceless %}<title>{% block title %} lim {% endblock title %}: lim</title>{% endspaceless %}
+    <link rel="stylesheet" href="/static/base.css"></link>
+    <!-- <link rel="stylesheet" type="text/css" media="print" href="/static/print.css"></link> -->
+  </head>
+  <body>
+
+    <div id="header">
+      <h1 id="header-title">lim: the <em>less is more</em> bug database</h1>
+      <div id="clients">
+        <h2>Clients:</h2>
+        <ul>
+        {% for c in clients %}
+            <li>
+              {% ifequal c.name client.name %}
+              <h2 id="client-title">{{ client.name }}</h2>
+              {% else %}
+              <span class="client-name"><a href="{% url db.views.view_client c.safe_name %}">{{ c.name }}</a></span>
+              {% endifequal %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div id="projects">
+        {% if project %}
+         <h3 id="project-title">{{ project.name }}</h3>
+        {% endif %}
+        {% block main %}{% endblock main %}
+    </div>
+
+  </body>
+</html>

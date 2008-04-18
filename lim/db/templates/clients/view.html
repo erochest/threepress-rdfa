@@ -1,0 +1,23 @@
+
+<h2>{{ client.name }}</h2>
+
+
+{% ifequal client.description None %}
+<form action="/clients/edit/{{client.key}}/" method="post">
+<p>This client does not currently have a description. Add one: </p>
+  <textarea name="description">
+
+  </textarea>
+<input type="submit"/>
+{% else  %}
+<p class="description">  {{ client.description }}</p>
+{% endifequal %}
+
+<ul>
+{% for p in projects %}
+  <li> <a href="{% url db.views.view_project client.safe_name,p.safe_name %}">{{ p.name }}</a> </li>
+{% endfor %}
+</ul>
+
+</form>
+

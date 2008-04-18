@@ -1,0 +1,53 @@
+{% extends "base.html" %} 
+
+{% block main %}
+
+
+<table id="bug-list">
+  <tr>
+    <th>Bug #</th>
+    <th>Priority</th>
+    <th>Title</th>
+    <th>Assigned to</th>
+    <th>Last-modified</th>
+  </tr>
+    
+  {% for b in bugs %}
+  <tr>
+    
+    <td><a href="{% url db.views.view_bug project.safe_name,b.key.id %}">{{ b.key.id }}</a></td>
+    <td>{{ b.state.priority }}</td>
+    <td>{{ b.title }}</td>
+    <td>{{ b.state.owner.nickname }}</td>
+    <td>{{ b.last_modified }} last: {{ b.english_last_modified }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+{% ifequal project.description None %}
+<form action="{% url db.views.edit_project project.client.safe_name,project.safe_name %}" method="post">
+<p>This project does not currently have a description. Add one: </p>
+  <textarea name="description">
+
+  </textarea>
+<input type="submit"/>
+</form>
+{% else  %}
+<p class="description">  {{ project.description }}</p>
+{% endifequal %}
+
+<p>Client: {{ project.client.name }}</p>
+
+Add bug:
+
+<div>
+<form action="{% url db.views.add_bug project.client.safe_name,project.safe_name %}" method="post">
+  <div><label for="title">Bug title:</label> <input name="title" type="text"/></div>
+  <div><label for="description">Description:</label> <textarea name="description"></textarea></div>
+  <div><label for="priority">Priority:</label> <input name="priority" value="high" type="text" /></div>
+  <input type="submit" />
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+<h1>Welcome to LIM</h1>
+
+{% if clients.get %}
+<h2>Clients</h2>
+<ol>
+  {% for c in clients %}
+    <li> <a href="{% url db.views.view_client c.safe_name %}">{{ c.name }}</a> </li>
+  {% endfor %}
+</ol>
+
+{% else %}
+<p>No clients are in the system at the moment.</p>
+
+{% endif %}
+
+<div>
+<form action="/clients/add/" method="post">
+   Add a client:
+   <input type="text" name="client_name" />
+</form>
+</div>
+
+
+</ol>
+
+{% if projects.get %}
+<h2>Projects</h2>
+
+<ol>
+{% for p in projects %}
+  <li> <a href="{% url db.views.view_project p.client.safe_name,p.safe_name %}">{{ p.name }}</a> </li>
+{% endfor %}
+</ol>
+{% else %}
+<p>No projects are in the system at the moment.</p>
+
+{% endif %}
+<div>
+<form action="{% url db.views.add_project %} " method="post">
+   Add a project:
+   <input type="text" name="project_name" />
+   <select name="client_name">
+     {% for c in clients %}
+       <option value="{{c.name}}">{{c.name}}</option>
+     {% endfor %}
+   </select>
+</form>
+</div>

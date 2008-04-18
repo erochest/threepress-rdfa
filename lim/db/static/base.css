@@ -1,0 +1,83 @@
+html {
+ margin:0;
+ padding:0;
+}
+body {
+ font-family: sans-serif;
+ font-size: 12px;
+ margin:0;
+ padding:0;
+ background-color:#7C6F5C;
+ }
+a { color: black }
+
+.header {
+   background-color: #332;
+   width: 95%;      
+}
+#header-title {
+  padding: 5px 0 5px 0;
+  margin:auto;
+  text-align:center;
+  width: 95%;
+  font-size: 1.2em;
+  background: rgb(191, 165, 95);
+}
+#clients {
+  margin:0;
+  padding: 10px;
+  width: 100%;
+  background-color: rgb(239, 225, 74);
+}
+#clients a {
+  text-decoration: none;
+}
+#clients ul,li {
+  display: inline;
+  list-style-type: none;
+}
+#clients li {
+  padding: 0 20px 0 20px;
+}
+#client-title {
+  background-color: rgb(201, 223, 111); 
+  border-top: 1px solid #7C6F5C;
+  border-left: 1px solid #7C6F5C;
+  border-right: 1px solid #7C6F5C;
+  padding: 5px 20px 11px 20px;
+}
+
+#projects {
+  margin:auto;
+  width:95%;
+  border-top: 1px solid #7C6F5C;
+  padding:10px 0 10xp 0;
+  background-color: rgb(201, 223, 111); 
+}
+
+#project-title {
+  text-align:center;
+}
+
+
+#clients h2 {
+  display:inline;
+}
+table {
+   width: 95%;
+   border: 3px solid #222;
+   background-color: white;
+   padding: 20px;
+   margin:auto;
+   border-collapse: collapse;
+}
+th {
+  border: 1px solid grey;
+  padding: 10px;
+  color: white;
+  background-color: rgb(239, 182, 29);
+}
+td {
+  border: 1px solid grey;
+  padding: 5px;
+}
