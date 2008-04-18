@@ -1,8 +1,17 @@
 {% extends "base.html" %} 
 
+{% block head %}
+<script language="javascript" type="text/javascript" src="/static/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+<script language="javascript" type="text/javascript">
+tinyMCE.init({
+	mode : "textareas"
+});
+</script>
+{% endblock %}
+
 {% block main %}
 
-
+{% if bugs.count %}
 <table id="bug-list">
   <tr>
     <th>Bug #</th>
@@ -19,35 +28,56 @@
     <td>{{ b.state.priority }}</td>
     <td>{{ b.title }}</td>
     <td>{{ b.state.owner.nickname }}</td>
-    <td>{{ b.last_modified }} last: {{ b.english_last_modified }}</td>
+    <td>{{ b.english_last_modified }}</td>
   </tr>
   {% endfor %}
 </table>
+{% else %}
+<p style="padding-left:10px">No bugs have been entered into the system yet.</p>
+{% endif %}
 
+<div id="main">
 
-{% ifequal project.description None %}
-<form action="{% url db.views.edit_project project.client.safe_name,project.safe_name %}" method="post">
-<p>This project does not currently have a description. Add one: </p>
-  <textarea name="description">
+  {% ifequal project.description None %}
+  <form action="{% url db.views.edit_project project.client.safe_name,project.safe_name %}" method="post">
+    <p>This project does not currently have a description. Add one: </p>
+    <textarea rows="3" cols="80" name="description"></textarea>
+    <div>
+      <p><input type="submit" value="edit"/></p>
+    </div>
+    <input type="submit" value="edit"/>
+  </form>
 
-  </textarea>
-<input type="submit"/>
-</form>
-{% else  %}
-<p class="description">  {{ project.description }}</p>
-{% endifequal %}
+  {% else  %}
+  <h3>Project description</h3>
+  <p class="description">{{ project.description }}</p>
+  {% endifequal %}
 
-<p>Client: {{ project.client.name }}</p>
+  <h3>Add a new bug</h3>  
+  <div id="bug">
+    <form action="{% url db.views.add_bug project.client.safe_name,project.safe_name %}" method="post">
+      <table id="bug_form">
+        <tr>
+          <th><label for="title">Bug title:</label></th>
+          <td><input name="title" type="text" size="80"/></td>
+        </tr>
+        <tr>
+          <th colspan="2"><label for="description">Description:</label></th>
+        </tr>
+        <tr>
+          <td colspan="2"><div align="center"><textarea name="description" rows="10" cols="85"></textarea></div></td>
+        </tr>
+        <tr>
+          <th><label for="priority">Priority:</label></th>
+          <td><input name="priority" value="high" type="text" /></td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="submit" value="enter bug"/></td>
+        </tr>
+      </table>
 
-Add bug:
-
-<div>
-<form action="{% url db.views.add_bug project.client.safe_name,project.safe_name %}" method="post">
-  <div><label for="title">Bug title:</label> <input name="title" type="text"/></div>
-  <div><label for="description">Description:</label> <textarea name="description"></textarea></div>
-  <div><label for="priority">Priority:</label> <input name="priority" value="high" type="text" /></div>
-  <input type="submit" />
-</form>
+    </form>
+  </div>
 </div>
-
+  
 {% endblock %}

@@ -1,6 +1,6 @@
 from google.appengine.ext import db
 from google.appengine.api import users
-from datetime import *
+from datetime import datetime
 
 # Functions
 def unsafe_name(name):
@@ -10,9 +10,20 @@ def safe_name(name):
     return name.replace(' ', '_')    
 
 def english_date(date):
+    return date
+
+def english_date_diff(date):
     d = date - datetime.now()
-    from_now = datetime.now() - d 
-    return from_now.isoweekday()
+    if d.days == 0:
+        return '%d hours ago' % d.hours
+    if d.days == -1:
+        return 'yesterday'
+    if d.days > -6:
+        return '%d days ago' % abs(d.days)
+    if d.days == -7:
+        return 'one week ago'
+    return english_date(date)
+
 
 # Properties
 class Priority(db.Property):
@@ -29,7 +40,7 @@ class LimBase(db.Model):
     def english_created(self):
         return english_date(self.created)
     def english_last_modified(self):
-        return english_date(self.last_modified)
+        return english_date_diff(self.last_modified)
 
 class Lim(LimBase):
 
@@ -48,6 +59,7 @@ class Project(Lim):
     name = db.StringProperty(required=True)
     description = db.TextProperty()
     creator = db.UserProperty()
+    client = db.ReferenceProperty(Client)
 
 class BugState(LimBase):
     owner = db.UserProperty()    

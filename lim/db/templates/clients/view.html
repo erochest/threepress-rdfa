@@ -1,17 +1,25 @@
+{% extends "base.html" %} 
+
+{% block main %}
+
+<div id="main">
+
 
 <h2>{{ client.name }}</h2>
 
 
 {% ifequal client.description None %}
-<form action="/clients/edit/{{client.key}}/" method="post">
-<p>This client does not currently have a description. Add one: </p>
-  <textarea name="description">
-
-  </textarea>
-<input type="submit"/>
+<form action="{% url db.views.edit_client client.safe_name %}/" method="post">
+  <p>This client does not currently have a description. Add one: </p>
+  <textarea rows="3" cols="80" name="client_description"></textarea>
+  <div>
+    <p><input type="submit" value="edit"/></p>
+  </div>
 {% else  %}
 <p class="description">  {{ client.description }}</p>
 {% endifequal %}
+
+<h3>Projects under {{ client.name }}</h3>
 
 <ul>
 {% for p in projects %}
@@ -21,3 +29,5 @@
 
 </form>
 
+</div>
+{% endblock %}

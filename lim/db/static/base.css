@@ -81,3 +81,20 @@ td {
   border: 1px solid grey;
   padding: 5px;
 }
+
+#main {
+  padding: 1em;
+}
+
+#bug_form {
+  background-color: rgb(207, 207, 207);
+  font-size: 16px;
+}
+#bug_form input,textarea {
+  font-size: 16px;
+}
+#bug_form th {
+  background-color: rgb(207, 207, 207);
+  color: black;
+  text-align:left;
+}

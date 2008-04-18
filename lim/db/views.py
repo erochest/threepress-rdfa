@@ -74,9 +74,11 @@ def view_bug(request, project_name, bug_id):
 def add_project(request):
     name = request.POST['project_name']
     client_name = request.POST['client_name']
+    description = request.POST['project_description']
     client = Client.gql("WHERE name = :name", name=client_name).get()
     project = Project(name=name,
                       creator=users.get_current_user(),
+                      description=description,
                       client=client)        
     project.put()
     return HttpResponseRedirect('/')
@@ -89,22 +91,26 @@ def edit_project(request, client_name, project_name):
 
 
 def view_client(request, client_name):
+    clients = Client.all()
     client = get_client_from_name(client_name)
     projects = Project.gql("WHERE client = :client", client=client)
 
     return render_to_response('clients/view.html', {'client':client,
+                                                    'clients':clients,
                                                     'projects':projects})
 
 def add_client(request):
     name = request.POST['client_name']       
+    description = request.POST['description']   
     client = Client(name=name,
-                      creator=users.get_current_user())        
+                    description=description,
+                    creator=users.get_current_user())        
     client.put()
     return HttpResponseRedirect('/')
 
-def edit_client(request, id):
-    client = db.get(db.Key(id))        
-    client.description = request.POST['description']   
+def edit_client(request, client_name):
+    client = get_client_from_name(client_name)
+    client.description = request.POST['client_description']   
     client.put()
     return view_client(request, id)
 
