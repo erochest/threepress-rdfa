@@ -1,7 +1,11 @@
+{% extends "base.html" %} 
+
+{% block main %}
+<div id="main">
 
 
 <div>
-Bug #: {{ bug.key.id }}
+Bug num#: {{ bug.bug_num }}
 </div>
 <div>
 {{ bug.title }}
@@ -13,5 +17,9 @@ Bug #: {{ bug.key.id }}
 {{ bug.last_modified }}
 </div>
 <div>
-{{ bug.description }}
+{{ bug.description|safe }}
 </div>
+
+</div>
+
+{% endblock %}

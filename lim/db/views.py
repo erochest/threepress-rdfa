@@ -12,14 +12,22 @@ from models import *
 import os.path
 
 def get_project_from_name(name):
-    return Project.gql("WHERE name = :name", name=unsafe_name(name)).get()
+    p = Project.gql("WHERE name = :name", name=unsafe_name(name)).get()
+    if not p:
+        raise Http404
+    return p
 
 def get_client_from_name(name):
-    return Client.gql("WHERE name = :name", name=unsafe_name(name)).get()
+    c = Client.gql("WHERE name = :name", name=unsafe_name(name)).get()
+    if not c:
+        raise Http404
+    return c
+
+def get_clients():
+    return Client.all()
     
 def index(request):
     projects = Project.all()
-    clients = Client.all()
     user = users.get_current_user()
     if not user:
       greeting = ("<a href=\"%s\">Sign in or register</a>." %
@@ -27,19 +35,23 @@ def index(request):
       return render_to_response('login.html',  {'greeting': greeting})
 
     return render_to_response('index.html', {'projects':projects,
-                                             'clients':clients})
+                                             'clients':get_clients()})
 
 
 def view_project(request, client_name, project_name):
     project = get_project_from_name(project_name)
+    if not project:
+        raise Http404
     client = get_client_from_name(client_name)
-    clients = Client.all()
+    if not client:
+        raise Http404
+
     # Get all bugs
     bugs = Bug.gql("WHERE project = :project ORDER BY created DESC", project=project)
     return render_to_response('projects/view.html', 
                               {'project':project,
                                'client':client,
-                               'clients':clients,
+                               'clients':get_clients(),
                                'bugs':bugs})
 
 def add_bug(request, client_name, project_name):
@@ -59,14 +71,21 @@ def add_bug(request, client_name, project_name):
               project=project,
               state=state)
     bug.put()
+    bug.bug_num = bug.key().id()
+    bug.put()
     return HttpResponseRedirect(reverse('db.views.view_project', kwargs={'client_name':client_name,'project_name':project_name}))
 
 
-def view_bug(request, project_name, bug_id):
-    project = Project.gql("WHERE name = :name", name=project_name).get()
-    bug = Bug.gql("WHERE project = :project AND id = :bug_id ", project=project, bug_id=bug_id).get()
+def view_bug(request, client_name, project_name, bug_num):
+    project = get_project_from_name(project_name)
+    client = get_client_from_name(client_name)
+    bug = Bug.gql("WHERE project = :project AND bug_num = :bug_num ", project=project, bug_num=int(bug_num)).get()
+    if not bug:
+        raise Http404
     return render_to_response('bugs/view.html',
                               { 'project':project,
+                                'client':client,
+                                'clients':get_clients(),
                                 'bug':bug }
                               )
     
@@ -91,17 +110,17 @@ def edit_project(request, client_name, project_name):
 
 
 def view_client(request, client_name):
-    clients = Client.all()
     client = get_client_from_name(client_name)
     projects = Project.gql("WHERE client = :client", client=client)
-
+    if not client:
+        raise Http404
     return render_to_response('clients/view.html', {'client':client,
-                                                    'clients':clients,
+                                                    'clients':get_clients(),
                                                     'projects':projects})
 
 def add_client(request):
     name = request.POST['client_name']       
-    description = request.POST['description']   
+    description = request.POST['client_description']   
     client = Client(name=name,
                     description=description,
                     creator=users.get_current_user())        

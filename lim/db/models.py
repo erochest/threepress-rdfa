@@ -1,13 +1,14 @@
 from google.appengine.ext import db
 from google.appengine.api import users
 from datetime import datetime
+from urllib import quote_plus, unquote_plus
 
 # Functions
-def unsafe_name(name):
-    return name.replace('_', ' ')
-
 def safe_name(name):
-    return name.replace(' ', '_')    
+    return quote_plus(name)
+
+def unsafe_name(name):
+    return unquote_plus(name)
 
 def english_date(date):
     return date
@@ -67,6 +68,7 @@ class BugState(LimBase):
     priority = db.StringProperty()
 
 class Bug(LimBase):
+    bug_num = db.IntegerProperty()
     title = db.StringProperty(required=True)
     description = db.TextProperty()
     creator = db.UserProperty()

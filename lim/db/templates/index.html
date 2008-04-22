@@ -4,7 +4,7 @@
 
 <div id="main">
 
-
+{% if clients.count %}
 <h2>Projects</h2>
 
 <div id="projects_form" style="padding-left: 3em">
@@ -41,6 +41,7 @@
   </div>
 </div>
 
+{% endif %}
 <h2>Clients</h2>
 
 <div id="clients_form" style="padding-left: 3em">
