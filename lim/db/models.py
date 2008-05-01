@@ -34,6 +34,14 @@ class Priority(db.Property):
                  **kwds):
         super(Priority, self).__init__(verbose_name, choices, **kwds)
 
+class BugStatus (db.StringProperty):
+    def __init__(self, 
+                 verbose_name='status', 
+                 choices=('fixed', 'open', 'duplicate', 'enhancement', 'unreproducible'),
+                 **kwds):
+        super(BugStatus, self).__init__(verbose_name, choices, **kwds)
+
+
 # Models
 class LimBase(db.Model):
     created = db.DateTimeProperty(auto_now_add=True)
@@ -62,18 +70,20 @@ class Project(Lim):
     creator = db.UserProperty()
     client = db.ReferenceProperty(Client)
 
-class BugState(LimBase):
-    owner = db.UserProperty()    
-    message = db.TextProperty()
-    priority = db.StringProperty()
-
 class Bug(LimBase):
     bug_num = db.IntegerProperty()
     title = db.StringProperty(required=True)
     description = db.TextProperty()
     creator = db.UserProperty()
-    state = db.ReferenceProperty(BugState)
     project = db.ReferenceProperty(Project)
 
     def safe_name(self):
         return safe_name(self.title)    
+
+class BugState(LimBase):
+    owner = db.UserProperty()    
+    message = db.TextProperty()
+    priority = db.StringProperty()
+    status = BugStatus()
+    bug = db.ReferenceProperty(Bug)
+

@@ -1,5 +1,8 @@
 # Create your views here.
-from threepress.search.models import *
+import sys
+sys.path.append('/home/liza/threepress')
+
+from threepress.search.models import Document, Chapter, Part, Result
 from django.http import *
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.core.exceptions import *
@@ -13,7 +16,7 @@ def document_chapter_view(request, id, chapter_id):
 
 def document_view(request, id, chapter_id=None):
     document = get_object_or_404(Document, pk=id)
-    show_spacing = True if request.GET.has_key('show_spacing') else False
+    #show_spacing = True if request.GET.has_key('show_spacing') else False
     chapter = None
     next = None
     previous = None

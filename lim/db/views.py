@@ -61,18 +61,18 @@ def add_bug(request, client_name, project_name):
     description = request.POST['description']
     priority = request.POST['priority']
     message = ''
-    state = BugState(owner=users.get_current_user(),
-                     message=message,
-                     priority=priority)
-    state.put()
-
     bug = Bug(title=title,
               description=description,
-              project=project,
-              state=state)
+              project=project)
     bug.put()
     bug.bug_num = bug.key().id()
     bug.put()
+
+    state = BugState(owner=users.get_current_user(),
+                     message=message,
+                     priority=priority,
+                     bug=bug)
+    state.put()
     return HttpResponseRedirect(reverse('db.views.view_project', kwargs={'client_name':client_name,'project_name':project_name}))
 
 
@@ -82,13 +82,29 @@ def view_bug(request, client_name, project_name, bug_num):
     bug = Bug.gql("WHERE project = :project AND bug_num = :bug_num ", project=project, bug_num=int(bug_num)).get()
     if not bug:
         raise Http404
+    states = BugState.gql("WHERE bug = :bug ORDER BY last_modified DESC ", bug=bug).fetch()
+    state = states[0]
     return render_to_response('bugs/view.html',
                               { 'project':project,
                                 'client':client,
                                 'clients':get_clients(),
+                                'user':users.get_current_user(),
+                                'now':datetime.now(),
+                                'statuses':BugStatus.choices,
+                                'states':states,
+                                'state':state,
                                 'bug':bug }
                               )
     
+
+def edit_bug(request, client_name, project_name, bug_num):
+    project = get_project_from_name(project_name)
+    client = get_client_from_name(client_name)
+    bug = Bug.gql("WHERE project = :project AND bug_num = :bug_num ", project=project, bug_num=int(bug_num)).get()
+    if not bug:
+        raise Http404
+
+    return view_project(request, client_name, project_name)
 
 def add_project(request):
     name = request.POST['project_name']

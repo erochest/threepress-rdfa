@@ -98,3 +98,10 @@ td {
   color: black;
   text-align:left;
 }
+
+table.comment {
+ background-color: lightgrey;
+}
+table.comment th {
+ background-color: darkgrey;
+}

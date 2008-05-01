@@ -25,9 +25,9 @@ tinyMCE.init({
   <tr>
     
     <td><a href="{% url db.views.view_bug project.client.safe_name,project.safe_name,b.bug_num %}">{{ b.bug_num }}</a></td>
-    <td>{{ b.state.priority }}</td>
+    <td>{{ state.priority }}</td>
     <td>{{ b.title }}</td>
-    <td>{{ b.state.owner.nickname }}</td>
+    <td>{{ state.owner.nickname }}</td>
     <td>{{ b.english_last_modified }}</td>
   </tr>
   {% endfor %}

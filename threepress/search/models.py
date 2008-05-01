@@ -2,11 +2,9 @@ from django.db import models
 from django.db.models import permalink
 from lxml import etree
 from StringIO import StringIO
-import xapian
-from threepress import settings
-from lxml import etree
 
-TEI = 'http://www.tei-c.org/ns/1.0'    
+import settings
+
 TEI_XSLT = etree.XSLT(etree.parse('%s/data/xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'  % (settings.DIR_ROOT)))
 
 class Document(models.Model):
@@ -76,7 +74,6 @@ class Part(models.Model):
     class Admin:
         pass
 
-
 class Chapter(models.Model):
     id      = models.CharField(max_length=1000, primary_key=True)
     document = models.ForeignKey(Document)
@@ -98,7 +95,7 @@ class Chapter(models.Model):
         f = StringIO(self.content)
         root = etree.parse(f)
         rendered = None
-        preview = (root.xpath('(//tei:p)[1]', namespaces= {'tei': TEI }))[0]
+        preview = (root.xpath('(//tei:p)[1]', namespaces= {'tei': settings.TEI }))[0]
         rendered = TEI_XSLT(preview)
         return etree.tostring(rendered, encoding='utf-8', pretty_print=True, xml_declaration=False)        
     

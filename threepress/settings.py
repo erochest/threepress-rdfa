@@ -1,4 +1,3 @@
-
 # Django settings for threepress project.
 
 DEBUG = True
@@ -105,3 +104,4 @@ SORT_RELEVANCE = 0
 SORT_ORDINAL = 1
 
 
+TEI = 'http://www.tei-c.org/ns/1.0'

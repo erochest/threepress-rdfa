@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-
 import sys
 import os
 from lxml import etree
 from datetime import datetime
-from settings import *
+from settings import TEI
 
 
 if not len(sys.argv) == 2:
@@ -16,19 +15,17 @@ xml = etree.parse(sys.argv[1], parser)
 
 sys.path.append('/home/liza/threepress')
 
-import threepress
-
 os.environ['DJANGO_SETTINGS_MODULE'] = 'threepress.settings'
 
-from threepress.search.models import Document, Chapter
+from search.models import Document
 
 print "Current documents loaded: " + ', '.join([t.title for t in Document.objects.all()])
 
 
 def xpath(field, xml):
-    t = xml.xpath(field, namespaces={'tei': TEI})
-    if t:
-        x = t[0]
+    t1 = xml.xpath(field, namespaces={'tei': TEI})
+    if t1:
+        x = t1[0]
         if hasattr(x, 'text'):
             return x.text.strip()
         return x
@@ -58,6 +55,7 @@ id = xpath('/tei:TEI/@xml:id', xml)
 
 d = Document(id=id,
              title=title,
+
              author=author,
              add_date=datetime.now(),
              pub_date=datetime.now()
