@@ -22,7 +22,6 @@
        <h2> {{ chapter.title }}</h2>
      {% endif %}
 
-   {% if show_nav %}
    <div class="results_nav">
 
      <div class="previous"> {% if previous %} <a href="{% url threepress.search.views.document_chapter_view document.id,previous.id %}">← previous</a> {% endif %} </div>
@@ -30,7 +29,7 @@
        {% if next %} <a href="{% url threepress.search.views.document_chapter_view document.id,next.id %}">next →</a> {% endif %} 
      </div>
    </div>
-   {% endif %}
+
 
    <div id="document_content">
      {{ chapter.render|safe }}
