@@ -4,6 +4,12 @@
 {% block title %}{{ document.title }} by {{ document.author }}{% endblock title %}
 {% endspaceless %}
 
+<!-- AB Meta -->
+{% block head %}
+<meta name="dc:type" content="book" ></meta>
+<meta name="dc:title" content="{{ document.title }}" ></meta>
+<meta name="dc:creator" content="{{ document.author }}" ></meta>
+{% endblock head %}
 {% block header %}
 <div class="document_title"><a href="{% url threepress.search.views.document_view document.id %}"><h1><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></h1></a></div>
 {% endblock header%}
