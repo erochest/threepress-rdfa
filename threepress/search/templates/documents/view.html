@@ -42,11 +42,13 @@
    <h4>Select a chapter on the left to browse online, or any of the formats listed below for the entire work:</h4>
    <ul style="list-style-type:none;line-height:2em;">
      <li><a style="text-decoration:none" href="/static/pdf/{{ document.id }}.pdf">Adobe PDF <img src="/static/images/pdficon_small.gif" alt="PDF" border="0" /></a></li>
-     <li><a style="text-decoration:none" Href="/static/epub/{{ document.id }}.epub">OPS 2.0 digital book format (.epub)</a>
+     <li><a style="text-decoration:none" href="/static/epub/{{ document.id }}.epub">OPS 2.0 digital book format (.epub)</a></li>
+     <li><a style="text-decoration:none" href="/static/xml/{{ document.id }}.xml">TEI p5 XML</a></li>
    </ul>
    <p>
      OPS 2.0 is an open standard ebook format developed by the <a href="http://www.idpf.org/">International Digital Publishing Forum</a>.  OPS files can be read with <a href="http://www.adobe.com/products/digitaleditions/">Adobe Digital Editions</a> and, in the near future, portable digital readers such as the Kindle. 
    </p>
+   <p>TEI is the Text Encoding Initiative and is the source format for all threepress content.</p>
    <h4>Preview:</h4>
    <div id="document_content">
      <blockquote>{{ chapter_preview.render_preview|safe }}[ . . . ]</blockquote>
