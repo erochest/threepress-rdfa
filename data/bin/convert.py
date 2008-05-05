@@ -26,9 +26,11 @@ if len(sys.argv) < 3:
 
 xml = sys.argv[1]
 xsl = sys.argv[2]
+
 reindex = False
 if len(sys.argv) > 3:
     reindex = True
+
 
 tei_xsl = 'xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'
 fo_xsl  = 'xsl/tei-xsl-5.9/p5/fo/tei.xsl'
@@ -38,15 +40,15 @@ out_file = xml.replace('src', 'tei')
 out = open(out_file, 'w')
 
 schema = 'src/teilite.xsd'
-#xmlschema_doc = etree.parse(schema)
-#xmlschema = etree.XMLSchema(xmlschema_doc)
+xmlschema_doc = etree.parse(schema)
+xmlschema = etree.XMLSchema(xmlschema_doc)
 
 tree = etree.parse(xml)
 xslt = etree.parse(xsl)
 root = tree.xslt(xslt)
 
 # Check the document
-#xmlschema.assertValid(root)
+xmlschema.assertValid(root)
     
 for element in root.iter():
     if element.text:
@@ -114,6 +116,7 @@ else:
 out.write(etree.tostring(root, encoding='utf-8', pretty_print=True, xml_declaration=True))
 out.close()
 
+sys.exit()
 
 # Also transform it to FO
 fo_file = out_file

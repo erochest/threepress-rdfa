@@ -56,7 +56,7 @@
       <xsl:when test="starts-with(local-name(),'div')">
         <xsl:if
           test="not(preceding-sibling::tei:*) or preceding-sibling::tei:titlePage">
-          <h2>
+          <h2>hi1
             <xsl:apply-templates mode="xref" select="."/>
 	    <xsl:call-template name="sectionHeadHook"/>
           </h2>
@@ -321,7 +321,7 @@ $ID: requests a particular page
           </xsl:when>
           <xsl:when
             test="starts-with(local-name(),'div') and      $pageLayout='Table'      or      $pageLayout='CSS'">
-            <h2>
+            <h2>hi3
               <xsl:apply-templates mode="xref" select="."/>
 	      <xsl:call-template name="sectionHeadHook"/>
             </h2>
@@ -361,7 +361,7 @@ $ID: requests a particular page
                   </xsl:with-param>
                 </xsl:call-template>
 		</div>
-                <h2>
+                <h2>hi4
                   <xsl:apply-templates mode="xref" select="."/>
 		  <xsl:call-template name="sectionHeadHook"/>
                 </h2>
@@ -539,7 +539,7 @@ $ID: requests a particular page
     </xd:detail>
   </xd:doc>
   <xsl:template match="tei:divGen[@type='toc']">
-    <h2>
+    <h2>hi5
       <xsl:call-template name="i18n">
         <xsl:with-param name="word">tocWords</xsl:with-param>
       </xsl:call-template>
@@ -1007,6 +1007,7 @@ $ID: requests a particular page
       </xsl:when>
       <xsl:otherwise>
         <xsl:if test="not($Type = '')">
+
           <xsl:element name="h{$Type + $divOffset}">
             <xsl:if test="$xhtml='false'">
               <a name="{$ident}"/>
@@ -1014,6 +1015,7 @@ $ID: requests a particular page
             <xsl:call-template name="header">
 	      <xsl:with-param name="display">full</xsl:with-param>
 	    </xsl:call-template>
+            &#160;
 	    <xsl:call-template name="sectionHeadHook"/>
           </xsl:element>
         </xsl:if>
@@ -1546,7 +1548,7 @@ $ID: requests a particular page
         <xsl:choose>
           <xsl:when test="count(key('IDS',$currentID))&gt;0">
             <xsl:for-each select="key('IDS',$currentID)">
-              <h2>
+              <h2>hi2
                 <xsl:apply-templates mode="xref" select="."/>
 		<xsl:call-template name="sectionHeadHook"/>
               </h2>
@@ -1609,7 +1611,7 @@ $ID: requests a particular page
     <xsl:apply-templates select="tei:text/tei:front"/>
     <xsl:if
       test="$autoToc='true' and (descendant::tei:div or descendant::tei:div0 or descendant::tei:div1) and not(descendant::tei:divGen[@type='toc'])">
-      <h2>
+      <h2>hi6
         <xsl:call-template name="i18n">
           <xsl:with-param name="word">tocWords</xsl:with-param>
         </xsl:call-template>
@@ -2223,7 +2225,7 @@ $ID: requests a particular page
     <xsl:apply-templates select="tei:text/tei:front"/>
     <xsl:if
       test="$autoToc='true' and (descendant::tei:div or descendant::tei:div0 or descendant::tei:div1) and not(descendant::tei:divGen[@type='toc'])">
-      <h2>
+      <h2>hi8
         <xsl:call-template name="i18n">
           <xsl:with-param name="word">tocWords</xsl:with-param>
         </xsl:call-template>

@@ -21,7 +21,6 @@ from search.models import Document
 
 print "Current documents loaded: " + ', '.join([t.title for t in Document.objects.all()])
 
-
 def xpath(field, xml):
     t1 = xml.xpath(field, namespaces={'tei': TEI})
     if t1:
@@ -29,25 +28,31 @@ def xpath(field, xml):
         if hasattr(x, 'text'):
             return x.text.strip()
         return x
-    return ""
+    return u""
 
-def chapter(xml_root, db_obj, document):
-    chapter_ordinal = 1
+def chapter(xml_root, db_obj, document, ordinal_start):
+    chapter_ordinal = ordinal_start
+
     chapter_count = len(xml_root.xpath("tei:div[@type='chapter']", namespaces={'tei': TEI}))
+
     if chapter_count == 1:
-        chapter_default_name = 'Content'
+        chapter_default_name = 'Complete story'
     else:
         chapter_default_name = 'Chapter'
+
     for chapter in xml_root.xpath("tei:div[@type='chapter']", namespaces={'tei': TEI}):
         chapter_id = xpath('@xml:id', chapter)
         chapter_title = xpath('tei:head[1]', chapter) or chapter_default_name
         content = etree.tostring(chapter, encoding='utf-8', pretty_print=True, xml_declaration=False)
+        print "Setting ordinal to %d " % chapter_ordinal
         c = db_obj.chapter_set.create(id=chapter_id,
                                       title=chapter_title,
                                       document=document,
                                       ordinal=chapter_ordinal,
                                       content=content)
-        chapter_ordinal += 1        
+        chapter_ordinal += 1
+
+    return chapter_ordinal
 
 title = xpath('//tei:title', xml)
 author = xpath('//tei:author', xml)
@@ -63,8 +68,8 @@ d = Document(id=id,
 
 d.save()
 
-print "Adding chapters for id %s" %  d.id
-
+print "Adding content for id %s" %  d.id
+chapter_ordinal = 1
 
 # Do we have parts?
 if len(xml.xpath("//tei:div[@type='part']", namespaces={'tei': TEI})) > 0:
@@ -73,15 +78,16 @@ if len(xml.xpath("//tei:div[@type='part']", namespaces={'tei': TEI})) > 0:
     for part in xml.xpath("//tei:div[@type='part']", namespaces={'tei': TEI}):
         part_id = xpath('@xml:id', part)
         part_title = xpath('tei:head[1]', part) 
+        print "Adding part", part_title.encode('utf-8')
         p = d.part_set.create(id=part_id,
                               title=part_title,
                               ordinal=part_ordinal,
                               label='part')
-        chapter(part, p, d)
+        chapter_ordinal = chapter(part, p, d, chapter_ordinal)
         part_ordinal += 1
 else:
     print "Adding chapters only"
-    chapter(xml.xpath("//tei:body", namespaces={'tei': TEI})[0], d, d)
+    chapter_ordinal = chapter(xml.xpath("//tei:body", namespaces={'tei': TEI})[0], d, d, chapter_ordinal)
 
 
 print d.chapter_set.all()
