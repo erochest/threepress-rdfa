@@ -41,7 +41,6 @@ def document_view(request, id, chapter_id=None):
                                'chapter_preview':chapter_preview,
                                'next':next,
                                'previous':previous,
-                               'show_nav': True if next or previous else False
                                })
 
 def page_view(request, page):
