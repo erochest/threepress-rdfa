@@ -23,7 +23,10 @@ def document_view(request, id, chapter_id=None):
     chapter_preview = None
 
     if chapter_id:
-        chapter = document.chapter_set.filter(id=chapter_id)[0]
+        chapter_query = document.chapter_set.filter(id=chapter_id)
+        if chapter_query.count() == 0:
+            raise Http404
+        chapter = chapter_query[0]
         next_set = document.chapter_set.filter(ordinal=chapter.ordinal+1)
         if len(next_set) > 0:
             next = next_set[0]
