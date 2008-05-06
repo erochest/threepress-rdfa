@@ -49,7 +49,6 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'lukeplant_me_uk.django.validator.middleware.ValidatorMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -74,7 +73,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.flatpages',
     'django.contrib.sitemaps',
-    'lukeplant_me_uk.django.validator',
     'threepress.search'
     
 )
