@@ -116,7 +116,6 @@ else:
 out.write(etree.tostring(root, encoding='utf-8', pretty_print=True, xml_declaration=True))
 out.close()
 
-sys.exit()
 
 # Also transform it to FO
 fo_file = out_file

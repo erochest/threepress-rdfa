@@ -28,10 +28,11 @@ def document_view(request, id, chapter_id=None):
             raise Http404
         chapter = chapter_query[0]
         next_set = document.chapter_set.filter(ordinal=chapter.ordinal+1)
+        previous_set = document.chapter_set.filter(ordinal=chapter.ordinal-1)
         if len(next_set) > 0:
             next = next_set[0]
-        if chapter.ordinal > 1:
-            previous = document.chapter_set.filter(ordinal=chapter.ordinal-1)[0]
+        if len(previous_set) > 0:
+            previous = previous_set[0]
     else:
         chapter_preview = document.chapter_set.all()[0]
 
@@ -65,8 +66,10 @@ def search(request, doc_id=None):
         document = get_object_or_404(Document, pk=doc_id)
     else:
         document = None
+    if not request.GET.has_key('search'):
+        return HttpResponseRedirect('/')
 
-    search = request.GET['search']
+    search_term = request.GET['search']
     start = int(request.GET['start']) if request.GET.has_key('start') else 1
     end = int(request.GET['end']) if request.GET.has_key('end') else settings.RESULTS_PAGESIZE
     
@@ -88,8 +91,8 @@ def search(request, doc_id=None):
     qp.set_stemmer(stemmer)
     qp.set_database(database)
     qp.set_stemming_strategy(xapian.QueryParser.STEM_SOME)
-    query = qp.parse_query(search)
-    stem = stemmer(search)
+    query = qp.parse_query(search_term)
+    stem = stemmer(search_term)
     print "Stem is : " + stem
     for t in qp.unstemlist("Z%s" % stem):
         print t
@@ -125,9 +128,7 @@ def search(request, doc_id=None):
     previous_start = start - settings.RESULTS_PAGESIZE
     previous_end = previous_start + settings.RESULTS_PAGESIZE
 
-
     results = [Result(match.docid, match.document) for match in matches]
-    import re
     for r in results:
         words = []
         for word in r.xapian_document.get_data().split(" "):
@@ -143,7 +144,7 @@ def search(request, doc_id=None):
                                                'settings':settings,
                                                'estimate': estimate, 
                                                'document': document,
-                                               'search': search,
+                                               'search': search_term,
                                                'sort': sort,
                                                'size': size,
                                                'multiple_pages': True if show_next or show_previous else False,

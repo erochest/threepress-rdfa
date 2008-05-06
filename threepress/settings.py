@@ -1,24 +1,11 @@
 # Django settings for threepress project.
-
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
-DIR_ROOT = '/home/liza/threepress'
+from local import *
 
 ADMINS = (
-     ('Liza Daly', 'liza31337@gmail.com'),
+     ('Liza Daly', 'liza@threepress.org')
 )
 
 MANAGERS = ADMINS
-
-#DATABASE_ENGINE = 'sqlite3' # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-#DATABASE_NAME = '/Users/liza/threepress/threepress/db/threepress.db' # Or path to database file if using sqlite3.
-DATABASE_ENGINE = 'mysql' 
-DATABASE_NAME = 'threepress'
-DATABASE_USER = 'threepress'             # Not used with sqlite3.
-DATABASE_PASSWORD = '3press'         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -62,6 +49,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'lukeplant_me_uk.django.validator.middleware.ValidatorMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -86,6 +74,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.flatpages',
     'django.contrib.sitemaps',
+    'lukeplant_me_uk.django.validator',
     'threepress.search'
     
 )
@@ -99,9 +88,16 @@ SEARCH_ORDINAL = 1
 SEARCH_DOCUMENT_TITLE = 2
 SEARCH_DOCUMENT_ID = 3
 
-
 SORT_RELEVANCE = 0
 SORT_ORDINAL = 1
 
-
 TEI = 'http://www.tei-c.org/ns/1.0'
+
+# Validator
+VALIDATOR_APP_VALIDATORS = {
+    'text/html': '/home/liza/xmllint-wrapper.sh',
+    'application/xml+xhtml': '/home/liza/xmllint-wrapper.sh'
+}
+VALIDATOR_APP_IGNORE_PATHS = (
+    '/admin/',
+)
