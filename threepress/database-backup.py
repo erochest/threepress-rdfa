@@ -53,7 +53,14 @@ def _zip_backup(file_name):
 
     # Test our archive
     logging.debug("Testing zip archive")
-    return os.system("%(zip)s -T -q %(zipfile)s" % zip_cmds)
+    if not os.system("%(zip)s -T -q %(zipfile)s" % zip_cmds):
+        # If there was no problem, then delete the unzipped version
+        os.remove(backup)
+        return True
+    else:
+        return False
+
+
 
 def main(*args):
     _setup()
