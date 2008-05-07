@@ -44,9 +44,4 @@ do
 done
 
 
-
-
-
-./load-flatpages.py
-
 ./run.sh
