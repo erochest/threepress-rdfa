@@ -31,7 +31,7 @@ class Word {
   int drift;
   int size = 48;
   int palette;
-  
+
   public Word(String w, int x, int y, int r, int g, int b) {
     this.w = w;
     this.x = x;
@@ -42,7 +42,7 @@ class Word {
     this.a = 255;
     this.palette = int(random(3));
     this.drift = int(random(4));
-   
+
   }
   void draw() {
     fill(this.r, this.g, this.b, this.a);
@@ -51,11 +51,11 @@ class Word {
   String normalWord() {
     return this.w.replaceAll(",", "").replaceAll("\\.", "").replaceAll(";", "").toLowerCase();
   }
- 
+
   boolean atMaxColor() {
-   return (this.r >= 255);
+    return (this.r >= 255);
   }
- 
+
 }
 
 void setup() {
@@ -80,61 +80,87 @@ void setup() {
 }
 
 void drawWords() {
-  for (int i=0;i<displayWords.size();i++) {
-    Word word = (Word)displayWords.get(i);
-    
+
+  for (Iterator it = displayWords.iterator (); it.hasNext (); ) {
+    Word word = (Word)it.next();
+
     if ( wordMap.containsKey(word.normalWord()) && ((Integer)wordMap.get(word.normalWord())).intValue() > word.frequency)
-   {  
-     println("got mapping for word " + word.w);
-      int r_modifier = word.palette == RED_PALETTE ? 0 : 10;
-      int g_modifier = word.palette == GREEN_PALETTE ? 0 : 10;
-      int b_modifier = word.palette == BLUE_PALETTE ? 0 : 10;
-      
-       word.r = word.r - r_modifier;
-       word.g = word.g - g_modifier;
-       word.b = word.b - b_modifier; 
-       
-       // Increase alpha channel up to max
-       if (word.a < 255) 
-          word.a+=10;
-       
-       word.size+=2;
-       
+    {  
+
+      if (word.palette == RED_PALETTE) {
+        word.r = 208; 
+        word.g = 168;
+        word.b = 37;        
+      }
+      else if (word.palette == GREEN_PALETTE) {
+        word.r = 64;
+        word.g = 98;
+        word.b = 124;
+      }
+      else { 
+        word.r = 38;
+        word.g = 57;
+        word.b = 61;
+      }
+
+      // Increase alpha channel up to max
+      if (word.a < 255) 
+        word.a+=10;
+
+      word.size+=2;
+      /*
        switch(word.drift) {
-          case 0: 
-            if (word.x >= WIDTH) word.x-=2; else word.x+=2;
-          case 1: 
-            if (word.y >= HEIGHT) word.y-=2; else word.y+=2;
-            
-          case 2: 
-            if (word.x <= 0) word.x+=2; else word.x--;
-          case 3: 
-            if (word.y <= 0) word.y+=2; else word.y--;
+       case 0: 
+       if (word.x >= WIDTH) word.x-=2; else word.x+=2;
+       case 1: 
+       if (word.y >= HEIGHT) word.y-=2; else word.y+=2;
+       
+       case 2: 
+       if (word.x <= 0) word.x+=2; else word.x--;
+       case 3: 
+       if (word.y <= 0) word.y+=2; else word.y--;
        }
- 
-       textSize(word.size);
-     
+       */
+      switch(word.drift) {
+      case 0: 
+        word.x+=2;
+      case 1: 
+        word.y+=2;
+
+      case 2: 
+        word.x--;
+      case 3: 
+        word.y--;
+      }
+
+      textSize(word.size);
+      //word.frequency++;
+      //println(word.frequency);
+
     }
     if (word.a < 0) {
-      println("no print : " + word.w);
-      return; 
+      println("removing " + word.w + " (" + displayWords.size() + ")");
+      it.remove();
     }
-    
-   word.draw();
+    // If we've left the boundaries, start forcing down the alpha channel
+    if  (word.x >= WIDTH || word.y >= HEIGHT)  {
+      word.a -= 20; 
+    }
+    word.draw();
 
     textSize(FONT_SIZE);
-    
+
     if (word.a > 0) {
-      println("Shrinking " + word.w);
+      //println("Shrinking " + word.w);
       word.size--;
       word.a-=10;
-      
-     }
+
+    }
     else {
       word.a = 0; 
     }
   }
-   
+
 }
 
 
@@ -159,11 +185,11 @@ void draw() {
   }
   word.frequency =+ 1;
 
-
+  /*
   if (index == 2000) {
-    exit(); 
-  }
-
+   exit(); 
+   }
+   */
   int nextWord = int(textWidth((String)words.get(index + 1) + " "));
   int thisWord = int(textWidth(s + " "));
 
@@ -181,5 +207,5 @@ void draw() {
     }
   }
   index++;
-  delay(10); 
+  //delay(1); 
 }
