@@ -2,6 +2,10 @@ int HEIGHT = 800;
 int WIDTH = 600;
 int MARGIN = 5;
 int FONT_SIZE = 48;
+int MAX_SIZE = 60;
+
+// How many words must we see before we give up on seeing again and remove it from our list?
+int LIFESPAN = 200;
 
 // Palettes control which color scheme is modified when the
 // word "ages"
@@ -11,9 +15,20 @@ int BLUE_PALETTE = 2;
 
 int index = 0;
 PFont font;
+
+// The total list of words in the document
 ArrayList words = new ArrayList();
+
+// The list of words we're displaying in each frame
 ArrayList displayWords = new ArrayList();
+
+// The frequencies of all words we've seen to date
 HashMap wordMap = new HashMap();
+
+// Words we are already displaying, so don't bother re-displaying them
+// (instead increment them in-place)
+HashMap displayMap = new HashMap();
+
 
 String s;
 int X_START = MARGIN * 3;
@@ -31,6 +46,7 @@ class Word {
   int drift;
   int size = 48;
   int palette;
+  int lifespan;
 
   public Word(String w, int x, int y, int r, int g, int b) {
     this.w = w;
@@ -42,7 +58,7 @@ class Word {
     this.a = 255;
     this.palette = int(random(3));
     this.drift = int(random(4));
-
+    this.lifespan = LIFESPAN;
   }
   void draw() {
     fill(this.r, this.g, this.b, this.a);
@@ -83,7 +99,8 @@ void drawWords() {
 
   for (Iterator it = displayWords.iterator (); it.hasNext (); ) {
     Word word = (Word)it.next();
-
+    
+    int totalFrequency = ((Integer)wordMap.get(word.normalWord())).intValue();
     if ( wordMap.containsKey(word.normalWord()) && ((Integer)wordMap.get(word.normalWord())).intValue() > word.frequency)
     {  
 
@@ -108,43 +125,48 @@ void drawWords() {
         word.a+=10;
 
       word.size+=2;
-      /*
-       switch(word.drift) {
-       case 0: 
-       if (word.x >= WIDTH) word.x-=2; else word.x+=2;
-       case 1: 
-       if (word.y >= HEIGHT) word.y-=2; else word.y+=2;
-       
-       case 2: 
-       if (word.x <= 0) word.x+=2; else word.x--;
-       case 3: 
-       if (word.y <= 0) word.y+=2; else word.y--;
-       }
-       */
+    
       switch(word.drift) {
-      case 0: 
-        word.x+=2;
-      case 1: 
-        word.y+=2;
-
-      case 2: 
-        word.x--;
-      case 3: 
-        word.y--;
+        case 0: 
+          word.x+=2;
+        case 1: 
+          word.y+=2;
+        case 2: 
+          word.x--;
+        case 3: 
+          word.y--;
       }
 
       textSize(word.size);
-      //word.frequency++;
+      word.lifespan++;
+      //println(totalFrequency);
+      word.frequency++;
       //println(word.frequency);
 
     }
-    if (word.a < 0) {
-      println("removing " + word.w + " (" + displayWords.size() + ")");
-      it.remove();
+    else {
+       word.lifespan--; 
+       word.size--;
     }
+    
+    if (word.size <= 0) {
+       word.a = 0; 
+    }
+    
     // If we've left the boundaries, start forcing down the alpha channel
     if  (word.x >= WIDTH || word.y >= HEIGHT)  {
       word.a -= 20; 
+    }
+    // If we've reached the max size, do the same
+    if (word.size >= MAX_SIZE) {
+       word.a -= 5; 
+    }
+    
+    // If we can't see it don't bother drawing it
+    if (word.a <= 0) {
+       //println("removing  " + word.normalWord() + " ("  + totalFrequency + ")");
+       displayMap.remove(word.normalWord());
+       it.remove();  
     }
     word.draw();
 
@@ -152,13 +174,13 @@ void drawWords() {
 
     if (word.a > 0) {
       //println("Shrinking " + word.w);
-      word.size--;
+      word.size-=1;
       word.a-=10;
-
     }
     else {
       word.a = 0; 
     }
+    
   }
 
 }
@@ -176,10 +198,15 @@ void draw() {
   if (wordMap.containsKey(normalWord)) {
     Integer v = (Integer)wordMap.get(normalWord);
     wordMap.put(normalWord, new Integer(v.intValue() + 1));
+    if (!displayMap.containsKey(normalWord)) {
+      displayWords.add(word);
+      displayMap.put(normalWord, new Integer(1));
+    }
   }
   else {
     wordMap.put(normalWord, new Integer(1)); 
     displayWords.add(word);
+    displayMap.put(normalWord, new Integer(1));
     word.draw();
 
   }
