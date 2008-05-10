@@ -14,3 +14,11 @@ find 'Knightley'
 go /search/Emma_Jane-Austen?search=knightley
 code 200
 find 'Elton'
+
+go /about/liza
+code 200
+find 'Liza Daly'
+
+go /foo
+code 404
+find 'Page not found'
