@@ -1,23 +1,24 @@
 import processing.opengl.*; 
 
+// Size of our window
 int HEIGHT = 600;
 int WIDTH = 800;
+
+// Margin between the text and the viewscreen
 int MARGIN = 5;
+
 int FONT_SIZE = 48;
-int MAX_SIZE = 60;
+int MAX_SIZE = 60;  // Words can get no larger than this size
+
+// Our starting alpha channel (max = 255)
 int ALPHA_START = 200;
-int SPEEDUP = 50;
-int SPEEDUP_FACTOR = 50;
 
 int totalWords;
 
-// Stop words
+// Stop words (e.g. "the", "and")
 HashMap stopwords = new HashMap();
 PGraphics p;
 
-
-// How many words must we see before we give up on seeing again and remove it from our list?
-int LIFESPAN = 200;
 
 // Palettes control which color scheme is modified when the
 // word "ages"
@@ -58,7 +59,6 @@ class Word {
   int drift;
   int size = 48;
   int palette;
-  int lifespan;
   int initial_x;
   int initial_y;
 
@@ -74,8 +74,9 @@ class Word {
     this.a = ALPHA_START;
     this.palette = int(random(3));
     this.drift = int(random(4));
-    this.lifespan = LIFESPAN;
   }
+  
+  // Draws a word at the current size, color and alpha channel
   void draw() {
     int diff = 5 * ( this.size - FONT_SIZE );
     diff = 0;
@@ -86,6 +87,10 @@ class Word {
     fill(this.r + diff, this.g + diff, this.b + diff, this.a + diff);
     text(this.w, this.x, this.y);
   }
+  
+  /** This routine works and produces a nice visual effect, but it is very slow, and will eventually
+      run out of memory before the entire corpus has been processed. 
+      
   void drawBlur() {
     p = createGraphics(int(textWidth(this.w)) + 40, int(textAscent() + textDescent()) + 40, P3D);
     
@@ -104,12 +109,12 @@ class Word {
     p.endDraw();  
     image(p, this.x -5, this.y - textAscent() - 5);
   }
+  
+  */
+  
+  /** The normalized form of the word, without common punctuation, and case-insensitive **/
   String normalWord() {
     return this.w.replaceAll(",", "").replaceAll("\\.", "").replaceAll(";", "").toLowerCase();
-  }
-
-  boolean atMaxColor() {
-    return (this.r >= 255);
   }
 
 }
@@ -259,10 +264,12 @@ void draw() {
     // Wrap to next line, if there's room
     y = y + int(textAscent() + textDescent());
     x = MARGIN;    
+    
+    // We've gotten to the bottom of the page, so start from the top
     if (y + (textAscent() + textDescent())  >= HEIGHT) {
       y = Y_START;
     }
   }
   index++;
-  delay(50); 
+  delay(25); 
 }
