@@ -1,3 +1,0 @@
- 
-threewords
-threewords.jar,core.jar,opengl.jar,jogl.jar
