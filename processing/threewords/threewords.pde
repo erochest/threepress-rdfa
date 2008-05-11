@@ -1,13 +1,19 @@
 import processing.opengl.*; 
 
-int HEIGHT = 800;
-int WIDTH = 600;
+int HEIGHT = 600;
+int WIDTH = 800;
 int MARGIN = 5;
 int FONT_SIZE = 48;
 int MAX_SIZE = 60;
+int ALPHA_START = 200;
+int SPEEDUP = 50;
+int SPEEDUP_FACTOR = 50;
+
+int totalWords;
 
 // Stop words
 HashMap stopwords = new HashMap();
+PGraphics p;
 
 
 // How many words must we see before we give up on seeing again and remove it from our list?
@@ -55,24 +61,48 @@ class Word {
   int lifespan;
   int initial_x;
   int initial_y;
-  
+
   public Word(String w, int x, int y, int r, int g, int b) {
     this.w = w;
-    this.x = x; this.initial_x = x;
-    this.y = y; this.initial_y = y;
+    this.x = x; 
+    this.initial_x = x;
+    this.y = y; 
+    this.initial_y = y;
     this.r = r;
     this.g = g;
     this.b = b;
-    this.a = 255;
+    this.a = ALPHA_START;
     this.palette = int(random(3));
     this.drift = int(random(4));
     this.lifespan = LIFESPAN;
   }
   void draw() {
-    fill(this.r, this.g, this.b, this.a);
     int diff = 5 * ( this.size - FONT_SIZE );
-    fill(this.r + diff, this.g + diff, this.b + diff);
+    diff = 0;
+    if (diff > 20) {
+      //drawBlur();
+    }
+    
+    fill(this.r + diff, this.g + diff, this.b + diff, this.a + diff);
     text(this.w, this.x, this.y);
+  }
+  void drawBlur() {
+    p = createGraphics(int(textWidth(this.w)) + 40, int(textAscent() + textDescent()) + 40, P3D);
+    
+    p.beginDraw();  
+    p.fill(this.r, this.g, this.b, this.a + 50);
+    p.textFont(font);  
+    p.textSize(this.size + 2);
+    p.text(this.w, 5, 5, int(textWidth(this.w)), int(textAscent() + textDescent()) );
+    int diff = this.size - FONT_SIZE;
+    if (diff == 0)
+      return;
+    if (diff > 10)
+       diff = 10;  
+    p.filter(BLUR, 7);
+    p.modified=true;
+    p.endDraw();  
+    image(p, this.x -5, this.y - textAscent() - 5);
   }
   String normalWord() {
     return this.w.replaceAll(",", "").replaceAll("\\.", "").replaceAll(";", "").toLowerCase();
@@ -86,35 +116,34 @@ class Word {
 
 void setup() {
   size(WIDTH, HEIGHT, OPENGL);
-
+  
   font = loadFont("Helvetica-Bold-" + FONT_SIZE + ".vlw"); 
   textFont(font);
-  //textMode(SCREEN);
 
-  String lines[] = loadStrings("ss.txt");
+  String lines[] = loadStrings("Pride-and-Prejudice_Jane-Austen.txt");
   String sw[] = loadStrings("stopwords.txt");
   for (int i=0;i<sw.length;i++) {
     stopwords.put(sw[i].trim(), ""); 
   }
 
-  println("there are " + lines.length + " lines");
-
   for (int i=0; i < lines.length; i++) {
     String l = lines[i];
     String twords[] = l.split(" ");
     for (int j=0;j<twords.length;j++) {
-      words.add(twords[j]); 
+      if (!twords[j].trim().equals(""))
+         words.add(twords[j].trim()); 
     }
   }
   println("and " + words.size() + " words ");
-  frameRate(60);
+  totalWords = words.size();
+  frameRate(30);
 }
 
 void drawWords() {
 
   for (Iterator it = displayWords.iterator (); it.hasNext (); ) {
     Word word = (Word)it.next();
-
+  
     int totalFrequency = ((Integer)wordMap.get(word.normalWord())).intValue();
     if ( wordMap.containsKey(word.normalWord()) && ((Integer)wordMap.get(word.normalWord())).intValue() > word.frequency)
     {  
@@ -140,21 +169,16 @@ void drawWords() {
         word.a+=10;
 
       word.size+=2;
- //     word.y-=2;
- //     word.x-=2;
 
       word.frequency++;
     }
-    
-    // Use text size to determine the x/y offset
+
+    // Use text size to determine the x/y offset 
     int diff = word.size - FONT_SIZE;
     word.x = word.initial_x - diff;
-    //colorMode(HSB, 255);
-    
-    //word.y = word.initial_y - diff;
-    
+
     textSize(word.size);
-    
+
     if (word.size <= 0) {
       word.a = 0; 
     }
@@ -170,18 +194,15 @@ void drawWords() {
 
     // If we can't see it don't bother drawing it
     if (word.a <= 0) {
-      //println("removing  " + word.normalWord() + " ("  + totalFrequency + ")");
       displayMap.remove(word.normalWord());
       it.remove();  
     }
     word.draw();
-   // blur();
     textSize(FONT_SIZE);
 
     if (word.a > 0) {
-      //println("Shrinking " + word.w);
-      //word.size-=1;
-      word.a-=5;
+      word.a-=3;
+      
     }
     else {
       word.a = 0; 
@@ -198,7 +219,8 @@ void draw() {
   s = (String) words.get(index);
   Word word = new Word(s, x, y, r, g, b);
   String normalWord = word.normalWord();
-
+  
+    
   if (stopwords.containsKey(normalWord)) {
     // Draw this but don't otherwise add it to any list
     wordMap.put(normalWord, new Integer(1)); 
@@ -215,12 +237,16 @@ void draw() {
     else {
       wordMap.put(normalWord, new Integer(1)); 
       displayMap.put(normalWord, new Integer(1));
+      
     }
     word.frequency =+ 1;
   }
-  displayWords.add(word);
-  drawWords();
   
+
+  displayWords.add(word);
+        
+  drawWords();
+
   int nextWord = int(textWidth((String)words.get(index + 1) + " "));
   int thisWord = int(textWidth(s + " "));
 
@@ -238,5 +264,5 @@ void draw() {
     }
   }
   index++;
-  //delay(20); 
+  delay(50); 
 }
