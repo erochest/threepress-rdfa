@@ -6,21 +6,20 @@ from settings import *
 
 logging.basicConfig(level=logging.DEBUG)
 
-def create_html(dir, tree):
+def create_html(directory, tree):
     '''Generate the HTML files that make up each chapter in the TEI document.'''
     xslt = etree.parse(TEI2XHTML_XSLT)
-    shell = tree
 
     transform = etree.XSLT(xslt)
     for (i, element) in enumerate(tree.xpath('//tei:div[@type="chapter"]', namespaces={'tei': TEI})):
         processed = transform(element)
-        file = '%s/%s/chapter-%d.html' % (dir, OEBPS, i + 1)
-        _output_html(file, processed)
+        f = '%s/%s/chapter-%d.html' % (directory, OEBPS, i + 1)
+        _output_html(f, processed) 
 
     # Create the title page
-    _output_html('%s/%s/title_page.html' % (dir, OEBPS), '<p>Title page</p>', False)
+    _output_html('%s/%s/title_page.html' % (directory, OEBPS), '<p>Title page</p>', False)
 
-def _output_html(file, content, xml=True):
+def _output_html(f, content, xml=True):
     if xml:                     
         xslt = etree.parse(HTMLFRAG2HTML_XSLT)        
         processed = content.xslt(xslt)
@@ -35,58 +34,58 @@ def _output_html(file, content, xml=True):
   </body>
 </html>
 ''' % ('test', content)
-    logging.debug('Outputting file %s' % file)
-    content = open(file, 'w')    
+    logging.debug('Outputting file %s' % f)
+    content = open(f, 'w')    
     content.write(html)
     content.close()
 
-def create_content(dir, tree):
+def create_content(directory, tree):
     '''Create the content file based on our TEI source'''
     xslt = etree.parse(TEI2OPF_XSLT)
     processed = tree.xslt(xslt)
-    file = '%s/%s/%s' % (dir, OEBPS, CONTENT)
-    _output_xml(file, processed)
+    f = '%s/%s/%s' % (directory, OEBPS, CONTENT)
+    _output_xml(f, processed)
 
-def create_navmap(dir, tree):
+def create_navmap(directory, tree):
     '''Create the navmap file based on our TEI source'''
     xslt = etree.parse(TEI2NCX_XSLT)
     processed = tree.xslt(xslt)
-    file = '%s/%s/%s' % (dir, OEBPS, NAVMAP)
-    _output_xml(file, processed)
+    f = '%s/%s/%s' % (directory, OEBPS, NAVMAP)
+    _output_xml(f, processed)
 
-def _output_xml(file, xml):
-    logging.debug('Outputting file %s' % file)
-    content = open(file, 'w')
+def _output_xml(f, xml):
+    logging.debug('Outputting file %s' % f)
+    content = open(f, 'w')
     content.write(etree.tostring(xml, encoding='utf-8', pretty_print=True, xml_declaration=True))
     content.close()
 
-def create_mimetype(dir):
+def create_mimetype(directory):
     '''Create the mimetype file'''
-    file = '%s/%s' % (dir, MIMETYPE)
-    logging.debug('Creating mimetype file %s' % file)
+    f = '%s/%s' % (directory, MIMETYPE)
+    logging.debug('Creating mimetype file %s' % f)
     f = open(file, 'w')
     f.write(MIMETYPE_CONTENT)
     f.close()
 
-def create_folders(dir):
-    '''Create all the top-level directories in our package'''
+def create_folders(directory):
+    '''Create all the top-level directoryectories in our package'''
     for f in FOLDERS:
-        d = '%s/%s' % (dir, f)
+        d = '%s/%s' % (directory, f)
         if not os.path.exists(d):
-            os.mkdir(d)
+            os.mkdirectory(d)
 
-def create_container(dir):
+def create_container(directory):
     '''Create the OPF container file'''
-    file = '%s/%s/%s' % (dir, META, CONTAINER)
-    logging.debug('Creating container file %s' % file)
-    f = open(file, 'w')
+    f = '%s/%s/%s' % (directory, META, CONTAINER)
+    logging.debug('Creating container file %s' % f)
+    f = open(f, 'w')
     f.write(CONTAINER_CONTENTS)
     f.close()
 
-def create_stylesheet(dir):
+def create_stylesheet(directory):
     '''Create the stylesheet file'''
-    file = '%s/%s/%s' % (dir, OEBPS, CSS_STYLESHEET)
-    logging.debug('Creating CSS file %s' % file)
+    f = '%s/%s/%s' % (directory, OEBPS, CSS_STYLESHEET)
+    logging.debug('Creating CSS file %s' % f)
     f = open(file, 'w')
     f.write(STYLESHEET_CONTENTS)
     f.close()
@@ -103,12 +102,12 @@ def main(*args):
     source = args[1]
 
     if len(args) > 2:
-        dir = '%s/%s' % (BUILD, args[2])
+        directory = '%s/%s' % (BUILD, args[2])
     else:
         if not '.xml' in source:
             logging.error('Source file must have a .xml extension')
             return 1
-        dir = '%s/%s' % (BUILD, os.path.basename(source).replace('.xml', ''))
+        directory = '%s/%s' % (BUILD, os.path.basename(source).replace('.xml', ''))
 
     tree = etree.parse(source)
 
@@ -120,26 +119,26 @@ def main(*args):
 
     if os.path.exists(dir):
         logging.debug('Removing previous output directory %s' % dir)
-        shutil.rmtree(dir)
+        shutil.rmtree(directory)
 
-    logging.debug('Creating directory %s' % dir)
-    os.mkdir(dir)
+    logging.debug('Creating directoryectory %s' % directory)
+    os.mkdir(directory)
 
     # Create the epub content
-    create_folders(dir)
-    create_mimetype(dir)
-    create_container(dir)
-    create_stylesheet(dir)
-    create_navmap(dir, tree)
-    create_content(dir, tree)
-    create_html(dir, tree)
+    create_folders(directory)
+    create_mimetype(directory)
+    create_container(directory)
+    create_stylesheet(directory)
+    create_navmap(directory, tree)
+    create_content(directory, tree)
+    create_html(directory, tree)
 
     # Create the epub format
-    os.chdir(dir)
-    os.system('%s -v0X %s %s' % (ZIP, dir, MIMETYPE))
-    os.system('%s -vr %s * -x %s.zip %s' % (ZIP, dir, dir, MIMETYPE))
-    os.rename('%s.zip' % dir, '%s.epub' % dir)
-    shutil.move('%s.epub' % dir, DIST)
+    os.chdir(directory)
+    os.system('%s -v0X %s %s' % (ZIP, directory, MIMETYPE))
+    os.system('%s -vr %s * -x %s.zip %s' % (ZIP, directory, directory, MIMETYPE))
+    os.rename('%s.zip' % directory, '%s.epub' % directory)
+    shutil.move('%s.epub' % directory, DIST)
 
     return 0
 

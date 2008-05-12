@@ -34,8 +34,7 @@
             <!-- Removed Gutenberg notice per their agreement -->
             <!-- <xsl:apply-templates select="para"/> -->
 	  </tei:sourceDesc>
-
-	</tei:fileDesc>
+        </tei:fileDesc>
 	</tei:teiHeader>
     </xsl:template>
     <xsl:template match="book">
@@ -81,6 +80,15 @@
       <!-- ignore and generate out of content -->
     </xsl:template>
 
+    <xsl:template match="pubinfo">
+      
+    </xsl:template>
+    
+    <xsl:template match="frontmatter/preface">
+      <tei:titlePart type="preface">
+        <xsl:apply-templates />
+      </tei:titlePart>
+    </xsl:template>
 
     <xsl:template match="titlepage/partnum">
       <tei:head><xsl:apply-templates /></tei:head>
@@ -108,6 +116,13 @@
       <tei:head><xsl:apply-templates /></tei:head>
     </xsl:template>
 
+    <xsl:template match="subtitle" />
+
+    <xsl:template match="subtitle" mode="subtitle">
+      <tei:titlePart type="sub"><xsl:apply-templates /></tei:titlePart>
+    </xsl:template>
+
+
     <xsl:template match="title[preceding-sibling::chapnum]" />
     <xsl:template match="title[preceding-sibling::chapnum]" mode="override">
       <xsl:apply-templates />
@@ -118,6 +133,11 @@
 	<xsl:apply-templates />
       </tei:titlePage>
     </xsl:template>
+    <xsl:template match="frontmatter/titlepage/pubinfo">
+      <tei:titlePart>
+        <tei:note><xsl:apply-templates /></tei:note>
+      </tei:titlePart>
+    </xsl:template>
 
     <xsl:template match="bookbody/part/titlepage">
       <xsl:apply-templates />
@@ -125,9 +145,11 @@
 
 
     <xsl:template match="titlepage/title">
-      <tei:docTitle><tei:titlePart><xsl:apply-templates /></tei:titlePart></tei:docTitle>
+      <tei:docTitle>
+      <tei:titlePart><xsl:apply-templates /></tei:titlePart>
+      <xsl:apply-templates select="../subtitle" mode="subtitle"/>
+      </tei:docTitle>
     </xsl:template>
-
 
     <xsl:template match="bookbody/part/titlepage/title">
       <tei:head><xsl:value-of select="." /></tei:head>
@@ -158,4 +180,114 @@
     </xsl:template>
 
     <xsl:template match="acknowledge" />
+    <xsl:template match="index" />
+
+    <xsl:template match="frontmatter/preface/title">
+      <tei:title>
+        <xsl:apply-templates />
+      </tei:title>
+    </xsl:template>
+
+    <xsl:template match="frontmatter/preface/para">
+      <tei:note>
+        <tei:p>
+          <xsl:apply-templates />
+        </tei:p>
+      </tei:note>
+    </xsl:template>
+
+    <xsl:template match="chapsummary">
+      <tei:head type="summary">
+        <xsl:apply-templates />
+      </tei:head>
+    </xsl:template>
+
+    <xsl:template match="epigraph">
+      <tei:epigraph>
+        <xsl:apply-templates />
+      </tei:epigraph>
+    </xsl:template>
+
+    <xsl:template match="blockquote">
+      <tei:q>
+        <xsl:apply-templates />
+      </tei:q>
+    </xsl:template>
+
+    <xsl:template match="attrib">
+      <tei:bibl>
+        <xsl:apply-templates />        
+      </tei:bibl>
+    </xsl:template>
+    
+    <xsl:template match="epigraph/para[place]">
+      <tei:bibl>
+        <tei:pubPlace><xsl:apply-templates />        </tei:pubPlace>
+      </tei:bibl>
+    </xsl:template>
+
+    <xsl:template match="epigraph/para[date]">
+      <tei:bibl>
+        <tei:date><xsl:apply-templates />        </tei:date>
+      </tei:bibl>
+    </xsl:template>
+
+    <xsl:template match="introduction">
+      <tei:div type="preface">
+        <xsl:apply-templates />
+      </tei:div>
+    </xsl:template>
+
+    <xsl:template match="list">
+      <tei:list>
+        <xsl:apply-templates />
+      </tei:list>
+    </xsl:template>
+
+    <xsl:template match="item">
+      <tei:item>
+        <xsl:apply-templates />
+      </tei:item>
+    </xsl:template>
+
+    <!-- For Huck Finn -->
+    <xsl:template match="htitlepage/place">
+      <tei:div type="place"><tei:p><xsl:apply-templates /></tei:p></tei:div>
+    </xsl:template>
+
+    <xsl:template match="htitlepage/date">
+      <tei:div type="date"><tei:p><xsl:apply-templates /></tei:p></tei:div>
+    </xsl:template>
+
+    
+    <xsl:template match="poem">
+      <tei:lg><xsl:apply-templates /></tei:lg>
+    </xsl:template>
+
+    <xsl:template match="line">
+      <tei:l><xsl:apply-templates /></tei:l>
+    </xsl:template>
+    
+    <xsl:template match="note">
+      <tei:note><xsl:apply-templates /></tei:note>
+    </xsl:template>
+
+    <xsl:template match="footnote">
+      <tei:note place="foot" type="footnote" resp="author" anchored="true">
+        <xsl:attribute name="xml:id">
+          <xsl:value-of select="@id" />
+        </xsl:attribute>
+        <xsl:apply-templates />
+      </tei:note>
+    </xsl:template>
+
+    <xsl:template match="reference[@ref]">
+      <tei:anchor>
+      <xsl:attribute name="xml:id">
+        <xsl:value-of select="@ref" />
+      </xsl:attribute></tei:anchor>
+    </xsl:template>
+
+    <xsl:template match="reference[not(@ref)]">
+    </xsl:template>
 </xsl:stylesheet>
