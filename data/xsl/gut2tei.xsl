@@ -9,9 +9,9 @@
     <xsl:template match="gutbook">
       <tei:TEI>
         <xsl:attribute name="xml:id">
-        <xsl:value-of select="translate(normalize-space(//titlepage/title/text()), ' ', '-')"/>
+        <xsl:value-of select="translate(translate(normalize-space(//titlepage/title/text()), ' ', '-'), '.', '')"/>
         <xsl:text>_</xsl:text>
-        <xsl:value-of select="translate(normalize-space(//titlepage/author/text()), ' ', '-')"/>
+        <xsl:value-of select="translate(translate(normalize-space(//titlepage/author/text()), ' ', '-'), '.', '')"/>
         </xsl:attribute>
 	<xsl:apply-templates select="gutblurb"/>
 	<xsl:apply-templates select="book"/>
