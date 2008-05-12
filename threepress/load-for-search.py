@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-import sys
-import os
+import sys, os, logging
 from lxml import etree
 from datetime import datetime
 from settings import TEI
 
+logging.basicConfig(level=logging.WARNING)
 
 if not len(sys.argv) == 2:
-    print "Usage: load-for-search path-to-tei-xml"
+    logging.error("Usage: load-for-search path-to-tei-xml")
     sys.exit(2)
 
 parser = etree.XMLParser(remove_blank_text=True)
@@ -19,7 +19,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'threepress.settings'
 
 from search.models import Document
 
-print "Current documents loaded: " + ', '.join([t.title for t in Document.objects.all()])
+logging.info("Current documents loaded: " + ', '.join([t.title for t in Document.objects.all()]))
 
 def xpath(field, xml):
     t1 = xml.xpath(field, namespaces={'tei': TEI})
@@ -44,7 +44,7 @@ def chapter(xml_root, db_obj, document, ordinal_start):
         chapter_id = xpath('@xml:id', chapter)
         chapter_title = xpath('tei:head[1]', chapter) or chapter_default_name
         content = etree.tostring(chapter, encoding='utf-8', pretty_print=True, xml_declaration=False)
-        print "Setting ordinal to %d " % chapter_ordinal
+        logging.debug("Setting ordinal to %d " % chapter_ordinal)
         c = db_obj.chapter_set.create(id=chapter_id,
                                       title=chapter_title,
                                       document=document,
@@ -68,17 +68,16 @@ d = Document(id=id,
 
 d.save()
 
-print "Adding content for id %s" %  d.id
+logging.info("Adding content for id %s" %  d.id)
 chapter_ordinal = 1
 
 # Do we have parts?
 if len(xml.xpath("//tei:div[@type='part']", namespaces={'tei': TEI})) > 0:
-    print "Adding parts"
     part_ordinal = 1
     for part in xml.xpath("//tei:div[@type='part']", namespaces={'tei': TEI}):
         part_id = xpath('@xml:id', part)
         part_title = xpath('tei:head[1]', part) 
-        print "Adding part", part_title.encode('utf-8')
+        logging.debug("Adding part", part_title.encode('utf-8'))
         p = d.part_set.create(id=part_id,
                               title=part_title,
                               ordinal=part_ordinal,
@@ -86,11 +85,11 @@ if len(xml.xpath("//tei:div[@type='part']", namespaces={'tei': TEI})) > 0:
         chapter_ordinal = chapter(part, p, d, chapter_ordinal)
         part_ordinal += 1
 else:
-    print "Adding chapters only"
+    logging.info("Adding chapters only")
     chapter_ordinal = chapter(xml.xpath("//tei:body", namespaces={'tei': TEI})[0], d, d, chapter_ordinal)
 
 
-print d.chapter_set.all()
+logging.debug(d.chapter_set.all())
 
 
 

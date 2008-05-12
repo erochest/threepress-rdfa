@@ -11,7 +11,7 @@ from threepress import settings
 db_dir = 'db/'
 main_db = 'threepress'
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.WARNING)
 
 indexer = xapian.TermGenerator()
 stemmer = xapian.Stem("english")

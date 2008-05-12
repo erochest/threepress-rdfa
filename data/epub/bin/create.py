@@ -4,7 +4,7 @@ import os, os.path, sys, logging, shutil
 
 from settings import *
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 def create_html(directory, tree):
     '''Generate the HTML files that make up each chapter in the TEI document.'''
@@ -63,16 +63,16 @@ def create_mimetype(directory):
     '''Create the mimetype file'''
     f = '%s/%s' % (directory, MIMETYPE)
     logging.debug('Creating mimetype file %s' % f)
-    f = open(file, 'w')
+    f = open(f, 'w')
     f.write(MIMETYPE_CONTENT)
     f.close()
 
 def create_folders(directory):
-    '''Create all the top-level directoryectories in our package'''
+    '''Create all the top-level directories in our package'''
     for f in FOLDERS:
         d = '%s/%s' % (directory, f)
         if not os.path.exists(d):
-            os.mkdirectory(d)
+            os.mkdir(d)
 
 def create_container(directory):
     '''Create the OPF container file'''
@@ -86,7 +86,7 @@ def create_stylesheet(directory):
     '''Create the stylesheet file'''
     f = '%s/%s/%s' % (directory, OEBPS, CSS_STYLESHEET)
     logging.debug('Creating CSS file %s' % f)
-    f = open(file, 'w')
+    f = open(f, 'w')
     f.write(STYLESHEET_CONTENTS)
     f.close()
 
@@ -117,11 +117,11 @@ def main(*args):
     if not os.path.exists(DIST):
         os.mkdir(DIST)
 
-    if os.path.exists(dir):
-        logging.debug('Removing previous output directory %s' % dir)
+    if os.path.exists(directory):
+        logging.debug('Removing previous output directory %s' % directory)
         shutil.rmtree(directory)
 
-    logging.debug('Creating directoryectory %s' % directory)
+    logging.debug('Creating directory %s' % directory)
     os.mkdir(directory)
 
     # Create the epub content
@@ -135,8 +135,8 @@ def main(*args):
 
     # Create the epub format
     os.chdir(directory)
-    os.system('%s -v0X %s %s' % (ZIP, directory, MIMETYPE))
-    os.system('%s -vr %s * -x %s.zip %s' % (ZIP, directory, directory, MIMETYPE))
+    os.system('%s -v0Xq %s %s' % (ZIP, directory, MIMETYPE))
+    os.system('%s -vrq %s * -x %s.zip %s' % (ZIP, directory, directory, MIMETYPE))
     os.rename('%s.zip' % directory, '%s.epub' % directory)
     shutil.move('%s.epub' % directory, DIST)
 

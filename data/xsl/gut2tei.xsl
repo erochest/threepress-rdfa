@@ -276,6 +276,8 @@
       <tei:note place="foot" type="footnote" resp="author" anchored="true">
         <xsl:attribute name="xml:id">
           <xsl:value-of select="@id" />
+          <xsl:text>_</xsl:text>
+          <xsl:value-of select="position()" />
         </xsl:attribute>
         <xsl:apply-templates />
       </tei:note>
@@ -285,6 +287,8 @@
       <tei:anchor>
       <xsl:attribute name="xml:id">
         <xsl:value-of select="@ref" />
+        <xsl:text>_</xsl:text>
+        <xsl:value-of select="position()" />
       </xsl:attribute></tei:anchor>
     </xsl:template>
 
