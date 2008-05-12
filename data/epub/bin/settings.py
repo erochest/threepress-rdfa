@@ -15,17 +15,17 @@ TEI2OPF_XSLT = '%s/tei2opf.xsl' % XSLT_DIR
 TEI2NCX_XSLT = '%s/tei2ncx.xsl' % XSLT_DIR
 HTMLFRAG2HTML_XSLT = '%s/htmlfrag2html.xsl' % XSLT_DIR
 
-# You should not have to change any items below this as they are standard
-# OPF filenames
-
 # Directory where our output will go
-DIST = '%s/../../../threepress/search/templates/static/epub' % path
+DIST = '%s/../dist' % path
 
 # Working directory
 BUILD = '%s/../build' % path
 
 # zip command
 ZIP = 'zip'
+
+# You should not have to change any items below this as they are standard
+# OPF filenames
 
 # Name of our OPF mimetype file
 MIMETYPE = 'mimetype'
