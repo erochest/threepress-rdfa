@@ -21,6 +21,13 @@ def document_view(request, id, chapter_id=None):
     next = None
     previous = None
     chapter_preview = None
+    show_pdf = False
+    for d in settings.TEMPLATE_DIRS:
+        if os.path.exists('%s/static/pdf/%s.pdf' % (d, id)):
+            show_pdf = True
+            break
+                              
+
 
     if chapter_id:
         chapter_query = document.chapter_set.filter(id=chapter_id)
@@ -42,6 +49,7 @@ def document_view(request, id, chapter_id=None):
                                'chapter_preview':chapter_preview,
                                'next':next,
                                'previous':previous,
+                               'show_pdf':show_pdf,
                                })
 
 def page_view(request, page):
