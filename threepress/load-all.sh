@@ -29,7 +29,7 @@ cd /home/liza/threepress/data/epub
 
 for b in `echo $books`
 do
-  bin/create.py ../tei/$b.xml
+  bin/tei2epub.py ../tei/$b.xml
 done
 
 cd /home/liza/threepress/threepress
