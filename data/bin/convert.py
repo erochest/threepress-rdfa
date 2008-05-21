@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from lxml import etree
-import os
-import sys
+import os, sys, logging, subprocess
 import xapian
-import logging
+
 sys.path.append('/home/liza/threepress')
 from threepress import settings
 
@@ -136,7 +135,6 @@ fo_out.close()
 pdf_file = "pdf/%s.pdf" % id
 
 logging.debug("Converting from FO %s to PDF as %s" % (fo_file, pdf_file))
-cmd = '%s %s -pdf %s &> pdf/log.txt' % (fop, fo_file, pdf_file)
-os.system(cmd)
+subprocess.check_call([fop, '-r', fo_file, '-pdf', pdf_file])
 
 logging.debug("Done.")
