@@ -1,0 +1,60 @@
+{% extends "base_documents.html" %} 
+
+
+{% spaceless %}
+{% block title %}{{ document.title }} by {{ document.author }}{% endblock title %}
+{% endspaceless %}
+
+
+{% block head %}
+    <!-- AB Meta -->
+    <meta name="dc:type" content="book" ></meta>
+    <meta name="dc:title" content="{{ document.title }}" ></meta>
+    <meta name="dc:creator" content="{{ document.author }}" ></meta>
+    
+    <!-- Dublin Core -->
+    <link rel="schema.dc" href="http://purl.org/dc/elements/1.1/"></link>
+    <link rel="schema.dcterms" href="http://purl.org/dc/terms/"></link>
+    
+    <meta name="dc.format" scheme="dcterms.IMT" content="text/html"></meta>
+    <meta name="dc.type" scheme="dcterms.DCMIType" content="Text" ></meta>
+    <meta name="dc.title" content="{{ document.title }}" ></meta>
+    <meta name="dc.creator" content="{{ document.author }}" ></meta>
+{% endblock head %}
+
+{% block header %}
+<div class="document_title"><a href="{% url threepress.search.views.document_view document.id %}"><h1><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></h1></a></div>
+{% endblock header%}
+
+
+{% block leftnav %}      
+
+{{ block.super }}
+
+{% if document.has_parts %}
+  {% for p in document.part_list %}
+     <h4> {{ p.title }} </h4>
+     <ol class="nav">
+     {% for c in p.chapter_list %}
+        {% ifequal c.ordinal chapter.ordinal %}
+        <li class="current"> {{ c.title }} </li>
+        {% else %}
+          <li>{{ c.link|safe }}</li>
+        {% endifequal %}
+     {% endfor %}     
+     </ol>
+  {% endfor %}
+{% else %}
+   <ol class="nav">
+     {% for c in document.chapter_list %}
+        {% ifequal c.ordinal chapter.ordinal %}
+          <li class="current"> {{ c.title }} </li>
+        {% else %}
+          <li>{{ c.link|safe }}</li>
+        {% endifequal %}
+     {% endfor %}
+   </ol>        
+
+{% endif %}
+{% endblock leftnav %}
+

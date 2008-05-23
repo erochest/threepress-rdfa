@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 from lxml import etree
 import os, sys, logging, subprocess
+from os.path import realpath, dirname
 import xapian
 
 sys.path.append('/home/liza/threepress')
@@ -30,7 +31,7 @@ if len(sys.argv) > 3:
 
 tei_xsl = 'xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'
 fo_xsl  = 'xsl/tei-xsl-5.9/p5/fo/tei.xsl'
-fop = 'fop'
+fop = '/usr/local/bin/fop'
 
 out_file = xml.replace('src', 'tei')
 out = open(out_file, 'w')
@@ -133,8 +134,14 @@ fo_out.write(etree.tostring(fo, encoding='utf-8', pretty_print=True, xml_declara
 fo_out.close()
 
 pdf_file = "pdf/%s.pdf" % id
+path = "%s/.." % realpath(dirname(sys.argv[0]))
+
+pdf_file = "%s/%s" % (path, pdf_file)
+fo_file = "%s/%s" % (path, fo_file)
 
 logging.debug("Converting from FO %s to PDF as %s" % (fo_file, pdf_file))
+
+
 subprocess.check_call([fop, '-r', fo_file, '-pdf', pdf_file])
 
 logging.debug("Done.")

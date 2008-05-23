@@ -1,33 +1,85 @@
 # Create your views here.
-import sys
+import sys,logging
 sys.path.append('/home/liza/threepress')
 
-from threepress.search.models import Document, Chapter, Part, Result
+from threepress.search.models import Document, Chapter, Part, Result, EpubDocument, EpubChapter
 from django.http import *
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.core.exceptions import *
 from django.newforms import *
 from django.conf import settings
-import os.path
+from lxml import etree
+import os.path, re
 import xapian
 
-def document_chapter_view(request, id, chapter_id):
-    return document_view(request, id, chapter_id)
+static_dir = None
 
-def document_view(request, id, chapter_id=None):
-    document = get_object_or_404(Document, pk=id)
-    #show_spacing = True if request.GET.has_key('show_spacing') else False
+def _get_static_dir():
+    global static_dir 
+    if static_dir:
+        logging.info("Returning cached")
+        return static_dir
+    for d in settings.TEMPLATE_DIRS:
+        logging.info("Setting static variable")
+        if os.path.exists('%s/static' % d):
+            static_dir = '%s/static' % d
+            return static_dir
+    
+
+def document_epubx(request, document_id, chapter_id='1'):
+    '''Here we do not load a document from the database, but instead 
+    render the epub file from the file system.'''
+    d = _get_static_dir()
+    epubx_dir = "%s/epubx/%s.epubx" % (d, document_id)
+    container = etree.parse("%s/META-INF/container.xml" % epubx_dir)
+    opf_filename = container.xpath('//opf:rootfile/@full-path', namespaces={'opf':'urn:oasis:names:tc:opendocument:xmlns:container'})[0]
+    logging.debug("Got OPF filename as %s" % opf_filename)
+    opf = etree.parse("%s/%s" % (epubx_dir, opf_filename))
+    
+    title = opf.xpath('//dc:title/text()', namespaces={'dc':'http://purl.org/dc/elements/1.1/'})[0]
+    author = None # fixme                      
+    epub = EpubDocument(document_id, title, author)
+
+    chapter = None
+    p = re.compile("(\d+)")
+
+    ordinal = 1
+
+    for item in opf.xpath('//opf:item[@media-type="application/xhtml+xml"]', 
+                          namespaces={'opf':'http://www.idpf.org/2007/opf'}):
+        c_href = item.xpath('@href')[0]
+        c_id = item.xpath('@href')[0]
+        m = p.search(c_id)
+        c_numeric_id = m.group(1) if m else None
+        c_content = etree.parse('%s/OEBPS/%s' % (epubx_dir, c_href))
+        c_title = c_content.xpath('//html:title/text()', namespaces={'html':'http://www.w3.org/1999/xhtml'})[0]
+        c = EpubChapter(c_numeric_id, epub, c_title, None)
+        c.ordinal = ordinal
+        if c_numeric_id == chapter_id:
+            chapter = c
+            chapter.content = open("%s/OEBPS/chapter-%s.html" % (epubx_dir, chapter_id)).read()
+        epub.chapters.append(c)
+        ordinal += 1
+
+    return render_to_response('documents/epubx.html',
+                              {'document':epub, 
+                               'chapter':chapter})
+
+
+def document_chapter_view(request, document_id, chapter_id):
+    return document_view(request, document_id, chapter_id)
+
+def document_view(request, document_id, chapter_id=None):
+    document = get_object_or_404(Document, pk=document_id)
     chapter = None
     next = None
     previous = None
     chapter_preview = None
     show_pdf = False
     for d in settings.TEMPLATE_DIRS:
-        if os.path.exists('%s/static/pdf/%s.pdf' % (d, id)):
+        if os.path.exists('%s/static/pdf/%s.pdf' % (d, document_id)):
             show_pdf = True
             break
-                              
-
 
     if chapter_id:
         chapter_query = document.chapter_set.filter(id=chapter_id)
@@ -69,9 +121,9 @@ def index(request):
     documents = get_list_or_404(Document)
     return render_to_response('index.html', {'documents':documents})
 
-def search(request, doc_id=None):
-    if doc_id:
-        document = get_object_or_404(Document, pk=doc_id)
+def search(request, document_id=None):
+    if document_id:
+        document = get_object_or_404(Document, pk=document_id)
     else:
         document = None
     if not request.GET.has_key('search'):
@@ -85,11 +137,11 @@ def search(request, doc_id=None):
 
     # Open the database for searching.
     if document:
-        database = xapian.Database('%s/%s' % (settings.DB_DIR, doc_id))
+        database = xapian.Database('%s/%s' % (settings.DB_DIR, document_id))
     else:
         database = xapian.Database('%s/%s' % (settings.DB_DIR, 'threepress'))
 
-    #document = Document.objects.get(id=doc_id)
+    #document = Document.objects.get(id=document_id)
 
     # Start an enquire session.
     enquire = xapian.Enquire(database)

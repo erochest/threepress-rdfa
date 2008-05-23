@@ -7,7 +7,67 @@ import settings
 
 TEI_XSLT = etree.XSLT(etree.parse('%s/data/xsl/tei-xsl-5.9/p5/xhtml/tei.xsl'  % (settings.DIR_ROOT)))
 
-class Document(models.Model):
+
+class AbstractDocument():
+    '''An AbstractDocument could be either from our database or from
+    an epub source'''
+    def __init__(self, id, title, author):
+        self.id = id
+        self.title = title
+        self.author = author
+
+    @permalink
+    def get_absolute_url(self):
+        return ('threepress.search.views.document_view', [self.id])
+
+    def link(self, text=None):
+        if not text:
+            text = self.title
+        return '<a href="%s">%s</a>' % (self.get_absolute_url(), self.title)
+
+    def chapter_list(self):
+        '''The implementation here will be different for each model type'''
+        pass
+
+    def part_list(self):
+        '''The implementation here will be different for each model type'''
+        pass
+
+class AbstractChapter():
+    '''A Chapter in an AbstractDocument'''
+    ordinal = 0
+
+    def __init__(self, id, document, title, content):
+        self.document = document 
+        self.id = id
+        self.title = title
+        self.content = content
+
+    def render(self):
+        return self.content
+
+    @permalink
+    def get_absolute_url(self):
+        return ('threepress.search.views.document_chapter_view', [self.document.id, self.id])
+
+    def link(self, text=None):
+        if not text:
+            text = self.title
+        return '<a href="%s">%s</a>' % (self.get_absolute_url(), self.title)
+
+class EpubDocument(AbstractDocument):
+    '''A document derived out of an epub package'''
+    chapters = []
+
+    def chapter_list(self):
+        return self.chapters
+
+
+class EpubChapter(AbstractChapter):
+    '''A chapter of content from an epub package'''
+    pass
+
+class Document(models.Model, AbstractDocument):
     id      = models.CharField(max_length=1000, primary_key=True)
     title   = models.CharField(max_length=2000)
     author  = models.CharField(max_length=2000)
@@ -23,14 +83,6 @@ class Document(models.Model):
             return True
         return False
 
-    @permalink
-    def get_absolute_url(self):
-        return ('threepress.search.views.document_view', [self.id])
-
-    def link(self, text=None):
-        if not text:
-            text = self.title
-        return '<a href="%s">%s</a>' % (self.get_absolute_url(), self.title)
 
     def info(self):
         if len([p for p in self.part_set.all()]) > 1:
@@ -41,6 +93,13 @@ class Document(models.Model):
             return "%s %d chapters" % (parts_text, len([p for p in self.chapter_set.all()]))
         return ""
 
+    def chapter_list(self):
+        return self.chapter_set.all()
+
+    def part_list(self):
+        return self.part_set.all()
+
+
     def __unicode__(self):
         return "%s by %s" % ( self.title, self.author)
 
@@ -50,7 +109,7 @@ class Document(models.Model):
     class Admin:
         pass
 
-class Part(models.Model):
+class Part(models.Model, AbstractDocument):
     id      = models.CharField(max_length=1000, primary_key=True)
     document = models.ForeignKey(Document, max_length=1000)
 
@@ -64,7 +123,9 @@ class Part(models.Model):
     # Which part is this, in order?
     ordinal = models.PositiveIntegerField(default=1)
 
-
+    def chapter_list(self):
+        return self.chapter_set.all()
+    
     def __unicode__(self):
         return "%s: %s (%d)" % (self.label, self.title, self.ordinal)
 
@@ -74,7 +135,7 @@ class Part(models.Model):
     class Admin:
         pass
 
-class Chapter(models.Model):
+class Chapter(models.Model, AbstractChapter):
     id      = models.CharField(max_length=1000, primary_key=True)
     document = models.ForeignKey(Document)
     part = models.ForeignKey(Part, null=True)
@@ -99,14 +160,6 @@ class Chapter(models.Model):
         rendered = TEI_XSLT(preview)
         return etree.tostring(rendered, encoding='utf-8', pretty_print=True, xml_declaration=False)        
     
-    @permalink
-    def get_absolute_url(self):
-        return ('threepress.search.views.document_chapter_view', [self.document.id, self.id])
-
-    def link(self, text=None):
-        if not text:
-            text = self.title
-        return '<a href="%s">%s</a>' % (self.get_absolute_url(), self.title)
 
     def __part_title__(self):
         if self.part:
