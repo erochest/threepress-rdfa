@@ -93,11 +93,10 @@ SORT_ORDINAL = 1
 
 TEI = 'http://www.tei-c.org/ns/1.0'
 
-# Validator
-VALIDATOR_APP_VALIDATORS = {
-    'text/html': '/home/liza/xmllint-wrapper.sh',
-    'application/xml+xhtml': '/home/liza/xmllint-wrapper.sh'
-}
-VALIDATOR_APP_IGNORE_PATHS = (
-    '/admin/',
-)
+EPUB_VALIDATOR_TEMP_DIR = "%s/data/epub-validator-temp" % DIR_ROOT
+
+JAVA = '/usr/bin/java'
+JAVA_JAR_ARG = '-jar'
+EPUBCHECK_DIR = "%s/data/epub/test" % DIR_ROOT
+EPUBCHECK_JAR = "epubcheck.jar" 
+

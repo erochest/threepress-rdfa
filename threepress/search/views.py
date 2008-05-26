@@ -1,16 +1,16 @@
-# Create your views here.
-import sys,logging
+import os.path, re, subprocess, sys, logging, urllib
 sys.path.append('/home/liza/threepress')
 
-from threepress.search.models import Document, Chapter, Part, Result, EpubDocument, EpubChapter
-from django.http import *
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
-from django.core.exceptions import *
-from django.newforms import *
 from django.conf import settings
 from lxml import etree
-import os.path, re
+
 import xapian
+
+from models import Document, Result, EpubDocument, EpubChapter
+from forms import EpubValidateForm
+import epubcheck
 
 static_dir = None
 
@@ -26,15 +26,53 @@ def _get_static_dir():
             return static_dir
     
 
-def document_epubx(request, document_id, chapter_id='1'):
+def epub_validate(request):
+    if request.method == 'POST':
+        form = EpubValidateForm(request.POST, request.FILES)
+        if form.is_valid():
+
+            data = form.cleaned_data['epub'].content
+            document_name = form.cleaned_data['epub'].filename
+            
+            validator = epubcheck.validate(document_name, data)
+            # Strip the filename info from errors
+            errors = ''; output = ''
+            if validator.clean_errors():
+                errors = urllib.quote_plus(validator.clean_errors())
+            if validator.output:
+                output = urllib.quote_plus(validator.output)
+
+            return HttpResponseRedirect('/document/epub-validate/?document=%s&output=%s&errors=%s' % 
+                                        (urllib.quote_plus(document_name),
+                                         output,
+                                         errors
+                                         )
+                                        )
+    else:
+        form = EpubValidateForm()
+    output = None; errors = None; document = None
+     
+    if request.GET.has_key('output'):
+        output = request.GET['output']
+    if request.GET.has_key('errors'):
+        errors = [f.strip() for f in request.GET['errors'].split('\n') if f]
+    if request.GET.has_key('document'):
+        document = request.GET['document']
+
+
+    return render_to_response('documents/validate.html', {'form':form, 'output':output, 'errors':errors,'document':document})
+    
+    
+
+def document_epub(request, document_id, chapter_id='1'):
     '''Here we do not load a document from the database, but instead 
     render the epub file from the file system.'''
     d = _get_static_dir()
-    epubx_dir = "%s/epubx/%s.epubx" % (d, document_id)
-    container = etree.parse("%s/META-INF/container.xml" % epubx_dir)
+    epub_dir = "%s/epub/%s" % (d, document_id)
+    container = etree.parse("%s/META-INF/container.xml" % epub_dir)
     opf_filename = container.xpath('//opf:rootfile/@full-path', namespaces={'opf':'urn:oasis:names:tc:opendocument:xmlns:container'})[0]
     logging.debug("Got OPF filename as %s" % opf_filename)
-    opf = etree.parse("%s/%s" % (epubx_dir, opf_filename))
+    opf = etree.parse("%s/%s" % (epub_dir, opf_filename))
     
     title = opf.xpath('//dc:title/text()', namespaces={'dc':'http://purl.org/dc/elements/1.1/'})[0]
     author = None # fixme                      
@@ -51,13 +89,13 @@ def document_epubx(request, document_id, chapter_id='1'):
         c_id = item.xpath('@href')[0]
         m = p.search(c_id)
         c_numeric_id = m.group(1) if m else None
-        c_content = etree.parse('%s/OEBPS/%s' % (epubx_dir, c_href))
+        c_content = etree.parse('%s/OEBPS/%s' % (epub_dir, c_href))
         c_title = c_content.xpath('//html:title/text()', namespaces={'html':'http://www.w3.org/1999/xhtml'})[0]
         c = EpubChapter(c_numeric_id, epub, c_title, None)
         c.ordinal = ordinal
         if c_numeric_id == chapter_id:
             chapter = c
-            chapter.content = open("%s/OEBPS/chapter-%s.html" % (epubx_dir, chapter_id)).read()
+            chapter.content = open("%s/OEBPS/chapter-%s.html" % (epub_dir, chapter_id)).read()
         epub.chapters.append(c)
         ordinal += 1
 
@@ -104,19 +142,6 @@ def document_view(request, document_id, chapter_id=None):
                                'show_pdf':show_pdf,
                                })
 
-def page_view(request, page):
-    try:
-        page = Page.objects.get(name=page)
-    except ObjectDoesNotExist:
-        page_filename = "%s/%s.html" % ('/Users/liza/threepress/threepress/search/templates/pages', page)
-        if os.path.exists(page_filename):
-            content = open(page_filename).read()
-            page = Page(content=content, name=page)
-            #page.save()
-        else:
-            raise Http404
-    return render_to_response('pages/view.html',
-                              {'page':page})
 def index(request):
     documents = get_list_or_404(Document)
     return render_to_response('index.html', {'documents':documents})

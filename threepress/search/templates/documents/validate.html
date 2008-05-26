@@ -1,0 +1,112 @@
+{% extends "base.html" %} 
+
+{% block title %}Epub validation tool{% endblock title %}
+
+{% block head %}
+<style type="text/css">
+dl { color: grey }
+dt { font-weight: bold; color: #2E4560;}
+dd { margin:0 0 1em 0; padding:0 10px 0 0; }
+li { padding-bottom: .5em; }
+.document_title a { text-decoration: none }
+</style>
+{% endblock head %}
+
+{% block header %}
+<div class="document_title"><h1>Digital publishing tools → 
+<a href="{% url threepress.search.views.epub_validate %}">Validate an epub document</a></h1></div>
+{% endblock %}
+
+{% block leftnav %}
+<p>This validator uses <a href="http://code.google.com/p/epubcheck/">epubcheck 0.9.5</a></p>
+
+{% if errors %}
+<h4>Error descriptions</h4>
+
+<dl>
+<dt>required attributes missing</dt>
+<dd>Some elements have attributes that must be provided.
+<br/><br/>
+Example: XHTML <code>img</code> element must have <code>src</code> and <code>alt</code> attributes.</dd>
+
+<dt>required elements missing</dt>
+<dd>Some elements require certain child elements to be provided.
+<br/><br/>
+Example: XHTML <code>html</code> element must contain the <code>body</code> element.</dd>
+
+<dt>bad value for attribute "xxx"</dt>
+<dd>An attribute was given a value that it cannot have. For instance, the <code>id</code> attribute's value must be an XML name and cannot start with digit or have spaces in it.</dd>
+
+<dt>attribute "xxx" not allowed at this point; ignored</dt>
+<dd>An element cannot have this attribute. Many commonly used HTML attributes cannot be used in XHTML.
+</dd>
+
+<dt>unknown element "xxx" from namespace "xxx"</dt>
+<dd>Unrecognized element, e.g. HTML <code>font</code>.</dd>
+
+<dt>element "xxx" from namespace "xxx" not allowed in this context</dt>
+<dd>The element is used in the context which is not appropriate, e.g. XHTML <code>tr</code> element is used outside of the table.</dd>
+
+<dt>unfinished element</dt>
+<dd>
+An element is missing a required child. 
+<br/><br/>
+Example: XHTML <code>head</code> element that is missing <code>title</code>.</dd>
+
+<dt>mimetype entry missing or not the first in archive</dt>
+<dd>A valid epub file must contain an uncompressed file named <code>mimetype</code> as a first entry in the zip archive. That file must contain epub mime type (<code>application/epub+zip</code>).</dd>
+<dt>mimetype contains wrong type (application/epub+zip expected)</dt>
+<dd>
+Either mimetype is wrong or mimetype does not start at the proper byte offset in the archive. (OCF spec requires it to start at offset 38).</dd>
+</dl>
+
+<p>Adapted from the <a href="http://code.google.com/p/epubcheck/wiki/Errors">epubcheck error page</a></p>
+{% endif %}
+
+{% endblock %}
+{% block main %}
+
+
+
+<h2>Validate epub documents</h2>
+
+
+{% if errors %}
+<h3>Errors were found in {{ document }}</h3>
+
+<ol>
+  {% for e in errors %}
+  <li> {{ e }} </li>
+  {% endfor %}
+</ol>
+
+{% else %}
+
+{% if output %}
+
+<h3>{{ document }} is valid!</h3>
+
+
+{% endif %}
+
+{% endif %}
+
+
+
+
+
+<p>
+Upload a DRM-free epub document to validate it against the schemas supplied with the <a href="http://code.google.com/p/epubcheck/">epubcheck</a> tool.  Documents are not permanently stored on the system.
+</p>
+  
+<form action="/document/epub-validate/" method="post" enctype="multipart/form-data">
+  <div>
+    {{ form.as_p }}
+    <input type="submit" value="validate" />
+  </div>
+ 
+</form>
+
+
+
+{% endblock %}

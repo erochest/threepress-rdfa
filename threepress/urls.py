@@ -22,9 +22,11 @@ urlpatterns = patterns('',
                        (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 
                        # -----------Threepress
+                       
+                       (r'^document/epub-validate', 'threepress.search.views.epub_validate'),
 
                        # View an epubx document (expanded epub)
-                       (r'^document/(?P<document_id>[^\.]+)\.epubx$', 'threepress.search.views.document_epubx'),
+                       (r'^epub/(?P<document_id>[^\.]+)$', 'threepress.search.views.document_epub'),
 
                        # View a document by ID only
                        (r'^document/(?P<document_id>[^/]+)/$', 'threepress.search.views.document_view'),
