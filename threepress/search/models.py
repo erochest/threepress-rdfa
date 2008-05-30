@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import permalink
 from lxml import etree
 from StringIO import StringIO
+import logging
 
 import settings
 
@@ -16,9 +17,9 @@ class AbstractDocument():
         self.title = title
         self.author = author
 
-    @permalink
     def get_absolute_url(self):
-        return ('threepress.search.views.document_view', [self.id])
+        '''Implement in subclasses'''
+        pass
 
     def link(self, text=None):
         if not text:
@@ -46,9 +47,9 @@ class AbstractChapter():
     def render(self):
         return self.content
 
-    @permalink
     def get_absolute_url(self):
-        return ('threepress.search.views.document_chapter_view', [self.document.id, self.id])
+        '''Implement in subclasses'''
+        pass
 
     def link(self, text=None):
         if not text:
@@ -59,13 +60,22 @@ class EpubDocument(AbstractDocument):
     '''A document derived out of an epub package'''
     chapters = []
 
+    @permalink
+    def get_absolute_url(self):
+        return ('threepress.search.views.document_epub', [self.id])
+
     def chapter_list(self):
         return self.chapters
 
 
 class EpubChapter(AbstractChapter):
     '''A chapter of content from an epub package'''
-    pass
+
+    @permalink
+    def get_absolute_url(self):
+        return ('threepress.search.views.document_chapter_epub', [self.document.id, self.id])
+
+
 
 class Document(models.Model, AbstractDocument):
     id      = models.CharField(max_length=1000, primary_key=True)
@@ -77,6 +87,10 @@ class Document(models.Model, AbstractDocument):
     # Documents may have content because they have no chapters/parts, or have
     # front matter
     content = models.TextField()
+
+    @permalink
+    def get_absolute_url(self):
+        return ('threepress.search.views.document_view', [self.id])
 
     def has_parts(self):
         if len(self.part_set.all()) > 0:
@@ -160,6 +174,9 @@ class Chapter(models.Model, AbstractChapter):
         rendered = TEI_XSLT(preview)
         return etree.tostring(rendered, encoding='utf-8', pretty_print=True, xml_declaration=False)        
     
+    @permalink
+    def get_absolute_url(self):
+        return ('threepress.search.views.document_chapter_view', [self.document.id, self.id])
 
     def __part_title__(self):
         if self.part:

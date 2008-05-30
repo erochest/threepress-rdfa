@@ -62,42 +62,71 @@ def epub_validate(request):
 
     return render_to_response('documents/validate.html', {'form':form, 'output':output, 'errors':errors,'document':document})
     
-    
+
+def document_chapter_epub(request, document_id, chapter_id):
+    return document_epub(request, document_id, chapter_id)
 
 def document_epub(request, document_id, chapter_id='1'):
     '''Here we do not load a document from the database, but instead 
     render the epub file from the file system.'''
     d = _get_static_dir()
-    epub_dir = "%s/epub/%s" % (d, document_id)
+    logging.info("Got document_id as %s" % document_id)
+
+    epub_dir = "%s/epubx/%s" % (d, document_id)
     container = etree.parse("%s/META-INF/container.xml" % epub_dir)
     opf_filename = container.xpath('//opf:rootfile/@full-path', namespaces={'opf':'urn:oasis:names:tc:opendocument:xmlns:container'})[0]
     logging.debug("Got OPF filename as %s" % opf_filename)
     opf = etree.parse("%s/%s" % (epub_dir, opf_filename))
     
     title = opf.xpath('//dc:title/text()', namespaces={'dc':'http://purl.org/dc/elements/1.1/'})[0]
-    author = None # fixme                      
+    author = opf.xpath('//dc:creator/text()', namespaces={'dc':'http://purl.org/dc/elements/1.1/'})[0]
     epub = EpubDocument(document_id, title, author)
+
+    ncx_filename = opf.xpath('//opf:item[@id="ncx"]/@href', namespaces={'opf':'http://www.idpf.org/2007/opf'})[0]
+    logging.debug("Got NCX filename as %s" % ncx_filename)
+    ncx = etree.parse("%s/OEBPS/%s" % (epub_dir, ncx_filename))
 
     chapter = None
     p = re.compile("(\d+)")
-
     ordinal = 1
 
-    for item in opf.xpath('//opf:item[@media-type="application/xhtml+xml"]', 
-                          namespaces={'opf':'http://www.idpf.org/2007/opf'}):
-        c_href = item.xpath('@href')[0]
-        c_id = item.xpath('@href')[0]
-        m = p.search(c_id)
-        c_numeric_id = m.group(1) if m else None
-        c_content = etree.parse('%s/OEBPS/%s' % (epub_dir, c_href))
-        c_title = c_content.xpath('//html:title/text()', namespaces={'html':'http://www.w3.org/1999/xhtml'})[0]
-        c = EpubChapter(c_numeric_id, epub, c_title, None)
-        c.ordinal = ordinal
-        if c_numeric_id == chapter_id:
-            chapter = c
-            chapter.content = open("%s/OEBPS/chapter-%s.html" % (epub_dir, chapter_id)).read()
-        epub.chapters.append(c)
-        ordinal += 1
+    if ncx:
+        for item in ncx.xpath('//ncx:navPoint', 
+                              namespaces={'ncx': 'http://www.daisy.org/z3986/2005/ncx/'}):        
+            c_href = item.xpath('ncx:content/@src', 
+                                namespaces={'ncx': 'http://www.daisy.org/z3986/2005/ncx/'})[0]
+            c_id = item.xpath('@id')[0]
+            m = p.search(c_id)
+            c_numeric_id = m.group(1) if m else None
+            c_title = item.xpath('ncx:navLabel/ncx:text/text()', 
+                                namespaces={'ncx': 'http://www.daisy.org/z3986/2005/ncx/'})[0]
+            c = EpubChapter(c_numeric_id, epub, c_title, None)
+            c.ordinal = ordinal
+            if c_numeric_id == chapter_id:
+                chapter = c
+                chapter.content = open("%s/OEBPS/chapter-%s.html" % (epub_dir, chapter_id)).read()
+            epub.chapters.append(c)
+            ordinal += 1         
+
+    # If we don't have an NCX file then we'll have to read the titles of each 
+    # chapter out of the XHTML, by parsing the contents of the OPF file            
+    if not ncx:
+
+        for item in opf.xpath('//opf:item[@media-type="application/xhtml+xml"]', 
+                              namespaces={'opf':'http://www.idpf.org/2007/opf'}):
+            c_href = item.xpath('@href')[0]
+            c_id = item.xpath('@href')[0]
+            m = p.search(c_id)
+            c_numeric_id = m.group(1) if m else None
+            c_content = etree.parse('%s/OEBPS/%s' % (epub_dir, c_href))
+            c_title = c_content.xpath('//html:title/text()', namespaces={'html':'http://www.w3.org/1999/xhtml'})[0]
+            c = EpubChapter(c_numeric_id, epub, c_title, None)
+            c.ordinal = ordinal
+            if c_numeric_id == chapter_id:
+                chapter = c
+                chapter.content = open("%s/OEBPS/chapter-%s.html" % (epub_dir, chapter_id)).read()
+            epub.chapters.append(c)
+            ordinal += 1
 
     return render_to_response('documents/epubx.html',
                               {'document':epub, 

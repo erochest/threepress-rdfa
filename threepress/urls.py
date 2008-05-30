@@ -25,8 +25,11 @@ urlpatterns = patterns('',
                        
                        (r'^document/epub-validate', 'threepress.search.views.epub_validate'),
 
-                       # View an epubx document (expanded epub)
-                       (r'^epub/(?P<document_id>[^\.]+)$', 'threepress.search.views.document_epub'),
+                       # View an epub document (expanded epub)
+                       (r'^epub/(?P<document_id>[^/]+)/$', 'threepress.search.views.document_epub'),
+
+                       # View an epub document by ID + chapter
+                       (r'^epub/(?P<document_id>.+)/(?P<chapter_id>.+)/$', 'threepress.search.views.document_chapter_epub'),
 
                        # View a document by ID only
                        (r'^document/(?P<document_id>[^/]+)/$', 'threepress.search.views.document_view'),

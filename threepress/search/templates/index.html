@@ -1,24 +1,34 @@
 {% extends 'base_sitesearch.html' %}
 
-{% block main %}
-<h1 style="font-weight:normal;color:grey"><span class="logo"><a style="text-decoration:none" href="{% url threepress.search.views.index %}"><span class="three">three</span><span class="press">press</span></a></span> is a project to enable new revenue streams for print publishers using free and open tools for the web.</h1>
-<p>
-<em>Updated May 26, 2008</em>
+{% block leftnav %}
+{{ block.super }}
+<p style="margin-top:5em">
+<em>Updated May 30, 2008</em>
 </p>
 <p>
 New &lsquo;Tools&rsquo; section for hosting developer and publisher tools: first released is a simple wrapper to <a href="/document/epub-validate">validate epub documents</a>.
 </p>
 
-<h2>Demonstration</h2>
-<p>These public domain books are available for online reading, searching, or downloading as portable ebooks:</p>
+
+{% endblock %}
+{% block main %}
+<h1 style="font-weight:normal;color:grey"><span class="logo"><a style="text-decoration:none" href="{% url threepress.search.views.index %}"><span class="three">three</span><span class="press">press</span></a></span> is a project to enable new revenue streams for print publishers using free and open tools for the web.</h1>
+<ul style="color:rgb(113, 127, 95);font-size:x-large;list-style-type:none;line-height:1.3em">
+  <li> → XML-driven search applications </li>
+  <li> → e-books and ePub development </li>
+  <li> → automated tools for data conversion </li>
+  <li> → innovative experiments in publishing </li>
+  <li> → agile custom development and <a href="/consulting/">consulting</a> </li>
+</ul>
+
+<h2 style="color:rgb(80,80,80);margin-top:3em">Search and e-book demonstration</h2>
+<p>These public domain books are available for online reading, searching, or downloading as portable ebooks in PDF or ePub format:</p>
 {% if documents %}
 
-<ul>
+<ul style="list-style-type:none">
   {% for document in documents %}
   <li style="line-height:2em">
     {{ document.link|safe }} by <em>{{ document.author }}</em>
-    <br/>
-    {{ document.info }}
   </li>
 {% endfor %}
 </ul>
