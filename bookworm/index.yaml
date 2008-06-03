@@ -28,3 +28,21 @@ indexes:
   - name: project
   - name: created
     direction: desc
+
+# Used 4 times in query history.
+- kind: EpubArchive
+  properties:
+  - name: author
+  - name: title
+
+# Used once in query history.
+- kind: HTMLFile
+  properties:
+  - name: archive
+  - name: order
+
+# Used once in query history.
+- kind: HTMLFile
+  ancestor: yes
+  properties:
+  - name: order

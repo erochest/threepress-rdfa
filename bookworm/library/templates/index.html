@@ -11,9 +11,12 @@
 
 <h2>Documents in library</h2>
 
+<p><a href="{% url library.views.upload %}">Upload</a> a new document.</p>
+
 <ol>
 {% for d in documents %}
-  <li> {{ d.title}} by {{ d.author }} (filename: {{ d.name }})</li>
+  <li> <a href="{% url library.views.view d.safe_title,d.safe_author %}">{{ d.title}}</a>
+  by {{ d.author }} (filename: {{ d.name }})</li>
 {% endfor %}
 </ol>
 

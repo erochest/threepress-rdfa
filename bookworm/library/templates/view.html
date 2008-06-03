@@ -1,0 +1,14 @@
+{% extends "base.html" %} 
+
+
+{% block main %}
+<h1>{{document.title }}</h1>
+<h2>{{document.author}}</h2>
+
+<ol>
+{% for chapter in toc %}
+  <li>{{ chapter.title }}</li>
+{% endfor %}
+</ol>
+
+{% endblock main %}

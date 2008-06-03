@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from django.conf import settings
 
-from models import EpubDocument, EpubChapter, EpubArchive
+from models import EpubArchive, HTMLFile, safe_name, unsafe_name
 from forms import EpubValidateForm
 
 
@@ -21,6 +21,17 @@ def index(request):
 
     return render_to_response('index.html', {'documents':documents})
 
+def view(request, title, author):
+    logging.info("Looking up title %s, author %s" % (title, author))
+    document = EpubArchive.gql('WHERE title = :title AND author = :author',
+                               title=unsafe_name(title), author=unsafe_name(author)).get()
+    if not document:
+        raise Http404
+    toc = HTMLFile.gql('WHERE archive = :parent ORDER BY order ASC', 
+                   parent=document).fetch(100)
+    
+    return render_to_response('view.html', {'document':document, 'toc':toc})
+
 def upload(request):
     document = None
     if request.method == 'POST':
@@ -32,6 +43,7 @@ def upload(request):
             logging.info("Document name: %s" % document_name)
             document = EpubArchive(name=document_name)
             document.content = data
+            document.put()
             document.explode()
             document.put()
             return HttpResponseRedirect('/')
