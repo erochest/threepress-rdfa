@@ -1,14 +1,24 @@
 {% extends "base.html" %} 
 
+{% block leftnav %}
+
+<ol class="nav">
+{% for chapter in toc %}
+  <li><a href="{% url library.views.view_chapter document.safe_title,document.safe_author,chapter.idref %}">{{ chapter.title }}</a></li>
+{% endfor %}
+</ol>
+
+{% endblock leftnav %}
 
 {% block main %}
 <h1>{{document.title }}</h1>
 <h2>{{document.author}}</h2>
 
-<ol>
-{% for chapter in toc %}
-  <li>{{ chapter.title }}</li>
-{% endfor %}
-</ol>
+{% if chapter %}
+<div id="content">
+ {{ chapter.render|safe }}
+</div>
+
+{% endif %}
 
 {% endblock main %}

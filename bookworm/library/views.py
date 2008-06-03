@@ -23,14 +23,29 @@ def index(request):
 
 def view(request, title, author):
     logging.info("Looking up title %s, author %s" % (title, author))
-    document = EpubArchive.gql('WHERE title = :title AND author = :author',
-                               title=unsafe_name(title), author=unsafe_name(author)).get()
-    if not document:
-        raise Http404
+    document = _get_document(title, author)
     toc = HTMLFile.gql('WHERE archive = :parent ORDER BY order ASC', 
                    parent=document).fetch(100)
     
     return render_to_response('view.html', {'document':document, 'toc':toc})
+
+def view_chapter(request, title, author, chapter_id):
+    logging.info("Looking up title %s, author %s, chapter %s" % (title, author, chapter_id))    
+    document = _get_document(title, author)
+    toc = HTMLFile.gql('WHERE archive = :parent ORDER BY order ASC', 
+                   parent=document).fetch(100)
+    chapter = HTMLFile.gql('WHERE archive = :parent AND idref = :idref',
+                           parent=document, idref=chapter_id).get()
+    return render_to_response('view.html', {'document':document,
+                                            'toc':toc,
+                                            'chapter':chapter})
+
+def _get_document(title, author):
+    document = EpubArchive.gql('WHERE title = :title AND author = :author',
+                               title=unsafe_name(title), author=unsafe_name(author)).get()
+    if not document:
+        raise Http404
+    return document
 
 def upload(request):
     document = None

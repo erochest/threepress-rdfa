@@ -5,7 +5,7 @@ urlpatterns = patterns('',
                        
                        (r'^upload/$', 'library.views.upload'),
                        
-                       (r'^view/(?P<title>.+)/(?P<author>.+)/$', 'library.views.view'),
-
+                       (r'^view/(?P<title>.+)/(?P<author>[.^/]+)/$', 'library.views.view'),
+                       (r'^view/(?P<title>.+)/(?P<author>.+)/(?P<chapter_id>.+)/$', 'library.views.view_chapter'),
                        )
 

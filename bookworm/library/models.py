@@ -23,6 +23,7 @@ class EpubArchive(db.Model):
                'ncx':'http://www.daisy.org/z3986/2005/ncx/'}
 
     _content_path = 'OEBPS' # Default
+    _archive = ''
 
     name = db.StringProperty(required=True)
     title = db.StringProperty()
@@ -32,10 +33,12 @@ class EpubArchive(db.Model):
     opf = db.TextProperty()
     container = db.TextProperty()
     
+
     def explode(self):
         '''Explodes an epub archive'''
         e = StringIO(self.content)
         z = ZipFile(e)
+        self._archive = z
         logging.info(z.namelist())
         self.container = z.read(self._CONTAINER)
         self.opf = z.read(self._get_opf())
@@ -105,8 +108,11 @@ class EpubArchive(db.Model):
                 logging.info("checking href %s" % href)
                 if navMap.has_key(href):
                     logging.info('Adding navmap item %s' % navMap[href])
+                    filename = '%s/%s' % (self._content_path, href)
+                    content = self._archive.read(filename)
                     html = HTMLFile(title=navMap[href].title,
-                                    file=href,
+                                    idref=idref,
+                                    file=unicode(content, 'utf-8'),
                                     archive=self,
                                     order=navMap[href].order)
                     html.put()
@@ -127,11 +133,14 @@ class NavPoint():
         return "%s (%s) %d" % (self.title, self.href, self.order)
 
 class HTMLFile(db.Model):
+    idref = db.StringProperty()
     title = db.StringProperty()
     file = db.TextProperty()
     archive = db.ReferenceProperty(EpubArchive)
     order = db.IntegerProperty()
 
+    def render(self):
+        return self.file
 
 class AbstractDocument(db.Model):
     '''An AbstractDocument could be either from our database or from
