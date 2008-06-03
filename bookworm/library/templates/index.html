@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+
+{% block title %}My epub library{% endblock title %}
+
+{% block header %}
+<div class="document_title"><h1>Bookworm → Library</h1></div>
+{% endblock %}
+
+
+{% block main %}
+
+<h2>Documents in library</h2>
+
+<ol>
+{% for d in documents %}
+  <li> {{ d.title}} by {{ d.author }} (filename: {{ d.name }})</li>
+{% endfor %}
+</ol>
+
+{% endblock %}
