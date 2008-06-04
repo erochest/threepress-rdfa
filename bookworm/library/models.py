@@ -32,7 +32,7 @@ class EpubArchive(db.Model):
     toc = db.TextProperty()
     opf = db.TextProperty()
     container = db.TextProperty()
-    
+    owner = db.UserProperty()
 
     def explode(self):
         '''Explodes an epub archive'''
@@ -45,9 +45,9 @@ class EpubArchive(db.Model):
 
         parsed_opf = ElementTree.fromstring(self.opf)
 
-        self.toc = z.read(self._get_toc(parsed_opf))
+        self.toc = unicode(z.read(self._get_toc(parsed_opf)), 'utf-8')
 
-        parsed_toc = ElementTree.fromstring(self.toc)
+        parsed_toc = ElementTree.fromstring(self.toc.encode('utf-8'))
 
         self.author = self._get_author(parsed_opf)
         self.title = self._get_title(parsed_opf)
@@ -68,17 +68,17 @@ class EpubArchive(db.Model):
         items = xml.findall('.//{%s}item' % self._NSMAP['opf'])
         for item in items:
             if item.get('id') == 'ncx':
-                toc_filename = item.get('href')
+                toc_filename = item.get('href').strip()
                 logging.info('Got toc filename as %s' % toc_filename)
                 return "%s/%s" % (self._content_path, toc_filename)
 
     def _get_author(self, xml):
-        author = xml.findtext('.//{%s}creator' % self._NSMAP['dc'])
+        author = xml.findtext('.//{%s}creator' % self._NSMAP['dc']).strip()
         logging.info('Got author as %s' % author)
         return author
 
     def _get_title(self, xml):
-        title = xml.findtext('.//{%s}title' % self._NSMAP['dc'])
+        title = xml.findtext('.//{%s}title' % self._NSMAP['dc']).strip()
         logging.info('Got title as %s' % title)
         return title
     

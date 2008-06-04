@@ -39,9 +39,13 @@
     <table width="100%">
       <tr><td>
         <div id="subheader">
+          <div style="float:right;padding-right:2em">
+            <p>{{ greeting|safe }}</p>
+          </div>
           {% block header %}
-          <div class="document_title"><h1 style="visibility:hidden">threepress</h1></div>
+          <div class="document_title"><h1>Bookworm → Library</h1></div>
           {% endblock header %}
+
         </div>
       </td></tr>
     </table>

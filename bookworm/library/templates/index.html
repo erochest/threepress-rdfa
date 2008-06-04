@@ -2,9 +2,6 @@
 
 {% block title %}My epub library{% endblock title %}
 
-{% block header %}
-<div class="document_title"><h1>Bookworm → Library</h1></div>
-{% endblock %}
 
 
 {% block main %}
@@ -16,7 +13,8 @@
 <ol>
 {% for d in documents %}
   <li> <a href="{% url library.views.view d.safe_title,d.safe_author %}">{{ d.title}}</a>
-  by {{ d.author }} (filename: {{ d.name }})</li>
+  by {{ d.author }}
+  <span style="font-size:small">[<a href="{% url library.views.delete d.safe_title,d.safe_author %}">delete</a>]</span></li>
 {% endfor %}
 </ol>
 

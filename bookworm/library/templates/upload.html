@@ -9,6 +9,7 @@ dt { font-weight: bold; color: #2E4560;}
 dd { margin:0 0 1em 0; padding:0 10px 0 0; }
 li { padding-bottom: .5em; }
 .document_title a { text-decoration: none }
+#upload_form label { display:none }
 </style>
 {% endblock head %}
 
@@ -27,7 +28,7 @@ Upload a DRM-free epub document to read it on this site.
 </p>
   
 <form action="{% url library.views.upload d%}" method="post" enctype="multipart/form-data">
-  <div>
+  <div id="upload_form">
     {{ form.as_p }}
     <input type="submit" value="upload" />
   </div>
