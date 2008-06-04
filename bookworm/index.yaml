@@ -29,19 +29,26 @@ indexes:
   - name: created
     direction: desc
 
+# Used 37 times in query history.
+- kind: EpubArchive
+  properties:
+  - name: author
+  - name: owner
+  - name: title
+
 # Unused in query history -- copied from input.
 - kind: EpubArchive
   properties:
   - name: author
   - name: title
 
-# Unused in query history -- copied from input.
+# Used 13 times in query history.
 - kind: HTMLFile
   properties:
   - name: archive
   - name: idref
 
-# Used 12 times in query history.
+# Used 7 times in query history.
 - kind: HTMLFile
   properties:
   - name: archive
@@ -52,3 +59,9 @@ indexes:
   ancestor: yes
   properties:
   - name: order
+
+# Used 14 times in query history.
+- kind: StylesheetFile
+  properties:
+  - name: archive
+  - name: idref

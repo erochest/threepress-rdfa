@@ -20,7 +20,8 @@ class EpubArchive(db.Model):
     _NSMAP = { 'container': 'urn:oasis:names:tc:opendocument:xmlns:container',
                'opf': 'http://www.idpf.org/2007/opf',
                'dc':'http://purl.org/dc/elements/1.1/',
-               'ncx':'http://www.daisy.org/z3986/2005/ncx/'}
+               'ncx':'http://www.daisy.org/z3986/2005/ncx/',
+               'html':'http://www.w3.org/1999/xhtml'}
 
     _content_path = 'OEBPS' # Default
     _archive = ''
@@ -33,6 +34,7 @@ class EpubArchive(db.Model):
     opf = db.TextProperty()
     container = db.TextProperty()
     owner = db.UserProperty()
+    has_stylesheets = db.BooleanProperty(default=False)
 
     def explode(self):
         '''Explodes an epub archive'''
@@ -53,6 +55,7 @@ class EpubArchive(db.Model):
         self.title = self._get_title(parsed_opf)
 
         self._get_content(parsed_opf, parsed_toc)
+        self._get_stylesheets(parsed_opf)
 
     def _get_opf(self):
         '''Parse the container to get the name of the opf file'''
@@ -81,7 +84,18 @@ class EpubArchive(db.Model):
         title = xml.findtext('.//{%s}title' % self._NSMAP['dc']).strip()
         logging.info('Got title as %s' % title)
         return title
-    
+
+    def _get_stylesheets(self, opf):
+        for item in opf.getiterator("{%s}item" % (self._NSMAP['opf'])):
+            if item.get('media-type') == 'text/css':
+                content = self._archive.read("%s/%s" % (self._content_path, item.get('href')))
+                css = StylesheetFile(idref=item.get('id'),
+                                     file=unicode(content, 'utf-8'),
+                                     archive=self)
+                css.put()
+                logging.info('adding stylesheet %s ' % item.get('href'))
+                self.has_stylesheets = True
+                
     def _get_content(self, opf, toc):
         # Get all the item references from the <spine>
         refs = opf.findall('.//{%s}spine/{%s}itemref' % (self._NSMAP['opf'], self._NSMAP['opf']) )
@@ -109,15 +123,25 @@ class EpubArchive(db.Model):
                 if navMap.has_key(href):
                     logging.info('Adding navmap item %s' % navMap[href])
                     filename = '%s/%s' % (self._content_path, href)
+                    #content = unicode(self._archive.read(filename), 'utf-8')
                     content = self._archive.read(filename)
+                    # Parse the content as XML to pull out just the body
+                    xhtml = ElementTree.fromstring(content)
+                    body = xhtml.find('.//{%s}body' % self._NSMAP['html'])
+                    body = self._clean_xhtml(body)
+                    body_content = ElementTree.tostring(body, 'utf-8')
                     html = HTMLFile(title=navMap[href].title,
                                     idref=idref,
-                                    file=unicode(content, 'utf-8'),
+                                    file=unicode(body_content, 'utf-8'),
                                     archive=self,
                                     order=navMap[href].order)
                     html.put()
 
-
+    def _clean_xhtml(self, xhtml):
+        for element in xhtml.getiterator():
+            element.tag = element.tag.replace('{%s}' % self._NSMAP['html'], '')
+        return xhtml
+            
     def safe_title(self):
         return safe_name(self.title)  
     def safe_author(self):
@@ -132,82 +156,20 @@ class NavPoint():
     def __repr__(self):
         return "%s (%s) %d" % (self.title, self.href, self.order)
 
-class HTMLFile(db.Model):
+class BookwormFile(db.Model):
     idref = db.StringProperty()
-    title = db.StringProperty()
-    file = db.TextProperty()
+    file = db.TextProperty()    
     archive = db.ReferenceProperty(EpubArchive)
-    order = db.IntegerProperty()
-
     def render(self):
         return self.file
 
-class AbstractDocument(db.Model):
-    '''An AbstractDocument could be either from our database or from
-    an epub source'''
-    def __init__(self, id, title, author):
-        self.id = id
-        self.title = title
-        self.author = author
+class HTMLFile(BookwormFile):
+    title = db.StringProperty()
+    order = db.IntegerProperty()
 
-    def get_absolute_url(self):
-        '''Implement in subclasses'''
-        pass
+class StylesheetFile(BookwormFile):
+    pass
 
-    def link(self, text=None):
-        if not text:
-            text = self.title
-        return '<a href="%s">%s</a>' % (self.get_absolute_url(), self.title)
-
-    def chapter_list(self):
-        '''The implementation here will be different for each model type'''
-        pass
-
-    def part_list(self):
-        '''The implementation here will be different for each model type'''
-        pass
-
-class AbstractChapter(db.Model):
-    '''A Chapter in an AbstractDocument'''
-    ordinal = 0
-
-    def __init__(self, id, document, title, content):
-        self.document = document 
-        self.id = id
-        self.title = title
-        self.content = content
-
-    def render(self):
-        return self.content
-
-    def get_absolute_url(self):
-        '''Implement in subclasses'''
-        pass
-
-    def link(self, text=None):
-        if not text:
-            text = self.title
-        return '<a href="%s">%s</a>' % (self.get_absolute_url(), self.title)
-
-class EpubDocument(AbstractDocument):
-    '''A document derived out of an epub package'''
-    chapters = []
-    
-    def __init__(self, id, document, title, content, stylesheet=None):
-        self.stylesheet = stylesheet
-        AbstractDocument.__init__(self, id, document, title, content)
-
-    def get_absolute_url(self):
-        return ('threepress.search.views.document_epub', [self.id])
-
-    def chapter_list(self):
-        return self.chapters
-
-
-class EpubChapter(AbstractChapter):
-    '''A chapter of content from an epub package'''
-
-    def get_absolute_url(self):
-        return ('threepress.search.views.document_chapter_epub', [self.document.id, self.id])
-
-
+class UserPrefs(db.Model):
+    user = db.UserProperty()
+    use_iframe = db.BooleanProperty(default=False)
