@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}{{ common.user.nickname }}'s profile{% endblock %}
+
+{% block main %}
+
+<h1>User profile settings for {{ common.user.nickname }}</h1>
+
+<p>Note: these settings are for Bookworm only; no Google Accounts configuration is available here.</p>
+
+   <table class="meta">
+     <thead>
+       <tr>
+         <th class="table_header" colspan="2">User information</th>
+       </tr>
+     </thead>     
+     <tbody>
+       <tr>
+         <th>Nickname</th>
+         <td>{{ common.user.nickname }}</td>
+       </tr>
+       <tr>
+         <th>Email address</th>
+         <td> {{ common.user.email }}</td>
+       </tr>
+       <tr>
+         <th>Show individual book styles? </th>
+         <td>
+           {% if common.prefs.use_iframe %}
+           Yes, show book's styles in a scrolling window 
+           <br/>(<a href="{% url library.views.profile %}?iframe=no">change this</a>)
+           {% else %}
+           No, view without styles 
+           <br/>(<a href="{% url library.views.profile %}?iframe=yes">change this</a>)
+           {% endif %}           
+         </td>
+       </tr>
+       <tr>
+         <th>Show warning on chapter pages if the book has styles?</th>
+         <td>
+           {% if common.prefs.show_iframe_note %}
+           Yes, show this message
+           <br/>(<a href="{% url library.views.profile %}?iframe_note=no">change this</a>)
+           {% else %}
+           No, hide this message
+           <br/>(<a href="{% url library.views.profile %}?iframe_note=yes">change this</a>)
+           {% endif %}           
+         </td>
+       </tr>
+     </tbody>
+   </table>
+
+   <form action="{% url library.views.profile_delete %}">
+     <div>
+       <p>
+         You can <strong>delete all personal information</strong> from this application, including
+         any profile information and all ebooks.
+         This action will also log you out of Google to keep from automatically creating a new profile.
+       </p>
+       <p><strong>This action cannot be undone.</strong></p>
+       <input type="submit" value="Delete my profile" onclick="return confirm('Are you sure you want to delete all personal info and books?')"/>
+     </div>
+   </form>
+
+{% endblock main %}

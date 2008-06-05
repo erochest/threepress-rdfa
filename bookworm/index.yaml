@@ -29,7 +29,7 @@ indexes:
   - name: created
     direction: desc
 
-# Used 37 times in query history.
+# Used 12 times in query history.
 - kind: EpubArchive
   properties:
   - name: author
@@ -42,13 +42,13 @@ indexes:
   - name: author
   - name: title
 
-# Used 13 times in query history.
+# Used 11 times in query history.
 - kind: HTMLFile
   properties:
   - name: archive
   - name: idref
 
-# Used 7 times in query history.
+# Used 12 times in query history.
 - kind: HTMLFile
   properties:
   - name: archive
@@ -60,7 +60,7 @@ indexes:
   properties:
   - name: order
 
-# Used 14 times in query history.
+# Unused in query history -- copied from input.
 - kind: StylesheetFile
   properties:
   - name: archive

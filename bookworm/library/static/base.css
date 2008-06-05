@@ -38,10 +38,16 @@
 
       /* Header */
       #header {
-        background-color: rgb(198, 223, 167); 
+        background-color: rgb(156, 175, 131); /* threepress orig: rgb(198, 223, 167);  */
         padding: 10px 0 10px 60px;
         overflow:hidden;      
       }
+      #threepress_logo {
+       width:200px;
+       float:right;
+       padding: 0 60px 0 0;
+      }
+
       #header a {
         text-decoration: none;
       }
@@ -63,15 +69,14 @@
         font-weight: bold;
         letter-spacing:-1px;    
       }
-      .logo .three {
+      .three {
        color: #2E4560;
       }
-      .logo .press {
+      .press {
         color: #5F5B4B;
       }
       .motto {  
         padding:0; margin:0;
-        font-size: 1em;
       }
       .motto a {
         color: rgb(248, 255, 239);
@@ -97,6 +102,22 @@
          font-weight:normal;
          color: #746E53;
       }
+      .book_title {
+         color: #746E53;
+         font-size:50px;
+         margin-top:.5em;
+         margin-bottom:0;
+      }
+      .book_author {
+         color: #746E53;
+         font-size:large;
+         margin-top:0;
+         margin-bottom:0;
+      }
+      h3 {
+        color: 
+      }
+      
       #subheader {
         margin:0;
         padding: 5px 60x 5px 60px;
@@ -239,3 +260,38 @@
    ul.about {
     line-height: 1.5em;
    }
+
+.note {
+  width:100%;
+  color: #5F5B4B;
+  font-weight:bold;
+  background-color: rgb(248, 255, 239);
+  padding:.5em;
+  border:1px solid #5F5B4B;
+}
+
+table.meta {
+  width: 600px;
+  margin:2em;
+  border: 1px solid #5F5B4B;
+  border-collapse:collapse;
+}
+
+table.meta th {
+  background-color: rgb(248, 255, 239);
+  border: 1px dotted #5F5B4B;
+  padding:1em;
+  width:250px;
+}
+table.meta  td {
+  border: 1px dotted #5F5B4B;
+  padding:1em;
+}
+
+table.meta th.table_header {
+  border: 1px solid #5F5B4B;            
+}
+li.first {
+  font-size:larger;
+  font-weight:bold;
+}

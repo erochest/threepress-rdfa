@@ -2,7 +2,15 @@
 
 {% block title %}My epub library{% endblock title %}
 
+{% block leftnav %}
 
+<p>There {% ifequal common.total_users 1 %} is {% else %} are {% endifequal %}
+
+  {{ common.total_users }} reader{{ common.total_users|pluralize }} using Bookworm, 
+  storing {{ common.total_books }} individual book{{ common.total_books|pluralize }}.
+</p>
+
+{% endblock leftnav %}
 
 {% block main %}
 

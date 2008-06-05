@@ -1,13 +1,14 @@
 from google.appengine.ext import db
-from google.appengine.api import users
 
 from xml.etree import ElementTree
 from zipfile import ZipFile
 from StringIO import StringIO
-import logging
+import logging, datetime
 from urllib import quote_plus, unquote_plus
 
-import settings
+from epub import constants
+
+
 # Functions
 def safe_name(name):
     return quote_plus(name)
@@ -15,15 +16,16 @@ def safe_name(name):
 def unsafe_name(name):
     return unquote_plus(name)
 
-class EpubArchive(db.Model):
-    _CONTAINER = 'META-INF/container.xml'
-    _NSMAP = { 'container': 'urn:oasis:names:tc:opendocument:xmlns:container',
-               'opf': 'http://www.idpf.org/2007/opf',
-               'dc':'http://purl.org/dc/elements/1.1/',
-               'ncx':'http://www.daisy.org/z3986/2005/ncx/',
-               'html':'http://www.w3.org/1999/xhtml'}
+class BookwormModel(db.Model):
+    created_time = db.DateTimeProperty(default=datetime.datetime.now())
 
-    _content_path = 'OEBPS' # Default
+class EpubArchive(BookwormModel):
+    '''Represents an entire epub container'''
+
+    _CONTAINER = constants.CONTAINER     
+    _NSMAP = constants.NAMESPACES
+
+    _content_path = constants.CONTENT_PATH 
     _archive = ''
 
     name = db.StringProperty(required=True)
@@ -35,6 +37,8 @@ class EpubArchive(db.Model):
     container = db.TextProperty()
     owner = db.UserProperty()
     has_stylesheets = db.BooleanProperty(default=False)
+
+
 
     def explode(self):
         '''Explodes an epub archive'''
@@ -87,7 +91,7 @@ class EpubArchive(db.Model):
 
     def _get_stylesheets(self, opf):
         for item in opf.getiterator("{%s}item" % (self._NSMAP['opf'])):
-            if item.get('media-type') == 'text/css':
+            if item.get('media-type') == constants.STYLESHEET_MIMETYPE:
                 content = self._archive.read("%s/%s" % (self._content_path, item.get('href')))
                 css = StylesheetFile(idref=item.get('id'),
                                      file=unicode(content, 'utf-8'),
@@ -100,41 +104,55 @@ class EpubArchive(db.Model):
         # Get all the item references from the <spine>
         refs = opf.findall('.//{%s}spine/{%s}itemref' % (self._NSMAP['opf'], self._NSMAP['opf']) )
         navs = toc.findall('.//{%s}navPoint' % (self._NSMAP['ncx']))
-        navMap = {}
-        itemMap = {}
+        nav_map = {}
+        item_map = {}
+        
+        depth = 1
 
+        metas = toc.findall('.//{%s}meta' % (self._NSMAP['ncx']))
+        for m in metas:
+            if m.get('name') == 'db:depth':
+                depth = int(m.get('content'))
+                logging.info('Book has depth of %d' % depth)
+        
         items = opf.findall(".//{%s}item" % (self._NSMAP['opf']))
         for item in items:
-            itemMap[item.get('id')] = item.get('href')
+            item_map[item.get('id')] = item.get('href')
+
 
         for nav in navs:
+
             order = int(nav.get('playOrder')) 
             title = nav.findtext('.//{%s}text' % (self._NSMAP['ncx']))
             href = nav.find('.//{%s}content' % (self._NSMAP['ncx'])).get('src')
             filename = href.split('#')[0]
             logging.info('adding filename %s to navmap' % filename)
-            navMap[filename] = NavPoint(title, href, order)
+            if nav_map.has_key(filename):
+                pass
+                # Skip this item so we don't overwrite with a new navpoint
+            else:
+                nav_map[filename] = NavPoint(title, href, order, depth=depth)
         
         for ref in refs:
             idref = ref.get('idref')
-            if itemMap.has_key(idref):
-                href = itemMap[idref]
+            if item_map.has_key(idref):
+                href = item_map[idref]
                 logging.info("checking href %s" % href)
-                if navMap.has_key(href):
-                    logging.info('Adding navmap item %s' % navMap[href])
+                if nav_map.has_key(href):
+                    logging.info('Adding navmap item %s' % nav_map[href])
                     filename = '%s/%s' % (self._content_path, href)
-                    #content = unicode(self._archive.read(filename), 'utf-8')
                     content = self._archive.read(filename)
+
                     # Parse the content as XML to pull out just the body
                     xhtml = ElementTree.fromstring(content)
                     body = xhtml.find('.//{%s}body' % self._NSMAP['html'])
                     body = self._clean_xhtml(body)
                     body_content = ElementTree.tostring(body, 'utf-8')
-                    html = HTMLFile(title=navMap[href].title,
+                    html = HTMLFile(title=nav_map[href].title,
                                     idref=idref,
                                     file=unicode(body_content, 'utf-8'),
                                     archive=self,
-                                    order=navMap[href].order)
+                                    order=nav_map[href].order)
                     html.put()
 
     def _clean_xhtml(self, xhtml):
@@ -149,27 +167,54 @@ class EpubArchive(db.Model):
 
 
 class NavPoint():
-    def __init__(self, title, href, order):
+    '''Temporary storage object to hold an individual navpoint.  
+    @todo Nest these
+    '''
+    def __init__(self, title, href, order, depth=1):
         self.title = title
         self.href = href
         self.order = order
+        self.depth = depth
     def __repr__(self):
         return "%s (%s) %d" % (self.title, self.href, self.order)
 
-class BookwormFile(db.Model):
+
+class BookwormFile(BookwormModel):
+    '''Abstract class that represents a file in the datastore'''
     idref = db.StringProperty()
     file = db.TextProperty()    
     archive = db.ReferenceProperty(EpubArchive)
+
     def render(self):
         return self.file
 
 class HTMLFile(BookwormFile):
+    '''Usually an individual page in the ebook'''
     title = db.StringProperty()
     order = db.IntegerProperty()
 
 class StylesheetFile(BookwormFile):
+    '''A CSS stylesheet associated with a given book'''
     pass
 
-class UserPrefs(db.Model):
+
+class SystemInfo(BookwormModel):
+    '''Random information about the status of the whole library'''
+    total_books = db.IntegerProperty(default=0)
+    total_users = db.IntegerProperty(default=0)
+
+def get_system_info():
+    '''There should only be one of these, so create it if it doesn't exists, 
+    otherwise return get()'''
+    instance = SystemInfo.all().get()
+    if not instance:
+        logging.info('Creating SystemInfo instance')
+        instance = SystemInfo()
+        instance.put()
+    return instance
+
+class UserPrefs(BookwormModel):
+    '''Per-user preferences for this application'''
     user = db.UserProperty()
     use_iframe = db.BooleanProperty(default=False)
+    show_iframe_note = db.BooleanProperty(default=True)

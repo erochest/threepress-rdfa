@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" ></meta>    
-    {% spaceless %}<title>{% block title %} threepress {% endblock title %}: threepress</title>{% endspaceless %}
+    {% spaceless %}<title>{% block title %} threepress {% endblock title %}: on bookworm by threepress.org</title>{% endspaceless %}
     <link rel="stylesheet" href="/static/base.css"></link>
     <link rel="stylesheet" type="text/css" media="print" href="/static/print.css"></link>
     {% block head %}{% endblock head %}
@@ -12,7 +12,7 @@
       document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     </script>
     <script type="text/javascript">
-      var pageTracker = _gat._getTracker("UA-162955-2");
+      var pageTracker = _gat._getTracker("UA-162955-4");
       pageTracker._initData();
       pageTracker._trackPageview();
     </script>
@@ -22,17 +22,14 @@
 
     <div id="header" style="margin-bottom:0">
       <div id="header_logo">
-        <h1 class="logo"><a href="{% url library.views.index %}"><span class="three">three</span><span class="press">press</span></a></h1>
-        <h2 class="motto"><a href="{%  url library.views.index %}">open source publishing software</a></h2>
+        <h1 class="logo"><a href="{% url library.views.index %}">bookworm</a></h1>
+        <h2 class="motto"><a href="{%  url library.views.index %}">online epub reading</a></h2>
       </div>
       <div id="header_nav">
+
         <p>
-          <a href="/about/">about</a>
-          <a href="/download/">download</a>
-          <a href="/document/epub-validate/">tools</a>
-          <a href="/consulting/">consulting</a>
-          <a href="http://blog.threepress.org/">blog</a>
-          <a href="/contact/">contact</a>
+          <a href="/about/">about bookworm</a>
+          <a href="http://www.threepress.org/about/">about <span class="three">three</span><span class="press">press</span></a>
         </p>
       </div>
     </div>
@@ -40,7 +37,7 @@
       <tr><td>
         <div id="subheader">
           <div style="float:right;padding-right:2em">
-            <p>{{ greeting|safe }}</p>
+            <p>{{ common.greeting|safe }}</p>
           </div>
           {% block header %}
           <div class="document_title"><h1>Bookworm → Library</h1></div>
@@ -71,7 +68,7 @@
     <!-- Footer -->
     <div id="footer">
       {% block footer %}{% endblock footer %}
-      <p style="float:left">Software by <a href="http://www.threepress.org/">threepress</a>, <a href="http://www.djangoproject.com">Django</a> and <a href="http://www.xapian.org">Xapian</a></p>
+      <p style="float:left">Software by <a href="http://www.threepress.org/">threepress</a>, <a href="http://www.djangoproject.com">Django</a> and <a href="http://appengine.google.com/">Google App Engine</a></p>
       <p style="float:right;margin-right:50px;">threepress software is licensed under the <a href="http://www.opensource.org/licenses/bsd-license.php">BSD License</a></p>
     </div>
   </body>
