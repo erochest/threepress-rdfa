@@ -1,4 +1,5 @@
 from google.appengine.api import users
+from google.appengine.api import memcache
 
 import logging, sys
 
@@ -184,15 +185,16 @@ def upload(request):
             try:
                 document.explode()
                 document.put()
+                sysinfo = get_system_info()
+                sysinfo.total_books += 1
+                sysinfo.put()
+
             except:
                 # If we got any error, delete this document
-                document.delete()
+                logging.error('Got deadline exceeded error on request, deleting document')
                 logging.error(sys.exc_info()[0])
+                document.delete()
                 raise
-            
-            sysinfo = get_system_info()
-            sysinfo.total_books += 1
-            sysinfo.put()
 
             return HttpResponseRedirect('/')
 
