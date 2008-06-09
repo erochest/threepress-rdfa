@@ -22,7 +22,7 @@
 {% endblock head %}
 
 {% block header %}
-<div class="document_title"><a href="{% url library.views.view document.safe_title,document.safe_author %}"><h1><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></h1></a></div>
+<a href="{% url library.views.view document.safe_title,document.safe_author %}"><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></a>
 {% endblock header %}
 
 {% block leftnav %}

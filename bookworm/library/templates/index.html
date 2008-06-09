@@ -2,28 +2,72 @@
 
 {% block title %}My epub library{% endblock title %}
 
+{% block head %}
+<link rel="stylesheet" href="/static/home.css"></link>
+{% endblock head %}
+
 {% block leftnav %}
 
-<p>There {% ifequal common.total_users 1 %} is {% else %} are {% endifequal %}
+<div class="status"><h2 class="upload"><a href="{% url library.views.upload d%}">Add a book</a></h2></div>
 
-  {{ common.total_users }} reader{{ common.total_users|pluralize }} using Bookworm, 
-  storing {{ common.total_books }} individual book{{ common.total_books|pluralize }}.
-</p>
+<div class="status">
+  <h2>Status</h2>
+  <p>There {% ifequal common.total_users 1 %} is {% else %} are {% endifequal %}
+
+  {{ common.total_users }} reader{{ common.total_users|pluralize }} using Bookworm.
+  </p>
+  <p>
+  There {% ifequal common.total_books 1 %} is {% else %} are {% endifequal %}  {{ common.total_books }} individual book{{ common.total_books|pluralize }}.
+  </p>
+</div>
+
+<div class="status">
+ <h3 class="profile"><a href="{% url library.views.profile %}">Edit your profile</a></h3>
+</div>
 
 {% endblock leftnav %}
 
 {% block main %}
 
-<h2>Documents in library</h2>
+<div id="content">
+<h1><img src="/static/bookworm-logo.png" alt="Bookworm" /></h1>
 
-<p><a href="{% url library.views.upload %}">Upload</a> a new document.</p>
+<p class="tagline">A free platform for reading epub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
 
-<ol>
-{% for d in documents %}
-  <li> <a href="{% url library.views.view d.safe_title,d.safe_author %}">{{ d.title}}</a>
-  by {{ d.author }}
-  <span style="font-size:small">[<a href="{% url library.views.delete d.safe_title,d.safe_author %}">delete</a>]</span></li>
-{% endfor %}
-</ol>
+{% if documents.count %}
+<h2>Books in your library</h2>
 
+<p>The books listed below have been added to your library and are available for reading online:</p>
+
+<table id="library">
+  {% for d in documents %}
+  <tr>
+    <td>
+      <span class="title"><a href="{% url library.views.view d.safe_title,d.safe_author %}">{{ d.title}}</a></span>
+    </td>
+    <td>
+      <span class="attribution">by <span class="author">{{ d.author }}</span></span>
+    </td>
+    <td>
+      added on <span class="added">{{ d.created_time|date:"l, F Y" }}</span>
+    </td>
+    <td>
+      <span class="delete"><a href="{% url library.views.delete d.safe_title,d.safe_author %}" onclick="return confirm('Sure?')">delete</a></span>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+
+
+{% endif %}
+
+<h3 style="padding-top:2em;">Upload {% if documents.count %} a new {% else %} your first {% endif %} book</h3>
+<form action="{% url library.views.upload d%}" method="post" enctype="multipart/form-data">
+  <div id="upload_form">
+    {{ common.upload_form.as_p }}
+    <input type="submit" value="upload" />
+  </div>
+</form>
+</div>
 {% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %} 
+
+{% block title %}About Bookworm{% endblock title %}
+
+{% block header %}About{% endblock header %}
+{% block head %}
+<style type="text/css">
+ li { line-height: 1.5em; padding-bottom: 1em;}
+</style>
+{% endblock head %}
+
+{% block leftnav %}
+<p style="font-size:smaller">
+For questions or problems with bookworm, please contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
+</p>
+
+<p style="font-size:smaller">
+For more information about Threepress, please visit our <a href="http://www.threepress.org/about/">About</a> page.
+</p>
+
+{% endblock %}
+{% block main %}
+
+<div id="content">
+  <h1>About Bookworm</h1>
+  <p>
+    <strong>Bookworm</strong> is an experimental platform for storing and reading epub-format books online.
+  </p>
+
+  <h2>What's epub?</h2>
+  <p>
+    Epub is the open e-book standard developed by the <a href="http://www.idpf.org/">International Digital Publishing Forum</a> (<acronym>IDPF</acronym>).  It is based on a number of other open standards including XHTML, making it ideally suited to be read on web browsers.
+  </p>
+
+  <h2>Where can I get epub-formatted books?</h2>
+  <p>
+    At this time, contemporary, popular books are not widely available in epub, as neither the Amazon Kindle nor Sony Reader support the format.  <a href="http://feedbooks.com/">Feedbooks</a> is a excellent site for downloading public domain and contributed books in epub as well as other digital book formats.  <a href="http://www.threepress.org/">Threepress</a> also offers several epub formatted books which have been auto-converted from the TEI XML standard.</p>
+
+  <h2>What Bookworm isn't</h2>
+
+  <ol>
+    <li> <em>A general ebook platform</em>. There are many good standalone ebook readers for computers, including <a href="http://www.adobe.com/products/digitaleditions/">Adobe Digital Editions</a>, <a href="http://www.fbreader.org/">FBReader</a> and <a href="http://www.lexcycle.com/">Stanza</a>. Bookworm is meant specifically to test the viability of using ordinary web browsers as epub rendering engines, not to host PDF, Mobi, or other formats.</li>
+    <li> <em>An ebook sharing site</em>.  There are currently no plans to support sharing of books on Bookworm.  I feel it would be detrimental to the adoption of DRM-free e-books to encourage digital distribution at this critical time.  Google App Engine's infrastructure would certainly faciliate this feature, and so it may be considered in the future.
+    </li>
+    <li> <em>Mature software</em>.  Your books may be deleted or altered at any time as features are added or modified.  Please store your books locally.
+    </li>
+  </ol>
+
+  <h2>Who is responsible for Bookworm?</h2>
+  <p>
+    Bookworm software is free and available for download under the terms of the BSD license from the <a href="http://www.threepress.org/download/">download page</a>. It is a product of <a href="http://www.threepress.org/">threepress</a>, a venue for experimenting with open source publishing software, and is written by <a href="http://www.threepress.org/about/liza/">Liza Daly</a>.  Any problems with Bookworm can be reported to <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>. (Feature requests welcome too!)
+  </p>
+</div>
+
+{% endblock %}

@@ -140,7 +140,7 @@ class EpubArchive(BookwormModel):
             else:
                 logging.info('adding filename %s to navmap' % filename)
                 order = int(nav.get('playOrder')) 
-                title = nav.findtext('.//{%s}text' % (constants.NAMESPACES['ncx']))
+                title = nav.findtext('.//{%s}text' % (constants.NAMESPACES['ncx'])).strip()
                 nav_map[filename] = NavPoint(title, href, order, depth=depth)
         pages = []
 

@@ -45,6 +45,10 @@ def view(request, title, author):
                                             'toc':toc,
                                             'common':common})
 
+def about(request):
+    common = _common(request)
+    return render_to_response('about.html', {'common': common})
+    
 
 def _delete_document(document):
     # Delete the chapters of the book
@@ -189,26 +193,29 @@ def upload(request):
             document.owner = users.get_current_user()
             document.put()
 
+            try:
+                document.explode()
+                document.put()
+                sysinfo = get_system_info()
+                sysinfo.total_books += 1
+                sysinfo.put()
+                # Update the cache
+                memcache.set('total_books', sysinfo.total_books)
+
+            except:
+                # If we got any error, delete this document
+                logging.error('Got deadline exceeded error on request, deleting document')
+                logging.error(sys.exc_info()[0])
+                document.delete()
+                raise
             
-            document.explode()
-            document.put()
-            sysinfo = get_system_info()
-            sysinfo.total_books += 1
-            sysinfo.put()
-            # Update the cache
-            memcache.set('total_books', sysinfo.total_books)
-
-            #except:
-            #    # If we got any error, delete this document
-            #    logging.error('Got deadline exceeded error on request, deleting document')
-            #    logging.error(sys.exc_info()[0])
-            #    document.delete()
             logging.info("Successfully added %s" % document.title)
-            return render_to_response('upload_success.html', 
-                                      {'common':common,
-                                       'document':document})
+            return HttpResponseRedirect('/')
+            #return render_to_response('upload_success.html', 
+            #                          {'common':common,
+            #                           'document':document})
 
-        #return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/')
 
     else:
         form = EpubValidateForm()        
@@ -287,6 +294,7 @@ def _common(request, load_prefs=False):
 
     common['greeting'] = _greeting()
 
+    common['upload_form'] = EpubValidateForm()        
     return common
 
 

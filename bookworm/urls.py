@@ -22,5 +22,7 @@ urlpatterns = patterns('',
                        (r'^profile/delete/$', 'library.views.profile_delete'),
 
                        (r'^redirect/$', 'library.views.redirect_test'),
+
+                       (r'^about/$', 'library.views.about'),
                        )
 

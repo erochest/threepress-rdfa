@@ -39,9 +39,10 @@
           <div style="float:right;padding-right:2em">
             <p>{{ common.greeting|safe }}</p>
           </div>
-          {% block header %}
-          <div class="document_title"><h1>Bookworm → Library</h1></div>
-          {% endblock header %}
+          <div class="document_title">
+            <h1>{% block header %}Library{% endblock header %}</h1>
+          </div>
+
 
         </div>
       </td></tr>
