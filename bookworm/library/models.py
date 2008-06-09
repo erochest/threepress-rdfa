@@ -50,15 +50,17 @@ class EpubArchive(BookwormModel):
 
         parsed_opf = ElementTree.fromstring(self.opf)
 
-        self.toc = unicode(z.read(self._get_toc(parsed_opf)), 'utf-8')
+        items = parsed_opf.getiterator("{%s}item" % (constants.NAMESPACES['opf']))
+
+        self.toc = unicode(z.read(self._get_toc(items)), 'utf-8')
 
         parsed_toc = ElementTree.fromstring(self.toc.encode('utf-8'))
 
         self.author = self._get_author(parsed_opf)
         self.title = self._get_title(parsed_opf)
 
-        self._get_content(parsed_opf, parsed_toc)
-        self._get_stylesheets(parsed_opf)
+        self._get_content(parsed_opf, parsed_toc, items)
+        self._get_stylesheets(items)
 
     def _get_opf(self):
         '''Parse the container to get the name of the opf file'''
@@ -69,9 +71,9 @@ class EpubArchive(BookwormModel):
         logging.debug("Got opf filename as %s" % opf_filename)
         return opf_filename
  
-    def _get_toc(self, xml):
+    def _get_toc(self, items):
         '''Parse the opf file to get the name of the TOC'''
-        for item in xml.getiterator('{%s}item' % constants.NAMESPACES['opf']):
+        for item in items:
             if item.get('id') == 'ncx':
                 toc_filename = item.get('href').strip()
                 logging.debug('Got toc filename as %s' % toc_filename)
@@ -88,18 +90,28 @@ class EpubArchive(BookwormModel):
         logging.info('Got title as %s' % title)
         return title
 
-    def _get_stylesheets(self, opf):
-        for item in opf.getiterator("{%s}item" % (constants.NAMESPACES['opf'])):
+    def _get_stylesheets(self, items):
+        stylesheets = []
+        for item in items:
             if item.get('media-type') == constants.STYLESHEET_MIMETYPE:
                 content = self._archive.read("%s/%s" % (self._content_path, item.get('href')))
-                css = StylesheetFile(idref=item.get('id'),
-                                     file=unicode(content, 'utf-8'),
-                                     archive=self)
-                css.put()
+                stylesheets.append({'idref':item.get('href'),
+                                    'file':unicode(content, 'utf-8')})
+
+
                 logging.debug('adding stylesheet %s ' % item.get('href'))
                 self.has_stylesheets = True
-                
-    def _get_content(self, opf, toc):
+        db.run_in_transaction(self.create_stylesheets, stylesheets)
+
+
+    def create_stylesheets(self, stylesheets):
+        for s in stylesheets:
+            css = StylesheetFile(parent=self,
+                                 idref=s['idref'],
+                                 file=s['file'],
+                                 archive=self)
+            css.put()            
+    def _get_content(self, opf, toc, items):
         # Get all the item references from the <spine>
         refs = opf.getiterator('{%s}itemref' % (constants.NAMESPACES['opf']) )
         navs = toc.getiterator('{%s}navPoint' % (constants.NAMESPACES['ncx']))
@@ -109,47 +121,65 @@ class EpubArchive(BookwormModel):
         depth = 1
 
         metas = toc.getiterator('{%s}meta' % (constants.NAMESPACES['ncx']))
+      
         for m in metas:
             if m.get('name') == 'db:depth':
                 depth = int(m.get('content'))
                 logging.debug('Book has depth of %d' % depth)
         
-        items = opf.getiterator("{%s}item" % (constants.NAMESPACES['opf']))
         for item in items:
-            item_map[item.get('id')] = item.get('href')
-
-
+             item_map[item.get('id')] = item.get('href')
+             
         for nav in navs:
-
-            order = int(nav.get('playOrder')) 
-            title = nav.findtext('.//{%s}text' % (constants.NAMESPACES['ncx']))
             href = nav.find('.//{%s}content' % (constants.NAMESPACES['ncx'])).get('src')
             filename = href.split('#')[0]
-            #logging.info('adding filename %s to navmap' % filename)
+            
             if nav_map.has_key(filename):
                 pass
                 # Skip this item so we don't overwrite with a new navpoint
             else:
+                logging.info('adding filename %s to navmap' % filename)
+                order = int(nav.get('playOrder')) 
+                title = nav.findtext('.//{%s}text' % (constants.NAMESPACES['ncx']))
                 nav_map[filename] = NavPoint(title, href, order, depth=depth)
-        
+        pages = []
+
         for ref in refs:
             idref = ref.get('idref')
             if item_map.has_key(idref):
                 href = item_map[idref]
-                #logging.info("checking href %s" % href)
+                logging.info("checking href %s" % href)
                 if nav_map.has_key(href):
-                    #logging.info('Adding navmap item %s' % nav_map[href])
+                    logging.info('Adding navmap item %s' % nav_map[href])
                     filename = '%s/%s' % (self._content_path, href)
                     content = self._archive.read(filename)
+                    
+                    # We store the raw XHTML and will process it for display on request
+                    # later
+                    page = {'title': nav_map[href].title,
+                            'idref':idref,
+                            'file':unicode(content, 'utf-8'),
+                            'archive':self,
+                            'order':nav_map[href].order}
+                    pages.append(page)
+                    
+        db.run_in_transaction(self.create_pages, pages)
 
-                    # Parse the content as XML to pull out just the body
-                    html = HTMLFile(title=nav_map[href].title,
-                                    idref=idref,
-                                    file=unicode(content, 'utf-8'),
-                                    archive=self,
-                                    order=nav_map[href].order)
-                    html.put()
 
+    def create_pages(self, pages):
+        for p in pages:
+            self.create_page(p['title'], p['idref'], p['file'], p['archive'], p['order'])
+
+    def create_page(self, title, idref, filename, archive, order):
+        html = HTMLFile(parent=self, 
+                        title=title, 
+                        idref=idref,
+                        file=filename,
+                        archive=archive,
+                        order=order)
+        html.put()
+
+                  
     def safe_title(self):
         return safe_name(self.title)  
     def safe_author(self):
@@ -199,7 +229,7 @@ class HTMLFile(BookwormFile):
         try:
             self.processed_content = unicode(body_content, 'utf-8')
             self.put()            
-        except:
+        except Exception:
             logging.error("Could not cache processed document, error was: " + sys.exc_info()[0])
 
         return body_content

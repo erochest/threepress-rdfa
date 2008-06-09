@@ -1,5 +1,6 @@
 from google.appengine.api import users
 from google.appengine.api import memcache
+from google.appengine.ext import db
 
 import logging, sys
 
@@ -49,20 +50,20 @@ def _delete_document(document):
     # Delete the chapters of the book
     toc = HTMLFile.gql('WHERE archive = :parent', 
                    parent=document).fetch(100)
-    for t in toc:
-        t.delete()
+    db.delete(toc)
 
     # Delete all the stylesheets in the book
     css = StylesheetFile.gql('WHERE archive = :parent', 
                              parent=document).fetch(100)
-    for c in css:
-        c.delete()
+
+    db.delete(css)
 
     # Delete the book itself, along with our counter
     document.delete()
     sysinfo = get_system_info()
     sysinfo.total_books -= 1
-    sysinfo.put()
+    sysinfo.put() 
+    memcache.set('total_books', sysinfo.total_books)
 
 def delete(request, title, author):
     '''Delete a book and associated metadata, and decrement our total books counter'''
@@ -74,6 +75,10 @@ def delete(request, title, author):
 
     return HttpResponseRedirect('/')
 
+def redirect_test(request):
+    logging.info('Redirecting')
+    return HttpResponseRedirect('/')    
+
 def profile_delete(request):
     
     userprefs = _prefs()
@@ -83,6 +88,7 @@ def profile_delete(request):
     counter = get_system_info()
     counter.total_users -= 1
     counter.put()
+    memcache.set('total_users', counter.total_users)
 
     # Delete all their books
     documents = EpubArchive.all()
@@ -182,21 +188,27 @@ def upload(request):
             document.content = data
             document.owner = users.get_current_user()
             document.put()
-            try:
-                document.explode()
-                document.put()
-                sysinfo = get_system_info()
-                sysinfo.total_books += 1
-                sysinfo.put()
 
-            except:
-                # If we got any error, delete this document
-                logging.error('Got deadline exceeded error on request, deleting document')
-                logging.error(sys.exc_info()[0])
-                document.delete()
-                raise
+            
+            document.explode()
+            document.put()
+            sysinfo = get_system_info()
+            sysinfo.total_books += 1
+            sysinfo.put()
+            # Update the cache
+            memcache.set('total_books', sysinfo.total_books)
 
-            return HttpResponseRedirect('/')
+            #except:
+            #    # If we got any error, delete this document
+            #    logging.error('Got deadline exceeded error on request, deleting document')
+            #    logging.error(sys.exc_info()[0])
+            #    document.delete()
+            logging.info("Successfully added %s" % document.title)
+            return render_to_response('upload_success.html', 
+                                      {'common':common,
+                                       'document':document})
+
+        #return HttpResponseRedirect('/')
 
     else:
         form = EpubValidateForm()        
@@ -238,7 +250,8 @@ def _prefs():
 
         counter.total_users += 1
         counter.put()
-        
+        memcache.set('total_users', counter.total_users)
+
     return userprefs
 
 def _common(request, load_prefs=False):
@@ -253,9 +266,29 @@ def _common(request, load_prefs=False):
     if load_prefs:
         common['prefs'] = _prefs()
 
-    sysinfo = get_system_info()
-    common['total_users'] = sysinfo.total_users
-    common['total_books'] = sysinfo.total_books
+    cached_total_books = memcache.get('total_books')
+
+    if cached_total_books is not None:
+        common['total_books'] = cached_total_books
+    else:
+        sysinfo = get_system_info()
+        common['total_books'] = sysinfo.total_books
+        memcache.set('total_books', sysinfo.total_books)
+
+    cached_total_users = memcache.get('total_users')
+
+    if cached_total_users is not None:
+        common['total_users'] = cached_total_users
+    else:
+        if not sysinfo:
+            sysinfo = get_system_info()            
+        common['total_users'] = sysinfo.total_users
+        memcache.set('total_users', sysinfo.total_users)
+
     common['greeting'] = _greeting()
 
     return common
+
+
+
+    
