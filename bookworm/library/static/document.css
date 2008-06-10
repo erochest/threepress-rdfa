@@ -1,0 +1,11 @@
+/* These document-level styles should be displayed even with iframes */
+a.svg {
+  display:block;
+  background-image: url(/static/svg.png);
+  background-repeat: no-repeat;
+  height:50px;
+  text-align:right;
+  margin-left:50px;
+  width:250px;
+  padding-top:10px;
+}

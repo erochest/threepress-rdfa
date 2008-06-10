@@ -3,7 +3,8 @@
         padding:0;
       }
       body {
-        font-family: Helvetica, Verdana, sans-serif;
+
+        font-family: Helvetica, Arial, sans-serif;
         font-size: 12px;
         margin:0;
         padding:0;
@@ -84,7 +85,7 @@
       .document_title {
         clear:left;
         margin-top:-5px;padding:0;
-        border-bottom: 1px solid lightgrey; 
+        border-bottom: 1px solid rgb(210,210,210); 
       }
       .document_title h1 .by {
         font-size: .7em; 
@@ -119,7 +120,7 @@
          margin-bottom:0;
       }
  h1, h2, h3 {
- color: grey;
+ color: gray;
 }      
       #subheader {
         margin:0;
@@ -169,7 +170,7 @@
  
       }
       #leftnav form h3 {
-        color: lightgray;
+        color: rgb(210,210,210);
         font-size: .8em;
       }
       #main {
@@ -177,7 +178,7 @@
         width:100%;
         padding-left: 15px;
         padding-top: 0;
-        border-left: 1px dotted lightgray;
+        border-left: 1px dotted rgb(210,210,210);
         padding-bottom:100px;
       }
 
@@ -187,7 +188,7 @@
       }
 
       #rightnav .nextprevious {
-        color: lightgray;
+        color: rgb(210,210,210);
       }
       #rightnav .nextprevious a {
         color: gray;
@@ -300,4 +301,11 @@ li.first {
 
 #content h2, h3 {
  text-transform: uppercase;
+}
+
+.message {
+  color:darkred;
+  background-color: lightyellow;
+  padding:1em;
+  border: 1px solid darkred;
 }

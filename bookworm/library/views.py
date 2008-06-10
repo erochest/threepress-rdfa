@@ -3,14 +3,16 @@ from google.appengine.api import memcache
 from google.appengine.ext import db
 
 import logging, sys
+from zipfile import BadZipfile
 
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import render_to_response
 from django.core.urlresolvers import reverse
 
-from models import EpubArchive, HTMLFile, UserPrefs, StylesheetFile, unsafe_name, get_system_info
+from models import EpubArchive, HTMLFile, UserPrefs, StylesheetFile, ImageFile, unsafe_name, get_system_info
 from forms import EpubValidateForm
 from epub import constants as epub_constants
+from epub import InvalidEpubException
 
 
 def index(request):
@@ -109,14 +111,21 @@ def _check_switch_modes(request):
     '''Did they switch viewing modes?'''
     common = _common(request, load_prefs=True)
     userprefs = common['prefs']
+    update_cache = False
 
     if request.GET.has_key('iframe'):
         userprefs.use_iframe = (request.GET['iframe'] == 'yes')
         userprefs.put()
+        update_cache = True
 
     if request.GET.has_key('iframe_note'):
         userprefs.show_iframe_note = (request.GET['iframe_note'] == 'yes')
         userprefs.put()
+        update_cache = True
+
+    if update_cache:
+        counter = get_system_info()
+        memcache.set('total_users', counter.total_users)
 
     return common
     
@@ -136,6 +145,21 @@ def view_chapter(request, title, author, chapter_id):
                                             'document':document,
                                             'toc':toc,
                                             'chapter':chapter})
+
+def view_chapter_image(request, title, author, chapter_id, image):
+    logging.info("Image request: looking up title %s, author %s, chapter %s, image %s" % (title, author, chapter_id, image))        
+    document = _get_document(title, author)
+    # Chapter is irrelevant
+    image = ImageFile.gql('WHERE archive = :parent AND idref = :idref',
+                          parent=document, idref=image).get()
+    response = HttpResponse(content_type=image.content_type)
+    if image.content_type == 'image/svg+xml':
+        response.content = image.file
+    else:
+        response.content = image.data
+
+    return response
+
 
 def view_chapter_frame(request, title, author, chapter_id):
     '''Generate an iframe to display the document online, possibly with its own stylesheets'''
@@ -202,6 +226,20 @@ def upload(request):
                 # Update the cache
                 memcache.set('total_books', sysinfo.total_books)
 
+            except BadZipfile:
+                logging.error('Non-zip archive uploaded: %s' % document_name)
+                message = 'The file you uploaded was not recognized as an ePub archive and could not be added to your library.'
+                document.delete()
+                return render_to_response('upload.html', {'common':common,
+                                                          'form':form, 
+                                                          'message':message})
+            except InvalidEpubException:
+                logging.error('Non epub zip file uploaded: %s' % document_name)
+                message = 'The file you uploaded was a valid zip file but did not appear to be an ePub archive.'
+                document.delete()
+                return render_to_response('upload.html', {'common':common,
+                                                          'form':form, 
+                                                          'message':message})                
             except:
                 # If we got any error, delete this document
                 logging.error('Got deadline exceeded error on request, deleting document')

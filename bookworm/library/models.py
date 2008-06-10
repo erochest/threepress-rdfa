@@ -6,8 +6,7 @@ from StringIO import StringIO
 import logging, datetime, sys
 from urllib import quote_plus, unquote_plus
 
-from epub import constants
-
+from epub import constants, InvalidEpubException
 
 # Functions
 def safe_name(name):
@@ -25,7 +24,7 @@ class EpubArchive(BookwormModel):
     _CONTAINER = constants.CONTAINER     
 
     _content_path = constants.CONTENT_PATH 
-    _archive = ''
+    _archive = None
 
     name = db.StringProperty(required=True)
     title = db.StringProperty()
@@ -36,16 +35,22 @@ class EpubArchive(BookwormModel):
     container = db.TextProperty()
     owner = db.UserProperty()
     has_stylesheets = db.BooleanProperty(default=False)
-
+    has_svg = db.BooleanProperty(default=False)
 
 
     def explode(self):
         '''Explodes an epub archive'''
         e = StringIO(self.content)
         z = ZipFile(e)
-        self._archive = z
+
         logging.info(z.namelist())
-        self.container = z.read(self._CONTAINER)
+        self._archive = z
+
+        try:
+            self.container = z.read(self._CONTAINER)
+        except KeyError:
+            raise InvalidEpubException()
+
         self.opf = z.read(self._get_opf())
 
         parsed_opf = ElementTree.fromstring(self.opf)
@@ -61,6 +66,7 @@ class EpubArchive(BookwormModel):
 
         self._get_content(parsed_opf, parsed_toc, items)
         self._get_stylesheets(items)
+        self._get_images(items)
 
     def _get_opf(self):
         '''Parse the container to get the name of the opf file'''
@@ -90,6 +96,46 @@ class EpubArchive(BookwormModel):
         logging.info('Got title as %s' % title)
         return title
 
+    def _get_images(self, items):
+        '''Images might be in a variety of formats, from JPEG to SVG.'''
+        images = []
+        for item in items:
+            if 'image' in item.get('media-type'):
+                
+                content = self._archive.read("%s/%s" % (self._content_path, item.get('href')))
+                data = {}
+                data['data'] = None
+                data['file'] = None
+
+                if item.get('media-type') == 'image/svg+xml':
+                    logging.info('Adding image as SVG text type')
+                    data['file'] = unicode(content, 'utf-8')
+                    self.has_svg = True
+
+                else:
+                    # This is a binary file, like a jpeg
+                    logging.info('Adding image as binary type')
+                    data['data'] = content
+
+                data['idref'] = item.get('href')
+                data['content_type'] = item.get('media-type')
+
+                images.append(data)
+
+                logging.info('adding image %s ' % item.get('href'))
+
+        db.run_in_transaction(self._create_images, images)                
+
+    def _create_images(self, images):
+        for i in images:
+            image = ImageFile(parent=self,
+                              idref=i['idref'],
+                              data=i['data'],
+                              file=i['file'],
+                              content_type=i['content_type'],
+                              archive=self)
+            image.put()            
+
     def _get_stylesheets(self, items):
         stylesheets = []
         for item in items:
@@ -101,10 +147,10 @@ class EpubArchive(BookwormModel):
 
                 logging.debug('adding stylesheet %s ' % item.get('href'))
                 self.has_stylesheets = True
-        db.run_in_transaction(self.create_stylesheets, stylesheets)
+        db.run_in_transaction(self._create_stylesheets, stylesheets)
 
 
-    def create_stylesheets(self, stylesheets):
+    def _create_stylesheets(self, stylesheets):
         for s in stylesheets:
             css = StylesheetFile(parent=self,
                                  idref=s['idref'],
@@ -163,14 +209,14 @@ class EpubArchive(BookwormModel):
                             'order':nav_map[href].order}
                     pages.append(page)
                     
-        db.run_in_transaction(self.create_pages, pages)
+        db.run_in_transaction(self._create_pages, pages)
 
 
-    def create_pages(self, pages):
+    def _create_pages(self, pages):
         for p in pages:
-            self.create_page(p['title'], p['idref'], p['file'], p['archive'], p['order'])
+            self._create_page(p['title'], p['idref'], p['file'], p['archive'], p['order'])
 
-    def create_page(self, title, idref, filename, archive, order):
+    def _create_page(self, title, idref, filename, archive, order):
         html = HTMLFile(parent=self, 
                         title=title, 
                         idref=idref,
@@ -213,12 +259,13 @@ class HTMLFile(BookwormFile):
     title = db.StringProperty()
     order = db.IntegerProperty()
     processed_content = db.TextProperty()
+    content_type = db.StringProperty(default="application/xhtml")
 
     def render(self):
         '''If we don't have any processed content, process it and cache the
         results in the datastore.'''
-        if self.processed_content:
-            return self.processed_content
+        #if self.processed_content:
+        #    return self.processed_content
 
         logging.info('Parsing body content for first display')
         xhtml = ElementTree.fromstring(self.file.encode('utf-8'))
@@ -235,16 +282,44 @@ class HTMLFile(BookwormFile):
         return body_content
 
     def _clean_xhtml(self, xhtml):
-        '''Should we defer this to when we display the chapter and then rewrite?'''
+        '''This is only run the first time the user requests the HTML file; the processed HTML is then cached'''
+        parent_map = dict((c, p) for p in xhtml.getiterator() for c in p)
+
         for element in xhtml.getiterator():
             element.tag = element.tag.replace('{%s}' % constants.NAMESPACES['html'], '')
+            # if we have SVG, then we need to re-write the image links that contain svg in order to
+            # make them work in most browsers
+            if element.tag == 'img' and 'svg' in element.get('src'):
+                logging.info('translating svg image %s' % element.get('src'))
+                try:
+                    p = parent_map[element]
+                    logging.info("Got parent %s " % (p.tag)) 
+
+                    e = ElementTree.fromstring("""
+<a class="svg" href="%s">[ View linked image in SVG format ]</a>
+""" % element.get('src'))
+                    p.remove(element)
+                    p.append(e)
+                    logging.info("Added subelement %s to %s " % (e.tag, p.tag)) 
+                except: 
+                    logging.error("ERROR:" + sys.exc_info())[0]
         return xhtml
+
+#<a href="img/butterfly_vector.svg">[<acronym>SVG</acronym> Image of a butterfly</a>] (Using the link to view the image requires a stand alone <acronym>SVG</acronym> viewer and your browser needs to be configured to use this player)
+#</object>
+
+
             
 
 
 class StylesheetFile(BookwormFile):
     '''A CSS stylesheet associated with a given book'''
-    pass
+    content_type = db.StringProperty(default="text/css")
+
+class ImageFile(BookwormFile):
+    '''An image file associated with a given book.  Mime-type will vary.'''
+    content_type = db.StringProperty()
+    data = db.BlobProperty()
 
 
 class SystemInfo(BookwormModel):

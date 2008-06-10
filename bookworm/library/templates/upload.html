@@ -20,6 +20,10 @@ li { padding-bottom: .5em; }
 
 <h2>Upload an epub document</h2>
 
+{% if message %}
+<p class="message"><strong>{{ message }}</strong></p>
+{% endif %}
+
 <p>
 Upload a DRM-free epub document to read it on this site.
 </p>

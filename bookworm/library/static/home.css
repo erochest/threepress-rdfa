@@ -10,7 +10,7 @@
 .status { 
   font-size: 12px;
   text-transform: uppercase;
-  border: 1px solid lightgray;
+  border: 1px solid rgb(210,210,210);
   color: gray;
   padding: 1em;
   margin-left: 0px;
@@ -32,7 +32,7 @@
   line-height:500px;
   margin-top:-200px;
   margin-bottom:-168px;
-  color: lightgray;
+  color: rgb(210,210,210);
 }
 */
 #worm_title {
@@ -64,7 +64,7 @@ padding-bottom:10px;
 #library li {
 }
 #library .title, #library .author {
-  font-size: x-large;
+  font-size: medium;
 }
 #library .author {
   padding-left: 5px;
@@ -77,10 +77,8 @@ padding-bottom:10px;
   clear:both;
 }
 
-#
-library td {
+#library td {
  border-bottom: 1px dotted gray;
- padding: 1em;
  padding: 1em;
 }
 

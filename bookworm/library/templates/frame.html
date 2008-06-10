@@ -13,10 +13,12 @@
        <link rel="stylesheet" href="/static/base.css"></link>
        <link rel="stylesheet" type="text/css" media="print" href="/static/print.css"></link>
     {% endif %}
+
+    <!-- Common document stylesheets -->
+    <link rel="stylesheet" href="/static/document.css"></link>
+
     <!-- Frame-specific stylesheets -->
-    <style type="text/css">
-      body { padding-right: 2em; }
-    </style>
+    <link rel="stylesheet" href="/static/frame.css"></link>
 
     {% block head %}{% endblock head %}
     <script type="text/javascript">
