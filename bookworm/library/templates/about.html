@@ -63,6 +63,20 @@ For more information about Threepress, please visit our <a href="http://www.thre
   <p>
     Bookworm software is free and available for download under the terms of the BSD license from the <a href="http://www.threepress.org/download/">download page</a>. It is a product of <a href="http://www.threepress.org/">threepress</a>, a venue for experimenting with open source publishing software, and is written by <a href="http://www.threepress.org/about/liza/">Liza Daly</a>.  Any problems with Bookworm can be reported to <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>. (Feature requests welcome too!)
   </p>
+
+  <h2>Why do I receive a "Connection Closed" error when uploading a book?</h2>
+  <p>
+    Bookworm is build on <a href="http://appengine.google.com/">Google App Engine</a>, a new platform for hosting
+    web applications that are built to scale to millions of users.  App Engine is still in an early beta release and Google
+    has placed some restrictions on the number and size of files added to it.  Unfortunately this means that books
+    greater than <strong>1 megabyte</strong> in size cannot be added to your library.  
+  </p>
+  <p>
+    If you have the ability to author ePub files, try removing any large media such as images before uploading.  Even very 
+    long e-books will be quite small in byte size if they are compressed at the maximum level and do not have
+    many attached media files.
+  </p>
+
 </div>
 
 {% endblock %}

@@ -63,6 +63,7 @@
 {% endif %}
 
 <h3 style="padding-top:2em;">Upload {% if documents.count %} a new {% else %} your first {% endif %} book</h3>
+<p style="font-size:smaller">(E-books must be less than 1 megabyte in size due to Google restrictions.)</p>
 <form action="{% url library.views.upload d%}" method="post" enctype="multipart/form-data">
   <div id="upload_form">
     {{ common.upload_form.as_p }}

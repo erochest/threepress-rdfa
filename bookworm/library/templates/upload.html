@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 
-{% block title %}Upload an epub document{% endblock title %}
+{% block title %}Add a book{% endblock title %}
 
 {% block head %}
 <style type="text/css">
@@ -13,19 +13,28 @@ li { padding-bottom: .5em; }
 </style>
 {% endblock head %}
 
-{% block header %}Upload an epub document{% endblock %}
+{% block leftnav %}
+<p class="status">Because of restrictions in Google's application environment any e-book must be <strong>less than 1 megabyte</strong> in size.</p>
 
+<p style="font-size:smaller">If you receive a message saying, "Connection closed" or the upload returns an error, check the size of the ePub file.  
+If it is still under 1M in size, please email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> with
+a description of the problem (and if possible, please attach the ePub file).
+</p>
+
+{% endblock %}
 
 {% block main %}
 
-<h2>Upload an epub document</h2>
+<h2>Add a book</h2>
 
 {% if message %}
 <p class="message"><strong>{{ message }}</strong></p>
 {% endif %}
 
 <p>
-Upload a DRM-free epub document to read it on this site.
+Upload a DRM-free ePub book to read it on this site.
+</p>
+
 </p>
   
 <form action="{% url library.views.upload d%}" method="post" enctype="multipart/form-data">
