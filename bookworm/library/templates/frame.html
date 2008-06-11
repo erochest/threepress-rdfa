@@ -30,7 +30,7 @@
       pageTracker._initData();
       pageTracker._trackPageview();
     </script>
-    <base href="http://bookworm.threepress.org/" target="_top" />
+    <base href="{% url library.views.view_chapter document.safe_title,document.safe_author,chapter.idref %} " target="_top" />
   </head>
   <body>
 

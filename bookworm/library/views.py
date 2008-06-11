@@ -174,6 +174,7 @@ def view_chapter_frame(request, title, author, chapter_id):
 
 def view_stylesheet(request, title, author, stylesheet_id):
     document = _get_document(title, author)
+    logging.info('getting stylesheet %s' % stylesheet_id)
     stylesheet = StylesheetFile.gql('WHERE archive = :parent AND idref = :idref',
                                     parent=document,
                                     idref=stylesheet_id).get()
@@ -194,6 +195,7 @@ def _get_document(title, author):
                                author=unsafe_name(author)
                                ).get()
     if not document:
+        logging.error('Failed to get document with %s as the title (type %s)' % (unsafe_name(title), type(unsafe_name(title))))
         raise Http404 
         
     return document

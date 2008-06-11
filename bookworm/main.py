@@ -1,5 +1,7 @@
 import logging, os, sys
 
+logging.basicConfig(level=logging.DEBUG)
+
 # Google App Engine imports.
 from google.appengine.ext.webapp import util
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from google.appengine.ext import db
 
 from xml.etree import ElementTree
@@ -6,14 +7,21 @@ from StringIO import StringIO
 import logging, datetime, sys
 from urllib import quote_plus, unquote_plus
 
+from django.utils.encoding import iri_to_uri
+from django.utils.http import urlquote, urlquote_plus
+
 from epub import constants, InvalidEpubException
+logging.basicConfig(level=logging.DEBUG)
 
 # Functions
 def safe_name(name):
-    return quote_plus(name)
+    #quote = quote_plus(name.encode('utf-8'))
+    quote = urlquote_plus(name.encode('utf-8'))
+    return quote
 
 def unsafe_name(name):
-    return unquote_plus(name)
+    unquote = unquote_plus(name.encode('utf8'))
+    return unicode(unquote, 'utf-8')
 
 class BookwormModel(db.Model):
     created_time = db.DateTimeProperty(default=datetime.datetime.now())
@@ -51,9 +59,9 @@ class EpubArchive(BookwormModel):
         except KeyError:
             raise InvalidEpubException()
 
-        self.opf = z.read(self._get_opf())
+        self.opf = unicode(z.read(self._get_opf()), 'utf-8')
 
-        parsed_opf = ElementTree.fromstring(self.opf)
+        parsed_opf = ElementTree.fromstring(self.opf.encode('utf-8'))
 
         items = parsed_opf.getiterator("{%s}item" % (constants.NAMESPACES['opf']))
 
@@ -72,9 +80,15 @@ class EpubArchive(BookwormModel):
         '''Parse the container to get the name of the opf file'''
         xml = ElementTree.fromstring(self.container)
         opf_filename = xml.find('.//{%s}rootfile' % constants.NAMESPACES['container']).get('full-path')
-        path = opf_filename.split('/')[0] # fixme, use basename
-        self._content_path = path
-        logging.debug("Got opf filename as %s" % opf_filename)
+        paths = opf_filename.split('/')
+        if len(paths) == 1:
+            # We have no extra path info; this document's content is at the root
+            self._content_path = ''
+        else:
+            self._content_path = paths[0] + '/'
+
+        logging.info('Got content path as %s' % self._content_path)
+        logging.info("Got opf filename as %s" % opf_filename)
         return opf_filename
  
     def _get_toc(self, items):
@@ -83,17 +97,17 @@ class EpubArchive(BookwormModel):
             if item.get('id') == 'ncx':
                 toc_filename = item.get('href').strip()
                 logging.debug('Got toc filename as %s' % toc_filename)
-                return "%s/%s" % (self._content_path, toc_filename)
+                return "%s%s" % (self._content_path, toc_filename)
         raise Exception("Could not find toc filename")
 
     def _get_author(self, xml):
         author = xml.findtext('.//{%s}creator' % constants.NAMESPACES['dc']).strip()
-        logging.info('Got author as %s' % author)
+        logging.info('Got author as %s with type %s' % (author, type(author)))
         return author
 
     def _get_title(self, xml):
         title = xml.findtext('.//{%s}title' % constants.NAMESPACES['dc']).strip()
-        logging.info('Got title as %s' % title)
+        logging.info('Got title as %s with type %s' % (title, type(title) ))
         return title
 
     def _get_images(self, items):
@@ -102,7 +116,7 @@ class EpubArchive(BookwormModel):
         for item in items:
             if 'image' in item.get('media-type'):
                 
-                content = self._archive.read("%s/%s" % (self._content_path, item.get('href')))
+                content = self._archive.read("%s%s" % (self._content_path, item.get('href')))
                 data = {}
                 data['data'] = None
                 data['file'] = None
@@ -140,7 +154,7 @@ class EpubArchive(BookwormModel):
         stylesheets = []
         for item in items:
             if item.get('media-type') == constants.STYLESHEET_MIMETYPE:
-                content = self._archive.read("%s/%s" % (self._content_path, item.get('href')))
+                content = self._archive.read("%s%s" % (self._content_path, item.get('href')))
                 stylesheets.append({'idref':item.get('href'),
                                     'file':unicode(content, 'utf-8')})
 
@@ -160,7 +174,10 @@ class EpubArchive(BookwormModel):
     def _get_content(self, opf, toc, items):
         # Get all the item references from the <spine>
         refs = opf.getiterator('{%s}itemref' % (constants.NAMESPACES['opf']) )
-        navs = toc.getiterator('{%s}navPoint' % (constants.NAMESPACES['ncx']))
+        navs = [n for n in toc.getiterator('{%s}navPoint' % (constants.NAMESPACES['ncx']))]
+        navs2 = [n for n in toc.getiterator('{%s}navTarget' % (constants.NAMESPACES['ncx']))]
+        navs = navs + navs2
+
         nav_map = {}
         item_map = {}
         
@@ -174,7 +191,7 @@ class EpubArchive(BookwormModel):
                 logging.debug('Book has depth of %d' % depth)
         
         for item in items:
-             item_map[item.get('id')] = item.get('href')
+            item_map[item.get('id')] = item.get('href')
              
         for nav in navs:
             href = nav.find('.//{%s}content' % (constants.NAMESPACES['ncx'])).get('src')
@@ -197,7 +214,7 @@ class EpubArchive(BookwormModel):
                 logging.info("checking href %s" % href)
                 if nav_map.has_key(href):
                     logging.info('Adding navmap item %s' % nav_map[href])
-                    filename = '%s/%s' % (self._content_path, href)
+                    filename = '%s%s' % (self._content_path, href)
                     content = self._archive.read(filename)
                     
                     # We store the raw XHTML and will process it for display on request
@@ -218,7 +235,7 @@ class EpubArchive(BookwormModel):
 
     def _create_page(self, title, idref, filename, archive, order):
         html = HTMLFile(parent=self, 
-                        title=title, 
+                        title=title.encode('utf-8'), 
                         idref=idref,
                         file=filename,
                         archive=archive,

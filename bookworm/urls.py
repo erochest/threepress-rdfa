@@ -7,7 +7,7 @@ urlpatterns = patterns('',
 
                        (r'^chapter/(?P<title>.+)/(?P<author>.+)/(?P<chapter_id>.+)/$', 'library.views.view_chapter_frame'),                       
                        # Images from within documents
-                       (r'^view/(?P<title>[^/]+)/(?P<author>[^/]+)/(?P<chapter_id>[^/]+)/(?P<image>.*\..*)$', 
+                       (r'^(view|chapter)/(?P<title>[^/]+)/(?P<author>[^/]+)/(?P<chapter_id>[^/]+)/(?P<image>.*\..*)$', 
                         'library.views.view_chapter_image'),                       
                        
                        (r'^view/(?P<title>.+)/(?P<author>.+)/(?P<chapter_id>.+)/$', 'library.views.view_chapter'),                       
@@ -15,8 +15,7 @@ urlpatterns = patterns('',
 
                        (r'^view/(?P<title>.+)/(?P<author>[^/]+)/$', 'library.views.view'),
 
-                       (r'^css/(?P<title>.+)/(?P<author>.+)/(?P<stylesheet_id>.+)/$', 'library.views.view_stylesheet'),                       
-
+                       (r'^css/(?P<title>[^/]+)/(?P<author>[^/]+)/(?P<stylesheet_id>.+)/$', 'library.views.view_stylesheet'),                       
                        (r'^delete/(?P<title>.+)/(?P<author>[^/]+)/$', 'library.views.delete'),
 
                        (r'^download/epub/(?P<title>.+)/(?P<author>[^/]+)/$', 'library.views.download_epub'),
