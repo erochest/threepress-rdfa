@@ -5,21 +5,21 @@ from xml.etree import ElementTree
 from zipfile import ZipFile
 from StringIO import StringIO
 import logging, datetime, sys
-from urllib import quote_plus, unquote_plus
+from urllib import unquote_plus
 
-from django.utils.encoding import iri_to_uri
-from django.utils.http import urlquote, urlquote_plus
+from django.utils.http import urlquote_plus
 
 from epub import constants, InvalidEpubException
-logging.basicConfig(level=logging.DEBUG)
 
 # Functions
 def safe_name(name):
-    #quote = quote_plus(name.encode('utf-8'))
+    '''Return a name that can be used safely in a URL'''
     quote = urlquote_plus(name.encode('utf-8'))
     return quote
 
 def unsafe_name(name):
+    '''Convert from a URL-formatted name to something that will match
+    in the datastore'''
     unquote = unquote_plus(name.encode('utf8'))
     return unicode(unquote, 'utf-8')
 
@@ -65,7 +65,7 @@ class EpubArchive(BookwormModel):
 
         items = parsed_opf.getiterator("{%s}item" % (constants.NAMESPACES['opf']))
 
-        self.toc = unicode(z.read(self._get_toc(items)), 'utf-8')
+        self.toc = unicode(z.read(self._get_toc(parsed_opf, items)), 'utf-8')
 
         parsed_toc = ElementTree.fromstring(self.toc.encode('utf-8'))
 
@@ -91,10 +91,14 @@ class EpubArchive(BookwormModel):
         logging.info("Got opf filename as %s" % opf_filename)
         return opf_filename
  
-    def _get_toc(self, items):
-        '''Parse the opf file to get the name of the TOC'''
+    def _get_toc(self, opf, items):
+        '''Parse the opf file to get the name of the TOC
+        (From OPF spec: The spine element must include the toc attribute, 
+        whose value is the the id attribute value of the required NCX document 
+        declared in manifest)'''
+        tocid = opf.find('.//{%s}spine' % constants.NAMESPACES['opf']).get('toc')
         for item in items:
-            if item.get('id') == 'ncx':
+            if item.get('id') == tocid:
                 toc_filename = item.get('href').strip()
                 logging.debug('Got toc filename as %s' % toc_filename)
                 return "%s%s" % (self._content_path, toc_filename)
@@ -122,13 +126,13 @@ class EpubArchive(BookwormModel):
                 data['file'] = None
 
                 if item.get('media-type') == 'image/svg+xml':
-                    logging.info('Adding image as SVG text type')
+                    logging.debug('Adding image as SVG text type')
                     data['file'] = unicode(content, 'utf-8')
                     self.has_svg = True
 
                 else:
                     # This is a binary file, like a jpeg
-                    logging.info('Adding image as binary type')
+                    logging.debug('Adding image as binary type')
                     data['data'] = content
 
                 data['idref'] = item.get('href')
@@ -234,8 +238,7 @@ class EpubArchive(BookwormModel):
             self._create_page(p['title'], p['idref'], p['file'], p['archive'], p['order'])
 
     def _create_page(self, title, idref, file, archive, order):
-        logging.info('Creating %s %s %s %s %s %s' % (title, type(title), idref, archive, order, type(file)))
-
+        '''Create an HTML page and associate it with the archive'''
         html = HTMLFile(parent=self, 
                         title=title, 
                         idref=unicode(idref, 'utf-8'),
@@ -283,9 +286,9 @@ class HTMLFile(BookwormFile):
     def render(self):
         '''If we don't have any processed content, process it and cache the
         results in the datastore.'''
-        #if self.processed_content:
-        #    return self.processed_content
-
+        if self.processed_content:
+            return self.processed_content
+        
         logging.info('Parsing body content for first display')
         f = self.file.encode('utf-8')
 
@@ -311,7 +314,6 @@ class HTMLFile(BookwormFile):
         for element in xhtml.getiterator():
             element.tag = element.tag.replace('{%s}' % constants.NAMESPACES['html'], '')
 
-
             # if we have SVG, then we need to re-write the image links that contain svg in order to
             # make them work in most browsers
             if element.tag == 'img' and 'svg' in element.get('src'):
@@ -330,12 +332,6 @@ class HTMLFile(BookwormFile):
                     logging.error("ERROR:" + sys.exc_info())[0]
         return xhtml
 
-#<a href="img/butterfly_vector.svg">[<acronym>SVG</acronym> Image of a butterfly</a>] (Using the link to view the image requires a stand alone <acronym>SVG</acronym> viewer and your browser needs to be configured to use this player)
-#</object>
-
-
-            
-
 
 class StylesheetFile(BookwormFile):
     '''A CSS stylesheet associated with a given book'''
@@ -345,7 +341,6 @@ class ImageFile(BookwormFile):
     '''An image file associated with a given book.  Mime-type will vary.'''
     content_type = db.StringProperty()
     data = db.BlobProperty()
-
 
 class SystemInfo(BookwormModel):
     '''Random information about the status of the whole library'''
