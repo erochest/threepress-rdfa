@@ -56,13 +56,15 @@ def _delete_document(document):
     # Delete the chapters of the book
     toc = HTMLFile.gql('WHERE archive = :parent', 
                    parent=document).fetch(100)
-    db.delete(toc)
+    if toc:
+        db.delete(toc)
 
     # Delete all the stylesheets in the book
     css = StylesheetFile.gql('WHERE archive = :parent', 
                              parent=document).fetch(100)
 
-    db.delete(css)
+    if css:
+        db.delete(css)
 
     # Delete the book itself, along with our counter
     document.delete()

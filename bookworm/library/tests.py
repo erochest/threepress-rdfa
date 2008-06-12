@@ -21,7 +21,7 @@ AUTH_DOMAIN = 'gmail.com'
 LOGGED_IN_USER = 'test@example.com'
 
 # Data for public epub documents
-DATA_DIR = 'tests/data'
+DATA_DIR = '/home/liza/threepress/bookworm-tests/data'
 
 # Local documents should be added here and will be included in tests,
 # but not in the svn repository

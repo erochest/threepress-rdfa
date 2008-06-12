@@ -51,7 +51,7 @@ class EpubArchive(BookwormModel):
         e = StringIO(self.content)
         z = ZipFile(e)
 
-        logging.info(z.namelist())
+        logging.debug(z.namelist())
         self._archive = z
 
         try:
@@ -106,12 +106,12 @@ class EpubArchive(BookwormModel):
 
     def _get_author(self, xml):
         author = xml.findtext('.//{%s}creator' % constants.NAMESPACES['dc']).strip()
-        logging.info('Got author as %s with type %s' % (author, type(author)))
+        logging.info('Got author as %s' % (author))
         return author
 
     def _get_title(self, xml):
         title = xml.findtext('.//{%s}title' % constants.NAMESPACES['dc']).strip()
-        logging.info('Got title as %s with type %s' % (title, type(title) ))
+        logging.info('Got title as %s' % (title))
         return title
 
     def _get_images(self, items):
@@ -140,7 +140,7 @@ class EpubArchive(BookwormModel):
 
                 images.append(data)
 
-                logging.info('adding image %s ' % item.get('href'))
+                logging.debug('adding image %s ' % item.get('href'))
 
         db.run_in_transaction(self._create_images, images)                
 
@@ -205,7 +205,7 @@ class EpubArchive(BookwormModel):
                 pass
                 # Skip this item so we don't overwrite with a new navpoint
             else:
-                logging.info('adding filename %s to navmap' % filename)
+                logging.debug('adding filename %s to navmap' % filename)
                 order = int(nav.get('playOrder')) 
                 title = nav.findtext('.//{%s}text' % (constants.NAMESPACES['ncx'])).strip()
                 nav_map[filename] = NavPoint(title, href, order, depth=depth)
@@ -215,9 +215,9 @@ class EpubArchive(BookwormModel):
             idref = ref.get('idref')
             if item_map.has_key(idref):
                 href = item_map[idref]
-                logging.info("checking href %s" % href)
+                logging.debug("checking href %s" % href)
                 if nav_map.has_key(href):
-                    logging.info('Adding navmap item %s' % nav_map[href])
+                    logging.debug('Adding navmap item %s' % nav_map[href])
                     filename = '%s%s' % (self._content_path, href)
                     content = self._archive.read(filename)
                     
@@ -289,7 +289,7 @@ class HTMLFile(BookwormFile):
         if self.processed_content:
             return self.processed_content
         
-        logging.info('Parsing body content for first display')
+        logging.debug('Parsing body content for first display')
         f = self.file.encode('utf-8')
 
         # Replace some common XHTML entities
@@ -317,17 +317,17 @@ class HTMLFile(BookwormFile):
             # if we have SVG, then we need to re-write the image links that contain svg in order to
             # make them work in most browsers
             if element.tag == 'img' and 'svg' in element.get('src'):
-                logging.info('translating svg image %s' % element.get('src'))
+                logging.debug('translating svg image %s' % element.get('src'))
                 try:
                     p = parent_map[element]
-                    logging.info("Got parent %s " % (p.tag)) 
+                    logging.debug("Got parent %s " % (p.tag)) 
 
                     e = ElementTree.fromstring("""
 <a class="svg" href="%s">[ View linked image in SVG format ]</a>
 """ % element.get('src'))
                     p.remove(element)
                     p.append(e)
-                    logging.info("Added subelement %s to %s " % (e.tag, p.tag)) 
+                    logging.debug("Added subelement %s to %s " % (e.tag, p.tag)) 
                 except: 
                     logging.error("ERROR:" + sys.exc_info())[0]
         return xhtml
