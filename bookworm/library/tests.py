@@ -75,7 +75,7 @@ class TestSearch(unittest.TestCase):
             doc = self.create_document(d)
             doc.explode()
 
-    def testGetOpf(self):
+    def testGetTitle(self):
         title = 'Pride and Prejudice'
         filename = 'Pride-and-Prejudice_Jane-Austen.epub'
         document = self.create_document(filename)
