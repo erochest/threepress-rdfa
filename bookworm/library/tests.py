@@ -1,5 +1,5 @@
 import sys, os, time
-from os.path import isfile
+from os.path import isfile, isdir
 sys.path.append('/usr/local/google_appengine')
 sys.path.append('/usr/local/google_appengine/lib/yaml/lib')
 
@@ -30,34 +30,35 @@ PRIVATE_DATA_DIR = '%s/private' % DATA_DIR
 class TestSearch(unittest.TestCase):
 
     def setUp(self):
-       # Ensure we're in UTC.
-       os.environ['TZ'] = 'UTC'
-       time.tzset()
+        # Ensure we're in UTC.
+        os.environ['TZ'] = 'UTC'
+        time.tzset()
+        
+        # Start with a fresh api proxy.
+        apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
+        
+        # Use a fresh stub datastore.
+        stub = datastore_file_stub.DatastoreFileStub(APP_ID, '/dev/null', '/dev/null')
+        apiproxy_stub_map.apiproxy.RegisterStub('datastore_v3', stub)
 
-       # Start with a fresh api proxy.
-       apiproxy_stub_map.apiproxy = apiproxy_stub_map.APIProxyStubMap()
+        # Use a fresh stub UserService.
+        apiproxy_stub_map.apiproxy.RegisterStub(
+            'user', user_service_stub.UserServiceStub())
+        os.environ['AUTH_DOMAIN'] = AUTH_DOMAIN
+        os.environ['USER_EMAIL'] = LOGGED_IN_USER
+        
+        # Use a fresh urlfetch stub.
+        apiproxy_stub_map.apiproxy.RegisterStub(
+            'urlfetch', urlfetch_stub.URLFetchServiceStub())
+        
+        # Use a fresh mail stub.
+        apiproxy_stub_map.apiproxy.RegisterStub('mail', mail_stub.MailServiceStub())
 
-       # Use a fresh stub datastore.
-       stub = datastore_file_stub.DatastoreFileStub(APP_ID, '/dev/null', '/dev/null')
-       apiproxy_stub_map.apiproxy.RegisterStub('datastore_v3', stub)
+        # Add all our test data
+        self.documents = [d for d in os.listdir(DATA_DIR) if isfile('%s/%s' % (DATA_DIR, d))]
 
-       # Use a fresh stub UserService.
-       apiproxy_stub_map.apiproxy.RegisterStub(
-         'user', user_service_stub.UserServiceStub())
-       os.environ['AUTH_DOMAIN'] = AUTH_DOMAIN
-       os.environ['USER_EMAIL'] = LOGGED_IN_USER
-
-       # Use a fresh urlfetch stub.
-       apiproxy_stub_map.apiproxy.RegisterStub(
-         'urlfetch', urlfetch_stub.URLFetchServiceStub())
-
-       # Use a fresh mail stub.
-       apiproxy_stub_map.apiproxy.RegisterStub(
-         'mail', mail_stub.MailServiceStub())
-
-       # Add all our test data
-       self.documents = [d for d in os.listdir(DATA_DIR) if isfile('%s/%s' % (DATA_DIR, d))] + \
-           [d for d in os.listdir(PRIVATE_DATA_DIR) if isfile('%s/%s' % (PRIVATE_DATA_DIR, d))] 
+        if isdir(PRIVATE_DATA_DIR):
+            self.documents += [d for d in os.listdir(PRIVATE_DATA_DIR) if isfile('%s/%s' % (PRIVATE_DATA_DIR, d))] 
        
     def testTest(self):
         b = HTMLFile(idref='test')
