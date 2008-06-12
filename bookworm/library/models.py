@@ -221,7 +221,7 @@ class EpubArchive(BookwormModel):
                     # later
                     page = {'title': nav_map[href].title,
                             'idref':idref,
-                            'file':unicode(content, 'utf-8'),
+                            'file':content,
                             'archive':self,
                             'order':nav_map[href].order}
                     pages.append(page)
@@ -233,11 +233,13 @@ class EpubArchive(BookwormModel):
         for p in pages:
             self._create_page(p['title'], p['idref'], p['file'], p['archive'], p['order'])
 
-    def _create_page(self, title, idref, filename, archive, order):
+    def _create_page(self, title, idref, file, archive, order):
+        logging.info('Creating %s %s %s %s %s %s' % (title, type(title), idref, archive, order, type(file)))
+
         html = HTMLFile(parent=self, 
-                        title=title.encode('utf-8'), 
-                        idref=idref,
-                        file=filename,
+                        title=title, 
+                        idref=unicode(idref, 'utf-8'),
+                        file=unicode(file, 'utf-8'),
                         archive=archive,
                         order=order)
         html.put()
@@ -285,7 +287,11 @@ class HTMLFile(BookwormFile):
         #    return self.processed_content
 
         logging.info('Parsing body content for first display')
-        xhtml = ElementTree.fromstring(self.file.encode('utf-8'))
+        f = self.file.encode('utf-8')
+
+        # Replace some common XHTML entities
+        f = f.replace('&nbsp;', '&#160;')
+        xhtml = ElementTree.fromstring(f)
         body = xhtml.getiterator('{%s}body' % constants.NAMESPACES['html'])[0]
         body = self._clean_xhtml(body)
         body_content = ElementTree.tostring(body, 'utf-8')
@@ -304,6 +310,8 @@ class HTMLFile(BookwormFile):
 
         for element in xhtml.getiterator():
             element.tag = element.tag.replace('{%s}' % constants.NAMESPACES['html'], '')
+
+
             # if we have SVG, then we need to re-write the image links that contain svg in order to
             # make them work in most browsers
             if element.tag == 'img' and 'svg' in element.get('src'):
