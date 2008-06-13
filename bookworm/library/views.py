@@ -244,7 +244,14 @@ def _delete_document(document):
     if css:
         db.delete(css)
 
-    # Delete the book itself, along with our counter
+    # Delete all the images in the book
+    images = ImageFile.gql('WHERE archive = :parent', 
+                             parent=document).fetch(100)
+
+    if images:
+        db.delete(images)
+
+    # Delete the book itself, and decrement our counter
     document.delete()
     sysinfo = get_system_info()
     sysinfo.total_books -= 1
@@ -266,7 +273,7 @@ def _get_document(title, author, override_owner=False):
                                    ).get()    
     else:
         document = EpubArchive.gql('WHERE title = :title AND authors = :authors',
-                                   owner=owner,
+                                   authors=author,
                                    title=title,
                                    ).get()            
     if not document:
@@ -284,12 +291,16 @@ def _get_document(title, author, override_owner=False):
 def _greeting():
     user = users.get_current_user()
     if user:
-        return ('Signed in as %s: <a href="%s">logout</a> | <a href="%s">edit profile</a>' % 
+        text = ('Signed in as %s: <a href="%s">logout</a> | <a href="%s">edit profile</a>' % 
                 (user.nickname(), 
                  users.create_logout_url("/"),
                  reverse('library.views.profile')
                  )
                 )
+        if users.is_current_user_admin():
+            text += ' | <a href="%s">admin</a> ' % reverse('library.admin.search')
+        return text
+
     return ("<a href=\"%s\">Sign in or register</a>." % users.create_login_url("/"))
 
 

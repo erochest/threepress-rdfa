@@ -29,10 +29,13 @@
 
 {% block leftnav %}
 
+{% if document.authors %}
+<h2 class="authors">by 
 {% for a in document.authors %}
-  {{ a }}
+  {{ a }}{% if not forloop.last %}, {% endif %}
 {% endfor %}
-
+</h2>
+{% endif %}
 
 <ol class="nav">
   <li class="first">
@@ -97,10 +100,10 @@
  <!-- Title page -->
 
    <h1 class="book_title">{{ document.title }}</h1>
-   <h2 class="book_author">{{ document.author }}</h2>
+   <h2 class="book_author">{% for a in document.authors %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}</h2>
 
    <p>
-     To read this book online, select any of the chapters to the left.
+     To read this book online, select any of the sections to the left.
    </p>
 
    <table class="meta">
