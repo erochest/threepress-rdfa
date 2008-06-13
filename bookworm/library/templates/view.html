@@ -24,10 +24,16 @@
 {% endblock head %}
 
 {% block header %}
-<a href="{% url library.views.view document.safe_title,document.safe_author %}"><span class="title">{{ document.title }}</span> <span class="by">by</span> <span class="author">{{ document.author }}</span></a>
+<a href="{% url library.views.view document.safe_title,document.safe_author %}"><span class="title">{{ document.title }}</span></a> 
 {% endblock header %}
 
 {% block leftnav %}
+
+{% for a in document.authors %}
+  {{ a }}
+{% endfor %}
+
+
 <ol class="nav">
   <li class="first">
   {% if chapter %}
@@ -109,7 +115,7 @@
          <td>{{ document.created_time|date:"l, F Y" }}</td>
        </tr>
        <tr>
-         <th>Number of chapters</th>
+         <th>Number of sections</th>
          <td>{{ toc|length }}</td>
        </tr>
        <tr>

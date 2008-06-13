@@ -191,17 +191,32 @@ def download_epub(request, title, author):
     response['Content-Disposition'] = 'attachment; filename=%s' % document.name
     return response
 
-def _get_document(title, author):
-    document = EpubArchive.gql('WHERE title = :title AND author = :author AND owner = :owner',
-                               owner=users.get_current_user(),
-                               title=unsafe_name(title), 
-                               author=unsafe_name(author)
-                               ).get()
+def _get_document(title, author, override_owner=False):
+    owner = users.get_current_user()
+    title=unsafe_name(title)
+    author=unsafe_name(author)
+
+    if override_owner:
+        document = EpubArchive.gql('WHERE title = :title AND authors = :authors AND owner = :owner',
+                                   owner=owner,
+                                   title=title,
+                                   authors=author,
+                                   ).get()    
+    else:
+        document = EpubArchive.gql('WHERE title = :title AND authors = :authors',
+                                   owner=owner,
+                                   title=title,
+                                   ).get()            
     if not document:
-        logging.error('Failed to get document with %s as the title (type %s)' % (unsafe_name(title), type(unsafe_name(title))))
+        logging.error("Failed to get document with title '%s'  (type %s) and author '%s' (type %s)" 
+                      % (unsafe_name(title), 
+                         type(unsafe_name(title)), 
+                         unsafe_name(author), 
+                         type(unsafe_name(author))))
         raise Http404 
         
     return document
+
 
 def upload(request):
     '''Uploads a new document and stores it in the datastore'''
@@ -254,9 +269,6 @@ def upload(request):
             
             logging.info("Successfully added %s" % document.title)
             return HttpResponseRedirect('/')
-            #return render_to_response('upload_success.html', 
-            #                          {'common':common,
-            #                           'document':document})
 
         return HttpResponseRedirect('/')
 
