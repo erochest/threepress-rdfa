@@ -28,8 +28,6 @@ urlpatterns = patterns('',
 
                        (r'^about/$', 'library.views.about'),
 
-
-
-                       
+                       (r'^admin/search/$', 'library.admin.search'),
                        )
 

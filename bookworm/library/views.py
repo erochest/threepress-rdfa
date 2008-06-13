@@ -52,27 +52,6 @@ def about(request):
     return render_to_response('about.html', {'common': common})
     
 
-def _delete_document(document):
-    # Delete the chapters of the book
-    toc = HTMLFile.gql('WHERE archive = :parent', 
-                   parent=document).fetch(100)
-    if toc:
-        db.delete(toc)
-
-    # Delete all the stylesheets in the book
-    css = StylesheetFile.gql('WHERE archive = :parent', 
-                             parent=document).fetch(100)
-
-    if css:
-        db.delete(css)
-
-    # Delete the book itself, along with our counter
-    document.delete()
-    sysinfo = get_system_info()
-    sysinfo.total_books -= 1
-    sysinfo.put() 
-    memcache.set('total_books', sysinfo.total_books)
-
 def delete(request, title, author):
     '''Delete a book and associated metadata, and decrement our total books counter'''
 
@@ -82,10 +61,6 @@ def delete(request, title, author):
     _delete_document(document)
 
     return HttpResponseRedirect('/')
-
-def redirect_test(request):
-    logging.info('Redirecting')
-    return HttpResponseRedirect('/')    
 
 def profile_delete(request):
     
@@ -151,7 +126,8 @@ def view_chapter(request, title, author, chapter_id):
 def view_chapter_image(request, title, author, chapter_id, image):
     logging.info("Image request: looking up title %s, author %s, chapter %s, image %s" % (title, author, chapter_id, image))        
     document = _get_document(title, author)
-    # Chapter is irrelevant
+    # Chapter is irrelevant but ends up in the request because the 
+    # document's links are relative
     image = ImageFile.gql('WHERE archive = :parent AND idref = :idref',
                           parent=document, idref=image).get()
     response = HttpResponse(content_type=image.content_type)
@@ -190,33 +166,6 @@ def download_epub(request, title, author):
     response = HttpResponse(content=document.content, content_type=epub_constants.MIMETYPE)
     response['Content-Disposition'] = 'attachment; filename=%s' % document.name
     return response
-
-def _get_document(title, author, override_owner=False):
-    owner = users.get_current_user()
-    title=unsafe_name(title)
-    author=unsafe_name(author)
-
-    if override_owner:
-        document = EpubArchive.gql('WHERE title = :title AND authors = :authors AND owner = :owner',
-                                   owner=owner,
-                                   title=title,
-                                   authors=author,
-                                   ).get()    
-    else:
-        document = EpubArchive.gql('WHERE title = :title AND authors = :authors',
-                                   owner=owner,
-                                   title=title,
-                                   ).get()            
-    if not document:
-        logging.error("Failed to get document with title '%s'  (type %s) and author '%s' (type %s)" 
-                      % (unsafe_name(title), 
-                         type(unsafe_name(title)), 
-                         unsafe_name(author), 
-                         type(unsafe_name(author))))
-        raise Http404 
-        
-    return document
-
 
 def upload(request):
     '''Uploads a new document and stores it in the datastore'''
@@ -281,6 +230,56 @@ def upload(request):
 
 
 
+def _delete_document(document):
+    # Delete the chapters of the book
+    toc = HTMLFile.gql('WHERE archive = :parent', 
+                   parent=document).fetch(100)
+    if toc:
+        db.delete(toc)
+
+    # Delete all the stylesheets in the book
+    css = StylesheetFile.gql('WHERE archive = :parent', 
+                             parent=document).fetch(100)
+
+    if css:
+        db.delete(css)
+
+    # Delete the book itself, along with our counter
+    document.delete()
+    sysinfo = get_system_info()
+    sysinfo.total_books -= 1
+    sysinfo.put() 
+    memcache.set('total_books', sysinfo.total_books)
+
+def _get_document(title, author, override_owner=False):
+    '''Return a document by title, author and owner.  Setting override_owner
+    will search regardless of ownership, for use with admin accounts.'''
+    owner = users.get_current_user()
+    title=unsafe_name(title)
+    author=unsafe_name(author)
+
+    if override_owner:
+        document = EpubArchive.gql('WHERE title = :title AND authors = :authors AND owner = :owner',
+                                   owner=owner,
+                                   title=title,
+                                   authors=author,
+                                   ).get()    
+    else:
+        document = EpubArchive.gql('WHERE title = :title AND authors = :authors',
+                                   owner=owner,
+                                   title=title,
+                                   ).get()            
+    if not document:
+        logging.error("Failed to get document with title '%s'  (type %s) and author '%s' (type %s)" 
+                      % (unsafe_name(title), 
+                         type(unsafe_name(title)), 
+                         unsafe_name(author), 
+                         type(unsafe_name(author))))
+        raise Http404 
+        
+    return document
+
+
 
 def _greeting():
     user = users.get_current_user()
@@ -295,6 +294,10 @@ def _greeting():
 
 
 def _prefs():
+    '''Get (or create) a user preferences object for a given user.
+    If created, the total number of users counter will be incremented and
+    the memcache updated.'''
+
     user = users.get_current_user()
     if not user:
         return

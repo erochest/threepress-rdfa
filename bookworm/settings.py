@@ -84,3 +84,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'library',
 )
+
+# Local settings
+AUTHOR_DIVIDER = '__'
