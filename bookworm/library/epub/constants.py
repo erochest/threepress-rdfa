@@ -1,6 +1,6 @@
 '''Helpers or defaults for epub processing'''
 
-MIMETYPE='application/epub+xml'
+MIMETYPE='application/epub+zip'
 STYLESHEET_MIMETYPE='text/css'
 
 NAMESPACES = { 'container': 'urn:oasis:names:tc:opendocument:xmlns:container',

@@ -188,6 +188,7 @@ def view_stylesheet(request, title, author, stylesheet_id):
 def download_epub(request, title, author):
     document = _get_document(title, author)
     response = HttpResponse(content=document.content, content_type=epub_constants.MIMETYPE)
+    response['Content-Disposition'] = 'attachment; filename=%s' % document.name
     return response
 
 def _get_document(title, author):
