@@ -9,10 +9,12 @@ from google.appengine.api import datastore_file_stub
 from google.appengine.api import mail_stub
 from google.appengine.api import urlfetch_stub
 from google.appengine.api import user_service_stub
-from google.appengine.ext import db, search 
 from google.appengine.api import users
 
+
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+dir_path = '%s/..' % os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
+sys.path.append(dir_path)
 from models import *
 import views
 

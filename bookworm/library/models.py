@@ -4,13 +4,9 @@ from google.appengine.ext import db
 from xml.etree import ElementTree
 from zipfile import ZipFile
 from StringIO import StringIO
-import logging, datetime, sys, os.path
+import logging, datetime, sys
 from urllib import unquote_plus
 
-dir_path = '%s/..' % os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
-sys.path.append(dir_path)
-import settings
-  
 from django.utils.http import urlquote_plus
 
 from epub import constants, InvalidEpubException
@@ -54,6 +50,8 @@ class EpubArchive(BookwormModel):
     def author(self):
         '''This method returns the author, if only one, or the first author in
         the list with ellipses for additional authors.'''
+        if not self.authors:
+            return None
         if len(self.authors) == 1:
             return self.authors[0]
         return self.authors[0] + '...'
@@ -277,7 +275,9 @@ class EpubArchive(BookwormModel):
     def safe_author(self):
         '''We only use the first author name for our unique identifier, which should be
         good enough for all but the oddest cases (revisions?)'''
-        return safe_name(self.authors[0])
+        if self.authors:
+            return safe_name(self.authors[0])
+        return None
 
         
 
