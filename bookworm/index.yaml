@@ -11,25 +11,6 @@ indexes:
 # your application using appcfg.py.
 
 # Unused in query history -- copied from input.
-- kind: Bug
-  properties:
-  - name: bug_num
-  - name: project
-
-# Unused in query history -- copied from input.
-- kind: Bug
-  properties:
-  - name: id
-  - name: project
-
-# Unused in query history -- copied from input.
-- kind: Bug
-  properties:
-  - name: project
-  - name: created
-    direction: desc
-
-# Unused in query history -- copied from input.
 - kind: EpubArchive
   properties:
   - name: author
@@ -48,7 +29,7 @@ indexes:
   - name: archive
   - name: idref
 
-# Used 23 times in query history.
+# Unused in query history -- copied from input.
 - kind: HTMLFile
   properties:
   - name: archive
