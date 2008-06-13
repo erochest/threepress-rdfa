@@ -6,6 +6,7 @@ urlpatterns = patterns('',
                        (r'^upload/$', 'library.views.upload'),
 
                        (r'^chapter/(?P<title>.+)/(?P<author>.+)/(?P<chapter_id>.+)/$', 'library.views.view_chapter_frame'),                       
+
                        # Images from within documents
                        (r'^(view|chapter)/(?P<title>[^/]+)/(?P<author>[^/]+)/(?P<chapter_id>[^/]+)/(?P<image>.*\..*)$', 
                         'library.views.view_chapter_image'),                       

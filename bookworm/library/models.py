@@ -36,7 +36,6 @@ class EpubArchive(BookwormModel):
     _CONTAINER = constants.CONTAINER     
 
     _archive = None
-    _author_divider = settings.AUTHOR_DIVIDER
 
     name = db.StringProperty(str, required=True)
     title = db.StringProperty(unicode)
