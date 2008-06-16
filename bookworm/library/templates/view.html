@@ -92,7 +92,12 @@
 
       {% endif %} <!-- end stylesheet check -->
 
-   {{ chapter.render|safe }}
+   {% include "includes/chapter_next_previous.html" %}
+  
+      {{ chapter.render|safe }}
+  
+   {% include "includes/chapter_next_previous.html" %}
+
 
    {% endif %}
 {% else %}

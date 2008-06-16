@@ -40,6 +40,7 @@ def view(request, title, key):
     common = _check_switch_modes(request)
 
     document = _get_document(title, key)
+
     toc = HTMLFile.gql('WHERE archive = :parent ORDER BY order ASC', 
                    parent=document).fetch(100)
     
@@ -115,14 +116,36 @@ def view_chapter(request, title, key, chapter_id):
     chapter = HTMLFile.gql('WHERE archive = :parent AND idref = :idref',
                            parent=document, idref=chapter_id).get()
 
+    next = _chapter_next_previous(document, chapter, 'next')
+    previous = _chapter_next_previous(document, chapter, 'previous')
 
     common = _check_switch_modes(request)
         
     return render_to_response('view.html', {'common':common,
                                             'document':document,
                                             'toc':toc,
+                                            'next':next,
+                                            'previous':previous,
                                             'chapter':chapter})
 
+def _chapter_next_previous(document, chapter, dir='next'):
+
+    if dir == 'previous':
+        argument = '<='
+        ordinal = chapter.order - 1
+        direction = 'DESC'
+    else:
+        argument = '>='
+        ordinal = chapter.order + 1
+        direction = 'ASC'
+    
+    return HTMLFile.gql('WHERE archive = :parent AND order %s :order ORDER by order %s' 
+                        % (argument, direction), 
+                        parent=document,
+                        order=ordinal).get()
+
+
+    
 def view_chapter_image(request, title, key, chapter_id, image):
     logging.info("Image request: looking up title %s, key %s, chapter %s, image %s" % (title, key, chapter_id, image))        
     document = _get_document(title, key)

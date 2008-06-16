@@ -32,7 +32,7 @@
         margin:0;
         background-color: rgb(248, 255, 239);
       }
-      #footer p,a {
+      #footer p,a:link,a:hover;a:visited {
         margin:0;padding:0;
         color: #2E4560;
       }
@@ -93,7 +93,7 @@
         padding-right: .2em;
 
       }
-      .document_title a {`
+      .document_title a {
         color:#746E53;
         text-decoration:none;
       }
@@ -188,7 +188,7 @@
       }
 
       #rightnav .nextprevious {
-        color: rgb(210,210,210);
+        color:#746E53;
       }
       #rightnav .nextprevious a {
         color: gray;
@@ -230,10 +230,10 @@
     .results_nav {
        width:100%;
        clear:both;
-      height:1em;
+       height:1em;
 
        padding: .5em .5em .5em .5em;
-       background-color: rgb(181, 188, 207); 
+       background-color: #746E53;
        border-top: 1px solid rgb(248, 255, 239);
        border-bottom: 1px solid rgb(248, 255, 239);
     }
