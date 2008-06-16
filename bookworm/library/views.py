@@ -35,11 +35,11 @@ def profile(request):
     return render_to_response('profile.html', { 'common':common})
     
 
-def view(request, title, author):
-    logging.info("Looking up title %s, author %s" % (title, author))
+def view(request, title, key):
+    logging.info("Looking up title %s, key %s" % (title, key))
     common = _check_switch_modes(request)
 
-    document = _get_document(title, author)
+    document = _get_document(title, key)
     toc = HTMLFile.gql('WHERE archive = :parent ORDER BY order ASC', 
                    parent=document).fetch(100)
     
@@ -106,9 +106,9 @@ def _check_switch_modes(request):
 
     return common
     
-def view_chapter(request, title, author, chapter_id):
-    logging.info("Looking up title %s, author %s, chapter %s" % (title, author, chapter_id))    
-    document = _get_document(title, author)
+def view_chapter(request, title, key, chapter_id):
+    logging.info("Looking up title %s, key %s, chapter %s" % (title, key, chapter_id))    
+    document = _get_document(title, key)
 
     toc = HTMLFile.gql('WHERE archive = :parent ORDER BY order ASC', 
                    parent=document).fetch(100)
@@ -123,9 +123,9 @@ def view_chapter(request, title, author, chapter_id):
                                             'toc':toc,
                                             'chapter':chapter})
 
-def view_chapter_image(request, title, author, chapter_id, image):
-    logging.info("Image request: looking up title %s, author %s, chapter %s, image %s" % (title, author, chapter_id, image))        
-    document = _get_document(title, author)
+def view_chapter_image(request, title, key, chapter_id, image):
+    logging.info("Image request: looking up title %s, key %s, chapter %s, image %s" % (title, key, chapter_id, image))        
+    document = _get_document(title, key)
     # Chapter is irrelevant but ends up in the request because the 
     # document's links are relative
     image = ImageFile.gql('WHERE archive = :parent AND idref = :idref',
@@ -139,9 +139,9 @@ def view_chapter_image(request, title, author, chapter_id, image):
     return response
 
 
-def view_chapter_frame(request, title, author, chapter_id):
+def view_chapter_frame(request, title, key, chapter_id):
     '''Generate an iframe to display the document online, possibly with its own stylesheets'''
-    document = _get_document(title, author)
+    document = _get_document(title, key)
     chapter = HTMLFile.gql('WHERE archive = :parent AND idref = :idref',
                            parent=document, idref=chapter_id).get()    
     stylesheets = StylesheetFile.gql('WHERE archive = :parent',
@@ -150,8 +150,8 @@ def view_chapter_frame(request, title, author, chapter_id):
                                              'chapter':chapter, 
                                              'stylesheets':stylesheets})
 
-def view_stylesheet(request, title, author, stylesheet_id):
-    document = _get_document(title, author)
+def view_stylesheet(request, title, key, stylesheet_id):
+    document = _get_document(title, key)
     logging.info('getting stylesheet %s' % stylesheet_id)
     stylesheet = StylesheetFile.gql('WHERE archive = :parent AND idref = :idref',
                                     parent=document,
@@ -161,8 +161,8 @@ def view_stylesheet(request, title, author, stylesheet_id):
 
     return response
 
-def download_epub(request, title, author):
-    document = _get_document(title, author)
+def download_epub(request, title, key):
+    document = _get_document(title, key)
     response = HttpResponse(content=document.content, content_type=epub_constants.MIMETYPE)
     response['Content-Disposition'] = 'attachment; filename=%s' % document.name
     return response
@@ -258,32 +258,21 @@ def _delete_document(document):
     sysinfo.put() 
     memcache.set('total_books', sysinfo.total_books)
 
-def _get_document(title, author, override_owner=False):
-    '''Return a document by title, author and owner.  Setting override_owner
+def _get_document(title, key, override_owner=False):
+    '''Return a document by Google key and owner.  Setting override_owner
     will search regardless of ownership, for use with admin accounts.'''
-    owner = users.get_current_user()
-    title=unsafe_name(title)
-    author=unsafe_name(author)
-
-    if override_owner:
-        document = EpubArchive.gql('WHERE title = :title AND authors = :authors AND owner = :owner',
-                                   owner=owner,
-                                   title=title,
-                                   authors=author,
-                                   ).get()    
-    else:
-        document = EpubArchive.gql('WHERE title = :title AND authors = :authors',
-                                   authors=author,
-                                   title=title,
-                                   ).get()            
+    user = users.get_current_user()
+    document = EpubArchive.get(db.Key(key))
+      
     if not document:
-        logging.error("Failed to get document with title '%s'  (type %s) and author '%s' (type %s)" 
-                      % (unsafe_name(title), 
-                         type(unsafe_name(title)), 
-                         unsafe_name(author), 
-                         type(unsafe_name(author))))
+        logging.error("Failed to get document with title '%s', key '%s'" 
+                      % (unsafe_name(title), key))
         raise Http404 
-        
+
+    if not override_owner and document.owner != user:   
+        logging.error('User %s tried to access document %s, which they do not own' % (user, title))
+        raise Http404
+
     return document
 
 

@@ -150,7 +150,8 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.put()
         logging.info(users.get_current_user())
-        d = _get_document(title, author)
+        key = document.key()
+        d = _get_document(title, key)
         self.assert_(d)
 
     def testBadEpubFails(self):
@@ -177,14 +178,9 @@ class TestModels(unittest.TestCase):
         epub.put()
         return epub
 
-def _get_document(title, author):
+def _get_document(title, key):
     '''@todo Mock this out better instead of overwriting the real view'''
-    return MockEpubArchive.gql('WHERE title = :title AND authors = :authors AND owner = :owner',
-                               owner=users.get_current_user(),
-                               title=unsafe_name(title), 
-                               authors=unsafe_name(author),
-                               ).get()
-    
+    return MockEpubArchive.get(key)
 
 
 class MockEpubArchive(EpubArchive): 

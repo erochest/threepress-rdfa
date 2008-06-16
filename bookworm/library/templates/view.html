@@ -24,7 +24,7 @@
 {% endblock head %}
 
 {% block header %}
-<a href="{% url library.views.view document.safe_title,document.safe_author %}"><span class="title">{{ document.title }}</span></a> 
+<a href="{% url library.views.view document.safe_title,document.key %}"><span class="title">{{ document.title }}</span></a> 
 {% endblock header %}
 
 {% block leftnav %}
@@ -40,14 +40,14 @@
 <ol class="nav">
   <li class="first">
   {% if chapter %}
-  <a href="{% url library.views.view document.safe_title,document.safe_author %}">Book information</a>
+  <a href="{% url library.views.view document.safe_title,document.key %}">Book information</a>
   {% else %}
   Book information
   {% endif %}
   </li>
   
 {% for chapter in toc %}
-  <li><a href="{% url library.views.view_chapter document.safe_title,document.safe_author,chapter.idref %}">{{ chapter.title }}</a></li>
+  <li><a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}">{{ chapter.title }}</a></li>
 {% endfor %}
 </ol>
 {% endblock leftnav %}
@@ -61,8 +61,8 @@
   {% if common.prefs.use_iframe %}
   <!-- Show iframe -->
   <div style="width:100%">
-   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="100%" name="content" src="{% url library.views.view_chapter_frame document.safe_title,document.safe_author,chapter.idref %}">
-     <p>Your browser doesn't support iframes, but that's okay: <a href="{% url library.views.view_chapter document.safe_title,document.safe_author,chapter.idref %}?iframe=no">disable iframes</a></p>
+   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="100%" name="content" src="{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.idref %}">
+     <p>Your browser doesn't support iframes, but that's okay: <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">disable iframes</a></p>
    </iframe>
    <script type="text/javascript">
      function resizeIframe() {
@@ -76,7 +76,7 @@
     
    <p>
      To disable the book's custom stylesheets and display only using the styles in Bookworm, you can
-   <a href="{% url library.views.view_chapter document.safe_title,document.safe_author,chapter.idref %}?iframe=no">disable iframes</a>.</p>
+   <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">disable iframes</a>.</p>
   </div>
  {% else %}
       <!-- Skip iframe -->
@@ -85,8 +85,8 @@
          <!-- Show iframe note -->
          {% if common.prefs.show_iframe_note %}
             <p class="note">
-              Note: This ebook came bundled with its own stylesheets.  To use them you will need to <a href="{% url library.views.view_chapter document.safe_title,document.safe_author,chapter.idref %}?iframe=yes">enable iframes</a>.
-              [<a href="{% url library.views.view_chapter document.safe_title,document.safe_author,chapter.idref %}?iframe_note=no">hide this note</a>]
+              Note: This ebook came bundled with its own stylesheets.  To use them you will need to <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=yes">enable iframes</a>.
+              [<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe_note=no">hide this note</a>]
             </p>
          {% endif %}
 
@@ -123,7 +123,7 @@
        </tr>
        <tr>
          <th>Download entire book</th>
-         <td><a href="{% url library.views.download_epub document.safe_title,document.safe_author %}">epub format</a></td>
+         <td><a href="{% url library.views.download_epub document.safe_title,document.key %}">epub format</a></td>
        </tr>
        {% if document.has_stylesheets %}
        <tr>
@@ -131,10 +131,10 @@
          <td>
            {% if common.prefs.use_iframe %}
            Yes, show book's styles in a scrolling window 
-           <br/>(<a href="{% url library.views.view_chapter document.safe_title,document.safe_author,chapter.idref %}?iframe=no">change this</a>)
+           <br/>(<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">change this</a>)
            {% else %}
            No, view without styles 
-           <br/>(<a href="{% url library.views.view_chapter document.safe_title,document.safe_author,chapter.idref %}?iframe=yes">change this)</a>
+           <br/>(<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=yes">change this)</a>
            {% endif %}
          </td>
        </tr>

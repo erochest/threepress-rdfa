@@ -29,7 +29,7 @@ indexes:
   - name: archive
   - name: idref
 
-# Unused in query history -- copied from input.
+# Used 28 times in query history.
 - kind: HTMLFile
   properties:
   - name: archive
