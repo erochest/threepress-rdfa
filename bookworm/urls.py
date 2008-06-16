@@ -5,27 +5,38 @@ urlpatterns = patterns('',
                        
                        (r'^upload/$', 'library.views.upload'),
 
-                       (r'^chapter/(?P<title>.+)/(?P<author>.+)/(?P<chapter_id>.+)/$', 'library.views.view_chapter_frame'),                       
+                       # View a chapter in frame mode
+                       (r'^chapter/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)/$', 'library.views.view_chapter_frame'),                       
 
                        # Images from within documents
-                       (r'^(view|chapter)/(?P<title>[^/]+)/(?P<author>[^/]+)/(?P<chapter_id>[^/]+)/(?P<image>.*\..*)$', 
+                       (r'^(view|chapter)/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<chapter_id>[^/]+)/(?P<image>.*\..*)$', 
                         'library.views.view_chapter_image'),                       
-                       
-                       (r'^view/(?P<title>.+)/(?P<author>.+)/(?P<chapter_id>.+)/$', 'library.views.view_chapter'),                       
 
+                       # View a chapter in non-frame mode
+                       (r'^view/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)/$', 'library.views.view_chapter'),                       
 
-                       (r'^view/(?P<title>.+)/(?P<author>[^/]+)/$', 'library.views.view'),
+                       # Main entry point for a document
+                       (r'^view/(?P<title>.+)/(?P<key>[^/]+)/$', 'library.views.view'),
 
-                       (r'^css/(?P<title>[^/]+)/(?P<author>[^/]+)/(?P<stylesheet_id>.+)/$', 'library.views.view_stylesheet'),                       
+                       # CSS file for within a document (frame-mode)
+                       (r'^css/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<stylesheet_id>.+)/$', 'library.views.view_stylesheet'),                       
+
+                       # DEPRECATED; should be POST
                        (r'^delete/(?P<title>.+)/(?P<author>[^/]+)/$', 'library.views.delete'),
+                       
+                       # Download a source epub file
+                       (r'^download/epub/(?P<title>.+)/(?P<key>[^/]+)/$', 'library.views.download_epub'),
 
-                       (r'^download/epub/(?P<title>.+)/(?P<author>[^/]+)/$', 'library.views.download_epub'),
-
+                       # User profile
                        (r'^profile/$', 'library.views.profile'),
-
+                       
+                       # DEPRECATE, unsafe
                        (r'^profile/delete/$', 'library.views.profile_delete'),
+
+                       # Static pages
                        (r'^about/$', 'library.views.about'),
 
+                       # Admin pages
                        (r'^admin/search/$', 'library.admin.search'),
                        )
 
