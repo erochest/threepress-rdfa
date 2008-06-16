@@ -53,18 +53,38 @@ def about(request):
     return render_to_response('about.html', {'common': common})
     
 
-def delete(request, title, author):
+def delete(request):
     '''Delete a book and associated metadata, and decrement our total books counter'''
 
-    logging.info("Deleting title %s, author %s" % (title, author))
-    document = _get_document(title, author)
-
-    _delete_document(document)
+    if request.POST.has_key('key') and request.POST.has_key('title'):
+        title = request.POST['title']
+        key = request.POST['key']
+        logging.info("Deleting title %s, key %s" % (title, key))
+        if users.is_current_user_admin():
+            document = _get_document(title, key, override_owner=True)
+        else:
+            document = _get_document(title, key)
+        _delete_document(document)
 
     return HttpResponseRedirect('/')
 
 def profile_delete(request):
-    
+    common = _common(request)
+
+    if not request.POST.has_key('delete'):
+        # Extra sanity-check that this is a POST request
+        logging.error('Received deletion request but was not POST')
+        message = "There was a problem with your request to delete this profile."
+        return render_to_response('profile.html', { 'common':common, 'message':message})
+
+    if not request.POST['delete'] == users.get_current_user().nickname():
+        # And that we're POSTing from our own form (this is a sanity check, 
+        # not a security feature.  The current logged-in user profile is always
+        # the one to be deleted, regardless of the value of 'delete')
+        logging.error('Received deletion request but nickname did not match: received %s but current user is %s' % (request.POST['delete'], users.get_current_user().nickname()))
+        message = "There was a problem with your request to delete this profile."
+        return render_to_response('profile.html', { 'common':common, 'message':message})
+
     userprefs = _prefs()
     userprefs.delete()
 
@@ -74,7 +94,7 @@ def profile_delete(request):
     counter.put()
     memcache.set('total_users', counter.total_users)
 
-    # Delete all their books
+    # Delete all their books (this is likely to time out for large numbers of books)
     documents = EpubArchive.all()
     common = _common(request, load_prefs=True)
     user = common['user']
@@ -349,6 +369,7 @@ def _common(request, load_prefs=False):
     common = {}
     user = users.get_current_user()
     common['user']  = user
+    common['is_admin'] = users.is_current_user_admin()
 
     # Don't load user prefs unless we need to
     if load_prefs:

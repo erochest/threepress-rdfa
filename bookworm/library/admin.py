@@ -18,6 +18,7 @@ def search(request):
             logging.info('including title %s' % request.GET['title'])
             d.filter('title = ', request.GET['title'])
         return render_to_response('admin/search.html', { 'documents':d,
+                                                         'show_owner':True,
                                                          'common':common })
     
     return render_to_response('admin/search.html', {'common':common })                               

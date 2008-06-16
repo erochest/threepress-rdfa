@@ -4,6 +4,11 @@
 
 {% block main %}
 
+{% if message %}
+<p class="message"><strong>{{ message }}</strong></p>
+{% endif %}
+
+
 <h1>User profile settings for {{ common.user.nickname }}</h1>
 
 <p>Note: these settings are for Bookworm only; no Google Accounts configuration is available here.</p>
@@ -50,8 +55,9 @@
      </tbody>
    </table>
 
-   <form action="{% url library.views.profile_delete %}">
+   <form action="{% url library.views.profile_delete %}" method="post">
      <div>
+       <input type="hidden" name="delete" value="{{ common.user.nickname }}" />
        <p>
          You can <strong>delete all personal information</strong> from this application, including
          any profile information and all ebooks.

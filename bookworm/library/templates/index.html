@@ -39,24 +39,7 @@
 
 <p>The books listed below have been added to your library and are available for reading online:</p>
 
-<table id="library">
-  {% for d in documents %}
-  <tr>
-    <td>
-      <span class="title"><a href="{% url library.views.view d.safe_title,d.key %}">{{ d.title}}</a></span>
-    </td>
-    <td>
-      <span class="attribution">{% if d.author %}by <span class="author">{{ d.author }}</span>{% endif %}</span>
-    </td>
-    <td>
-      added on <span class="added">{{ d.created_time|date:"l, F Y" }}</span>
-    </td>
-    <td>
-      <span class="delete"><a href="{% url library.views.delete d.safe_title,d.safe_author %}" onclick="return confirm('Sure?')">delete</a></span>
-    </td>
-  </tr>
-  {% endfor %}
-</table>
+{% include "includes/document_list.html" %} 
 {% else %}
 
 
