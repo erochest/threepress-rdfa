@@ -52,6 +52,8 @@ class EpubArchive(BookwormModel):
         the list with ellipses for additional authors.'''
         if not self.authors:
             return None
+        if len(self.authors) == 0:
+            return ''
         if len(self.authors) == 1:
             return self.authors[0]
         return self.authors[0] + '...'
