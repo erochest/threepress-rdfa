@@ -166,13 +166,13 @@ def _chapter_next_previous(document, chapter, dir='next'):
 
 
     
-def view_chapter_image(request, title, key, chapter_id, image):
-    logging.info("Image request: looking up title %s, key %s, chapter %s, image %s" % (title, key, chapter_id, image))        
+def view_chapter_image(request, title, key, image):
+    logging.info("Image request: looking up title %s, key %s, image %s" % (title, key, image))        
     document = _get_document(title, key)
-    # Chapter is irrelevant but ends up in the request because the 
-    # document's links are relative
     image = ImageFile.gql('WHERE archive = :parent AND idref = :idref',
                           parent=document, idref=image).get()
+    if not image:
+        raise Http404
     response = HttpResponse(content_type=image.content_type)
     if image.content_type == 'image/svg+xml':
         response.content = image.file
