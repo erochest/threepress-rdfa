@@ -338,7 +338,7 @@ def _greeting():
             text += ' | <a href="%s">admin</a> ' % reverse('library.admin.search')
         return text
 
-    return ("<a href=\"%s\">Sign in or register</a>." % users.create_login_url("/"))
+    return ("<a name='signin' href=\"%s\">Sign in or register</a>." % users.create_login_url("/"))
 
 
 def _prefs():
