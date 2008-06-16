@@ -6,7 +6,7 @@
 
     {% if stylesheets %}
       {% for css in stylesheets %}
-         <link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.safe_author,css.idref %}" />
+         <link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.idref %}" />
       {% endfor %}
 
     {% else %}
@@ -30,12 +30,12 @@
       pageTracker._initData();
       pageTracker._trackPageview();
     </script>
-    <base href="{% url library.views.view_chapter document.safe_title,document.safe_author,chapter.idref %} " target="_top" />
+    <base href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %} " target="_top" />
   </head>
   <body>
 
-
+   {% include "includes/chapter_next_previous_frame.html" %}
     {{ chapter.render|safe }}
-
+   {% include "includes/chapter_next_previous_frame.html" %}
   </body>
 </html>

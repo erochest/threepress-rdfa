@@ -6,7 +6,7 @@ urlpatterns = patterns('',
                        (r'^upload/$', 'library.views.upload'),
 
                        # View a chapter in frame mode
-                       (r'^chapter/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)/$', 'library.views.view_chapter_frame'),                       
+                       (r'^chapter/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)$', 'library.views.view_chapter_frame'),                       
 
                        # Images from within documents
                        (r'^(view|chapter)/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<chapter_id>[^/]+)/(?P<image>.*\..*)$', 
@@ -19,7 +19,7 @@ urlpatterns = patterns('',
                        (r'^view/(?P<title>.+)/(?P<key>[^/]+)/$', 'library.views.view'),
 
                        # CSS file for within a document (frame-mode)
-                       (r'^css/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<stylesheet_id>.+)/$', 'library.views.view_stylesheet'),                       
+                       (r'^css/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<stylesheet_id>.+)$', 'library.views.view_stylesheet'),                       
 
                        # DEPRECATED; should be POST
                        (r'^delete/', 'library.views.delete'),

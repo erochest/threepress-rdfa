@@ -189,8 +189,13 @@ def view_chapter_frame(request, title, key, chapter_id):
                            parent=document, idref=chapter_id).get()    
     stylesheets = StylesheetFile.gql('WHERE archive = :parent',
                                      parent=document).fetch(10)
+    next = _chapter_next_previous(document, chapter, 'next')
+    previous = _chapter_next_previous(document, chapter, 'previous')
+
     return render_to_response('frame.html', {'document':document, 
                                              'chapter':chapter, 
+                                             'next':next,
+                                             'previous':previous,
                                              'stylesheets':stylesheets})
 
 def view_stylesheet(request, title, key, stylesheet_id):

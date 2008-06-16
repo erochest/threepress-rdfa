@@ -9,3 +9,26 @@ a.svg {
   width:250px;
   padding-top:10px;
 }
+    .results_nav {
+       width:100%;
+       clear:both;
+       height:1em;
+
+       padding: .5em .5em .5em .5em;
+       background-color: #746E53;
+       border-top: 1px solid rgb(248, 255, 239);
+       border-bottom: 1px solid rgb(248, 255, 239);
+    }
+
+    .results_nav a {
+       text-decoration: none;
+       color: rgb(248, 255, 239);
+
+    }
+    .results_nav .previous {
+      float:left;
+    }
+      .results_nav .next {
+      float:right;
+
+    }
