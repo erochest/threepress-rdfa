@@ -6,6 +6,7 @@ import re
 import sys
 import time
 import unittest
+import logging
 
 from os.path import isfile, isdir
 
@@ -22,12 +23,12 @@ from google.appengine.api import users
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 # Could we get this with the relative imports in 2.5 __future__?
+# Tried this but relative imports do not work in 2.5 if the script is run as '__main__' -ld 
 dir_path = os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..'))
 sys.path.append(dir_path)
 
 from library.models import *
 import library.views as views
-
 
 logging.basicConfig(level=logging.INFO)
 
@@ -76,16 +77,6 @@ class TestModels(unittest.TestCase):
         if isdir(PRIVATE_DATA_DIR):
             self.documents += [d for d in os.listdir(PRIVATE_DATA_DIR) if '.epub' in d and isfile('%s/%s' % (PRIVATE_DATA_DIR, d))] 
         
-
-       
-    def testTest(self):
-        # what does this test?
-        b = HTMLFile(idref='test')
-        b.put()
-
-        a = HTMLFile.gql('WHERE idref = :title',
-                         title='test').get()
-        self.assertEquals(a.idref, 'test')
 
 
     def testGetAllDocuments(self):
@@ -196,7 +187,7 @@ def _get_document(title, author):
     
 
 
-class MockEpubArchive(EpubArchive):
+class MockEpubArchive(EpubArchive): 
     '''Mock object to expose some protected methods for testing purposes.'''
 
     def xml_from_string(self, string):
