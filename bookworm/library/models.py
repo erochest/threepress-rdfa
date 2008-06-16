@@ -125,7 +125,10 @@ class EpubArchive(BookwormModel):
 
     def _get_authors(self, opf):
         authors = [unicode(a.text.strip(), 'utf-8') for a in opf.findall('.//{%s}creator' % constants.NAMESPACES['dc'])]
-        logging.info('Got authors as %s' % (authors))
+        if len(authors) == 0:
+            logging.warn('Got empty authors string for book %s' % self.name)
+        else:
+            logging.info('Got authors as %s' % (authors))
         return authors
 
     def _get_title(self, xml):
