@@ -234,6 +234,7 @@ class EpubArchive(BookwormModel):
                 order = int(nav.get('playOrder')) 
                 title = nav.findtext('.//{%s}text' % (constants.NAMESPACES['ncx'])).strip()
                 nav_map[filename] = NavPoint(title, href, order, depth=depth)
+
         pages = []
 
         for ref in refs:
@@ -249,7 +250,7 @@ class EpubArchive(BookwormModel):
                     # We store the raw XHTML and will process it for display on request
                     # later
                     page = {'title': nav_map[href].title,
-                            'idref':idref,
+                            'idref':href,
                             'file':content,
                             'archive':self,
                             'order':nav_map[href].order}

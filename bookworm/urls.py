@@ -13,7 +13,7 @@ urlpatterns = patterns('',
                         'library.views.view_chapter_image'),                       
 
                        # View a chapter in non-frame mode
-                       (r'^view/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)/$', 'library.views.view_chapter'),                       
+                       (r'^view/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)$', 'library.views.view_chapter'),                       
 
                        # Main entry point for a document
                        (r'^view/(?P<title>.+)/(?P<key>[^/]+)/$', 'library.views.view'),
@@ -22,7 +22,7 @@ urlpatterns = patterns('',
                        (r'^css/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<stylesheet_id>.+)/$', 'library.views.view_stylesheet'),                       
 
                        # DEPRECATED; should be POST
-                       (r'^delete/(?P<title>.+)/(?P<author>[^/]+)/$', 'library.views.delete'),
+                       (r'^delete/', 'library.views.delete'),
                        
                        # Download a source epub file
                        (r'^download/epub/(?P<title>.+)/(?P<key>[^/]+)/$', 'library.views.download_epub'),
@@ -30,7 +30,6 @@ urlpatterns = patterns('',
                        # User profile
                        (r'^profile/$', 'library.views.profile'),
                        
-                       # DEPRECATE, unsafe
                        (r'^profile/delete/$', 'library.views.profile_delete'),
 
                        # Static pages
