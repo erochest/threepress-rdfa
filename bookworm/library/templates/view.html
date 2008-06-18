@@ -84,18 +84,19 @@
   <!-- Show iframe -->
   <div style="width:100%">
 <!--   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="100%" name="content" src="{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.idref %}" > -->
-   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="100%" name="content" >
+   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="100%" name="content" src="{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.idref %}">
      <p>Your browser doesn't support iframes, but that's okay: <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">disable iframes</a></p>
    </iframe>
    <script type="text/javascript">
      function resizeIframe() {
-       var height = document.documentElement.clientHeight;
-       height -= document.getElementById('frame').offsetTop;
-       document.getElementById('frame').style.height = height +"px";
-       document.getElementById('frame').src = getFullPath();
+        var height = document.documentElement.clientHeight;
+        height -= document.getElementById('frame').offsetTop;
+        height -= 200;
+        document.getElementById('frame').style.height = height +"px";
      };
      document.getElementById('frame').onload = resizeIframe;
      window.onresize = resizeIframe;
+     document.getElementById('frame').src = getFullPath();
 
    </script>
     
