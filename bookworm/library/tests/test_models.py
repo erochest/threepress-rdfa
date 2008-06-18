@@ -29,6 +29,7 @@ sys.path.append(dir_path)
 
 from library.models import *
 import library.views as views
+from library.epub import toc
 
 logging.basicConfig(level=logging.INFO)
 
@@ -168,6 +169,19 @@ class TestModels(unittest.TestCase):
         result = comma_re.match(sn)
         self.failIf(result)
 
+    def testCountTOC(self):
+        '''Check that in a simple document, the number of chapter items
+        equals the number of top-level nav items'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.put()
+        t = toc.TOC(document.toc)
+        chapters = HTMLFile.gql('WHERE archive = :parent',
+                               parent=document).fetch(100)
+        
+        self.assertEquals(len(chapters), len(t.find_points(1)))
+
     def create_document(self, document):
         epub = MockEpubArchive(name=document)
         try:
@@ -177,6 +191,7 @@ class TestModels(unittest.TestCase):
         epub.owner = users.get_current_user()
         epub.put()
         return epub
+
 
 def _get_document(title, key):
     '''@todo Mock this out better instead of overwriting the real view'''
