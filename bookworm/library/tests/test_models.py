@@ -29,10 +29,7 @@ sys.path.append(dir_path)
 
 from library.models import *
 import library.views as views
-from library.epub import toc
-
-logging.basicConfig(level=logging.INFO)
-
+from library.epub.toc import TOC
 
 APP_ID = u'test'
 AUTH_DOMAIN = 'gmail.com'
@@ -126,7 +123,7 @@ class TestModels(unittest.TestCase):
         len_first_author = len(expected_authors[0])
         len_short_author_str = len(document.get_author(opf))
         difference = len_short_author_str - len_first_author
-        self.assert_(difference < 4)
+        self.assert_(difference < fuzz)
 
     def testNoAuthor(self):
         '''An OPF document with no authors should return None.'''
@@ -135,7 +132,7 @@ class TestModels(unittest.TestCase):
         opf = no_author_document.xml_from_string(open('%s/%s' % (DATA_DIR, no_author_opf_file)).read())
 
         author = no_author_document.get_author(opf)
-        self.assertEquals(None, author)
+        self.failIf(author)
 
     def testCreateDocument(self):
         '''Assert that we created a non-None document.'''
@@ -153,7 +150,7 @@ class TestModels(unittest.TestCase):
         logging.info(users.get_current_user())
         key = document.key()
         d = _get_document(title, key)
-        self.assert_(d)
+        self.failUnless(d)
 
     def testBadEpubFails(self):
         """ePub documents with missing compontent should raise errors."""
@@ -170,18 +167,25 @@ class TestModels(unittest.TestCase):
         self.failIf(result)
 
     def testCountTOC(self):
-        '''Check that in a simple document, the number of chapter items
-        equals the number of top-level nav items'''
+        '''Check that in a simple document, the number of chapter items equals the number of top-level nav items'''
         filename = 'Pride-and-Prejudice_Jane-Austen.epub'
         document = self.create_document(filename)
         document.explode()
         document.put()
-        t = toc.TOC(document.toc)
-        chapters = HTMLFile.gql('WHERE archive = :parent',
-                               parent=document).fetch(100)
-        
-        self.assertEquals(len(chapters), len(t.find_points(1)))
 
+        toc = TOC(document.toc)
+        self.failUnless(toc)
+
+        chapters = HTMLFile.gql('WHERE archive = :parent',
+                                parent=document).fetch(100)
+        self.assertEquals(len(chapters), len(toc.find_points(1)))
+
+    def testCountDeepTOC(self):
+        '''Check a complex document with multiple nesting levels'''
+        toc = TOC(open('%s/complex-ncx.ncx' % DATA_DIR).read())
+        self.failUnless(toc)
+        self.assert_(len(toc.find_points(3)) > len(toc.find_points(2)) > len(toc.find_points(1)))
+        
     def create_document(self, document):
         epub = MockEpubArchive(name=document)
         try:
@@ -213,4 +217,5 @@ class MockEpubArchive(EpubArchive):
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     unittest.main() 

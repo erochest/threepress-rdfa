@@ -229,7 +229,7 @@ class EpubArchive(BookwormModel):
             item_map[item.get('id')] = item.get('href')
              
         for nav in navs:
-            n = NavPoint(nav)
+            n = NavPoint(nav, doc_title=self.title)
             href = n.href()
             filename = href.split('#')[0]
             
