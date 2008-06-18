@@ -24,7 +24,6 @@
       #footer { 
         border-top: 1px solid lightgrey;
         width:100%; /* Otherwise does not span in FF 3 */
-        position:fixed;
         bottom:0;
         clear: both;
         padding: 5px 20px 1em 20px;
