@@ -185,6 +185,37 @@ class TestModels(unittest.TestCase):
         toc = TOC(open('%s/complex-ncx.ncx' % DATA_DIR).read())
         self.failUnless(toc)
         self.assert_(len(toc.find_points(3)) > len(toc.find_points(2)) > len(toc.find_points(1)))
+
+    def testOrderedTOC(self):
+        '''TOC should preserve the playorder of the NCX'''
+        toc = TOC(open('%s/complex-ncx.ncx' % DATA_DIR).read())
+        self.failUnless(toc)
+        # First item is the Copyright statement, which has no children
+        copyright_statement = toc.tree[0]
+        self.assertEquals(copyright_statement.title(), 'Copyright')
+
+        # Second item should be the preface
+        preface = toc.tree[1]
+        self.assertEquals(preface.title(), 'Preface')        
+
+        # Last item is the Colophon
+        colophon = toc.tree[-1:][0]
+        self.assertEquals(colophon.title(), 'Colophon')
+
+    def testGetChildren(self):
+        '''Get the children of a particular nested TOC node, by node'''
+        toc = TOC(open('%s/complex-ncx.ncx' % DATA_DIR).read())
+        self.failUnless(toc)
+
+        # First item is the Copyright statement, which has no children
+        copyright_section = toc.tree[0]
+        children = toc.find_children(copyright_section)
+        self.failIf(children)
+
+        # Second item is the Preface, which has 8 children
+        preface = toc.tree[1]
+        children = toc.find_children(preface)
+        self.assertEquals(8, len(children))
         
     def create_document(self, document):
         epub = MockEpubArchive(name=document)

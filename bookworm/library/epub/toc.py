@@ -39,20 +39,33 @@ class TOC():
         '''Return all the navpoints in the TOC having a maximum depth of maxdepth'''
         return [p for p in self.tree if p.depth <= maxdepth]
 
+    def find_children(self, element):
+        '''Find all the children of a node (for expand/collapse navigation)'''
+        return [n for n in self.tree if n.parent.get('id') == element.element.get('id')]
+    
     def _find_point(self, element, depth=1):
         for nav in element.findall('{%s}navPoint' % (ns)):
-            self._find_point(nav, depth+1)
             n = NavPoint(nav, depth, element, self.doc_title)
             self.tree.append(n)
+            self._find_point(nav, depth+1)
+
+
+def get_label(element):
+    '''Gets the text label for any element'''
+    if not element:
+        return None
+    return element.findtext('.//{%s}text' % ns)
 
 class NavPoint():
-    '''Hold an individual navpoint.'''
+    '''Hold an individual navpoint, including its text, label and parent relationship.'''
     def __init__(self, element, depth=1, parent=None, doc_title=None):
         self.element = element
         self.depth = depth
         self.parent = parent
         self.doc_title = doc_title
-        logging.debug('Created navpoint for book "%s" with title "%s" and depth %d' % (self.doc_title, self.title(), self.depth))
+        self.label = get_label(self.element)
+        logging.debug('Created navpoint for book "%s" with title "%s", parent label "%s" and depth %d' 
+                      % (self.doc_title, self.title(), get_label(self.parent), self.depth))
 
     def title(self):
         return self.element.findtext('.//{%s}text' % (ns)).strip()
