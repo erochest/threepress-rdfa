@@ -11,7 +11,7 @@ from google.appengine.ext import db
 from epub import constants, InvalidEpubException
 from epub.constants import ENC
 from epub.constants import NAMESPACES as NS
-from epub.toc import NavPoint
+from epub.toc import NavPoint, TOC
 
 # Functions
 def safe_name(name):
@@ -36,6 +36,7 @@ class EpubArchive(BookwormModel):
 
     _archive = None
     _parsed_metadata = None
+    _parsed_toc = None
 
     name = db.StringProperty(str, required=True)
     owner = db.UserProperty()
@@ -81,6 +82,18 @@ class EpubArchive(BookwormModel):
     def get_publisher(self):
         return self._get_metadata(constants.DC_PUBLISHER_TAG, self.opf)
 
+    def get_top_level_toc(self):
+        t = self._get_parsed_toc()
+        return t.find_points()
+
+    def _get_parsed_toc(self):
+        return TOC(self.toc)        
+
+        #if not self._parsed_toc:
+        #    self._parsed_toc = TOC(self.toc)
+        #return self._parsed_toc
+        
+        
     def explode(self):
         '''Explodes an epub archive'''
         e = StringIO(self.content)

@@ -39,13 +39,23 @@ class TOC():
         '''Return all the navpoints in the TOC having a maximum depth of maxdepth'''
         return [p for p in self.tree if p.depth <= maxdepth]
 
+    def find_children_by_id(self, node_id):
+        '''Find all children given the id of a node in the TOC'''
+        node = None
+        for n in self.tree:
+            if n.element.get('id') == node_id:
+                node = n
+                break
+        return self.find_children(node)
+
     def find_children(self, element):
         '''Find all the children of a node (for expand/collapse navigation)'''
+        logging.info('finding children')
         return [n for n in self.tree if n.parent.get('id') == element.element.get('id')]
     
     def _find_point(self, element, depth=1):
         for nav in element.findall('{%s}navPoint' % (ns)):
-            n = NavPoint(nav, depth, element, self.doc_title)
+            n = NavPoint(nav, depth, element, self.doc_title, self.tree)
             self.tree.append(n)
             self._find_point(nav, depth+1)
 
@@ -58,14 +68,19 @@ def get_label(element):
 
 class NavPoint():
     '''Hold an individual navpoint, including its text, label and parent relationship.'''
-    def __init__(self, element, depth=1, parent=None, doc_title=None):
+    def __init__(self, element, depth=1, parent=None, doc_title=None, tree=None):
         self.element = element
         self.depth = depth
         self.parent = parent
         self.doc_title = doc_title
+        self.tree = tree
         self.label = get_label(self.element)
+
         logging.debug('Created navpoint for book "%s" with title "%s", parent label "%s" and depth %d' 
                       % (self.doc_title, self.title(), get_label(self.parent), self.depth))
+
+    def find_children(self):
+        return [n for n in self.tree if n.parent.get('id') == self.element.get('id')]
 
     def title(self):
         return self.element.findtext('.//{%s}text' % (ns)).strip()
@@ -75,6 +90,9 @@ class NavPoint():
 
     def href(self):
         return self.element.find('.//{%s}content' % (ns)).get('src')
+
+    def id(self):
+        return self.element.get('id')
 
     def __str__(self):
         res = ''

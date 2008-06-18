@@ -217,7 +217,13 @@ class TestModels(unittest.TestCase):
         preface = toc.tree[1]
         children = toc.find_children(preface)
         self.assertEquals(8, len(children))
-        
+
+    def testTOCHref(self):
+        '''Ensure that we are returning the correct href for an item'''
+        toc = TOC(open('%s/complex-ncx.ncx' % DATA_DIR).read())
+        preface = toc.tree[1]
+        self.assertEquals("pr02.html", preface.href())
+
     def testMetadata(self):
         opf_file = 'all-metadata.opf'
         document = MockEpubArchive(name=opf_file)

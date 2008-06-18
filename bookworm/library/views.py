@@ -131,8 +131,8 @@ def view_chapter(request, title, key, chapter_id):
     logging.info("Looking up title %s, key %s, chapter %s" % (title, key, chapter_id))    
     document = _get_document(title, key)
 
-    toc = HTMLFile.gql('WHERE archive = :parent ORDER BY order ASC', 
-                   parent=document).fetch(100)
+    #toc = HTMLFile.gql('WHERE archive = :parent ORDER BY order ASC', 
+    #                   parent=document).fetch(100)
     chapter = HTMLFile.gql('WHERE archive = :parent AND idref = :idref',
                            parent=document, idref=chapter_id).get()
 
@@ -143,7 +143,7 @@ def view_chapter(request, title, key, chapter_id):
         
     return render_to_response('view.html', {'common':common,
                                             'document':document,
-                                            'toc':toc,
+                                            #'toc':document.get_top_level_toc(),
                                             'next':next,
                                             'previous':previous,
                                             'chapter':chapter})
@@ -185,6 +185,7 @@ def view_chapter_image(request, title, key, image):
 def view_chapter_frame(request, title, key, chapter_id):
     '''Generate an iframe to display the document online, possibly with its own stylesheets'''
     document = _get_document(title, key)
+    logging.info(request.get_full_path())
     chapter = HTMLFile.gql('WHERE archive = :parent AND idref = :idref',
                            parent=document, idref=chapter_id).get()    
     stylesheets = StylesheetFile.gql('WHERE archive = :parent',

@@ -4,6 +4,12 @@
 {% endspaceless %}
 
 {% block head %}
+<script type="text/javascript">
+     function getFullPath() {
+       var u = '{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.idref %}' + location.hash;
+       return u;
+     }
+</script>
 {% spaceless %}
     <!-- AB Meta -->
     <meta name="dc:type" content="book" ></meta>
@@ -46,8 +52,21 @@
   {% endif %}
   </li>
   
-{% for chapter in toc %}
-  <li><a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}">{{ chapter.title }}</a></li>
+{% for c in document.get_top_level_toc %}
+   {% ifequal c.order chapter.order %}
+   <li class="current {% if c.find_children %} has_children {% endif %}"> {{ c.title }} 
+
+   {% if c.find_children %}
+      <ol>
+      {% for sub in c.find_children %}
+        <li><a href="{% url library.views.view_chapter document.safe_title,document.key,sub.href %}">{{ sub.title }}</a></li>
+      {% endfor %}
+      </ol>
+   {% endif %}
+   </li>
+   {% else %}
+     <li><a href="{% url library.views.view_chapter document.safe_title,document.key,c.href %}">{{ c.title }}</a></li>
+   {% endifequal %}
 {% endfor %}
 </ol>
 {% endblock leftnav %}
@@ -59,19 +78,25 @@
 {% if chapter %}
 
   {% if common.prefs.use_iframe %}
+  <script type="text/javascript">
+    getFullPath();
+  </script>
   <!-- Show iframe -->
   <div style="width:100%">
-   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="100%" name="content" src="{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.idref %}">
+<!--   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="100%" name="content" src="{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.idref %}" > -->
+   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="100%" name="content" >
      <p>Your browser doesn't support iframes, but that's okay: <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">disable iframes</a></p>
    </iframe>
    <script type="text/javascript">
      function resizeIframe() {
-     var height = document.documentElement.clientHeight;
-     height -= document.getElementById('frame').offsetTop;
-     document.getElementById('frame').style.height = height +"px";
+       var height = document.documentElement.clientHeight;
+       height -= document.getElementById('frame').offsetTop;
+       document.getElementById('frame').style.height = height +"px";
+       document.getElementById('frame').src = getFullPath();
      };
      document.getElementById('frame').onload = resizeIframe;
      window.onresize = resizeIframe;
+
    </script>
     
    <p>

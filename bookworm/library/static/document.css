@@ -32,3 +32,29 @@ a.svg {
       float:right;
 
     }
+
+.has_children {
+  /*   background-color: rgb(248, 255, 239); */
+  border-bottom: 1px dotted gray;
+  border-top: 1px dotted gray;
+  margin-bottom: 1em;
+}
+.has_children a:link, .has_children a:visited {
+ color: gray;
+}
+
+/* subnavs */
+.current ol {
+  font-weight:normal;
+  font-size: smaller;
+  padding:0;
+  margin:0;
+  text-align:right;
+  list-style-type: none;
+  padding-top:1em;
+}
+
+.current ol li {
+  padding:0;
+  margin:0;
+}
