@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% spaceless %}
-{% block title %}{{ document.title }} by {{ document.author }}{% endblock title %}
+{% block title %}{{ document.title }}{% if document.author %} by {{ document.author }} {% endif %}{% endblock title %}
 {% endspaceless %}
 
 {% block head %}
