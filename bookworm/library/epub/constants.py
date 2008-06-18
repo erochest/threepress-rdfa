@@ -1,7 +1,9 @@
 '''Helpers or defaults for epub processing'''
+ENC = 'utf-8'
 
 MIMETYPE='application/epub+zip'
 STYLESHEET_MIMETYPE='text/css'
+SVG_MIMETYPE='image/svg+xml'
 
 NAMESPACES = { 'container': 'urn:oasis:names:tc:opendocument:xmlns:container',
                'opf': 'http://www.idpf.org/2007/opf',

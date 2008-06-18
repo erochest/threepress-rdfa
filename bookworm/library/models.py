@@ -1,29 +1,32 @@
 # -*- coding: utf-8 -*-
-from google.appengine.ext import db
-
-from xml.etree import ElementTree
+from xml.etree import ElementTree as ET
 from zipfile import ZipFile
 from StringIO import StringIO
 import logging, datetime, sys
 from urllib import unquote_plus
 
 from django.utils.http import urlquote_plus
+from google.appengine.ext import db
 
 from epub import constants, InvalidEpubException
+from epub.constants import ENC
+from epub.constants import NAMESPACES as NS
+from epub.toc import NavPoint
 
 # Functions
 def safe_name(name):
     '''Return a name that can be used safely in a URL'''
-    quote = urlquote_plus(name.encode('utf-8'))
+    quote = urlquote_plus(name.encode(ENC))
     return quote
  
 def unsafe_name(name):
     '''Convert from a URL-formatted name to something that will match
     in the datastore'''
-    unquote = unquote_plus(name.encode('utf8'))
-    return unicode(unquote, 'utf-8')
+    unquote = unquote_plus(name.encode(ENC))
+    return unicode(unquote, ENC)
 
 class BookwormModel(db.Model):
+    '''Base class for all models'''
     created_time = db.DateTimeProperty(default=datetime.datetime.now())
 
 class EpubArchive(BookwormModel):
@@ -34,18 +37,22 @@ class EpubArchive(BookwormModel):
     _archive = None
 
     name = db.StringProperty(str, required=True)
+    owner = db.UserProperty()
+
     title = db.StringProperty(unicode)
     authors = db.ListProperty(unicode)
 
     content = db.BlobProperty() 
 
-    toc = db.TextProperty()
-    opf = db.TextProperty()
+    # There's no reason to store this anymore now that each of the
+    # methods are independent, but we should store the 
+    # parsed ncx file for use in drawing the toc
+    # opf = db.TextProperty()
+    # container = db.TextProperty()
 
-    container = db.TextProperty()
-    owner = db.UserProperty()
+    toc = db.TextProperty()
+
     has_stylesheets = db.BooleanProperty(default=False)
-    has_svg = db.BooleanProperty(default=False)
 
     def author(self):
         '''This method returns the author, if only one, or the first author in
@@ -68,24 +75,26 @@ class EpubArchive(BookwormModel):
         self._archive = z
 
         try:
-            self.container = z.read(self._CONTAINER)
+            container = z.read(self._CONTAINER)
         except KeyError:
             raise InvalidEpubException()
 
-        parsed_container = self._xml_from_string(self.container)
+        parsed_container = self._xml_from_string(container)
 
         opf_filename = self._get_opf_filename(parsed_container)
 
         content_path = self._get_content_path(opf_filename)
 
-        self.opf = unicode(z.read(opf_filename), 'utf-8')
-        parsed_opf = self._xml_from_string(self.opf.encode('utf-8'))
+        opf = unicode(z.read(opf_filename), ENC)
+        parsed_opf = self._xml_from_string(opf.encode(ENC))
 
-        items = parsed_opf.getiterator("{%s}item" % (constants.NAMESPACES['opf']))
+        items = parsed_opf.getiterator("{%s}item" % (NS['opf']))
 
-        self.toc = unicode(z.read(self._get_toc(parsed_opf, items, content_path)), 'utf-8')
+        self.toc = unicode(z.read(self._get_toc(parsed_opf, items, content_path)), ENC)
 
-        parsed_toc = self._xml_from_string(self.toc.encode('utf-8'))
+        parsed_toc = self._xml_from_string(self.toc.encode(ENC))
+
+
 
         self.authors = self._get_authors(parsed_opf)
         self.title = self._get_title(parsed_opf) 
@@ -96,11 +105,11 @@ class EpubArchive(BookwormModel):
 
 
     def _xml_from_string(self, xml):
-        return ElementTree.fromstring(xml)
+        return ET.fromstring(xml)
 
     def _get_opf_filename(self, container):
         '''Parse the container to get the name of the opf file'''
-        return container.find('.//{%s}rootfile' % constants.NAMESPACES['container']).get('full-path')
+        return container.find('.//{%s}rootfile' % NS['container']).get('full-path')
 
     def _get_content_path(self, opf_filename):
         '''Return the content path, which may be a named subdirectory or could be at the root of
@@ -117,7 +126,7 @@ class EpubArchive(BookwormModel):
         (From OPF spec: The spine element must include the toc attribute, 
         whose value is the the id attribute value of the required NCX document 
         declared in manifest)'''
-        tocid = opf.find('.//{%s}spine' % constants.NAMESPACES['opf']).get('toc')
+        tocid = opf.find('.//{%s}spine' % NS['opf']).get('toc')
         for item in items:
             if item.get('id') == tocid:
                 toc_filename = item.get('href').strip()
@@ -126,7 +135,7 @@ class EpubArchive(BookwormModel):
         raise Exception("Could not find toc filename")
 
     def _get_authors(self, opf):
-        authors = [unicode(a.text.strip(), 'utf-8') for a in opf.findall('.//{%s}creator' % constants.NAMESPACES['dc'])]
+        authors = [unicode(a.text.strip(), ENC) for a in opf.findall('.//{%s}creator' % NS['dc'])]
         if len(authors) == 0:
             logging.warn('Got empty authors string for book %s' % self.name)
         else:
@@ -134,7 +143,7 @@ class EpubArchive(BookwormModel):
         return authors
 
     def _get_title(self, xml):
-        title = xml.findtext('.//{%s}title' % constants.NAMESPACES['dc']).strip()
+        title = xml.findtext('.//{%s}title' % NS['dc']).strip()
         logging.info('Got title as %s' % (title))
         return title
 
@@ -148,11 +157,10 @@ class EpubArchive(BookwormModel):
                 data = {}
                 data['data'] = None
                 data['file'] = None
-
-                if item.get('media-type') == 'image/svg+xml':
+ 
+                if item.get('media-type') == constants.SVG_MIMETYPE:
                     logging.debug('Adding image as SVG text type')
-                    data['file'] = unicode(content, 'utf-8')
-                    self.has_svg = True
+                    data['file'] = unicode(content, ENC)
 
                 else:
                     # This is a binary file, like a jpeg
@@ -184,7 +192,7 @@ class EpubArchive(BookwormModel):
             if item.get('media-type') == constants.STYLESHEET_MIMETYPE:
                 content = self._archive.read("%s%s" % (content_path, item.get('href')))
                 stylesheets.append({'idref':item.get('href'),
-                                    'file':unicode(content, 'utf-8')})
+                                    'file':unicode(content, ENC)})
 
 
                 logging.debug('adding stylesheet %s ' % item.get('href'))
@@ -202,17 +210,15 @@ class EpubArchive(BookwormModel):
 
     def _get_content(self, opf, toc, items, content_path):
         # Get all the item references from the <spine>
-        refs = opf.getiterator('{%s}itemref' % (constants.NAMESPACES['opf']) )
-        navs = [n for n in toc.getiterator('{%s}navPoint' % (constants.NAMESPACES['ncx']))]
-        navs2 = [n for n in toc.getiterator('{%s}navTarget' % (constants.NAMESPACES['ncx']))]
+        refs = opf.getiterator('{%s}itemref' % (NS['opf']) )
+        navs = [n for n in toc.getiterator('{%s}navPoint' % (NS['ncx']))]
+        navs2 = [n for n in toc.getiterator('{%s}navTarget' % (NS['ncx']))]
         navs = navs + navs2
 
         nav_map = {}
         item_map = {}
         
-        depth = 1
-
-        metas = toc.getiterator('{%s}meta' % (constants.NAMESPACES['ncx']))
+        metas = toc.getiterator('{%s}meta' % (NS['ncx']))
       
         for m in metas:
             if m.get('name') == 'db:depth':
@@ -223,7 +229,8 @@ class EpubArchive(BookwormModel):
             item_map[item.get('id')] = item.get('href')
              
         for nav in navs:
-            href = nav.find('.//{%s}content' % (constants.NAMESPACES['ncx'])).get('src')
+            n = NavPoint(nav)
+            href = n.href()
             filename = href.split('#')[0]
             
             if nav_map.has_key(filename):
@@ -231,9 +238,7 @@ class EpubArchive(BookwormModel):
                 # Skip this item so we don't overwrite with a new navpoint
             else:
                 logging.debug('adding filename %s to navmap' % filename)
-                order = int(nav.get('playOrder')) 
-                title = nav.findtext('.//{%s}text' % (constants.NAMESPACES['ncx'])).strip()
-                nav_map[filename] = NavPoint(title, href, order, depth=depth)
+                nav_map[filename] = n
 
         pages = []
 
@@ -249,11 +254,11 @@ class EpubArchive(BookwormModel):
                     
                     # We store the raw XHTML and will process it for display on request
                     # later
-                    page = {'title': nav_map[href].title,
+                    page = {'title': nav_map[href].title(),
                             'idref':href,
                             'file':content,
                             'archive':self,
-                            'order':nav_map[href].order}
+                            'order':nav_map[href].order()}
                     pages.append(page)
                     
         db.run_in_transaction(self._create_pages, pages)
@@ -263,16 +268,16 @@ class EpubArchive(BookwormModel):
         for p in pages:
             self._create_page(p['title'], p['idref'], p['file'], p['archive'], p['order'])
 
-    def _create_page(self, title, idref, file, archive, order):
+    def _create_page(self, title, idref, f, archive, order):
         '''Create an HTML page and associate it with the archive'''
         html = HTMLFile(parent=self, 
                         title=title, 
-                        idref=unicode(idref, 'utf-8'),
-                        file=unicode(file, 'utf-8'),
+                        idref=unicode(idref, ENC),
+                        file=unicode(f, ENC),
                         archive=archive,
                         order=order)
         html.put()
-
+ 
                   
     def safe_title(self):
         '''Return a URL-safe title'''
@@ -286,18 +291,6 @@ class EpubArchive(BookwormModel):
         return None
 
         
-
-class NavPoint():
-    '''Temporary storage object to hold an individual navpoint.  
-    @todo Nest these
-    '''
-    def __init__(self, title, href, order, depth=1):
-        self.title = title
-        self.href = href
-        self.order = order
-        self.depth = depth
-    def __repr__(self):
-        return "%s (%s) %d" % (self.title, self.href, self.order)
 
 
 class BookwormFile(BookwormModel):
@@ -323,19 +316,19 @@ class HTMLFile(BookwormFile):
             return self.processed_content
         
         logging.debug('Parsing body content for first display')
-        f = self.file.encode('utf-8')
+        f = self.file.encode(ENC)
 
         # Replace some common XHTML entities
         f = f.replace('&nbsp;', '&#160;')
-        xhtml = ElementTree.fromstring(f)
-        body = xhtml.getiterator('{%s}body' % constants.NAMESPACES['html'])[0]
+        xhtml = ET.fromstring(f)
+        body = xhtml.getiterator('{%s}body' % NS['html'])[0]
         body = self._clean_xhtml(body)
-        body_content = ElementTree.tostring(body, 'utf-8')
+        body_content = ET.tostring(body, ENC)
 
         try:
-            self.processed_content = unicode(body_content, 'utf-8')
+            self.processed_content = unicode(body_content, ENC)
             self.put()            
-        except Exception:
+        except:
             logging.error("Could not cache processed document, error was: " + sys.exc_info()[0])
 
         return body_content
@@ -345,7 +338,7 @@ class HTMLFile(BookwormFile):
         parent_map = dict((c, p) for p in xhtml.getiterator() for c in p)
 
         for element in xhtml.getiterator():
-            element.tag = element.tag.replace('{%s}' % constants.NAMESPACES['html'], '')
+            element.tag = element.tag.replace('{%s}' % NS['html'], '')
 
             # if we have SVG, then we need to re-write the image links that contain svg in order to
             # make them work in most browsers
@@ -355,7 +348,7 @@ class HTMLFile(BookwormFile):
                     p = parent_map[element]
                     logging.debug("Got parent %s " % (p.tag)) 
 
-                    e = ElementTree.fromstring("""
+                    e = ET.fromstring("""
 <a class="svg" href="%s">[ View linked image in SVG format ]</a>
 """ % element.get('src'))
                     p.remove(element)
