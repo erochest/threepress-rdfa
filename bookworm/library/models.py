@@ -35,23 +35,15 @@ class EpubArchive(BookwormModel):
     _CONTAINER = constants.CONTAINER     
 
     _archive = None
+    _parsed_metadata = None
 
     name = db.StringProperty(str, required=True)
     owner = db.UserProperty()
-
     title = db.StringProperty(unicode)
     authors = db.ListProperty(unicode)
-
     content = db.BlobProperty() 
-
-    # There's no reason to store this anymore now that each of the
-    # methods are independent, but we should store the 
-    # parsed ncx file for use in drawing the toc
-    # opf = db.TextProperty()
-    # container = db.TextProperty()
-
+    opf = db.TextProperty()
     toc = db.TextProperty()
-
     has_stylesheets = db.BooleanProperty(default=False)
 
     def author(self):
@@ -65,6 +57,29 @@ class EpubArchive(BookwormModel):
             return self.authors[0]
         return self.authors[0] + '...'
 
+    def _get_metadata(self, metadata_tag, opf):
+        '''Returns a metdata item's text content by tag name, or a list if mulitple names match'''
+        if not self._parsed_metadata:
+            self._parsed_metadata = self._xml_from_string(opf)
+        text = []
+        for t in self._parsed_metadata.findall('.//{%s}%s' % (NS['dc'], metadata_tag)):
+            text.append(t.text)
+        if len(text) == 1:
+            return text[0]
+        return text
+
+    def get_subjects(self):
+        return self._get_metadata(constants.DC_SUBJECT_TAG, self.opf)
+    
+    def get_rights(self):
+        return self._get_metadata(constants.DC_RIGHTS_TAG, self.opf)
+
+    def get_language(self):
+        '''@todo expand into full form '''
+        return self._get_metadata(constants.DC_LANGUAGE_TAG, self.opf)        
+
+    def get_publisher(self):
+        return self._get_metadata(constants.DC_PUBLISHER_TAG, self.opf)
 
     def explode(self):
         '''Explodes an epub archive'''
@@ -85,9 +100,9 @@ class EpubArchive(BookwormModel):
 
         content_path = self._get_content_path(opf_filename)
 
-        opf = unicode(z.read(opf_filename), ENC)
-        parsed_opf = self._xml_from_string(opf.encode(ENC))
-
+        self.opf = unicode(z.read(opf_filename), ENC)
+        parsed_opf = self._xml_from_string(self.opf.encode(ENC))
+        
         items = parsed_opf.getiterator("{%s}item" % (NS['opf']))
 
         self.toc = unicode(z.read(self._get_toc(parsed_opf, items, content_path)), ENC)
@@ -135,7 +150,7 @@ class EpubArchive(BookwormModel):
         raise Exception("Could not find toc filename")
 
     def _get_authors(self, opf):
-        authors = [unicode(a.text.strip(), ENC) for a in opf.findall('.//{%s}creator' % NS['dc'])]
+        authors = [unicode(a.text.strip(), ENC) for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG))]
         if len(authors) == 0:
             logging.warn('Got empty authors string for book %s' % self.name)
         else:
@@ -143,7 +158,7 @@ class EpubArchive(BookwormModel):
         return authors
 
     def _get_title(self, xml):
-        title = xml.findtext('.//{%s}title' % NS['dc']).strip()
+        title = xml.findtext('.//{%s}%s' % (NS['dc'], constants.DC_TITLE_TAG)).strip()
         logging.info('Got title as %s' % (title))
         return title
 

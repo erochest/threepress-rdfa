@@ -30,6 +30,7 @@ sys.path.append(dir_path)
 from library.models import *
 import library.views as views
 from library.epub.toc import TOC
+from library.epub.constants import *
 
 APP_ID = u'test'
 AUTH_DOMAIN = 'gmail.com'
@@ -194,7 +195,7 @@ class TestModels(unittest.TestCase):
         copyright_statement = toc.tree[0]
         self.assertEquals(copyright_statement.title(), 'Copyright')
 
-        # Second item should be the preface
+        # Second item should be the preface 
         preface = toc.tree[1]
         self.assertEquals(preface.title(), 'Preface')        
 
@@ -217,6 +218,19 @@ class TestModels(unittest.TestCase):
         children = toc.find_children(preface)
         self.assertEquals(8, len(children))
         
+    def testMetadata(self):
+        opf_file = 'all-metadata.opf'
+        document = MockEpubArchive(name=opf_file)
+        opf = open('%s/%s' % (DATA_DIR, opf_file)).read()
+
+        self.assertEquals('en-US', document.get_metadata(DC_LANGUAGE_TAG, opf))
+        self.assertEquals('Public Domain', document.get_metadata(DC_RIGHTS_TAG, opf))
+        self.assertEquals('threepress.org', document.get_metadata(DC_PUBLISHER_TAG, opf))
+        self.assertEquals(3, len(document.get_metadata(DC_SUBJECT_TAG, opf)))
+        self.assertEquals('Subject 1', document.get_metadata(DC_SUBJECT_TAG, opf)[0])
+        self.assertEquals('Subject 2', document.get_metadata(DC_SUBJECT_TAG, opf)[1])
+        self.assertEquals('Subject 3', document.get_metadata(DC_SUBJECT_TAG, opf)[2])
+
     def create_document(self, document):
         epub = MockEpubArchive(name=document)
         try:
@@ -246,6 +260,8 @@ class MockEpubArchive(EpubArchive):
     def get_authors(self, opf):
         return self._get_authors(opf)
 
+    def get_metadata(self, tag, opf):
+        return self._get_metadata(tag, opf)
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)

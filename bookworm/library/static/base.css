@@ -23,17 +23,14 @@
 
       #footer { 
         border-top: 1px solid lightgrey;
-        width:100%; /* Otherwise does not span in FF 3 */
-        bottom:0;
-        clear: both;
-        padding: 5px 20px 1em 20px;
-        height:1em;
-        margin:0;
+        width:100%; 
+        padding: 5px 20px 30px 20px;
         background-color: rgb(248, 255, 239);
       }
-      #footer p,a:link,a:hover;a:visited {
+      #footer span,a:link,a:hover;a:visited {
         margin:0;padding:0;
         color: #2E4560;
+        background-color: blue;
       }
 
       /* Header */
@@ -262,7 +259,8 @@ table.meta th {
   background-color: rgb(248, 255, 239);
   border: 1px dotted #5F5B4B;
   padding:1em;
-  width:250px;
+  width:150px;
+  text-align:left;
 }
 table.meta  td {
   border: 1px dotted #5F5B4B;
@@ -271,6 +269,7 @@ table.meta  td {
 
 table.meta th.table_header {
   border: 1px solid #5F5B4B;            
+  text-align:center;
 }
 li.first {
   font-size:larger;

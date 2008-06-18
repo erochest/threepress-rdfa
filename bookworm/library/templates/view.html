@@ -118,6 +118,20 @@
        </tr>
      </thead>     
      <tbody>
+       {% if document.get_publisher %}
+       <tr>
+         <th>Publisher</th>
+         <td>{{ document.get_publisher }}</td>
+       </tr>
+       {% endif %}
+
+       {% if document.get_language %}
+       <tr>
+         <th>Language</th>
+         <td>{{ document.get_language }}</td>
+       </tr>
+       {% endif %}
+
        <tr>
          <th>Date added to library</th>
          <td>{{ document.created_time|date:"l, F Y" }}</td>
@@ -126,6 +140,22 @@
          <th>Number of sections</th>
          <td>{{ toc|length }}</td>
        </tr>
+
+       {% if document.get_subjects %}
+       <tr>
+         <th>Subjects</th>
+         <td>{% for s in document.get_subjects %}{{ s }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+       </tr>
+       {% endif %}
+
+       {% if document.get_rights %}
+       <tr>
+         <th>Rights</th>
+         <td>{{ document.get_rights }}</td>
+       </tr>
+       {% endif %}
+
+
        <tr>
          <th>Download entire book</th>
          <td><a href="{% url library.views.download_epub document.safe_title,document.key %}">epub format</a></td>
