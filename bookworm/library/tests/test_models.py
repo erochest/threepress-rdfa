@@ -225,6 +225,7 @@ class TestModels(unittest.TestCase):
         self.assertEquals("pr02.html", preface.href())
 
     def testMetadata(self):
+        '''All metadata should be returned using the public methods'''
         opf_file = 'all-metadata.opf'
         document = MockEpubArchive(name=opf_file)
         opf = open('%s/%s' % (DATA_DIR, opf_file)).read()
@@ -236,6 +237,27 @@ class TestModels(unittest.TestCase):
         self.assertEquals('Subject 1', document.get_metadata(DC_SUBJECT_TAG, opf)[0])
         self.assertEquals('Subject 2', document.get_metadata(DC_SUBJECT_TAG, opf)[1])
         self.assertEquals('Subject 3', document.get_metadata(DC_SUBJECT_TAG, opf)[2])
+
+
+    def testInvalidXHTML(self):
+        '''Documents with non-XML content should be renderable'''
+        document = self.create_document('invalid-xhtml.epub')
+        document.explode()
+        document.put()
+        chapters = HTMLFile.gql('WHERE archive = :parent', 
+                                   parent=document).fetch(100)
+        for c in chapters:
+            c.render()
+
+    def testHTMLEntities(self):
+        '''Documents which are valid XML except for HTML entities should convert'''
+        document = self.create_document('html-entities.epub')
+        document.explode()
+        document.put()
+        chapters = HTMLFile.gql('WHERE archive = :parent', 
+                                   parent=document).fetch(100)
+        for c in chapters:
+            c.render()        
 
     def create_document(self, document):
         epub = MockEpubArchive(name=document)

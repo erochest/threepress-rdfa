@@ -4,6 +4,8 @@ from zipfile import ZipFile
 from StringIO import StringIO
 import logging, datetime, sys
 from urllib import unquote_plus
+from xml.parsers.expat import ExpatError
+import htmlentitydefs
 
 from django.utils.http import urlquote_plus
 from google.appengine.ext import db
@@ -87,11 +89,9 @@ class EpubArchive(BookwormModel):
         return t.find_points()
 
     def _get_parsed_toc(self):
-        return TOC(self.toc)        
-
-        #if not self._parsed_toc:
-        #    self._parsed_toc = TOC(self.toc)
-        #return self._parsed_toc
+        if not self._parsed_toc:
+            self._parsed_toc = TOC(self.toc)
+        return self._parsed_toc
         
         
     def explode(self):
@@ -346,9 +346,14 @@ class HTMLFile(BookwormFile):
         logging.debug('Parsing body content for first display')
         f = self.file.encode(ENC)
 
-        # Replace some common XHTML entities
-        f = f.replace('&nbsp;', '&#160;')
-        xhtml = ET.fromstring(f)
+        src = StringIO(f)
+        try:
+            xhtml = CleanXmlFile(file=src)
+        except ExpatError:
+            logging.error('Was not valid XHTML; treating as uncleaned string')
+            self.processed_content = f
+            return f
+
         body = xhtml.getiterator('{%s}body' % NS['html'])[0]
         body = self._clean_xhtml(body)
         body_content = ET.tostring(body, ENC)
@@ -363,6 +368,7 @@ class HTMLFile(BookwormFile):
 
     def _clean_xhtml(self, xhtml):
         '''This is only run the first time the user requests the HTML file; the processed HTML is then cached'''
+        
         parent_map = dict((c, p) for p in xhtml.getiterator() for c in p)
 
         for element in xhtml.getiterator():
@@ -416,3 +422,13 @@ class UserPrefs(BookwormModel):
     user = db.UserProperty()
     use_iframe = db.BooleanProperty(default=False)
     show_iframe_note = db.BooleanProperty(default=True)
+
+class CleanXmlFile(ET.ElementTree):
+    '''Implementation that includes all HTML entities'''
+    def __init__(self, file=None, tag='global', **extra):
+        ET.ElementTree.__init__(self) 
+        parser = ET.XMLTreeBuilder(
+            target=ET.TreeBuilder(ET.Element)) 
+        parser.entity = htmlentitydefs.entitydefs
+        self.parse(source=file, parser=parser) 
+        return
