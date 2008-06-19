@@ -4,8 +4,12 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" ></meta>    
     {% spaceless %}<title>{% block title %} threepress {% endblock title %}: on bookworm by threepress.org</title>{% endspaceless %}
+
+    <script type="text/javascript" src="/static/jquery-1.2.6.min.js" ></script>
+    {% block localstyles %}{% endblock localstyles %}
     <link rel="stylesheet" href="/static/base.css"></link>
     <link rel="stylesheet" type="text/css" media="print" href="/static/print.css"></link>
+
     {% block head %}{% endblock head %}
     <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -20,26 +24,28 @@
   <body>
     <!-- Header -->
 
-    <div id="header" style="margin-bottom:0">
-      <div id="header_logo">
-        <h1 class="logo"><a href="{% url library.views.index %}">bookworm</a></h1>
-        <h2 class="motto"><a href="{%  url library.views.index %}">online epub reading</a></h2>
+    <div id="bw-header" style="margin-bottom:0">
+      <div id="bw-header_logo">
+        <h1 class="bw-logo"><a href="{% url library.views.index %}">bookworm</a></h1>
+        <h2 class="bw-motto"><a href="{%  url library.views.index %}">online epub reading</a></h2>
       </div>
-      <div id="header_nav">
+      <div id="bw-header_nav">
 
         <p>
+          <a href="/">my books</a>
+          <a href="/upload/">upload a book</a>
           <a href="/about/">about bookworm</a>
-          <a href="http://www.threepress.org/about/">about <span class="three">three</span><span class="press">press</span></a>
+          <a href="http://www.threepress.org/about/">about <span class="bw-three">three</span><span class="bw-press">press</span></a>
         </p>
       </div>
     </div>
     <table width="100%">
       <tr><td>
-        <div id="subheader">
+        <div id="bw-subheader">
           <div style="float:right;padding-right:2em">
             <p>{{ common.greeting|safe }}</p>
           </div>
-          <div class="document_title">
+          <div class="bw-document_title">
             <h1>{% block header %}Library{% endblock header %}</h1>
           </div>
 
@@ -49,25 +55,25 @@
     </table>
     <table style="margin-left: 60px; padding: 0 60px 100px 0; background-color:white">
       <tr><td valign="top">
-        <div id="leftnav">
+        <div id="bw-leftnav">
           {% block leftnav %}{% endblock leftnav %}
         </div>
       </td>
       <td valign="top" style="background-color:white; width=100%;padding-right: 50px">
         <!-- Content -->
-        <div id="main">
+        <div id="bw-main">
           {% block main %}{% endblock main %}
         </div>
       </td>
       <td valign="top">
-        <div id="rightnav">
+        <div id="bw-rightnav">
           {% block rightnav %}{% endblock rightnav %}
         </div>
       </td>
       </tr>
     </table>
     <!-- Footer -->
-    <div id="footer">
+    <div id="bw-footer">
       {% block footer %}{% endblock footer %}
       <span style="float:left">Software by <a href="http://www.threepress.org/">threepress</a>, <a href="http://www.djangoproject.com">Django</a> and <a href="http://appengine.google.com/">Google App Engine</a></span>
       <span style="float:right;margin-right:50px;">threepress software is licensed under the <a href="http://www.opensource.org/licenses/bsd-license.php">BSD License</a></span>

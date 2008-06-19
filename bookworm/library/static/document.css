@@ -1,60 +1,88 @@
 /* These document-level styles should be displayed even with iframes */
 a.svg {
-  display:block;
-  background-image: url(/static/svg.png);
-  background-repeat: no-repeat;
-  height:50px;
-  text-align:right;
-  margin-left:50px;
-  width:250px;
-  padding-top:10px;
+    display:block;
+    background-image: url(/static/svg.png);
+    background-repeat: no-repeat;
+    height:50px;
+    text-align:right;
+    margin-left:50px;
+    width:250px;
+    padding-top:10px;
 }
-    .results_nav {
-       width:100%;
-       clear:both;
-       height:1em;
+.bw-results_nav {
+    width:100%;
+    clear:both;
+    height:1em;
+    
+    padding: .5em .5em .5em .5em;
+    background-color: #746E53;
+    border-top: 1px solid rgb(248, 255, 239);
+    border-bottom: 1px solid rgb(248, 255, 239);
+ }
 
-       padding: .5em .5em .5em .5em;
-       background-color: #746E53;
-       border-top: 1px solid rgb(248, 255, 239);
-       border-bottom: 1px solid rgb(248, 255, 239);
-    }
+.bw-results_nav a {
+    text-decoration: none;
+    color: rgb(248, 255, 239);
+  }
+.bw-results_nav .bw-previous {
+    float:left;
+ }
+.bw-results_nav .bw-next {
+    float:right;
+ }
 
-    .results_nav a {
-       text-decoration: none;
-       color: rgb(248, 255, 239);
-
-    }
-    .results_nav .previous {
-      float:left;
-    }
-      .results_nav .next {
-      float:right;
-
-    }
-
-.has_children {
-  /*   background-color: rgb(248, 255, 239); */
-  border-bottom: 1px dotted gray;
-  border-top: 1px dotted gray;
-  margin-bottom: 1em;
-}
-li.has_children a:visited, li.has_children a:link, li.has_children a:hover {
- color: gray;
+.bw-has_children {
+    border-bottom: 1px dotted gray;
+    border-top: 1px dotted gray;
+    margin-bottom: 1em;
+ }
+li.bw-has_children a:visited, li.bw-has_children a:link, li.bw-has_children a:hover {
+    color: gray;
 }
 
 /* subnavs */
-.current ol {
-  font-weight:normal;
-  font-size: smaller;
-  padding:0;
-  margin:0;
-  text-align:right;
-  list-style-type: none;
-  padding-top:1em;
-}
+.bw-current ol {
+    font-weight:normal;
+    font-size: smaller;
+    padding:0;
+    margin:0;
+    text-align:right;
+    list-style-type: none;
+    padding-top:1em;
+ }
 
-.current ol li {
-  padding:0;
-  margin:0;
+.bw-current ol li {
+    padding:0;
+    margin:0;
+}
+.bw-book_title {
+    color: #746E53;
+    font-size:50px;
+    margin-top:.5em;
+    margin-bottom:0;
+ }
+.bw-book_author {
+    color: #746E53;
+    font-size:large;
+    margin-top:0;
+    margin-bottom:0;
+ }
+#bw-document_content h2 { display: none; }
+
+#bw-document_spacing {
+    padding-bottom:400px;
+}
+ol.bw-nav .bw-current {
+    font-size: 1.5em;
+    color: gray;
+    font-weight: bold;
+    margin-left: -20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#bw-rightnav .bw-nextprevious {
+    color:#746E53;
+}
+#bw-rightnav .bw-nextprevious a:link, #bw-rightnav .bw-nextprevious a:visited {
+    color: gray;
 }

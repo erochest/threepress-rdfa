@@ -14,7 +14,7 @@ li { padding-bottom: .5em; }
 {% endblock head %}
 
 {% block leftnav %}
-<p class="status">Because of restrictions in Google's application environment any e-book must be <strong>less than 1 megabyte</strong> in size.</p>
+<p class="bw-status">Because of restrictions in Google's application environment any e-book must be <strong>less than 1 megabyte</strong> in size.</p>
 
 <p style="font-size:smaller">If you receive a message saying, "Connection closed" or the upload returns an error, check the size of the ePub file.  
 If it is still under 1M in size, please email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> with
@@ -28,7 +28,7 @@ a description of the problem (and if possible, please attach the ePub file).
 <h2>Add a book</h2>
 
 {% if message %}
-<p class="message"><strong>{{ message }}</strong></p>
+<p class="bw-message"><strong>{{ message }}</strong></p>
 {% endif %}
 
 <p>
@@ -38,7 +38,7 @@ Upload a DRM-free ePub book to read it on this site.
 </p>
   
 <form action="{% url library.views.upload d%}" method="post" enctype="multipart/form-data">
-  <div id="upload_form">
+  <div id="bw-upload_form">
     {{ form.as_p }}
     <input type="submit" value="upload" />
   </div>

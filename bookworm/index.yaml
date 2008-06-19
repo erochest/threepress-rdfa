@@ -29,13 +29,13 @@ indexes:
   - name: archive
   - name: idref
 
-# Used 7 times in query history.
+# Used 68 times in query history.
 - kind: HTMLFile
   properties:
   - name: archive
   - name: order
 
-# Used 4 times in query history.
+# Used 60 times in query history.
 - kind: HTMLFile
   properties:
   - name: archive

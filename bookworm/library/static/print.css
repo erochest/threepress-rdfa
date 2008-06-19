@@ -1,53 +1,48 @@
 body {
-  background: white;
-  font-size: 10pt;
-  font-family: georgia, serif;
-  padding:0;
-  margin:0;
+    background: white;
+    font-size: 10pt;
+    font-family: georgia, serif;
+    padding:0;
+    margin:0;
 }
 
-p { line-height: 12pt; }
+p { 
+    line-height: 12pt; 
+}
 
-#outer {
-  margin:0;padding:0;
+#bw-main {
+    background: white;
+    float:none;
+    margin:0;
+    padding:0;
+    border:none;
 }
-#main {
-  background: white;
-  float:none;
-  margin:0;
-  padding:0;
-  border:none;
+#bw-header {
+    background: white;
+    float:none;
 }
-#header {
-  background: white;
-  float:none;
-}
-#subheader {
-  background: white;
-  float:none;
+#bw-subheader {
+    background: white;
+    float:none;
 }
 
 a:link, a:visited {
-	color: #520;
-	background: transparent;
-	font-weight: bold;
-	text-decoration: underline;
+    color: #520;
+    background: transparent;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
-a:link:after, #content a:visited:after {
-/*  content: " (" attr(href) ") "; */
+a:link:after, #bw-content a:visited:after {
   font-size: 90%;
 }
-#body a[href^="/"]:after {
-  /*  content: " (http://www.threepress.org" attr(href) ") "; */
-}
-#leftnav {
+#bw-leftnav {
   display:none;
 }
-#rightnav {
+#bw-rightnav {
   display:none;
 }
-#container {
+#bw-container {
   margin:0;
   padding:0;
   display:block;
@@ -55,6 +50,6 @@ a:link:after, #content a:visited:after {
   border:none;
 }
 
-#header_nav, .results_nav, #footer {
+#bw-header_nav, .bw-results_nav, #bw-footer {
  display:none;
 }

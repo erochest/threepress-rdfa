@@ -8,9 +8,9 @@
 
 {% block leftnav %}
 
-<div class="status"><h2 class="upload"><a href="{% url library.views.upload d%}">Add a book</a></h2></div>
+<div class="bw-status"><h2 class="bw-upload"><a href="{% url library.views.upload d%}">Add a book</a></h2></div>
 
-<div class="status">
+<div class="bw-status">
   <h2>Status</h2>
   <p>There {% ifequal common.total_users 1 %} is {% else %} are {% endifequal %}
 
@@ -21,18 +21,18 @@
   </p>
 </div>
 
-<div class="status">
- <h3 class="profile"><a href="{% url library.views.profile %}">Edit your profile</a></h3>
+<div class="bw-status">
+ <h3 class="bw-profile"><a href="{% url library.views.profile %}">Edit your profile</a></h3>
 </div>
 
 {% endblock leftnav %}
 
 {% block main %}
 
-<div id="content">
+<div id="bw-content">
 <h1><img src="/static/bookworm-logo.png" alt="Bookworm" /></h1>
 
-<p class="tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
+<p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
 
 {% if documents.count %}
 <h2>Books in your library</h2>
@@ -48,7 +48,7 @@
 <h3 style="padding-top:2em;">Upload {% if documents.count %} a new {% else %} your first {% endif %} book</h3>
 <p style="font-size:smaller">(E-books must be less than 1 megabyte in size due to Google restrictions.)</p>
 <form action="{% url library.views.upload d%}" method="post" enctype="multipart/form-data">
-  <div id="upload_form">
+  <div id="bw-upload_form">
     {{ common.upload_form.as_p }}
     <input type="submit" value="upload" />
   </div>

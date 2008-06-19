@@ -1,24 +1,24 @@
-<table id="library">
+<table id="bw-library">
   {% for d in documents %}
   <tr>
     <td>
-      <span class="title"><a href="{% url library.views.view d.safe_title,d.key %}">{{ d.title}}</a></span>
+      <span class="bw-title"><a href="{% url library.views.view d.safe_title,d.key %}">{{ d.title}}</a></span>
     </td>
     <td>
-      <span class="attribution">{% if d.author %}by <span class="author">{{ d.author }}</span>{% endif %}</span>
+      <span class="bw-attribution">{% if d.author %}by <span class="bw-author">{{ d.author }}</span>{% endif %}</span>
     </td>
     <td>
-      added on <span class="added">{{ d.created_time|date:"l, F j Y" }}</span>
+      added on <span class="bw-added">{{ d.created_time|date:"l, F j Y" }}</span>
     </td>
     {% if common.is_admin %}
       {% if show_owner %}
       <td>
-        owned by <span class="owner">{{ d.owner.nickname }}</span>
+        owned by <span class="bw-owner">{{ d.owner.nickname }}</span>
       </td>
       {% endif %}
     {% endif %}
     <td>
-      <span class="delete">
+      <span class="bw-delete">
       <form action="{% url library.views.delete %}" method="post">
         <input type="hidden" name="title" value="{{ d.safe_title }}" />
         <input type="hidden" name="key" value="{{ d.key }}" />

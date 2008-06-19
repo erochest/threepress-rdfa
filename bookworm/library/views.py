@@ -130,11 +130,10 @@ def view_chapter(request, title, key, chapter_id):
     logging.info("Looking up title %s, key %s, chapter %s" % (title, key, chapter_id))    
     document = _get_document(title, key)
 
-    #toc = HTMLFile.gql('WHERE archive = :parent ORDER BY order ASC', 
-    #                   parent=document).fetch(100)
     chapter = HTMLFile.gql('WHERE archive = :parent AND idref = :idref',
                            parent=document, idref=chapter_id).get()
-
+    stylesheets = StylesheetFile.gql('WHERE archive = :parent',
+                                     parent=document).fetch(10)
     next = _chapter_next_previous(document, chapter, 'next')
     previous = _chapter_next_previous(document, chapter, 'previous')
 
@@ -142,8 +141,8 @@ def view_chapter(request, title, key, chapter_id):
         
     return render_to_response('view.html', {'common':common,
                                             'document':document,
-                                            #'toc':document.get_top_level_toc(),
                                             'next':next,
+                                            'stylesheets':stylesheets,
                                             'previous':previous,
                                             'chapter':chapter})
 

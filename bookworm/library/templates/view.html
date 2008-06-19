@@ -3,6 +3,17 @@
 {% block title %}{{ document.title }}{% if document.author %} by {{ document.author }} {% endif %}{% endblock title %}
 {% endspaceless %}
 
+
+{% block localstyles %}
+    {% if stylesheets %}
+      {% for css in stylesheets %}
+      <!-- preparing for in-document CSS
+         <link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.idref %}" />
+      -->
+      {% endfor %}
+    {% endif %}
+{% endblock %}
+
 {% block head %}
 <script type="text/javascript">
      function getFullPath() {
@@ -26,25 +37,26 @@
     <meta name="dc.creator" content="{{ document.author }}" ></meta>
 
     <link rel="stylesheet" href="/static/document.css"></link>
+
 {% endspaceless %}
 {% endblock head %}
 
 {% block header %}
-<a href="{% url library.views.view document.safe_title,document.key %}"><span class="title">{{ document.title }}</span></a> 
+<a href="{% url library.views.view document.safe_title,document.key %}"><span class="bw-title">{{ document.title }}</span></a> 
 {% endblock header %}
 
 {% block leftnav %}
 
 {% if document.authors %}
-<h2 class="authors">by 
+<h2 class="bw-authors">by 
 {% for a in document.authors %}
   {{ a }}{% if not forloop.last %}, {% endif %}
 {% endfor %}
 </h2>
 {% endif %}
 
-<ol class="nav">
-  <li class="first">
+<ol class="bw-nav">
+  <li class="bw-first">
   {% if chapter %}
   <a href="{% url library.views.view document.safe_title,document.key %}">Book information</a>
   {% else %}
@@ -54,7 +66,7 @@
   
 {% for c in document.get_top_level_toc %}
    {% ifequal c.order chapter.order %}
-   <li class="current {% if c.find_children %} has_children {% endif %}"> {{ c.title }} 
+   <li class="bw-current {% if c.find_children %} bw-has_children {% endif %}"> {{ c.title }} 
 
    {% if c.find_children %}
       <ol>
@@ -73,7 +85,7 @@
 
 {% block main %}
 
-<div id="content" style="height:100%">
+<div id="bw-content" style="height:100%">
 
 {% if chapter %}
 
@@ -110,7 +122,7 @@
 
          <!-- Show iframe note -->
          {% if common.prefs.show_iframe_note %}
-            <p class="note">
+            <p class="bw-note">
               Note: This ebook came bundled with its own stylesheets.  To use them you will need to <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=yes">enable iframes</a>.
               [<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe_note=no">hide this note</a>]
             </p>
@@ -130,17 +142,17 @@
 
  <!-- Title page -->
 
-   <h1 class="book_title">{{ document.title }}</h1>
-   <h2 class="book_author">{% for a in document.authors %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}</h2>
+   <h1 class="bw-book_title">{{ document.title }}</h1>
+   <h2 class="bw-book_author">{% for a in document.authors %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}</h2>
 
    <p>
      To read this book online, select any of the sections to the left.
    </p>
 
-   <table class="meta">
+   <table class="bw-meta">
      <thead>
        <tr>
-         <th class="table_header" colspan="2">Book information</th>
+         <th class="bw-table_header" colspan="2">Book information</th>
        </tr>
      </thead>     
      <tbody>
@@ -207,6 +219,5 @@
 {% endif %}
 
 </div>
-
 
 {% endblock main %}
