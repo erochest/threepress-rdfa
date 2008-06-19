@@ -38,7 +38,6 @@ def profile(request):
 def view(request, title, key):
     logging.info("Looking up title %s, key %s" % (title, key))
     common = _check_switch_modes(request)
-
     document = _get_document(title, key)
 
     toc = HTMLFile.gql('WHERE archive = :parent ORDER BY order ASC', 
@@ -311,6 +310,7 @@ def _get_document(title, key, override_owner=False):
     '''Return a document by Google key and owner.  Setting override_owner
     will search regardless of ownership, for use with admin accounts.'''
     user = users.get_current_user()
+
     document = EpubArchive.get(db.Key(key))
       
     if not document:
@@ -318,7 +318,7 @@ def _get_document(title, key, override_owner=False):
                       % (unsafe_name(title), key))
         raise Http404 
 
-    if not override_owner and document.owner != user:   
+    if not override_owner and document.owner != user and not users.is_current_user_admin():
         logging.error('User %s tried to access document %s, which they do not own' % (user, title))
         raise Http404
 
