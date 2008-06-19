@@ -8,7 +8,7 @@
       <span class="attribution">{% if d.author %}by <span class="author">{{ d.author }}</span>{% endif %}</span>
     </td>
     <td>
-      added on <span class="added">{{ d.created_time|date:"l, F Y" }}</span>
+      added on <span class="added">{{ d.created_time|date:"l, F j Y" }}</span>
     </td>
     {% if common.is_admin %}
       {% if show_owner %}
