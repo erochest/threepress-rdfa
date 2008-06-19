@@ -20,7 +20,7 @@ a.svg {
        border-bottom: 1px solid rgb(248, 255, 239);
     }
 
-    .results_nav a {
+    .results_nav a:link, .result_nav a:visited {
        text-decoration: none;
        color: rgb(248, 255, 239);
 

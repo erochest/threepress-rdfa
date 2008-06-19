@@ -29,7 +29,7 @@
         background-color: rgb(248, 255, 239);
       }
 
-      #footer span,a:link,a:hover,a:visited {
+      #footer span, #footer a:link, #footer a:hover,#footer a:visited, #footer a:active {
         margin:0;padding:0;
         color: #2E4560;
       }
@@ -55,7 +55,7 @@
         margin-top: -10px;
         font-weight: bold;
       }
-      #header_nav a {
+      #header_nav a:link, #header_nav a:visited {
         color: rgb(248, 255, 239); 
         padding: 10px;
       }
@@ -76,7 +76,7 @@
       .motto {  
         padding:0; margin:0;
       }
-      .motto a {
+      .motto a:link, .motto a:visited {
         color: rgb(248, 255, 239);
       }
       .document_title {
@@ -90,7 +90,7 @@
         padding-right: .2em;
 
       }
-      .document_title a {
+      .document_title a:link, .document_title a:visited {
         color:#746E53;
         text-decoration:none;
       }
@@ -146,7 +146,7 @@
         text-align:right;
         padding-right: 2em;
       }
-      ol.nav a {
+      ol.nav a:link, ol.nav a:visited {
         text-decoration: none;
         color: black;
       }
@@ -186,7 +186,7 @@
       #rightnav .nextprevious {
         color:#746E53;
       }
-      #rightnav .nextprevious a {
+      #rightnav .nextprevious a:link, #rightnav .nextprevious a:visited {
         color: gray;
       }
       ol.results {
