@@ -20,7 +20,7 @@ a.svg {
        border-bottom: 1px solid rgb(248, 255, 239);
     }
 
-    .results_nav a:link, .result_nav a:visited {
+    .results_nav a {
        text-decoration: none;
        color: rgb(248, 255, 239);
 
@@ -39,7 +39,7 @@ a.svg {
   border-top: 1px dotted gray;
   margin-bottom: 1em;
 }
-.has_children a:link, .has_children a:visited {
+li.has_children a:visited, li.has_children a:link, li.has_children a:hover {
  color: gray;
 }
 
