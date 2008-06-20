@@ -45,10 +45,13 @@
 #bw-library .bw-author {
     padding-left: 5px;
 }
-#bw-library a {
+#bw-library a:visited, #bw-library a:hover, #bw-library a:link { 
     text-decoration: none;
+    color: black !important;
 }
-
+#bw-library a:hover {
+    text-decoration: underline;
+}
 #bw-library .bw-attribution {
     clear:both;
 }
@@ -62,3 +65,6 @@
   font-size: smaller;
 }
 
+p.bw-tagline {
+    font-size: x-large !important;
+ }

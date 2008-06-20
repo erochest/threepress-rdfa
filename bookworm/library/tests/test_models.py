@@ -259,6 +259,18 @@ class TestModels(unittest.TestCase):
         for c in chapters:
             c.render()        
 
+    def testRemoveBodyTag(self):
+        '''We should not be printing the original document's <body> tag'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.put()
+        chapters = HTMLFile.gql('WHERE archive = :parent', 
+                                   parent=document).fetch(100)
+        for c in chapters:
+            self.assert_('<body' not in c.render())
+            self.assert_('<div id="bw-book-content"' in c.render())
+
     def create_document(self, document):
         epub = MockEpubArchive(name=document)
         try:

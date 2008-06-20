@@ -9,9 +9,20 @@ body {
     padding:0 !important;
     background-color:white;
 }
-a { color: black }
+a:link { 
+    color: black !important;
+}
+a:visited {
+    color: gray !important;
+}
 
-p { line-height: 1.7em; }
+p { 
+    font-size: 1em !important;
+    text-align:inherit !important;
+    line-height: 1.7em !important; 
+    text-indent:inherit !important;
+
+}
 
 #bw-footer { 
     border-top: 1px solid lightgrey;
@@ -21,18 +32,19 @@ p { line-height: 1.7em; }
 }
 
 #bw-footer span, #bw-footer a:link, #bw-footer a:hover, #bw-footer a:visited, #bw-footer a:active {
-    margin:0;padding:0;
-    color: #2E4560;
+    margin:0;padding:0 !important;
+    color: #2E4560 !important;
 }
 
 /* Header */
 #bw-header {
-    background-color: rgb(156, 175, 131); /* threepress orig: rgb(198, 223, 167);  */
+    background-color: rgb(156, 175, 131); 
     padding: 10px 0 10px 60px;
     overflow:hidden;      
 }
-#bw-header a {
-    text-decoration: none;
+#bw-header a:link, #bw-header a:hover, #bw-header a:visited {
+    text-decoration: none !important;
+    color: black !important;
 }
 #bw-header_nav {
     text-align:right;
@@ -40,18 +52,31 @@ p { line-height: 1.7em; }
     margin-top: -10px;
     font-weight: bold;
 }
-#bw-header_nav a {
-    color: rgb(248, 255, 239); 
-    padding: 10px;
+#bw-header_nav a:visited, #bw-header_nav a:hover, #bw-header_nav a:link  {
+    color: rgb(248, 255, 239) !important; 
+    padding: 10px !important;
 }
 #bw-header_logo {
     float:left;
 }
-.bw-logo {
+/* Do not allow document stylesheets to alter these */
+#bw-header p {
+    font-size: 1em      !important;
+    text-align:inherit  !important;
+    line-height: 1.7em  !important; 
+    text-indent:inherit !important;
+}
+
+#bw-header_logo h1.bw-logo {
     margin:0; padding:0;
     font-weight: bold;
     letter-spacing:-1px;    
+
  }
+#bw-header_logo h1.bw-logo a:visited, #bw-header_logo h1.bw-logo a:link, #bw-header_logo h1.bw-logo a:hover {
+    color: #2E4560 !important;
+}
+
 .bw-three {
     color: #2E4560;
  }
@@ -61,8 +86,8 @@ p { line-height: 1.7em; }
 .bw-motto {  
     padding:0; margin:0;
  }
-.bw-motto a {
-    color: rgb(248, 255, 239);
+#bw-header_logo .bw-motto a:visited, #bw-header_logo .bw-motto a:link, #bw-header_logo .bw-motto a:hover {
+    color: rgb(248, 255, 239) !important;
  }
 .bw-document_title {
     clear:left;
@@ -117,7 +142,7 @@ h1, h2, h3 {
 
 ol.bw-nav a:link, ol.bw-nav a:visited, ol.bw-nav a:hover {
     text-decoration: none !important;
-    color: black;
+    color: black !important;
 }
 
 #bw-leftnav {    

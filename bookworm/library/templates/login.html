@@ -6,16 +6,16 @@
 {% block main %}
 
 
-<div id="content">
+<div id="bw-content">
 <h1><img src="/static/bookworm-logo.png" alt="Bookworm" /></h1>
 
-<p class="tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
+<p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
 
 <p>Use of the library requires that you be logged in to the Google service.  Once logged in you'll have
 access to books that you have uploaded to the service.  
 </p>
 
-<p style="font-size:x-large">→ <a href="{{ login }}">Log in to your Google account</a></p>
+<p class="bw-tagline">→ <a href="{{ login }}">Log in to your Google account</a></p>
 
 {% endblock main %}
 

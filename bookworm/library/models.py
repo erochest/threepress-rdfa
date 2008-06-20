@@ -354,9 +354,14 @@ class HTMLFile(BookwormFile):
             self.processed_content = f
             return f
 
-        body = xhtml.getiterator('{%s}body' % NS['html'])[0]
+        body = xhtml.find('{%s}body' % NS['html'])
         body = self._clean_xhtml(body)
-        body_content = ET.tostring(body, ENC)
+        div = ET.Element('div')
+        div.attrib['id'] = 'bw-book-content'
+        children = body.getchildren()
+        for c in children:
+            div.append(c)
+        body_content = ET.tostring(div, ENC)
 
         try:
             self.processed_content = unicode(body_content, ENC)

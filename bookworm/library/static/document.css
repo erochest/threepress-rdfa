@@ -14,16 +14,22 @@ a.svg {
     clear:both;
     height:1em;
     
-    padding: .5em .5em .5em .5em;
-    background-color: #746E53;
-    border-top: 1px solid rgb(248, 255, 239);
-    border-bottom: 1px solid rgb(248, 255, 239);
  }
+#bw-results_nav_top {
+   border-bottom: 1px dotted gray;
+   padding: .5em .5em 1em .5em;
+}
 
-.bw-results_nav a {
+#bw-results_nav_bottom {
+   border-top: 1px dotted gray;
+   padding: 1em .5em 1em .5em;
+}
+
+.bw-results_nav a:hover, .bw-results_nav a:visited, .bw-results_nav a:link {
     text-decoration: none;
-    color: rgb(248, 255, 239);
-  }
+    font-size: large;
+    color: #2E4560 !important;
+ }
 .bw-results_nav .bw-previous {
     float:left;
  }
@@ -74,7 +80,7 @@ li.bw-has_children a:visited, li.bw-has_children a:link, li.bw-has_children a:ho
 }
 ol.bw-nav .bw-current {
     font-size: 1.5em;
-    color: gray;
+    color: gray !important;
     font-weight: bold;
     margin-left: -20px;
     padding-top: 10px;

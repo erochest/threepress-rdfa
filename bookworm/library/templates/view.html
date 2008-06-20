@@ -5,13 +5,13 @@
 
 
 {% block localstyles %}
-    {% if stylesheets %}
+{% spaceless %}
+    {% if not common.prefs.use_iframe %}
       {% for css in stylesheets %}
-      <!-- preparing for in-document CSS
-         <link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.idref %}" />
-      -->
+      <link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.idref %}" />
       {% endfor %}
     {% endif %}
+{% endspaceless %}
 {% endblock %}
 
 {% block head %}
@@ -95,8 +95,7 @@
   </script>
   <!-- Show iframe -->
   <div style="width:100%">
-<!--   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="100%" name="content" src="{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.idref %}" > -->
-   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="100%" name="content" src="{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.idref %}">
+   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="500px" name="content" src="javascript:getFullPath()">
      <p>Your browser doesn't support iframes, but that's okay: <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">disable iframes</a></p>
    </iframe>
    <script type="text/javascript">
@@ -112,30 +111,33 @@
 
    </script>
     
-   <p>
-     To disable the book's custom stylesheets and display only using the styles in Bookworm, you can
-   <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">disable iframes</a>.</p>
+   <p style="width:400px" >
+     To redisplay this book in the main window, you may
+   <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">disable frames</a>.
+   </p>
   </div>
  {% else %}
+
+   <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
+  
+      {{ chapter.render|safe }}
+  
+   <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
+
       <!-- Skip iframe -->
       {% if document.has_stylesheets %}
 
          <!-- Show iframe note -->
          {% if common.prefs.show_iframe_note %}
-            <p class="bw-note">
-              Note: This ebook came bundled with its own stylesheets.  To use them you will need to <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=yes">enable iframes</a>.
+            <p class="bw-note" style="margin-top:2em;margin-left:0;">
+              Note: This book came bundled with its own stylesheets.  It's possible for these
+              styles to interfere with the behavior of the site.  If the site does not appear to be laid out as expected, you may
+              <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=yes">view the book content in its own frame</a>.
               [<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe_note=no">hide this note</a>]
             </p>
          {% endif %}
 
       {% endif %} <!-- end stylesheet check -->
-
-   {% include "includes/chapter_next_previous.html" %}
-  
-      {{ chapter.render|safe }}
-  
-   {% include "includes/chapter_next_previous.html" %}
-
 
    {% endif %}
 {% else %}

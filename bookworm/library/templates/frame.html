@@ -20,6 +20,21 @@
     <!-- Frame-specific stylesheets -->
     <link rel="stylesheet" href="/static/frame.css"></link>
 
+    <script type="text/javascript" src="/static/jquery-1.2.6.min.js" ></script>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+         // For each anchor, add a target="_parent" if it's an external link to break out of the frame.
+         // Keep internal links untouched.
+         $("#bw-book-frame  a").each(function() {
+           if (this.href.match('http://' + location.hostname) == null) { 
+             this.target="_parent";
+           }
+         });
+      });
+    </script>
+
+
     {% block head %}{% endblock head %}
     <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -30,12 +45,12 @@
       pageTracker._initData();
       pageTracker._trackPageview();
     </script>
-    <base target="_parent" />
+
   </head>
   <body>
 
    {% include "includes/chapter_next_previous_frame.html" %}
-    {{ chapter.render|safe }}
+    <div id="bw-book-frame">{{ chapter.render|safe }}</div>
    {% include "includes/chapter_next_previous_frame.html" %}
   </body>
 </html>
