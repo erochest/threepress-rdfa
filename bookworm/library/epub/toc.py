@@ -80,6 +80,7 @@ class NavPoint():
                       % (self.doc_title, self.title(), get_label(self.parent), self.depth))
 
     def find_children(self):
+        '''Returns all the children of this NavPoint'''
         return [n for n in self.tree if n.parent.get('id') == self.element.get('id')]
 
     def title(self):

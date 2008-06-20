@@ -16,13 +16,14 @@ a.svg {
     
  }
 #bw-results_nav_top {
-   border-bottom: 1px dotted gray;
-   padding: .5em .5em 1em .5em;
+    border-bottom: 1px dotted gray;
+    padding: .5em .5em 1em .5em;
+    margin-bottom: 1em;
 }
 
 #bw-results_nav_bottom {
-   border-top: 1px dotted gray;
-   padding: 1em .5em 1em .5em;
+    border-top: 1px dotted gray;
+    padding: 1em .5em 1em .5em;
 }
 
 .bw-results_nav a:hover, .bw-results_nav a:visited, .bw-results_nav a:link {

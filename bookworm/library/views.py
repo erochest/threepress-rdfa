@@ -137,11 +137,27 @@ def view_chapter(request, title, key, chapter_id):
     next = _chapter_next_previous(document, chapter, 'next')
     previous = _chapter_next_previous(document, chapter, 'previous')
 
+    parent_chapter = None
+    subchapter_href = None
+
+    toc = document.get_top_level_toc()
+
+    for t in toc:
+        href = chapter.idref.encode(epub_constants.ENC)
+        if href in [c.href() for c in t.find_children()]:
+            parent_chapter = t
+            subchapter_href = href
+            logging.info(parent_chapter.order())
+            break
+
     common = _check_switch_modes(request)
         
     return render_to_response('view.html', {'common':common,
                                             'document':document,
                                             'next':next,
+                                            'toc':toc,
+                                            'subchapter_href':subchapter_href,
+                                            'parent_chapter':parent_chapter,
                                             'stylesheets':stylesheets,
                                             'previous':previous,
                                             'chapter':chapter})

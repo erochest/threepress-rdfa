@@ -65,20 +65,36 @@
   </li>
   
 {% for c in document.get_top_level_toc %}
-   {% ifequal c.order chapter.order %}
-   <li class="bw-current {% if c.find_children %} bw-has_children {% endif %}"> {{ c.title }} 
 
-   {% if c.find_children %}
-      <ol>
-      {% for sub in c.find_children %}
-        <li><a href="{% url library.views.view_chapter document.safe_title,document.key,sub.href %}">{{ sub.title }}</a></li>
-      {% endfor %}
-      </ol>
-   {% endif %}
-   </li>
-   {% else %}
-     <li><a href="{% url library.views.view_chapter document.safe_title,document.key,c.href %}">{{ c.title }}</a></li>
+   {# Is 'c' a top-level chapter? #}
+
+   {% ifequal c.order chapter.order %}
+
+     {% with c.find_children as find_children %}
+       {% with c as current_chapter %}
+         {% include "includes/subchapters.html" %}
+       {% endwith %}
+     {% endwith %}
+
    {% endifequal %}
+
+   {# Instead is 'c' the parent of the viewed chapter? #}
+
+   {% ifequal c.order parent_chapter.order %}
+      {% with c.find_children as find_children %}
+        {% with c as current_chapter %}
+          {% include "includes/subchapters.html" %}
+        {% endwith %}
+      {% endwith %}
+   {% endifequal %}
+
+   {# Silly Django templates to accommodate no flexible 'else' #}
+   {% ifnotequal parent_chapter c %}
+     {% ifnotequal c.order chapter.order %}
+       <li><a href="{% url library.views.view_chapter document.safe_title,document.key,c.href %}">{{ c.title }}</a></li>
+     {% endifnotequal %}
+   {% endifnotequal %}
+
 {% endfor %}
 </ol>
 {% endblock leftnav %}
@@ -120,7 +136,7 @@
 
    <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
   
-      {{ chapter.render|safe }}
+      <div id="bw-book-content">{{ chapter.render|safe }}</div>
   
    <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
 
