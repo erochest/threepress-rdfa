@@ -43,7 +43,7 @@ a.svg {
     margin-bottom: 1em;
  }
 li.bw-has_children a:visited, li.bw-has_children a:link, li.bw-has_children a:hover {
-    color: gray;
+    color: gray !important;
 }
 
 /* subnavs */
@@ -80,8 +80,8 @@ li.bw-has_children a:visited, li.bw-has_children a:link, li.bw-has_children a:ho
 }
 ol.bw-nav .bw-current {
     font-size: 1.5em;
-    color: gray !important;
     font-weight: bold;
+    color: gray !important;
     margin-left: -20px;
     padding-top: 10px;
     padding-bottom: 10px;
