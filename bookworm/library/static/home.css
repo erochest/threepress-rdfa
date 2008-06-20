@@ -27,7 +27,7 @@
     text-align:center;
  }
 .bw-status p {
-    line-height:1em;
+    line-height:1em !important;
  }
 
 .bw-tagline {
@@ -67,4 +67,10 @@
 
 p.bw-tagline {
     font-size: x-large !important;
- }
+}
+h3.bw-profile a:link, h3.bw-profile a:visited, h3.bw-profile a:hover,
+h2.bw-upload a:link, h2.bw-upload a:visited, h2.bw-upload a:hover {
+ 
+    color: #2E4560 !important;
+    font-weight:bold;
+}
