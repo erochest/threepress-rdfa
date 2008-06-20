@@ -39,7 +39,7 @@
     background-color: rgb(248, 255, 239);
     border-top: 1px dotted gray;
 }
-#bw-library .title, #bw-library .author {
+#bw-library .bw-title, #bw-library .bw-author {
     font-size: medium;
 }
 #bw-library .bw-author {
@@ -58,7 +58,7 @@
 
 #bw-library td {
     border-bottom: 1px dotted gray;
-    padding: 1em;
+    padding: 7px;
 }
 
 #bw-library .bw-delete {
