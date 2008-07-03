@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Admin search{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/home.css"></link>
+{% endblock head %}
+
+
+{% block main %}
+
+<div id="bw-content">
+
+  <p>Search for any book in the system:</p>
+  
+  <form action="{% url library.admin.search %}" method="get">
+    <div>
+      <label for="title">Title</label> <input type="text" name="title" />
+      <label for="author">Author</label> <input type="text" name="author" />
+      <input type="submit" value="Search"/>
+    </div>
+  </form>
+  
+</div>
+
+{% if documents.count %}
+<h2>Search results</h2>
+
+{% include "includes/document_list.html" %} 
+
+{% endif %}
+
+{% endblock main %}

@@ -1,0 +1,20 @@
+form input { 
+  display:block;
+  margin: 1em 1em 1em 1em;
+}
+form label {
+  font-weight: bold;
+  color: #5F5B4B;
+  font-size: larger;
+
+}
+form legend {
+  color: #5F5B4B;
+  font-weight:bold;
+  font-size:large;
+
+}
+
+form fieldset {
+  border: 1px dotted gray;
+}

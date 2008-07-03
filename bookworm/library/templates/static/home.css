@@ -1,0 +1,76 @@
+.bw-document_title a { 
+    text-decoration: none;
+ }
+#bw-upload_form label { 
+    display:none;
+}
+.bw-upload { 
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.bw-status a { 
+    text-decoration:none;
+}
+.bw-status { 
+    font-size: 12px;
+    text-transform: uppercase;
+    border: 1px solid rgb(210,210,210);
+    color: gray;
+    padding: 1em;
+    margin-left: 0px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+ }
+.bw-status h2, .bw-status h3 {
+    margin:0;
+    padding:0;
+    text-align:center;
+ }
+.bw-status p {
+    line-height:1em !important;
+ }
+
+.bw-tagline {
+    font-size: x-large;
+ }
+
+#bw-library {
+    width:100%;
+    background-color: rgb(248, 255, 239);
+    border-top: 1px dotted gray;
+}
+#bw-library .bw-title, #bw-library .bw-author {
+    font-size: medium;
+}
+#bw-library .bw-author {
+    padding-left: 5px;
+}
+#bw-library a:visited, #bw-library a:hover, #bw-library a:link { 
+    text-decoration: none;
+    color: black !important;
+}
+#bw-library a:hover {
+    text-decoration: underline;
+}
+#bw-library .bw-attribution {
+    clear:both;
+}
+
+#bw-library td {
+    border-bottom: 1px dotted gray;
+    padding: 7px;
+}
+
+#bw-library .bw-delete {
+  font-size: smaller;
+}
+
+p.bw-tagline {
+    font-size: x-large !important;
+}
+h3.bw-profile a:link, h3.bw-profile a:visited, h3.bw-profile a:hover,
+h2.bw-upload a:link, h2.bw-upload a:visited, h2.bw-upload a:hover {
+ 
+    color: #2E4560 !important;
+    font-weight:bold;
+}

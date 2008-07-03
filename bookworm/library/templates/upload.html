@@ -1,0 +1,45 @@
+{% extends "base.html" %} 
+
+{% block title %}Add a book{% endblock title %}
+
+{% block head %}
+<style type="text/css">
+dl { color: grey }
+dt { font-weight: bold; color: #2E4560;}
+dd { margin:0 0 1em 0; padding:0 10px 0 0; }
+li { padding-bottom: .5em; }
+.document_title a { text-decoration: none }
+#upload_form label { display:none }
+</style>
+{% endblock head %}
+
+{% block leftnav %}
+<p style="font-size:smaller">If the upload returns an error, please email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> with
+a description of the problem (and if possible, please attach the ePub file).
+</p>
+
+{% endblock %}
+
+{% block main %}
+
+<h2>Add a book</h2>
+
+{% if message %}
+<p class="bw-message"><strong>{{ message }}</strong></p>
+{% endif %}
+
+<p>
+Upload a DRM-free ePub book to read it on this site.
+</p>
+  
+<form action="{% url library.views.upload d%}" method="post" enctype="multipart/form-data">
+  <div id="bw-upload_form">
+    {{ form.as_p }}
+    <input type="submit" value="upload" />
+  </div>
+ 
+</form>
+
+
+
+{% endblock %}
