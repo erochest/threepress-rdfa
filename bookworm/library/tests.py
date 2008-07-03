@@ -15,7 +15,6 @@ from models import *
 from testmodels import *
 from epub.toc import TOC
 from epub.constants import *
-import smtp
 
 # Data for public epub documents
 DATA_DIR = os.path.abspath('./library/test-data/data')
@@ -424,6 +423,11 @@ class TestViews(DjangoTestCase):
         self.assertTemplateUsed(response, 'auth/profile.html')
         self.assertContains(response, 'testuser', status_code=200)        
 
+    def test_view_about_not_logged_in(self):
+        '''This throws an exception if the user profile isn't properly handled for anonymous requests'''
+        response = self.client.get('/about/')
+        self.assertContains(response, 'About', status_code=200)                
+        self.assertTemplateUsed(response, 'about.html')
 
     def test_register_standard(self):
         logging.info("This test may fail if the local client does not have a running stmp server. Try running library/smtp.py as root before calling this test.")

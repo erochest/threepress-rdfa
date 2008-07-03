@@ -372,6 +372,9 @@ def _prefs(request):
     user = request.user
     try:
         userprefs = user.get_profile()
+    except AttributeError:
+        # Occurs when this is called on an anonymous user; ignore
+        return None
     except UserPref.DoesNotExist:
         logging.info('Creating a userprefs object for %s' % user.username)
         # Create a preference object for this user
