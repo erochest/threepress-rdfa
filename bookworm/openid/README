@@ -1,0 +1,40 @@
+Prerequisites
+=============
+
+Via easy_install:
+
+- cssutils
+- python-openid (2.x)
+- python-yadis
+
+Database
+--------
+
+The first time you get here, manually setup MySQL database 
+and user permissions according to values in ./local.py
+
+Then, from the project root:
+
+./manage.py syncdb
+./manage.py test library # Sanity check
+
+You should only need to run syncdb initially, or when the schema changes.
+
+===
+
+To test the models and views:
+./manage.py test library 
+
+===
+
+To run a local development server:
+./manage.py runserver 
+
+(./run.sh is a short-hand, and will put the dev server in the background)
+
+===
+
+To start over with a clean database:
+./clear-db.sh 
+
+

@@ -1,0 +1,9 @@
+{% if document %}
+<div class="bw-results_nav">
+  <div class="bw-previous"> {% if previous %} <a target="_self" href="{% url library.views.view_chapter_frame document.safe_title,document.key,previous.idref %}">← previous</a> {% endif %} </div>
+  <div class="bw-next">
+    {% if next %} <a target="_self" href="{% url library.views.view_chapter_frame document.safe_title,document.key,next.idref %}">next →</a> {% endif %} 
+  </div>
+</div>
+<br />
+{% endif %}
