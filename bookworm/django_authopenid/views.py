@@ -435,7 +435,7 @@ def signup(request):
         }, context_instance=RequestContext(request))
 
 @login_required
-def signout(request):
+def signout(request, msg=None):
     """
     signout from the website. Remove openid from session and kill it.
 
@@ -445,10 +445,11 @@ def signout(request):
         del request.session['openid']
     except KeyError:
         pass
-    next = request.GET.get('next', '/')
+    next = request.GET.get('next', reverse('user_signin'))
     if not is_valid_next_url(next):
         next = '/'
-
+    if msg:
+        next = next + '?msg=' + urlquote_plus(msg)
     logout(request)
     
     return HttpResponseRedirect(next)
@@ -501,7 +502,7 @@ def changepw(request):
             user_.save()
             msg = _("Password changed.") 
             redirect = "%s?msg=%s" % (
-                    reverse('user_account_settings'),
+                    reverse('library.views.profile'),
                     urlquote_plus(msg))
             return HttpResponseRedirect(redirect)
     else:
@@ -649,14 +650,14 @@ def changeopenid_success(request, identity_url, openid_response):
             uassoc.save()
     elif uassoc.user.username != request.user.username:
         return changeopenid_failure(request, 
-                _('This openid is already associated with another account.'))
+                _('This OpenID is already associated with another account.'))
 
     request.session['openids'] = []
     request.session['openids'].append(openid_)
 
-    msg = _("Openid %s associated with your account." % identity_url) 
+    msg = _("This OpenID is now associated with your account.") 
     redirect = "%s?msg=%s" % (
-            reverse('user_account_settings'), 
+            reverse('library.views.profile'), 
             urlquote_plus(msg))
     return HttpResponseRedirect(redirect)
     
@@ -686,9 +687,12 @@ def delete(request):
     if request.POST:
         form = DeleteForm(request.POST, user=user_)
         if form.is_valid():
-            if  'password' in form.cleaned_data and form.cleaned_data['password']:
+            if 'password' in form.cleaned_data and form.cleaned_data['password']:
+                if user_.check_password(form.cleaned_data['password']):
+                    user_.delete()
+                    return signout(request, msg='Your account has been deleted.')
                 return ask_openid(request, form.cleaned_data['password'],
-                        redirect_to, on_failure=deleteopenid_failure)
+                                  redirect_to, on_failure=deleteopenid_failure)
             else:
                 return ask_openid(request, form.cleaned_data['openid_url'],
                         redirect_to, on_failure=deleteopenid_failure)
@@ -722,7 +726,7 @@ def deleteopenid_success(request, identity_url, openid_response):
 
     if uassoc.user.username == user_.username:
         user_.delete()
-        return signout(request)
+        return signout(request, msg='Your account has been deleted.')
     else:
         return deleteopenid_failure(request,
                 _("This OpenID isn't associated with the current logged-in user"))

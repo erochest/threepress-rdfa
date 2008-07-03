@@ -59,6 +59,7 @@ def profile(request):
 
     uprofile = request.user.get_profile()
     if request.openid:
+        uprofile.openidurl = request.openid
         sreg = request.openid.sreg
         # If we have the email from OpenID and not in their profile, pre-populate it
         if not request.user.email and sreg.has_key('email'):

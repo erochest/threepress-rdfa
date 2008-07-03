@@ -1,29 +1,30 @@
 {% extends "base.html" %}
-{% load i18n %}
 
-{% block content %}
-<h4 class="headblue">{% trans "Account: change openid url" %}</h4>
+{% block main %}
+<div id="bw-content">
+<h1>Change OpenID URL associated with this account</h1>
 
-<p>{% blocktrans %}This is where you can change your openid url used to connect to friendsnippets. Make sure you remember it!{% endblocktrans %}</p>
-{% if form.errors %}
-<p class="errors">{% trans "Please correct errors below:" %}<br />
-	{% if form.openid_url.errors %} 
-		<span class="error">{{ form.openid_url.errors|join:", " }}</span>
-	{% endif %}
-
-
+<p>You may change the OpenID URL which is associated with the current logged-in account.  Make sure you
+really mean to do this, as you will not be able to log in with the old URL again.
 </p>
+
+{% if form.errors %}
+<p class="bw-message">Please correct the errors below:<br />
+{% if form.openid_url.errors %} 
+<span class="bw-error">{{ form.openid_url.errors|join:", " }}</span>
+{% endif %}
+</p>
+
 {% endif %}
 {% if msg %}
-	<p class="errors">{{ msg }}</p>
+ <p class="bw-message">{{ msg }}</p>
 {% endif %}
 
-<div class="aligned">
-	<form action="." method="post" accept-charset="utf-8">
-
-		<div id="form-row"><label for="id_openid_url">{% trans "OpenID url:" %}</label>{{ form.openid_url }}</div>
-        <p><input type="submit" value="{% trans "Change openid" %}"></p>
-
-	</form>
-	</div>
+<form action="." method="post" accept-charset="utf-8">
+  
+  <div id="form-row"><label for="id_openid_url">OpenID URL</label>{{ form.openid_url }}</div>
+  <p><input type="submit" value="Change OpenID"/></p>
+  
+</form>
+</div>
 {% endblock %}

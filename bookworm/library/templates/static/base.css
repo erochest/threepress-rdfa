@@ -225,7 +225,7 @@ li.bw-first {
 }
 
 #bw-content h2, h3 {
- text-transform: uppercase;
+ /* text-transform: uppercase; */
 }
 
 .bw-message {
