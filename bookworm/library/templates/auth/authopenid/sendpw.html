@@ -1,6 +1,4 @@
-
 {% extends "base.html" %}
-{% load i18n %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="/static/auth.css" ></link>
 {% endblock head %}
@@ -8,7 +6,7 @@
 {% block main %}
 <h2>Reset your password</h2>
 
-<p class="settings-descr">If you've forgotten your password, enter your username below and we'll 
+<p ">If you've forgotten your password, enter your username below and we'll 
 email you a new one.  The password won't be activated until you click on the link you see in the email.
 </p>
 {% if form.errors %}
@@ -18,17 +16,15 @@ email you a new one.  The password won't be activated until you click on the lin
 	{% endif %}
 </p>
 {% endif %}
+
 {% if msg %}
-<br /
-<span>{{ msg }}</span>
+  <span class="bw-message">{{ msg }}</span>
 {% endif %}
 
-<div class="aligned">
-	<form action="." method="post" accept-charset="utf-8">
-		<div id="form-row"><label for="id_username">{% trans "Username" %}</label>{{ form.username }}</div>
-
-        <p><input type="submit" value="{% trans "Reset password" %}"></p>
-
-	</form>
-	</div>
+<div>
+  <form action="." method="post" accept-charset="utf-8">
+    <label for="id_username">{% trans "Username" %}</label>{{ form.username }}
+    <input type="submit" value="{% trans "Reset password" %}" />
+  </form>
+</div>
 {% endblock %}
