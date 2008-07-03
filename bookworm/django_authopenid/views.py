@@ -529,17 +529,17 @@ def changeemail(request):
     if request.POST:
         form = ChangeemailForm(request.POST, user=user_)
         if form.is_valid():
-            if form.test_openid:
+            if user_.check_password(form.cleaned_data['password']):
                 user_.email = form.cleaned_data['email']
                 user_.save()
                 msg = _("Email changed.") 
-                redirect = "%s?msg=%s" % (reverse('user_account_settings'),
-                        urlquote_plus(msg))
+                redirect = "%s?msg=%s" % (reverse('library.views.profile'),
+                                      urlquote_plus(msg))
                 return HttpResponseRedirect(redirect)
             else:
-                request.session['new_email'] = form.cleaned_data['email']
                 return ask_openid(request, form.cleaned_data['password'], 
-                        redirect_to, on_failure=emailopenid_failure, sreg_request=request.openid.sreg)    
+                                  redirect_to, on_failure=emailopenid_failure)    
+
     elif not request.POST and 'openid.mode' in request.GET:
         return complete(request, emailopenid_success, 
                 emailopenid_failure, redirect_to) 

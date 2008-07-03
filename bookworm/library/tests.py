@@ -430,6 +430,7 @@ class TestViews(DjangoTestCase):
         self.assertTemplateUsed(response, 'about.html')
 
     def test_register_standard(self):
+        '''Register a new account using a standard Django account'''
         logging.info("This test may fail if the local client does not have a running stmp server. Try running library/smtp.py as root before calling this test.")
         response = self.client.post('/account/signup/', { 'username':'registertest',
                                                           'email':'registertest@example.com',
@@ -442,6 +443,51 @@ class TestViews(DjangoTestCase):
         self.assertTemplateUsed(response, 'index.html')
         self.assertContains(response, 'registertest', status_code=200)
 
+    def test_change_email(self):
+        '''Change the email address in a standard Django account'''
+        self.test_register_standard()
+        response = self.client.post('/account/email/', { 'password':'registertest',
+                                                         'email':'registertest2@example.com'})
+        self.assertRedirects(response, '/accounts/profile/?msg=Email+changed.', 
+                             status_code=302, 
+                             target_status_code=200)           
+        
+        response = self.client.get('/accounts/profile/')
+        self.assertContains(response, 'registertest2@example.com', status_code=200)
+        self.assertNotContains(response, 'registertest@example.com', status_code=200)
+
+    def test_change_password(self):
+        '''Change a standard Django account password'''
+        self.test_register_standard()
+        response = self.client.post('/account/password/', { 'oldpw':'registertest',
+                                                            'password1':'registertest2',
+                                                            'password2':'registertest2'})
+        
+        self.assertRedirects(response, '/accounts/profile/?msg=Password+changed.', 
+                             status_code=302, 
+                             target_status_code=200)   
+        response = self.client.get('/')
+        self.assertContains(response, 'registertest', status_code=200)
+        self.client.logout()
+        self.assertTrue(self.client.login(username='registertest', password='registertest2'))        
+        self.client.logout()
+        self.assertFalse(self.client.login(username='registertest', password='registertest'))        
+
+    def test_delete_account(self):
+        self.test_register_standard()
+        response = self.client.post('/account/delete/', { 'password':'registertest',
+                                                          'confirm':'checked'})
+        
+        self.assertRedirects(response, '/account/signin/?msg=Your+account+has+been+deleted.',
+                             status_code=302, 
+                             target_status_code=200)   
+        response = self.client.get('/')
+        self.assertRedirects(response, '/account/signin/?next=/', 
+                             status_code=302, 
+                             target_status_code=200)   
+        self.assertFalse(self.client.login(username='registertest', password='registertest'))                
+
+        
     def _upload(self, f):
         self._login()
         fh = _get_filehandle(f)

@@ -15,7 +15,10 @@
 {% if not prefs.openidurl %}
 <li><h3><a href="{% url django_authopenid.views.changepw %}">Change password</a></h3></li>
 {% endif %}
+
+{% if not prefs.openidurl %}
 <li><h3><a href="{% url django_authopenid.views.changeemail %}">Change email address</a></h3></li>
+{% endif %}
 {% if prefs.openidurl %}
 <li><h3><a href="{% url django_authopenid.views.changeopenid %}">Change associated OpenID</a></h3></li>
 {% endif %}
@@ -57,7 +60,7 @@
     </tr>
     <tr>
       <th>Email address</th>
-      <td> {{ request.user.email }} <a href="{% url django_authopenid.views.changeemail %}">[change]</a></td>
+      <td> {{ request.user.email }} {% if not prefs.openidurl %}<a href="{% url django_authopenid.views.changeemail %}">[change]</a>{% endif %} </td>
     </tr>
 
     <tr>
