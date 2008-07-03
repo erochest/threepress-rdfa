@@ -2,7 +2,6 @@ from django.db import models
 from django.db.models import permalink
 from lxml import etree
 from StringIO import StringIO
-import logging
 
 import settings
 
