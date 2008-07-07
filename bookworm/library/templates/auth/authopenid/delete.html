@@ -20,7 +20,6 @@
     </p>
     <p><strong>This action cannot be undone.</strong></p>
 
-    <p>If you created an account with an OpenID, enter that below. <strong>Otherwise</strong> enter your password:</p>
     {% if form.errors %}
     <p class="bw-message">Please correct the errors below:<br />
     <span class="bw-error"> {{ form.non_field_errors }}</span>
@@ -32,12 +31,13 @@
     </p>
     {% endif %}
 
-    <label style="display:block" for="id_openid">OpenID URL</label>
-    {{ form.openid_url }}
-
-    <label style="display:block" for="id_password">or password</label>
-    {{ form.password }}
-
+    {% if request.session.openids %}
+      <label style="display:block" for="id_openid">OpenID URL</label>
+      {{ form.openid_url }}
+    {% else %}
+      <label style="display:block" for="id_password">or password</label>
+      {{ form.password }}
+    {% endif %}
 
     <label for="confirm" >I'm sure I want to delete all my personal information and books.</label>
     {{ form.confirm }}

@@ -125,7 +125,17 @@ def complete(request, on_success=None, on_failure=None, return_to=None):
     consumer = Consumer(request.session, DjangoOpenIDStore())
     openid_response = consumer.complete(dict(request.GET.items()),
             return_to)
-    
+
+    try:
+        rel = UserAssociation.objects.get(openid_url__exact = openid_response.identity_url)  
+        try:
+            rel.user
+        except User.DoesNotExist:
+            rel.delete()
+            return register(request)
+    except UserAssociation.DoesNotExist:
+        pass
+
     if openid_response.status == SUCCESS:
         return on_success(request, openid_response.identity_url,
                 openid_response)
@@ -255,7 +265,9 @@ def signin_success(request, identity_url, openid_response):
     except:
         # try to register this new user
         return register(request)
+    
     user_ = rel.user
+
     if user_.is_active:
         user_.backend = "django.contrib.auth.backends.ModelBackend"
         login(request, user_)

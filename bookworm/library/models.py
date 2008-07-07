@@ -503,7 +503,7 @@ class UserPref(BookwormModel):
     '''Per-user preferences for this application'''
     user = models.ForeignKey(User, unique=True)
     fullname = models.CharField(max_length=1000) # To ease OpenID integration
-    openidurl = models.CharField(max_length=255)
+    #openidurl = models.CharField(max_length=255)
     country = models.CharField(max_length=100) 
     language = models.CharField(max_length=100)
     timezone = models.CharField(max_length=50)

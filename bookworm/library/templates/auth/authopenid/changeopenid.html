@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/auth.css" ></link>
+{% endblock %}
+
 
 {% block main %}
 <div id="bw-content">
@@ -22,7 +26,7 @@ really mean to do this, as you will not be able to log in with the old URL again
 
 <form action="." method="post" accept-charset="utf-8">
   
-  <div id="form-row"><label for="id_openid_url">OpenID URL</label>{{ form.openid_url }}</div>
+  <label for="id_openid_url">OpenID URL</label>{{ form.openid_url }}
   <p><input type="submit" value="Change OpenID"/></p>
   
 </form>
