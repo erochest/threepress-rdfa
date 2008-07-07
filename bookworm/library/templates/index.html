@@ -12,12 +12,12 @@
 
 <div class="bw-status">
   <h2>Status</h2>
-  <p>There {% ifequal common.total_users 1 %} is {% else %} are {% endifequal %}
+  <p>There {% ifequal request.session.common.total_users 1 %} is {% else %} are {% endifequal %}
 
-  {{ common.total_users }} reader{{ common.total_users|pluralize }} using Bookworm.
+  {{ request.session.common.total_users }} reader{{ request.session.common.total_users|pluralize }} using Bookworm.
   </p>
   <p>
-  There {% ifequal common.total_books 1 %} is {% else %} are {% endifequal %}  {{ common.total_books }} individual book{{ common.total_books|pluralize }}.
+  There {% ifequal request.session.common.total_books 1 %} is {% else %} are {% endifequal %}  {{ request.session.common.total_books }} individual book{{ request.session.common.total_books|pluralize }}.
   </p>
 </div>
 

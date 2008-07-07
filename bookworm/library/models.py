@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from xml.etree import ElementTree as ET
+#from xml.etree import cElementTree as ET
+from lxml import etree as ET
+import lxml.html
 from zipfile import ZipFile
 from StringIO import StringIO
 import logging, datetime, sys
@@ -94,7 +96,7 @@ class EpubArchive(BookwormModel):
 
     def _get_metadata(self, metadata_tag, opf):
         '''Returns a metdata item's text content by tag name, or a list if mulitple names match'''
-        if not self._parsed_metadata:
+        if self._parsed_metadata is None:
             self._parsed_metadata = self._xml_from_string(opf)
         text = []
         for t in self._parsed_metadata.findall('.//{%s}%s' % (NS['dc'], metadata_tag)):
@@ -146,14 +148,12 @@ class EpubArchive(BookwormModel):
 
         self.opf = unicode(z.read(opf_filename), ENC)
         parsed_opf = self._xml_from_string(self.opf.encode(ENC))
-        
-        items = parsed_opf.getiterator("{%s}item" % (NS['opf']))
 
+        items = [i for i in parsed_opf.iterdescendants(tag="{%s}item" % (NS['opf']))]
+        
         self.toc = unicode(z.read(self._get_toc(parsed_opf, items, content_path)), ENC)
 
         parsed_toc = self._xml_from_string(self.toc.encode(ENC))
-
-
 
         self.authors = self._get_authors(parsed_opf)
         self.title = self._get_title(parsed_opf) 
@@ -164,6 +164,8 @@ class EpubArchive(BookwormModel):
 
 
     def _xml_from_string(self, xml):
+        if type(xml) == unicode:
+            return ET.fromstring(xml.encode(ENC))
         return ET.fromstring(xml)
 
     def _get_opf_filename(self, container):
@@ -296,21 +298,20 @@ class EpubArchive(BookwormModel):
 
         nav_map = {}
         item_map = {}
-        
         metas = toc.getiterator('{%s}meta' % (NS['ncx']))
       
         for m in metas:
             if m.get('name') == 'db:depth':
                 depth = int(m.get('content'))
-        
+
         for item in items:
             item_map[item.get('id')] = item.get('href')
+            #logging.debug('adding %s to item_map' % item.get('href'))
              
         for nav in navs:
             n = NavPoint(nav, doc_title=self.title)
             href = n.href()
             filename = href.split('#')[0]
-            
             if nav_map.has_key(filename):
                 pass
                 # Skip this item so we don't overwrite with a new navpoint
@@ -361,9 +362,11 @@ class EpubArchive(BookwormModel):
     def safe_author(self):
         '''We only use the first author name for our unique identifier, which should be
         good enough for all but the oddest cases (revisions?)'''
-        if self.authors:
-            return safe_name(self.authors[0])
-        return None
+        return self.author()
+
+
+    def __unicode__(self):
+        return '%s by %s (%s)' % (self.title, self.author(), self.name)
 
     class Admin:
         pass
@@ -401,25 +404,29 @@ class HTMLFile(BookwormFile):
         
         f = smart_str(self.file, encoding=ENC)
 
-        src = StringIO(f)
         try:
-            xhtml = CleanXmlFile(file=src)
+            xhtml = ET.XML(f, ET.XMLParser())
+            body = xhtml.find('{%s}body' % NS['html'])
+        except ET.XMLSyntaxError:
+            # Use the HTML parser
+            xhtml = ET.parse(StringIO(f), ET.HTMLParser())
+            body = xhtml.find('body')
         except ExpatError:
             logging.error('Was not valid XHTML; treating as uncleaned string')
             self.processed_content = f
-            return f
+            return f 
 
-        body = xhtml.find('{%s}body' % NS['html'])
+
         body = self._clean_xhtml(body)
         div = ET.Element('div')
         div.attrib['id'] = 'bw-book-content'
         children = body.getchildren()
         for c in children:
             div.append(c)
-        body_content = ET.tostring(div, ENC)
+        body_content = lxml.html.tostring(div, encoding=ENC, method="html")
 
         try:
-            self.processed_content = unicode(body_content, ENC)
+            self.processed_content = body_content
             self.save()            
         except: 
             logging.error("Could not cache processed document, error was: " + sys.exc_value)
@@ -428,18 +435,19 @@ class HTMLFile(BookwormFile):
 
     def _clean_xhtml(self, xhtml):
         '''This is only run the first time the user requests the HTML file; the processed HTML is then cached'''
-        
-        parent_map = dict((c, p) for p in xhtml.getiterator() for c in p)
-
+        ns = u'{%s}' % NS['html']
+        nsl = len(ns)
         for element in xhtml.getiterator():
-            element.tag = element.tag.replace('{%s}' % NS['html'], '')
-
+            
+            if type(element.tag) == str and element.tag.startswith(ns):
+                element.tag = element.tag[nsl:]
+ 
             # if we have SVG, then we need to re-write the image links that contain svg in order to
             # make them work in most browsers
             if element.tag == 'img' and 'svg' in element.get('src'):
                 logging.debug('translating svg image %s' % element.get('src'))
                 try:
-                    p = parent_map[element]
+                    p = element.parent
                     e = ET.fromstring("""<a class="svg" href="%s">[ View linked image in SVG format ]</a>""" % element.get('src'))
                     p.remove(element)
                     p.append(e)
@@ -521,13 +529,11 @@ class SystemInfo():
         self._total_users = None
 
     def get_total_books(self):
-        if not self._total_books:
-            self._total_books = EpubArchive.objects.count()
+        self._total_books = EpubArchive.objects.count()
         return self._total_books
 
     def get_total_users(self):
-        if not self._total_users:
-            self._total_users = UserPref.objects.count()
+        self._total_users = UserPref.objects.count()
         return self._total_users
 
     def increment_total_books(self):
@@ -637,16 +643,6 @@ class ImageBlob(BinaryBlob):
     '''Storage mechanism for a binary image'''
     image = models.ForeignKey(ImageFile)    
     
-class CleanXmlFile(ET.ElementTree):
-    '''Implementation that includes all HTML entities'''
-    def __init__(self, file=None, tag='global', **extra):
-        ET.ElementTree.__init__(self) 
-        parser = ET.XMLTreeBuilder(
-            target=ET.TreeBuilder(ET.Element)) 
-        parser.entity = htmlentitydefs.entitydefs
-        self.parse(source=file, parser=parser) 
-        return
-
 class InvalidBinaryException(Exception):
     pass
 

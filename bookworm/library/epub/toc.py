@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from xml.etree import ElementTree as ET
+from xml.etree import cElementTree as ET
 import sys, logging
 from namespaces import init_namespaces
 from constants import NAMESPACES as NS
@@ -62,7 +62,7 @@ class TOC():
 
 def get_label(element):
     '''Gets the text label for any element'''
-    if not element:
+    if element is None:
         return None
     return element.findtext('.//{%s}text' % ns)
 

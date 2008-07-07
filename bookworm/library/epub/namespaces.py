@@ -1,4 +1,4 @@
-from xml.etree import ElementTree as ET
+from lxml import etree as ET
 import logging
 from constants import NAMESPACES as NS
 

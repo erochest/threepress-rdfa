@@ -209,6 +209,7 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         chapters = HTMLFile.objects.filter(archive=document)
+        assert len(chapters) > 0
         for c in chapters:
             c.render()
 
@@ -218,8 +219,17 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         chapters = HTMLFile.objects.filter(archive=document)
+        assert len(chapters) > 0
         for c in chapters:
             c.render()        
+
+    def testRemoveHTMLNamespaces(self):
+        filename = 'Cory_Doctorow_-_Little_Brother.epub'        
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        chapters = HTMLFile.objects.filter(archive=document)
+        assert 'html:br' not in chapters[0].render()
 
     def testRemoveBodyTag(self):
         '''We should not be printing the original document's <body> tag'''
@@ -228,11 +238,20 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         chapters = HTMLFile.objects.filter(archive=document)
+        assert len(chapters) == 61
         for c in chapters:
             self.assert_('<body' not in c.render())
             self.assert_('<div id="bw-book-content"' in c.render())
 
-
+    def testChapters(self):
+        '''When switching to lxml, chapters in this book did not get captured'''
+        filename = 'Cory_Doctorow_-_Little_Brother.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        chapters = HTMLFile.objects.filter(archive=document)
+        assert chapters
+        
     def testBinaryImage(self):
         '''Test the ImageBlob class directly'''
         filename = 'Pride-and-Prejudice_Jane-Austen.epub'
@@ -360,6 +379,15 @@ class TestViews(DjangoTestCase):
                              status_code=302, 
                              target_status_code=200)
 
+    def test_content_visible(self):
+        response = self._upload('Cory_Doctorow_-_Little_Brother.epub')
+
+        id = self._get_id_for_document(self.client.get('/'), 'Little+Brother')
+        assert id
+        logging.info(id)
+        response = self.client.get('/view/Little-Brother/%s/main5.xml' % id)
+        self.assertTemplateUsed(response, 'view.html')
+        
     def test_upload_with_images(self):
         response = self._upload('alice-fromAdobe.epub')
         self.assertRedirects(response, '/', 
@@ -493,6 +521,15 @@ class TestViews(DjangoTestCase):
         fh = _get_filehandle(f)
         response = self.client.post('/upload/', {'epub':fh})
         return response
+
+    def _get_id_for_document(self, response, title):
+        p = re.compile('class="id_%s">(\d+)</' % title.replace('+', '\+'))
+        m = p.search(response.content)
+        if m:
+            return m.group(1)
+        else:
+            raise Exception
+
 
 def _get_document(title, id):
     '''@todo Mock this out better instead of overwriting the real view'''
