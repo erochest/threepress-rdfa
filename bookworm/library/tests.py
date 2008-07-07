@@ -16,6 +16,14 @@ from testmodels import *
 from epub.toc import TOC
 from epub.constants import *
 
+import twill
+from twill import get_browser
+from twill.errors import TwillAssertionError
+from twill import add_wsgi_intercept
+
+from twill.commands import *
+from socket import gethostname
+
 # Data for public epub documents
 DATA_DIR = os.path.abspath('./library/test-data/data')
 
@@ -550,7 +558,60 @@ class TestViews(DjangoTestCase):
         else:
             raise Exception
 
+class TestTwill(DjangoTestCase):
+    def setUp(self):
+        os.environ["DJANGO_SETTINGS_MODULE"] = "settings"
+        
+        from django.core.servers.basehttp import AdminMediaHandler
+        from django.core.handlers.wsgi import WSGIHandler
 
+        app = AdminMediaHandler(WSGIHandler())
+        add_wsgi_intercept("127.0.0.1", 9876, lambda: app)
+        self.b = get_browser()
+        #if 'threepress' in gethostname():
+        #    self.url = 'http://bookworm.threepress.org/'
+        #else:
+        #    self.url = 'http://127.0.0.1:9876'
+        self.url = 'http://127.0.0.1:9876'
+        #self.url = 'http://localhost:8000'
+
+    def test_home(self):
+        go(self.url)
+        url('signin')
+
+    def test_register(self):
+        self._register()
+
+    def test_upload(self):
+        self._register()
+        #self._login()
+        go(self.url)
+        formfile("upload", "epub", _get_filepath('Pride-and-Prejudice_Jane-Austen.epub'))
+        submit("submit-upload")
+        find('Pride and Prejudice')
+
+    def _login(self):
+        go('/')
+        fv("fauth", "username", "twilltest")
+        fv("fauth", "password", "twill")
+        submit()
+
+
+    def _register(self):
+        go(self.url)
+        follow('register')
+        url('signup')
+        fv("2", "username", "twilltest")
+        fv("2", "email", "twilltest@example.com")
+        fv("2", "password1", "twill")
+        fv("2", "password2", "twill")
+        submit("register_local")
+        url("/$")
+        find("twilltest")
+        
+    def tearDown(self):
+        pass
+        
 def _get_document(title, id):
     '''@todo Mock this out better instead of overwriting the real view'''
     return MockEpubArchive(id=id)

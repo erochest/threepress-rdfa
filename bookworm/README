@@ -6,6 +6,7 @@ Via easy_install:
 - cssutils
 - python-openid (2.x)
 - python-yadis
+- twill
 
 Database
 --------
@@ -36,5 +37,12 @@ To run a local development server:
 
 To start over with a clean database:
 ./clear-db.sh 
+
+clear-db takes optional arguments:
+
+ - no arguments clears only the 'library' app 
+ - 'auth' clears the base Django auth framework
+ - 'openid' clears the django_authopenid database
+ - 'all' clears all of the above
 
 

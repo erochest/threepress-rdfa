@@ -64,6 +64,12 @@ class EpubArchive(BookwormModel):
     toc = models.TextField()
     has_stylesheets = models.BooleanField(default=False)
 
+    def __init__(self, *args, **kwargs):
+        # If the filename itself has a path (this happens with Twill), just get its basename value
+        if 'name' in kwargs:
+            kwargs['name'] = os.path.basename(kwargs['name'])
+        super(EpubArchive, self).__init__(*args, **kwargs)
+        
     def get_content(self):
         try:
             epub = EpubBlob.objects.filter(archive=self)[0]
@@ -578,6 +584,7 @@ class BinaryBlob(BookwormFile):
         if kwargs.has_key('data'):
             self.data = kwargs['data']
             del kwargs['data']
+
         super(BinaryBlob, self).__init__(*args, **kwargs)
 
     def save(self):
@@ -589,6 +596,7 @@ class BinaryBlob(BookwormFile):
             raise InvalidBinaryException('No filename but save() operation called')
 
         storage = self._get_storage()
+        logging.info("Storage: " + storage)
 
         if not os.path.exists(storage):
             os.mkdir(storage)

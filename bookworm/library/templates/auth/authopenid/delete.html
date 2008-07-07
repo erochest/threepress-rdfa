@@ -31,7 +31,7 @@
     </p>
     {% endif %}
 
-    {% if request.session.openids %}
+    {% if request.openid %}
       <label style="display:block" for="id_openid">OpenID URL</label>
       {{ form.openid_url }}
     {% else %}

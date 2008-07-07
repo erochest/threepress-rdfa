@@ -1,7 +1,5 @@
 {% extends "base.html" %}
-{% block title %}
-Sign in
-{% endblock %}
+{% block title %}Sign in{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="/static/home.css"></link>
@@ -24,7 +22,7 @@ form fieldset {
   
   <p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
   
-  <p class="bw-tagline">New to Bookworm? <a href="{% url django_authopenid.views.signup %}">Register</a>.</p>
+  <p class="bw-tagline">New to Bookworm? <a href="{% url django_authopenid.views.signup %}" name="register">Register</a>.</p>
   
   <p>Use of the library requires that you be logged in.  Once logged in you'll have
   access to books that you have uploaded to the service.</p>
