@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load i18n %}
 
 {% block head %}
 <link rel="stylesheet" href="/static/home.css"></link>
@@ -18,60 +17,53 @@ form fieldset {
 
 {% block main %}
 <div id="bw-content">
-<h1><img src="/static/bookworm-logo.png" alt="Bookworm" /></h1>
+  <h1><img src="/static/bookworm-logo.png" alt="Bookworm" /></h1>
+  
+  <p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
+  
+  <p class="bw-tagline">New to Bookworm? <a href="{% url django_authopenid.views.signup %}">Register</a>.</p>
+  
+  <p>Use of the library requires that you be logged in.  Once logged in you'll have
+  access to books that you have uploaded to the service.</p>
+  
+  
+  {% if msg %}
+    <p class="bw-message">{{ msg }}</p>
+  {% endif %}
+  {% if form1.errors %}
+    <p class="bw-message">Please correct the errors below:
+      {% if form1.username.errors %} 
+        <span class="bw-error">{{ form1.username.errors|join:", " }}</span>
+      {% endif %}
+      {% if form1.password.errors %} 
+        <span class="bw-error">{{ form1.password.errors|join:", " }}</span>
+      {% endif %}
+      <span>You may have created your account with an OpenID, in which case you won't need your password but should
+      enter your OpenID URL below.</span>
+    </p>
+  {% endif %}
 
-<p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
-
-<p class="bw-tagline">New to Bookworm? <a href="{% url django_authopenid.views.signup %}">Register</a>.</p>
-
-<p>Use of the library requires that you be logged in.  Once logged in you'll have
-access to books that you have uploaded to the service.  
-</p>
-
-
-{% if msg %}
-<p class="bw-message">{{ msg }}</p>
-{% endif %}
-{% if form1.errors %}
-<p class="bw-message">{% trans "Please correct errors below:" %}<br />
-	{% if form1.username.errors %} 
-		<span class="bw-error">{{ form1.username.errors|join:", " }}</span>
-	{% endif %}
-	{% if form1.password.errors %} 
-		<span class="bw-error">{{ form1.password.errors|join:", " }}</span>
-	{% endif %}
-<span>You may have created your account with an OpenID, in which case you won't need your password but should
-enter your OpenID URL below.</span>
-</p>
-
-{% endif %}
-
-
-
-<div class="login">
-
+  <div class="login">
     <form name="fauth" action="{{ action }}" method="post">
-        {{ form1.next }}
-	<fieldset>
-		<legend>{% trans "Sign In Using Your Account ID" %}</legend>
-		<label for="id_username">{% trans "Username:" %}</label>{{ form1.username }}
-		<label for="id_password">{% trans "Password" %}</label>{{ form1.password }}
-		<input type="submit" name="blogin" value="{% trans "Sign in" %}"> 
-        <div><a href="{{ sendpw_url }}">{% trans "Lost your password ?" %}</a></div>
-	</fieldset>	
-</form>
+      {{ form1.next }}
+      <fieldset>
+        <legend>Sign in using a local Bookworm account</legend>
+        <label for="id_username">Username</label>{{ form1.username }}
+        <label for="id_password">Password</label>{{ form1.password }}
+        <input type="submit" name="blogin" value="Sign in"/> 
+        <a href="{{ sendpw_url }}">Lost your password?</a>
+      </fieldset>	
+    </form>
 
-
-<form name="fopenid" action="{{ action }}" method="post">
-    {{ form2.next }}
-	<fieldset>
-
-	<legend>{% trans "Sign In Using Your OpenID" %}</legend>
+    <form name="fopenid" action="{{ action }}" method="post">
+      {{ form2.next }}
+      <fieldset>
+        <legend>Sign in using your OpenID</legend>
         <label for="id_openid_ul"><img src="/static/openid-logo.png" alt="OpenID" /></label>{{ form2.openid_url }}
-        <input name="bsignin" type="submit" value="{% trans "Sign in with OpenID" %}">
-	</fieldset>
-</form>	
-</div>	
+        <input name="bsignin" type="submit" value="Sign in with OpenID" />
+      </fieldset>
+    </form>	
+  </div>	
 </div>
 
 {% endblock %}
