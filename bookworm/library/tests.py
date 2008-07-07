@@ -419,7 +419,7 @@ class TestViews(DjangoTestCase):
         
     def test_view_profile(self):
         self._login()
-        response = self.client.get('/accounts/profile/')
+        response = self.client.get('/account/profile/')
         self.assertTemplateUsed(response, 'auth/profile.html')
         self.assertContains(response, 'testuser', status_code=200)        
 
@@ -448,11 +448,11 @@ class TestViews(DjangoTestCase):
         self.test_register_standard()
         response = self.client.post('/account/email/', { 'password':'registertest',
                                                          'email':'registertest2@example.com'})
-        self.assertRedirects(response, '/accounts/profile/?msg=Email+changed.', 
+        self.assertRedirects(response, '/account/profile/?msg=Email+changed.', 
                              status_code=302, 
                              target_status_code=200)           
         
-        response = self.client.get('/accounts/profile/')
+        response = self.client.get('/account/profile/')
         self.assertContains(response, 'registertest2@example.com', status_code=200)
         self.assertNotContains(response, 'registertest@example.com', status_code=200)
 
@@ -463,7 +463,7 @@ class TestViews(DjangoTestCase):
                                                             'password1':'registertest2',
                                                             'password2':'registertest2'})
         
-        self.assertRedirects(response, '/accounts/profile/?msg=Password+changed.', 
+        self.assertRedirects(response, '/account/profile/?msg=Password+changed.', 
                              status_code=302, 
                              target_status_code=200)   
         response = self.client.get('/')

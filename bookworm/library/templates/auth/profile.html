@@ -12,14 +12,14 @@
 
 {% block leftnav %}
 <ol>
-{% if not request.session.openids %}
+{% if not request.openid %}
 <li><h3><a href="{% url django_authopenid.views.changepw %}">Change password</a></h3></li>
 {% endif %}
 
-{% if not request.session.openids %}
+{% if not request.openid %}
 <li><h3><a href="{% url django_authopenid.views.changeemail %}">Change email address</a></h3></li>
 {% endif %}
-{% if request.session.openids %}
+{% if request.openid %}
 <li><h3><a href="{% url django_authopenid.views.changeopenid %}">Change associated OpenID</a></h3></li>
 {% endif %}
 <li><h3><a href="{% url django_authopenid.views.delete %}">Delete this account</a></h3></li>
@@ -48,13 +48,18 @@
       <th>Username</th>
       <td>{{ request.user.username }}</td>
     </tr>
-    {% if request.session.openids %}
+    {% if request.openid %}
     <tr>
       <th>OpenID</th>
       <td>
-        {% for url in request.session.openids %} 
-          {{ url }}
-        {% endfor %}
+        {% if request.session.openids %}
+          {% for url in request.session.openids %} 
+            {{ url }}
+          {% endfor %}
+        {% else %}
+          {{ request.openid }}
+        {% endif %}
+        
       <a href="{% url django_authopenid.views.changeopenid %}">[change]</a></td>
     </tr>
     {% endif %}
@@ -64,7 +69,7 @@
     </tr>
     <tr>
       <th>Email address</th>
-      <td> {{ request.user.email }} {% if not request.session.openids %}<a href="{% url django_authopenid.views.changeemail %}">[change]</a>{% endif %} </td>
+      <td> {{ request.user.email }} {% if not request.openid %}<a href="{% url django_authopenid.views.changeemail %}">[change]</a>{% endif %} </td>
     </tr>
 
     <tr>

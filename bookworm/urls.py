@@ -17,7 +17,6 @@ urlpatterns = patterns('',
                        (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
                        
                        # Auth
-                       (r'^accounts/logout/', logout, { 'next_page': '/'}),
                        (r'^account/', include('django_authopenid.urls')),                       
                        
                        # Bookworm
@@ -47,10 +46,8 @@ urlpatterns = patterns('',
                        (r'^download/epub/(?P<title>.+)/(?P<key>[^/]+)/$', 'library.views.download_epub'),
 
                        # User profile
-                       (r'^accounts/profile/$', 'library.views.profile'),
-                       #(r'^accounts/profile/$', 'django_authopenid.views.account_settings'),
-                       
-                       (r'^accounts/profile/delete/$', 'library.views.profile_delete'),
+                       (r'^account/profile/$', 'library.views.profile'),
+                       (r'^account/profile/delete/$', 'library.views.profile_delete'),
 
                        # Static pages
                        (r'^about/$', 'library.views.about'),

@@ -15,12 +15,6 @@ form fieldset {
 </style>
 {% endblock head %}
 
-{% block leftnav %}
-{% if request.GET.msg %}
-<div class="bw-message">{{ request.GET.msg }}</div>
-{% endif %}
-{% endblock %}
-
 
 {% block main %}
 <div id="bw-content">
@@ -36,8 +30,7 @@ access to books that you have uploaded to the service.
 
 
 {% if msg %}
-
-<p class="warning">{{ msg }}</p>
+<p class="bw-message">{{ msg }}</p>
 {% endif %}
 {% if form1.errors %}
 <p class="bw-message">{% trans "Please correct errors below:" %}<br />

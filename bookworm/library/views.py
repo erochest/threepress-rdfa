@@ -354,7 +354,7 @@ def _greeting(request):
         
         text = ('Signed in as %s: <a href="%s">logout</a> | <a href="%s">edit profile</a>' % 
                 (request.user.username, 
-                 '/accounts/logout/',
+                 reverse('user_signout'),
                  reverse('library.views.profile')
                  )
                 )
