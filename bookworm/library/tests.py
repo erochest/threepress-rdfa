@@ -339,8 +339,28 @@ class TestModels(unittest.TestCase):
         b2.delete()
         self.assert_(not os.path.exists(storage))        
 
+    def testSafeDeletionWhenEpubGone(self):
+        '''If an epub binary is deleted, we should still allow deletion from the database'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        epub = _get_file(filename)
+        bin = EpubBlob(idref=filename,
+                       archive=document,
+                       filename=filename,
+                       data=epub)
+        bin.save()
+        b2 = EpubBlob.objects.filter(idref=filename)[0]        
+        assert b2
+        b2.delete()
+        try:
+            document.delete()
+        except InvalidBinaryException:
+            pass
+        
 
-
+        
     def create_document(self, document):
         epub = MockEpubArchive(name=document)
         epub.owner = self.user
@@ -541,10 +561,19 @@ def _get_file(f):
 
 def _get_filehandle(f):
     '''Get a file from either the public or private data directories'''
-    try:
-        return open('%s/%s' % (DATA_DIR, f))
-    except IOError:
-        return open('%s/%s' % (PRIVATE_DATA_DIR, f))
-    
+    path = _get_filepath(f)
+    return open(path)
+
+def _get_filepath(f):
+    data_dir = '%s/%s' % (DATA_DIR, f)
+    if os.path.exists(data_dir):
+        return data_dir
+
+    data_dir = '%s/%s' % (PRIVATE_DATA_DIR, f)
+    if os.path.exists(data_dir):
+        return data_dir    
+    raise OSError('Could not find file %s in either data dir' % f)
+
+
 if __name__ == '__main__':
     logging.error('Invoke this using "manage.py test"')

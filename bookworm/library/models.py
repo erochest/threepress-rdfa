@@ -65,13 +65,21 @@ class EpubArchive(BookwormModel):
     has_stylesheets = models.BooleanField(default=False)
 
     def get_content(self):
-        epub = EpubBlob.objects.filter(archive=self)[0]
+        try:
+            epub = EpubBlob.objects.filter(archive=self)[0]
+        except IndexError:
+            raise EpubBlob.ObjectNotFound
         return epub.get_data()
 
     def delete(self):
-        epub = EpubBlob.objects.filter(archive=self)[0]
-        epub.delete()
-        super(EpubArchive, self).delete()
+        try:
+            epub = EpubBlob.objects.filter(archive=self)[0]
+            epub.delete()
+            super(EpubArchive, self).delete()
+        except IndexError:
+            logging.error('Could not find associated epubblob, maybe deleted from file system?')
+
+
 
     def set_content(self, c):
         if not self.id:
