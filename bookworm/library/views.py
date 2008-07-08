@@ -289,12 +289,12 @@ def upload(request):
                 return render_to_response('upload.html', {'common':common,
                                                           'form':form, 
                                                           'message':message})                
-            except:
-                # If we got any error, delete this document
-                logging.error('Got unknown error on request, deleting document')
-                logging.error(sys.exc_value)
-                document.delete()
-                raise
+            #except:
+            #    # If we got any error, delete this document
+            #    logging.error('Got unknown error on request, deleting document')
+            #    logging.error(sys.exc_value)
+            #    document.delete()
+            #    raise
             
             logging.info("Successfully added %s" % document.title)
             return HttpResponseRedirect('/')

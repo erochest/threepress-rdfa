@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from xml.etree import cElementTree as ET
+from lxml import etree as ET
 import sys, logging
 from namespaces import init_namespaces
 from constants import NAMESPACES as NS
@@ -84,7 +84,10 @@ class NavPoint():
         return [n for n in self.tree if n.parent.get('id') == self.element.get('id')]
 
     def title(self):
-        return self.element.findtext('.//{%s}text' % (ns)).strip()
+        text = self.element.findtext('.//{%s}text' % (ns))
+        if text:
+            return text.strip()
+        return ""
 
     def order(self):
         return int(self.element.get('playOrder'))
