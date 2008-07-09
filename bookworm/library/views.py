@@ -212,7 +212,7 @@ def view_chapter_image(request, title, key, image):
     logging.info("Image request: looking up title %s, key %s, image %s" % (title, key, image))        
     document = _get_document(request, title, key)
     image = get_object_or_404(ImageFile, archive=document, filename=image)
-    response = HttpResponse(content_type=image.content_type)
+    response = HttpResponse(content_type=str(image.content_type))
     if image.content_type == 'image/svg+xml':
         response.content = image.file
     else:
