@@ -8,6 +8,13 @@ Via easy_install:
 - python-yadis
 - twill
 
+Via subversion:
+
+- django_evolution 
+  + svn checkout http://django-evolution.googlecode.com/svn/trunk/ django-evolution
+  + cd django-evolution
+  + sudo python setup.py install
+
 Database
 --------
 

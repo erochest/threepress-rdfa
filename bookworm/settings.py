@@ -95,6 +95,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.sitemaps',
     'django_authopenid',
+    'django_evolution',
     'library',
 )
 
