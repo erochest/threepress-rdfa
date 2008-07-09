@@ -10,7 +10,7 @@
 email you a new one.  The password won't be activated until you click on the link you see in the email.
 </p>
 {% if form.errors %}
-<p class="bw-message">{% trans "Please correct the errors below:" %}<br />
+<p class="bw-message">Please correct the errors below:<br />
 	{% if form.username.errors %} 
 		<span class="bw-error">{{ form.username.errors|join:", " }}</span>
 	{% endif %}
@@ -23,8 +23,8 @@ email you a new one.  The password won't be activated until you click on the lin
 
 <div>
   <form action="." method="post" accept-charset="utf-8">
-    <label for="id_username">{% trans "Username" %}</label>{{ form.username }}
-    <input type="submit" value="{% trans "Reset password" %}" />
+    <label for="id_username">Username</label>{{ form.username }}
+    <input type="submit" value="Reset password" />
   </form>
 </div>
 {% endblock %}
