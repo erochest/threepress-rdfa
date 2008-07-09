@@ -425,6 +425,8 @@ class BookwormFile(BookwormModel):
         return self.file
     class Meta:
         abstract = True
+    def __str__(self):
+        return "%s [%s]" % (self.filename, self.archive.title)
 
 class HTMLFile(BookwormFile):
     '''Usually an individual page in the ebook'''
@@ -492,8 +494,6 @@ class HTMLFile(BookwormFile):
                     logging.error("ERROR:" + sys.exc_value)
         return xhtml
 
-    def __str__(self):
-        return "[%d] '%s' in %s " % (self.order, self.title, self.archive.title)
 
     class Admin:
         pass
@@ -505,6 +505,7 @@ class StylesheetFile(BookwormFile):
     content_type = models.CharField(max_length=100, default="text/css")
     class Admin:
         pass
+
 
 class ImageFile(BookwormFile):
     '''An image file associated with a given book.  Mime-type will vary.'''
@@ -541,6 +542,8 @@ class ImageFile(BookwormFile):
     def _blob(self):
         '''Gets the blob related to this image'''
         return ImageBlob.objects.filter(image=self)[0]        
+
+
     class Admin:
         pass
 
@@ -570,7 +573,7 @@ class SystemInfo():
         return self._total_books
 
     def get_total_users(self):
-        self._total_users = UserPref.objects.count()
+        self._total_users = User.objects.count()
         return self._total_users
 
     def increment_total_books(self):
