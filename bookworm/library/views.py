@@ -163,7 +163,7 @@ def view_chapter(request, title, key, chapter_id):
     logging.info("Looking up title %s, key %s, chapter %s" % (title, key, chapter_id))    
     document = _get_document(request, title, key)
 
-    chapter = get_object_or_404(HTMLFile,archive=document, idref=chapter_id)
+    chapter = get_object_or_404(HTMLFile,archive=document, filename=chapter_id)
     stylesheets = StylesheetFile.objects.filter(archive=document)
     next = _chapter_next_previous(document, chapter, 'next')
     previous = _chapter_next_previous(document, chapter, 'previous')
@@ -174,7 +174,7 @@ def view_chapter(request, title, key, chapter_id):
     toc = document.get_top_level_toc()
 
     for t in toc:
-        href = chapter.idref.encode(epub_constants.ENC)
+        href = chapter.filename.encode(epub_constants.ENC)
         if href in [c.href() for c in t.find_children()]:
             parent_chapter = t
             subchapter_href = href
@@ -205,7 +205,7 @@ def _chapter_next_previous(document, chapter, dir='next'):
 def view_chapter_image(request, title, key, image):
     logging.info("Image request: looking up title %s, key %s, image %s" % (title, key, image))        
     document = _get_document(request, title, key)
-    image = get_object_or_404(ImageFile, archive=document, idref=image)
+    image = get_object_or_404(ImageFile, archive=document, filename=image)
     response = HttpResponse(content_type=image.content_type)
     if image.content_type == 'image/svg+xml':
         response.content = image.file
@@ -218,7 +218,7 @@ def view_chapter_image(request, title, key, image):
 def view_chapter_frame(request, title, key, chapter_id):
     '''Generate an iframe to display the document online, possibly with its own stylesheets'''
     document = _get_document(request, title, key)
-    chapter = HTMLFile.objects.get(archive=document, idref=chapter_id)
+    chapter = HTMLFile.objects.get(archive=document, filename=chapter_id)
     stylesheets = StylesheetFile.objects.filter(archive=document)
     next = _chapter_next_previous(document, chapter, 'next')
     previous = _chapter_next_previous(document, chapter, 'previous')
@@ -233,7 +233,7 @@ def view_chapter_frame(request, title, key, chapter_id):
 def view_stylesheet(request, title, key, stylesheet_id):
     document = _get_document(request, title, key)
     logging.info('getting stylesheet %s' % stylesheet_id)
-    stylesheet = get_object_or_404(StylesheetFile, archive=document,idref=stylesheet_id)
+    stylesheet = get_object_or_404(StylesheetFile, archive=document,filename=stylesheet_id)
     response = HttpResponse(content=stylesheet.file, content_type='text/css')
     response['Cache-Control'] = 'public'
 

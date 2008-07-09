@@ -243,7 +243,8 @@ class EpubArchive(BookwormModel):
                     logging.debug('Adding image as binary type')
                     data['data'] = content
 
-                data['idref'] = item.get('href')
+                data['filename'] = item.get('href')
+                data['idref'] = item.get('id')
                 data['content_type'] = item.get('media-type')
 
                 images.append(data)
@@ -260,6 +261,7 @@ class EpubArchive(BookwormModel):
             image = ImageFile(
                               idref=i['idref'],
                               file=f,
+                              filename=i['filename'],
                               data=i['data'],
                               content_type=i['content_type'],
                               archive=self)
@@ -271,7 +273,8 @@ class EpubArchive(BookwormModel):
             if item.get('media-type') == constants.STYLESHEET_MIMETYPE:
                 content = self._archive.read("%s%s" % (content_path, item.get('href')))
                 parsed_content = self._parse_stylesheet(content)
-                stylesheets.append({'idref':item.get('href'),
+                stylesheets.append({'idref':item.get('id'),
+                                    'filename':item.get('href'),
                                     'file':unicode(parsed_content, ENC)})
 
 
@@ -298,6 +301,7 @@ class EpubArchive(BookwormModel):
         for s in stylesheets:
             css = StylesheetFile(
                                  idref=s['idref'],
+                                 filename=s['filename'],
                                  file=s['file'],
                                  archive=self)
             css.save()            
@@ -345,7 +349,8 @@ class EpubArchive(BookwormModel):
                     # We store the raw XHTML and will process it for display on request
                     # later
                     page = {'title': nav_map[href].title(),
-                            'idref':href,
+                            'idref':idref,
+                            'filename':href,
                             'file':content,
                             'archive':self,
                             'order':nav_map[href].order()}
@@ -356,18 +361,19 @@ class EpubArchive(BookwormModel):
 
     def _create_pages(self, pages):
         for p in pages:
-            self._create_page(p['title'], p['idref'], p['file'], p['archive'], p['order'])
+            self._create_page(p['title'], p['idref'], p['filename'], p['file'], p['archive'], p['order'])
 
-    def _create_page(self, title, idref, f, archive, order):
+    def _create_page(self, title, idref, filename, f, archive, order):
         '''Create an HTML page and associate it with the archive'''
         html = HTMLFile(
                         title=title, 
                         idref=idref,
+                        filename=filename,
                         file=f,
                         archive=archive,
                         order=order)
         html.save()
- 
+  
                   
     def safe_title(self):
         '''Return a URL-safe title'''
@@ -396,6 +402,7 @@ class BookwormFile(BookwormModel):
     '''Abstract class that represents a file in the database'''
     idref = models.CharField(max_length=1000)
     file = models.TextField(default='')    
+    filename = models.CharField(max_length=1000)
     archive = models.ForeignKey(EpubArchive)
 
     def render(self):
@@ -578,7 +585,6 @@ class BinaryBlob(BookwormFile):
     _pathname = 'storage'
     _storage_dir = '%s/%s' % (os.path.dirname(__file__), _pathname)   
     data = None
-    filename = models.CharField(max_length=2000, null=False, blank=False)
 
     def __init__(self, *args, **kwargs):
         if kwargs.has_key('data'):

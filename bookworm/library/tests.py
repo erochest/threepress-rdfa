@@ -196,6 +196,15 @@ class TestModels(unittest.TestCase):
         preface = toc.tree[1]
         self.assertEquals("pr02.html", preface.href())
 
+    def testTOCTopLevel(self):
+        '''We should use the <spine> to locate the top-level navigation items'''
+        toc = TOC(_get_file('top-level-toc.ncx'), 
+                  _get_file('top-level-toc.opf'))
+        first_page_ncx = toc.tree[0]  
+        first_page_spine = toc.items[0]
+        self.assertNotEquals(first_page_ncx.label,
+                             first_page_spine.label)
+
     def testMetadata(self):
         '''All metadata should be returned using the public methods'''
         opf_file = 'all-metadata.opf'

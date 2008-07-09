@@ -17,7 +17,7 @@
 {% spaceless %}
     {% if not request.common.prefs.use_iframe %}
       {% for css in stylesheets %}
-      <link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.idref %}" />
+      <link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.filename %}" />
       {% endfor %}
     {% endif %}
 {% endspaceless %}
@@ -26,7 +26,7 @@
 {% block head %}
 <script type="text/javascript">
      function getFullPath() {
-       var u = '{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.idref %}' + location.hash;
+       var u = '{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.filename %}' + location.hash;
        return u;
      }
 </script>
@@ -108,7 +108,7 @@
   <!-- Show iframe -->
   <div style="width:100%">
    <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="500px" name="content" src="javascript:getFullPath()">
-     <p>Your browser doesn't support iframes, but that's okay: <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">disable iframes</a></p>
+     <p>Your browser doesn't support iframes, but that's okay: <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe=no">disable iframes</a></p>
    </iframe>
    <script type="text/javascript">
      function resizeIframe() {
@@ -125,7 +125,7 @@
     
    <p style="width:400px" >
      To redisplay this book in the main window, you may
-   <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">disable frames</a>.
+   <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe=no">disable frames</a>.
    </p>
   </div>
  {% else %}
@@ -144,8 +144,8 @@
             <p class="bw-note" style="margin-top:2em;margin-left:0;">
               Note: This book came bundled with its own stylesheets.  It's possible for these
               styles to interfere with the behavior of the site.  If the site does not appear to be laid out as expected, you may
-              <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=yes">view the book content in its own frame</a>.
-              [<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe_note=no">hide this note</a>]
+              <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe=yes">view the book content in its own frame</a>.
+              [<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe_note=no">hide this note</a>]
             </p>
          {% endif %}
 
@@ -218,10 +218,10 @@
          <td>
            {% if request.common.prefs.use_iframe %}
            Yes, show book's styles in a scrolling window 
-           <br/>(<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=no">change this</a>)
+           <br/>(<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe=no">change this</a>)
            {% else %}
            No, view without styles 
-           <br/>(<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.idref %}?iframe=yes">change this)</a>
+           <br/>(<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe=yes">change this)</a>
            {% endif %}
          </td>
        </tr>

@@ -9,7 +9,7 @@
 
     {% if stylesheets %}
       {% for css in stylesheets %}
-         <link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.idref %}" />
+         <link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.filename %}" />
       {% endfor %}
 
     {% else %}

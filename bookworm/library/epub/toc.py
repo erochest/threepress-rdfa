@@ -37,7 +37,7 @@ class TOC():
 
         # If we have a spine, we use that to define our next/previous tree, and then
         # find children of each spine element in the NCX, just for display
-        if self.spine:
+        if self.spine is not None:
 
             for itemref in self.spine.xpath('//opf:spine/opf:itemref', namespaces=NS):
                 item = self.spine.xpath('//opf:item[@id="%s"]' % itemref.get('idref'),
