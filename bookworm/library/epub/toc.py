@@ -30,7 +30,7 @@ class TOC():
         self.parse() 
 
     def parse(self):
-        self.parsed = ET.fromstring(self.toc.encode(ENC))
+        self.parsed = util.xml_from_string(self.toc)
         self.doc_title = self.parsed.findtext('.//{%s}docTitle/{%s}text' % (NS['ncx'], NS['ncx'])).strip()
 
         for navmap in self.parsed.findall('.//{%s}navMap' % (NS['ncx'])):
@@ -55,16 +55,16 @@ class TOC():
 
             
     def __str__(self):
-        res = ''
+        res = u''
         for n in self.tree:
             res += n.__str__()
 
         if self.items:
-            res += "\nOPF:\n"
+            res += u"\nOPF:\n"
             for n in self.items:
                 res += n.__str__()
 
-        return res
+        return res.encode(ENC)
 
     def find_opf(self):
         '''Get the points in OPF order'''
@@ -160,7 +160,7 @@ class Item():
             # Get the real navpoint from the tree
             navpoint = self.toc.find_point_by_id(self.navpoint.id)
             return navpoint.__str__()
-        return self.label + "\n"
+        return unicode(self.label, encoding=ENC) + u"\n"
 
 class NavPoint():
     '''Hold an individual navpoint, including its text, label and parent relationship.'''
@@ -193,11 +193,16 @@ class NavPoint():
         return self.element.find('.//{%s}content' % (NS['ncx'])).get('src')
 
     def __str__(self):
-        res = ''
+        res = u''
         for n in range(1,self.depth):
-            res += ' '
-        res += self.element.findtext('.//{%s}text' % NS['ncx'])
-        res += '\n'
+            res += u' '
+        text = self.element.findtext('.//{%s}text' % NS['ncx'])
+        if type(text) == unicode:
+            res += text
+            pass
+        else:
+            res += unicode(text, encoding=ENC)
+        res += u'\n'
         return res
 
     def __repr__(self):
@@ -211,7 +216,7 @@ if __name__ == '__main__':
         toc = TOC(open(sys.argv[1]).read())
         print toc
 
-    if len(sys.argv) == 3:
+    elif len(sys.argv) == 3:
         toc = TOC(open(sys.argv[1]).read(),
                   open(sys.argv[2]).read())
         print toc
