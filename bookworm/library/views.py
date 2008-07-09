@@ -201,6 +201,11 @@ def _chapter_next_previous(document, chapter, dir='next'):
         return q[0]
     return q
 
+def item_next_previous(document, item, dir='next'):
+    '''Returns the next or previous data object from the OPF'''
+    pass
+
+
 @login_required    
 def view_chapter_image(request, title, key, image):
     logging.info("Image request: looking up title %s, key %s, image %s" % (title, key, image))        

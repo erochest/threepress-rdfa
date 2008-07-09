@@ -3,6 +3,7 @@ ENC = 'utf-8'
 
 MIMETYPE='application/epub+zip'
 STYLESHEET_MIMETYPE='text/css'
+XHTML_MIMETYPE='application/xhtml+xml'
 SVG_MIMETYPE='image/svg+xml'
 
 NAMESPACES = { 'container': 'urn:oasis:names:tc:opendocument:xmlns:container',

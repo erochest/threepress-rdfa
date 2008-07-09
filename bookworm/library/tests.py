@@ -15,6 +15,7 @@ from models import *
 from testmodels import *
 from epub.toc import TOC
 from epub.constants import *
+import epub.util
 
 import twill
 from twill import get_browser
@@ -79,7 +80,7 @@ class TestModels(unittest.TestCase):
         expected_authors = [u'First Author', u'Second Author']
         opf_file = 'two-authors.opf'
         document = MockEpubArchive(name=opf_file)
-        opf = document.xml_from_string(_get_file(opf_file))
+        opf = epub.util.xml_from_string(_get_file(opf_file))
         authors = [a.name for a in document.get_authors(opf)]
         self.assertEquals(expected_authors, authors)
 
@@ -90,7 +91,7 @@ class TestModels(unittest.TestCase):
         document = MockEpubArchive(name=opf_file)
         document.owner = self.user
         document.save()
-        opf = document.xml_from_string(_get_file(opf_file))
+        opf = epub.util.xml_from_string(_get_file(opf_file))
         
         fuzz = 4
         len_first_author = len(expected_authors[0])
@@ -105,7 +106,7 @@ class TestModels(unittest.TestCase):
         no_author_document.owner = self.user
         no_author_document.save()
 
-        opf = no_author_document.xml_from_string(_get_file(no_author_opf_file))
+        opf = epub.util.xml_from_string(_get_file(no_author_opf_file))
 
         author = no_author_document.get_author(opf)
         self.failIf(author)
@@ -205,6 +206,37 @@ class TestModels(unittest.TestCase):
         self.assertNotEquals(first_page_ncx.label,
                              first_page_spine.label)
 
+    def testGetFileByItem(self):
+        '''Make sure we can find any item by its idref'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        self.assert_(document.opf)
+        toc = document.get_toc()
+        self.assert_(toc)
+        self.assert_(len(toc.items) > 0)
+        item = toc.items[2]
+        self.assertEquals(item.id, 'chapter-3')
+        self.assertEquals(item.media_type, 'application/xhtml+xml')
+        self.assertEquals(item.media_type, XHTML_MIMETYPE)
+        file = get_file_by_item(item)
+        self.assertEquals(file.filename, 'chapter-3.html')
+
+    def testTOCNextPreviousItem(self):
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        toc = document.get_toc()
+        item = toc.items[2]
+        self.assertEquals(item.id, 'chapter-3')
+        item2 = toc.find_next_item(item)
+        self.assertEquals(item2.id, 'chapter-4')        
+        item3 = toc.find_previous_item(item2)
+        self.assertEquals(item.id, item3.id)
+
+
     def testMetadata(self):
         '''All metadata should be returned using the public methods'''
         opf_file = 'all-metadata.opf'
@@ -226,7 +258,7 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         chapters = HTMLFile.objects.filter(archive=document)
-        assert len(chapters) > 0
+        self.assert_(len(chapters) > 0)
         for c in chapters:
             c.render()
 
@@ -236,7 +268,7 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         chapters = HTMLFile.objects.filter(archive=document)
-        assert len(chapters) > 0
+        self.assert_(len(chapters) > 0)
         for c in chapters:
             c.render()        
 
@@ -246,7 +278,7 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         chapters = HTMLFile.objects.filter(archive=document)
-        assert 'html:br' not in chapters[0].render()
+        self.assert_('html:br' not in chapters[0].render())
 
     def testRemoveBodyTag(self):
         '''We should not be printing the original document's <body> tag'''
@@ -255,11 +287,13 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         chapters = HTMLFile.objects.filter(archive=document)
-        assert len(chapters) == 61
+        self.assert_(len(chapters) == 61)
         for c in chapters:
             self.assert_('<body' not in c.render())
             self.assert_('<div id="bw-book-content"' in c.render())
 
+
+        
     def testChapters(self):
         '''When switching to lxml, chapters in this book did not get captured'''
         filename = 'Cory_Doctorow_-_Little_Brother.epub'
@@ -267,7 +301,7 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         chapters = HTMLFile.objects.filter(archive=document)
-        assert chapters
+        self.assert_(chapters)
         
     def testBinaryImage(self):
         '''Test the ImageBlob class directly'''
@@ -321,7 +355,7 @@ class TestModels(unittest.TestCase):
         image_obj.save()
         i2 = ImageFile.objects.filter(idref=imagename)[0]
         storage = i2._blob()._get_file()
-        assert storage
+        self.assert_(storage)
         i2.delete()
         self.assert_(not os.path.exists(storage))
 
@@ -369,7 +403,7 @@ class TestModels(unittest.TestCase):
                        data=epub)
         bin.save()
         b2 = EpubBlob.objects.filter(idref=filename)[0]        
-        assert b2
+        self.assert_(b2)
         b2.delete()
         try:
             document.delete()
@@ -420,7 +454,7 @@ class TestViews(DjangoTestCase):
         response = self._upload('Cory_Doctorow_-_Little_Brother.epub')
 
         id = self._get_id_for_document(self.client.get('/'), 'Little+Brother')
-        assert id
+        self.assert_(id)
         logging.info(id)
         response = self.client.get('/view/Little-Brother/%s/main5.xml' % id)
         self.assertTemplateUsed(response, 'view.html')

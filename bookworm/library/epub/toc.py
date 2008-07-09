@@ -4,6 +4,7 @@ import sys, logging
 from namespaces import init_namespaces
 from constants import NAMESPACES as NS
 from constants import ENC
+import util
 
 # Helpers for dealing with TOC file and <spine> elements
 
@@ -22,7 +23,7 @@ class TOC():
         '''If provided, an optional opf file will inform the parsing of the ncx file'''
         self.toc = toc_string
         if opf_string:
-            self.spine = ET.fromstring(opf_string)
+            self.spine = util.xml_from_string(opf_string)
     
         self.tree = []
         self.items = []
@@ -67,8 +68,8 @@ class TOC():
 
     def find_opf(self):
         '''Get the points in OPF order'''
+        pass
 
-        
     def find_points(self, maxdepth=1):
         '''Return all the navpoints in the TOC having a maximum depth of maxdepth'''
         return [p for p in self.tree if p.depth <= maxdepth]
@@ -79,7 +80,18 @@ class TOC():
             if n.element.get('id') == node_id:
                 return n
             
-                
+    def find_next_item(self, item):
+        i = self.items.index(item)
+        if i == len(self.items) - 1:
+            # This is the last item
+            return None
+        return self.items[i + 1]
+
+    def find_previous_item(self, item):
+        i = self.items.index(item)
+        if i == 0:
+            return None
+        return self.items[i - 1]
 
     def find_children_by_id(self, node_id):
         '''Find all children given the id of a node in the TOC'''
@@ -130,7 +142,7 @@ class Item():
         '''Print the depth relative to its navpoint, if it exists'''
         if self.navpoint and self.toc:
             # Get the real navpoint from the tree
-            navpoint = self.toc.find_point_by_id(self.navpoint.id())
+            navpoint = self.toc.find_point_by_id(self.navpoint.id)
             return navpoint.__str__()
         return self.label + "\n"
 
@@ -138,6 +150,7 @@ class NavPoint():
     '''Hold an individual navpoint, including its text, label and parent relationship.'''
     def __init__(self, element, depth=1, parent=None, doc_title=None, tree=None):
         self.element = element
+        self.id = self.element.get('id')
         self.depth = depth
         self.parent = parent
         self.doc_title = doc_title
@@ -162,9 +175,6 @@ class NavPoint():
 
     def href(self):
         return self.element.find('.//{%s}content' % (NS['ncx'])).get('src')
-
-    def id(self):
-        return self.element.get('id')
 
     def __str__(self):
         res = ''

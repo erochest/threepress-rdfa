@@ -18,9 +18,10 @@ from django.contrib.auth.models import User
 from django.utils.encoding import smart_str
 
 from epub import constants, InvalidEpubException
-from epub.constants import ENC, BW_BOOK_CLASS
+from epub.constants import ENC, BW_BOOK_CLASS, STYLESHEET_MIMETYPE, XHTML_MIMETYPE
 from epub.constants import NAMESPACES as NS
 from epub.toc import NavPoint, TOC
+import epub.util as util
 
 
 # Functions
@@ -35,7 +36,21 @@ def unsafe_name(name):
     unquote = unquote_plus(name.encode(ENC))
     return unicode(unquote, ENC)
 
-
+def get_file_by_item(item):
+    '''Accepts an Item and uses that to find the related file in the database'''
+    if item.media_type == XHTML_MIMETYPE:
+        html = HTMLFile.objects.filter(idref=item.id)
+        if html is not None:
+            return html[0]
+    if item.media_type == STYLESHEET_MIMETYPE:
+        css = StylesheetFile.objects.filter(idref=item.id)
+        if css is not None:
+            return css[0]
+    image = ImageFile.objects.file(idref=item.id)
+    if image is not None:
+        return image[0]
+    return None
+    
 class BookwormModel(models.Model):
     '''Base class for all models'''
     created_time = models.DateTimeField('date created', default=datetime.datetime.now())
@@ -111,7 +126,7 @@ class EpubArchive(BookwormModel):
     def _get_metadata(self, metadata_tag, opf):
         '''Returns a metdata item's text content by tag name, or a list if mulitple names match'''
         if self._parsed_metadata is None:
-            self._parsed_metadata = self._xml_from_string(opf)
+            self._parsed_metadata = util.xml_from_string(opf)
         text = []
         for t in self._parsed_metadata.findall('.//{%s}%s' % (NS['dc'], metadata_tag)):
             text.append(t.text)
@@ -133,15 +148,15 @@ class EpubArchive(BookwormModel):
         return self._get_metadata(constants.DC_PUBLISHER_TAG, self.opf)
 
     def get_top_level_toc(self):
-        t = self._get_parsed_toc()
+        t = self.get_toc()
         return t.find_points()
 
-    def _get_parsed_toc(self):
+    def get_toc(self):
         if not self._parsed_toc:
-            self._parsed_toc = TOC(self.toc)
+            self._parsed_toc = TOC(self.toc, self.opf)
         return self._parsed_toc
         
-        
+          
     def explode(self):
         '''Explodes an epub archive'''
         e = StringIO(self.get_content())
@@ -154,20 +169,20 @@ class EpubArchive(BookwormModel):
         except KeyError:
             raise InvalidEpubException()
 
-        parsed_container = self._xml_from_string(container)
+        parsed_container = util.xml_from_string(container)
 
         opf_filename = self._get_opf_filename(parsed_container)
 
         content_path = self._get_content_path(opf_filename)
 
-        self.opf = unicode(z.read(opf_filename), ENC)
-        parsed_opf = self._xml_from_string(self.opf.encode(ENC))
+        self.opf = z.read(opf_filename)
+        parsed_opf = util.xml_from_string(self.opf)
 
         items = [i for i in parsed_opf.iterdescendants(tag="{%s}item" % (NS['opf']))]
         
-        self.toc = unicode(z.read(self._get_toc(parsed_opf, items, content_path)), ENC)
+        self.toc = z.read(self._get_toc(parsed_opf, items, content_path))
 
-        parsed_toc = self._xml_from_string(self.toc.encode(ENC))
+        parsed_toc = util.xml_from_string(self.toc)
 
         self.authors = self._get_authors(parsed_opf)
         self.title = self._get_title(parsed_opf) 
@@ -176,11 +191,6 @@ class EpubArchive(BookwormModel):
         self._get_stylesheets(items, content_path)
         self._get_images(items, content_path)
 
-
-    def _xml_from_string(self, xml):
-        if type(xml) == unicode:
-            return ET.fromstring(xml.encode(ENC))
-        return ET.fromstring(xml)
 
     def _get_opf_filename(self, container):
         '''Parse the container to get the name of the opf file'''
@@ -209,7 +219,7 @@ class EpubArchive(BookwormModel):
         raise Exception("Could not find toc filename")
 
     def _get_authors(self, opf):
-        authors = [BookAuthor(name=unicode(a.text.strip(), ENC)) for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG))]
+        authors = [BookAuthor(name=a.text.strip()) for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG))]
         if len(authors) == 0:
             logging.warn('Got empty authors string for book %s' % self.name)
         else:
