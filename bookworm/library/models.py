@@ -149,7 +149,13 @@ class EpubArchive(BookwormModel):
 
     def get_top_level_toc(self):
         t = self.get_toc()
-        return t.find_points()
+        p = t.find_points()
+        if len(p) == 1:
+            # If we only got one item try expanding the tree and dropping the first item
+            p = t.find_points(maxdepth=2)
+            if len(p) > 1:
+                p = p[1:]
+        return p
 
     def get_toc(self):
         if not self._parsed_toc:

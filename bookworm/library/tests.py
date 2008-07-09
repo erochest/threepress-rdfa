@@ -117,8 +117,7 @@ class TestModels(unittest.TestCase):
         self.assert_(d)
 
     def testFindDocument(self):
-        """Documents should be findable by title and author."""
-        author = u'Jane Austen'
+        """Documents should be findable by title"""
         title = u'Pride and Prejudice'
         filename = 'Pride-and-Prejudice_Jane-Austen.epub'
         document = self.create_document(filename)
@@ -220,8 +219,8 @@ class TestModels(unittest.TestCase):
         self.assertEquals(item.id, 'chapter-3')
         self.assertEquals(item.media_type, 'application/xhtml+xml')
         self.assertEquals(item.media_type, XHTML_MIMETYPE)
-        file = get_file_by_item(item)
-        self.assertEquals(file.filename, 'chapter-3.html')
+        f = get_file_by_item(item)
+        self.assertEquals(f.filename, 'chapter-3.html')
 
     def testTOCNextPreviousItem(self):
         filename = 'Pride-and-Prejudice_Jane-Austen.epub'

@@ -75,23 +75,39 @@ class TOC():
         return [p for p in self.tree if p.depth <= maxdepth]
 
     def find_point_by_id(self, node_id):
-        '''For accessing a node in the tree from an Item'''
+        '''For accessing a node in the tree from an id'''
         for n in self.tree:
             if n.element.get('id') == node_id:
                 return n
-            
+
+    def find_item_by_id(self, item_id):
+        '''For accessing a node in the item list from an id'''
+        for n in self.items:
+            if n.id == item_id:
+                return n
+
     def find_next_item(self, item):
-        i = self.items.index(item)
+        i = self._get_index_by_item(item)
         if i == len(self.items) - 1:
             # This is the last item
             return None
         return self.items[i + 1]
 
     def find_previous_item(self, item):
-        i = self.items.index(item)
+        i = self._get_index_by_item(item)
         if i == 0:
             return None
         return self.items[i - 1]
+
+    def _get_index_by_item(self, item):
+        try:
+            i = self.items.index(item)
+            return i
+        except ValueError:
+            for j in self.items:
+                if j.id == item.id:
+                    return j
+        return 0
 
     def find_children_by_id(self, node_id):
         '''Find all children given the id of a node in the TOC'''

@@ -14,7 +14,7 @@ from django.template import RequestContext, Context, Template
 from django_authopenid.views import delete as delete_openid_profile
 from django_authopenid.forms import DeleteForm
 
-from models import EpubArchive, HTMLFile, UserPref, StylesheetFile, ImageFile, SystemInfo
+from models import EpubArchive, HTMLFile, UserPref, StylesheetFile, ImageFile, SystemInfo, get_file_by_item
 from forms import EpubValidateForm
 from epub import constants as epub_constants
 from epub import InvalidEpubException
@@ -193,17 +193,18 @@ def view_chapter(request, title, key, chapter_id):
                               
 
 def _chapter_next_previous(document, chapter, dir='next'):
-    if dir == 'next':
-        q = document.htmlfile_set.filter(order__gte=chapter.order+1)
-    else :
-        q = document.htmlfile_set.filter(order__lte=chapter.order-1).order_by('-order')
-    if len(q) > 0:
-        return q[0]
-    return q
-
-def item_next_previous(document, item, dir='next'):
     '''Returns the next or previous data object from the OPF'''
-    pass
+    toc = document.get_toc()
+    item = toc.find_item_by_id(chapter.idref)
+
+    if dir == 'next':
+        target_item = toc.find_next_item(item)
+    else:
+        target_item = toc.find_previous_item(item)
+    if target_item is None:
+        return None
+    object = get_file_by_item(target_item)
+    return object
 
 
 @login_required    
@@ -364,7 +365,7 @@ def _greeting(request):
                  )
                 )
         if request.user.is_superuser:
-            text += ' | <a href="%s">admin</a> ' % reverse('library.admin.search')
+            text += ' | <a href="/admin">admin</a> '
         return text
 
     return ("<a name='signin' href=\"%s\">Sign in or register</a>." % '/accounts/login/')
