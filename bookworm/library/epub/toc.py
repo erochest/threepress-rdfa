@@ -116,13 +116,17 @@ class TOC():
 
     def find_children(self, element):
         '''Find all the children of a node (for expand/collapse navigation)'''
-        return [n for n in self.tree if n.parent.get('id') == element.element.get('id')]
-    
-    def _find_point(self, element, depth=1):
+        return [n for n in self.tree if n.parent is not None and n.parent.element.get('id') == element.element.get('id')]
+
+    def find_descendants(self, element):
+        '''Find all the descendants of a node'''
+        return [n for n in self.tree if n != element and n.parent is not None and element in n.find_ancestors()]
+        
+    def _find_point(self, element, parent=None, depth=1):
         for nav in element.findall('{%s}navPoint' % (NS['ncx'])):
-            n = NavPoint(nav, depth, element, self.doc_title, self.tree)
+            n = NavPoint(nav, depth, parent=parent, doc_title=self.doc_title, tree=self.tree)
             self.tree.append(n)
-            self._find_point(nav, depth+1)
+            self._find_point(nav, parent=n, depth=depth+1)
 
 
 def get_label(element):
@@ -172,13 +176,28 @@ class NavPoint():
         self.doc_title = doc_title
         self.tree = tree
         self.label = get_label(self.element)
+        self.ancestors = []
 
-        #logging.debug('Created navpoint for book "%s" with title "%s", parent label "%s" and depth %d' 
-        #              % (self.doc_title, self.title(), get_label(self.parent), self.depth))
+    def find_ancestors(self):
+        '''All the parents of our parent, which will allow for deeper exploration of the tree'''
+        self._find_ancestor(self)
+        return self.ancestors
+
+    def _find_ancestor(self, navpoint):
+        if navpoint.parent is None:
+            return 
+        self.ancestors.append(navpoint.parent)
+        return self._find_ancestor(navpoint.parent)
 
     def find_children(self):
         '''Returns all the children of this NavPoint'''
-        return [n for n in self.tree if n.parent.get('id') == self.element.get('id')]
+        return [n for n in self.tree if n.parent is not None and n.parent.element.get('id') == self.element.get('id')]
+        #return self.tree.find_children(self)
+        
+    def find_descendants(self):
+        '''Find all the descendants of a node'''
+        return [n for n in self.tree if n != self and n.parent is not None and self in n.find_ancestors()]
+
 
     def title(self):
         text = self.element.findtext('.//{%s}text' % (NS['ncx']))
@@ -206,7 +225,7 @@ class NavPoint():
         return res
 
     def __repr__(self):
-        return "'%s' %s (%s) %d" % (self.doc_title, self.title(), self.href(), self.order())
+        return "doc='%s' title=%s href=(%s) order=%d" % (self.doc_title, self.title(), self.href(), self.order())
 
 
 if __name__ == '__main__':

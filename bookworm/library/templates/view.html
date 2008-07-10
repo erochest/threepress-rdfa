@@ -66,7 +66,7 @@
 
    {% ifequal c.order chapter.order %}
 
-     {% with c.find_children as find_children %}
+     {% with c.find_descendants as find_children %}
        {% with c as current_chapter %}
          {% include "includes/subchapters.html" %}
        {% endwith %}
@@ -77,14 +77,14 @@
    {# Instead is 'c' the parent of the viewed chapter? #}
 
    {% ifequal c.order parent_chapter.order %}
-      {% with c.find_children as find_children %}
+      {% with c.find_descendants as find_children %}
         {% with c as current_chapter %}
           {% include "includes/subchapters.html" %}
         {% endwith %}
       {% endwith %}
    {% endifequal %}
 
-   {# Silly Django templates to accommodate no flexible 'else' #}
+   {# Silly Django, no flexible 'else' #}
    {% ifnotequal parent_chapter c %}
      {% ifnotequal c.order chapter.order %}
        <li><a href="{% url library.views.view_chapter document.safe_title,document.key,c.href %}">{{ c.title }}</a></li>

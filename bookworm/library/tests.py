@@ -175,7 +175,7 @@ class TestModels(unittest.TestCase):
         colophon = toc.tree[-1:][0]
         self.assertEquals(colophon.title(), 'Colophon')
 
-    def testGetChildren(self):
+    def testFindChildren(self):
         '''Get the children of a particular nested TOC node, by node'''
         toc = TOC(_get_file('complex-ncx.ncx'))
         self.failUnless(toc)
@@ -189,6 +189,20 @@ class TestModels(unittest.TestCase):
         preface = toc.tree[1]
         children = toc.find_children(preface)
         self.assertEquals(8, len(children))
+
+    def testFindDescendants(self):
+        '''Get the deep children of a particular nested TOC'''
+        toc = TOC(_get_file('complex-ncx.ncx'))
+        chapter = toc.tree[11]
+        ancestors = chapter.find_ancestors()
+        self.assertNotEquals(0, len(ancestors))
+
+        intro = toc.tree[10]
+        self.assertEquals('pt01.html', intro.href())
+        self.assertEquals(intro.id, ancestors[0].id)
+
+        descendants = toc.find_descendants(chapter)
+        self.assertEquals(30, len(descendants))
 
     def testTOCHref(self):
         '''Ensure that we are returning the correct href for an item'''

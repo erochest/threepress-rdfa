@@ -175,7 +175,7 @@ def view_chapter(request, title, key, chapter_id):
 
     for t in toc:
         href = chapter.filename.encode(epub_constants.ENC)
-        if href in [c.href() for c in t.find_children()]:
+        if href in [c.href() for c in t.find_descendants()]:
             parent_chapter = t
             subchapter_href = href
             break
