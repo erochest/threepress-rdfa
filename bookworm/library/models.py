@@ -450,8 +450,8 @@ class HTMLFile(BookwormFile):
     def render(self):
         '''If we don't have any processed content, process it and cache the
         results in the datastore.'''
-        if self.processed_content:
-            return self.processed_content
+        #if self.processed_content:
+        #    return self.processed_content
         
         f = smart_str(self.file, encoding=ENC)
 
@@ -498,11 +498,13 @@ class HTMLFile(BookwormFile):
             if element.tag == 'img' and 'svg' in element.get('src'):
                 logging.debug('translating svg image %s' % element.get('src'))
                 try:
-                    p = element.parent
+                    p = element.getparent()         
                     e = ET.fromstring("""<a class="svg" href="%s">[ View linked image in SVG format ]</a>""" % element.get('src'))
                     p.remove(element)
                     p.append(e)
+                    pass
                 except: 
+                    pass
                     logging.error("ERROR:" + sys.exc_value)
         return xhtml
 

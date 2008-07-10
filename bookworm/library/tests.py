@@ -521,6 +521,14 @@ class TestViews(DjangoTestCase):
         self.assertTemplateUsed(response, 'view.html')
         self.assertContains(response, 'It is a truth universally acknowledged', status_code=200)
 
+    def test_view_svg(self):
+        self._upload('EPUBBestPractices-1_0_2.epub')
+        response = self.client.get('/view/EPUB+Best+Practices/1/Container_(OCF).xhtml')
+        self.assertTemplateUsed(response, 'view.html')
+        self.assertContains(response, 'View linked image in SVG format')
+        response = self.client.get('/view/EPUB+Best+Practices/1/images/OPS.svg')
+        self.assertEquals(response.status_code, 200)
+
     def test_delete_book(self):
         self._upload('Pride-and-Prejudice_Jane-Austen.epub')        
         response = self.client.post('/delete/', { 'title':'Pride+and+Prejudice',
