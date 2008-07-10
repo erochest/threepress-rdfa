@@ -54,12 +54,16 @@
 <ol class="bw-nav">
   <li class="bw-first">
   {% if chapter %}
-  <a href="{% url library.views.view document.safe_title,document.key %}">Book information</a>
+  <a href="{% url library.views.view_document_metadata document.safe_title,document.key %}">Book information</a>
   {% else %}
   Book information
   {% endif %}
   </li>
-  
+
+  <li class="bw-first">
+    <a href="{% url library.views.view document.safe_title,document.key %}">First page</a>
+  </li>
+
 {% for c in document.get_top_level_toc %}
 
    {# Is 'c' a top-level chapter? #}
@@ -188,11 +192,12 @@
          <th>Date added to library</th>
          <td>{{ document.created_time|date:"l, F Y" }}</td>
        </tr>
+       <!--
        <tr>
          <th>Number of sections</th>
          <td>{{ toc|length }}</td>
        </tr>
-
+       -->
        {% if document.get_subjects %}
        <tr>
          <th>Subjects</th>

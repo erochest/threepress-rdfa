@@ -27,6 +27,9 @@ urlpatterns = patterns('',
                        # Images from within documents
                        (r'^(view|chapter)/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<image>.*(jpg|gif|png|svg)+)$', 
                         'library.views.view_chapter_image'),                       
+                       
+                       # Document metadata
+                       (r'^metadata/(?P<title>.+)/(?P<key>.+)/$', 'library.views.view_document_metadata'),                       
 
                        # View a chapter in frame mode
                        (r'^chapter/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)$', 'library.views.view_chapter_frame'),                       

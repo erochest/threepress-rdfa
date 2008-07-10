@@ -10,7 +10,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import auth
 from django.template import RequestContext, Context, Template
 
-
 from django_authopenid.views import delete as delete_openid_profile
 from django_authopenid.forms import DeleteForm
 
@@ -79,14 +78,27 @@ def profile(request):
 
 @login_required
 def view(request, title, key):
+    '''If we view just a document, we want to see the first item in the <opf:spine>,
+    as required by the epub specification.'''
     logging.info("Looking up title %s, key %s" % (title, key))
     _check_switch_modes(request)
     document = _get_document(request, title, key)
-    
-    toc = HTMLFile.objects.filter(archive=document).order_by('order')
-    
-    return render_to_response('view.html', {'document':document, 
-                                            'toc':toc },
+    toc = document.get_toc()
+    items = toc.items
+    first = items[0]
+    object = get_file_by_item(first)
+    if object is None:
+        logging.error('Could not find an item with the id of %s' % first)
+        raise Http404
+    return view_chapter(request, title, key, object.filename)
+
+  
+@login_required
+def view_document_metadata(request, title, key):
+    logging.info("Looking up metadata %s, key %s" % (title, key))
+    _check_switch_modes(request)
+    document = _get_document(request, title, key)
+    return render_to_response('view.html', {'document':document}, 
                               context_instance=RequestContext(request))
 
 
@@ -190,8 +202,8 @@ def view_chapter(request, title, key, chapter_id):
                                             'stylesheets':stylesheets,
                                             'previous':previous},
                               context_instance=RequestContext(request))
-                              
-
+    
+    
 def _chapter_next_previous(document, chapter, dir='next'):
     '''Returns the next or previous data object from the OPF'''
     toc = document.get_toc()

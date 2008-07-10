@@ -40,14 +40,14 @@ def get_file_by_item(item):
     '''Accepts an Item and uses that to find the related file in the database'''
     if item.media_type == XHTML_MIMETYPE:
         html = HTMLFile.objects.filter(idref=item.id)
-        if html is not None:
+        if html is not None and len(html) > 0:
             return html[0]
     if item.media_type == STYLESHEET_MIMETYPE:
         css = StylesheetFile.objects.filter(idref=item.id)
-        if css is not None:
+        if css is not None and len(css) > 0:
             return css[0]
-    image = ImageFile.objects.file(idref=item.id)
-    if image is not None:
+    image = ImageFile.objects.filter(idref=item.id)
+    if image is not None and len(image) > 0:
         return image[0]
     return None
     
@@ -156,6 +156,10 @@ class EpubArchive(BookwormModel):
             if len(p) > 1:
                 p = p[1:]
         return p
+    
+    def get_toc_items(self):
+        t = self.get_toc()
+        return t.items
 
     def get_toc(self):
         if not self._parsed_toc:
@@ -358,19 +362,27 @@ class EpubArchive(BookwormModel):
             idref = ref.get('idref')
             if item_map.has_key(idref):
                 href = item_map[idref]
-                if nav_map.has_key(href):
-                    filename = '%s%s' % (content_path, href)
-                    content = self._archive.read(filename)
+                filename = '%s%s' % (content_path, href)
+                content = self._archive.read(filename)
                     
-                    # We store the raw XHTML and will process it for display on request
-                    # later
-                    page = {'title': nav_map[href].title(),
-                            'idref':idref,
-                            'filename':href,
-                            'file':content,
-                            'archive':self,
-                            'order':nav_map[href].order()}
-                    pages.append(page)
+                # We store the raw XHTML and will process it for display on request
+                # later
+
+                # If this item is in the navmap then we have a handy title
+                if href in nav_map:
+                    title = nav_map[href].title()
+                    order = nav_map[href].order()
+                else:
+                    title = ""
+                    order = 0
+
+                page = {'title': title,
+                        'idref':idref,
+                        'filename':href,
+                        'file':content,
+                        'archive':self,
+                        'order':order}
+                pages.append(page)
                     
         self._create_pages(pages)
 
