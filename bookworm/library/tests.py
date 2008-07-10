@@ -168,7 +168,21 @@ class TestModels(unittest.TestCase):
         self.assert_(first)
         self.assertEquals('htmltoc', first.id)
 
+    def testAuxilliaryTOC(self):
+        '''Support one or more lists of additional content'''
+        toc = TOC(_get_file('auxilliary-lists.ncx'))
+
+        aux1 = toc.lists[0]
+        self.assert_(aux1)
+
+        aux2 = toc.lists[1]
+        self.assert_(aux2)
         
+        self.assertEquals(2, len(toc.lists))
+        self.assertEquals(2, len(aux1.tree))
+        self.assertEquals(3, len(aux2.tree))
+        self.assertEquals('recipe 2', aux2.tree[1].label)
+        self.assertEquals('image1.html', aux1.tree[0].href())
 
     def testCountDeepTOC(self):
         '''Check a complex document with multiple nesting levels'''

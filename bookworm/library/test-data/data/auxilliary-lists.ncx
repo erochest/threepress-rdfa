@@ -35,15 +35,34 @@
 
   <navList id="loi">
    <navLabel><text>List of Illustrations</text></navLabel>
+
    <navTarget id="loi-cover" playOrder="4">
       <navLabel><text>image 1</text></navLabel>
       <content src="image1.html"/>
    </navTarget>
 
-   <navTarget id="loi-titlepage" playOrder="4">
+   <navTarget id="loi-titlepage" playOrder="5">
       <navLabel><text>image 2</text></navLabel>
       <content src="image2.html"/>
    </navTarget>
-</navList>
+  </navList>
 
+  <navList id="recipes">
+   <navLabel><text>List of recipes</text></navLabel>
+
+   <navTarget id="recipe1" playOrder="6">
+      <navLabel><text>recipe 1</text></navLabel>
+      <content src="recipe1.html"/>
+   </navTarget>
+
+   <navTarget id="recipe2" playOrder="7">
+      <navLabel><text>recipe 2</text></navLabel>
+      <content src="recipe2.html"/>
+   </navTarget>
+
+   <navTarget id="recipe3" playOrder="8">
+      <navLabel><text>recipe 3</text></navLabel>
+      <content src="recipe3.html"/>
+   </navTarget>
+  </navList>
 </ncx>

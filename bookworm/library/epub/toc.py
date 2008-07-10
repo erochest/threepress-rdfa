@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 from lxml import etree as ET
 import sys, logging
-from namespaces import init_namespaces
+
 from constants import NAMESPACES as NS
 from constants import ENC
-import util
 
 # Helpers for dealing with TOC file and <spine> elements
 
@@ -21,16 +20,25 @@ class TOC():
 
     def __init__(self, toc_string, opf_string=None):
         '''If provided, an optional opf file will inform the parsing of the ncx file'''
-        self.toc = toc_string
+        self.parsed = xml_from_string(toc_string)
+
         if opf_string:
-            self.spine = util.xml_from_string(opf_string)
+            self.spine = xml_from_string(opf_string)
     
         self.tree = []
         self.items = []
+        self.lists = []
         self.parse() 
+        self.parse_auxilliary()
+
+    def parse_auxilliary(self):
+        '''Parses any auxilliary nav lists and adds them to self.lists'''
+        for l in self.parsed.findall('.//{%s}navList' % (NS['ncx'])):
+            n = NavList(l, related_toc=self)
+            self.lists.append(n)
 
     def parse(self):
-        self.parsed = util.xml_from_string(self.toc)
+                            
         self.doc_title = self.parsed.findtext('.//{%s}docTitle/{%s}text' % (NS['ncx'], NS['ncx'])).strip()
 
         for navmap in self.parsed.findall('.//{%s}navMap' % (NS['ncx'])):
@@ -66,6 +74,10 @@ class TOC():
             for n in self.items:
                 res += n.__str__()
 
+        if self.lists:
+            res += u"\nNav Lists:\n"
+            for n in self.lists:
+                res += n.__str__()            
         return res.encode(ENC)
 
     def find_opf(self):
@@ -141,11 +153,6 @@ class TOC():
             self._find_point(nav, parent=n, depth=depth+1)
 
 
-def get_label(element):
-    '''Gets the text label for any element'''
-    if element is None:
-        return None
-    return element.findtext('.//{%s}text' % NS['ncx'])
 
 class Item():
     '''An OPF item, which will itself may contain a navpoint.  
@@ -244,6 +251,38 @@ class NavPoint():
         return "doc='%s' title=%s href=(%s) order=%d" % (self.doc_title, self.title(), self.href(), self.order())
 
 
+class NavTarget(NavPoint):
+    '''A subclass of NavPoint which is found in ncx:navList rather than ncx:navMap'''
+    pass
+
+class NavList():
+    '''An auxilliary content list, as a list of illustrations'''
+    def __init__(self, nav_list, related_toc):
+        self.toc = related_toc
+        self.nav_list = nav_list
+        self.title = self.nav_list.findtext('.//{%s}text' % NS['ncx'])
+        self.tree = []
+        for t in self.nav_list.findall('.//{%s}navTarget' % NS['ncx']):
+            self.tree.append(NavTarget(t, parent=None, doc_title=self.toc.doc_title))
+
+    def __str__(self):
+        return u''.join([n.__str__() for n in self.tree])
+                        
+
+def get_label(element):
+    '''Gets the text label for any element'''
+    if element is None:
+        return None
+    return element.findtext('.//{%s}text' % NS['ncx'])
+
+def xml_from_string(xml):
+    '''Django stores document data in unicode, but lxml doesn't like that if the
+    document itself contains an encoding declaration, so convert from unicode
+    first if necessary.'''
+    if type(xml) == unicode:
+        return ET.fromstring(xml.encode(ENC))
+    return ET.fromstring(xml)    
+                            
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
         
