@@ -153,6 +153,23 @@ class TestModels(unittest.TestCase):
         chapters = HTMLFile.objects.filter(archive=document)
         self.assertEquals(len(chapters), len(toc.find_points(1)))
 
+    def testFirstItemInTOC(self):
+        '''Check that the first_item method returns the correct item based on the rules
+        defined in the OCF spec.'''
+        toc = TOC(_get_file('top-level-toc.ncx'), 
+                  _get_file('linear-no-missing-linear.opf'))
+        first = toc.first_item()
+        self.assert_(first)
+        self.assertEquals('htmltoc', first.id)
+
+        toc = TOC(_get_file('top-level-toc.ncx'), 
+                  _get_file('linear-no.opf'))
+        first = toc.first_item()
+        self.assert_(first)
+        self.assertEquals('htmltoc', first.id)
+
+        
+
     def testCountDeepTOC(self):
         '''Check a complex document with multiple nesting levels'''
         toc = TOC(_get_file('complex-ncx.ncx'))
@@ -233,7 +250,7 @@ class TestModels(unittest.TestCase):
         self.assertEquals(item.id, 'chapter-3')
         self.assertEquals(item.media_type, 'application/xhtml+xml')
         self.assertEquals(item.media_type, XHTML_MIMETYPE)
-        f = get_file_by_item(item)
+        f = get_file_by_item(item, document)
         self.assertEquals(f.filename, 'chapter-3.html')
 
     def testTOCNextPreviousItem(self):

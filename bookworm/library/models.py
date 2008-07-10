@@ -36,17 +36,17 @@ def unsafe_name(name):
     unquote = unquote_plus(name.encode(ENC))
     return unicode(unquote, ENC)
 
-def get_file_by_item(item):
+def get_file_by_item(item, document) :
     '''Accepts an Item and uses that to find the related file in the database'''
     if item.media_type == XHTML_MIMETYPE:
-        html = HTMLFile.objects.filter(idref=item.id)
+        html = HTMLFile.objects.filter(idref=item.id, archive=document)
         if html is not None and len(html) > 0:
             return html[0]
     if item.media_type == STYLESHEET_MIMETYPE:
-        css = StylesheetFile.objects.filter(idref=item.id)
+        css = StylesheetFile.objects.filter(idref=item.id, archive=document)
         if css is not None and len(css) > 0:
             return css[0]
-    image = ImageFile.objects.filter(idref=item.id)
+    image = ImageFile.objects.filter(idref=item.id, archive=document)
     if image is not None and len(image) > 0:
         return image[0]
     return None

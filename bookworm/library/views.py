@@ -84,13 +84,13 @@ def view(request, title, key):
     _check_switch_modes(request)
     document = _get_document(request, title, key)
     toc = document.get_toc()
-    items = toc.items
-    first = items[0]
-    object = get_file_by_item(first)
-    if object is None:
+    first = toc.first_item()
+    o = get_file_by_item(first, document)
+    if o is None:
         logging.error('Could not find an item with the id of %s' % first)
         raise Http404
-    return view_chapter(request, title, key, object.filename)
+    logging.info('Dispatching to chapter view for file %s' % o.filename)
+    return view_chapter(request, title, key, o.filename)
 
   
 @login_required
@@ -175,7 +175,8 @@ def view_chapter(request, title, key, chapter_id):
     logging.info("Looking up title %s, key %s, chapter %s" % (title, key, chapter_id))    
     document = _get_document(request, title, key)
 
-    chapter = get_object_or_404(HTMLFile,archive=document, filename=chapter_id)
+    chapter = get_object_or_404(HTMLFile, archive=document, filename=chapter_id)
+    logging.info('got chapter')
     stylesheets = StylesheetFile.objects.filter(archive=document)
     next = _chapter_next_previous(document, chapter, 'next')
     previous = _chapter_next_previous(document, chapter, 'previous')
@@ -215,7 +216,7 @@ def _chapter_next_previous(document, chapter, dir='next'):
         target_item = toc.find_previous_item(item)
     if target_item is None:
         return None
-    object = get_file_by_item(target_item)
+    object = get_file_by_item(target_item, document)
     return object
 
 

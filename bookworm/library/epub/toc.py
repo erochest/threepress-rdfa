@@ -50,7 +50,9 @@ class TOC():
                     navpoint = NavPoint(np, doc_title=self.doc_title)
                 except IndexError:
                     navpoint = None
-                self.items.append(Item(item.get('id'), item.get('href'), item.get('media-type'), navpoint,
+                self.items.append(Item(item.get('id'), item.get('href'), item.get('media-type'), 
+                                       navpoint=navpoint,
+                                       linear=itemref.get('linear'),
                                        toc=self))
 
             
@@ -68,8 +70,18 @@ class TOC():
 
     def find_opf(self):
         '''Get the points in OPF order'''
-        pass
+        return self.items
 
+    def first_item(self):
+        '''According to the OPF spec, the first item in the book should be the first
+        ordered itemref from the spine which has either 'linear=yes' or no 
+        linear attribute, in which case 'yes' is the default.'''
+        for i in self.items:
+            if i.linear == 'yes':
+                return i
+        raise Exception("Did not find any start items; malformed epub?")
+
+            
     def find_points(self, maxdepth=1):
         '''Return all the navpoints in the TOC having a maximum depth of maxdepth'''
         return [p for p in self.tree if p.depth <= maxdepth]
@@ -145,12 +157,16 @@ class Item():
     label, or nothing.  If there is no title then the item will not show up in 
     any named href on the web site.'''
 
-    def __init__(self, idref, href, media_type, navpoint=None, toc=None):
+    def __init__(self, idref, href, media_type, linear='yes', navpoint=None, toc=None):
         self.id = idref
         self.href = href
         self.media_type = media_type
         self.navpoint = navpoint
         self.toc = toc
+        if linear == None:
+            self.linear = 'yes'
+        else:
+            self.linear = linear
         if self.navpoint is not None:
             self.label = navpoint.label
             self.title = navpoint.label
