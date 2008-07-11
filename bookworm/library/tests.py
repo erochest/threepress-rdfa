@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import shutil
 import os
 import re
 import unittest
@@ -32,6 +33,8 @@ DATA_DIR = os.path.abspath('./library/test-data/data')
 # but not in the svn repository
 PRIVATE_DATA_DIR = '%s/private' % DATA_DIR
 
+STORAGE_DIR = os.path.abspath('./library/test-data/storage')
+
 class TestModels(unittest.TestCase):
 
     def setUp(self):
@@ -48,6 +51,8 @@ class TestModels(unittest.TestCase):
 
     def tearDown(self):
         self.user.delete()
+        for d in os.listdir(STORAGE_DIR):
+            shutil.rmtree("%s/%s" % (STORAGE_DIR, d))
 
     def testGetAllDocuments(self):
         '''Run through all the documents at a high level'''
@@ -355,17 +360,17 @@ class TestModels(unittest.TestCase):
         document.save()
         imagename = 'alice01a.gif'
         image = _get_file(imagename)
-        image_obj = ImageFile(idref=imagename,
+        image_obj = MockImageFile(idref=imagename,
                               archive=document)
         image_obj.save()
 
-        i = ImageBlob(archive=document,
+        i = MockImageBlob(archive=document,
                       idref=imagename,
                       image=image_obj,
                       data=image,
                       filename=imagename)
         i.save()
-        i2 = ImageBlob.objects.filter(idref=imagename)[0]
+        i2 = MockImageBlob.objects.filter(idref=imagename)[0]
         self.assertEquals(image, i2.get_data())
         i2.delete()
 
@@ -377,11 +382,11 @@ class TestModels(unittest.TestCase):
         document.save()
         imagename = 'alice01a.gif'
         image = _get_file(imagename)
-        image_obj = ImageFile(idref=imagename,
+        image_obj = MockImageFile(idref=imagename,
                               archive=document,
                               data=image)
         image_obj.save()
-        i2 = ImageFile.objects.filter(idref=imagename)[0]
+        i2 = MockImageFile.objects.filter(idref=imagename)[0]
         self.assertEquals(image, i2.get_data())
         i2.delete()
         
@@ -393,15 +398,16 @@ class TestModels(unittest.TestCase):
         document.save()
         imagename = 'alice2.gif'
         image = _get_file(imagename)
-        image_obj = ImageFile(idref=imagename,
+        image_obj = MockImageFile(idref=imagename,
                               archive=document,
                               data=image)
         image_obj.save()
-        i2 = ImageFile.objects.filter(idref=imagename)[0]
+        i2 = MockImageFile.objects.filter(idref=imagename)[0]
         storage = i2._blob()._get_file()
         self.assert_(storage)
         i2.delete()
         self.assert_(not os.path.exists(storage))
+
 
     def testImageWithPathInfo(self):
         filename = 'alice-fromAdobe.epub'
@@ -416,12 +422,12 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         epub = _get_file(filename)
-        bin = EpubBlob(idref=filename,
+        bin = MockEpubBlob(idref=filename,
                        archive=document,
                        filename=filename,
                        data=epub)
         bin.save()
-        b2 = EpubBlob.objects.filter(idref=filename)[0]
+        b2 = MockEpubBlob.objects.filter(idref=filename)[0]
 
         # Assert that we can read the file, and it's the same
         self.assertEquals(epub, b2.get_data())
@@ -441,12 +447,12 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         epub = _get_file(filename)
-        bin = EpubBlob(idref=filename,
+        bin = MockEpubBlob(idref=filename,
                        archive=document,
                        filename=filename,
                        data=epub)
         bin.save()
-        b2 = EpubBlob.objects.filter(idref=filename)[0]        
+        b2 = MockEpubBlob.objects.filter(idref=filename)[0]        
         self.assert_(b2)
         b2.delete()
         try:

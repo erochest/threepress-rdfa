@@ -84,17 +84,22 @@ class EpubArchive(BookwormModel):
         if 'name' in kwargs:
             kwargs['name'] = os.path.basename(kwargs['name'])
         super(EpubArchive, self).__init__(*args, **kwargs)
-        
+
+    def _blob_class(self):
+        return EpubBlob
+
     def get_content(self):
+        blob = self._blob_class()
         try:
-            epub = EpubBlob.objects.filter(archive=self)[0]
+            epub = blob.objects.filter(archive=self)[0]
         except IndexError:
-            raise EpubBlob.ObjectNotFound
+            raise blob.ObjectNotFound
         return epub.get_data()
 
     def delete(self):
+        blob = self._blob_class()
         try:
-            epub = EpubBlob.objects.filter(archive=self)[0]
+            epub = blob.objects.filter(archive=self)[0]
             epub.delete()
             super(EpubArchive, self).delete()
         except IndexError:
@@ -105,10 +110,10 @@ class EpubArchive(BookwormModel):
     def set_content(self, c):
         if not self.id:
             raise InvalidEpubException('save() must be called before setting content')
-        epub = EpubBlob(archive=self,
-                        filename=self.name,
-                        data=c,
-                        idref=self.name)
+        epub = self._blob_class()(archive=self,
+                                 filename=self.name,
+                                 data=c,
+                                 idref=self.name)
         epub.save()
 
     def author(self):
@@ -278,14 +283,16 @@ class EpubArchive(BookwormModel):
             f = i['file']
             if f == None:
                 f = ''
-            image = ImageFile(
-                              idref=i['idref'],
-                              file=f,
-                              filename=i['filename'],
-                              data=i['data'],
-                              content_type=i['content_type'],
-                              archive=self)
+            image = self._image_class()(
+                idref=i['idref'],
+                file=f,
+                filename=i['filename'],
+                data=i['data'],
+                content_type=i['content_type'],
+                archive=self)
             image.save()  
+    def _image_class(self):
+        return ImageFile
 
     def _get_stylesheets(self, items, content_path):
         stylesheets = []
@@ -537,10 +544,11 @@ class ImageFile(BookwormFile):
         # Save first so we have an id
         super(ImageFile, self).save()
         if self.data:
-            b = ImageBlob(archive=self.archive,
-                          image=self,
-                          data=self.data,
-                          filename=self.idref)
+            blob_class = self._blob_class()
+            b = blob_class(archive=self.archive,
+                           image=self,
+                           data=self.data,
+                           filename=self.idref)
             b.save()
 
 
@@ -555,8 +563,10 @@ class ImageFile(BookwormFile):
 
     def _blob(self):
         '''Gets the blob related to this image'''
-        return ImageBlob.objects.filter(image=self)[0]        
+        return self._blob_class().objects.filter(image=self)[0]        
 
+    def _blob_class(self):
+        return ImageBlob
 
     class Admin:
         pass
@@ -615,8 +625,6 @@ class BinaryBlob(BookwormFile):
     possible replacement with an S3-like storage system later.  For now
     this implementation is in the local filesystem.'''
     
-    _pathname = 'storage'
-    _storage_dir = '%s/%s' % (os.path.dirname(__file__), _pathname)   
     data = None
 
     def __init__(self, *args, **kwargs):
@@ -627,8 +635,8 @@ class BinaryBlob(BookwormFile):
         super(BinaryBlob, self).__init__(*args, **kwargs)
 
     def save(self):
-        if not os.path.exists(self._storage_dir):
-            os.mkdir(self._storage_dir)
+        if not os.path.exists(self._get_storage_dir()):
+            os.mkdir(self._get_storage_dir())
         if not self.data:
             raise InvalidBinaryException('No data to save but save() operation called')
         if not self.filename:
@@ -669,8 +677,9 @@ class BinaryBlob(BookwormFile):
         storage = self._get_storage()
         f = self._get_file()
         if not os.path.exists(f):
-            raise InvalidBinaryException('Tried to delete non-existent file %s in %s' % (self.filename, storage))         
-        os.remove(f)
+            logging.warn('Tried to delete non-existent file %s in %s' % (self.filename, storage))         
+        else:
+            os.remove(f)
         super(BinaryBlob, self).delete()
 
     def get_data(self):
@@ -680,12 +689,25 @@ class BinaryBlob(BookwormFile):
             raise InvalidBinaryException("Tried to open file %s but it wasn't there" % f)
         return open(f).read()
 
+    def _get_pathname(self):
+        return 'storage'
+
+    def _get_storage_dir(self):
+        return '%s/%s' % (os.path.dirname(__file__), self._get_pathname())   
+
+
     def _get_file(self):
         storage = self._get_storage()
+        if not os.path.exists(storage):
+            storage = self._get_storage_deprecated()
         return '%s/%s' % (storage, self.filename)
 
     def _get_storage(self):
-        return '%s/%s__%s' % (self._storage_dir, self.archive.id, self.archive.name)
+        return '%s/%s' % (self._get_storage_dir(), self.archive.id)
+
+    def _get_storage_deprecated(self):
+        logging.warn('Using old method of file retrieval; this should be removed!')
+        return '%s/%s' % (self._get_storage_dir(), self.archive.name)
 
     class Meta:
         abstract = True
