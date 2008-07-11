@@ -685,7 +685,7 @@ class BinaryBlob(BookwormFile):
         return '%s/%s' % (storage, self.filename)
 
     def _get_storage(self):
-        return '%s/%s' % (self._storage_dir, self.archive.name)
+        return '%s/%s__%s' % (self._storage_dir, self.archive.id, self.archive.name)
 
     class Meta:
         abstract = True
