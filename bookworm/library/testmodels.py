@@ -25,12 +25,9 @@ class MockBinaryBlob(BinaryBlob):
     def _get_pathname(self):
         return 'test-data/storage'        
 
-
 class MockEpubBlob(EpubBlob):
     def _get_pathname(self):
         return 'test-data/storage'        
-    
-
 
 class MockImageFile(ImageFile):
     def _blob_class(self):

@@ -237,15 +237,12 @@ class EpubArchive(BookwormModel):
         authors = [BookAuthor(name=a.text.strip()) for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG))]
         if len(authors) == 0:
             logging.warn('Got empty authors string for book %s' % self.name)
-        else:
-            logging.info('Got authors as %s' % (authors))
         for a in authors:
             a.save()
         return authors
 
     def _get_title(self, xml):
         title = xml.findtext('.//{%s}%s' % (NS['dc'], constants.DC_TITLE_TAG)).strip()
-        logging.info('Got title as %s' % (title))
         return title
 
     def _get_images(self, items, content_path):
@@ -260,12 +257,10 @@ class EpubArchive(BookwormModel):
                 data['file'] = None
  
                 if item.get('media-type') == constants.SVG_MIMETYPE:
-                    logging.debug('Adding image as SVG text type')
                     data['file'] = unicode(content, ENC)
 
                 else:
                     # This is a binary file, like a jpeg
-                    logging.debug('Adding image as binary type')
                     data['data'] = content
 
                 data['filename'] = item.get('href')
@@ -273,8 +268,6 @@ class EpubArchive(BookwormModel):
                 data['content_type'] = item.get('media-type')
 
                 images.append(data)
-
-                logging.debug('adding image %s ' % item.get('href'))
 
         self._create_images(images)                
 
@@ -305,7 +298,6 @@ class EpubArchive(BookwormModel):
                                     'file':unicode(parsed_content, ENC)})
 
 
-                logging.debug('adding stylesheet %s ' % item.get('href'))
                 self.has_stylesheets = True
         self._create_stylesheets(stylesheets)
 
@@ -351,7 +343,6 @@ class EpubArchive(BookwormModel):
 
         for item in items:
             item_map[item.get('id')] = item.get('href')
-            #logging.debug('adding %s to item_map' % item.get('href'))
              
         for nav in navs:
             n = NavPoint(nav, doc_title=self.title)
@@ -503,16 +494,11 @@ class HTMLFile(BookwormFile):
             # if we have SVG, then we need to re-write the image links that contain svg in order to
             # make them work in most browsers
             if element.tag == 'img' and 'svg' in element.get('src'):
-                logging.debug('translating svg image %s' % element.get('src'))
-                try:
-                    p = element.getparent()         
-                    e = ET.fromstring("""<a class="svg" href="%s">[ View linked image in SVG format ]</a>""" % element.get('src'))
-                    p.remove(element)
-                    p.append(e)
-                    pass
-                except: 
-                    pass
-                    logging.error("ERROR:" + sys.exc_value)
+                p = element.getparent()         
+                e = ET.fromstring("""<a class="svg" href="%s">[ View linked image in SVG format ]</a>""" % element.get('src'))
+                p.remove(element)
+                p.append(e)
+
         return xhtml
 
 
@@ -643,7 +629,6 @@ class BinaryBlob(BookwormFile):
             raise InvalidBinaryException('No filename but save() operation called')
 
         storage = self._get_storage()
-        logging.info("Storage: " + storage)
 
         if not os.path.exists(storage):
             os.mkdir(storage)
@@ -664,13 +649,11 @@ class BinaryBlob(BookwormFile):
             d = storage
             for p in pathinfo:
                 d += '/' + p
-                logging.info('Creating directory %s' % d)
                 if not os.path.exists(d):
                     os.mkdir(d)
         f = open(f, 'w')
         f.write(self.data)
         f.close()
-        logging.debug('Wrote binary file %s to %s' % (self.filename, storage))
         super(BinaryBlob, self).save()
 
     def delete(self):
