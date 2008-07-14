@@ -8,7 +8,6 @@ import logging, datetime, sys
 from urllib import unquote_plus
 import os, os.path
 from xml.parsers.expat import ExpatError
-import htmlentitydefs
 import cssutils
 
 from django.utils.http import urlquote_plus
@@ -66,7 +65,6 @@ class EpubArchive(BookwormModel):
 
     _CONTAINER = constants.CONTAINER     
 
-    _archive = None
     _parsed_metadata = None
     _parsed_toc = None
 
@@ -177,8 +175,6 @@ class EpubArchive(BookwormModel):
         e = StringIO(self.get_content())
         z = ZipFile(e)
 
-        self._archive = z
-
         try:
             container = z.read(self._CONTAINER)
         except KeyError:
@@ -202,11 +198,11 @@ class EpubArchive(BookwormModel):
         self.authors = self._get_authors(parsed_opf)
         self.title = self._get_title(parsed_opf) 
 
-        self._get_content(parsed_opf, parsed_toc, items, content_path)
-        self._get_stylesheets(items, content_path)
-        self._get_images(items, content_path)
-
-
+        self._get_content(z, parsed_opf, parsed_toc, items, content_path)
+        self._get_stylesheets(z, items, content_path)
+        self._get_images(z, items, content_path)
+   
+ 
     def _get_opf_filename(self, container):
         '''Parse the container to get the name of the opf file'''
         return container.find('.//{%s}rootfile' % NS['container']).get('full-path')
@@ -245,13 +241,13 @@ class EpubArchive(BookwormModel):
         title = xml.findtext('.//{%s}%s' % (NS['dc'], constants.DC_TITLE_TAG)).strip()
         return title
 
-    def _get_images(self, items, content_path):
+    def _get_images(self, archive, items, content_path):
         '''Images might be in a variety of formats, from JPEG to SVG.'''
         images = []
         for item in items:
             if 'image' in item.get('media-type'):
                 
-                content = self._archive.read("%s%s" % (content_path, item.get('href')))
+                content = archive.read("%s%s" % (content_path, item.get('href')))
                 data = {}
                 data['data'] = None
                 data['file'] = None
@@ -287,11 +283,11 @@ class EpubArchive(BookwormModel):
     def _image_class(self):
         return ImageFile
 
-    def _get_stylesheets(self, items, content_path):
+    def _get_stylesheets(self, archive, items, content_path):
         stylesheets = []
         for item in items:
             if item.get('media-type') == constants.STYLESHEET_MIMETYPE:
-                content = self._archive.read("%s%s" % (content_path, item.get('href')))
+                content = archive.read("%s%s" % (content_path, item.get('href')))
                 parsed_content = self._parse_stylesheet(content)
                 stylesheets.append({'idref':item.get('id'),
                                     'filename':item.get('href'),
@@ -326,7 +322,7 @@ class EpubArchive(BookwormModel):
             css.save()            
 
  
-    def _get_content(self, opf, toc, items, content_path):
+    def _get_content(self, archive, opf, toc, items, content_path):
         # Get all the item references from the <spine>
         refs = opf.getiterator('{%s}itemref' % (NS['opf']) )
         navs = [n for n in toc.getiterator('{%s}navPoint' % (NS['ncx']))]
@@ -361,7 +357,7 @@ class EpubArchive(BookwormModel):
             if item_map.has_key(idref):
                 href = item_map[idref]
                 filename = '%s%s' % (content_path, href)
-                content = self._archive.read(filename)
+                content = archive.read(filename)
                     
                 # We store the raw XHTML and will process it for display on request
                 # later
@@ -399,6 +395,7 @@ class EpubArchive(BookwormModel):
                         archive=archive,
                         order=order)
         html.save()
+        
   
                   
     def safe_title(self):
@@ -448,8 +445,8 @@ class HTMLFile(BookwormFile):
     def render(self):
         '''If we don't have any processed content, process it and cache the
         results in the datastore.'''
-        #if self.processed_content:
-        #    return self.processed_content
+        if self.processed_content:
+            return self.processed_content
         
         f = smart_str(self.file, encoding=ENC)
 
