@@ -669,7 +669,8 @@ class BinaryBlob(BookwormFile):
         '''Return the data for this file, as a string of bytes (output from read())'''
         f = self._get_file()
         if not os.path.exists(f):
-            raise InvalidBinaryException("Tried to open file %s but it wasn't there" % f)
+            logging.warn("Tried to open file %s but it wasn't there (storage dir %s)" % (f, self._get_storage()))
+            return None
         return open(f).read()
 
     def _get_pathname(self):
