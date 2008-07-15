@@ -1,0 +1,79 @@
+h1 {
+  font-size:medium;
+}
+h2 {
+  font-size:small;
+}
+
+h1.bw-mb-logo {
+  font-size:small;
+  display:inline;
+  float:left;
+  color:white;
+}
+h2.bw-mb-motto {
+  font-size:x-small;
+  display:inline;
+  float:right;
+  color:white;
+  padding-right: 2em;
+}
+#bw-header a:link, #bw-header a:visited, #bw-header a:hover 
+{
+  color:white !important;
+}
+div.login form fieldset {
+ border:none;
+}
+#bw-logo-image {
+  display:none;
+}
+p.bw-tagline {
+  font-size:larger;
+  display:inline;
+}
+#bw-service-disclaimer { display:none; }
+#bw-mb-leftnav { 
+clear:both;}
+div.bw-status {
+  display:none;
+}
+
+#bw-header {
+  color: #9CAF83;
+  padding:0;
+}
+p {
+ color: black !important;
+}
+#bw-mb-signed-in-message {
+  clear:both;
+}
+#bw-leftnav {
+ width:auto;
+}
+#bw-leftnav ol.bw-nav {
+    line-height: 1em;
+    padding-left:0; 
+    text-align:left;
+   display:inline;
+}
+#bw-leftnav ol.bw-nav li {
+   display:inline;
+
+}
+
+ol.bw-nav .bw-current  {
+  font-size: 1.5em !important;
+  padding:0 !important;
+  margin:0 !important;
+}
+ol.bw-nav .bw-current ol {
+  font-size: inherit;
+  text-align:inherit;
+  padding: 0;
+
+}
+.bw-mb-divider {
+  color:gray;
+}

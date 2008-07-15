@@ -18,13 +18,13 @@ form fieldset {
 
 {% block main %}
 <div id="bw-content">
-  <h1><img src="/static/bookworm-logo.png" alt="Bookworm" /></h1>
+  <h1><img src="/static/bookworm-logo.png" alt="Bookworm" id="bw-logo-image" /></h1>
   
   <p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
   
   <p class="bw-tagline">New to Bookworm? <a href="{% url django_authopenid.views.signup %}" name="register">Register</a>.</p>
   
-  <p>Use of the library requires that you be logged in.  Once logged in you'll have
+  <p id="bw-service-disclaimer">Use of the library requires that you be logged in.  Once logged in you'll have
   access to books that you have uploaded to the service.</p>
   
   
@@ -51,7 +51,7 @@ form fieldset {
         <legend>Sign in using a local Bookworm account</legend>
         <label for="id_username">Username</label>{{ form1.username }}
         <label for="id_password">Password</label>{{ form1.password }}
-        <input type="submit" name="blogin" value="Sign in"/> 
+        <input type="submit" name="blogin" value="Sign in with a Bookworm account"/> 
         <a href="{{ sendpw_url }}">Lost your password?</a>
       </fieldset>	
     </form>

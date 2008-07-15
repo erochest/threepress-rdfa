@@ -38,18 +38,22 @@
 
 {% include "includes/document_list.html" %} 
 {% else %}
-<h1><img src="/static/bookworm-logo.png" alt="Bookworm" /></h1> 
+<h1><img id="bw-logo-image" src="/static/bookworm-logo.png" alt="Bookworm" /></h1> 
 <p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p> 
 
 
 {% endif %}
+{% if request.session.common.mobile %}
+<p>To upload a new book, log in using your computer.</p>
+{% else %}
 
-<h3 style="padding-top:2em;">Upload {% if documents.count %} a new {% else %} your first {% endif %} book</h3>
+<h3 class="bw-upload-message">Upload {% if documents.count %} a new {% else %} your first {% endif %} book</h3>
 <form action="{% url library.views.upload d%}" method="post" enctype="multipart/form-data" name="upload">
   <div id="bw-upload_form">
     {{ form.as_p }}
     <input type="submit" value="upload" name="submit-upload"/>
   </div>
 </form>
+{% endif %}
 </div>
 {% endblock %}

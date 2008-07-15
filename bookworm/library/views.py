@@ -17,6 +17,7 @@ from models import EpubArchive, HTMLFile, UserPref, StylesheetFile, ImageFile, S
 from forms import EpubValidateForm
 from epub import constants as epub_constants
 from epub import InvalidEpubException
+from bookworm import settings
 
 
 def register(request):
@@ -419,6 +420,7 @@ def _common(request, load_prefs=False):
     common['total_users'] = _get_system_info(request).get_total_users()
     common['total_books'] = _get_system_info(request).get_total_books()
     common['greeting'] = _greeting(request)
+    common['mobile'] =  settings.MOBILE
     request.session.modified = True
     request.session['common'] = common
 
