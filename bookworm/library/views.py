@@ -131,7 +131,7 @@ def profile_delete(request):
         # Extra sanity-check that this is a POST request
         logging.error('Received deletion request but was not POST')
         message = "There was a problem with your request to delete this profile."
-        return render_to_response('profile.html', { 'common':common, 'message':message})
+        return render_to_response('profile.html', { 'message':message})
 
     if not request.POST['delete'] == request.user.email:
         # And that we're POSTing from our own form (this is a sanity check, 
@@ -139,7 +139,7 @@ def profile_delete(request):
         # the one to be deleted, regardless of the value of 'delete')
         logging.error('Received deletion request but nickname did not match: received %s but current user is %s' % (request.POST['delete'], request.user.nickname()))
         message = "There was a problem with your request to delete this profile."
-        return render_to_response('profile.html', { 'common':common, 'message':message})
+        return render_to_response('profile.html', { 'message':message})
 
     userprefs = _prefs(request)
     userprefs.delete()
@@ -299,14 +299,14 @@ def upload(request):
                 logging.error(sys.exc_value)
                 message = 'The file you uploaded was not recognized as an ePub archive and could not be added to your library.'
                 document.delete()
-                return render_to_response('upload.html', {'common':common,
+                return render_to_response('upload.html', {
                                                           'form':form, 
                                                           'message':message})
             except InvalidEpubException:
                 logging.error('Non epub zip file uploaded: %s' % document_name)
                 message = 'The file you uploaded was a valid zip file but did not appear to be an ePub archive.'
                 document.delete()
-                return render_to_response('upload.html', {'common':common,
+                return render_to_response('upload.html', {
                                                           'form':form, 
                                                           'message':message})                
             #except:
@@ -324,7 +324,7 @@ def upload(request):
     else:
         form = EpubValidateForm()        
 
-    return render_to_response('upload.html', {'common':common,
+    return render_to_response('upload.html', {
                                               'form':form},
                               context_instance=RequestContext(request)) 
 
