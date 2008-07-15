@@ -116,6 +116,11 @@ class TestModels(unittest.TestCase):
         author = no_author_document.get_author(opf)
         self.failIf(author)
 
+    def testNoAuthorDocument(self):
+        '''A full document should still pass explode() if there is an empty author'''
+        a = self.create_document('No-Author.epub')
+        a.explode()
+
     def testCreateDocument(self):
         '''Assert that we created a non-None document.'''
         d = self.create_document(self.documents[0])

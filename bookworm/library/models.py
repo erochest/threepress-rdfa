@@ -178,7 +178,7 @@ class EpubArchive(BookwormModel):
         try:
             container = z.read(self._CONTAINER)
         except KeyError:
-            raise InvalidEpubException()
+            raise InvalidEpubException('Was not able to locate container file')
 
         parsed_container = util.xml_from_string(container)
 
@@ -230,7 +230,7 @@ class EpubArchive(BookwormModel):
         raise Exception("Could not find toc filename")
 
     def _get_authors(self, opf):
-        authors = [BookAuthor(name=a.text.strip()) for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG))]
+        authors = [BookAuthor(name=a.text.strip()) for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG)) if a is not None and a.text is not None]
         if len(authors) == 0:
             logging.warn('Got empty authors string for book %s' % self.name)
         for a in authors:
