@@ -7,20 +7,20 @@ body {
 }
 
 h1 {
-  font-size:medium;
+  font-size:x-large;
 }
 h2 {
-  font-size:small;
+  font-size:large;
 }
 
 h1.bw-mb-logo {
-  font-size:small;
+  font-size:large;
   display:inline;
   float:left;
   color:white;
 }
 h2.bw-mb-motto {
-  font-size:x-small;
+  font-size:smaller;
   display:inline;
   float:right;
   color:white;
@@ -34,8 +34,12 @@ h2.bw-mb-motto {
 div.login form fieldset {
  border:none;
 }
+input {
+ -webkit-border-radius:10px;
+}
 div.login form input {
  display:block;
+
 }
 #bw-logo-image {
   display:none;
