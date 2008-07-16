@@ -2,6 +2,7 @@
 {% block title %}Sign in{% endblock %}
 
 {% block head %}
+
 <link rel="stylesheet" href="/static/home.css"></link>
 <link rel="stylesheet" type="text/css" href="/static/auth.css" ></link>
 <style type="text/css">
@@ -12,22 +13,24 @@ form input {
 form fieldset {
   border: 1px dotted gray;
 }
+
 </style>
+
 {% endblock head %}
 
 
 {% block main %}
 <div id="bw-content">
+
   <h1><img src="/static/bookworm-logo.png" alt="Bookworm" id="bw-logo-image" /></h1>
   
   <p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
   
   <p class="bw-tagline">New to Bookworm? <a href="{% url django_authopenid.views.signup %}" name="register">Register</a>.</p>
-  
+
   <p id="bw-service-disclaimer">Use of the library requires that you be logged in.  Once logged in you'll have
   access to books that you have uploaded to the service.</p>
-  
-  
+
   {% if msg %}
     <p class="bw-message">{{ msg }}</p>
   {% endif %}
@@ -65,6 +68,7 @@ form fieldset {
       </fieldset>
     </form>	
   </div>	
+
 </div>
 
 {% endblock %}

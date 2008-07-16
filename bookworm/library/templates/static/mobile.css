@@ -1,3 +1,11 @@
+
+body {
+ font-size:inherit;
+}
+#bw-content {
+ padding:1em 1em 1em 1em !important;
+}
+
 h1 {
   font-size:medium;
 }
@@ -21,9 +29,13 @@ h2.bw-mb-motto {
 #bw-header a:link, #bw-header a:visited, #bw-header a:hover 
 {
   color:white !important;
+  padding: .5em;
 }
 div.login form fieldset {
  border:none;
+}
+div.login form input {
+ display:block;
 }
 #bw-logo-image {
   display:none;
