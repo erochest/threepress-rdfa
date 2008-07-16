@@ -17,7 +17,7 @@ from models import EpubArchive, HTMLFile, UserPref, StylesheetFile, ImageFile, S
 from forms import EpubValidateForm
 from epub import constants as epub_constants
 from epub import InvalidEpubException
-from bookworm import settings
+from django.conf import settings
 
 
 def register(request):
@@ -370,20 +370,7 @@ def _get_document(request, title, key, override_owner=False):
 
 
 def _greeting(request):
-    if request.user.is_authenticated():
-        
-        text = ('Signed in as %s: <a href="%s">logout</a> | <a href="%s">edit profile</a>' % 
-                (request.user.username, 
-                 reverse('user_signout'),
-                 reverse('library.views.profile')
-                 )
-                )
-        if request.user.is_superuser:
-            text += ' | <a href="/admin">admin</a> '
-        return text
-
-    return ("<a name='signin' href=\"%s\">Sign in or register</a>." % '/accounts/login/')
-
+    return None
 
 def _prefs(request):
     '''Get (or create) a user preferences object for a given user.
@@ -420,7 +407,9 @@ def _common(request, load_prefs=False):
     common['total_users'] = _get_system_info(request).get_total_users()
     common['total_books'] = _get_system_info(request).get_total_books()
     common['greeting'] = _greeting(request)
-    common['mobile'] =  settings.MOBILE
+    common['mobile'] = settings.MOBILE 
+
+
     request.session.modified = True
     request.session['common'] = common
 

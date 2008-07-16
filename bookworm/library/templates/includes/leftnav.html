@@ -1,6 +1,14 @@
+<a name="toc">&nbsp;</a>
+{% if request.session.common.mobile %}
+<p><a href="#bwmain">Read current page</a></p>
+{% endif %}
 
 {% if document.authors.all %}
-<h2 class="bw-authors">by 
+<h2 class="bw-authors">
+{% if request.session.common.mobile %}
+{{ document.title }}
+{% endif %}
+by 
 {% for a in document.authors.all %}
   {{ a }}{% if not forloop.last %}, {% endif %}
 {% endfor %}
@@ -48,7 +56,7 @@
    {% ifnotequal parent_chapter c %}
      {% ifnotequal c.order chapter.order %}
        <li><a href="{% url library.views.view_chapter document.safe_title,document.key,c.href %}">{{ c.title }}</a></li>
-       {% if request.session.common.mobile %}<span class="bw-mb-divider">~</span>{% endif %}   
+       <!-- {% if request.session.common.mobile %}<span class="bw-mb-divider">~</span>{% endif %}    -->
      {% endifnotequal %}
    {% endifnotequal %}
 

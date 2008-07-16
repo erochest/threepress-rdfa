@@ -4,9 +4,10 @@
 {% endblock head %}
 
 {% block main %}
+<div id="bw-content">
 <h2>Reset your password</h2>
 
-<p ">If you've forgotten your password, enter your username below and we'll 
+<p>If you've forgotten your password, enter your username below and we'll 
 email you a new one.  The password won't be activated until you click on the link you see in the email.
 </p>
 {% if form.errors %}
@@ -26,5 +27,6 @@ email you a new one.  The password won't be activated until you click on the lin
     <label for="id_username">Username</label>{{ form.username }}
     <input type="submit" value="Reset password" />
   </form>
+</div>
 </div>
 {% endblock %}

@@ -49,7 +49,7 @@
 
 {% block main %}
 
-<div id="bw-content" style="height:100%;width:100%">
+<div id="bw-content">
 
 {% if chapter %}
 
@@ -84,7 +84,7 @@
 
    <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
   
-      <div id="bw-book-content">{{ chapter.render|safe }}</div>
+      <div id="bw-book-content" >{{ chapter.render|safe }}</div>
   
    <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
 

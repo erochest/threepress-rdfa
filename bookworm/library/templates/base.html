@@ -43,9 +43,17 @@
       <tr><td>
         <div id="bw-subheader">
           <div style="float:right;padding-right:2em">
-            {% if request.user.username %}
-              <p>{{ request.session.common.greeting|safe }}</p>
-            {% endif %}
+        {% if request.user.is_authenticated %}
+          <p>Signed in as <span class="bw-username">{{ request.user.username }}:  
+             <a class="bw-edit-profile-link" href="{% url library.views.profile %}">edit profile</a> 
+           {% if request.user.is_superuser %}
+             | <a class="bw-admin-link" href="/admin">admin</a>
+           {% endif %}
+	     | <a class="bw-logout-link" href="{% url user_signout %}">logout</a> 
+
+        {% else %}
+         <a name='signin' href="/accounts/login">Sign in or register</a>
+        {% endif %}
           </div>
           <div class="bw-document_title">
             <h1>{% block header %}Library{% endblock header %}</h1>

@@ -26,7 +26,8 @@ a.svg {
     padding: 1em .5em 1em .5em;
 }
 
-.bw-results_nav a:hover, .bw-results_nav a:visited, .bw-results_nav a:link {
+.bw-results_nav a:hover, .bw-results_nav a:visited, .bw-results_nav a:link 
+{
     text-decoration: none;
     font-size: large;
     color: #2E4560 !important;

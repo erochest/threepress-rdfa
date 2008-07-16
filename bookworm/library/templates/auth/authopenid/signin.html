@@ -23,10 +23,12 @@ form fieldset {
 <div id="bw-content">
 
   <h1><img src="/static/bookworm-logo.png" alt="Bookworm" id="bw-logo-image" /></h1>
-  
+
+  <div id="bw-text-intro">  
   <p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
   
   <p class="bw-tagline">New to Bookworm? <a href="{% url django_authopenid.views.signup %}" name="register">Register</a>.</p>
+  </div>
 
   <p id="bw-service-disclaimer">Use of the library requires that you be logged in.  Once logged in you'll have
   access to books that you have uploaded to the service.</p>
@@ -48,23 +50,23 @@ form fieldset {
   {% endif %}
 
   <div class="login">
-    <form name="fauth" action="{{ action }}" method="post">
+    <form name="fauth" action="{{ action }}" method="post" id="bw-username-form">
       {{ form1.next }}
       <fieldset>
         <legend>Sign in using a local Bookworm account</legend>
         <label for="id_username">Username</label>{{ form1.username }}
         <label for="id_password">Password</label>{{ form1.password }}
-        <input type="submit" name="blogin" value="Sign in with a Bookworm account"/> 
-        <a href="{{ sendpw_url }}">Lost your password?</a>
+        <input type="submit" name="blogin" value="Sign in"/> 
+        <a id="bw-lost-password" href="{{ sendpw_url }}">Lost your password?</a>
       </fieldset>	
     </form>
 
-    <form name="fopenid" action="{{ action }}" method="post">
+    <form name="fopenid" action="{{ action }}" method="post" id="bw-openid-form">
       {{ form2.next }}
       <fieldset>
         <legend>Sign in using your OpenID</legend>
         <label for="id_openid_ul"><img src="/static/openid-logo.png" alt="OpenID" /></label>{{ form2.openid_url }}
-        <input name="bsignin" type="submit" value="Sign in with OpenID" />
+        <!-- <input name="bsignin" type="submit" value="Sign in with OpenID" /> -->
       </fieldset>
     </form>	
   </div>	

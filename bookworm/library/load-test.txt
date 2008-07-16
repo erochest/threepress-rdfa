@@ -1,9 +1,8 @@
 # Twill-based load testing
 add_auth Restricted http://205.209.146.131/ threepress 3press
 
-
-go 'http://localhost:8000'
-#go http://205.209.146.131/
+#go 'http://localhost:8000'
+go http://205.209.146.131/
 follow 'register'
 url 'signup'
 fv "2" "username" "twilltest"
@@ -19,8 +18,8 @@ submit
 
 go /
 
-#show
 
-formfile "upload" "epub" "/home/liza/threepress/bookworm/library/test-data/data/private/designing_web_navigation-337bcb2fae.epub"
+formfile "upload" "epub" "/home/liza/designing_web_navigation-337bcb2fae.epub"
 submit "submit-upload"
+
 find 'Web Navigation'
