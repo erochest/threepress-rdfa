@@ -4,7 +4,7 @@ from local import *
 
 # Django settings for bookworm project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -68,8 +68,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    #'django_openidconsumer.middleware.OpenIDMiddleware',
     'django_authopenid.middleware.OpenIDMiddleware'
+    
 )
 
 ROOT_URLCONF = 'urls'
