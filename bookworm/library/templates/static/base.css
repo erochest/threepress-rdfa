@@ -10,7 +10,7 @@ body {
     background-color:white;
 }
 a:link { 
-    color: black !important;
+    color: #2E4560 !important;
 }
 a:visited {
     color: gray !important;
@@ -31,10 +31,9 @@ p {
 }
 
 #bw-footer { 
-    border-top: 1px solid lightgrey;
-    width:100%; 
+    border-top: 1px solid rgb(200,200,200);
     padding: 5px 20px 30px 20px;
-    background-color: rgb(248, 255, 239);
+/*    background-color: rgb(248, 255, 239); */
 }
 
 #bw-footer span, #bw-footer a:link, #bw-footer a:hover, #bw-footer a:visited, #bw-footer a:active {
@@ -82,6 +81,10 @@ p {
 #bw-header_logo h1.bw-logo a:visited, #bw-header_logo h1.bw-logo a:link, #bw-header_logo h1.bw-logo a:hover {
     color: #2E4560 !important;
 }
+#bw-header_nav a:visited span.bw-logo, #bw-header_nav a:link span.bw-logo, #bw-header_nav a:hover span.bw-logo 
+{
+    color: #2E4560 !important;
+}
 
 .bw-three {
     color: #2E4560;
@@ -120,12 +123,25 @@ p {
     color: #746E53;
  }
 
-h1, h2, h3 {
-    color: gray !important;
-}      
+
+h2, h3 {
+   color: rgb(159, 109, 69);
+}     
+h1 { 
+  color: rgb(111, 76, 48);
+}
 #bw-subheader {
     margin:0;
     background-color: rgb(248, 255, 239);
+    width:100%;
+
+}
+.bw-signed-in {
+  font-weight:normal;
+}
+
+#bw-subheader .bw-signed-in a {
+   color: rgb(159, 109, 69) !important;
 }
 
 #bw-leftnav ol.bw-nav {
@@ -238,3 +254,8 @@ li.bw-first {
   font-weight: bold;
   font-size: larger;
 }
+/*
+#bw-content h1, #bw-content h2, #bw-content h3  {
+  color: black;
+}
+*/

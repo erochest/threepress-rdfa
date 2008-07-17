@@ -63,50 +63,29 @@
       <a href="{% url django_authopenid.views.changeopenid %}">[change]</a></td>
     </tr>
     {% endif %}
+    {% if prefs.fullname %}
     <tr>
       <th>Full name</th>
       <td>{{ prefs.fullname }}</td>
     </tr>
+    {% endif %}
     <tr>
       <th>Email address</th>
       <td> {{ request.user.email }} {% if not request.openid %}<a href="{% url django_authopenid.views.changeemail %}">[change]</a>{% endif %} </td>
     </tr>
-
+    {% if prefs.country %}
     <tr>
       <th>Country</th>
       <td> {{ prefs.country }}</td>
     </tr>
-
+    {% endif %}
+    {% if prefs.language %}
     <tr>
       <th>Language</th>
       <td> {{ prefs.language }}</td>
     </tr>
+    {% endif %}
 
-
-    <tr>
-      <th>Show individual book styles? </th>
-      <td>
-        {% if prefs.use_iframe %}
-        Yes, show book's styles in a scrolling window 
-        <br/>(<a href="{% url library.views.profile %}?iframe=no">change this</a>)
-        {% else %}
-        No, view without styles 
-        <br/>(<a href="{% url library.views.profile %}?iframe=yes">change this</a>)
-        {% endif %}           
-      </td>
-    </tr>
-    <tr>
-      <th>Show warning on chapter pages if the book has styles?</th>
-      <td>
-        {% if prefs.show_iframe_note %}
-        Yes, show this message
-        <br/>(<a href="{% url library.views.profile %}?iframe_note=no">change this</a>)
-        {% else %}
-        No, hide this message
-        <br/>(<a href="{% url library.views.profile %}?iframe_note=yes">change this</a>)
-        {% endif %}           
-      </td>
-    </tr>
   </tbody>
 </table>
 </div>

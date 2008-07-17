@@ -39,7 +39,7 @@
 </p>
 {% endif %}
 
-<div class="bw-login" style="float:left">
+<div class="bw-login" >
   <form name="fregister" action="{{ action }}" method="POST">
     {{ form.next }}
     <fieldset>
@@ -53,15 +53,15 @@
 
 
 
-<div class="bw-login" style="float:right">
+<div class="bw-login">
   <h3></h3>
   <form name="fverify" action="{{ action }}" method="POST">
     {{ form.next }}
     <fieldset>
       <legend>I already have a Bookworm account</legend>
-      <div class="form-row"><label for "id_username">{% trans "Screen name" %}</label><br />{{ form2.username }}</div>
-      <div class="form-row"><label for "id_passwordl">{% trans "Password" %}</label><br />{{ form2.password }}</div>
-      <div class="submit-row"><input type="submit" name="bverify" value="Associate with my OpenID"></div>
+      <label for="id_username">{% trans "Screen name" %}</label>{{ form2.username }}
+      <label for="id_passwordl">{% trans "Password" %}</label>{{ form2.password }}
+      <input type="submit" name="bverify" value="Associate with my OpenID" />
     </fieldset>
   </form>
 </div>

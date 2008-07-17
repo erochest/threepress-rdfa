@@ -33,7 +33,7 @@ h2.bw-mb-motto {
   padding: .5em;
 }
 div.login form fieldset {
- border:none;
+/* border:none; */
 }
 input {
  -webkit-border-radius:10px;
@@ -70,6 +70,7 @@ p {
 
 #bw-mb-signed-in-message {
   clear:both;
+
 }
 #bw-leftnav {
  width:auto;
@@ -81,8 +82,11 @@ p {
 }
 #bw-leftnav ol.bw-nav li {
 /*   display:inline; */
-
 }
+#bw-leftnav ol.bw-nav li a {
+   border-bottom: 1px dotted gray;
+}
+
 .bw-logo {
     color: #2E4560 !important;
 }
@@ -102,10 +106,14 @@ ol.bw-nav .bw-current ol {
 }
 #bw-text-intro {
  -webkit-border-radius:30px;
+ -moz-border-radius:30px;
   background-color: #F8FFEF;
   margin:1em;
   border: 1px solid gray;
   padding:1em;
+}
+#bw-logo-image-header {
+  margin:1em;
 }
 div.login label { 
   /* display:none; */
@@ -180,7 +188,7 @@ span.bw-jump-to-toc a {
 .bw-mb-document_title {
     margin:0;
     background-color: rgb(248, 255, 239);
-    border-bottom: 1px solid darkgray;
+    border-bottom: 1px solid gray;
 }
 .bw-mb-document_title h1 {
     margin:0; padding:.5em;
@@ -196,4 +204,11 @@ span.bw-jump-to-toc a {
   margin-left: 5px;
   margin-right: 5px;
   font-size: large;
+}
+
+table.bw-meta  {
+width:auto;
+}
+table.bw-meta th {
+  width:auto;
 }

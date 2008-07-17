@@ -4,20 +4,22 @@
 {% endblock head %}
 
 {% block main %}
-<h1>Change password</h1>
+<div id="bw-content">
+  <h1>Change password</h1>
 
-{% if form.errors %}
-<p class="bw-message">Please correct the errors below:<br />
-{{ form.errors }}
-</p>
-{% endif %}
-
-<div>
-  <form action="{{ path }}" method="post" accept-charset="utf-8">
-    <div id="form-row"><label for="id_oldpw">Old password</label>{{ form.oldpw }}</div>
-    <div id="form-row"><label for="id_password1">New password</label>{{ form.password1 }}</div>
-    <div id="form-row"><label for="id_password2">New password again</label>{{ form.password2 }}</div>
-    <p><input type="submit" value="Change password"/></p>
-  </form>
+  {% if form.errors %}
+  <p class="bw-message">Please correct the errors below:<br />
+  {{ form.errors }}
+  </p>
+  {% endif %}
+  
+  <div>
+    <form action="{{ path }}" method="post" accept-charset="utf-8">
+      <div id="form-row"><label for="id_oldpw">Old password</label>{{ form.oldpw }}</div>
+      <div id="form-row"><label for="id_password1">New password</label>{{ form.password1 }}</div>
+      <div id="form-row"><label for="id_password2">New password again</label>{{ form.password2 }}</div>
+      <p><input type="submit" value="Change password"/></p>
+    </form>
+  </div>
 </div>
 {% endblock %}

@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ "$HOSTNAME" = "host.threepress.org" ]; then 
+    echo 'Cowardly refusing to let you delete the live database.'
+    exit
+fi
+
 if [ "$1" = "" ]; then
     echo "Clearing library"
     ./manage.py sqlclear library > clear.sql

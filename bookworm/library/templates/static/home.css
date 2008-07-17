@@ -30,9 +30,6 @@
     line-height:1em !important;
  }
 
-.bw-tagline {
-    font-size: x-large;
- }
 
 #bw-library {
     width:100%;
@@ -67,10 +64,55 @@
 
 p.bw-tagline {
     font-size: x-large !important;
+    display:inline;
 }
 h3.bw-profile a:link, h3.bw-profile a:visited, h3.bw-profile a:hover,
 h2.bw-upload a:link, h2.bw-upload a:visited, h2.bw-upload a:hover {
  
     color: #2E4560 !important;
     font-weight:bold;
+}
+#bw-text-intro {
+ margin:0; padding:0;
+}
+#bw-text-intro p {
+ margin:0; padding:0;
+ color:gray;
+}
+#bw-text-intro p a {
+ color:gray !important;
+}
+form input { 
+  display:inline;
+  margin: 1em 1em 1em 1em;
+}
+form fieldset {
+  border: 1px solid rgb(200,200,200);
+  background-color: rgb(248, 255, 239);
+  -moz-border-radius: 20px; 
+  -webkit-border-radius: 20px; 
+}
+
+form {
+
+}
+
+#bw-leftnav ol  {
+  padding:0;margin:0;
+  padding-bottom: 1em;
+}
+#bw-leftnav ol li {
+  list-style-type: none;
+  padding-bottom: 1em;
+}
+#bw-leftnav ol li a {
+  text-decoration:none;
+  border-bottom: 1px dotted  rgb(200,200,200);
+  line-height:1.3em;
+}
+#bw-lost-password {
+  display:block;
+}
+input {
+ -moz-border-radius:10px;
 }

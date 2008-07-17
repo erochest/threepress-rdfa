@@ -34,25 +34,28 @@
         <p>
           <a href="/">my books</a>
           <a href="/upload/">upload a book</a>
-          <a href="/about/">about bookworm</a>
+          <a href="http://mobile.threepress.org">mobile version</a>
+          <br />
+          <a href="/about/">about <span class="bw-logo">bookworm</span></a>
           <a href="http://www.threepress.org/about/">about <span class="bw-three">three</span><span class="bw-press">press</span></a>
         </p>
       </div>
    </div>
-    <table width="100%">
+    <table style="width:100%;background-color:white">
       <tr><td>
         <div id="bw-subheader">
           <div style="float:right;padding-right:2em">
         {% if request.user.is_authenticated %}
-          <p>Signed in as <span class="bw-username">{{ request.user.username }}:  
+          <h3 class="bw-signed-in" >Signed in as <span class="bw-username">{{ request.user.username }}:  
              <a class="bw-edit-profile-link" href="{% url library.views.profile %}">edit profile</a> 
            {% if request.user.is_superuser %}
              | <a class="bw-admin-link" href="/admin">admin</a>
            {% endif %}
 	     | <a class="bw-logout-link" href="{% url user_signout %}">logout</a> 
-
+           </span>
+          </h3>
         {% else %}
-         <a name='signin' href="/accounts/login">Sign in or register</a>
+
         {% endif %}
           </div>
           <div class="bw-document_title">
@@ -69,7 +72,7 @@
           {% block leftnav %}{% endblock leftnav %}
         </div>
       </td>
-      <td valign="top" style="background-color:white;width:100%;padding-right: 50px">
+      <td valign="top" style="background-color:white;padding-right: 50px;width:100%;">
         <!-- Content -->
         <div id="bw-main">
           {% block main %}{% endblock main %}

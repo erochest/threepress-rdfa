@@ -10,9 +10,9 @@
     {% block localstyles %}{% endblock localstyles %}
 
     <link rel="stylesheet" type="text/css" href="/static/base.css"></link> 
-    <link rel="stylesheet" type="text/css" href="/static/mobile.css"></link>
 
     {% block head %}{% endblock head %}
+    <link rel="stylesheet" type="text/css" href="/static/mobile.css"></link>
 
     <script type="text/javascript">
       var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -34,16 +34,15 @@
         <h2 class="bw-mb-motto"><a href="{%  url library.views.index %}">my books</a></h2>
 	{% endif %}
         <div id="bw-mb-signed-in-message">
-        {% if request.user.is_authenticated %}
-          <p>Signed in as <span class="bw-username">{{ request.user.username }}:  
+          {% if request.user.is_authenticated %}
+             <p>Signed in as <span class="bw-username">{{ request.user.username }}</span>:  
              <a class="bw-edit-profile-link bw-profile-link" href="{% url library.views.profile %}">edit profile</a> 
-           {% if request.user.is_superuser %}
+             {% if request.user.is_superuser %}
              ~ <a class="bw-admin-link bw-profile-link" href="/admin">admin</a>
-           {% endif %}
-	     ~ <a class="bw-logout-link bw-profile-link" href="{% url user_signout %}">logout</a> 
-        {% else %}
-         <a name='signin' href="/accounts/login">Sign in or register</a>
-        {% endif %}
+             {% endif %}
+             ~ <a class="bw-logout-link bw-profile-link" href="{% url user_signout %}">logout</a> 
+             {% endif %}
+             </p>
         </div>
       </div>
     </div>

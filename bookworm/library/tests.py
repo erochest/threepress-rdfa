@@ -664,6 +664,7 @@ class TestViews(DjangoTestCase):
         else:
             raise Exception
 
+    
 class TestTwill(DjangoTestCase):
     def setUp(self):
         os.environ["DJANGO_SETTINGS_MODULE"] = "settings"
@@ -706,6 +707,7 @@ class TestTwill(DjangoTestCase):
     def _register(self):
         go(self.url)
         follow('register')
+
         url('signup')
         fv("2", "username", "twilltest")
         fv("2", "email", "twilltest@example.com")
@@ -717,6 +719,8 @@ class TestTwill(DjangoTestCase):
         
     def tearDown(self):
         pass
+
+
         
 def _get_document(title, id):
     '''@todo Mock this out better instead of overwriting the real view'''

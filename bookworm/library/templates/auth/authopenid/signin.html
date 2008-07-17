@@ -3,31 +3,30 @@
 
 {% block head %}
 
-<link rel="stylesheet" href="/static/home.css"></link>
 <link rel="stylesheet" type="text/css" href="/static/auth.css" ></link>
-<style type="text/css">
-form input { 
-  display:inline;
-  margin: 1em 1em 1em 1em;
-}
-form fieldset {
-  border: 1px dotted gray;
-}
+<link rel="stylesheet" href="/static/home.css"></link>
 
-</style>
 
 {% endblock head %}
 
+{% block leftnav %}
+  {% include "includes/news.html" %}
+  {% include "includes/about_development.html" %}
+{% endblock %}
 
 {% block main %}
 <div id="bw-content">
 
-  <h1><img src="/static/bookworm-logo.png" alt="Bookworm" id="bw-logo-image" /></h1>
+  <h1 id="bw-logo-image-header"><img src="/static/bookworm-logo.png" alt="Bookworm" id="bw-logo-image" /></h1>
 
   <div id="bw-text-intro">  
   <p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p>
   
-  <p class="bw-tagline">New to Bookworm? <a href="{% url django_authopenid.views.signup %}" name="register">Register</a>.</p>
+  <p class="bw-tagline">New to Bookworm? <a href="{% url django_authopenid.views.signup %}" name="register">Register</a>.
+  </p>
+
+
+
   </div>
 
   <p id="bw-service-disclaimer">Use of the library requires that you be logged in.  Once logged in you'll have
@@ -37,7 +36,7 @@ form fieldset {
     <p class="bw-message">{{ msg }}</p>
   {% endif %}
   {% if form1.errors %}
-    <p class="bw-message">Please correct the errors below:
+    <p class="bw-message">
       {% if form1.username.errors %} 
         <span class="bw-error">{{ form1.username.errors|join:", " }}</span>
       {% endif %}
@@ -66,7 +65,7 @@ form fieldset {
       <fieldset>
         <legend>Sign in using your OpenID</legend>
         <label for="id_openid_ul"><img src="/static/openid-logo.png" alt="OpenID" /></label>{{ form2.openid_url }}
-        <!-- <input name="bsignin" type="submit" value="Sign in with OpenID" /> -->
+        <input name="bsignin" type="submit" value="Sign in with OpenID" /> 
       </fieldset>
     </form>	
   </div>	

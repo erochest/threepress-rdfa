@@ -4,9 +4,6 @@ from local import *
 
 # Django settings for bookworm project.
 
-DEBUG = False
-TEMPLATE_DEBUG = DEBUG
-
 ADMINS = (
     ('Liza Daly', 'liza@threepress.org'),
 )
@@ -100,8 +97,6 @@ INSTALLED_APPS = (
 )
 
 AUTH_PROFILE_MODULE = "library.userpref"
-
-#OPENID_REDIRECT_TO = '/openid/complete/'
 
 ugettext = lambda s: s
 LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))

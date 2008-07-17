@@ -8,6 +8,9 @@
  li { line-height: 1.5em; padding-bottom: 1em;}
  #bw-leftnav ul { list-style-type: none; padding:0;margin:0; color: gray; }
  hr { margin:3em 10px 1em 0; }
+#bw-leftnav h2 {
+  color: gray;
+}
 </style>
 {% endblock head %}
 
@@ -17,7 +20,8 @@
 <ul>
   <li> True HTML rendering in your browser</li>
   <li> Automatically-generated TOC based on document metadata</li>
-  <li> Options to view a book's bundled stylesheet, or render natively</li>
+  <li> Uses legible, clear styles layered over the book's native stylesheets</li>
+  <li> Mobile browser support</li>
   <li> Inline image support: PNG, JPG, GIF</li>
   <li> Generated external link to SVG images</li>
 </ul>
@@ -45,6 +49,11 @@ For more information about Threepress, please visit our <a href="http://www.thre
     ePub is the open e-book standard developed by the <a href="http://www.idpf.org/">International Digital Publishing Forum</a> (<acronym>IDPF</acronym>).  It is based on a number of other open standards including XHTML, making it ideally suited to be read on web browsers.
   </p>
 
+  <h2>Can I use Bookworm on my mobile device?</h2>
+  <p>
+    Absolutely!  A special version of the site optimized for mobile devices (especially 
+    the iPhone) is available at <a href="http://mobile.threepress.org/">http://mobile.threepress.org/</a>.
+  </p>
   <h2>Where can I get ePub-formatted books?</h2>
   <p>
     At this time, contemporary, popular books are not widely available in ePub, as neither the Amazon Kindle nor Sony Reader currently support it. Some sources including: 
@@ -53,8 +62,9 @@ For more information about Threepress, please visit our <a href="http://www.thre
       <li> <a href="http://feedbooks.com/">Feedbooks</a> is a excellent site for downloading public domain and contributed books in ePub as well as other digital book formats.</li>
       <li> <a href="http://www.threepress.org/">Threepress</a> also offers several ePub books which have been auto-converted from the TEI XML standard.</li>
     </ul>
+  </p>
 
-  <h2>What Bookworm isn't</h2>
+  <h2>Bookworm is not:</h2>
 
   <ol>
     <li> <em>A general ebook platform</em>. There are many good standalone ebook readers for computers, including <a href="http://www.adobe.com/products/digitaleditions/">Adobe Digital Editions</a>, <a href="http://www.fbreader.org/">FBReader</a> and <a href="http://www.lexcycle.com/">Stanza</a>. Bookworm is meant specifically to test the viability of using ordinary web browsers as ePub rendering engines, not to host PDF, Mobi, or other formats.</li>
@@ -68,6 +78,8 @@ For more information about Threepress, please visit our <a href="http://www.thre
   <p>
     Bookworm software is free and available for download under the terms of the BSD license from the <a href="http://www.threepress.org/download/">download page</a>. It is a product of <a href="http://www.threepress.org/">threepress</a>, a venue for experimenting with open source publishing software, and is written by <a href="http://www.threepress.org/about/liza/">Liza Daly</a> with contributions from <a href="http://kfahlgren.com/blog">Keith Fahlgren</a>.  Any problems with Bookworm can be reported to <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>. (Feature requests welcome too!)
   </p>
+
+  {% include "includes/about_development.html" %}
 
 </div>
 

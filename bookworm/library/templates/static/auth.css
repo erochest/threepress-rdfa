@@ -16,5 +16,5 @@ form legend {
 }
 
 form fieldset {
-  border: 1px dotted gray;
+  border: 1px solid rgb(200,200,200) ;
 }
