@@ -9,16 +9,16 @@ from settings import DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
 
 logging.basicConfig(level=logging.WARN)
 
-LOG_DIR = "%s/backups" % os.path.dirname(__file__)
+BACKUP_DIR = "%s/backups" % os.path.dirname(__file__)
 MYSQL_CMD = 'mysqldump'
 ZIP_CMD = 'zip'
 
 def _setup():
-    if not os.path.exists(LOG_DIR):
-        logging.debug("Created log directory %s" % LOG_DIR)
-        os.mkdir(LOG_DIR)
+    if not os.path.exists(BACKUP_DIR):
+        logging.debug("Created backup directory %s" % BACKUP_DIR)
+        os.mkdir(BACKUP_DIR)
     else:
-        logging.debug("Using log directory %s" % LOG_DIR)
+        logging.debug("Using backup directory %s" % BACKUP_DIR)
     
 def _backup_name():
     now = datetime.now()
@@ -33,13 +33,13 @@ def _run_backup(file_name):
         'user' : DATABASE_USER,
         'password' : DATABASE_PASSWORD,
         'database' : DATABASE_NAME,
-        'log_dir' : LOG_DIR,
+        'log_dir' : BACKUP_DIR,
         'file': file_name}
     logging.debug("Backing up with command %s " % cmd)
     return os.system(cmd)
 
 def _zip_backup(file_name):
-    backup = "%s/%s" % (LOG_DIR, file_name)
+    backup = "%s/%s" % (BACKUP_DIR, file_name)
     zipfile_name = "%s.zip" % (backup)
 
     if os.path.exists(zipfile_name):
@@ -53,7 +53,7 @@ def _zip_backup(file_name):
 
     # Test our archive
     logging.debug("Testing zip archive")
-    if not os.system("%(zip)s -T -q %(zipfile)s" % zip_cmds):
+    if not os.system("%(zip)s -T -D -q %(zipfile)s" % zip_cmds):
         # If there was no problem, then delete the unzipped version
         os.remove(backup)
         return True
