@@ -5,11 +5,11 @@ import os.path
 import os
 import logging
 from datetime import datetime
-from settings import ROOT_PATH, DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
+from settings import DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
 
 logging.basicConfig(level=logging.WARN)
 
-LOG_DIR = "%s/backups" % ROOT_PATH
+LOG_DIR = "%s/backups" % os.path.dirname(__file__)
 MYSQL_CMD = 'mysqldump'
 ZIP_CMD = 'zip'
 
