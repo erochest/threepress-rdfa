@@ -126,7 +126,6 @@ div.login {
 #bw-openid-form {
   display:block;
   font-size: x-large;
-  float:right;
 }
 #bw-username-form legend {
  display:none;
