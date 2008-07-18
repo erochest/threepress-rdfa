@@ -2,13 +2,17 @@ from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib.sitemaps import FlatPageSitemap
 from threepress.search.threepress_sitemap import ThreepressSitemap
+from django_restapi.model_resource import Collection
+from django_restapi.responder import XMLResponder
+from django_restapi.resource import Resource
+from threepress.search.epubcheck import validate
+from django.http import HttpResponse
+import sys
 
 sitemaps = {
     'flatpages' : FlatPageSitemap,
     'documents': ThreepressSitemap,
 }
-
-
 
 urlpatterns = patterns('',
 
@@ -45,6 +49,48 @@ urlpatterns = patterns('',
 
                        # Index.html
                        (r'^$', 'threepress.search.views.index'), 
+)
+
+
+
+# REST API for Epubcheck service
+class Epubcheck(Resource):
+    
+    def create(self, request, *args, **kwargs):
+        try:
+            epub = request.raw_post_data
+            validator = validate('temp.epub', epub)
+            if validator.is_valid():
+                msg = "<is-valid>True</is-valid>"
+                errors = ""
+            else:
+                msg = "<is-valid>False</is-valid>"
+                errors = validator.clean_errors()
+                
+            xml = """
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="ok">%s%s</rsp>
+""" % (msg, errors)
+        except:
+            xml = """
+<?xml version="1.0" encoding="utf-8" ?>
+<rsp stat="fail">
+   <err code="500" msg="%s" />
+</rsp>""" % sys.exc_info
+        response = HttpResponse(content=xml, content_type='application/xml')
+        return response
+
+
+         
+    #def read(self, request, *args, **kwargs):
+    #    
+    #    pass
+    #def update(self, request, *args, **kwargs):
+    #    # ...
+    #    pass
+
+urlpatterns += patterns('',
+                        url(r'^epubcheck-service/$', Epubcheck(permitted_methods=['POST'])),
 )
 
 if settings.DEBUG:
