@@ -303,11 +303,10 @@ def upload(request):
                                                           'form':form, 
                                                           'message':message})
             except InvalidEpubException:
-                logging.error('Non epub zip file uploaded: %s' % document_name)
-                message = 'The file you uploaded was a valid zip file but did not appear to be an ePub archive.'
+                logging.error('Non epub zip file uploaded' % sys.exc_value)
+                message = "The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or a problem with the way the ePub was created.  The complete error message is: '%s'" % str(sys.exc_value)
                 document.delete()
-                return render_to_response('upload.html', {
-                                                          'form':form, 
+                return render_to_response('upload.html', {'form':form, 
                                                           'message':message})                
             #except:
             #    # If we got any error, delete this document

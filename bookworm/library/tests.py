@@ -163,6 +163,53 @@ class TestModels(unittest.TestCase):
         chapters = HTMLFile.objects.filter(archive=document)
         self.assertEquals(len(chapters), len(toc.find_points(1)))
 
+    def testNoTocInItem(self):
+        '''Test an OPF file that has no <item> reference to a TOC'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        opf = _get_file('no-toc-item.opf')
+        document = self.create_document(filename)        
+        document.explode()
+        parsed_opf = util.xml_from_string(opf)
+        items = [i for i in parsed_opf.iterdescendants(tag="{%s}item" % (NS['opf']))]
+        try:
+            document._get_toc(parsed_opf, items, 'OEBPS')
+        except InvalidEpubException:
+            err = str(sys.exc_info()[1])
+            self.assertTrue('Could not find an item' in err)
+            return
+        self.assert_(False)
+
+    def testNoTocAttribute(self):
+        '''Test an OPF file that has no @toc in the <spine>'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        opf = _get_file('no-toc-attribute-in-spine.opf')
+        document = self.create_document(filename)        
+        document.explode()
+        parsed_opf = util.xml_from_string(opf)
+        items = [i for i in parsed_opf.iterdescendants(tag="{%s}item" % (NS['opf']))]
+        try:
+            document._get_toc(parsed_opf, items, 'OEBPS')
+        except InvalidEpubException:
+            err = str(sys.exc_info()[1])
+            logging.info(err)
+            self.assertTrue('Could not find toc attribute' in err)
+            return
+        self.assert_(False)
+
+    def testNoToc(self):
+        '''Test an OPF file that has has a TOC reference to a nonexistent file'''
+        filename = 'invalid-no-toc.epub'
+        document = self.create_document(filename)        
+        document.save()
+        try:
+            document.explode()
+        except InvalidEpubException:
+            err = str(sys.exc_info()[1])
+            self.assertTrue('TOC file was referenced in OPF, but not found in archive' in err)
+            return
+        self.assert_(False)
+
+        
     def testFirstItemInTOC(self):
         '''Check that the first_item method returns the correct item based on the rules
         defined in the OCF spec.'''
@@ -504,6 +551,11 @@ class TestViews(DjangoTestCase):
         self.assertRedirects(response, '/', 
                              status_code=302, 
                              target_status_code=200)
+
+    def test_upload_invalid_epub(self):
+        response = self._upload('invalid-no-toc.epub')
+        self.assertTemplateUsed(response, 'upload.html')
+        self.assertContains(response, 'TOC file was referenced in OPF, but not found in archive')
 
     def test_content_visible(self):
         response = self._upload('Cory_Doctorow_-_Little_Brother.epub')

@@ -178,7 +178,7 @@ class EpubArchive(BookwormModel):
         try:
             container = z.read(self._CONTAINER)
         except KeyError:
-            raise InvalidEpubException('Was not able to locate container file')
+            raise InvalidEpubException('Was not able to locate container file', archive=self)
 
         parsed_container = util.xml_from_string(container)
 
@@ -191,7 +191,11 @@ class EpubArchive(BookwormModel):
 
         items = [i for i in parsed_opf.iterdescendants(tag="{%s}item" % (NS['opf']))]
         
-        self.toc = z.read(self._get_toc(parsed_opf, items, content_path))
+        toc_filename = self._get_toc(parsed_opf, items, content_path)
+        try:
+            self.toc = z.read(toc_filename)
+        except KeyError:
+            raise InvalidEpubException('TOC file was referenced in OPF, but not found in archive: toc file %s' % toc_filename, archive=self)
 
         parsed_toc = util.xml_from_string(self.toc)
 
@@ -223,11 +227,13 @@ class EpubArchive(BookwormModel):
         whose value is the the id attribute value of the required NCX document 
         declared in manifest)'''
         tocid = opf.find('.//{%s}spine' % NS['opf']).get('toc')
+        if not tocid:
+            raise InvalidEpubException('Could not find toc attribute in OFP <spine>', archive=self)
         for item in items:
             if item.get('id') == tocid:
                 toc_filename = item.get('href').strip()
                 return "%s%s" % (content_path, toc_filename)
-        raise Exception("Could not find toc filename")
+        raise InvalidEpubException("Could not find an item matching %s in OPF <item> list" % (tocid), archive=self)
 
     def _get_authors(self, opf):
         authors = [BookAuthor(name=a.text.strip()) for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG)) if a is not None and a.text is not None]
@@ -621,12 +627,12 @@ class BinaryBlob(BookwormFile):
         if not os.path.exists(self._get_storage_dir()):
             os.mkdir(self._get_storage_dir())
         if not self.data:
-            raise InvalidBinaryException('No data to save but save() operation called')
+            raise InvalidBinaryException('No data to save but save() operation called', archive=self.archive)
         if not self.filename:
-            raise InvalidBinaryException('No filename but save() operation called')
+            raise InvalidBinaryException('No filename but save() operation called', archive=self.archive)
 
         storage = self._get_storage()
-
+  
         if not os.path.exists(storage):
             os.mkdir(storage)
         f = self._get_file()
@@ -701,6 +707,6 @@ class ImageBlob(BinaryBlob):
     '''Storage mechanism for a binary image'''
     image = models.ForeignKey(ImageFile)    
     
-class InvalidBinaryException(Exception):
+class InvalidBinaryException(InvalidEpubException):
     pass
 
