@@ -67,13 +67,11 @@ class Epubcheck(Resource):
                 msg = "<is-valid>False</is-valid>"
                 errors = "<errors>%s</errors>" % validator.clean_errors()
                 
-            xml = """
-<?xml version="1.0" encoding="utf-8" ?>
+            xml = """<?xml version="1.0" encoding="utf-8" ?>
 <rsp stat="ok">%s%s</rsp>
 """ % (msg, errors)
         except:
-            xml = """
-<?xml version="1.0" encoding="utf-8" ?>
+            xml = """<?xml version="1.0" encoding="utf-8" ?>
 <rsp stat="fail">
    <err code="500" msg="%s" />
 </rsp>""" % sys.exc_info
