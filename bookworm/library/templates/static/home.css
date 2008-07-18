@@ -105,6 +105,9 @@ form {
   list-style-type: none;
   padding-bottom: 1em;
 }
+#bw-leftnav ol li {
+  color: gray;
+}
 #bw-leftnav ol li a {
   text-decoration:none;
   border-bottom: 1px dotted  rgb(200,200,200);

@@ -303,17 +303,37 @@ def upload(request):
                                                           'form':form, 
                                                           'message':message})
             except InvalidEpubException:
-                logging.error('Non epub zip file uploaded' % sys.exc_value)
-                message = "The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or a problem with the way the ePub was created.  The complete error message is: '%s'" % str(sys.exc_value)
+                # Let's see what's wrong with this by asking epubcheck too, since it will let us know if it's our bug
+                import urllib
+                resp = urllib.urlopen('http://www.threepress.org/epubcheck-service/', data)
+                if resp:
+                    d = resp.read()
+                    if d:
+                        try:
+                            from epub import util
+                            epubcheck_response =  util.xml_from_string(d)
+                        except:
+                            logging.error('Got an error when trying to XML-ify the epubecheck response; ignoring: %s' % sys.exc_info()[1])
+                
+                logging.error('Non epub zip file uploaded' % sys.exc_info()[1])
+                message = "The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is: <p style='color:black;font-weight:normal'>%s</p>" % sys.exc_info()[1]
+                if epubcheck_response:
+                    if epubcheck_response.findtext('.//is-valid') == 'True':
+                        message += "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm error)</p>"
+                    elif epubcheck_response.findtext('.//is-valid') == 'False':
+                        message += "<p>epubcheck agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned: <pre style='color:black;font-weight:normal'>%s</pre></p>" % epubcheck_response.findtext('.//errors')
+                    else:
+                        logging.error('Got an unexpected response from epubcheck, ignoring: %s' % d)
+
                 document.delete()
                 return render_to_response('upload.html', {'form':form, 
                                                           'message':message})                
-            #except:
-            #    # If we got any error, delete this document
-            #    logging.error('Got unknown error on request, deleting document')
-            #    logging.error(sys.exc_value)
-            #    document.delete()
-            #    raise
+            except:
+                # If we got any error, delete this document
+                logging.error('Got unknown error on request, deleting document')
+                logging.error(sys.exc_value)
+                document.delete()
+                raise
             
             logging.info("Successfully added %s" % document.title)
             return HttpResponseRedirect('/')

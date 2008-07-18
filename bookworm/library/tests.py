@@ -556,6 +556,9 @@ class TestViews(DjangoTestCase):
         response = self._upload('invalid-no-toc.epub')
         self.assertTemplateUsed(response, 'upload.html')
         self.assertContains(response, 'TOC file was referenced in OPF, but not found in archive')
+        # Check that we talked to epubcheck too
+        self.assertContains(response, 'epubcheck agrees')
+        self.assertContains(response, 'toc-doesnt-exist.ncx is missing')
 
     def test_content_visible(self):
         response = self._upload('Cory_Doctorow_-_Little_Brother.epub')

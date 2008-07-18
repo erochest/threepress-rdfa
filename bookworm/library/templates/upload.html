@@ -25,7 +25,7 @@ a description of the problem.
 <h2>Add a book</h2>
 
 {% if message %}
-<p class="bw-message"><strong>{{ message }}</strong></p>
+<p class="bw-message"><strong>{{ message|safe }}</strong></p>
 {% endif %}
 
 <p>
