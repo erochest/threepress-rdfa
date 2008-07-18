@@ -54,8 +54,9 @@
       <fieldset>
         <legend>Sign in using a local Bookworm account</legend>
         <label for="id_username">Username</label>{{ form1.username }}
-        <label for="id_password">Password</label>{{ form1.password }}
-        <input type="submit" name="blogin" value="Sign in"/> 
+	<br/>
+        <label id="bw-username-password-label" for="id_password">Password</label>{{ form1.password }}
+        <input type="submit" name="blogin" value="Sign in" id="bw-mb-username-submit"/>
         <a id="bw-lost-password" href="{{ sendpw_url }}">Lost your password?</a>
       </fieldset>	
     </form>
@@ -65,7 +66,7 @@
       <fieldset>
         <legend>Sign in using your OpenID</legend>
         <label for="id_openid_ul"><img src="/static/openid-logo.png" alt="OpenID" /></label>{{ form2.openid_url }}
-        <input name="bsignin" type="submit" value="Sign in with OpenID" /> 
+        <input name="bsignin" type="submit" value="Sign in with OpenID" id="bw-mb-openid-submit"/> 
       </fieldset>
     </form>	
   </div>	

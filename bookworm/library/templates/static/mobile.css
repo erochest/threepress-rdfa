@@ -33,17 +33,18 @@ h2.bw-mb-motto {
   padding: .5em;
 }
 div.login form fieldset {
-/* border:none; */
+ /*border:none; */
 }
 input {
  -webkit-border-radius:10px;
 }
 div.login form input {
- display:block;
+/* display:block; */
 
 }
 #bw-logo-image {
-  display:none;
+/*  display:none; */
+ margin:0;padding:0;
 }
 p.bw-tagline {
   font-size:larger;
@@ -105,12 +106,16 @@ ol.bw-nav .bw-current ol {
   color:gray;
 }
 #bw-text-intro {
+/*
  -webkit-border-radius:30px;
  -moz-border-radius:30px;
+  border: 1px solid gray;
   background-color: #F8FFEF;
   margin:1em;
-  border: 1px solid gray;
   padding:1em;
+*/
+ margin:0;
+ padding-bottom:.5em;
 }
 #bw-logo-image-header {
   margin:1em;
@@ -121,7 +126,10 @@ div.login label {
   font-weight:normal;
 }
 div.login {
-  background-color: lightgray;
+/*  background-color: lightgray; */
+}
+div.login input {
+ font-size:x-large;
 }
 #bw-openid-form {
   display:block;
@@ -134,22 +142,25 @@ div.login {
  display:none;
 }
 
-
 #bw-username-form input {
  font-size:x-small;
- width:9em;
+
 }
 #bw-openid-form input {
  font-size:x-small;
- width:9em;
+}
+#bw-mb-openid-submit {
+ font-size:medium !important;
+}
+#bw-mb-username-submit {
+ font-size:medium !important;
 }
 #bw-username-form {
   display:block;
   font-size: x-large;
-  float:left;
 }
 #bw-lost-password {
-  font-size:x-small;
+  font-size:medium;
 }
 #bw-header p {
  color: white !important;
@@ -158,6 +169,12 @@ div.login {
 }
 #bw-mb-leftnav {
  padding:1em;
+ padding-top:0;
+ margin-top:0;
+ border-top:1px dotted rgb(200,200,200);
+}
+#bw-leftnav {
+  margin:0;padding:0;
 }
 #bw-mb-leftnav ol.bw-nav .bw-current {
 
