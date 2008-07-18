@@ -65,7 +65,7 @@ class Epubcheck(Resource):
                 errors = ""
             else:
                 msg = "<is-valid>False</is-valid>"
-                errors = validator.clean_errors()
+                errors = "<errors>%s</errors>" % validator.clean_errors()
                 
             xml = """
 <?xml version="1.0" encoding="utf-8" ?>
@@ -79,15 +79,6 @@ class Epubcheck(Resource):
 </rsp>""" % sys.exc_info
         response = HttpResponse(content=xml, content_type='application/xml')
         return response
-
-
-         
-    #def read(self, request, *args, **kwargs):
-    #    
-    #    pass
-    #def update(self, request, *args, **kwargs):
-    #    # ...
-    #    pass
 
 urlpatterns += patterns('',
                         url(r'^epubcheck-service/$', Epubcheck(permitted_methods=['POST'])),
