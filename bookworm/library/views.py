@@ -1,4 +1,4 @@
-import logging, sys
+import logging, sys, StringIO
 from zipfile import BadZipfile
 
 from django.contrib.auth.decorators import login_required
@@ -278,13 +278,16 @@ def upload(request):
         form = EpubValidateForm(request.POST, request.FILES)
         if form.is_valid():
 
-            data = form.cleaned_data['epub'].content
+            data = StringIO.StringIO()
+            for c in request.FILES['epub'].chunks():
+                data.write(c)
+            #data.close()
             document_name = form.cleaned_data['epub'].filename
             logging.info("Document name: %s" % document_name)
             document = EpubArchive(name=document_name)
             document.owner = request.user
             document.save()
-            document.set_content(data)
+            document.set_content(data.getvalue())
 
             try:
                 document.explode()
@@ -305,7 +308,7 @@ def upload(request):
             except InvalidEpubException:
                 # Let's see what's wrong with this by asking epubcheck too, since it will let us know if it's our bug
                 import urllib
-                resp = urllib.urlopen('http://www.threepress.org/epubcheck-service/', data)
+                resp = urllib.urlopen('http://www.threepress.org/epubcheck-service/', data.getvalue())
                 if resp:
                     d = resp.read()
                     if d:
