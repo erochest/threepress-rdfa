@@ -1,26 +1,30 @@
-import logging
-from django.shortcuts import render_to_response
+from django.contrib import admin
+from models import *
 
-from models import EpubArchive
+class EpubArchiveAdmin(admin.ModelAdmin):
+    pass
 
-from views import _common
 
-def search(request):
-    common = _common(request, load_prefs=True)
+class BookAuthorAdmin(admin.ModelAdmin):
+    pass
 
-    if request.GET.has_key('author') or request.GET.has_key('title'):
-        d = EpubArchive.objects.filter()
-        logging.debug('Performing search')
-        if request.GET.has_key('author') and request.GET['author']:
-            logging.info('including author %s' % request.GET['author'])
-            d.filter('author = ', request.GET['author'])
-        if request.GET.has_key('title') and request.GET['title']:
-            logging.info('including title %s' % request.GET['title'])
-            d.filter('title = ', request.GET['title'])
-        return render_to_response('admin/search.html', { 'documents':d,
-                                                         'show_owner':True,
-                                                         'common':common })
-    
-    return render_to_response('admin/search.html', {'common':common })                               
+class HTMLFileAdmin(admin.ModelAdmin):
+    pass
 
-            
+class StylesheetFileAdmin(admin.ModelAdmin):
+    pass
+
+class ImageFileAdmin(admin.ModelAdmin):
+    pass
+
+class UserPrefAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(EpubArchive, EpubArchiveAdmin)
+admin.site.register(BookAuthor, BookAuthorAdmin)
+admin.site.register(HTMLFile, HTMLFileAdmin)
+admin.site.register(StylesheetFile, StylesheetFileAdmin)
+admin.site.register(ImageFile, ImageFileAdmin)
+admin.site.register(UserPref, UserPrefAdmin)
+
+

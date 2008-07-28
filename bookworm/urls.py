@@ -1,8 +1,12 @@
 
 from django.conf.urls.defaults import *
+from django.contrib import admin
+
 from django.conf import settings
 from django.contrib.sitemaps import FlatPageSitemap
-from django.contrib.auth.views import login, logout
+from library.views import *
+
+admin.autodiscover()
 
 sitemaps = {
     'flatpages' : FlatPageSitemap,
@@ -10,8 +14,7 @@ sitemaps = {
 
 urlpatterns = patterns('',
 
-                       # Uncomment this for admin:
-                       (r'^admin/', include('django.contrib.admin.urls')),
+                       (r'^admin/(.*)',  admin.site.root),
 
                        # Sitemaps
                        (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
@@ -20,43 +23,41 @@ urlpatterns = patterns('',
                        (r'^account/', include('django_authopenid.urls')),                       
                        
                        # Bookworm
-                       (r'^$', 'library.views.index'),                        
+                       url(r'^$', index, name="index"),                        
                        
-                       (r'^upload/$', 'library.views.upload'),
+                       url(r'^upload/$', upload, name="upload"),
 
                        # Images from within documents
-                       (r'^(view|chapter)/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<image>.*(jpg|gif|png|svg)+)$', 
-                        'library.views.view_chapter_image'),                       
+                       url(r'^(view|chapter)/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<image>.*(jpg|gif|png|svg)+)$', 
+                           view_chapter_image, name="view_chapter_image"),                       
                        
                        # Document metadata
-                       (r'^metadata/(?P<title>.+)/(?P<key>.+)/$', 'library.views.view_document_metadata'),                       
+                       url(r'^metadata/(?P<title>.+)/(?P<key>.+)/$', view_document_metadata, name="view_document_metadata"),                       
 
-                       # View a chapter in frame mode
-                       (r'^chapter/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)$', 'library.views.view_chapter_frame'),                       
+                       # View a chapter in frame mode - deprecated
+                       #(r'^chapter/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)$', 'library.views.view_chapter_frame'),                       
 
-                       # View a chapter in non-frame mode
-                       (r'^view/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)$', 'library.views.view_chapter'),                       
+                       # View a chapter 
+                       url(r'^view/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)$', view_chapter, name="view_chapter"),                       
                        
                        # Main entry point for a document
-                       (r'^view/(?P<title>.+)/(?P<key>[^/]+)/$', 'library.views.view'),
+                       url(r'^view/(?P<title>.+)/(?P<key>[^/]+)/$', view, name="view"),
 
                        # CSS file for within a document (frame-mode)
-                       (r'^css/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<stylesheet_id>.+)$', 'library.views.view_stylesheet'),                       
+                       url(r'^css/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<stylesheet_id>.+)$', view_stylesheet, name="view_stylesheet"),
 
-                       (r'^delete/', 'library.views.delete'),
+                       # Delete a book
+                       url(r'^delete/', delete, name='delete'),
                        
                        # Download a source epub file
-                       (r'^download/epub/(?P<title>.+)/(?P<key>[^/]+)/$', 'library.views.download_epub'),
+                       url(r'^download/epub/(?P<title>.+)/(?P<key>[^/]+)/$', download_epub, name='download_epub'),
 
                        # User profile
-                       (r'^account/profile/$', 'library.views.profile'),
-                       (r'^account/profile/delete/$', 'library.views.profile_delete'),
+                       url(r'^account/profile/$', profile, name='profile'),
+                       url(r'^account/profile/delete/$', profile_delete, name='profile_delete'),
 
-                       # Static pages
-                       (r'^about/$', 'library.views.about'),
-
-                       # Admin pages
-                       (r'^admin/search/$', 'library.admin.search'),
+                       # About page
+                       url(r'^about/$', about, name='about'),
 
                        )
 

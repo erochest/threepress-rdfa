@@ -417,15 +417,12 @@ class EpubArchive(BookwormModel):
     def __unicode__(self):
         return '%s by %s (%s)' % (self.title, self.author(), self.name)
 
-    class Admin:
-        pass
 
 class BookAuthor(BookwormModel):
     name = models.CharField(max_length=2000)
     def __str__(self):
         return self.name
-    class Admin:
-        pass
+
 
 class BookwormFile(BookwormModel):
     '''Abstract class that represents a file in the database'''
@@ -505,16 +502,13 @@ class HTMLFile(BookwormFile):
         return xhtml
 
 
-    class Admin:
-        pass
+
     class Meta:
         ordering = ['order']
 
 class StylesheetFile(BookwormFile):
     '''A CSS stylesheet associated with a given book'''
     content_type = models.CharField(max_length=100, default="text/css")
-    class Admin:
-        pass
 
 
 class ImageFile(BookwormFile):
@@ -557,8 +551,6 @@ class ImageFile(BookwormFile):
     def _blob_class(self):
         return ImageBlob
 
-    class Admin:
-        pass
 
 class UserPref(BookwormModel):
     '''Per-user preferences for this application'''
@@ -571,8 +563,6 @@ class UserPref(BookwormModel):
     nickname = models.CharField(max_length=500)
     use_iframe = models.BooleanField(default=False)
     show_iframe_note = models.BooleanField(default=True)
-    class Admin:
-        pass
 
 class SystemInfo():
     '''This can now be computed at runtime (and cached)'''

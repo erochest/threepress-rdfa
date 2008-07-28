@@ -30,13 +30,14 @@
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-from django import newforms as forms
+from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
-import re, logging
+import re
+#import logging
 
 
 # needed for some linux distributions like debian
