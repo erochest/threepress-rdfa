@@ -8,12 +8,11 @@ from django.core.urlresolvers import reverse
 from django import oldforms 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import auth
-from django.template import RequestContext, Context, Template
+from django.template import RequestContext
+from django.core.paginator import Paginator, EmptyPage
 
-from django_authopenid.views import delete as delete_openid_profile
 from django_authopenid.forms import DeleteForm
-
-from models import EpubArchive, HTMLFile, UserPref, StylesheetFile, ImageFile, SystemInfo, get_file_by_item
+from models import EpubArchive, HTMLFile, UserPref, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields
 from forms import EpubValidateForm
 from epub import constants as epub_constants
 from epub import InvalidEpubException
@@ -41,13 +40,50 @@ def register(request):
 
 
 @login_required
-def index(request):
+def index(request, 
+          page_number=settings.DEFAULT_START_PAGE, 
+          order=settings.DEFAULT_ORDER_FIELD,
+          dir=settings.DEFAULT_ORDER_DIRECTION):
+
+    if not dir in settings.VALID_ORDER_DIRECTIONS:
+        raise Exception("Direction %s was not in our list of known ordering directions" % dir)
+    if not order in settings.VALID_ORDER_FIELDS:
+        raise Exception("Field %s was not in our list of known ordering fields" % order)
+    if dir == 'desc':
+        order_computed = '-%s' % order
+        reverse_dir = 'asc'
+    else:
+        order_computed = order
+        reverse_dir = 'desc'
+
     _common(request, load_prefs=True)
+    if page_number is None:
+        page_number = settings.DEFAULT_START_PAGE
     user = request.user
     form = EpubValidateForm()
-    documents = EpubArchive.objects.filter(owner=user)
-    return render_to_response('index.html', {'documents':documents, 
+    paginator = Paginator(EpubArchive.objects.filter(owner=user).order_by(order_computed), settings.DEFAULT_NUM_RESULTS)
+    try:
+        page = paginator.page(page_number)
+    except EmptyPage:
+        page_number = settings.DEFAULT_START_PAGE
+        # If we somehow got to an invalid page number, start over
+        return HttpResponseRedirect(reverse('index-paginate', args=[page_number]))
+
+    for d in page.object_list:
+        if d.orderable_author == '':
+            # Populate the author field if it was empty before
+            d.orderable_author = d.safe_author()
+            d.save()
+        
+    return render_to_response('index.html', {'documents':paginator, 
+                                             'page':page,
                                              'form':form,
+                                             'order':order,
+                                             'dir':dir,
+                                             'reverse_dir':reverse_dir,
+                                             'order_text': order_fields[order],
+                                             'order_direction': 'ascending' if dir == 'asc' else 'descending',
+                                             'order_adverb': 'alphabetically' if order != 'created_time' else 'by date value',
                                              },
                                              context_instance=RequestContext(request)
                               )
@@ -90,7 +126,6 @@ def view(request, title, key):
     if o is None:
         logging.error('Could not find an item with the id of %s' % first)
         raise Http404
-    logging.info('Dispatching to chapter view for file %s' % o.filename)
     return view_chapter(request, title, key, o.filename)
 
   
@@ -177,7 +212,6 @@ def view_chapter(request, title, key, chapter_id):
     document = _get_document(request, title, key)
 
     chapter = get_object_or_404(HTMLFile, archive=document, filename=chapter_id)
-    logging.info('got chapter')
     stylesheets = StylesheetFile.objects.filter(archive=document)
     next = _chapter_next_previous(document, chapter, 'next')
     previous = _chapter_next_previous(document, chapter, 'previous')
@@ -282,8 +316,8 @@ def upload(request):
             for c in request.FILES['epub'].chunks():
                 data.write(c)
             #data.close()
-            document_name = form.cleaned_data['epub'].filename
-            logging.info("Document name: %s" % document_name)
+            document_name = form.cleaned_data['epub'].name
+            logging.info("Uploading document name: %s" % document_name)
             document = EpubArchive(name=document_name)
             document.owner = request.user
             document.save()
@@ -320,7 +354,7 @@ def upload(request):
                 
                 logging.error('Non epub zip file uploaded' % sys.exc_info()[1])
                 message = "The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is: <p style='color:black;font-weight:normal'>%s</p>" % sys.exc_info()[1]
-                if epubcheck_response:
+                if epubcheck_response is not None:
                     if epubcheck_response.findtext('.//is-valid') == 'True':
                         message += "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm error)</p>"
                     elif epubcheck_response.findtext('.//is-valid') == 'False':

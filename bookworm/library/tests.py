@@ -26,6 +26,8 @@ from twill import add_wsgi_intercept
 from twill.commands import *
 from socket import gethostname
 
+from django.conf import settings
+
 # Data for public epub documents
 DATA_DIR = os.path.abspath('./library/test-data/data')
 
@@ -512,6 +514,13 @@ class TestModels(unittest.TestCase):
         except InvalidBinaryException:
             pass
         
+    def testOPFFileInSubDir(self):
+        '''A archive should be able to put its OPF file in a subdirectory and still locate the resources'''
+        filename = 'opf-in-subdirectory.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        self.assertEquals('OPF in subdir', document.title)
 
         
     def create_document(self, document):
@@ -574,6 +583,67 @@ class TestViews(DjangoTestCase):
         self.assertRedirects(response, '/', 
                              status_code=302, 
                              target_status_code=200)        
+
+
+    def test_next_previous(self):
+        '''Assert that we can move next and previous through our list of books'''
+        # Load enough books to exceed our settings pagination label
+        for a in range(1, (settings.DEFAULT_NUM_RESULTS * 2) ):
+            response = self._upload('Cory_Doctorow_-_Little_Brother.epub')
+            self.assertRedirects(response, '/', 
+                                 status_code=302, 
+                                 target_status_code=200)        
+
+        response = self.client.get('/')
+        self.assertContains(response, 'Page 1 of 2')
+        self.assertContains(response, 'date added to your library')
+        self.assertContains(response, 'descending')
+
+        response = self.client.get('/page/2')
+        self.assertTemplateUsed(response, 'index.html')
+        self.assertContains(response, 'Page 2 of 2')
+
+        response = self.client.get('/page/1')
+        self.assertTemplateUsed(response, 'index.html')
+        self.assertContains(response, 'Page 1 of 2')
+
+        # Going to an incorrect range should redirect us back to the first page
+        response = self.client.get('/page/99')
+        self.assertRedirects(response, '/page/1',
+                             status_code=302,
+                             target_status_code=200)
+
+    def test_ordering(self):
+        '''Test our re-ordering of books'''
+        # Load enough books to exceed our settings pagination label
+        for a in range(1, (settings.DEFAULT_NUM_RESULTS * 2) ):
+            response = self._upload('Cory_Doctorow_-_Little_Brother.epub')
+            self.assertRedirects(response, '/', 
+                                 status_code=302, 
+                                 target_status_code=200)        
+        
+        response = self.client.get('/')
+        self.assertContains(response, 'Page 1 of 2')
+
+        response = self.client.get('/page/1/order/title/dir/asc')
+        self.assertContains(response, 'Page 1 of 2')
+        self.assertContains(response, 'book title')
+        self.assertContains(response, 'alphabetically')
+        self.assertContains(response, 'ascending')
+
+        response = self.client.get('/page/1/order/orderable_author/dir/asc')
+        self.assertContains(response, 'Page 1 of 2')
+        self.assertContains(response, 'first author')
+        self.assertContains(response, 'alphabetically')
+        self.assertContains(response, 'ascending')
+
+        response = self.client.get('/page/1/order/created_time/dir/desc')
+        self.assertContains(response, 'Page 1 of 2')
+        self.assertContains(response, 'date added')
+        self.assertContains(response, 'by date')
+        self.assertContains(response, 'descending')
+
+
 
     def test_upload_with_utf8(self):
         response = self._upload('The-Adventures-of-Sherlock-Holmes_Arthur-Conan-Doyle.epub')

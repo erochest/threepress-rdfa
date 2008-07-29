@@ -71,6 +71,7 @@ class EpubArchive(BookwormModel):
     name = models.CharField(max_length=2000)
     owner = models.ForeignKey(User)
     authors = models.ManyToManyField('BookAuthor')
+    orderable_author = models.CharField(max_length=1000, default='')
 
     title = models.CharField(max_length=5000)
     opf = models.TextField()
@@ -117,6 +118,7 @@ class EpubArchive(BookwormModel):
     def author(self):
         '''This method returns the author, if only one, or the first author in
         the list with ellipses for additional authors.'''
+
         if not self.authors:
             return None
         a = self.authors.all()
@@ -178,14 +180,13 @@ class EpubArchive(BookwormModel):
         try:
             container = z.read(self._CONTAINER)
         except KeyError:
-            raise InvalidEpubException('Was not able to locate container file', archive=self)
+            raise InvalidEpubException('Was not able to locate container file %s' % self._CONTAINER, archive=self)
 
         parsed_container = util.xml_from_string(container)
 
         opf_filename = self._get_opf_filename(parsed_container)
 
         content_path = self._get_content_path(opf_filename)
-
         self.opf = z.read(opf_filename)
         parsed_opf = util.xml_from_string(self.opf)
 
@@ -200,6 +201,8 @@ class EpubArchive(BookwormModel):
         parsed_toc = util.xml_from_string(self.toc)
 
         self.authors = self._get_authors(parsed_opf)
+        self.orderable_author = self.safe_author()
+
         self.title = self._get_title(parsed_opf) 
 
         self._get_content(z, parsed_opf, parsed_toc, items, content_path)
@@ -219,7 +222,7 @@ class EpubArchive(BookwormModel):
             # We have no extra path info; this document's content is at the root
             return ''
         else:
-            return paths[0] + '/'
+            return '/'.join(paths[:-1]) + '/'
  
     def _get_toc(self, opf, items, content_path):
         '''Parse the opf file to get the name of the TOC
@@ -236,6 +239,8 @@ class EpubArchive(BookwormModel):
         raise InvalidEpubException("Could not find an item matching %s in OPF <item> list" % (tocid), archive=self)
 
     def _get_authors(self, opf):
+        '''Retrieves a list of authors from the opf file, tagged as dc:creator.  It is acceptable
+        to have no author or even an empty dc:creator'''
         authors = [BookAuthor(name=a.text.strip()) for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG)) if a is not None and a.text is not None]
         if len(authors) == 0:
             logging.warn('Got empty authors string for book %s' % self.name)
@@ -244,11 +249,13 @@ class EpubArchive(BookwormModel):
         return authors
 
     def _get_title(self, xml):
+        '''Retrieves the title from dc:title in the OPF'''
         title = xml.findtext('.//{%s}%s' % (NS['dc'], constants.DC_TITLE_TAG)).strip()
         return title
 
     def _get_images(self, archive, items, content_path):
-        '''Images might be in a variety of formats, from JPEG to SVG.'''
+        '''Images might be in a variety of formats, from JPEG to SVG.  If they are
+        SVG they need to be specially handled as a text type.'''
         images = []
         for item in items:
             if 'image' in item.get('media-type'):
@@ -363,7 +370,11 @@ class EpubArchive(BookwormModel):
             if item_map.has_key(idref):
                 href = item_map[idref]
                 filename = '%s%s' % (content_path, href)
-                content = archive.read(filename)
+                try:
+                    content = archive.read(filename)
+                except:
+                    raise InvalidEpubException('Could not find file %s in archive even though it was listed in the OPF file' % filename,
+                                               archive=self)
                     
                 # We store the raw XHTML and will process it for display on request
                 # later
@@ -413,12 +424,15 @@ class EpubArchive(BookwormModel):
         good enough for all but the oddest cases (revisions?)'''
         return self.author()
 
+    class Meta:
+        ordering = ('-created_time', 'title')
 
     def __unicode__(self):
         return '%s by %s (%s)' % (self.title, self.author(), self.name)
 
 
 class BookAuthor(BookwormModel):
+    '''Authors are not normalized as there is no way to guarantee uniqueness across names'''
     name = models.CharField(max_length=2000)
     def __str__(self):
         return self.name
@@ -700,3 +714,7 @@ class ImageBlob(BinaryBlob):
 class InvalidBinaryException(InvalidEpubException):
     pass
 
+
+order_fields = { 'title': 'book title',
+                 'orderable_author': 'first author',
+                 'created_time' : 'date added to your library' }

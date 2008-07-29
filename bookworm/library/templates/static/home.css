@@ -34,10 +34,13 @@
 #bw-library {
     width:100%;
     background-color: rgb(248, 255, 239);
-    border-top: 1px dotted gray;
+    border-collapse:collapse;
 }
 #bw-library .bw-title, #bw-library .bw-author {
     font-size: medium;
+}
+#bw-library td.bw-title-container {
+   width: 50%;
 }
 #bw-library .bw-author {
     padding-left: 5px;
@@ -110,7 +113,7 @@ form {
 }
 #bw-leftnav ol li a {
   text-decoration:none;
-  border-bottom: 1px dotted  rgb(200,200,200);
+  border-bottom: 1px dotted rgb(200,200,200);
   line-height:1.3em;
 }
 #bw-lost-password {
@@ -118,4 +121,42 @@ form {
 }
 input {
  -moz-border-radius:10px;
+}
+table.bw-pagination {
+  width:100%;
+  padding:1em;
+}
+table.bw-pagination th {
+  width:33%;
+  color:gray;
+}
+#bw-library td.bw-title-container {
+  width: 50%;
+}
+
+#bw-library td.bw-attribution-container {
+  width: 20%;
+}
+
+#bw-library td.bw-added-container {
+  width: 20%;
+}
+#bw-library span.bw-added {
+  color: gray;
+}
+#bw-library span.bw-title a {
+
+}
+
+table.bw-pagination a {
+   text-decoration: none;
+}
+
+#bw-library th {
+  background-color: rgb(228, 235, 219);
+  border:none;
+  margin:0;
+}
+.bw-pagination-arrow {
+  color:gray;
 }

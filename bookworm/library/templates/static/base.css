@@ -254,6 +254,11 @@ li.bw-first {
   font-weight: bold;
   font-size: larger;
 }
+#bw-library th {
+  background:white;
+  border-bottom:1px dotted gray;
+  padding: .5em;
+}
 /*
 #bw-content h1, #bw-content h2, #bw-content h3  {
   color: black;

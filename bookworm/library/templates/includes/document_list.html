@@ -1,14 +1,32 @@
+
+<table class="bw-pagination">
+  {% include "includes/pagination.html" %}
+</table>
+
 <table id="bw-library">
-  {% for d in documents %}
   <tr>
-    <td>
+    <th><a href="{% url index-reorder page.number,"title",reverse_dir %}">Title
+    {% ifequal order "title" %}<span class="bw-pagination-arrow">{% ifequal "asc" reverse_dir %}↓{% else %}↑{% endifequal %}</span>{% endifequal %}
+    </a></th>
+    <th><a href="{% url index-reorder page.number,"orderable_author",reverse_dir %}">Author
+    {% ifequal order "orderable_author" %}<span class="bw-pagination-arrow">{% ifequal "asc" reverse_dir %}↓{% else %}↑{% endifequal %}</span>{% endifequal %}
+    </a></th>
+    <th><a href="{% url index-reorder page.number,"created_time",reverse_dir %}">Date added
+    {% ifequal order "created_time" %}<span class="bw-pagination-arrow">{% ifequal "asc" reverse_dir %}↓{% else %}↑{% endifequal %}</span>{% endifequal %}
+</a></th>
+    <th>&nbsp;</th>
+  </tr>
+
+  {% for d in page.object_list %}
+  <tr>
+    <td class="bw-title-container">
       <span class="bw-title"><a href="{% url library.views.view d.safe_title,d.key %}">{{ d.title}}</a></span>
     </td>
-    <td>
-      <span class="bw-attribution">{% if d.author %}by <span class="bw-author">{{ d.author }}</span>{% endif %}</span>
+    <td class="bw-attribution-container">
+    <span class="bw-attribution">{% if d.author %}<span class="bw-author">{{ d.author }}</span>{% endif %}</span>
     </td>
-    <td>
-      added on <span class="bw-added">{{ d.created_time|date:"l, F j Y" }}</span>
+    <td class="bw-added-container">
+      <span class="bw-added">{{ d.created_time|date:"l, F j Y" }}</span>
     </td>
     {% if common.is_admin %}
       {% if show_owner %}
@@ -31,4 +49,8 @@
     </td>
   </tr>
   {% endfor %}
+
+</table>
+<table class="bw-pagination">
+  {% include "includes/pagination.html" %}
 </table>

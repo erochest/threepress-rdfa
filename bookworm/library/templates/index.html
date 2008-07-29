@@ -36,9 +36,12 @@
 {% if documents.count %}
 <h2>Books in your library</h2>
 
-<p>The books listed below have been added to your library and are available for reading online:</p>
+{% if order_text %}<p>Books are listed by <em>{{ order_text }}</em> in <em>{{ order_direction }}</em> order {{ order_adverb }}.</p>{% endif %}
 
 {% include "includes/document_list.html" %} 
+
+<p style="color:gray">You can re-order your books by clicking on "title", "author" or "date added". Clicking on the same label twice will reverse the order.</p>
+
 {% else %}
 <h1 id="bw-logo-image-header"><img id="bw-logo-image" src="/static/bookworm-logo.png" alt="Bookworm" /></h1> 
 <p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p> 

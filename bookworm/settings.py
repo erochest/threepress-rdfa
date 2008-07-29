@@ -80,6 +80,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     '%s/library/templates/auth' % ROOT_PATH,    
     '%s/library/templates' % ROOT_PATH,
+    '%s/library/templates/includes' % ROOT_PATH,    
 
 )
 
@@ -100,5 +101,13 @@ AUTH_PROFILE_MODULE = "library.userpref"
 
 ugettext = lambda s: s
 LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
+
+DEFAULT_NUM_RESULTS = 2
+DEFAULT_START_PAGE = 1
+DEFAULT_ORDER_FIELD = 'created_time'
+DEFAULT_ORDER_DIRECTION = 'desc'
+VALID_ORDER_DIRECTIONS = ('asc', 'desc')
+VALID_ORDER_FIELDS = ('created_time', 'title', 'orderable_author')
+
 
 MOBILE = False

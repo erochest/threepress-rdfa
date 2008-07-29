@@ -24,6 +24,9 @@ urlpatterns = patterns('',
                        
                        # Bookworm
                        url(r'^$', index, name="index"),                        
+                       url(r'^page/(?P<page_number>\d+)$', index, name="index-paginate"),  
+                       url(r'^page/(?P<page_number>\d+)/order/(?P<order>[^/]+)/dir/(?P<dir>.+)$', 
+                           index, name="index-reorder"),  
                        
                        url(r'^upload/$', upload, name="upload"),
 
