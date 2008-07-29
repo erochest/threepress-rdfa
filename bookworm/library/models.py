@@ -555,11 +555,15 @@ class ImageFile(BookwormFile):
 
     def delete(self):
         b = self._blob()
-        b.delete()
+        if b:
+            b.delete()
         super(ImageFile, self).save()
 
     def _blob(self):
         '''Gets the blob related to this image'''
+        b = self._blob_class().objects.filter(image=self)
+        if len(b) == 0:
+            return None
         return self._blob_class().objects.filter(image=self)[0]        
 
     def _blob_class(self):
