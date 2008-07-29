@@ -561,8 +561,12 @@ class ImageFile(BookwormFile):
 
     def _blob(self):
         '''Gets the blob related to this image'''
-        b = self._blob_class().objects.filter(image=self)
-        if len(b) == 0:
+        try:
+            b = self._blob_class().objects.filter(image=self)
+            if len(b) == 0:
+                return None
+        except IndexError:
+            # This error is odd; possibly in Django?
             return None
         return self._blob_class().objects.filter(image=self)[0]        
 
