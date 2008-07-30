@@ -343,6 +343,7 @@ def upload(request):
                 # Let's see what's wrong with this by asking epubcheck too, since it will let us know if it's our bug
                 import urllib
                 resp = urllib.urlopen('http://www.threepress.org/epubcheck-service/', data.getvalue())
+                epubcheck_response = None
                 if resp:
                     d = resp.read()
                     if d:
