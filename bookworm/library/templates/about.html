@@ -8,8 +8,19 @@
  li { line-height: 1.5em; padding-bottom: 1em;}
  #bw-leftnav ul { list-style-type: none; padding:0;margin:0; color: gray; }
  hr { margin:3em 10px 1em 0; }
-#bw-leftnav h2 {
+ #bw-leftnav h2 {
   color: gray;
+ }
+ #bw-howto {
+   font-size: large;
+   padding: .25em;
+   padding-bottom:0;
+
+ }
+#bw-howto #bw-howto-list a {
+   color: black !important;
+}
+#bw-howto-list {
 }
 </style>
 {% endblock head %}
@@ -44,15 +55,33 @@ For more information about Threepress, please visit our <a href="http://www.thre
     <strong>Bookworm</strong> is an experimental platform for storing and reading ePub-format books online.
   </p>
 
+  <h2>How does it work?  What do I download?</h2>
+  <p>
+    The great thing about Bookworm is there's nothing to download!  Here's how it works:
+  </p>
+  <div id="bw-howto">
+    <ol id="bw-howto-list">
+      <li> <a href="{% url user_signup %}">Create a Bookworm account</a> </li>
+      <li> <a href="{% url upload %}">Upload an ePub book</a></li>
+      <li> Start reading by just clicking on the book title in your library!</li>
+    </ol>
+  </div>
+  <p>
+    Because your books are stored on the Bookworm site, you can read them from any web browser
+    and on most mobile web devices, anywhere in the world!  We're working on ways to read your
+    book content on your mobile phone even when you aren't connected to the internet.
+  </p>
+
   <h2>What's ePub?</h2>
   <p>
-    ePub is the open e-book standard developed by the <a href="http://www.idpf.org/">International Digital Publishing Forum</a> (<acronym>IDPF</acronym>).  It is based on a number of other open standards including XHTML, making it ideally suited to be read on web browsers.
+    ePub is the open ebook standard developed by the <a href="http://www.idpf.org/">International Digital Publishing Forum</a> (<acronym>IDPF</acronym>).  It is based on a number of other open standards including XHTML, making it ideally suited to be read on web browsers.
   </p>
 
   <h2>Can I use Bookworm on my mobile device?</h2>
   <p>
     Absolutely!  A special version of the site optimized for mobile devices (especially 
     the iPhone) is available at <a href="http://mobile.threepress.org/">http://mobile.threepress.org/</a>.
+    It has also been tested on the Blackberry, Opera Mobile and the Kindle's Whispernet service.
   </p>
   <h2>Where can I get ePub-formatted books?</h2>
   <p>
@@ -64,15 +93,37 @@ For more information about Threepress, please visit our <a href="http://www.thre
     </ul>
   </p>
 
-  <h2>Bookworm is not:</h2>
+  <h2>I'm a publisher and I have questions or feature requests</h2>
+  <p>
+    Threepress is a publisher-serving corporation with many years of experience in building
+    products in the industry.  We would be happy to discuss the ePub format, getting your books
+    into ePub and even extending Bookworm with custom features for your publications.  Please
+    contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
+    and we'll get back to you right away.
+  </p>
 
-  <ol>
-    <li> <em>A general ebook platform</em>. There are many good standalone ebook readers for computers, including <a href="http://www.adobe.com/products/digitaleditions/">Adobe Digital Editions</a>, <a href="http://www.fbreader.org/">FBReader</a> and <a href="http://www.lexcycle.com/">Stanza</a>. Bookworm is meant specifically to test the viability of using ordinary web browsers as ePub rendering engines, not to host PDF, Mobi, or other formats.</li>
-    <li> <em>An ebook sharing site</em>.  There are currently no plans to support sharing of books on Bookworm.  I feel it would be detrimental to the adoption of DRM-free e-books to encourage digital distribution at this critical time. 
-    </li>
-    <li> <em>Mature software</em>.  Your books may be deleted or altered at any time as features are added or modified.  Please store your books locally.
-    </li>
-  </ol>
+  <h2>Will other book formats be supported, such as PDF or mobi? What about DRM ebooks?</h2>
+  <p>
+    Bookworm is meant to push adoption of the open ePub format and there are no plans to 
+    support closed formats like mobi or those with limited flexibility like PDF.  
+  </p>
+  <p>
+    DRM (digital rights management) has been shown to be detrimental to technology adoption,
+    does not significantly prevent piracy, and provides a terrible user experience.
+    Bookworm will never support DRM'ed ebooks that require special software to unlock.
+    Instead we encourage publishers to explore forms of "soft" DRM (such as watermarking digital books with the name of the purchaser).
+  </p>
+  <h2>Is it possible to share my books with other Bookworm users, or link to one of my books?</h2>
+  <p>There are currently no plans to support sharing of books on Bookworm.  We feel it would be detrimental to the adoption of DRM-free ebooks to encourage digital distribution at this critical time.  However, individual publishers may choose to opt-in for sharing notes, books or other special features.  Please contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> for more information.    
+  </p>
+
+  <h2>Are my books securely stored and backed up?</h2>
+  <p>
+    No.  Bookworm is not a commercial product and has limited financial and legal resources.
+    No guarantees are provided for the security of your books or the reliability of the service.
+    Please do not upload sensitive material (e.g. pre-print books, or internal corporate documents).
+    Store copies of all your books on your own computers.
+  </p>
 
   <h2>Who is responsible for Bookworm?</h2>
   <p>
