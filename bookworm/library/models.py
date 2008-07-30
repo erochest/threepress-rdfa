@@ -428,15 +428,14 @@ class EpubArchive(BookwormModel):
         ordering = ('-created_time', 'title')
 
     def __unicode__(self):
-        return '%s by %s (%s)' % (self.title, self.author(), self.name)
+        return u'%s by %s (%s)' % (self.title, self.author(), self.name)
 
 
 class BookAuthor(BookwormModel):
     '''Authors are not normalized as there is no way to guarantee uniqueness across names'''
     name = models.CharField(max_length=2000)
-    def __str__(self):
+    def __unicode__(self):
         return self.name
-
 
 class BookwormFile(BookwormModel):
     '''Abstract class that represents a file in the database'''
@@ -449,8 +448,8 @@ class BookwormFile(BookwormModel):
         return self.file
     class Meta:
         abstract = True
-    def __str__(self):
-        return "%s [%s]" % (self.filename, self.archive.title)
+    def __unicode__(self):
+        return u"%s [%s]" % (self.filename, self.archive.title)
 
 class HTMLFile(BookwormFile):
     '''Usually an individual page in the ebook'''
