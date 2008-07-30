@@ -32,6 +32,8 @@ class AbstractDocument():
     def part_list(self):
         '''The implementation here will be different for each model type'''
         pass
+    class Meta:
+        abstract = True
 
 class AbstractChapter():
     '''A Chapter in an AbstractDocument'''
@@ -55,6 +57,8 @@ class AbstractChapter():
             text = self.title
         return '<a href="%s">%s</a>' % (self.get_absolute_url(), self.title)
 
+    class Meta:
+        abstract = True
 class EpubDocument(AbstractDocument):
     '''A document derived out of an epub package'''
     chapters = []

@@ -1,9 +1,8 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
+
 from django.contrib.sitemaps import FlatPageSitemap
 from threepress.search.threepress_sitemap import ThreepressSitemap
-from django_restapi.model_resource import Collection
-from django_restapi.responder import XMLResponder
 from django_restapi.resource import Resource
 from threepress.search.epubcheck import validate
 from django.http import HttpResponse
@@ -11,6 +10,9 @@ from django.http import HttpResponse
 from django.contrib import admin
 
 import sys
+
+admin.autodiscover()
+
 
 sitemaps = {
     'flatpages' : FlatPageSitemap,
