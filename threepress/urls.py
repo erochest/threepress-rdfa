@@ -7,6 +7,9 @@ from django_restapi.responder import XMLResponder
 from django_restapi.resource import Resource
 from threepress.search.epubcheck import validate
 from django.http import HttpResponse
+
+from django.contrib import admin
+
 import sys
 
 sitemaps = {
@@ -20,7 +23,7 @@ urlpatterns = patterns('',
                        # (r'^threepress/', include('threepress.foo.urls')),
                        
                        # Uncomment this for admin:
-                       (r'^admin/', include('django.contrib.admin.urls')),
+                       (r'^admin/(.*)',  admin.site.root),
 
                        # Sitemaps
                        (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
