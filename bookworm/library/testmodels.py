@@ -14,6 +14,9 @@ class MockEpubArchive(EpubArchive):
     def get_metadata(self, tag, opf):
         return self._get_metadata(tag, opf)
 
+    def get_title(self, opf):
+        return self._get_title(opf)
+
     def _blob_class(self):
         return MockEpubBlob
 

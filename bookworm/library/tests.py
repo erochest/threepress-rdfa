@@ -522,6 +522,30 @@ class TestModels(unittest.TestCase):
         document.save()
         self.assertEquals('OPF in subdir', document.title)
 
+    def testNoTitleInOpf(self):
+        '''Documents without titles should return a helpful error rather than crash'''
+        filename = 'no-title.opf'
+        document = MockEpubArchive(name=filename)
+        opf = _get_file(filename)
+        parsed_opf = util.xml_from_string(opf)
+        try:
+            document.get_title(parsed_opf)
+        except InvalidEpubException:
+            return
+        raise Exception('Failed to get invalid epub exception for title')
+
+    def testBlankTitleInOpf(self):
+        '''Documents without titles should return a helpful error rather than crash'''
+        filename = 'blank-title.opf'
+        document = MockEpubArchive(name=filename)
+        opf = _get_file(filename)
+        parsed_opf = util.xml_from_string(opf)
+        try:
+            document.get_title(parsed_opf)
+        except InvalidEpubException:
+            return
+        raise Exception('Failed to get invalid epub exception for title')
+        
         
     def create_document(self, document):
         epub = MockEpubArchive(name=document)
