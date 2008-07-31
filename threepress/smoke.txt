@@ -23,6 +23,14 @@ go /foo
 code 404
 find 'Page not found'
 
+go /document/epub-validate/
+code 200
+find 'Validate'
+formfile 1 "epub" "test.epub"
+submit
+code 200
+find 'is valid'
+
 go http://bookworm.threepress.org/
 code 200
 find 'bookworm'
