@@ -609,6 +609,13 @@ class TestViews(DjangoTestCase):
                              target_status_code=200)        
 
 
+    def test_upload_no_title(self):
+        response = self._upload('invalid-no-title.epub')
+        self.assertTemplateUsed(response, 'upload.html')
+        self.assertContains(response, 'This ePub document does not have a title.')
+        
+
+
     def test_next_previous(self):
         '''Assert that we can move next and previous through our list of books'''
         # Load enough books to exceed our settings pagination label
