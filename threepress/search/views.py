@@ -1,4 +1,4 @@
-import os.path, re, subprocess, sys, logging, urllib
+import os.path, re, subprocess, sys, logging, urllib, StringIO
 sys.path.append('/home/liza/threepress')
 
 from django.http import HttpResponseRedirect, Http404
@@ -31,10 +31,12 @@ def epub_validate(request):
         form = EpubValidateForm(request.POST, request.FILES)
         if form.is_valid():
 
-            data = form.cleaned_data['epub'].content
+            data = StringIO.StringIO()
+            for c in request.FILES['epub'].chunks():
+                data.write(c)
             document_name = form.cleaned_data['epub'].filename
             
-            validator = epubcheck.validate(document_name, data)
+            validator = epubcheck.validate(document_name, data.getvalue())
             # Strip the filename info from errors
             errors = ''; output = ''
             if validator.clean_errors():
