@@ -22,3 +22,9 @@ find 'Liza Daly'
 go /foo
 code 404
 find 'Page not found'
+
+go http://bookworm.threepress.org/
+code 200
+find 'bookworm'
+
+
