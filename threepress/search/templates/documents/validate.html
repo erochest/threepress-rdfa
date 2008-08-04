@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 
-{% block title %}Epub validation tool{% endblock title %}
+{% block title %}Validate ePub documents{% endblock title %}
 
 {% block head %}
 <style type="text/css">
@@ -14,11 +14,16 @@ li { padding-bottom: .5em; }
 
 {% block header %}
 <div class="document_title"><h1>Digital publishing tools → 
-<a href="{% url threepress.search.views.epub_validate %}">Validate an epub document</a></h1></div>
+<a href="{% url threepress.search.views.epub_validate %}">Validate an ePub document</a></h1></div>
 {% endblock %}
 
 {% block leftnav %}
 <p>This validator uses <a href="http://code.google.com/p/epubcheck/">epubcheck 0.9.5</a></p>
+
+<p>Once you have validated your document, consider uploading it to <a href="http://bookworm.threepress.org/">Bookworm</a> to view it in our highly-conformant ePub rendering system.
+</p>
+
+<p>More about <a href="/about/">threepress.org</a>.</p>
 
 {% if errors %}
 <h4>Error descriptions</h4>
@@ -54,7 +59,7 @@ An element is missing a required child.
 Example: XHTML <code>head</code> element that is missing <code>title</code>.</dd>
 
 <dt>mimetype entry missing or not the first in archive</dt>
-<dd>A valid epub file must contain an uncompressed file named <code>mimetype</code> as a first entry in the zip archive. That file must contain epub mime type (<code>application/epub+zip</code>).</dd>
+<dd>A valid ePub file must contain an uncompressed file named <code>mimetype</code> as a first entry in the zip archive. That file must contain ePub mime type (<code>application/epub+zip</code>).</dd>
 <dt>mimetype contains wrong type (application/epub+zip expected)</dt>
 <dd>
 Either mimetype is wrong or mimetype does not start at the proper byte offset in the archive. (OCF spec requires it to start at offset 38).</dd>
@@ -68,7 +73,7 @@ Either mimetype is wrong or mimetype does not start at the proper byte offset in
 
 
 
-<h2>Validate epub documents</h2>
+<h2>Validate ePub documents</h2>
 
 
 {% if errors %}
@@ -96,7 +101,7 @@ Either mimetype is wrong or mimetype does not start at the proper byte offset in
 
 
 <p>
-Upload a DRM-free epub document to validate it against the schemas supplied with the <a href="http://code.google.com/p/epubcheck/">epubcheck</a> tool.  Documents are not permanently stored on the system but take care not to upload any proprietary or sensitive documents. This tool provides no guarantees that any information it receives is secure.
+Upload a DRM-free ePub document to validate it against the schemas supplied with the <a href="http://code.google.com/p/epubcheck/">epubcheck</a> tool.  Documents are not permanently stored on the system but take care not to upload any proprietary or sensitive documents. This tool provides no guarantees that any information it receives is secure.
 </p>
   
 <form action="/document/epub-validate/" method="post" enctype="multipart/form-data">
