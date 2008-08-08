@@ -1,6 +1,6 @@
 # Library for calling an epub validator (current implementation is Java epub checker)
 from django.conf import settings
-import logging, os.path, subprocess, re
+import logging, os.path, subprocess
 
 class EpubValidator():
     output = None
@@ -51,8 +51,7 @@ class EpubValidator():
         if not self.errors:
             return None
         e = str(self.errors).replace(self.filepath, self.filename) 
-        error_list = [f.strip() for f in e.split('\n') if f]        
-        return '\n'.join(error_list)
+        return [f.strip() for f in e.split('\n') if f]
 
     def is_valid(self):
         if self.errors:

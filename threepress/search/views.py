@@ -37,31 +37,23 @@ def epub_validate(request):
             document_name = form.cleaned_data['epub'].name
             
             validator = epubcheck.validate(document_name, data.getvalue())
-            # Strip the filename info from errors
-            errors = ''; output = ''
-            if validator.clean_errors():
-                errors = urllib.quote_plus(validator.clean_errors())
-            if validator.output:
-                output = urllib.quote_plus(validator.output)
+            logging.info("back from validator")
 
-            return HttpResponseRedirect('/document/epub-validate/?document=%s&output=%s&errors=%s' % 
-                                        (urllib.quote_plus(document_name),
-                                         output,
-                                         errors
-                                         )
-                                        )
+            # Strip the filename info from errors
+            errors = validator.clean_errors()
+            output = validator.output
+            return render_to_response('documents/validate.html', 
+                                      {'form':form, 
+                                       'document':document_name,
+                                       'output':output, 
+                                       'errors':errors})
+
+
+                
     else:
         form = EpubValidateForm()
     output = None; errors = None; document = None
      
-    if request.GET.has_key('output'):
-        output = request.GET['output']
-    if request.GET.has_key('errors'):
-        errors = [f.strip() for f in request.GET['errors'].split('\n') if f]
-    if request.GET.has_key('document'):
-        document = request.GET['document']
-
-
     return render_to_response('documents/validate.html', {'form':form, 'output':output, 'errors':errors,'document':document})
     
 
