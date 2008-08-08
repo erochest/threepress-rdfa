@@ -34,7 +34,7 @@ def epub_validate(request):
             data = StringIO.StringIO()
             for c in request.FILES['epub'].chunks():
                 data.write(c)
-            document_name = form.cleaned_data['epub'].filename
+            document_name = form.cleaned_data['epub'].name
             
             validator = epubcheck.validate(document_name, data.getvalue())
             # Strip the filename info from errors
