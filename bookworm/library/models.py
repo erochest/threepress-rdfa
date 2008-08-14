@@ -462,6 +462,9 @@ class HTMLFile(BookwormFile):
         '''If we don't have any processed content, process it and cache the
         results in the database.'''
 
+        # Mark this chapter as last-read
+        self.read()
+
         if self.processed_content:
             return self.processed_content
         
@@ -495,7 +498,7 @@ class HTMLFile(BookwormFile):
             logging.error("Could not cache processed document, error was: " + sys.exc_value)
 
         # Mark this chapter as last-read
-        self.read()
+
 
         return body_content
 
