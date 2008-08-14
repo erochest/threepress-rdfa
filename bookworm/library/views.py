@@ -13,7 +13,7 @@ from django.core.paginator import Paginator, EmptyPage
 
 from django_authopenid.forms import DeleteForm
 from models import EpubArchive, HTMLFile, UserPref, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields
-from forms import EpubValidateForm
+from forms import EpubValidateForm, ProfileForm
 from epub import constants as epub_constants
 from epub import InvalidEpubException
 from django.conf import settings
@@ -91,9 +91,9 @@ def index(request,
 @login_required
 def profile(request):
     _check_switch_modes(request)
-    form = DeleteForm(user=request.user)
 
     uprofile = request.user.get_profile()
+    
     if request.openid:
         sreg = request.openid.sreg
         # If we have the email from OpenID and not in their profile, pre-populate it
@@ -111,27 +111,45 @@ def profile(request):
             uprofile.country = sreg['country']
         uprofile.save()
         _check_switch_modes(request)
-    return render_to_response('auth/profile.html', {'form':form, 'prefs':uprofile}, context_instance=RequestContext(request))
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=uprofile)
+        if form.is_valid():
+            form.save()
+        message = "Your profile has been updated."
+    else:
+        form = ProfileForm(instance=uprofile)
+        message = None
+
+    return render_to_response('auth/profile.html', {'form':form, 'prefs':uprofile, 'message':message}, context_instance=RequestContext(request))
 
 @login_required
-def view(request, title, key):
-    '''If we view just a document, we want to see the first item in the <opf:spine>,
-    as required by the epub specification.'''
-    logging.info("Looking up title %s, key %s" % (title, key))
+def view(request, title, key, first=False, resume=False):
+    '''If we view just a document, we want to either see our last chapter,
+    or see the first item in the <opf:spine>, as required by the epub specification.'''
+    logging.debug("Looking up title %s, key %s" % (title, key))
     _check_switch_modes(request)
     document = _get_document(request, title, key)
-    toc = document.get_toc()
-    first = toc.first_item()
-    o = get_file_by_item(first, document)
-    if o is None:
-        logging.error('Could not find an item with the id of %s' % first)
-        raise Http404
-    return view_chapter(request, title, key, o.filename)
+
+    uprofile = request.user.get_profile()
+
+    if resume and document.last_chapter_read is not None:
+        chapter = document.last_chapter_read
+    elif not first and uprofile.open_to_last_chapter and document.last_chapter_read is not None:
+        chapter = document.last_chapter_read
+    else:
+        toc = document.get_toc()
+        first = toc.first_item()
+        chapter = get_file_by_item(first, document)
+        if chapter is None:
+            logging.error('Could not find an item with the id of %s' % first)
+            raise Http404
+    return view_chapter(request, title, key, None, chapter=chapter)
 
   
 @login_required
 def view_document_metadata(request, title, key):
-    logging.info("Looking up metadata %s, key %s" % (title, key))
+    logging.debug("Looking up metadata %s, key %s" % (title, key))
     _check_switch_modes(request)
     document = _get_document(request, title, key)
     return render_to_response('view.html', {'document':document}, 
@@ -149,7 +167,7 @@ def delete(request):
     if request.POST.has_key('key') and request.POST.has_key('title'):
         title = request.POST['title']
         key = request.POST['key']
-        logging.info("Deleting title %s, key %s" % (title, key))
+        logging.debug("Deleting title %s, key %s" % (title, key))
         if request.user.is_superuser:
             document = _get_document(request, title, key, override_owner=True)
         else:
@@ -207,11 +225,16 @@ def _check_switch_modes(request):
 
 
 @login_required    
-def view_chapter(request, title, key, chapter_id):
-    logging.info("Looking up title %s, key %s, chapter %s" % (title, key, chapter_id))    
+def view_chapter(request, title, key, chapter_id, chapter=None):
+    if chapter is not None:
+        chapter_id = chapter.id
+
+    logging.debug("Looking up title %s, key %s, chapter %s" % (title, key, chapter_id))    
     document = _get_document(request, title, key)
 
-    chapter = get_object_or_404(HTMLFile, archive=document, filename=chapter_id)
+    if chapter is None:
+        chapter = get_object_or_404(HTMLFile, archive=document, filename=chapter_id)
+
     stylesheets = StylesheetFile.objects.filter(archive=document)
     next = _chapter_next_previous(document, chapter, 'next')
     previous = _chapter_next_previous(document, chapter, 'previous')
@@ -257,7 +280,7 @@ def _chapter_next_previous(document, chapter, dir='next'):
 
 @login_required    
 def view_chapter_image(request, title, key, image):
-    logging.info("Image request: looking up title %s, key %s, image %s" % (title, key, image))        
+    logging.debug("Image request: looking up title %s, key %s, image %s" % (title, key, image))        
     document = _get_document(request, title, key)
     image = get_object_or_404(ImageFile, archive=document, filename=image)
     response = HttpResponse(content_type=str(image.content_type))
@@ -286,7 +309,7 @@ def view_chapter_frame(request, title, key, chapter_id):
 @login_required
 def view_stylesheet(request, title, key, stylesheet_id):
     document = _get_document(request, title, key)
-    logging.info('getting stylesheet %s' % stylesheet_id)
+    logging.debug('getting stylesheet %s' % stylesheet_id)
     stylesheet = get_object_or_404(StylesheetFile, archive=document,filename=stylesheet_id)
     response = HttpResponse(content=stylesheet.file, content_type='text/css')
     response['Cache-Control'] = 'public'
@@ -317,7 +340,7 @@ def upload(request):
                 data.write(c)
             #data.close()
             document_name = form.cleaned_data['epub'].name
-            logging.info("Uploading document name: %s" % document_name)
+            logging.debug("Uploading document name: %s" % document_name)
             document = EpubArchive(name=document_name)
             document.owner = request.user
             document.save()
@@ -373,7 +396,7 @@ def upload(request):
                 document.delete()
                 raise
             
-            logging.info("Successfully added %s" % document.title)
+            logging.debug("Successfully added %s" % document.title)
             return HttpResponseRedirect('/')
 
         return HttpResponseRedirect('/')
@@ -440,7 +463,7 @@ def _prefs(request):
         # Occurs when this is called on an anonymous user; ignore
         return None
     except UserPref.DoesNotExist:
-        logging.info('Creating a userprefs object for %s' % user.username)
+        logging.debug('Creating a userprefs object for %s' % user.username)
         # Create a preference object for this user
         userprefs = UserPref(user=user)
         userprefs.save()

@@ -20,7 +20,10 @@
   {% for d in page.object_list %}
   <tr>
     <td class="bw-title-container">
-      <span class="bw-title"><a href="{% url library.views.view d.safe_title,d.key %}">{{ d.title}}</a></span>
+      <span class="bw-title"><a href="{% url view d.safe_title,d.key %}">{{ d.title}}</a></span>
+      {% if d.last_chapter_read %}
+      <span class="bw-last-read">(last read <a href="{% url view_chapter d.safe_title,d.key,d.last_chapter_read.filename %}">{{ d.last_chapter_read.title }}</a>)</span>
+      {% endif %}
     </td>
     <td class="bw-attribution-container">
     <span class="bw-attribution">{% if d.author %}<span class="bw-author">{{ d.author }}</span>{% endif %}</span>

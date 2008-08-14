@@ -40,7 +40,17 @@
 
 {% include "includes/document_list.html" %} 
 
-<p style="color:gray">You can re-order your books by clicking on "title", "author" or "date added". Clicking on the same label twice will reverse the order.</p>
+<p style="color:gray">You can re-order your books by clicking on "title", "author" or "date added".
+ Clicking on the same label twice will reverse the order.</p>
+
+{% if request.session.common.prefs.open_to_last_chapter %}
+<p style="color:gray">You've set your account to always go to the last-read chapter in 
+a book (<a href="{% url profile %}">change this</a>).
+</p>
+{% else %}
+<p style="color:gray">There is a setting in your <a href="{% url profile %}">profile</a> 
+to enable always going to the last-read chapter in a book when clicking on a book's title.</p>
+{% endif %}
 
 {% else %}
 <h1 id="bw-logo-image-header"><img id="bw-logo-image" src="/static/bookworm-logo.png" alt="Bookworm" /></h1> 

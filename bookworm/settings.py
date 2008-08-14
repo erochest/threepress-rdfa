@@ -1,7 +1,5 @@
 import os
 
-from local import *
-
 # Django settings for bookworm project.
 
 ADMINS = (
@@ -95,14 +93,14 @@ INSTALLED_APPS = (
     'django_authopenid',
     'django_evolution',
     'library',
-)
+    )
 
 AUTH_PROFILE_MODULE = "library.userpref"
 
 ugettext = lambda s: s
 LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
 
-DEFAULT_NUM_RESULTS = 2
+DEFAULT_NUM_RESULTS = 20
 DEFAULT_START_PAGE = 1
 DEFAULT_ORDER_FIELD = 'created_time'
 DEFAULT_ORDER_DIRECTION = 'desc'
@@ -110,4 +108,8 @@ VALID_ORDER_DIRECTIONS = ('asc', 'desc')
 VALID_ORDER_FIELDS = ('created_time', 'title', 'orderable_author')
 
 
+MOBILE_DEVICE_AGENTS = ('kindle', 'iphone')
 MOBILE = False
+
+from local import *
+

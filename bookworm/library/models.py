@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-#from xml.etree import cElementTree as ET
 from lxml import etree as ET
 import lxml.html
 from zipfile import ZipFile
@@ -53,6 +52,7 @@ def get_file_by_item(item, document) :
 class BookwormModel(models.Model):
     '''Base class for all models'''
     created_time = models.DateTimeField('date created', default=datetime.datetime.now())
+
     def key(self):
         '''Backwards compatibility with templates'''
         return self.id
@@ -63,11 +63,6 @@ class BookwormModel(models.Model):
 class EpubArchive(BookwormModel):
     '''Represents an entire epub container'''
 
-    _CONTAINER = constants.CONTAINER     
-
-    _parsed_metadata = None
-    _parsed_toc = None
-
     name = models.CharField(max_length=2000)
     owner = models.ForeignKey(User)
     authors = models.ManyToManyField('BookAuthor')
@@ -77,6 +72,11 @@ class EpubArchive(BookwormModel):
     opf = models.TextField()
     toc = models.TextField()
     has_stylesheets = models.BooleanField(default=False)
+    last_chapter_read = models.ForeignKey('HTMLFile', null=True)
+
+    _CONTAINER = constants.CONTAINER     
+    _parsed_metadata = None
+    _parsed_toc = None
 
     def __init__(self, *args, **kwargs):
         # If the filename itself has a path (this happens with Twill), just get its basename value
@@ -84,26 +84,29 @@ class EpubArchive(BookwormModel):
             kwargs['name'] = os.path.basename(kwargs['name'])
         super(EpubArchive, self).__init__(*args, **kwargs)
 
-    def _blob_class(self):
-        return EpubBlob
+    def safe_title(self):
+        '''Return a URL-safe title'''
+        return safe_name(self.title)  
+
+    def safe_author(self):
+        '''We only use the first author name for our unique identifier, which should be
+        good enough for all but the oddest cases (revisions?)'''
+        return self.author()
 
     def get_content(self):
         blob = self._blob_class()
-        try:
-            epub = blob.objects.filter(archive=self)[0]
-        except IndexError:
-            raise blob.ObjectNotFound
+        epub = blob.objects.get(archive=self)
         return epub.get_data()
 
     def delete(self):
         blob = self._blob_class()
         try:
-            epub = blob.objects.filter(archive=self)[0]
+            epub = blob.objects.get(archive=self)
             epub.delete()
             super(EpubArchive, self).delete()
-        except IndexError:
+        except blob.DoesNotExist:
             logging.error('Could not find associated epubblob, maybe deleted from file system?')
-
+            
 
 
     def set_content(self, c):
@@ -416,16 +419,9 @@ class EpubArchive(BookwormModel):
                         order=order)
         html.save()
         
-  
-                  
-    def safe_title(self):
-        '''Return a URL-safe title'''
-        return safe_name(self.title)  
 
-    def safe_author(self):
-        '''We only use the first author name for our unique identifier, which should be
-        good enough for all but the oddest cases (revisions?)'''
-        return self.author()
+    def _blob_class(self):
+        return EpubBlob
 
     class Meta:
         ordering = ('-created_time', 'title')
@@ -460,10 +456,12 @@ class HTMLFile(BookwormFile):
     order = models.PositiveSmallIntegerField(default=1)
     processed_content = models.TextField()
     content_type = models.CharField(max_length=100, default="application/xhtml")
+    is_read = models.BooleanField(default=False)
 
     def render(self):
         '''If we don't have any processed content, process it and cache the
-        results in the datastore.'''
+        results in the database.'''
+
         if self.processed_content:
             return self.processed_content
         
@@ -496,7 +494,17 @@ class HTMLFile(BookwormFile):
         except: 
             logging.error("Could not cache processed document, error was: " + sys.exc_value)
 
+        # Mark this chapter as last-read
+        self.read()
+
         return body_content
+
+    def read(self):
+        '''Mark this page as read by updated the related book object'''
+        self.archive.last_chapter_read = self
+        self.archive.save()
+        self.is_read = True
+        self.save()
 
     def _clean_xhtml(self, xhtml):
         '''This is only run the first time the user requests the HTML file; the processed HTML is then cached'''
@@ -579,12 +587,14 @@ class ImageFile(BookwormFile):
 class UserPref(BookwormModel):
     '''Per-user preferences for this application'''
     user = models.ForeignKey(User, unique=True)
-    fullname = models.CharField(max_length=1000) # To ease OpenID integration
-    #openidurl = models.CharField(max_length=255)
-    country = models.CharField(max_length=100) 
-    language = models.CharField(max_length=100)
-    timezone = models.CharField(max_length=50)
-    nickname = models.CharField(max_length=500)
+    fullname = models.CharField(max_length=1000, blank=True) # To ease OpenID integration
+    country = models.CharField(max_length=100, blank=True) 
+    language = models.CharField(max_length=100, blank=True)
+    timezone = models.CharField(max_length=50, blank=True)
+    nickname = models.CharField(max_length=500, blank=True)
+    open_to_last_chapter = models.BooleanField(default=False)
+
+    # Deprecated
     use_iframe = models.BooleanField(default=False)
     show_iframe_note = models.BooleanField(default=True)
 
@@ -723,6 +733,7 @@ class ImageBlob(BinaryBlob):
     
 class InvalidBinaryException(InvalidEpubException):
     pass
+
 
 
 order_fields = { 'title': 'book title',

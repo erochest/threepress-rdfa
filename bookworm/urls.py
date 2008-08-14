@@ -31,18 +31,21 @@ urlpatterns = patterns('',
                        url(r'^upload/$', upload, name="upload"),
 
                        # Images from within documents
-                       url(r'^(view|chapter)/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<image>.*(jpg|gif|png|svg)+)$', 
+                       url(r'^(view|chapter)/(?P<title>[^/]+)/(?P<key>[^/]+)/(first/|resume/)?(?P<image>.*(jpg|gif|png|svg)+)$', 
                            view_chapter_image, name="view_chapter_image"),                       
                        
                        # Document metadata
                        url(r'^metadata/(?P<title>.+)/(?P<key>.+)/$', view_document_metadata, name="view_document_metadata"),                       
 
-                       # View a chapter in frame mode - deprecated
-                       #(r'^chapter/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)$', 'library.views.view_chapter_frame'),                       
+                       # Force reading the first page of a document
+                       url(r'^view/(?P<title>.+)/(?P<key>[^/]+)/(?P<first>first)/$', view, name="view_first"),
+
+                       # Force resuming a document
+                       url(r'^view/(?P<title>.+)/(?P<key>[^/]+)/(?P<resume>resume)/$', view, name="view_resume"),
 
                        # View a chapter 
                        url(r'^view/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)$', view_chapter, name="view_chapter"),                       
-                       
+
                        # Main entry point for a document
                        url(r'^view/(?P<title>.+)/(?P<key>[^/]+)/$', view, name="view"),
 

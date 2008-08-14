@@ -28,6 +28,7 @@ from socket import gethostname
 
 from django.conf import settings
 
+
 # Data for public epub documents
 DATA_DIR = os.path.abspath('./library/test-data/data')
 
@@ -545,7 +546,27 @@ class TestModels(unittest.TestCase):
         except InvalidEpubException:
             return
         raise Exception('Failed to get invalid epub exception for title')
-        
+
+    def testReadChapter(self):
+      
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.user = self.user
+        document.explode()
+        document.save()
+        chapter = HTMLFile.objects.filter(archive=document)[0]
+        chapter.read()
+        document = EpubArchive.objects.get(name=filename)
+        self.assertEquals(chapter, document.last_chapter_read)
+
+        # Try rendering, then check that the last one is up-to-date
+        chapter2 = HTMLFile.objects.filter(archive=document)[1]
+        chapter2.render()
+        document = EpubArchive.objects.get(name=filename)
+        self.assertEquals(chapter2, document.last_chapter_read)
+
+        chapter3 = HTMLFile.objects.filter(archive=document)[1]
+        self.assertTrue(chapter3.is_read)
         
     def create_document(self, document):
         epub = MockEpubArchive(name=document)
@@ -558,7 +579,6 @@ class TestModels(unittest.TestCase):
 
 class TestViews(DjangoTestCase):
     def setUp(self):
-        logging.info('Calling setup')
         self.user = User.objects.create_user(username="testuser",email="test@example.com",password="testuser")
         self.user.save()        
 
@@ -805,7 +825,65 @@ class TestViews(DjangoTestCase):
                              target_status_code=200)   
         self.assertFalse(self.client.login(username='registertest', password='registertest'))                
 
-        
+
+    def test_open_to_last_chapter(self):
+        self._upload('Pride-and-Prejudice_Jane-Austen.epub')
+
+        uprofile = UserPref.objects.get(user=self.user)
+        uprofile.open_to_last_chapter = True
+        uprofile.save()
+
+        response = self.client.get('/view/Pride-and-Prejudice/1/')
+        self.assertTemplateUsed(response, 'view.html')        
+        first_page = response.content
+
+        # Read a page somewhere in the document
+        response = self.client.get('/view/Pride-and-Prejudice/1/chapter-10.html')
+        self.assertTemplateUsed(response, 'view.html')
+        last_chapter_content = response.content
+
+        # Now go to the default page; should be last chapter
+        response = self.client.get('/view/Pride-and-Prejudice/1/')
+        self.assertTemplateUsed(response, 'view.html')        
+        self.assertEquals(last_chapter_content, response.content)
+
+        # Now change our user profile to not select this behavior
+        uprofile.open_to_last_chapter = False
+        uprofile.save()
+
+        response = self.client.get('/view/Pride-and-Prejudice/1/')
+        self.assertTemplateUsed(response, 'view.html')        
+        self.assertNotEquals(last_chapter_content, response.content)        
+        self.assertEquals(first_page, response.content)
+
+        # But we should still be able to force it with the resume parameter
+        response = self.client.get('/view/Pride-and-Prejudice/1/resume/')
+        self.assertTemplateUsed(response, 'view.html')        
+        self.assertEquals(last_chapter_content, response.content)        
+        self.assertNotEquals(first_page, response.content)        
+
+    def test_force_first_page(self):
+        self._upload('Pride-and-Prejudice_Jane-Austen.epub')
+
+        uprofile = UserPref.objects.get(user=self.user)
+        uprofile.open_to_last_chapter = True
+        uprofile.save()
+
+        response = self.client.get('/view/Pride-and-Prejudice/1/')
+        self.assertTemplateUsed(response, 'view.html')        
+        first_page = response.content
+
+        # Read a page somewhere in the document
+        response = self.client.get('/view/Pride-and-Prejudice/1/chapter-10.html')
+        self.assertTemplateUsed(response, 'view.html')
+        last_chapter_content = response.content
+
+        # Force first chapter chapter
+        response = self.client.get('/view/Pride-and-Prejudice/1/first/')
+        self.assertTemplateUsed(response, 'view.html')        
+        self.assertEquals(first_page, response.content)        
+
+
     def _upload(self, f):
         self._login()
         fh = _get_filehandle(f)

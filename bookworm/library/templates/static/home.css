@@ -160,3 +160,11 @@ table.bw-pagination a {
 .bw-pagination-arrow {
   color:gray;
 }
+
+.bw-last-read {
+  display:block;
+  font-size:smaller;
+}
+.bw-last-read a {
+  text-decoration: underline !important;
+}
