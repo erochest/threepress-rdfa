@@ -14,22 +14,30 @@
     <th><a href="{% url index-reorder page.number,"created_time",reverse_dir %}">Date added
     {% ifequal order "created_time" %}<span class="bw-pagination-arrow">{% ifequal "asc" reverse_dir %}↓{% else %}↑{% endifequal %}</span>{% endifequal %}
 </a></th>
+    {% if not request.session.common.mobile %}
     <th>&nbsp;</th>
+    {% endif %}
   </tr>
 
   {% for d in page.object_list %}
   <tr>
     <td class="bw-title-container">
       <span class="bw-title"><a href="{% url view d.safe_title,d.key %}">{{ d.title}}</a></span>
-      {% if d.last_chapter_read %}
-      <span class="bw-last-read">(last read <a href="{% url view_chapter d.safe_title,d.key,d.last_chapter_read.filename %}">{{ d.last_chapter_read.title }}</a>)</span>
+      {% if d.last_chapter_read and d.last_chapter_read.title %}
+      <span class="bw-last-read">last read <a href="{% url view_chapter d.safe_title,d.key,d.last_chapter_read.filename %}">{{ d.last_chapter_read.title }}</a></span>
       {% endif %}
     </td>
     <td class="bw-attribution-container">
     <span class="bw-attribution">{% if d.author %}<span class="bw-author">{{ d.author }}</span>{% endif %}</span>
     </td>
     <td class="bw-added-container">
-      <span class="bw-added">{{ d.created_time|date:"l, F j Y" }}</span>
+      <span class="bw-added">
+         {% if request.session.common.mobile %}
+	    {{ d.created_time|date:"M j y"}}
+         {% else %}
+            {{ d.created_time|date:"l, F j Y" }}
+         {% endif %}
+       </span>
     </td>
     {% if common.is_admin %}
       {% if show_owner %}
@@ -38,6 +46,7 @@
       </td>
       {% endif %}
     {% endif %}
+    {% if not request.session.common.mobile %}
     <td>
       <span class="bw-delete">
       <form action="{% url library.views.delete %}" method="post">
@@ -50,6 +59,7 @@
     <td style="display:none">
       <span style="display:none" class="id_{{ d.safe_title}}">{{ d.id }}</span>
     </td>
+    {% endif %}
   </tr>
   {% endfor %}
 

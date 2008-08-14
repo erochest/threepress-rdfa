@@ -36,7 +36,9 @@
 {% if documents.count %}
 <h2>Books in your library</h2>
 
+{% if not request.session.common.mobile %}
 {% if order_text %}<p>Books are listed by <em>{{ order_text }}</em> in <em>{{ order_direction }}</em> order {{ order_adverb }}.</p>{% endif %}
+{% endif %}
 
 {% include "includes/document_list.html" %} 
 

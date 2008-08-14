@@ -230,3 +230,17 @@ width:auto;
 table.bw-meta th {
   width:auto;
 }
+
+.bw-last-read {
+  display:block;
+  font-size:inherit;
+  margin-top: .6em;
+  color:gray;
+}
+span.bw-last-read a:visited, span.bw-last-read a:link {
+  color:gray !important;
+}
+span.bw-title a{
+  font-size:large;
+  padding-bottom:.2em;
+}

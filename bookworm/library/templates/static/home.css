@@ -164,6 +164,8 @@ table.bw-pagination a {
 .bw-last-read {
   display:block;
   font-size:smaller;
+  margin-top: .4em;
+  color:gray;
 }
 .bw-last-read a {
   text-decoration: underline !important;
