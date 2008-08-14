@@ -25,7 +25,20 @@
  <h3 class="bw-profile"><a href="{% url library.views.profile %}">Edit your profile</a></h3>
 </div>
 
+
 {% include "includes/news.html" %}
+
+<p style="color:gray;font-size:smaller">Bookworm is a free service with no ads or corporate backing.  Please 
+consider making a donation to support innovation in open ebook software. (Note: threepress.org is not a charitable organization.)
+<form style="margin:0;padding:0;display:inline" name="_xclick" action="https://www.paypal.com/us/cgi-bin/webscr" method="post"/>
+<input type="hidden" name="cmd" value="_xclick"/>
+<input type="hidden" name="business" value="liza@threepress.org"/>
+<input type="hidden" name="item_name" value="Donation to threepress for Bookworm development"/>
+<input type="hidden" name="currency_code" value="USD"/>
+<input type="hidden" name="amount" value="10.00"/>
+<input value="Donate with PayPal" border="0" name="submit" type="submit"/>
+</form>
+</p>
 
 {% endblock leftnav %}
 
