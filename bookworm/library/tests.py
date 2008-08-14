@@ -567,7 +567,14 @@ class TestModels(unittest.TestCase):
 
         chapter3 = HTMLFile.objects.filter(archive=document)[1]
         self.assertTrue(chapter3.is_read)
-        
+
+    def testNoPlayOrderAttributeInToc(self):
+        filename = 'no-playorder.ncx'
+        f = _get_file(filename)
+        toc = TOC(f)
+        point = toc.find_points()[0]
+        self.assertRaises(InvalidEpubException, point.order)
+
     def create_document(self, document):
         epub = MockEpubArchive(name=document)
         epub.owner = self.user
@@ -857,6 +864,10 @@ class TestViews(DjangoTestCase):
         self.assertEquals(first_page, response.content)
 
         # But we should still be able to force it with the resume parameter
+        response = self.client.get('/view/Pride-and-Prejudice/1/chapter-10.html')
+        self.assertTemplateUsed(response, 'view.html')
+        last_chapter_content = response.content
+
         response = self.client.get('/view/Pride-and-Prejudice/1/resume/')
         self.assertTemplateUsed(response, 'view.html')        
         self.assertEquals(last_chapter_content, response.content)        

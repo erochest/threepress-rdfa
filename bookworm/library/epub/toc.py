@@ -5,6 +5,8 @@ import sys, logging
 from constants import NAMESPACES as NS
 from constants import ENC
 
+from . import InvalidEpubException
+
 # Helpers for dealing with TOC file and <spine> elements
 
 class TOC():
@@ -91,7 +93,7 @@ class TOC():
         for i in self.items:
             if i.linear == 'yes':
                 return i
-        raise Exception("Did not find any start items; malformed epub?")
+        raise InvalidEpubException("Did not find any start items; malformed epub?")
 
             
     def find_points(self, maxdepth=1):
@@ -229,7 +231,12 @@ class NavPoint():
         return ""
 
     def order(self):
-        return int(self.element.get('playOrder'))
+        try:
+            return int(self.element.get('playOrder'))
+        except TypeError:
+            logging.error('Could not find playOrder value in %s' % self.element)
+            raise InvalidEpubException('No playOrder attribute found in TOC element, but this is required')
+                       
 
     def href(self):
         return self.element.find('.//{%s}content' % (NS['ncx'])).get('src')
