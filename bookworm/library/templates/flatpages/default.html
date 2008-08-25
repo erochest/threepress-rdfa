@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% extends "base.html" %} 
+{% spaceless %}
+{% block title %}{{ flatpage.title }} {% endblock title %}
+{% endspaceless %}
+
+{% block main %}
+
+<div id="bw-content">
+  {{ flatpage.content }}
+</div>
+
+{% endblock main %}
+
