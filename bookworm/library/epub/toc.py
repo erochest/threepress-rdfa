@@ -217,7 +217,6 @@ class NavPoint():
     def find_children(self):
         '''Returns all the children of this NavPoint'''
         return [n for n in self.tree if n.parent is not None and n.parent.element.get('id') == self.element.get('id')]
-        #return self.tree.find_children(self)
         
     def find_descendants(self):
         '''Find all the descendants of a node'''

@@ -36,7 +36,9 @@ def unsafe_name(name):
 
 def get_file_by_item(item, document) :
     '''Accepts an Item and uses that to find the related file in the database'''
-    if item.media_type == XHTML_MIMETYPE:
+    if item.media_type == XHTML_MIMETYPE or 'text' in item.media_type:
+        # Allow semi-broken documents with media-type of 'text/html' or any text type
+        # to be treated as html
         html = HTMLFile.objects.filter(idref=item.id, archive=document)
         if html is not None and len(html) > 0:
             return html[0]
@@ -44,9 +46,10 @@ def get_file_by_item(item, document) :
         css = StylesheetFile.objects.filter(idref=item.id, archive=document)
         if css is not None and len(css) > 0:
             return css[0]
-    image = ImageFile.objects.filter(idref=item.id, archive=document)
-    if image is not None and len(image) > 0:
-        return image[0]
+    if 'image' in item.media_type:
+        image = ImageFile.objects.filter(idref=item.id, archive=document)
+        if image is not None and len(image) > 0:
+            return image[0]
     return None
     
 class BookwormModel(models.Model):

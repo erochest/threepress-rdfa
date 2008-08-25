@@ -11,7 +11,6 @@ from django.contrib import auth
 from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage
 
-from django_authopenid.forms import DeleteForm
 from models import EpubArchive, HTMLFile, UserPref, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields
 from forms import EpubValidateForm, ProfileForm
 from epub import constants as epub_constants
@@ -128,7 +127,9 @@ def profile(request):
 def view(request, title, key, first=False, resume=False):
     '''If we view just a document, we want to either see our last chapter,
     or see the first item in the <opf:spine>, as required by the epub specification.'''
+
     log.debug("Looking up title %s, key %s" % (title, key))
+
     _check_switch_modes(request)
     document = _get_document(request, title, key)
 
