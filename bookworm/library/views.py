@@ -18,6 +18,7 @@ from epub import constants as epub_constants
 from epub import InvalidEpubException
 from django.conf import settings
 
+log = logging.getLogger('views')
 
 def register(request):
     form = UserCreationForm()
@@ -127,7 +128,7 @@ def profile(request):
 def view(request, title, key, first=False, resume=False):
     '''If we view just a document, we want to either see our last chapter,
     or see the first item in the <opf:spine>, as required by the epub specification.'''
-    logging.debug("Looking up title %s, key %s" % (title, key))
+    log.debug("Looking up title %s, key %s" % (title, key))
     _check_switch_modes(request)
     document = _get_document(request, title, key)
 
@@ -142,14 +143,14 @@ def view(request, title, key, first=False, resume=False):
         first = toc.first_item()
         chapter = get_file_by_item(first, document)
         if chapter is None:
-            logging.error('Could not find an item with the id of %s' % first)
+            log.error('Could not find an item with the id of %s' % first)
             raise Http404
     return view_chapter(request, title, key, None, chapter=chapter)
 
   
 @login_required
 def view_document_metadata(request, title, key):
-    logging.debug("Looking up metadata %s, key %s" % (title, key))
+    log.debug("Looking up metadata %s, key %s" % (title, key))
     _check_switch_modes(request)
     document = _get_document(request, title, key)
     return render_to_response('view.html', {'document':document}, 
@@ -167,7 +168,7 @@ def delete(request):
     if request.POST.has_key('key') and request.POST.has_key('title'):
         title = request.POST['title']
         key = request.POST['key']
-        logging.debug("Deleting title %s, key %s" % (title, key))
+        log.debug("Deleting title %s, key %s" % (title, key))
         if request.user.is_superuser:
             document = _get_document(request, title, key, override_owner=True)
         else:
@@ -182,7 +183,7 @@ def profile_delete(request):
 
     if not request.POST.has_key('delete'):
         # Extra sanity-check that this is a POST request
-        logging.error('Received deletion request but was not POST')
+        log.error('Received deletion request but was not POST')
         message = "There was a problem with your request to delete this profile."
         return render_to_response('profile.html', { 'message':message})
 
@@ -190,7 +191,7 @@ def profile_delete(request):
         # And that we're POSTing from our own form (this is a sanity check, 
         # not a security feature.  The current logged-in user profile is always
         # the one to be deleted, regardless of the value of 'delete')
-        logging.error('Received deletion request but nickname did not match: received %s but current user is %s' % (request.POST['delete'], request.user.nickname()))
+        log.error('Received deletion request but nickname did not match: received %s but current user is %s' % (request.POST['delete'], request.user.nickname()))
         message = "There was a problem with your request to delete this profile."
         return render_to_response('profile.html', { 'message':message})
 
@@ -229,7 +230,7 @@ def view_chapter(request, title, key, chapter_id, chapter=None):
     if chapter is not None:
         chapter_id = chapter.id
 
-    logging.debug("Looking up title %s, key %s, chapter %s" % (title, key, chapter_id))    
+    log.debug("Looking up title %s, key %s, chapter %s" % (title, key, chapter_id))    
     document = _get_document(request, title, key)
 
     if chapter is None:
@@ -280,7 +281,7 @@ def _chapter_next_previous(document, chapter, dir='next'):
 
 @login_required    
 def view_chapter_image(request, title, key, image):
-    logging.debug("Image request: looking up title %s, key %s, image %s" % (title, key, image))        
+    log.debug("Image request: looking up title %s, key %s, image %s" % (title, key, image))        
     document = _get_document(request, title, key)
     image = get_object_or_404(ImageFile, archive=document, filename=image)
     response = HttpResponse(content_type=str(image.content_type))
@@ -309,7 +310,7 @@ def view_chapter_frame(request, title, key, chapter_id):
 @login_required
 def view_stylesheet(request, title, key, stylesheet_id):
     document = _get_document(request, title, key)
-    logging.debug('getting stylesheet %s' % stylesheet_id)
+    log.debug('getting stylesheet %s' % stylesheet_id)
     stylesheet = get_object_or_404(StylesheetFile, archive=document,filename=stylesheet_id)
     response = HttpResponse(content=stylesheet.file, content_type='text/css')
     response['Cache-Control'] = 'public'
@@ -340,7 +341,7 @@ def upload(request):
                 data.write(c)
             #data.close()
             document_name = form.cleaned_data['epub'].name
-            logging.debug("Uploading document name: %s" % document_name)
+            log.debug("Uploading document name: %s" % document_name)
             document = EpubArchive(name=document_name)
             document.owner = request.user
             document.save()
@@ -355,8 +356,8 @@ def upload(request):
                 #memcache.set('total_books', sysinfo.total_books)
 
             except BadZipfile:
-                logging.error('Non-zip archive uploaded: %s' % document_name)
-                logging.error(sys.exc_value)
+                log.error('Non-zip archive uploaded: %s' % document_name)
+                log.error(sys.exc_value)
                 message = 'The file you uploaded was not recognized as an ePub archive and could not be added to your library.'
                 document.delete()
                 return render_to_response('upload.html', {
@@ -374,9 +375,9 @@ def upload(request):
                             from epub import util
                             epubcheck_response =  util.xml_from_string(d)
                         except:
-                            logging.error('Got an error when trying to XML-ify the epubecheck response; ignoring: %s' % sys.exc_info()[1])
+                            log.error('Got an error when trying to XML-ify the epubecheck response; ignoring: %s' % sys.exc_info()[1])
                 
-                logging.error('Non epub zip file uploaded' % sys.exc_info()[1])
+                log.error('Non epub zip file uploaded' % sys.exc_info()[1])
                 message = "The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is: <p style='color:black;font-weight:normal'>%s</p>" % sys.exc_info()[1]
                 if epubcheck_response is not None:
                     if epubcheck_response.findtext('.//is-valid') == 'True':
@@ -384,19 +385,19 @@ def upload(request):
                     elif epubcheck_response.findtext('.//is-valid') == 'False':
                         message += "<p>epubcheck agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned: <pre style='color:black;font-weight:normal'>%s</pre></p>" % epubcheck_response.findtext('.//errors')
                     else:
-                        logging.error('Got an unexpected response from epubcheck, ignoring: %s' % d)
+                        log.error('Got an unexpected response from epubcheck, ignoring: %s' % d)
 
                 document.delete()
                 return render_to_response('upload.html', {'form':form, 
                                                           'message':message})                
             except:
                 # If we got any error, delete this document
-                logging.error('Got unknown error on request, deleting document')
-                logging.error(sys.exc_value)
+                log.error('Got unknown error on request, deleting document')
+                log.error(sys.exc_value)
                 document.delete()
                 raise
             
-            logging.debug("Successfully added %s" % document.title)
+            log.debug("Successfully added %s" % document.title)
             return HttpResponseRedirect('/')
 
         return HttpResponseRedirect('/')
@@ -442,7 +443,7 @@ def _get_document(request, title, key, override_owner=False):
     document = get_object_or_404(EpubArchive, pk=key)
 
     if not override_owner and document.owner != user and not user.is_superuser:
-        logging.error('User %s tried to access document %s, which they do not own' % (user, title))
+        log.error('User %s tried to access document %s, which they do not own' % (user, title))
         raise Http404
 
     return document
@@ -463,7 +464,7 @@ def _prefs(request):
         # Occurs when this is called on an anonymous user; ignore
         return None
     except UserPref.DoesNotExist:
-        logging.debug('Creating a userprefs object for %s' % user.username)
+        log.debug('Creating a userprefs object for %s' % user.username)
         # Create a preference object for this user
         userprefs = UserPref(user=user)
         userprefs.save()

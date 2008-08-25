@@ -1,6 +1,6 @@
 import logging
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
 # Local settings; should be overriden for each checkout
 DEBUG = True

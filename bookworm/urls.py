@@ -35,19 +35,19 @@ urlpatterns = patterns('',
                            view_chapter_image, name="view_chapter_image"),                       
                        
                        # Document metadata
-                       url(r'^metadata/(?P<title>.+)/(?P<key>.+)/$', view_document_metadata, name="view_document_metadata"),                       
+                       url(r'^metadata/(?P<title>[^/]+)/(?P<key>.+)/$', view_document_metadata, name="view_document_metadata"),                       
 
                        # Force reading the first page of a document
-                       url(r'^view/(?P<title>.+)/(?P<key>[^/]+)/(?P<first>first)/$', view, name="view_first"),
+                       url(r'^view/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<first>first)/$', view, name="view_first"),
 
                        # Force resuming a document
-                       url(r'^view/(?P<title>.+)/(?P<key>[^/]+)/(?P<resume>resume)/$', view, name="view_resume"),
+                       url(r'^view/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<resume>resume)/$', view, name="view_resume"),
 
                        # View a chapter 
-                       url(r'^view/(?P<title>.+)/(?P<key>.+)/(?P<chapter_id>.+)$', view_chapter, name="view_chapter"),                       
+                       url(r'^view/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<chapter_id>.+)$', view_chapter, name="view_chapter"),                       
 
                        # Main entry point for a document
-                       url(r'^view/(?P<title>.+)/(?P<key>[^/]+)/$', view, name="view"),
+                       url(r'^view/(?P<title>[^/]+)/(?P<key>[^/]+)/$', view, name="view"),
 
                        # CSS file for within a document (frame-mode)
                        url(r'^css/(?P<title>[^/]+)/(?P<key>[^/]+)/(?P<stylesheet_id>.+)$', view_stylesheet, name="view_stylesheet"),

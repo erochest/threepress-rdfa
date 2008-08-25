@@ -625,10 +625,18 @@ class TestViews(DjangoTestCase):
 
         id = self._get_id_for_document(self.client.get('/'), 'Little+Brother')
         self.assert_(id)
-        logging.info(id)
         response = self.client.get('/view/Little-Brother/%s/main5.xml' % id)
         self.assertTemplateUsed(response, 'view.html')
-        
+
+    def test_upload_with_nested_urls(self):
+        response = self._upload('Bible.epub')
+        self.assertRedirects(response, '/', 
+                             status_code=302, 
+                             target_status_code=200)        
+        id = self._get_id_for_document(self.client.get('/'), 'The+Bible')
+        response = self.client.get('/view/The+Bible/%s/Genesis/Genesis3.html' % id)
+        self.assertTemplateUsed(response, 'view.html')
+
     def test_upload_with_images(self):
         response = self._upload('alice-fromAdobe.epub')
         self.assertRedirects(response, '/', 

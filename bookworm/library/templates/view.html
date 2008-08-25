@@ -24,12 +24,6 @@
 {% endblock %}
 
 {% block head %}
-<script type="text/javascript">
-     function getFullPath() {
-       var u = '{% url library.views.view_chapter_frame document.safe_title,document.key,chapter.filename %}' + location.hash;
-       return u;
-     }
-</script>
 
 <link rel="stylesheet" href="/static/document.css"></link>
 
@@ -53,34 +47,6 @@
 
 {% if chapter %}
 
-  {% if request.common.prefs.use_iframe %}
-  <script type="text/javascript">
-    getFullPath();
-  </script>
-  <!-- Show iframe -->
-  <div style="width:100%">
-   <iframe style="padding-bottom: 2em; margin-bottom:2em; border-bottom:1px dotted grey" id="frame" frameborder="0" marginheight="20" marginwidth="0" align="left" width="500px" name="content" src="javascript:getFullPath()">
-     <p>Your browser doesn't support iframes, but that's okay: <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe=no">disable iframes</a></p>
-   </iframe>
-   <script type="text/javascript">
-     function resizeIframe() {
-        var height = document.documentElement.clientHeight;
-        height -= document.getElementById('frame').offsetTop;
-        height -= 200;
-        document.getElementById('frame').style.height = height +"px";
-     };
-     document.getElementById('frame').onload = resizeIframe;
-     window.onresize = resizeIframe;
-     document.getElementById('frame').src = getFullPath();
-
-   </script>
-    
-   <p style="width:400px" >
-     To redisplay this book in the main window, you may
-   <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe=no">disable frames</a>.
-   </p>
-  </div>
- {% else %}
 
    <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
   
@@ -88,22 +54,6 @@
   
    <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
 
-      <!-- Skip iframe -->
-      {% if document.has_stylesheets %}
-
-         <!-- Show iframe note -->
-         {% if request.common.prefs.show_iframe_note %}
-            <p class="bw-note" style="margin-top:2em;margin-left:0;">
-              Note: This book came bundled with its own stylesheets.  It's possible for these
-              styles to interfere with the behavior of the site.  If the site does not appear to be laid out as expected, you may
-              <a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe=yes">view the book content in its own frame</a>.
-              [<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe_note=no">hide this note</a>]
-            </p>
-         {% endif %}
-
-      {% endif %} <!-- end stylesheet check -->
-
-   {% endif %}
 {% else %}
 
  <!-- Title page -->

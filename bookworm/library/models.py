@@ -30,7 +30,7 @@ def safe_name(name):
  
 def unsafe_name(name):
     '''Convert from a URL-formatted name to something that will match
-    in the datastore'''
+    in the database'''
     unquote = unquote_plus(name.encode(ENC))
     return unicode(unquote, ENC)
 
