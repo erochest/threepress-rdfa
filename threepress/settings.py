@@ -98,5 +98,5 @@ EPUB_VALIDATOR_TEMP_DIR = "%s/data/epub-validator-temp" % DIR_ROOT
 JAVA = '/usr/bin/java'
 JAVA_JAR_ARG = '-jar'
 EPUBCHECK_DIR = "%s/data/epub/test" % DIR_ROOT
-EPUBCHECK_JAR = "epubcheck.jar" 
+EPUBCHECK_JAR = "epubcheck-1.0.0.jar" 
 
