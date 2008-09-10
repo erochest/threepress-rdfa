@@ -94,3 +94,8 @@ ol.bw-nav .bw-current {
 #bw-rightnav .bw-nextprevious a:link, #bw-rightnav .bw-nextprevious a:visited {
     color: gray;
 }
+#bw-download-link {
+    color: #2E4560 !important;
+    font-size: larger;
+    text-decoration: underline !important;
+}

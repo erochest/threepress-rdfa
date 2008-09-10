@@ -17,6 +17,9 @@ by
 
 <ol class="bw-nav">
   <li class="bw-first">
+    <a id="bw-download-link" href="{% url library.views.download_epub document.safe_title,document.key %}">Download this book</a>
+  </li>
+  <li class="bw-first">
   {% if chapter %}
   <a href="{% url library.views.view_document_metadata document.safe_title,document.key %}">Book information</a>
   {% else %}
