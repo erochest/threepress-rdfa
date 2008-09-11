@@ -1,21 +1,26 @@
 from django.contrib import admin
-from models import *
+from models import EpubArchive, BookAuthor,HTMLFile,StylesheetFile, ImageFile, UserPref
+
 
 class EpubArchiveAdmin(admin.ModelAdmin):
-    pass
-
+    fields=('title','name','owner','orderable_author','toc', 'opf')
+    list_filter=('orderable_author',)
+    search_fields = ['title']
+    ordering = ('title', '-created_time')
+    list_per_page = 500
 
 class BookAuthorAdmin(admin.ModelAdmin):
-    pass
+    ordering = ('name',)
 
 class HTMLFileAdmin(admin.ModelAdmin):
-    pass
+    fields=('title','filename','processed_content','is_read')
+    ordering = ('title',)
 
 class StylesheetFileAdmin(admin.ModelAdmin):
-    pass
+    fields=('filename',)
 
-class ImageFileAdmin(admin.ModelAdmin):
-    pass
+class ImageFileAdmin(admin.ModelAdmin):    
+    fields=('filename',)
 
 class UserPrefAdmin(admin.ModelAdmin):
     pass
