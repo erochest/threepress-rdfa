@@ -71,7 +71,7 @@ class EpubArchive(BookwormModel):
     authors = models.ManyToManyField('BookAuthor')
     orderable_author = models.CharField(max_length=1000, default='')
 
-    title = models.CharField(max_length=5000)
+    title = models.CharField(max_length=5000, default='Untitled')
     opf = models.TextField()
     toc = models.TextField()
     has_stylesheets = models.BooleanField(default=False)
@@ -89,7 +89,11 @@ class EpubArchive(BookwormModel):
 
     def safe_title(self):
         '''Return a URL-safe title'''
-        return safe_name(self.title)  
+        t = safe_name(self.title)  
+        # Make sure this returns something, if even untitled
+        if not t:
+            t = 'Untitled'
+        return t
 
     def safe_author(self):
         '''We only use the first author name for our unique identifier, which should be

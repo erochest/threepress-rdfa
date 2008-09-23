@@ -362,7 +362,10 @@ def upload(request):
                 return render_to_response('upload.html', {
                                                           'form':form, 
                                                           'message':message})
-            except InvalidEpubException:
+            except Exception, e:
+                # Delete it first so we don't end up with a broken document in the library
+                document.delete()
+
                 # Let's see what's wrong with this by asking epubcheck too, since it will let us know if it's our bug
                 resp = urllib.urlopen('http://www.threepress.org/epubcheck-service/', data.getvalue())
                 epubcheck_response = None
@@ -375,25 +378,31 @@ def upload(request):
                         except:
                             log.error('Got an error when trying to XML-ify the epubecheck response; ignoring: %s' % sys.exc_info()[1])
                 
-                log.error('Non epub zip file uploaded' % sys.exc_info()[1])
-                message = "The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is: <p style='color:black;font-weight:normal'>%s</p>" % sys.exc_info()[1]
+                log.error('Non epub zip file uploaded: %s' % e)
+                error = e.__str__()
+                if len(error) > 100:
+                    error = error[0:100] + '...'
+                message = "The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is: <p style='color:black;font-weight:normal'>%s</p>" % error
                 if epubcheck_response is not None:
                     if epubcheck_response.findtext('.//is-valid') == 'True':
                         message += "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm error)</p>"
                     elif epubcheck_response.findtext('.//is-valid') == 'False':
-                        message += "<p>epubcheck agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned: <pre style='color:black;font-weight:normal'>%s</pre></p>" % epubcheck_response.findtext('.//errors')
+                        epub_errors = epubcheck_response.findall('.//error')
+                        epub_error_list = [i.text for i in epub_errors]
+
+                        epub_errors = '<br/>'.join(epub_error_list)
+                        message += "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned: <pre style='color:black;font-weight:normal'>%s</pre></p>" % epub_errors
                     else:
                         log.error('Got an unexpected response from epubcheck, ignoring: %s' % d)
 
-                document.delete()
                 return render_to_response('upload.html', {'form':form, 
                                                           'message':message})                
-            except:
-                # If we got any error, delete this document
-                log.error('Got unknown error on request, deleting document')
-                log.error(sys.exc_value)
-                document.delete()
-                raise
+            #except:
+            #    # If we got any error, delete this document
+            #    log.error('Got unknown error on request, deleting document')
+            #    log.error(sys.exc_value)
+            #    document.delete()
+            #    raise
             
             log.debug("Successfully added %s" % document.title)
             return HttpResponseRedirect('/')
