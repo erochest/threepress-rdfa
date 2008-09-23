@@ -1,3 +1,5 @@
+from django.core.mail import EmailMessage
+
 import logging, sys, StringIO, urllib
 from zipfile import BadZipfile
 
@@ -364,6 +366,15 @@ def upload(request):
                                                           'message':message})
             except Exception, e:
                 # Delete it first so we don't end up with a broken document in the library
+                try:
+                    # Email it to the admins
+                    email = EmailMessage('[bookworm] Failed upload', '', 'no-reply@threepress.org',
+                                         ['liza@threepress.org'])
+                    email.attach(document_name, data.getvalue(), epub_constants.MIMETYPE)
+                    email.send()
+                except Exception, f:
+                    log.error(f)
+
                 document.delete()
 
                 # Let's see what's wrong with this by asking epubcheck too, since it will let us know if it's our bug
@@ -375,10 +386,10 @@ def upload(request):
                         try:
                             from epub import util
                             epubcheck_response =  util.xml_from_string(d)
-                        except:
-                            log.error('Got an error when trying to XML-ify the epubecheck response; ignoring: %s' % sys.exc_info()[1])
+                        except Exception, e2:
+                            log.error('Got an error when trying to XML-ify the epubecheck response; ignoring: %s' % e2)
                 
-                log.error('Non epub zip file uploaded: %s' % e)
+                log.error('Non epub zip file uploaded: %s' % document_name)
                 error = e.__str__()
                 if len(error) > 100:
                     error = error[0:100] + '...'
@@ -395,6 +406,10 @@ def upload(request):
                     else:
                         log.error('Got an unexpected response from epubcheck, ignoring: %s' % d)
 
+
+                                     
+
+                
                 return render_to_response('upload.html', {'form':form, 
                                                           'message':message})                
             #except:
