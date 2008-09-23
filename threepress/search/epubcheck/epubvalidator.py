@@ -10,7 +10,6 @@ class EpubValidator():
     def __init__(self, filename, data):
         # Make sure we have a temp dir to write to
         if not os.path.exists(settings.EPUB_VALIDATOR_TEMP_DIR):
-            logging.info("Creating %s " % settings.EPUB_VALIDATOR_TEMP_DIR)
             os.mkdir(settings.EPUB_VALIDATOR_TEMP_DIR)
 
         self.filename = filename
@@ -25,13 +24,11 @@ class EpubValidator():
         f = open("%s" % (self.filepath), 'w')
         f.write(self.data)
         f.close()
-        logging.info("Wrote %s " % self.filepath)
 
     def run(self):
-        logging.info("Changing to %s" % settings.EPUBCHECK_DIR)    
         os.chdir(settings.EPUBCHECK_DIR)    
     
-        logging.debug("Executing epubcheck on %s: %s %s %s %s " % (self.filepath, settings.JAVA, settings.JAVA_JAR_ARG, settings.EPUBCHECK_JAR, self.filepath))
+        #logging.debug("Executing epubcheck on %s: %s %s %s %s " % (self.filepath, settings.JAVA, settings.JAVA_JAR_ARG, settings.EPUBCHECK_JAR, self.filepath))
         process = subprocess.Popen([settings.JAVA, settings.JAVA_JAR_ARG, settings.EPUBCHECK_JAR, self.filepath],
                                    stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE
@@ -44,7 +41,6 @@ class EpubValidator():
         self._delete_temp_file()
 
     def _delete_temp_file(self):
-        logging.info("Deleting file %s " % self.filepath)
         os.remove(self.filepath)
 
     def clean_errors(self):
@@ -52,6 +48,14 @@ class EpubValidator():
             return None
         e = str(self.errors).replace(self.filepath, self.filename) 
         return [f.strip() for f in e.split('\n') if f]
+
+    def xml_errors(self):
+        '''Return the error list as a series of <error> nodes'''
+        errors = self.clean_errors()
+        error_list = ''
+        for e in errors:
+            error_list += '<error>%s</error>' % e
+        return error_list
 
     def is_valid(self):
         if self.errors:

@@ -37,7 +37,6 @@ def epub_validate(request):
             document_name = form.cleaned_data['epub'].name
             
             validator = epubcheck.validate(document_name, data.getvalue())
-            logging.info("back from validator")
 
             # Strip the filename info from errors
             errors = validator.clean_errors()

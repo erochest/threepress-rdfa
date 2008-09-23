@@ -70,7 +70,7 @@ class Epubcheck(Resource):
                 errors = ""
             else:
                 msg = "<is-valid>False</is-valid>"
-                errors = "<errors>%s</errors>" % validator.clean_errors()
+                errors = "<errors>%s</errors>" % validator.xml_errors()
                 
             xml = """<?xml version="1.0" encoding="utf-8" ?>
 <rsp stat="ok">%s%s</rsp>
