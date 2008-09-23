@@ -14,7 +14,12 @@ li { padding-bottom: .5em; }
 {% endblock head %}
 
 {% block leftnav %}
-<p style="font-size:smaller">If the upload returns an error, please email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> with
+<p>Need help?  Try reading the <a href="/about/">About</a> page for more
+information, or email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
+for assistance.
+</p>
+<p style="font-size:smaller">If you get an error while adding a book that
+you don't understand, please email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> with
 a description of the problem.
 </p>
 
@@ -22,20 +27,28 @@ a description of the problem.
 
 {% block main %}
 
-<h2>Add a book</h2>
+<h2>Add a book to your library</h2>
 
 {% if message %}
 <p class="bw-message"><strong>{{ message|safe }}</strong></p>
 {% endif %}
 
 <p>
-Upload a DRM-free ePub book to read it on this site.
+Bookworm is an online library.  To read a book on Bookworm, you must have first
+purchased or acquired it from a publisher or online book source.  The ebook must be
+in ePub format; if you don't know what that is, please see the 
+<a href="/about/">About</a> page for more information.
 </p>
-  
+{% if form.errors %}
+<p class="bw-message">You need to click on the &lsquo;Browse&rsquo; button and select an 
+ebook to add. </p>
+{% endif %}
+
 <form action="{% url library.views.upload %}" method="post" enctype="multipart/form-data">
   <div id="bw-upload_form">
-    {{ form.as_p }}
-    <input type="submit" value="upload" />
+    <strong>Add a book from your computer by clicking on &lsquo;Browse&rsquo;:</strong>
+    <p>{{ form.epub }}</p>
+    <p><input type="submit" value="Add to my library" /></p>
   </div>
  
 </form>

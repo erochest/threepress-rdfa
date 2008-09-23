@@ -412,17 +412,12 @@ def upload(request):
                 
                 return render_to_response('upload.html', {'form':form, 
                                                           'message':message})                
-            #except:
-            #    # If we got any error, delete this document
-            #    log.error('Got unknown error on request, deleting document')
-            #    log.error(sys.exc_value)
-            #    document.delete()
-            #    raise
-            
             log.debug("Successfully added %s" % document.title)
             return HttpResponseRedirect('/')
 
-        return HttpResponseRedirect('/')
+        return render_to_response('upload.html', {
+                'form':form},
+                                  context_instance=RequestContext(request)) 
 
     else:
         form = EpubValidateForm()        

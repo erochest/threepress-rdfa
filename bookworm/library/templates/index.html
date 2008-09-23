@@ -63,10 +63,10 @@ to enable always going to the last-read chapter in a book when clicking on a boo
 {% endif %}
 
 {% if request.session.common.mobile %}
-<p>To upload a new book, log in using your computer.</p>
+<p>To add a new book, log in using your computer.</p>
 {% else %}
 
-<h3 class="bw-upload-message">Upload {% if documents.count %} a new {% else %} your first {% endif %} book</h3>
+<h3 class="bw-upload-message">Add {% if documents.count %} a new {% else %} your first {% endif %} book that you have on your computer</h3>
 <form action="{% url library.views.upload %}" method="post" enctype="multipart/form-data" name="upload">
   <div id="bw-upload_form">
     {{ form.as_p }}

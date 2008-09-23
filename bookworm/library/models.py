@@ -489,7 +489,6 @@ class HTMLFile(BookwormFile):
             self.processed_content = f
             return f 
 
-
         body = self._clean_xhtml(body)
         div = ET.Element('div')
         div.attrib['id'] = 'bw-book-content'
