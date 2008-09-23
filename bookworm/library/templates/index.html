@@ -8,7 +8,7 @@
 
 {% block leftnav %}
 
-<div class="bw-status"><h2 class="bw-upload"><a href="{% url library.views.upload d%}">Add a book</a></h2></div>
+<div class="bw-status"><h2 class="bw-upload"><a href="{% url library.views.upload %}">Add a book</a></h2></div>
 
 <div class="bw-status">
   <h2>Status</h2>
@@ -27,18 +27,6 @@
 
 
 {% include "includes/news.html" %}
-
-<p style="color:gray;font-size:smaller">Bookworm is a free service with no ads or corporate backing.  Please 
-consider making a donation to support innovation in open ebook software. (Note: threepress.org is not a charitable organization.)
-<form style="margin:0;padding:0;display:inline" name="_xclick" action="https://www.paypal.com/us/cgi-bin/webscr" method="post"/>
-<input type="hidden" name="cmd" value="_xclick"/>
-<input type="hidden" name="business" value="liza@threepress.org"/>
-<input type="hidden" name="item_name" value="Donation to threepress for Bookworm development"/>
-<input type="hidden" name="currency_code" value="USD"/>
-<input type="hidden" name="amount" value="10.00"/>
-<input value="Donate with PayPal" border="0" name="submit" type="submit"/>
-</form>
-</p>
 
 {% endblock leftnav %}
 
@@ -79,7 +67,7 @@ to enable always going to the last-read chapter in a book when clicking on a boo
 {% else %}
 
 <h3 class="bw-upload-message">Upload {% if documents.count %} a new {% else %} your first {% endif %} book</h3>
-<form action="{% url library.views.upload d%}" method="post" enctype="multipart/form-data" name="upload">
+<form action="{% url library.views.upload %}" method="post" enctype="multipart/form-data" name="upload">
   <div id="bw-upload_form">
     {{ form.as_p }}
     <input type="submit" value="upload" name="submit-upload"/>

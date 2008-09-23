@@ -1,11 +1,10 @@
-import logging, sys, StringIO
+import logging, sys, StringIO, urllib
 from zipfile import BadZipfile
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
-from django import oldforms 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import auth
 from django.template import RequestContext
@@ -34,9 +33,8 @@ def register(request):
     else:
         data, errors = {}, {}
 
-    return render_to_response("auth/register.html", {
-        'form' : oldforms.FormWrapper(form, data, errors)
-    })
+    return render_to_response("auth/register.html", 
+                              { 'form' : form })
 
 
 @login_required
@@ -366,7 +364,6 @@ def upload(request):
                                                           'message':message})
             except InvalidEpubException:
                 # Let's see what's wrong with this by asking epubcheck too, since it will let us know if it's our bug
-                import urllib
                 resp = urllib.urlopen('http://www.threepress.org/epubcheck-service/', data.getvalue())
                 epubcheck_response = None
                 if resp:

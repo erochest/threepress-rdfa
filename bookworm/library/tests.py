@@ -28,6 +28,7 @@ from socket import gethostname
 
 from django.conf import settings
 
+settings.SITE_ID = 1
 
 # Data for public epub documents
 DATA_DIR = os.path.abspath('./library/test-data/data')
