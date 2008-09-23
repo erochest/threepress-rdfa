@@ -28,7 +28,7 @@
 
 <ol class="results" start="{{ start }}">
 {% for r in results %}
- <li> <a href="{% url threepress.search.views.document_chapter_view r.document_id,r.get_chapter_id,show_spacing=True %}#id{{ r.id }}"><h4>
+ <li> <a href="{% url threepress.search.views.document_chapter_view r.document_id,r.get_chapter_id %}#id{{ r.id }}"><h4>
    {% if not document %}{{ r.get_document_title }} : {% endif %} {{ r.title }}</h4></a>
       <p>{{ r.highlighted_content|safe }}</p>
  </li>
