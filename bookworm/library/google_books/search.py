@@ -4,12 +4,13 @@ import urllib2, logging
 
 log = logging.getLogger('google_books.search')
 
-ns = {'atom': 'http://www.w3.org/2005/Atom',
+API = 'http://books.google.com/books/feeds/volumes'
+
+NS = {'atom': 'http://www.w3.org/2005/Atom',
       'openSearch': 'http://a9.com/-/spec/opensearchrss/1.0/',
       'gbs' : 'http://schemas.google.com/books/2008',
       'dc' : 'http://purl.org/dc/terms',
       'gd' : 'http://schemas.google.com/g/2005' }
-
 
 viewability = { 'FULL' : { 'description' : 'Full view of this work',
                            'value': 'http://schemas.google.com/books/2008#view_all_pages' },
@@ -21,11 +22,10 @@ viewability = { 'FULL' : { 'description' : 'Full view of this work',
                              'value' : 'http://schemas.google.com/books/2008#view_unknown'}}
 
 class Request(object):
-    def __init__(self, query, remote_addr):
-        r = urllib2.Request('http://books.google.com/books/feeds/volumes?%s' % query)
+    def __init__(self, query, remote_addr=None):
+        r = urllib2.Request('%s?q=%s' % (API, query))
         if remote_addr:
             r.add_header('X-Forwarded-For', remote_addr)
-            #r.add_header('X-Forwarded-For', '98.216.48.48')
         self.r = urllib2.urlopen(r)
     def get(self):
         return Response(self.r.read())
@@ -33,9 +33,8 @@ class Request(object):
 class Response(object):
     def __init__(self, resp):
         self.tree = etree.fromstring(resp)
-        #log.debug(etree.tostring(self.tree, pretty_print=True))
         self.entries = [ Entry(e) for e in self.tree.xpath("//atom:entry",
-                                                           namespaces=ns)]
+                                                           namespaces=NS)]
 
 class Entry(object):
     def __init__(self, xml):
@@ -45,21 +44,21 @@ class Entry(object):
     def thumbnail(self):
         try:
             return self.xml.xpath("atom:link[@rel='http://schemas.google.com/books/2008/thumbnail']",
-                                  namespaces=ns)[0].get('href')
+                                  namespaces=NS)[0].get('href')
         except IndexError:
             return None
 
     @property
     def description(self):
         try:
-            return self.xml.xpath('dc:description/text()', namespaces=ns)[0]
+            return self.xml.xpath('dc:description/text()', namespaces=NS)[0]
         except IndexError:
             return None
 
     @property
     def viewability(self):
         try:
-            desc = self.xml.xpath('gbs:viewability', namespaces=ns)[0].get('value')
+            desc = self.xml.xpath('gbs:viewability', namespaces=NS)[0].get('value')
         except IndexError:
             return None
         for v in viewability.keys():
@@ -69,28 +68,28 @@ class Entry(object):
     @property
     def publisher(self):
         try:
-            return self.xml.xpath('dc:publisher/text()', namespaces=ns)[0]
+            return self.xml.xpath('dc:publisher/text()', namespaces=NS)[0]
         except IndexError:
             return None
 
     @property
     def pages(self):
         try:
-            return self.xml.xpath('dc:format/text()', namespaces=ns)[0]
+            return self.xml.xpath('dc:format/text()', namespaces=NS)[0]
         except IndexError:
             return None        
 
     @property
     def preview(self):
         try:
-            return self.xml.xpath("atom:link[@rel='http://schemas.google.com/books/2008/preview']", namespaces=ns)[0].get('href')
+            return self.xml.xpath("atom:link[@rel='http://schemas.google.com/books/2008/preview']", namespaces=NS)[0].get('href')
         except IndexError:
             return None        
 
     @property
     def info(self):
         try:
-            return self.xml.xpath("atom:link[@rel='http://schemas.google.com/books/2008/info']", namespaces=ns)[0].get('href')
+            return self.xml.xpath("atom:link[@rel='http://schemas.google.com/books/2008/info']", namespaces=NS)[0].get('href')
         except IndexError:
             return None        
 

@@ -527,11 +527,12 @@ def _get_google_books_info(document, request):
     # spaces and commas
     title_words = document.title.replace(',', '').split(' ')
     author_words = document.author.replace(',', '').split(' ')
-    query = 'q='
     for t in title_words:
         query += 'intitle:%s+' % urllib.quote(t)
     for a in author_words:
         query += 'inauthor:%s+' % urllib.quote(a)
     return Request(query, request.META['REMOTE_ADDR']).get()
+
+
 
 
