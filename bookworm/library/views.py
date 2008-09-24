@@ -531,6 +531,10 @@ def _get_google_books_info(document, request):
         query = 'intitle:%s+' % urllib.quote(t)
     for a in author_words:
         query += 'inauthor:%s+' % urllib.quote(a)
-    return Request(query, request.META['REMOTE_ADDR']).get()
+    if 'REMOTE_ADDR' in request.META:
+        remote_addr = request.META['REMOTE_ADDR']
+    else:
+        remote_addr = None
+    return Request(query, remote_addr).get()
 
 

@@ -63,6 +63,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django_authopenid.middleware.OpenIDMiddleware',
+    'django.middleware.http.SetRemoteAddrFromForwardedFor',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     
 )
