@@ -98,7 +98,7 @@ class EpubArchive(BookwormModel):
     def safe_author(self):
         '''We only use the first author name for our unique identifier, which should be
         good enough for all but the oddest cases (revisions?)'''
-        return self.author()
+        return self.author
 
     def get_content(self):
         blob = self._blob_class()
@@ -440,7 +440,7 @@ class EpubArchive(BookwormModel):
         ordering = ('-created_time', 'title')
 
     def __unicode__(self):
-        return u'%s by %s (%s)' % (self.title, self.author(), self.name)
+        return u'%s by %s (%s)' % (self.title, self.author, self.name)
 
 
 class BookAuthor(BookwormModel):

@@ -82,7 +82,7 @@ class TestModels(unittest.TestCase):
         filename = 'Pride-and-Prejudice_Jane-Austen.epub'
         document = self.create_document(filename)
         document.explode()
-        self.assertEquals(author, document.author())        
+        self.assertEquals(author, document.author)        
 
     def testGetMultipleAuthors(self):
         '''Do we return the correct number of authors in the correct order?'''

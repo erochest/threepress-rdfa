@@ -6,7 +6,7 @@ class MockEpubArchive(EpubArchive):
 
     def get_author(self, opf):
         self.authors = self._get_authors(opf)
-        return self.author()
+        return self.author
 
     def get_authors(self, opf):
         return self._get_authors(opf)
