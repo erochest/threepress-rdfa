@@ -90,12 +90,6 @@
          <th>Date added to library</th>
          <td>{{ document.created_time|date:"l, F Y" }}</td>
        </tr>
-       <!--
-       <tr>
-         <th>Number of sections</th>
-         <td>{{ toc|length }}</td>
-       </tr>
-       -->
        {% if document.get_subjects %}
        <tr>
          <th>Subjects</th>
@@ -115,24 +109,48 @@
          <th>Download entire book</th>
          <td><a href="{% url library.views.download_epub document.safe_title,document.key %}">epub format</a></td>
        </tr>
-       {% if document.has_stylesheets %}
-       <tr>
-         <th>Read this book with its own styles and fonts?</th>
-         <td>
-           {% if request.common.prefs.use_iframe %}
-           Yes, show book's styles in a scrolling window 
-           <br/>(<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe=no">change this</a>)
-           {% else %}
-           No, view without styles 
-           <br/>(<a href="{% url library.views.view_chapter document.safe_title,document.key,chapter.filename %}?iframe=yes">change this)</a>
-           {% endif %}
-         </td>
-       </tr>
-       {% endif %}
-
      </tbody>
    </table>
-         
+   
+   {% if google_books.entries %}
+     <h2>Editions of this work found in Google Books Search</h2>
+     <a href="http://www.google.com"><img align="left" style="padding-right: 1em" src="http://books.google.com/googlebooks/images/poweredby.png" border="0" style="border: 0"/></a>
+     <p>This title and author were found to have the following entries through
+     the use of the Google Books Search service. 
+     The information listed here may be inaccurate or incomplete and is not 
+     provided by Bookworm.
+     </p>
+
+     <table class="bw-meta">
+         {% for e in google_books.entries %}
+         <tr>
+           <td align="center">
+              {% if e.thumbnail %}
+               <a href="{{ e.info }} "><img src="{{ e.thumbnail }}" /></a>
+              {% else %}
+               <a href="{{ e.info }}">Cover image not available from Google Books</a>
+              {% endif %}
+           </td>
+
+           <td colspan="2">
+               {% if e.publisher %}
+                 <p>Published by {{ e.publisher }}</p>
+               {% else %}
+                 <p><em>No publisher was listed</em></p>
+               {% endif %}
+               {% if e.pages %}
+                 <p>{{ e.pages }}</p>
+               {% endif %}
+               <!-- <p>{{ e.viewability }}</p> -->
+           </td>
+           <td>{% if e.description %}{{ e.description|safe }}{% endif %}</td>
+
+         </tr>
+         {% endfor %}
+     </table>
+
+     
+   {% endif %}
 {% endif %}
 
 </div>

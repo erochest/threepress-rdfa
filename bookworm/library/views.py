@@ -2,6 +2,7 @@ from django.core.mail import EmailMessage
 
 import logging, sys, StringIO, urllib
 from zipfile import BadZipfile
+from lxml import etree
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, Http404, HttpResponse
@@ -17,6 +18,7 @@ from forms import EpubValidateForm, ProfileForm
 from epub import constants as epub_constants
 from epub import InvalidEpubException
 from django.conf import settings
+from google_books.search import Request
 
 log = logging.getLogger('views')
 
@@ -154,7 +156,8 @@ def view_document_metadata(request, title, key):
     log.debug("Looking up metadata %s, key %s" % (title, key))
     _check_switch_modes(request)
     document = _get_document(request, title, key)
-    return render_to_response('view.html', {'document':document}, 
+    google_books = _get_google_books_info(document, request)
+    return render_to_response('view.html', {'document':document, 'google_books':google_books}, 
                               context_instance=RequestContext(request))
 
 
@@ -227,7 +230,7 @@ def _check_switch_modes(request):
 
 
 @login_required    
-def view_chapter(request, title, key, chapter_id, chapter=None):
+def view_chapter(request, title, key, chapter_id, chapter=None, google_books=None):
     if chapter is not None:
         chapter_id = chapter.id
 
@@ -261,6 +264,7 @@ def view_chapter(request, title, key, chapter_id, chapter=None):
                                             'subchapter_href':subchapter_href,
                                             'parent_chapter':parent_chapter,
                                             'stylesheets':stylesheets,
+                                            'google_books':google_books,
                                             'previous':previous},
                               context_instance=RequestContext(request))
     
@@ -518,3 +522,16 @@ def _get_system_info(request):
         request.session['system_info'] = SystemInfo()
     return request.session['system_info']
     
+def _get_google_books_info(document, request):
+    # Find all the words in the title and all the names in the author by splitting on 
+    # spaces and commas
+    title_words = document.title.replace(',', '').split(' ')
+    author_words = document.author.replace(',', '').split(' ')
+    query = 'q='
+    for t in title_words:
+        query += 'intitle:%s+' % urllib.quote(t)
+    for a in author_words:
+        query += 'inauthor:%s+' % urllib.quote(a)
+    return Request(query, request.META['REMOTE_ADDR']).get()
+
+

@@ -125,6 +125,7 @@ class EpubArchive(BookwormModel):
                                  idref=self.name)
         epub.save()
 
+    @property
     def author(self):
         '''This method returns the author, if only one, or the first author in
         the list with ellipses for additional authors.'''
@@ -138,19 +139,21 @@ class EpubArchive(BookwormModel):
             return a[0].name
         return a[0].name + '...'
 
-    def _get_metadata(self, metadata_tag, opf):
+    def _get_metadata(self, metadata_tag, opf, plural=False):
         '''Returns a metdata item's text content by tag name, or a list if mulitple names match'''
         if self._parsed_metadata is None:
             self._parsed_metadata = util.xml_from_string(opf)
         text = []
-        for t in self._parsed_metadata.findall('.//{%s}%s' % (NS['dc'], metadata_tag)):
+        alltext = self._parsed_metadata.findall('.//{%s}%s' % (NS['dc'], metadata_tag))
+        for t in alltext:
             text.append(t.text)
         if len(text) == 1:
-            return text[0]
+            t = (text[0], ) if plural else text[0]
+            return t
         return text
 
     def get_subjects(self):
-        return self._get_metadata(constants.DC_SUBJECT_TAG, self.opf)
+        return self._get_metadata(constants.DC_SUBJECT_TAG, self.opf, plural=True)
     
     def get_rights(self):
         return self._get_metadata(constants.DC_RIGHTS_TAG, self.opf)
@@ -161,6 +164,9 @@ class EpubArchive(BookwormModel):
 
     def get_publisher(self):
         return self._get_metadata(constants.DC_PUBLISHER_TAG, self.opf)
+
+    def get_identifier(self):
+        return self._get_metadata(constants.DC_IDENTIFIER_TAG, self.opf)
 
     def get_top_level_toc(self):
         t = self.get_toc()

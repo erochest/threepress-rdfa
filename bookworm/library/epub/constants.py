@@ -21,6 +21,7 @@ DC_LANGUAGE_TAG = 'language'
 DC_RIGHTS_TAG = 'rights'
 DC_SUBJECT_TAG = 'subject'
 DC_PUBLISHER_TAG = 'publisher'
+DC_IDENTIFIER_TAG = 'identifier'
 
 BW_BOOK_CLASS = '#bw-book-content'
   
