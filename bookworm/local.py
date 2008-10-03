@@ -3,9 +3,9 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 # Local settings; should be overriden for each checkout
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-
+   
 DATABASE_ENGINE = 'mysql' 
 DATABASE_NAME = 'bookworm'
 DATABASE_USER = 'threepress'   # Not used with sqlite3.
