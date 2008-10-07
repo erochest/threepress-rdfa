@@ -54,6 +54,9 @@ urlpatterns = patterns('',
 
                        # Index.html
                        (r'^$', 'threepress.search.views.index'), 
+
+                       # ePub application
+                       (r'^epub', include('threepress.epub.urls')),
 )
 
 

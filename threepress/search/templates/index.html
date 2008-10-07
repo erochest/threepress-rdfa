@@ -2,12 +2,16 @@
 
 {% block leftnav %}
 {{ block.super }}
-<h3>Bookworm</h3>
-<p>
-The main project hosted by threepress is <a href="http://bookworm.threepress.org/">Bookworm</a>, a web-based
-reader of the ePub format.  <a href="http://blog.threepress.org/2008/07/15/bookworm-an-online-epub-reader/">Read more</a>.
+<h3 class="left-home"><a href="http://bookworm.threepress.org/">bookworm</a></h3>
+<p  class="left-home">
+threepress <a href="http://bookworm.threepress.org/">Bookworm</a>, is the first web-based
+reader of the ePub ebook format.  <a href="http://blog.threepress.org/2008/07/15/bookworm-an-online-epub-reader/">Read more</a>.
 </p>
 
+<h3 class="left-home"><a href="{% url logos %}">ePub logos</a></h3>
+<p  class="left-home">
+  Free, public domain <a href="{% url logos %}">ePub logos</a> for use in your website.
+</p>
 
 {% endblock %}
 {% block main %}
@@ -22,12 +26,19 @@ reader of the ePub format.  <a href="http://blog.threepress.org/2008/07/15/bookw
   <li> → agile custom development and <a href="/consulting/">consulting</a> </li>
 </ul>
 
-<h2 style="color:rgb(80,80,80);margin-top:3em"><a href="http://bookworm.threepress.org/">Bookworm</a></h2>
-<p><a href="http://bookworm.threepress.org/">Bookworm</a> is the first web-based reader for the open ePub ebook format. <a href="http://bookworm.threepress.org/about/">Find out more</a>.</p>
-
-
 <h2 style="color:rgb(80,80,80);">Search and ebook demonstration</h2>
-<p>These public domain books are available for online reading, searching, or downloading as portable ebooks in PDF or ePub format.  They have been converted automatically from Project Gutenberg's internal DTD to TEI, and then to their output formats, all automatically.  This software is free and available for commercial or non-commercial use.</p>
+<p>
+<img src="/static/images/epub/epub-logo-blue.png" width="100" align="left" style="padding-right:2em;" />
+</p>
+<div style="padding-left:2em">
+<p style="width:60%">
+These public domain books are available for online reading, searching, or downloading as portable ebooks in 
+PDF or ePub format.  They have been converted from Project Gutenberg's internal DTD to TEI (Text Encoding Initiative), 
+and then to their output formats, all automatically.  
+</p>
+<p>
+This software is free and available for commercial or non-commercial use.</p>
+
 {% if documents %}
 
 <ul style="list-style-type:none">
@@ -42,5 +53,5 @@ reader of the ePub format.  <a href="http://blog.threepress.org/2008/07/15/bookw
  <p>No documents are currently in the system.</p>
 
 {% endif %}
-
+</div>
 {% endblock %}

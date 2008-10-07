@@ -38,7 +38,8 @@
 
       /* Header */
       #header {
-        background-color: rgb(198, 223, 167); 
+        background-color: rgb(170, 191, 143);
+        //background-color: rgb(198, 223, 167); 
         padding: 10px 0 10px 60px;
         overflow:hidden;      
       }
@@ -49,12 +50,19 @@
         text-align:right;
         padding-right: 30px;
         margin-top: -10px;
-        font-weight: bold;
+        font-weight: normal;
       }
       #header_nav a {
         color: rgb(248, 255, 239); 
         padding: 10px;
+        letter-spacing: .5px;
       }
+      #header_nav a.second-level {
+        color: #2E4560;
+        padding: 10px;
+        letter-spacing: .5px;
+      }
+
       #header_logo {
         float:left;
       }
@@ -71,10 +79,12 @@
       }
       .motto {  
         padding:0; margin:0;
-        font-size: 1em;
+        font-size: 15px;
       }
       .motto a {
-        color: rgb(248, 255, 239);
+        color: white;
+        font-weight: normal;
+        letter-spacing: .5px;
       }
       .document_title {
         margin-top:-5px;padding:0;
@@ -145,7 +155,7 @@
 
       }
       #leftnav form h3 {
-        color: lightgray;
+        color: gray;
         font-size: .8em;
       }
       #main {
@@ -238,3 +248,14 @@
    ul.about {
     line-height: 1.5em;
    }
+
+#leftnav h3.left-home {
+  color: #2E4560 !important;font-weight:bold;font-size:20px;
+}
+#leftnav h3.left-home a {
+  color: #2E4560 !important;font-weight:bold;font-size:20px;
+  text-decoration: none;
+}
+#leftnav p.left-home {
+  color: gray;
+}

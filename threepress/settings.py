@@ -75,7 +75,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.flatpages',
     'django.contrib.sitemaps',
-    'threepress.search'
+    'threepress.search',
+    'threepress.epub'
     
 )
 
