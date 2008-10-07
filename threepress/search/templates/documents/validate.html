@@ -20,8 +20,9 @@ li { padding-bottom: .5em; }
 {% block leftnav %}
 <p>This validator uses <a href="http://code.google.com/p/epubcheck/">epubcheck 1.0.1</a></p>
 
-<p>Once you have validated your document, consider uploading it to <a href="http://bookworm.threepress.org/">Bookworm</a> to view it in our highly-conformant ePub rendering system.
+<p>Once you have validated your document, consider uploading it to <a href="http://bookworm.threepress.org/">Bookworm</a> to view it in our highly-conformant ePub reader.
 </p>
+<p>Get free, public-domain ePub logos at our <a href="{% url logos %}">ePub logos</a> page.</p>
 
 <p>More about <a href="/about/">threepress.org</a>.</p>
 
@@ -101,12 +102,13 @@ Either mimetype is wrong or mimetype does not start at the proper byte offset in
 
 
 <p>
-Upload a DRM-free ePub document to validate it against the schemas supplied with the <a href="http://code.google.com/p/epubcheck/">epubcheck</a> tool.  Documents are not permanently stored on the system but take care not to upload any proprietary or sensitive documents. This tool provides no guarantees that any information it receives is secure.
+<img src="/static/images/epub/epub-logo-blue.png" width="100" align="left" style="padding-right:2em;" />
+Upload a DRM-free ePub document to validate it against the schemas supplied with the <a href="http://code.google.com/p/epubcheck/">epubcheck</a> tool.  Documents are not permanently stored on the system but take care not to upload any sensitive documents.
 </p>
-  
+<br />  <br />  
 <form action="/document/epub-validate/" method="post" enctype="multipart/form-data">
   <div>
-    {{ form.as_p }}
+    {{ form.epub }}
     <input type="submit" value="validate" />
   </div>
  

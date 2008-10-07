@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block header %}
+<div class="document_title"><h1>Digital publishing tools → 
+<a href="{% url logos %}">ePub logos</a></h1></div>
+{% endblock %}
 
 {% block leftnav %}
 <h3>Use these ePub logos to show that you offer or support the ePub ebook format</h3>
@@ -9,6 +13,10 @@
 <p>
 <a rel="license" href="http://creativecommons.org/licenses/publicdomain/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/publicdomain/88x31.png" /></a><br />This work is dedicated to the <a rel="license" href="http://creativecommons.org/licenses/publicdomain/">Public Domain</a>.
 </p>
+<p>
+You may also be interested in our <a href="{% url threepress.search.views.epub_validate %}">ePub validation service</a>.
+</p>
+
 {% endblock %}
 
 {% block main %}
