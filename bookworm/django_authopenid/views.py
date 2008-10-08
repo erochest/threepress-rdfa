@@ -463,7 +463,7 @@ def signout(request, msg=None):
         del request.session['openid']
     except KeyError:
         pass
-    next = request.GET.get('next', reverse('user_signin'))
+    next = request.GET.get('next', reverse('index'))
     if not is_valid_next_url(next):
         next = '/'
     if msg:
