@@ -31,6 +31,11 @@
         </navPoint>
       </navPoint>
     </navPoint>
+    <navPoint xmlns="http://www.daisy.org/z3986/2005/ncx/" id="id86577" >
+      <navLabel>test
+      </navLabel>
+        <content src="pr01.html"/>
+    </navPoint>
   </navMap>
 
   <navList id="loi">

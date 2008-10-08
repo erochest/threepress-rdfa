@@ -4,20 +4,7 @@
 </table>
 
 <table id="bw-library">
-  <tr>
-    <th><a href="{% url index-reorder page.number,"title",reverse_dir %}">Title
-    {% ifequal order "title" %}<span class="bw-pagination-arrow">{% ifequal "asc" reverse_dir %}↓{% else %}↑{% endifequal %}</span>{% endifequal %}
-    </a></th>
-    <th><a href="{% url index-reorder page.number,"orderable_author",reverse_dir %}">Author
-    {% ifequal order "orderable_author" %}<span class="bw-pagination-arrow">{% ifequal "asc" reverse_dir %}↓{% else %}↑{% endifequal %}</span>{% endifequal %}
-    </a></th>
-    <th><a href="{% url index-reorder page.number,"created_time",reverse_dir %}">Date added
-    {% ifequal order "created_time" %}<span class="bw-pagination-arrow">{% ifequal "asc" reverse_dir %}↓{% else %}↑{% endifequal %}</span>{% endifequal %}
-</a></th>
-    {% if not request.session.common.mobile %}
-    <th>&nbsp;</th>
-    {% endif %}
-  </tr>
+  {% include "includes/document_list_controls.html" %}
 
   {% for d in page.object_list %}
   <tr>
@@ -32,21 +19,22 @@
     </td>
     <td class="bw-added-container">
       <span class="bw-added">
-         {% if request.session.common.mobile %}
+         {% if mobile %}
 	    {{ d.created_time|date:"M j y"}}
          {% else %}
             {{ d.created_time|date:"l, F j Y" }}
          {% endif %}
        </span>
     </td>
-    {% if common.is_admin %}
+    {% if request.user.is_superuser %}
       {% if show_owner %}
       <td>
         owned by <span class="bw-owner">{{ d.owner.username }}</span>
       </td>
       {% endif %}
+
     {% endif %}
-    {% if not request.session.common.mobile %}
+    {% if not mobile %}
     <td>
       <span class="bw-delete">
       <form action="{% url library.views.delete %}" method="post">
@@ -62,6 +50,7 @@
     {% endif %}
   </tr>
   {% endfor %}
+  {% include "includes/document_list_controls.html" %}
 
 </table>
 <table class="bw-pagination">

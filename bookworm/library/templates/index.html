@@ -12,12 +12,12 @@
 
 <div class="bw-status">
   <h2>Status</h2>
-  <p>There {% ifequal request.session.common.total_users 1 %} is {% else %} are {% endifequal %}
+  <p>There {% ifequal total_users 1 %} is {% else %} are {% endifequal %}
 
-  {{ request.session.common.total_users }} reader{{ request.session.common.total_users|pluralize }} using Bookworm.
+  {{ total_users }} reader{{ total_users|pluralize }} using Bookworm.
   </p>
   <p>
-  There {% ifequal request.session.common.total_books 1 %} is {% else %} are {% endifequal %}  {{ request.session.common.total_books }} individual book{{ request.session.common.total_books|pluralize }}.
+  There {% ifequal total_books 1 %} is {% else %} are {% endifequal %}  {{ total_books }} individual book{{ total_books|pluralize }}.
   </p>
 </div>
 
@@ -35,44 +35,58 @@
 <div id="bw-content">
 
 {% if documents.count %}
-<h2>Books in your library</h2>
+  <h2>Books in your library</h2>
 
-{% if not request.session.common.mobile %}
-{% if order_text %}<p>Books are listed by <em>{{ order_text }}</em> in <em>{{ order_direction }}</em> order {{ order_adverb }}.</p>{% endif %}
+  {% if not mobile %}
+    {% if order_text %}<p>Books are listed by <em>{{ order_text }}</em> in <em>{{ order_direction }}</em> order {{ order_adverb }}.</p>{% endif %}
+  {% endif %}
+
+  {% include "includes/document_list.html" %} 
+
+  {% if not mobile %}
+    <p style="color:gray">You can re-order your books by clicking on "title", "author" or "date added".
+     Clicking on the same label twice will reverse the order.</p>
+
+    {% if request.user.get_profile.open_to_last_chapter %}
+      <p style="color:gray">You've set your account to always go to the last-read chapter in 
+        a book (<a href="{% url profile %}">change this</a>).
+      </p>
+    {% else %}
+      <p style="color:gray">There is a setting in your <a href="{% url profile %}">profile</a> 
+        to enable always going to the last-read chapter in a book when clicking on a book's title.
+      </p>
+    {% endif %}
+
+  {% endif %}
+
+{% else %}
+  <h1 id="bw-logo-image-header"><img id="bw-logo-image" src="/static/bookworm-logo.png" alt="Bookworm" /></h1> 
+  <p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p> 
 {% endif %}
 
-{% include "includes/document_list.html" %} 
-
-<p style="color:gray">You can re-order your books by clicking on "title", "author" or "date added".
- Clicking on the same label twice will reverse the order.</p>
-
-{% if request.session.common.prefs.open_to_last_chapter %}
-<p style="color:gray">You've set your account to always go to the last-read chapter in 
-a book (<a href="{% url profile %}">change this</a>).
-</p>
-{% else %}
-<p style="color:gray">There is a setting in your <a href="{% url profile %}">profile</a> 
-to enable always going to the last-read chapter in a book when clicking on a book's title.</p>
-{% endif %}
-
-{% else %}
-<h1 id="bw-logo-image-header"><img id="bw-logo-image" src="/static/bookworm-logo.png" alt="Bookworm" /></h1> 
-<p class="bw-tagline">A free platform for reading ePub books online. <a href="{% url library.views.about %}">Learn more</a>.</p> 
-
-
-{% endif %}
-
-{% if request.session.common.mobile %}
-<p>To add a new book, log in using your computer.</p>
+{% if mobile %}
+  <p>To add a new book, log in using your computer.</p>
 {% else %}
 
-<h3 class="bw-upload-message">Add {% if documents.count %} a new {% else %} your first {% endif %} book that you have on your computer</h3>
-<form action="{% url library.views.upload %}" method="post" enctype="multipart/form-data" name="upload">
-  <div id="bw-upload_form">
-    {{ form.as_p }}
-    <input type="submit" value="upload" name="submit-upload"/>
-  </div>
-</form>
+  <h3 class="bw-upload-message">Add {% if documents.count %} a new {% else %} your first {% endif %} ePub ebook:
+  {% if not documents.count %}
+    If you don't have any ePubs yet, you can start with <a href="http://www.threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen.epub">Pride and Prejudice</a> by Jane Austen,
+    or the <a href="http://toc.oreilly.com/2008/07/30-oreilly-titles-now-available-as-ebook-bundles.html">technical ePubs available from O'Reilly</a>.
+  {% endif %}
+  </h3>
+  {% if not documents.count %}
+   <p>
+     Once you've gotten one of these books on your computer, you can upload them to your 
+     new Bookworm account.
+   </p>
+  {% endif %}
+
+  <form action="{% url library.views.upload %}" method="post" enctype="multipart/form-data" name="upload">
+    <div id="bw-upload_form">
+      {{ form.as_p }}
+      <input type="submit" value="upload" name="submit-upload"/>
+    </div>
+  </form>
 {% endif %}
 </div>
 {% endblock %}

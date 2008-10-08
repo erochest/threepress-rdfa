@@ -14,13 +14,13 @@ class BookAuthorAdmin(admin.ModelAdmin):
 
 class HTMLFileAdmin(admin.ModelAdmin):
     fields=('title','filename','processed_content','is_read')
-    ordering = ('title',)
+    ordering = ('title','path')
 
 class StylesheetFileAdmin(admin.ModelAdmin):
-    fields=('filename',)
+    fields=('filename','path')
 
 class ImageFileAdmin(admin.ModelAdmin):    
-    fields=('filename',)
+    fields=('filename','path', 'content_type')
 
 class UserPrefAdmin(admin.ModelAdmin):
     pass

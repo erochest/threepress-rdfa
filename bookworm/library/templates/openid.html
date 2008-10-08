@@ -1,0 +1,28 @@
+{% extends "base.html" %} 
+
+{% block title %}About OpenID{% endblock title %}
+
+{% block header %}About: OpenID{% endblock header %}
+{% block head %}
+<link rel="stylesheet" href="/static/about.css"></link>
+{% endblock head %}
+
+{% block leftnav %}
+<h1>About OpenID</h1>
+
+<p>
+Bookworm supports and advocates the use of OpenID, a simple
+way to manage your usernames and passwords on the internet.
+</p>
+
+<p>
+Academic publishers are encouraged to explore the use of OpenID to 
+add personalization to their products. <a href="http://toc.oreilly.com/2008/05/what-openid-can-do-for-educati.html">Read more</a>.
+</p>
+{% endblock leftnav %}
+
+{% block main %}
+
+{% include "includes/openid.html" %}
+
+{% endblock main %}

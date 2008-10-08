@@ -7,6 +7,8 @@ from constants import ENC
 
 from . import InvalidEpubException
 
+log = logging.getLogger('epub.toc')
+
 # Helpers for dealing with TOC file and <spine> elements
 
 class TOC():
@@ -40,9 +42,14 @@ class TOC():
             self.lists.append(n)
 
     def parse(self):
-                            
-        self.doc_title = self.parsed.findtext('.//{%s}docTitle/{%s}text' % (NS['ncx'], NS['ncx'])).strip()
 
+        try:
+            self.doc_title = self.parsed.findtext('.//{%s}docTitle/{%s}text' % (NS['ncx'], NS['ncx'])).strip()
+        except AttributeError:
+            log.warn("Did not get a docTitle from the NCX, although this is required.")
+            self.doc_title = ''
+            
+           
         for navmap in self.parsed.findall('.//{%s}navMap' % (NS['ncx'])):
             self._find_point(navmap)
 
@@ -233,9 +240,15 @@ class NavPoint():
         try:
             return int(self.element.get('playOrder'))
         except TypeError:
-            logging.error('Could not find playOrder value in %s' % self.element)
-            raise InvalidEpubException('No playOrder attribute found in TOC element, but this is required')
-                       
+            log.warn('Could not find playOrder value in %s' % self.element)
+            # Get it by counting where we are from the parent; I want to use
+            # self::*/position() here but lxml is complaining
+            if not self.tree:
+                return 0
+            else:
+                for index, x in enumerate(self.tree):
+                    if x.id == self.id:
+                        return index + 1
 
     def href(self):
         return self.element.find('.//{%s}content' % (NS['ncx'])).get('src')
@@ -290,7 +303,7 @@ def xml_from_string(xml):
     return ET.fromstring(xml)    
                             
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
+    log.basicConfig(level=logging.INFO)
         
     if len(sys.argv) == 2:
         toc = TOC(open(sys.argv[1]).read())

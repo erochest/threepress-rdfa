@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Delete {{ common.user.username }}'s profile{% endblock %}
+{% block title %}Delete {{ request.user.username }}'s profile{% endblock %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="/static/auth.css" ></link>
 {% endblock head %}
@@ -13,7 +13,7 @@
 <form action="." method="post">
   <fieldset>
     <legend>Delete account</legend>
-    <input type="hidden" name="delete" value="{{ common.user.email }}" />
+    <input type="hidden" name="delete" value="{{ request.user.email }}" />
     <p>
       You can <strong>delete all personal information</strong> from this application, including
       any profile information and all e-books.

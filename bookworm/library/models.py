@@ -21,6 +21,7 @@ from epub.constants import NAMESPACES as NS
 from epub.toc import NavPoint, TOC
 import epub.util as util
 
+log = logging.getLogger('library.models')
 
 # Functions
 def safe_name(name):
@@ -112,7 +113,7 @@ class EpubArchive(BookwormModel):
             epub.delete()
             super(EpubArchive, self).delete()
         except blob.DoesNotExist:
-            logging.error('Could not find associated epubblob, maybe deleted from file system?')
+            log.error('Could not find associated epubblob, maybe deleted from file system?')
             
 
 
@@ -259,7 +260,7 @@ class EpubArchive(BookwormModel):
         to have no author or even an empty dc:creator'''
         authors = [BookAuthor(name=a.text.strip()) for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG)) if a is not None and a.text is not None]
         if len(authors) == 0:
-            logging.warn('Got empty authors string for book %s' % self.name)
+            log.warn('Got empty authors string for book %s' % self.name)
         for a in authors:
             a.save()
         return authors
@@ -291,7 +292,8 @@ class EpubArchive(BookwormModel):
                     # This is a binary file, like a jpeg
                     data['data'] = content
 
-                data['filename'] = item.get('href')
+                (data['path'], data['filename']) = os.path.split(item.get('href'))
+                #log.debug('Got path=%s, filename=%s' % (data['path'], data['filename']))
                 data['idref'] = item.get('id')
                 data['content_type'] = item.get('media-type')
 
@@ -309,6 +311,7 @@ class EpubArchive(BookwormModel):
                 file=f,
                 filename=i['filename'],
                 data=i['data'],
+                path=i['path'],
                 content_type=i['content_type'],
                 archive=self)
             image.save()  
@@ -407,6 +410,7 @@ class EpubArchive(BookwormModel):
                     order = 0
 
                 page = {'title': title,
+                        'path': os.path.split(title)[0],
                         'idref':idref,
                         'filename':href,
                         'file':content,
@@ -455,6 +459,7 @@ class BookwormFile(BookwormModel):
     file = models.TextField(default='')    
     filename = models.CharField(max_length=1000)
     archive = models.ForeignKey(EpubArchive)
+    path = models.CharField(max_length=255, default='')
 
     def render(self):
         return self.file
@@ -488,12 +493,16 @@ class HTMLFile(BookwormFile):
             body = xhtml.find('{%s}body' % NS['html'])
         except ET.XMLSyntaxError:
             # Use the HTML parser
+            log.warn('Falling back to html parser')
             xhtml = ET.parse(StringIO(f), ET.HTMLParser())
             body = xhtml.find('body')
         except ExpatError:
-            logging.error('Was not valid XHTML; treating as uncleaned string')
-            self.processed_content = f
-            return f 
+            log.warn('Was not valid XHTML; trying with BeautifulSoup')
+            html = lxml.html.soupparser.fromstring(f)
+            body = html.find('.//body')
+
+            #self.processed_content = f
+            #return f 
 
         body = self._clean_xhtml(body)
         div = ET.Element('div')
@@ -507,7 +516,7 @@ class HTMLFile(BookwormFile):
             self.processed_content = body_content
             self.save()            
         except: 
-            logging.error("Could not cache processed document, error was: " + sys.exc_value)
+            log.error("Could not cache processed document, error was: " + sys.exc_value)
 
         # Mark this chapter as last-read
 
@@ -537,6 +546,11 @@ class HTMLFile(BookwormFile):
                 e = ET.fromstring("""<a class="svg" href="%s">[ View linked image in SVG format ]</a>""" % element.get('src'))
                 p.remove(element)
                 p.append(e)
+            
+            # Script tags are removed
+            if element.tag == 'script':
+                p = element.getparent()
+                p.remove(element)
 
         return xhtml
 
@@ -675,11 +689,11 @@ class BinaryBlob(BookwormFile):
         if not os.path.exists(storage):
             os.mkdir(storage)
         f = self._get_file()
-        if os.path.exists(f):
-            logging.warn('File %s with document %s already exists; saving anyway' % (self.filename, self.archive.name))
+        if os.path.exists(f.encode('utf8')):
+            log.warn('File %s with document %s already exists; saving anyway' % (self.filename, self.archive.name))
 
         else :
-            path = self.filename
+            path = self.filename.encode('utf8')
             pathinfo = []
             # This is ugly, but we want to create any depth of path,
             # and then save the file in the appropriate place
@@ -693,7 +707,7 @@ class BinaryBlob(BookwormFile):
                 d += '/' + p
                 if not os.path.exists(d):
                     os.mkdir(d)
-        f = open(f, 'w')
+        f = open(f.encode('utf8'), 'w')
         f.write(self.data)
         f.close()
         super(BinaryBlob, self).save()
@@ -701,8 +715,8 @@ class BinaryBlob(BookwormFile):
     def delete(self):
         storage = self._get_storage()
         f = self._get_file()
-        if not os.path.exists(f):
-            logging.warn('Tried to delete non-existent file %s in %s' % (self.filename, storage))         
+        if not os.path.exists(f.encode('utf8')):
+            log.warn('Tried to delete non-existent file %s in %s' % (self.filename, storage))         
         else:
             os.remove(f)
         super(BinaryBlob, self).delete()
@@ -710,30 +724,30 @@ class BinaryBlob(BookwormFile):
     def get_data(self):
         '''Return the data for this file, as a string of bytes (output from read())'''
         f = self._get_file()
-        if not os.path.exists(f):
-            logging.warn("Tried to open file %s but it wasn't there (storage dir %s)" % (f, self._get_storage()))
+        if not os.path.exists(f.encode('utf8')):
+            log.warn("Tried to open file %s but it wasn't there (storage dir %s)" % (f, self._get_storage()))
             return None
-        return open(f).read()
+        return open(f.encode('utf8')).read()
 
     def _get_pathname(self):
-        return 'storage'
+        return u'storage'
 
     def _get_storage_dir(self):
-        return '%s/%s' % (os.path.dirname(__file__), self._get_pathname())   
+        return u'%s/%s' % (os.path.dirname(__file__), self._get_pathname())   
 
 
     def _get_file(self):
         storage = self._get_storage()
         if not os.path.exists(storage):
             storage = self._get_storage_deprecated()
-        return '%s/%s' % (storage, self.filename)
+        return u'%s/%s' % (storage.encode('utf8'), self.filename)
 
     def _get_storage(self):
-        return '%s/%s' % (self._get_storage_dir(), self.archive.id)
+        return u'%s/%s' % (self._get_storage_dir(), self.archive.id)
 
     def _get_storage_deprecated(self):
-        logging.warn('Using old method of file retrieval; this should be removed!')
-        return '%s/%s' % (self._get_storage_dir(), self.archive.name)
+        log.warn('Using old method of file retrieval; this should be removed!')
+        return u'%s/%s' % (self._get_storage_dir(), self.archive.name)
 
     class Meta:
         abstract = True

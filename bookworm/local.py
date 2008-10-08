@@ -3,7 +3,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 # Local settings; should be overriden for each checkout
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
    
 DATABASE_ENGINE = 'mysql' 

@@ -68,6 +68,19 @@ urlpatterns = patterns('',
                        )
 
 
+urlpatterns += patterns('django.views.generic.simple',
+                       url(r'^about/tour$', 'direct_to_template',
+                           {'template': 'tour.html'}, name='tour'),
+                       url(r'^publishers/epub$', 'direct_to_template',
+                           {'template': 'epub.html'}, name='epub'),
+                       url(r'^publishers/ebook-testing$', 'direct_to_template',
+                           {'template': 'ebooktesting.html'}, name='ebooktesting'),
+                       url(r'^help$', 'direct_to_template',
+                           {'template': 'help.html'}, name='help'),
+                       url(r'^about/openid$', 'direct_to_template',
+                           {'template': 'openid.html'}, name='openid'),
+                        )
+
 if settings.DEBUG:
     urlpatterns += patterns('',
                             (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.ROOT_PATH + '/library/templates/static'}),

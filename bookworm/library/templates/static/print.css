@@ -24,6 +24,7 @@ p {
 #bw-subheader {
     background: white;
     float:none;
+    display:none;
 }
 
 a:link, a:visited {
@@ -52,4 +53,7 @@ a:link:after, #bw-content a:visited:after {
 
 #bw-header_nav, .bw-results_nav, #bw-footer {
  display:none;
+}
+#bw-printheader {
+ display:inline;
 }

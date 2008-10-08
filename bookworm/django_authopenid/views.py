@@ -29,6 +29,7 @@
 # THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+import logging
 
 from django.http import HttpResponseRedirect, get_host
 from django.shortcuts import render_to_response as render
@@ -44,7 +45,7 @@ from django.contrib.sites.models import Site
 from django.utils.http import urlquote_plus
 from django.core.mail import send_mail
 
-import logging
+from bookworm.library.models import UserPref
 
 from openid.consumer.consumer import Consumer, \
     SUCCESS, CANCEL, FAILURE, SETUP_NEEDED
@@ -237,6 +238,7 @@ def signin(request):
         'form2': form_signin,
         'action': request.path,
         'msg':  request.GET.get('msg',''),
+        'signin_page': True,
         'sendpw_url': reverse('user_sendpw'),
     }, context_instance=RequestContext(request))
 
@@ -338,7 +340,11 @@ def register(request):
                 tmp_pwd = User.objects.make_random_password()
                 user_ = User.objects.create_user(form1.cleaned_data['username'],
                          form1.cleaned_data['email'], tmp_pwd)
-                
+
+                # Save a profile for them
+                profile = UserPref(user=user_)
+                profile.save()
+
                 # make association with openid
                 uassoc = UserAssociation(openid_url=str(openid_),
                         user_id=user_.id)
@@ -720,7 +726,6 @@ def delete(request):
     return render('authopenid/delete.html', {
         'form': form, 
         'msg': msg, 
-        'common':request.session.get('common')
         }, context_instance=RequestContext(request))
 
 def deleteopenid_success(request, identity_url, openid_response):

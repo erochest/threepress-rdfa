@@ -1,24 +1,23 @@
 from django.core.mail import EmailMessage
 
-import logging, sys, StringIO, urllib
+import logging, sys, urllib, MySQLdb, cStringIO, os.path
 from zipfile import BadZipfile
-from lxml import etree
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, Http404, HttpResponse
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import auth
 from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage
-
-from models import EpubArchive, HTMLFile, UserPref, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields
+from django.views.generic.simple import direct_to_template
+from models import EpubArchive, HTMLFile, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields
 from forms import EpubValidateForm, ProfileForm
 from epub import constants as epub_constants
-from epub import InvalidEpubException
 from django.conf import settings
 from google_books.search import Request
+from django_authopenid.views import signin
 
 log = logging.getLogger('views')
 
@@ -37,15 +36,22 @@ def register(request):
     else:
         data, errors = {}, {}
 
-    return render_to_response("auth/register.html", 
+    return direct_to_template(request, "auth/register.html", 
                               { 'form' : form })
 
-
-@login_required
 def index(request, 
           page_number=settings.DEFAULT_START_PAGE, 
           order=settings.DEFAULT_ORDER_FIELD,
           dir=settings.DEFAULT_ORDER_DIRECTION):
+    if request.user.is_authenticated():
+        return logged_in_home(request, page_number, order, dir)
+
+    # If this is a mobile user, skip the public page
+    if settings.MOBILE:
+        return signin(request)
+    return direct_to_template(request, "public.html", {})
+
+def logged_in_home(request, page_number, order, dir):
 
     if not dir in settings.VALID_ORDER_DIRECTIONS:
         raise Exception("Direction %s was not in our list of known ordering directions" % dir)
@@ -58,7 +64,6 @@ def index(request,
         order_computed = order
         reverse_dir = 'desc'
 
-    _common(request, load_prefs=True)
     if page_number is None:
         page_number = settings.DEFAULT_START_PAGE
     user = request.user
@@ -76,25 +81,25 @@ def index(request,
             # Populate the author field if it was empty before
             d.orderable_author = d.safe_author()
             d.save()
-        
-    return render_to_response('index.html', {'documents':paginator, 
+
+    sysinfo = SystemInfo()
+    return direct_to_template(request, 'index.html', {'documents':paginator, 
                                              'page':page,
                                              'form':form,
                                              'order':order,
                                              'dir':dir,
+                                             'total_users':sysinfo.get_total_users(),
+                                             'total_books':sysinfo.get_total_books(),
                                              'reverse_dir':reverse_dir,
                                              'order_text': order_fields[order],
                                              'order_direction': 'ascending' if dir == 'asc' else 'descending',
                                              'order_adverb': 'alphabetically' if order != 'created_time' else 'by date value',
-                                             },
-                                             context_instance=RequestContext(request)
+                                             }
                               )
 
 @login_required
 def profile(request):
-    _check_switch_modes(request)
-
-    uprofile = request.user.get_profile()
+    uprofile = RequestContext(request).get('profile')
     
     if request.openid:
         sreg = request.openid.sreg
@@ -112,7 +117,6 @@ def profile(request):
         if sreg.has_key('country'):
             uprofile.country = sreg['country']
         uprofile.save()
-        _check_switch_modes(request)
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, instance=uprofile)
@@ -122,8 +126,12 @@ def profile(request):
     else:
         form = ProfileForm(instance=uprofile)
         message = None
+    if 'msg' in request.GET:
+        message = request.GET['msg']
 
-    return render_to_response('auth/profile.html', {'form':form, 'prefs':uprofile, 'message':message}, context_instance=RequestContext(request))
+    return direct_to_template(request,
+                              'auth/profile.html', 
+                              {'form':form, 'prefs':uprofile, 'message':message})
 
 @login_required
 def view(request, title, key, first=False, resume=False):
@@ -132,7 +140,6 @@ def view(request, title, key, first=False, resume=False):
 
     log.debug("Looking up title %s, key %s" % (title, key))
 
-    _check_switch_modes(request)
     document = _get_document(request, title, key)
 
     uprofile = request.user.get_profile()
@@ -154,16 +161,12 @@ def view(request, title, key, first=False, resume=False):
 @login_required
 def view_document_metadata(request, title, key):
     log.debug("Looking up metadata %s, key %s" % (title, key))
-    _check_switch_modes(request)
     document = _get_document(request, title, key)
     google_books = _get_google_books_info(document, request)
-    return render_to_response('view.html', {'document':document, 'google_books':google_books}, 
-                              context_instance=RequestContext(request))
-
+    return direct_to_template(request, 'view.html', {'document':document, 'google_books':google_books})
 
 def about(request):
-    _common(request)
-    return render_to_response('about.html', context_instance=RequestContext(request))
+    return direct_to_template(request, 'about.html')
     
 @login_required
 def delete(request):
@@ -183,13 +186,12 @@ def delete(request):
 
 @login_required
 def profile_delete(request):
-    _common(request)
 
     if not request.POST.has_key('delete'):
         # Extra sanity-check that this is a POST request
         log.error('Received deletion request but was not POST')
         message = "There was a problem with your request to delete this profile."
-        return render_to_response('profile.html', { 'message':message})
+        return direct_to_template(request, 'profile.html', { 'message':message})
 
     if not request.POST['delete'] == request.user.email:
         # And that we're POSTing from our own form (this is a sanity check, 
@@ -197,37 +199,17 @@ def profile_delete(request):
         # the one to be deleted, regardless of the value of 'delete')
         log.error('Received deletion request but nickname did not match: received %s but current user is %s' % (request.POST['delete'], request.user.nickname()))
         message = "There was a problem with your request to delete this profile."
-        return render_to_response('profile.html', { 'message':message})
+        return direct_to_template(request, 'profile.html', { 'message':message})
 
-    userprefs = _prefs(request)
-    userprefs.delete()
-
-    # Decrement our total-users counter
-    counter = _get_system_info(request)
-    counter.decrement_total_users()
+    request.user.get_profile().delete()
 
     # Delete all their books (this is likely to time out for large numbers of books)
     documents = EpubArchive.objects.filter(owner=request.user)
 
     for d in documents:
         _delete_document(request, d)
-    
 
     return HttpResponseRedirect('/') # fixme: actually log them out here
-
-def _check_switch_modes(request):
-    '''Did they switch viewing modes?'''
-    _common(request, load_prefs=True)
-    userprefs = request.session['common']['prefs']
-
-    if request.GET.has_key('iframe'):
-        userprefs.use_iframe = (request.GET['iframe'] == 'yes')
-        userprefs.save()
-
-    if request.GET.has_key('iframe_note'):
-        userprefs.show_iframe_note = (request.GET['iframe_note'] == 'yes')
-        userprefs.save()
-
 
 @login_required    
 def view_chapter(request, title, key, chapter_id, chapter=None, google_books=None):
@@ -256,8 +238,7 @@ def view_chapter(request, title, key, chapter_id, chapter=None, google_books=Non
             subchapter_href = href
             break
 
-    _check_switch_modes(request)
-    return render_to_response('view.html', {'chapter':chapter,
+    return direct_to_template(request, 'view.html', {'chapter':chapter,
                                             'document':document,
                                             'next':next,
                                             'toc':toc,
@@ -265,10 +246,8 @@ def view_chapter(request, title, key, chapter_id, chapter=None, google_books=Non
                                             'parent_chapter':parent_chapter,
                                             'stylesheets':stylesheets,
                                             'google_books':google_books,
-                                            'previous':previous},
-                              context_instance=RequestContext(request))
-    
-    
+                                            'previous':previous})
+
 def _chapter_next_previous(document, chapter, dir='next'):
     '''Returns the next or previous data object from the OPF'''
     toc = document.get_toc()
@@ -288,29 +267,19 @@ def _chapter_next_previous(document, chapter, dir='next'):
 def view_chapter_image(request, title, key, image):
     log.debug("Image request: looking up title %s, key %s, image %s" % (title, key, image))        
     document = _get_document(request, title, key)
-    image = get_object_or_404(ImageFile, archive=document, filename=image)
-    response = HttpResponse(content_type=str(image.content_type))
-    if image.content_type == 'image/svg+xml':
-        response.content = image.file
+    try: 
+        image_obj = get_object_or_404(ImageFile, archive=document, filename=image)
+    except Http404:
+        image = os.path.basename(image)
+        image_obj = get_object_or_404(ImageFile, archive=document, filename=image)
+    response = HttpResponse(content_type=str(image_obj.content_type))
+    if image_obj.content_type == 'image/svg+xml':
+        response.content = image_obj.file
     else:
-        response.content = image.get_data()
+        response.content = image_obj.get_data()
 
     return response
 
-@login_required
-def view_chapter_frame(request, title, key, chapter_id):
-    '''Generate an iframe to display the document online, possibly with its own stylesheets'''
-    document = _get_document(request, title, key)
-    chapter = HTMLFile.objects.get(archive=document, filename=chapter_id)
-    stylesheets = StylesheetFile.objects.filter(archive=document)
-    next = _chapter_next_previous(document, chapter, 'next')
-    previous = _chapter_next_previous(document, chapter, 'previous')
-
-    return render_to_response('frame.html', {'document':document, 
-                                             'chapter':chapter, 
-                                             'next':next,
-                                             'previous':previous,
-                                             'stylesheets':stylesheets})
 
 @login_required
 def view_stylesheet(request, title, key, stylesheet_id):
@@ -319,7 +288,6 @@ def view_stylesheet(request, title, key, stylesheet_id):
     stylesheet = get_object_or_404(StylesheetFile, archive=document,filename=stylesheet_id)
     response = HttpResponse(content=stylesheet.file, content_type='text/css')
     response['Cache-Control'] = 'public'
-
     return response
 
 @login_required
@@ -332,19 +300,15 @@ def download_epub(request, title, key):
 @login_required
 def upload(request):
     '''Uploads a new document and stores it in the datastore'''
-    
-    _common(request)
-    
     document = None 
     
     if request.method == 'POST':
         form = EpubValidateForm(request.POST, request.FILES)
         if form.is_valid():
 
-            data = StringIO.StringIO()
+            data = cStringIO.StringIO()
             for c in request.FILES['epub'].chunks():
                 data.write(c)
-            #data.close()
             document_name = form.cleaned_data['epub'].name
             log.debug("Uploading document name: %s" % document_name)
             document = EpubArchive(name=document_name)
@@ -355,24 +319,37 @@ def upload(request):
             try:
                 document.explode()
                 document.save()
-                sysinfo = _get_system_info(request)
-                sysinfo.increment_total_books()
-                # Update the cache
-                #memcache.set('total_books', sysinfo.total_books)
 
             except BadZipfile:
                 log.error('Non-zip archive uploaded: %s' % document_name)
                 log.error(sys.exc_value)
                 message = 'The file you uploaded was not recognized as an ePub archive and could not be added to your library.'
                 document.delete()
-                return render_to_response('upload.html', {
-                                                          'form':form, 
-                                                          'message':message})
+                return direct_to_template(request, 'upload.html', 
+                                          { 'form':form, 'message':message})
+
+            except MySQLdb.OperationalError, e:
+                log.debug("Got operational error %s" % e)
+                message = "We detected a problem with your ebook that is most likely related to it being too big to display safely in a web browser. This can happen with very large images, or with extremely long chapters. Please check with the publisher that the book has been formatted correctly.  Very large pages would require a lot of scrolling and load very slowly, so they are not allowed to be added to Bookworm."
+                try:
+                    # Email it to the admins
+                    email = EmailMessage('[bookworm] Too-large book added: %s' % document_name, e.__str__(), 'no-reply@threepress.org',
+                                         ['liza@threepress.org'])
+                    email.attach(document_name, data.getvalue(), epub_constants.MIMETYPE)
+                    email.send()
+                except Exception, f:
+                    log.error(f)
+
+
+                return direct_to_template(request, 'upload.html', {'form':form, 'message':message})                
             except Exception, e:
+                import traceback
+                tb =  traceback.format_exc()
+                log.error(tb)
                 # Delete it first so we don't end up with a broken document in the library
                 try:
                     # Email it to the admins
-                    email = EmailMessage('[bookworm] Failed upload', '', 'no-reply@threepress.org',
+                    email = EmailMessage('[bookworm] Failed upload for %s' % document_name, tb, 'no-reply@threepress.org',
                                          ['liza@threepress.org'])
                     email.attach(document_name, data.getvalue(), epub_constants.MIMETYPE)
                     email.send()
@@ -409,28 +386,20 @@ def upload(request):
                         message += "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned: <pre style='color:black;font-weight:normal'>%s</pre></p>" % epub_errors
                     else:
                         log.error('Got an unexpected response from epubcheck, ignoring: %s' % d)
-
-
-                                     
-
                 
-                return render_to_response('upload.html', {'form':form, 
-                                                          'message':message})                
+                return direct_to_template(request, 'upload.html', {'form':form, 
+                                                                   'message':message})                
             log.debug("Successfully added %s" % document.title)
             return HttpResponseRedirect('/')
 
-        return render_to_response('upload.html', {
-                'form':form},
-                                  context_instance=RequestContext(request)) 
+        return direct_to_template(request, 'upload.html', {
+                'form':form})
+
 
     else:
         form = EpubValidateForm()        
 
-    return render_to_response('upload.html', {
-                                              'form':form},
-                              context_instance=RequestContext(request)) 
-
-
+    return direct_to_template(request, 'upload.html', {'form':form})
 
 def _delete_document(request, document):
     # Delete the chapters of the book 
@@ -451,10 +420,8 @@ def _delete_document(request, document):
         for i in images:
             i.delete()
 
-    # Delete the book itself, and decrement our counter
+    # Delete the book itself
     document.delete()
-    sysinfo = _get_system_info(request)
-    sysinfo.decrement_total_books()
 
 def _get_document(request, title, key, override_owner=False):
     '''Return a document by Google key and owner.  Setting override_owner
@@ -469,68 +436,15 @@ def _get_document(request, title, key, override_owner=False):
 
     return document
 
-
-
-def _greeting(request):
-    return None
-
-def _prefs(request):
-    '''Get (or create) a user preferences object for a given user.
-    If created, the total number of users counter will be incremented and
-    the memcache updated.'''
-    user = request.user
-    try:
-        userprefs = user.get_profile()
-    except AttributeError:
-        # Occurs when this is called on an anonymous user; ignore
-        return None
-    except UserPref.DoesNotExist:
-        log.debug('Creating a userprefs object for %s' % user.username)
-        # Create a preference object for this user
-        userprefs = UserPref(user=user)
-        userprefs.save()
-
-        # Increment our total-users counter
-        counter = _get_system_info(request)
-
-        counter.increment_total_users()
-  
-    return userprefs
-
-def _common(request, load_prefs=False):
-    '''Builds a dictionary of common 'globals' into the request
-    @todo cache some of this, like from sysinfo'''
-
-    request.session['common']  = {}
-    common = {}
-    common['user'] = request.user
-    common['is_admin'] = request.user.is_superuser
-    common['prefs'] = _prefs(request)
-    common['total_users'] = _get_system_info(request).get_total_users()
-    common['total_books'] = _get_system_info(request).get_total_books()
-    common['greeting'] = _greeting(request)
-    common['mobile'] = settings.MOBILE 
-
-
-    request.session.modified = True
-    request.session['common'] = common
-
-
-def _get_system_info(request):
-    '''Super-primitive caching system'''
-    if not 'system_info' in request.session:
-        request.session['system_info'] = SystemInfo()
-    return request.session['system_info']
-    
 def _get_google_books_info(document, request):
     # Find all the words in the title and all the names in the author by splitting on 
     # spaces and commas
     title_words = document.title.replace(',', '').split(' ')
     author_words = document.author.replace(',', '').split(' ')
     for t in title_words:
-        query = 'intitle:%s+' % urllib.quote(t)
+        query = 'intitle:%s+' % urllib.quote(t.encode('utf8'))
     for a in author_words:
-        query += 'inauthor:%s+' % urllib.quote(a)
+        query += 'inauthor:%s+' % urllib.quote(a.encode('utf8'))
     if 'REMOTE_ADDR' in request.META:
         remote_addr = request.META['REMOTE_ADDR']
     else:

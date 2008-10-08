@@ -1,34 +1,15 @@
 {% extends "base.html" %} 
-{% spaceless %}
-{% block title %}
-  {% if chapter.title %}
-     '{{ chapter.title }}' in 
-  {% endif %}
+{% block title %}{% spaceless %}
+{% if chapter.title %} '{{ chapter.title }}' in {% endif %} {{ document.title }} {% if document.author %} by {{ document.author }} {% endif %}
+{% endspaceless %}{% endblock title %}
 
-  {{ document.title }}
-  {% if document.author %} 
-     by {{ document.author }} 
-  {% endif %}
-{% endblock title %}
-{% endspaceless %}
-
-
-{% block localstyles %}
-{% spaceless %}
-    {% if not request.common.prefs.use_iframe %}
-      {% for css in stylesheets %}
-      <link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.filename %}" />
-      {% endfor %}
-    {% endif %}
-{% endspaceless %}
-{% endblock %}
+{% block localstyles %}{% spaceless %}{% for css in stylesheets %}<link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.filename %}" />{% endfor %}{% endspaceless %}{% endblock %}
 
 {% block head %}
-
+{% spaceless %}
 <link rel="stylesheet" href="/static/document.css"></link>
-
 {% include "includes/meta.html" %}
-
+{% endspaceless %}
 {% endblock head %}
 
 {% block header %}
@@ -46,18 +27,11 @@
 <div id="bw-content">
 
 {% if chapter %}
-
-
    <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
-  
       <div id="bw-book-content" >{{ chapter.render|safe }}</div>
-  
    <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
-
 {% else %}
-
  <!-- Title page -->
-
    <h1 class="bw-book_title">{{ document.title }}</h1>
    <h2 class="bw-book_author">{% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}</h2>
 

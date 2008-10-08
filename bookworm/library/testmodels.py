@@ -26,17 +26,17 @@ class MockEpubArchive(EpubArchive):
 class MockBinaryBlob(BinaryBlob):
     '''Mock object that uses a different storage directory'''
     def _get_pathname(self):
-        return 'test-data/storage'        
+        return u'test-data/storage'        
 
 class MockEpubBlob(EpubBlob):
     def _get_pathname(self):
-        return 'test-data/storage'        
+        return u'test-data/storage'        
 
 class MockImageFile(ImageFile):
     def _blob_class(self):
         return MockImageBlob
     def _get_pathname(self):
-        return 'test-data/storage'        
+        return u'test-data/storage'        
 
 class MockImageBlob(ImageBlob):
     def _get_pathname(self):

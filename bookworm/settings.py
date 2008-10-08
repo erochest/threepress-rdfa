@@ -1,4 +1,5 @@
 import os
+import logging, logging.handlers
 
 # Django settings for bookworm project.
 
@@ -46,7 +47,6 @@ SECRET_KEY = 'j5+j92)+lry!gm1=*xl9#i=*gc2=opvfvew%8q2&4zx!v#6&1z'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -55,6 +55,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
+    "bookworm.library.context_processors.nav",
+    "bookworm.library.context_processors.profile",
+    "bookworm.library.context_processors.mobile"
 ) 
 
 MIDDLEWARE_CLASSES = (
@@ -65,6 +68,7 @@ MIDDLEWARE_CLASSES = (
     'django_authopenid.middleware.OpenIDMiddleware',
     'django.middleware.http.SetRemoteAddrFromForwardedFor',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+#    'django.contrib.csrf.middleware.CsrfMiddleware'
     
 )
 
@@ -112,5 +116,25 @@ VALID_ORDER_FIELDS = ('created_time', 'title', 'orderable_author')
 MOBILE_DEVICE_AGENTS = ('kindle', 'iphone')
 MOBILE = False
 
+# Set up logging
+LOG_DIR = '%s/log/' % ROOT_PATH
+LOG_NAME = 'bookworm.log'
+
+TEST_DATABASE_CHARSET = 'utf8'
+
+# Access time, filename/function#line-number message
+log_formatter = logging.Formatter("[%(asctime)s %(filename)s/%(funcName)s#%(lineno)d] %(message)s")
+
+try:
+    # This should roll logs over at midnight and date-stamp them appropriately
+    handler = logging.handlers.TimedRotatingFileHandler(filename="%s/%s" % (LOG_DIR, LOG_NAME),
+                                                        when='midnight')
+    handler.setFormatter(log_formatter)
+    log = logging.getLogger('')
+    log.setLevel(logging.DEBUG)
+    log.addHandler(handler)
+
+except IOError:
+    pass
 from local import *
 

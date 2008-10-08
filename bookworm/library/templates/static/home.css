@@ -33,7 +33,11 @@
 
 #bw-library {
     width:100%;
-    background-color: rgb(248, 255, 239);
+    /* background-color: rgb(248, 255, 239); */
+    background-color: rgb(254, 255, 254);
+    background-image: url(/static/yellow-gradiant-long.png);
+    background-repeat: repeat-x;
+
     border-collapse:collapse;
 }
 #bw-library .bw-title, #bw-library .bw-author {
@@ -94,10 +98,6 @@ form fieldset {
   background-color: rgb(248, 255, 239);
   -moz-border-radius: 20px; 
   -webkit-border-radius: 20px; 
-}
-
-form {
-
 }
 
 #bw-leftnav ol  {
