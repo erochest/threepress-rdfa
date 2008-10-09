@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from lxml import etree as ET
+from lxml.etree import XMLSyntaxError
 import lxml.html
 from zipfile import ZipFile
 from StringIO import StringIO
@@ -215,7 +216,10 @@ class EpubArchive(BookwormModel):
         except KeyError:
             raise InvalidEpubException('TOC file was referenced in OPF, but not found in archive: toc file %s' % toc_filename, archive=self)
 
-        parsed_toc = util.xml_from_string(self.toc)
+        try:
+            parsed_toc = util.xml_from_string(self.toc)
+        except XMLSyntaxError:
+            raise DRMEpubException(self.toc)
 
         self.authors = self._get_authors(parsed_opf)
         self.orderable_author = self.safe_author()
@@ -761,6 +765,9 @@ class ImageBlob(BinaryBlob):
     image = models.ForeignKey(ImageFile)    
     
 class InvalidBinaryException(InvalidEpubException):
+    pass
+
+class DRMEpubException(InvalidEpubException):
     pass
 
 

@@ -877,7 +877,7 @@ class TestViews(DjangoTestCase):
         response = self.client.post('/account/delete/', { 'password':'registertest',
                                                           'confirm':'checked'})
         
-        self.assertRedirects(response, '/account/signin/?msg=Your+account+has+been+deleted.',
+        self.assertRedirects(response, '/?msg=Your+account+has+been+deleted.',
                              status_code=302, 
                              target_status_code=200)   
         response = self.client.get('/view/test/1/')
