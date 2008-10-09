@@ -1,6 +1,6 @@
 {% if document %}
 <div class="bw-results_nav">
-<table width="100%"
+<table width="100%">
 <tr>
 <td><span class="bw-previous"> {% if previous %} <a target="_self" href="{% url library.views.view_chapter document.safe_title,document.key,previous.filename %}{% if mobile %}#bwmain{% endif %}">← previous</a> {% endif %} </span></td>
 {% if mobile %}
