@@ -14,6 +14,7 @@ NAMESPACES = { 'container': 'urn:oasis:names:tc:opendocument:xmlns:container',
 
 CONTENT_PATH = 'OEBPS' # Default, may be overridden by container.xml
 CONTAINER = 'META-INF/container.xml'
+RIGHTS = 'META-INF/rights.xml'
 
 DC_TITLE_TAG = 'title'
 DC_CREATOR_TAG = 'creator'

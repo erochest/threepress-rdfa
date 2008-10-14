@@ -199,6 +199,12 @@ class EpubArchive(BookwormModel):
             container = z.read(self._CONTAINER)
         except KeyError:
             raise InvalidEpubException('Was not able to locate container file %s' % self._CONTAINER, archive=self)
+        
+        try:
+            z.read(constants.RIGHTS)
+            raise DRMEpubException()
+        except KeyError:
+            pass
 
         parsed_container = util.xml_from_string(container)
 
@@ -216,10 +222,7 @@ class EpubArchive(BookwormModel):
         except KeyError:
             raise InvalidEpubException('TOC file was referenced in OPF, but not found in archive: toc file %s' % toc_filename, archive=self)
 
-        try:
-            parsed_toc = util.xml_from_string(self.toc)
-        except XMLSyntaxError:
-            raise DRMEpubException(self.toc)
+        parsed_toc = util.xml_from_string(self.toc)
 
         self.authors = self._get_authors(parsed_opf)
         self.orderable_author = self.safe_author()

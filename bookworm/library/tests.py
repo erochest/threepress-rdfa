@@ -587,6 +587,19 @@ class TestModels(unittest.TestCase):
         point = toc.find_points()[1]
         self.assertEquals(4, point.order())
 
+    def test_rights_document(self):
+        '''Assert that we correctly recognize a rights-managed epub'''
+        filename = 'invalid-rights-managed.epub'
+        document = self.create_document(filename)
+        document.user = self.user
+        self.assertRaises(DRMEpubException, document.explode)
+
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.user = self.user
+        document.explode()
+
+        
     def create_document(self, document):
         epub = MockEpubArchive(name=document)
         epub.owner = self.user
@@ -595,7 +608,7 @@ class TestModels(unittest.TestCase):
 
         return epub
 
-
+    
 class TestViews(DjangoTestCase):
     def setUp(self):
         self.user = User.objects.create_user(username="testuser",email="test@example.com",password="testuser")
