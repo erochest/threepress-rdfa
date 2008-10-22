@@ -42,16 +42,16 @@
       <li> Absolutely free</li>
       <li> Download books to your <a href="{% url help %}#devices">Sony Reader or iLiad</a></li>
       <li> On-the-go reading on your <a href="{% url tour %}#step3">mobile phone</a></li>
-      <li> <a href="{% url tour %}">Take the tour</a></li>
+      <li> <a href="{% url tour %}">Take a tour of Bookworm</a></li>
     </ul>
   </div>
 
   <div class="bw-home-block" >
     <h2>Publishers</h2>
     <ul>
-      <li> Test your ebooks (<a href="{% url ebooktesting %}">Here's how</a>)</li>
+      <li> <a href="{% url ebooktesting %}">Test your epub ebooks</a></li>
       <li> Need strategy or technical help?
-          <a href="http://www.threepress.org/consulting/">Consulting services</a></li>
+          <a href="http://www.threepress.org/consulting/">Ebook and ePub consulting services</a></li>
       <li> Details on the <a href="{% url epub %}">ePub</a> format </li>
     </ul>
   </div>
@@ -60,9 +60,9 @@
     <h2>Developers</h2>
     <ul>
       <li> Open-source, <a href="http://www.opensource.org/licenses/bsd-license.php">BSD-licensed</a></li>
-      <li> How Bookworm implements <a href="{% url epub %}">ePub</a> </li>
-      <li> <a href="http://www.threepress.org/download/">More ePub software</a></li>
-      <li> <a href="http://blog.threepress.org/">Follow announcements</a> on the blog</li>
+      <li> How Bookworm <a href="{% url epub %}">implements ePub</a> </li>
+      <li> More <a href="http://www.threepress.org/download/">open-source ePub software</a></li>
+      <li> Follow announcements on the <a href="http://blog.threepress.org/">Bookworm blog</a></li>
     </ul>
   </div>
 
@@ -72,25 +72,26 @@
     Bookworm allows readers to add ePub books to their online
     library and read them on their web browser or mobile device.
     If you have a portable device that supports ePub (such as the
-    Sony Reader PRS-505), you can download your books at any time
-    to put on your e-reader.
+    Sony Reader or iRex iLiad), you can download your books 
+    to put on your e-reader. Bookworm is specially optimized for use in the iPhone.
   </p>
   <div class="bw-public-screenshot-holder">
     <a href="{% url tour %}"><img src="/static/screenshot-alice-sm.png" alt="Screenshot of Bookworm reading page" class="bw-public-screenshot"/></a>
     <p class="bw-caption">A page in Bookworm, showing the
-    book's table of contents, illustrations, and text.</p>
+    book's table of contents, illustrations, and text. Bookworm supports CSS styles, images in JPG, GIF, PNG and SVG format,
+    and full XHTML.</p>
   </div>
   <h2>What&rsquo;s an &ldquo;ePub book&rdquo;?</h2>
   <p>
-    ePub is a ebook format. Your ebook is in ePub format if it
-    ends with <strong>.epub</strong>.  If so, you can read
-    it on Bookworm. If not, tell the book publisher to start
+    ePub is an ebook format. Your ebook is in ePub format if it
+    ends with <strong>.epub</strong>.  If so, you can <a href="{% url help %}">read
+    that ebook on Bookworm</a>. If not, tell the book publisher to start
     supporting the only free and open ebook format with strong
     industry support.
   </p>
   <h2>Try Bookworm out</h2>
   <p>
-    A one-page <a href="{% url tour %}">tour</a> of using Bookworm.
+    Try the one-page <a href="{% url tour %}">Bookworm and ePub tour</a>.
   </p>
 </div>
 
