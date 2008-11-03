@@ -1,26 +1,24 @@
 # -*- coding: utf-8 -*-
-from lxml import etree as ET
-from lxml.etree import XMLSyntaxError
+from lxml import etree
 import lxml.html
 from zipfile import ZipFile
 from StringIO import StringIO
-import logging, datetime, sys
+import logging, datetime, sys, os, os.path, re
 from urllib import unquote_plus
-import os, os.path
 from xml.parsers.expat import ExpatError
 import cssutils
 
 from django.utils.http import urlquote_plus
 from django.db import models
-from django.db.models import permalink
 from django.contrib.auth.models import User
 from django.utils.encoding import smart_str
+from django.conf import settings
 
-from epub import constants, InvalidEpubException
-from epub.constants import ENC, BW_BOOK_CLASS, STYLESHEET_MIMETYPE, XHTML_MIMETYPE
-from epub.constants import NAMESPACES as NS
-from epub.toc import NavPoint, TOC
-import epub.util as util
+from library.epub import constants, InvalidEpubException
+from library.epub.constants import ENC, BW_BOOK_CLASS, STYLESHEET_MIMETYPE, XHTML_MIMETYPE, DTBOOK_MIMETYPE
+from library.epub.constants import NAMESPACES as NS
+from library.epub.toc import NavPoint, TOC
+import library.epub.util as util
 
 log = logging.getLogger('library.models')
 
@@ -38,7 +36,7 @@ def unsafe_name(name):
 
 def get_file_by_item(item, document) :
     '''Accepts an Item and uses that to find the related file in the database'''
-    if item.media_type == XHTML_MIMETYPE or 'text' in item.media_type:
+    if item.media_type == XHTML_MIMETYPE or item.media_type == DTBOOK_MIMETYPE or 'text' in item.media_type:
         # Allow semi-broken documents with media-type of 'text/html' or any text type
         # to be treated as html
         html = HTMLFile.objects.filter(idref=item.id, archive=document)
@@ -56,7 +54,7 @@ def get_file_by_item(item, document) :
     
 class BookwormModel(models.Model):
     '''Base class for all models'''
-    created_time = models.DateTimeField('date created', default=datetime.datetime.now())
+    created_time = models.DateTimeField('date created', auto_now_add=True)
 
     def key(self):
         '''Backwards compatibility with templates'''
@@ -77,7 +75,20 @@ class EpubArchive(BookwormModel):
     opf = models.TextField()
     toc = models.TextField()
     has_stylesheets = models.BooleanField(default=False)
+
     last_chapter_read = models.ForeignKey('HTMLFile', null=True)
+
+    # Has this epub been indexed for search?
+    indexed = models.BooleanField(default=False)
+
+    # Metadata fields
+    language = models.CharField(max_length=255, default='', db_index=True)
+    rights = models.CharField(max_length=300, default='', db_index=False)
+    identifier = models.CharField(max_length=255, default='', db_index=True)
+
+    # MTM fields
+    subjects = models.ManyToManyField('Subject')
+    publishers = models.ManyToManyField('EpubPublisher')
 
     _CONTAINER = constants.CONTAINER     
     _parsed_metadata = None
@@ -115,7 +126,7 @@ class EpubArchive(BookwormModel):
             super(EpubArchive, self).delete()
         except blob.DoesNotExist:
             log.error('Could not find associated epubblob, maybe deleted from file system?')
-            
+            super(EpubArchive, self).delete()            
 
 
     def set_content(self, c):
@@ -141,34 +152,96 @@ class EpubArchive(BookwormModel):
             return a[0].name
         return a[0].name + '...'
 
-    def _get_metadata(self, metadata_tag, opf, plural=False):
-        '''Returns a metdata item's text content by tag name, or a list if mulitple names match'''
+    def _get_metadata(self, metadata_tag, opf, plural=False, as_string=False):
+        '''Returns a metdata item's text content by tag name, or a list if mulitple names match.
+        If as_string is set to True, then always return a comma-delimited string.'''
         if self._parsed_metadata is None:
             self._parsed_metadata = util.xml_from_string(opf)
         text = []
         alltext = self._parsed_metadata.findall('.//{%s}%s' % (NS['dc'], metadata_tag))
+        if as_string:
+            return ', '.join([t.text.strip() for t in alltext if t.text])
         for t in alltext:
-            text.append(t.text)
+            if t.text is not None:
+                text.append(t.text)
         if len(text) == 1:
             t = (text[0], ) if plural else text[0]
             return t
         return text
 
     def get_subjects(self):
-        return self._get_metadata(constants.DC_SUBJECT_TAG, self.opf, plural=True)
-    
+        if self.subjects.count() > 0:
+            return self.subjects
+        value = self._get_metadata(constants.DC_SUBJECT_TAG, self.opf, plural=True)
+        for s in value:        
+            is_lcsh = False
+            if 'lcsh' or 'lcss' in s:
+                s = s.replace('lcsh:', '').replace('lcsh', '').replace('lcc', '')
+                is_lcsh=True
+            subject = Subject.objects.get_or_create(name=s)[0]
+            subject.is_lcsh=is_lcsh
+            subject.save()
+            self.subjects.add(subject)
+        self.save()
+        return self.subjects
+
     def get_rights(self):
-        return self._get_metadata(constants.DC_RIGHTS_TAG, self.opf)
+        if self.rights is not u'':
+            return self.rights
+        rights = self._get_metadata(constants.DC_RIGHTS_TAG, self.opf, as_string=True)
+        self.rights = rights
+        self.save()
+        return self.rights
 
     def get_language(self):
-        '''@todo expand into full form '''
-        return self._get_metadata(constants.DC_LANGUAGE_TAG, self.opf)        
+        if self.language is not u'':
+            return self.language
+        self.language = self._get_metadata(constants.DC_LANGUAGE_TAG, self.opf, as_string=True)        
+        self.save()
+        return self.language
+
+    def get_major_language(self):
+        lang = self.get_language()
+        for div in ('-', '_'):
+            if div in lang:
+                return lang.split(div)[0]
+        return lang
 
     def get_publisher(self):
-        return self._get_metadata(constants.DC_PUBLISHER_TAG, self.opf)
+        if self.publishers.count() > 0:
+            return self.publishers
+        value = self._get_metadata(constants.DC_PUBLISHER_TAG, self.opf, plural=True)
+        if not value:
+            return None
+        for s in value:
+            publisher = EpubPublisher.objects.get_or_create(name=s)[0]
+            publisher.save()
+            self.publishers.add(publisher)
+        self.save()
+        return self.publishers
 
     def get_identifier(self):
-        return self._get_metadata(constants.DC_IDENTIFIER_TAG, self.opf)
+        if self.identifier is not u'':
+            return self.identifier
+        self.identifier = self._get_metadata(constants.DC_IDENTIFIER_TAG, self.opf, as_string=True)
+        self.save()
+        return self.identifier
+
+    def identifier_type(self):
+        if 'isbn' in self.identifier:
+            return constants.IDENTIFIER_ISBN
+        if 'uuid' in self.identifier:
+            return constants.IDENTIFIER_UUID
+        if 'http' in self.identifier:
+            return constants.IDENTIFIER_URL
+        if len(self.identifier) == 9 or len(self.identifier) == 13:
+            try:
+                int(self.identifier)
+                return constants.IDENTIFIER_ISBN_MAYBE
+            except ValueError:
+                return constants.IDENTIFIER_UNKNOWN
+        return constants.IDENTIFIER_UNKNOWN
+
 
     def get_top_level_toc(self):
         t = self.get_toc()
@@ -475,6 +548,19 @@ class BookwormFile(BookwormModel):
     def __unicode__(self):
         return u"%s [%s]" % (self.filename, self.archive.title)
 
+class Subject(BookwormModel):
+    '''Represents a DC:Subject value'''
+    name = models.CharField(max_length=255, unique=True, default='', db_index=True)
+    is_lcsh = models.BooleanField(default=False)
+    def __unicode__(self):
+        return self.name
+        
+class EpubPublisher(BookwormModel):
+    '''Represents a publisher'''
+    name = models.CharField(max_length=255, default='', db_index=True)
+    def __unicode__(self):
+        return self.name
+    
 class HTMLFile(BookwormFile):
     '''Usually an individual page in the ebook'''
     title = models.CharField(max_length=5000)
@@ -482,37 +568,46 @@ class HTMLFile(BookwormFile):
     processed_content = models.TextField()
     content_type = models.CharField(max_length=100, default="application/xhtml")
     is_read = models.BooleanField(default=False)
-
-    def render(self):
+ 
+    def render(self, mark_as_read=True):
         '''If we don't have any processed content, process it and cache the
         results in the database.'''
 
-        # Mark this chapter as last-read
-        self.read()
+        # Mark this chapter as last-read if selected
+        # (this is overridden during indexing)
+        if mark_as_read:
+            self.read()
 
         if self.processed_content:
             return self.processed_content
         
         f = smart_str(self.file, encoding=ENC)
-
         try:
-            xhtml = ET.XML(f, ET.XMLParser())
+            xhtml = etree.XML(f, etree.XMLParser())
             body = xhtml.find('{%s}body' % NS['html'])
-        except ET.XMLSyntaxError:
-            # Use the HTML parser
-            log.warn('Falling back to html parser')
-            xhtml = ET.parse(StringIO(f), ET.HTMLParser())
-            body = xhtml.find('body')
+            if body is None:
+                body = xhtml.find('{%s}book' % NS['dtbook'])
+                # This is DTBook; process it
+                body = self._process_dtbook(xhtml)
+                if body is None:
+                    raise UnknownContentException()
         except ExpatError:
-            log.warn('Was not valid XHTML; trying with BeautifulSoup')
+            raise UnknownContentException()
+        except etree.XMLSyntaxError:
+            # Use the HTML parser
+            #log.warn('Falling back to html parser')
+            xhtml = etree.parse(StringIO(f), etree.HTMLParser())
+            body = xhtml.find('body')
+            if body is None:
+                raise UnknownContentException()
+        except UnknownContentException:
+            #log.warn('Was not valid XHTML; trying with BeautifulSoup')
             html = lxml.html.soupparser.fromstring(f)
             body = html.find('.//body')
-
-            #self.processed_content = f
-            #return f 
-
+        if body is None:
+            print f
         body = self._clean_xhtml(body)
-        div = ET.Element('div')
+        div = etree.Element('div')
         div.attrib['id'] = 'bw-book-content'
         children = body.getchildren()
         for c in children:
@@ -525,9 +620,6 @@ class HTMLFile(BookwormFile):
         except: 
             log.error("Could not cache processed document, error was: " + sys.exc_value)
 
-        # Mark this chapter as last-read
-
-
         return body_content
 
     def read(self):
@@ -536,6 +628,19 @@ class HTMLFile(BookwormFile):
         self.archive.save()
         self.is_read = True
         self.save()
+
+    def _process_dtbook(self, xhtml):
+        '''Turn DTBook content into XHTML'''
+        xslt = etree.parse(settings.DTBOOK2XHTML)
+        transform = etree.XSLT(xslt)
+        result = transform(xhtml)
+        # If the DTBook transform failed, throw an exception
+        # and return to the standard XHTML pipeline
+        if result is not None:
+            log.debug("Got result, returning body content")
+            body = result.find('{%s}body' % NS['html'])        
+            return body
+        log.warn("Got None from dtbook transform")
 
     def _clean_xhtml(self, xhtml):
         '''This is only run the first time the user requests the HTML file; the processed HTML is then cached'''
@@ -550,7 +655,7 @@ class HTMLFile(BookwormFile):
             # make them work in most browsers
             if element.tag == 'img' and 'svg' in element.get('src'):
                 p = element.getparent()         
-                e = ET.fromstring("""<a class="svg" href="%s">[ View linked image in SVG format ]</a>""" % element.get('src'))
+                e = etree.fromstring("""<a class="svg" href="%s">[ View linked image in SVG format ]</a>""" % element.get('src'))
                 p.remove(element)
                 p.append(e)
             
@@ -723,7 +828,7 @@ class BinaryBlob(BookwormFile):
         storage = self._get_storage()
         f = self._get_file()
         if not os.path.exists(f.encode('utf8')):
-            log.warn('Tried to delete non-existent file %s in %s' % (self.filename, storage))         
+            log.warn(u'Tried to delete non-existent file %s in %s' % (self.filename, storage))         
         else:
             os.remove(f)
         super(BinaryBlob, self).delete()
@@ -732,7 +837,7 @@ class BinaryBlob(BookwormFile):
         '''Return the data for this file, as a string of bytes (output from read())'''
         f = self._get_file()
         if not os.path.exists(f.encode('utf8')):
-            log.warn("Tried to open file %s but it wasn't there (storage dir %s)" % (f, self._get_storage()))
+            log.warn(u"Tried to open file %s but it wasn't there (storage dir %s)" % (f, self._get_storage()))
             return None
         return open(f.encode('utf8')).read()
 
@@ -740,21 +845,21 @@ class BinaryBlob(BookwormFile):
         return u'storage'
 
     def _get_storage_dir(self):
-        return u'%s/%s' % (os.path.dirname(__file__), self._get_pathname())   
+        return os.path.join(unicode(os.path.dirname(__file__)), self._get_pathname())   
 
 
     def _get_file(self):
         storage = self._get_storage()
         if not os.path.exists(storage):
             storage = self._get_storage_deprecated()
-        return u'%s/%s' % (storage.encode('utf8'), self.filename)
+        return os.path.join(storage, self.filename)
 
     def _get_storage(self):
-        return u'%s/%s' % (self._get_storage_dir(), self.archive.id)
+        return os.path.join(self._get_storage_dir(), unicode(self.archive.id))
 
     def _get_storage_deprecated(self):
         log.warn('Using old method of file retrieval; this should be removed!')
-        return u'%s/%s' % (self._get_storage_dir(), self.archive.name)
+        return os.path.join(self._get_storage_dir(), self.archive.name)
 
     class Meta:
         abstract = True
@@ -773,8 +878,11 @@ class InvalidBinaryException(InvalidEpubException):
 class DRMEpubException(InvalidEpubException):
     pass
 
-
+class UnknownContentException(Exception):
+    # We weren't sure how to parse the body content here
+    pass
 
 order_fields = { 'title': 'book title',
                  'orderable_author': 'first author',
                  'created_time' : 'date added to your library' }
+

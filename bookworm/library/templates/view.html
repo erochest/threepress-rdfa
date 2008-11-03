@@ -46,10 +46,10 @@
        </tr>
      </thead>     
      <tbody>
-       {% if document.get_publisher %}
+       {% if document.get_publisher.count %}
        <tr>
          <th>Publisher</th>
-         <td>{{ document.get_publisher }}</td>
+         <td>{% for s in document.get_publisher.all %}{{ s.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
        </tr>
        {% endif %}
 
@@ -64,10 +64,10 @@
          <th>Date added to library</th>
          <td>{{ document.created_time|date:"l, F Y" }}</td>
        </tr>
-       {% if document.get_subjects %}
+       {% if document.get_subjects.count %}
        <tr>
          <th>Subjects</th>
-         <td>{% for s in document.get_subjects %}{{ s }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+         <td>{% for s in document.get_subjects.all %}{{ s.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
        </tr>
        {% endif %}
 

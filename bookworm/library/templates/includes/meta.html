@@ -14,12 +14,14 @@
 <meta name="dc.creator" content="{{ document.author }}"></meta>
 
 {% if document.get_publisher %}
-  <meta name="dc.publisher" content="{{ document.get_publisher }}"></meta>
+  {% for s in document.get_publisher.all %}
+    <meta name="dc.publisher" content="{{ s.name }}"></meta>
+  {% endfor %}
 {% endif %}
 
 {% if document.get_subjects %}
-  {% for s in document.get_subjects %}
-    <meta name="dc.subject" content="{{ s }}"></meta>
+  {% for s in document.get_subjects.all %}
+    <meta name="dc.subject" content="{{ s.name }}"></meta>
   {% endfor %}
 {% endif %}
 

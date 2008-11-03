@@ -41,10 +41,11 @@
             <a href="{% url index %}">my books</a>
             <a href="{% url upload %}" id="bw-upload-link">add a book</a>
             <a href="http://mobile.threepress.org">mobile version</a>
+            <a href="{% url search %}">search</a>
             <br />
           {% endif %}
           <a href="http://blog.threepress.org">blog</a>
-          <a href="/about/">about <span class="bw-logo">bookworm</span></a>
+          <a href="{% url about %}">about <span class="bw-logo">bookworm</span></a>
           <a href="http://www.threepress.org/about/">about <span class="bw-three">three</span><span class="bw-press">press</span></a>
           <a href="{% url help %}">help</a>
         </p>

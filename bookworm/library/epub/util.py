@@ -9,5 +9,7 @@ def xml_from_string(xml):
     document itself contains an encoding declaration, so convert from unicode
     first if necessary.'''
     if type(xml) == unicode:
-        return ET.fromstring(xml.encode(ENC))
+        enc = xml.encode(ENC)
+        value = ET.fromstring(enc)
+        return value
     return ET.fromstring(xml)    

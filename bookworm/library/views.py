@@ -12,14 +12,17 @@ from django.contrib import auth
 from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage
 from django.views.generic.simple import direct_to_template
-from models import EpubArchive, HTMLFile, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields, DRMEpubException
-from forms import EpubValidateForm, ProfileForm
-from epub import constants as epub_constants
 from django.conf import settings
-from google_books.search import Request
+
 from django_authopenid.views import signin
 
-log = logging.getLogger('views')
+from search import epubindexer
+from library.models import EpubArchive, HTMLFile, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields, DRMEpubException
+from library.forms import EpubValidateForm, ProfileForm
+from library.epub import constants as epub_constants
+from library.google_books.search import Request
+
+log = logging.getLogger('library.views')
 
 def register(request):
     form = UserCreationForm()
@@ -110,12 +113,19 @@ def profile(request):
             uprofile.fullname = sreg['fullname']
         if sreg.has_key('nickname'):
             uprofile.nickname = sreg['nickname']
-        if sreg.has_key('timezone'):
+
+        # These should only be updated if they haven't already been changed
+        if uprofile.timezone is None and sreg.has_key('timezone'):
             uprofile.timezone = sreg['timezone']
-        if sreg.has_key('language'):
+        if uprofile.language is None and sreg.has_key('language'):
             uprofile.language = sreg['language']
-        if sreg.has_key('country'):
+        if uprofile.country is None and sreg.has_key('country'):
             uprofile.country = sreg['country']
+        uprofile.save()
+    
+    if settings.LANGUAGE_COOKIE_NAME in request.session:
+        log.debug("Updating language to %s" % request.session.get(settings.LANGUAGE_COOKIE_NAME))
+        uprofile.language = request.session.get(settings.LANGUAGE_COOKIE_NAME)
         uprofile.save()
 
     if request.method == 'POST':
@@ -132,6 +142,7 @@ def profile(request):
     return direct_to_template(request,
                               'auth/profile.html', 
                               {'form':form, 'prefs':uprofile, 'message':message})
+
 
 @login_required
 def view(request, title, key, first=False, resume=False):
@@ -165,9 +176,6 @@ def view_document_metadata(request, title, key):
     google_books = _get_google_books_info(document, request)
     return direct_to_template(request, 'view.html', {'document':document, 'google_books':google_books})
 
-def about(request):
-    return direct_to_template(request, 'about.html')
-    
 @login_required
 def delete(request):
     '''Delete a book and associated metadata, and decrement our total books counter'''
@@ -299,7 +307,7 @@ def download_epub(request, title, key):
 
 @login_required
 def upload(request):
-    '''Uploads a new document and stores it in the datastore'''
+    '''Uploads a new document and stores it in the database'''
     document = None 
     
     if request.method == 'POST':
@@ -421,6 +429,9 @@ def upload(request):
     return direct_to_template(request, 'upload.html', {'form':form})
 
 def _delete_document(request, document):
+    # Delete the index before we've deleted the actual book
+    epubindexer.delete_epub(document)
+
     # Delete the chapters of the book 
     toc = HTMLFile.objects.filter(archive=document)
     if toc:
@@ -443,7 +454,7 @@ def _delete_document(request, document):
     document.delete()
 
 def _get_document(request, title, key, override_owner=False):
-    '''Return a document by Google key and owner.  Setting override_owner
+    '''Return a document by id and owner.  Setting override_owner
     will search regardless of ownership, for use with admin accounts.'''
     user = request.user
 

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="/static/about.css"></link>
+{% endblock head %}
+
+{% block header %}Full-text search in Bookworm{% endblock header %}
+
+{% block title %}Full-text search in Bookworm{% endblock %}
+{% block leftnav %}
+{% include "includes/about.html" %}
+{% endblock %}
+
+{% block main %}
+<p id="bw-about-description">
+  Bookworm's full-text search allows you to find words across
+  all of your ePubs. You can search in multiple languages,
+  and use advanced phrase searching and boolean operators similar to
+  those supported by Google.
+</p>
+
+<h3>Bookworm uses Xapian</h3>
+<p>
+  <a href="http://xapian.org/">Xapian</a> is a free, open-source search
+  engine which supports many of the features available in 
+  commercial search engines: fast indexing and retrieval,
+  stemming, spelling correction and synonym support.  
+  </p>
+  <p>At this time
+  Bookworm exposes only a fraction of those features:
+</p>
+
+<h3>Phrase searching</h3>
+<p>
+  Like Google, if you want to restrict your search to only a particular
+  phrase (e.g. books containing the phrase "White House" vs. those including just "white" and
+  "house" separately), then enclose them in quotation marks.
+</p>
+<h3>Case-sensitivity</h3>
+<p>
+  All searches are case-insensitive.  This means that "White" will find "white" or "WHITE".
+</p>
+<h3>Boolean operators</h3>
+<p>
+  Like Google, the default boolean operator is AND, meaning that in a 
+  multi-word search, all of the words must appear (but not necessarily
+  right next to each other).  You can change this behavior by
+  including boolean terms in your search:
+  <ul>
+    <li> <em>white AND house</em> &mdash; Same as a search for <em>white house</em>.</li>
+    <li> <em>white OR house</em> &mdash; Find ePubs with either word</li>
+    <li> <em>white NEAR house</em> &mdash; Find these two words near each other (within 10 words)</li>
+    <li> <em>white NOT house</em> &mdash; This is a good way to find ePubs that <em>don't</em> contain the phrase "White House" but do contain the word "white"</li>
+  </ul>
+</p>
+<h3>Ordering</h3>
+<p>
+  Results are returned in relevance order.  <em>Relevance</em>
+  is how likely it is that a given result is what you were looking for.
+  The algorithms used to determine relevance are complex and results
+  aren't always as intuitive as those in a massive commercial search engine like Google.
+  (For reference, Xapian uses the <a href="http://xapian.org/docs/bm25.html">BM25 weighting
+  scheme</a>.) 
+</p>
+<p>Simply put, ePubs with more occurrences of your search terms will appear
+higher in the results. Remember that stemming can influence the number of 
+terms matched in a way that might be unexpected.</p>
+
+<h3>Stemming</h3>
+<p>
+  By default, Bookworm searches for words assuming that they are in English.
+  It will automatically search for other parts of speech for that word,
+  so a search for 'run' will also match 'runs', 'running', etc.  You can
+  change your default language to apply different spelling rules;
+  see <a href="{% url search_language %}">language support in Bookworm</a> for 
+  more on this subject.
+</p>
+<h3>Indexing</h3>
+<p>
+  Every few minutes, Bookworm checks to see if new ePubs have been added.
+  If it finds new books, it indexes all of their words and adds them
+  to your personal search library.   (It's not possible to search books 
+  that are only in other people's libraries.)
+</p>
+<p>
+  This means a book you've just added might not show
+  up in the search immediately.  Be patient; it'll be there soon.
+</p>
+<p>
+  When an ePub is deleted from your library, it's also removed from
+  search.
+</p>
+<h3>More information</h3>
+<p>
+  Complete documentation for Xapian can be found on the Xapian site.  The <a href="http://xapian.org/features.php">feature list</a>
+  is a good high-level introduction.
+</p>
+{% endblock main %}

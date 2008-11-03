@@ -1,7 +1,8 @@
 import logging
-from forms import EpubValidateForm
-from models import SystemInfo, UserPref
 from django.conf import settings
+
+from library.forms import EpubValidateForm
+from library.models import SystemInfo, UserPref
 
 log = logging.getLogger('context_processors')
  
@@ -12,13 +13,15 @@ def nav(request):
 def mobile(request):
     return { 'mobile': settings.MOBILE }
 
+
 def profile(request):
-    '''Get (or create) a user preferences object for a given user.
-    If created, the total number of users counter will be incremented and
-    the memcache updated.'''
+    '''Get (or create) a user preferences object for a given user.'''
     userprefs = None
     try:
         userprefs = request.user.get_profile()
+        if not settings.LANGUAGE_COOKIE_NAME in request.session:
+            request.session[settings.LANGUAGE_COOKIE_NAME] = userprefs.language
+
     except AttributeError:
         # Occurs when this is called on an anonymous user; ignore
         pass
@@ -27,4 +30,5 @@ def profile(request):
         # Create a preference object for this user
         userprefs = UserPref(user=request.user)
         userprefs.save()
+
     return { 'profile': userprefs }

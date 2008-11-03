@@ -1,6 +1,20 @@
 import os
 import logging, logging.handlers
 
+# Live site settings (others should override in locals.py)
+
+DEBUG = False
+TEMPLATE_DEBUG = DEBUG
+   
+DATABASE_ENGINE = 'mysql' 
+DATABASE_NAME = 'bookworm'
+DATABASE_USER = 'threepress'   
+DATABASE_PASSWORD = '3press'   
+DATABASE_HOST = ''             
+DATABASE_PORT = ''             
+
+SITE_ID = 2
+
 # Django settings for bookworm project.
 
 ADMINS = (
@@ -57,12 +71,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "bookworm.library.context_processors.nav",
     "bookworm.library.context_processors.profile",
-    "bookworm.library.context_processors.mobile"
+    "bookworm.library.context_processors.mobile",
+    "bookworm.search.context_processors.search"
 ) 
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django_authopenid.middleware.OpenIDMiddleware',
@@ -71,6 +87,24 @@ MIDDLEWARE_CLASSES = (
 #    'django.contrib.csrf.middleware.CsrfMiddleware'
     
 )
+ugettext = lambda s: s
+
+# Only allow the list of languages available in Xapian
+LANGUAGES = ( ('da', ugettext('Danish')), 
+              ('nl', ugettext('Dutch')),
+              ('en', ugettext('English')),
+              ('fi', ugettext('Finnish')),
+              ('fr', ugettext('French')),
+              ('de', ugettext('German')),
+              ('hu', ugettext('Hungarian')),
+              ('it', ugettext('Italian')),
+              ('no', ugettext('Norwegian')),
+              ('pt', ugettext('Portuguese')),
+              ('ro', ugettext('Romanian')),
+              ('ru', ugettext('Russian')),
+              ('es', ugettext('Spanish')),
+              ('sv', ugettext('Swedish')),
+              ('tr', ugettext('Turkish')))
 
 ROOT_URLCONF = 'urls'
 
@@ -84,7 +118,7 @@ TEMPLATE_DIRS = (
     '%s/library/templates/auth' % ROOT_PATH,    
     '%s/library/templates' % ROOT_PATH,
     '%s/library/templates/includes' % ROOT_PATH,    
-
+    '%s/search/templates' % ROOT_PATH,    
 )
 
 INSTALLED_APPS = (
@@ -95,9 +129,11 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.flatpages',
     'django.contrib.sitemaps',
+    'django.contrib.humanize',
     'django_authopenid',
-#    'django_evolution',
+    'django_evolution',
     'library',
+    'search',
     )
 
 AUTH_PROFILE_MODULE = "library.userpref"
@@ -112,6 +148,8 @@ DEFAULT_ORDER_DIRECTION = 'desc'
 VALID_ORDER_DIRECTIONS = ('asc', 'desc')
 VALID_ORDER_FIELDS = ('created_time', 'title', 'orderable_author')
 
+# Search database info
+SEARCH_ROOT = os.path.join(ROOT_PATH, 'search')
 
 MOBILE_DEVICE_AGENTS = ('kindle', 'iphone')
 MOBILE = False
@@ -121,6 +159,14 @@ LOG_DIR = '%s/log/' % ROOT_PATH
 LOG_NAME = 'bookworm.log'
 
 TEST_DATABASE_CHARSET = 'utf8'
+
+SEARCH_ROOT = os.path.join(ROOT_PATH, 'search', 'dbs')
+
+
+CACHE_BACKEND = 'file:///tmp/bookworm/django_cache'
+
+XSLT_DIR = os.path.join(ROOT_PATH, 'library', 'xsl')
+DTBOOK2XHTML = os.path.join(XSLT_DIR, 'dtbook2xhtml.xsl')
 
 # Access time, filename/function#line-number message
 log_formatter = logging.Formatter("[%(asctime)s %(filename)s/%(funcName)s#%(lineno)d] %(message)s")
@@ -136,5 +182,8 @@ try:
 
 except IOError:
     pass
-from local import *
+try:
+    from local import *
+except:
+    pass
 

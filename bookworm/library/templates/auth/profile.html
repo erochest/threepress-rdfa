@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block title %}{{ request.user.username }}'s profile{% endblock %}
+
+{% block searcharea %}{% endblock %}
+
 {% block head %}
 <link rel="stylesheet" type="text/css" href="/static/home.css" ></link>
 <style type="text/css">
@@ -31,11 +34,12 @@ form input {
 {% if request.openid %}
 <li><h3><a href="{% url django_authopenid.views.changeopenid %}">Change associated OpenID</a></h3></li>
 {% endif %}
+<li><h3><a href="{% url profile_language %}">Set your default search language</a></h3></li>
 <li><h3><a href="{% url django_authopenid.views.delete %}">Delete this account</a></h3></li>
 </ol>
 
 {% if request.openid %}
-<p>Some fields such as preferred language, email and country have been imported via OpenID
+<p>Some fields such as email and country have been imported via OpenID
 and should be changed with your OpenID provider, rather than with Bookworm.</p>
 {% endif %}
 {% endblock %}
@@ -97,7 +101,7 @@ and should be changed with your OpenID provider, rather than with Bookworm.</p>
     {% if prefs.language %}
     <tr>
       <th>Language</th>
-      <td> {{ prefs.language }}</td>
+      <td> {{ current_search_language }} [<a href="{% url profile_language %}">change</a>]</td>
     </tr>
     {% endif %}
 

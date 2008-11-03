@@ -440,8 +440,9 @@ def signup(request):
                 'password': form.cleaned_data['password1'] 
             })
             message = message_template.render(message_context)
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, 
-                    [user_.email])
+            if not settings.DEBUG:
+                send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, 
+                          [user_.email])
             
             return HttpResponseRedirect(next)
     

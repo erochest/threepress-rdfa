@@ -18,19 +18,22 @@
 
   <p id="bw-about-description">
     This quick tour will show you all the major features of
-    Bookworm, from adding your first ebook to reading it 
-    on the web and on your mobile device. 
+    Bookworm, from adding your first ebook, to reading and searching it 
+    on the web, and taking it on your mobile device. 
     <a href="{% url django_authopenid.views.signup %}">Sign up</a>
     when you're done.
   </p>
 
   <div id="bw-tour-toc">
-    In this tour: 
     <a href="#step1">Step 1: Adding a book</a>
     ~
     <a href="#step2">Step 2: Reading a book</a>
     ~
-    <a href="#step3">Step 3: Take your book on the road</a>
+    <br />
+
+    <a href="#step3">Step 3: Searching your library</a>
+    ~
+    <a href="#step4">Step 4: Take your book on the road</a>
   </div>
 
   <a name="step1"></a>
@@ -88,7 +91,7 @@
 
 
     <h2>The Book Information page</h2>
-    <img src="/static/images/screenshots/metadata-box.png" alt="Book information" class="bw-screenshot-page" align="right" />
+    <img src="/static/images/screenshots/metadata-box.png" alt="Book information" class="bw-screenshot-page" align="right" style="margin-bottom:20px" />
     <p>
       Publisher, language, copyright and other information supplied
       with the ebook can be read here.  
@@ -103,9 +106,26 @@
       arrows to move between pages.  You can also always jump to 
       another part or chapter by clicking on the <em>Table of Contents.</em>
     </p>
-  <div style="border-top:1px solid rgb(210,210,210)">
-    <a name="step3"></a>
-    <h1>Step 3: Take your book on the road</h1>
+  <div style="border-top:1px solid rgb(210,210,210);clear:both;">
+  <a name="step3"></a>
+  <h1>Step 3: Searching your library</h1>
+  <img src="/static/images/screenshots/bookworm-search.png" alt="Bookworm search" class="bw-screenshot-page" align="right" />
+  <p>
+    If you've loaded books into your library, you'll see a search box at the top left
+    of most Bookworm pages.  Type a word or phrase in the box to find all occurrences of 
+    it in your library.
+  </p>
+  <p>
+    Chapters in your books which contain this term will be displayed on the next page.
+    Your search word or words will be highlighted in bold.  Click on the book title
+    to go to the matching chapter.
+  </p>
+  <img src="/static/images/screenshots/bookworm-search-results.png" alt="Bookworm search results" class="bw-screenshot-page" align="left" style="margin-bottom:20px"/>
+
+  </div>
+  <div style="border-top:1px solid rgb(210,210,210);clear:both">
+    <a name="step4"></a>
+    <h1>Step 4: Take your book on the road</h1>
     <img src="/static/images/screenshots/iphone.jpg" alt="Bookworm on the iPhone" class="bw-screenshot-page" align="right" style="margin-bottom:10px" />
     <h2>Bookworm on your mobile phone</h2>
     <p>

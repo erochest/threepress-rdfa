@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %}Search results{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="/static/results.css"></link>
+{% endblock head %}
+
+
+{% block leftnav %}
+
+<p><a href="{% url search_help %}">About searching</a></p>
+
+<p><a href="{% url search_language %}">Help with search languages</a></p>
+
+{% endblock leftnav %}
+
+{% block main %}
+<div id="bw-content">
+  
+  {% if results %}
+  <p class="bw-search-results-info">{{ total_results|intcomma }} result{{ page_size|pluralize}} found for 
+  <em>&lsquo;{{ term }}&rsquo;</em> in your library. Results are returned
+  starting from the most relevant.</p>
+  {% if multiple_pages %}
+    <p class="bw-search-results-listed">Showing result{{ page_size|pluralize}} {{ start|intcomma }} &mdash; {{ end|intcomma }}</p>
+  {% endif %}
+
+    <ol id="bw-search-results">
+      {% for result in results %}
+      <li><a href="{{ result.url }}"><span class="bw-search-results-book-title">{{ result.title }}</span> ~ <span class="bw-search-results-title">{{ result.chapter_title }}</span></a>
+      {% if result.author %}
+        <div class="bw-search-results-author">by {{ result.author }}</div>
+      {% endif %}
+      {% if result.result_fragment %}
+        <div class="bw-search-results-fragment">... {{ result.result_fragment|safe }} ...</div>
+      {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+
+
+
+  {% if multiple_pages %}
+  <div class="bw-search-results-nav">
+    <div class="bw-search-previous">{% if show_previous %} <a href="{% url search %}?q={{ term }}&amp;language={{ language }}&amp;start={{ previous_start }}&amp;end={{ previous_end }}">← previous</a> {% endif %} </div>
+    <div class="bw-search-next">
+    {% if show_next %} <a href="{% url search %}?q={{ term }}&amp;language={{ language }}&amp;start={{ next_start }}&amp;end={{ next_end }}">next →</a> {% endif %} 
+    </div>
+  </div>
+  {% endif %}
+
+  {% else %}
+    {% if term %}
+      <h2>No results were found</h2>
+      <p>No results were found for <em>&lsquo;{{ term }} &rsquo;</em> in <em>{{ current_search_language }}</em>.
+      Get <a href="{% url search_help %}">help with searching Bookworm</a>.
+      </p>
+      <p>
+        If you just added an ePub that you're expecting to search, please wait a 
+        few minutes.  The search engine checks periodically for new
+        material and should update shortly.
+      </p>
+     {% else %}
+     <h2>Search your ePubs on Bookworm</h2>
+      <p>Enter one or more words on the left to search your library, or get 
+        <a href="{% url search_help %}">help with searching Bookworm</a>.
+      </p>
+   {% endif %}
+
+  {% endif %}
+ 
+</div>
+{% endblock %}
