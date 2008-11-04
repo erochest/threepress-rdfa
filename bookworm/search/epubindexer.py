@@ -72,8 +72,10 @@ def index_epub(usernames, epub, chapter=None):
     for index, c in enumerate(chapters):
         content = c.render(mark_as_read=False)
         clean_content = get_searchable_content(content)
-
-        chapter_title = c.title if c.title is not None and c.title is not u'' else 'Chapter %d' % index
+        if c.title is not None and c.title is not u'':
+            chapter_title = c.title
+        else:
+            chapter_title = 'Chapter %d' % index
         doc = indexer.create_search_document(book_id, book_title, clean_content,
                                              c.id, c.filename, chapter_title, author_name=epub.orderable_author,
                                              language=language)
