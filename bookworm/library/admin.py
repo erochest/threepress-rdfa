@@ -3,7 +3,7 @@ from models import EpubArchive, BookAuthor,HTMLFile,StylesheetFile, ImageFile, U
 
 
 class EpubArchiveAdmin(admin.ModelAdmin):
-    fields=('title','name','owner','orderable_author','toc', 'opf', 'publishers', 'subjects', 'language', 'identifier', 'rights')
+    fields=('title','name','owner','orderable_author','toc', 'opf', 'publishers', 'subjects', 'language', 'identifier', 'rights', 'indexed')
     list_display=('title','created_time','identifier','orderable_author')
     list_filter=('orderable_author',)
     search_fields = ['title']
