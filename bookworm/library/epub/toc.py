@@ -58,9 +58,13 @@ class TOC():
         if self.spine is not None:
 
             for itemref in self.spine.xpath('//opf:spine/opf:itemref', namespaces=NS):
-                item = self.spine.xpath('//opf:item[@id="%s"]' % itemref.get('idref'),
-                                        namespaces=NS)[0]
-                assert item is not None
+                item_ref = self.spine.xpath('//opf:item[@id="%s"]' % itemref.get('idref'),
+                                        namespaces=NS)
+                # If this is null, we have a pointer to a non-existent item;
+                # bad but ignorable
+                if len(item_ref) == 0:
+                    continue
+                item = item_ref[0]
                 # Get the navpoint that corresponds to this, if any!
                 try:
                     np = self.parsed.xpath('//ncx:navPoint[@id="%s"]' % itemref.get('idref'), namespaces=NS)[0]
@@ -260,7 +264,6 @@ class NavPoint():
         text = self.element.findtext('.//{%s}text' % NS['ncx'])
         if type(text) == unicode:
             res += text
-            pass
         else:
             res += unicode(text, encoding=ENC)
         res += u'\n'

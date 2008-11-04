@@ -585,6 +585,14 @@ class TestModels(unittest.TestCase):
             return
         raise Exception('Failed to get invalid epub exception for title')
 
+    def test_itemref_points_nowhere_opf(self):
+        '''It should be ignored if an itemref points to a non-existent item'''
+        filename = 'itemref-points-nowhere.opf'
+        document = MockEpubArchive(name=filename)
+        opf = _get_file(filename)
+        parsed_opf = util.xml_from_string(opf)
+        self.assertEquals('Test', document.get_title(parsed_opf))
+
     def test_read_chapter(self):
       
         filename = 'Pride-and-Prejudice_Jane-Austen.epub'
