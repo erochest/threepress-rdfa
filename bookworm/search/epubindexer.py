@@ -64,11 +64,6 @@ def index_epub(usernames, epub, chapter=None):
 
     databases = []
 
-    for username in usernames:
-        log.debug("Creating databases for '%s'" % username)
-        databases.append(indexer.create_user_database(username))
-        databases.append(indexer.create_book_database(username, book_id))
-
     for index, c in enumerate(chapters):
         content = c.render(mark_as_read=False)
         clean_content = get_searchable_content(content)
@@ -84,15 +79,18 @@ def index_epub(usernames, epub, chapter=None):
 
         indexer.index_search_document(doc, clean_content)
 
-        for db in databases:
-            if db is not None:
-                indexer.add_search_document(db, doc)
-            else:
-                log.warn("Got db with None value")
+        for username in usernames:
+            user_db_path  = indexer.get_user_database_path(username)
+            user_db = xapian.WritableDatabase(user_db_path, xapian.DB_CREATE_OR_OPEN)
+            indexer.add_search_document(user_db, doc)
 
-    for db in databases:
-        if db is not None:
-            db.flush()    
+            book_db_path  = indexer.get_book_database_path(username, book_id)
+            book_db = xapian.WritableDatabase(book_db_path, xapian.DB_CREATE_OR_OPEN)
+            indexer.add_search_document(book_db, doc)
+
+            user_db = None
+            book_db = None
+            
     epub.indexed = True
     epub.save()
 
