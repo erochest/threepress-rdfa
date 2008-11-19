@@ -25,6 +25,7 @@ class ImageFileAdmin(admin.ModelAdmin):
     fields=('filename','path', 'content_type')
 
 class EpubPublisherAdmin(admin.ModelAdmin):
+    fields=('name',)
     ordering=('name',)
 
 class SubjectAdmin(admin.ModelAdmin):
