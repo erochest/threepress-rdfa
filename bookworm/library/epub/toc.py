@@ -243,16 +243,18 @@ class NavPoint():
     def order(self):
         try:
             return int(self.element.get('playOrder'))
+        except ValueError:
+            log.warn("Got non-numeric value from playOrder: %s" % self.element.get('playOrder'))
         except TypeError:
             log.warn('Could not find playOrder value in %s' % self.element)
-            # Get it by counting where we are from the parent; I want to use
-            # self::*/position() here but lxml is complaining
-            if not self.tree:
-                return 0
-            else:
-                for index, x in enumerate(self.tree):
-                    if x.id == self.id:
-                        return index + 1
+        # Get it by counting where we are from the parent; I want to use
+        # self::*/position() here but lxml is complaining
+        if not self.tree:
+            return 0
+        else:
+            for index, x in enumerate(self.tree):
+                if x.id == self.id:
+                    return index + 1
 
     def href(self):
         return self.element.find('.//{%s}content' % (NS['ncx'])).get('src')
