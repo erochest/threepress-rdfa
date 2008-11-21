@@ -84,6 +84,8 @@ MIDDLEWARE_CLASSES = (
     'django_authopenid.middleware.OpenIDMiddleware',
     'django.middleware.http.SetRemoteAddrFromForwardedFor',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'bookworm.minidetector.Middleware',
+    'bookworm.middleware.Mobile',
 #    'django.contrib.csrf.middleware.CsrfMiddleware'
     
 )
@@ -132,8 +134,9 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'django_authopenid',
     'django_evolution',
-    'library',
-    'search',
+    'bookworm.minidetector',
+    'bookworm.library',
+    'bookworm.search',
     )
 
 AUTH_PROFILE_MODULE = "library.userpref"
@@ -151,8 +154,11 @@ VALID_ORDER_FIELDS = ('created_time', 'title', 'orderable_author')
 # Search database info
 SEARCH_ROOT = os.path.join(ROOT_PATH, 'search')
 
-MOBILE_DEVICE_AGENTS = ('kindle', 'iphone')
+# Are we running with mobile settings on?
 MOBILE = False
+
+# Domain which to redirect requests that are coming from a mobile device
+MOBILE_HOST = 'http://m.threepress.org/'
 
 # Set up logging
 LOG_DIR = '%s/log/' % ROOT_PATH
