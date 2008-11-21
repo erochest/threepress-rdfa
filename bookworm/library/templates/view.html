@@ -25,6 +25,9 @@
 {% block main %}
 
 <div id="bw-content">
+{% comment %}
+  <h4><a href="epub://m.threepress.org/view/{{ document.safe_title }}/{{ document.key }}/">View in Stanza</a></h4>
+{% endcomment %}
 
 {% if chapter %}
    <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
@@ -79,17 +82,12 @@
        {% endif %}
 
 
-       {% if request.stanza_compatible %}
-       <tr>
-         <th>Download to Stanza</th>
-         <td><a href="epub://m.threepress.org/view/{{ document.safe_title }}/{{ document.key }}/">epub format</a></td>
-       </tr>
-       {% else %}
+
        <tr>
          <th>Download entire book</th>
          <td><a href="{% url library.views.download_epub document.safe_title,document.key %}">epub format</a></td>
        </tr>
-       {% endif %}
+
      </tbody>
    </table>
    
