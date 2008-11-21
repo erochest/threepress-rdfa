@@ -177,7 +177,7 @@ try:
                                                         when='midnight')
     handler.setFormatter(log_formatter)
     log = logging.getLogger('')
-    log.setLevel(logging.DEBUG)
+    log.setLevel(logging.INFO)
     log.addHandler(handler)
 
 except IOError:
