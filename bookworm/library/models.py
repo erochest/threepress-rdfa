@@ -579,8 +579,8 @@ class HTMLFile(BookwormFile):
         if mark_as_read:
             self.read()
 
-#        if self.processed_content:
-#            return self.processed_content
+        if self.processed_content:
+            return self.processed_content
         
         f = smart_str(self.file, encoding=ENC)
         try:
