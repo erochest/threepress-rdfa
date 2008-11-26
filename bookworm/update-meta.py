@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 import search.constants as constants
 from search import epubindexer
 from library.models import *
+from library.epub import InvalidEpubException
 
 log = logging.getLogger('update-meta')
 log.setLevel(logging.DEBUG)
@@ -44,7 +45,10 @@ for e in EpubArchive.objects.all().order_by('id'):
     lang = e.get_major_language()
     if lang in langs:
         log.debug("Indexing with lang=%s" % lang)
-        epubindexer.index_epub([user.username], e)
+        try:
+            epubindexer.index_epub([user.username], e)
+        except InvalidEpubException, e:
+            log.error("Got invalid epub exception on this content: %s" % e)
     else:
         log.warn("skipping %s with lang=%s" % (e.title, lang))
 

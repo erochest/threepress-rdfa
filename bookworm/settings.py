@@ -55,7 +55,7 @@ MEDIA_URL = ''
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'j5+j92)+lry!gm1=*xl9#i=*gc2=opvfvew%8q2&4zx!v#6&1z'
+SECRET_KEY = ''
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -167,7 +167,6 @@ LOG_NAME = 'bookworm.log'
 TEST_DATABASE_CHARSET = 'utf8'
 
 SEARCH_ROOT = os.path.join(ROOT_PATH, 'search', 'dbs')
-
 
 CACHE_BACKEND = 'file:///tmp/bookworm/django_cache'
 

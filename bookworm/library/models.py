@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from lxml import etree
+import lxml
 import lxml.html
 from zipfile import ZipFile
 from StringIO import StringIO
@@ -578,8 +579,8 @@ class HTMLFile(BookwormFile):
         if mark_as_read:
             self.read()
 
-        if self.processed_content:
-            return self.processed_content
+#        if self.processed_content:
+#            return self.processed_content
         
         f = smart_str(self.file, encoding=ENC)
         try:
@@ -602,10 +603,15 @@ class HTMLFile(BookwormFile):
                 raise UnknownContentException()
         except UnknownContentException:
             #log.warn('Was not valid XHTML; trying with BeautifulSoup')
-            html = lxml.html.soupparser.fromstring(f)
-            body = html.find('.//body')
-        if body is None:
-            print f
+            try:
+                html = lxml.html.soupparser.fromstring(f)
+                body = html.find('.//body')
+                if body is None:
+                    raise 
+            except:
+                # Give up
+                log.error("Giving up on this content")
+                raise UnknownContentException()
         body = self._clean_xhtml(body)
         div = etree.Element('div')
         div.attrib['id'] = 'bw-book-content'
@@ -637,9 +643,12 @@ class HTMLFile(BookwormFile):
         # If the DTBook transform failed, throw an exception
         # and return to the standard XHTML pipeline
         if result is not None:
-            log.debug("Got result, returning body content")
-            body = result.find('{%s}body' % NS['html'])        
-            return body
+            try:
+                body = result.getroot().find('{%s}body' % NS['html'])        
+                if body is not None:
+                    return body
+            except AttributeError:
+                pass
         log.warn("Got None from dtbook transform")
 
     def _clean_xhtml(self, xhtml):
@@ -878,7 +887,7 @@ class InvalidBinaryException(InvalidEpubException):
 class DRMEpubException(InvalidEpubException):
     pass
 
-class UnknownContentException(Exception):
+class UnknownContentException(InvalidEpubException):
     # We weren't sure how to parse the body content here
     pass
 

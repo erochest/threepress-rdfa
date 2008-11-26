@@ -29,6 +29,9 @@
   <h4><a href="epub://m.threepress.org/view/{{ document.safe_title }}/{{ document.key }}/">View in Stanza</a></h4>
 {% endcomment %}
 
+{% if message %}
+ <div class="bw-message"> {{ message }} </div>
+{% endif %}
 {% if chapter %}
    <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
       <div id="bw-book-content" >{{ chapter.render|safe }}</div>

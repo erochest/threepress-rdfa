@@ -17,7 +17,8 @@ from django.conf import settings
 from django_authopenid.views import signin
 
 from search import epubindexer
-from library.models import EpubArchive, HTMLFile, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields, DRMEpubException
+from library.epub import InvalidEpubException
+from library.models import EpubArchive, HTMLFile, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields, DRMEpubException, UnknownContentException
 from library.forms import EpubValidateForm, ProfileForm
 from library.epub import constants as epub_constants
 from library.google_books.search import Request
@@ -220,7 +221,7 @@ def profile_delete(request):
     return HttpResponseRedirect('/') # fixme: actually log them out here
 
 @login_required    
-def view_chapter(request, title, key, chapter_id, chapter=None, google_books=None):
+def view_chapter(request, title, key, chapter_id, chapter=None, google_books=None, message=None):
     if chapter is not None:
         chapter_id = chapter.id
 
@@ -245,10 +246,24 @@ def view_chapter(request, title, key, chapter_id, chapter=None, google_books=Non
             parent_chapter = t
             subchapter_href = href
             break
+    # Check whether this will render without throwing an exception
+    try:
+        chapter.render()
+    except InvalidEpubException, e:
+        import traceback
+        tb =  traceback.format_exc()
+        log.error(tb)
+        log.error(e)
+        chapter = None
+        message = '''
+This book contained content that Bookworm couldn't read.  You may need to check with the 
+publisher that this is a valid ePub book that contains either XHTML or DTBook-formatted
+content.'''
 
     return direct_to_template(request, 'view.html', {'chapter':chapter,
                                             'document':document,
                                             'next':next,
+                                            'message':message,      
                                             'toc':toc,
                                             'subchapter_href':subchapter_href,
                                             'parent_chapter':parent_chapter,
