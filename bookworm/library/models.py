@@ -101,6 +101,15 @@ class EpubArchive(BookwormModel):
             kwargs['name'] = os.path.basename(kwargs['name'])
         super(EpubArchive, self).__init__(*args, **kwargs)
 
+
+    @property
+    def publisher(self):
+        '''Returns a displayable list of the publishers'''
+        pubs = []
+        for p in self.publishers.all():
+            pubs.append(p.name)
+        return ', '.join(pubs)
+
     def safe_title(self):
         '''Return a URL-safe title'''
         t = safe_name(self.title)  
@@ -747,6 +756,13 @@ class UserPref(BookwormModel):
     # Deprecated
     use_iframe = models.BooleanField(default=False)
     show_iframe_note = models.BooleanField(default=True)
+    
+    @property
+    def username(self):
+        return self.user.username
+
+    def __unicode__(self):
+        return self.user.username
 
 class SystemInfo():
     '''This can now be computed at runtime (and cached)'''

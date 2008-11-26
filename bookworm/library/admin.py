@@ -4,10 +4,10 @@ from models import EpubArchive, BookAuthor,HTMLFile,StylesheetFile, ImageFile, U
 
 class EpubArchiveAdmin(admin.ModelAdmin):
     fields=('title','name','owner','orderable_author','toc', 'opf', 'publishers', 'subjects', 'language', 'identifier', 'rights', 'indexed')
-    list_display=('title','created_time','identifier','orderable_author')
+    list_display=('title','created_time','identifier','orderable_author', 'publisher')
     list_filter=('orderable_author',)
     search_fields = ['title']
-    ordering = ('title', '-created_time')
+    ordering = ('-created_time', 'title')
     list_per_page = 500
 
 class BookAuthorAdmin(admin.ModelAdmin):
@@ -32,7 +32,10 @@ class SubjectAdmin(admin.ModelAdmin):
     ordering=('name',)
 
 class UserPrefAdmin(admin.ModelAdmin):
-    pass
+    fields=('user', 'fullname', 'country', 'language', 'timezone','nickname','open_to_last_chapter')
+    list_display=('username', 'fullname','language')
+    search_fields = ['fullname', 'language', 'country']
+    list_per_page = 500
 
 admin.site.register(EpubArchive, EpubArchiveAdmin)
 admin.site.register(BookAuthor, BookAuthorAdmin)
