@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
-import shutil, os, re, unittest, logging
+import shutil, os, re, unittest, logging, datetime
 from os.path import isfile, isdir
 
 from django.contrib.auth.models import User
@@ -653,7 +653,23 @@ class TestModels(unittest.TestCase):
 
         document = self.create_document(filename, identifier='http://www.snee.com/epub/pg23598')
         self.assertEquals(document.identifier_type(), IDENTIFIER_URL)
-        
+
+    def test_nonce(self):
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)        
+
+        # If the document hasn't been updated, the nonce should be the same
+        self.assertEquals(document._get_nonce(),document._get_nonce())
+        n = document._get_nonce()
+        document.last_nonce = datetime.datetime.now()
+        document.save()
+
+        # If it has been updated, then they should be different
+        self.assertNotEquals(n,document._get_nonce())
+
+        # Test the validation routine
+        self.assertTrue(document.is_nonce_valid(document._get_nonce()))        
+
     def create_document(self, document, identifier=''):
         epub = MockEpubArchive(name=document)
         epub.identifier = identifier

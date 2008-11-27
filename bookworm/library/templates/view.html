@@ -25,9 +25,10 @@
 {% block main %}
 
 <div id="bw-content">
-{% comment %}
-  <h4><a href="epub://m.threepress.org/view/{{ document.safe_title }}/{{ document.key }}/">View in Stanza</a></h4>
-{% endcomment %}
+
+{% if mobile %}
+  <h4><a href="epub://m.threepress.org/{{ document.nonce_url }}/">View in Stanza</a></h4>
+{% endif %}
 
 {% if message %}
  <div class="bw-message"> {{ message }} </div>

@@ -36,6 +36,7 @@ urlpatterns = patterns('library.views',
                        
                        # Download a source epub file
                        url(r'^download/epub/(?P<title>.+)/(?P<key>\d+)/$', 'download_epub', name='download_epub'),
+                       url(r'^download/epub/(?P<title>.+)/(?P<key>\d+)/public/(?P<nonce>[^/]+)?/?$', 'download_epub', name='download_epub_public'),
 
                        # User profile
                        url(r'^account/profile/$', 'profile', name='profile'),

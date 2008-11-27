@@ -4,7 +4,7 @@ import lxml
 import lxml.html
 from zipfile import ZipFile
 from StringIO import StringIO
-import logging, datetime, sys, os, os.path, re
+import logging, datetime, sys, os, os.path, hashlib
 from urllib import unquote_plus
 from xml.parsers.expat import ExpatError
 import cssutils
@@ -14,6 +14,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.encoding import smart_str
 from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.db.models import permalink
 
 from library.epub import constants, InvalidEpubException
 from library.epub.constants import ENC, BW_BOOK_CLASS, STYLESHEET_MIMETYPE, XHTML_MIMETYPE, DTBOOK_MIMETYPE
@@ -56,6 +58,7 @@ def get_file_by_item(item, document) :
 class BookwormModel(models.Model):
     '''Base class for all models'''
     created_time = models.DateTimeField('date created', auto_now_add=True)
+    last_modified_time = models.DateTimeField('last-modified', auto_now=True, default=datetime.datetime.now())
 
     def key(self):
         '''Backwards compatibility with templates'''
@@ -79,6 +82,12 @@ class EpubArchive(BookwormModel):
 
     last_chapter_read = models.ForeignKey('HTMLFile', null=True)
 
+    # Is this book publicly-viewable?
+    is_public = models.BooleanField(default=False)
+
+    # Last time a nonce was generated
+    last_nonce = models.DateTimeField('last-nonce', default=datetime.datetime.now())
+
     # Has this epub been indexed for search?
     indexed = models.BooleanField(default=False)
 
@@ -101,6 +110,10 @@ class EpubArchive(BookwormModel):
             kwargs['name'] = os.path.basename(kwargs['name'])
         super(EpubArchive, self).__init__(*args, **kwargs)
 
+
+    def save(self, *args, **kwargs):
+        log.debug("being saved")
+        super(EpubArchive, self).save(*args, **kwargs)
 
     @property
     def publisher(self):
@@ -137,7 +150,6 @@ class EpubArchive(BookwormModel):
         except blob.DoesNotExist:
             log.error('Could not find associated epubblob, maybe deleted from file system?')
             super(EpubArchive, self).delete()            
-
 
     def set_content(self, c):
         if not self.id:
@@ -182,6 +194,7 @@ class EpubArchive(BookwormModel):
     def get_subjects(self):
         if self.subjects.count() > 0:
             return self.subjects
+        added_subjects = False
         value = self._get_metadata(constants.DC_SUBJECT_TAG, self.opf, plural=True)
         for s in value:        
             is_lcsh = False
@@ -192,23 +205,29 @@ class EpubArchive(BookwormModel):
             subject.is_lcsh=is_lcsh
             subject.save()
             self.subjects.add(subject)
-        self.save()
-        return self.subjects
+            added_subjects = True
+        if added_subjects:
+            self.save()
+            return self.subjects
 
     def get_rights(self):
-        if self.rights is not u'':
+        if self.rights != u'':
             return self.rights
         rights = self._get_metadata(constants.DC_RIGHTS_TAG, self.opf, as_string=True)
-        self.rights = rights
-        self.save()
-        return self.rights
+        if rights != u'':
+            log.debug("Setting rights to %s" % rights)
+            self.rights = rights
+            self.save()
+            return self.rights
 
     def get_language(self):
-        if self.language is not u'':
+        if self.language != u'':
             return self.language
         self.language = self._get_metadata(constants.DC_LANGUAGE_TAG, self.opf, as_string=True)        
-        self.save()
-        return self.language
+        if self.language != u'':
+            log.debug("Setting language to %s" % self.language)
+            self.save()
+            return self.language
 
     def get_major_language(self):
         lang = self.get_language()
@@ -227,15 +246,18 @@ class EpubArchive(BookwormModel):
             publisher = EpubPublisher.objects.get_or_create(name=s)[0]
             publisher.save()
             self.publishers.add(publisher)
+        log.debug("Setting publishers to %s" % value)
         self.save()
         return self.publishers
 
     def get_identifier(self):
-        if self.identifier is not u'':
+        if self.identifier != u'':
             return self.identifier
         self.identifier = self._get_metadata(constants.DC_IDENTIFIER_TAG, self.opf, as_string=True)
-        self.save()
-        return self.identifier
+        if self.identifier != u'':
+            log.debug("Saving identifier as %s" % self.identifier)
+            self.save()
+            return self.identifier
 
     def identifier_type(self):
         if 'isbn' in self.identifier:
@@ -271,8 +293,37 @@ class EpubArchive(BookwormModel):
         if not self._parsed_toc:
             self._parsed_toc = TOC(self.toc, self.opf)
         return self._parsed_toc
-        
-          
+
+    @permalink
+    def get_absolute_url(self):
+        return ('view', (), { 'title':self.safe_title(), 'key': self.id } )
+ 
+    @property
+    def nonce_url(self):
+        url =  reverse('download_epub_public', kwargs={
+                'title': self.safe_title(),
+                'key': self.id,
+                'nonce': self._get_nonce()})
+        return url
+
+    def is_nonce_valid(self, nonce):
+        valid = False
+        if nonce is None:
+            log.debug("Nonce is empty")
+            return False
+        valid = nonce == self._get_nonce()
+        log.debug("new=%s, old=%s, Nonce is %s" % (nonce, self._get_nonce(), valid))
+        # Update our timestamp
+        self.last_nonce = datetime.datetime.now()
+        self.save()
+        assert nonce != self._get_nonce()
+        return valid
+
+    def _get_nonce(self):
+        m = hashlib.sha1()
+        m.update(str(self.last_nonce) + settings.SECRET_KEY)
+        return m.hexdigest()
+
     def explode(self):
         '''Explodes an epub archive'''
         e = StringIO(self.get_content())
@@ -543,6 +594,13 @@ class BookAuthor(BookwormModel):
     def __unicode__(self):
         return self.name
 
+#class EpubNonce(BookwormModel):
+#    '''Stores a one-time hash for each book.  The hash should be
+#    computed through the use of a timestamp, the ID of the book
+#    and settings.SECRET_KEY for the particular Bookworm install.'''
+#    archive = models.ForeignKey(EpubArchive)
+#    nonce = models.CharField(max_length=1000)
+
 class BookwormFile(BookwormModel):
     '''Abstract class that represents a file in the database'''
     idref = models.CharField(max_length=1000)
@@ -638,11 +696,13 @@ class HTMLFile(BookwormFile):
         return body_content
 
     def read(self):
-        '''Mark this page as read by updated the related book object'''
-        self.archive.last_chapter_read = self
-        self.archive.save()
-        self.is_read = True
-        self.save()
+        '''Mark this page as read by updating the related book object
+        if we're not just reloading the same page.'''
+        if self.archive.last_chapter_read != self:
+            self.archive.last_chapter_read = self
+            self.archive.save()
+            self.is_read = True
+            self.save()
 
     def _process_dtbook(self, xhtml):
         '''Turn DTBook content into XHTML'''

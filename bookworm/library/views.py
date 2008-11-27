@@ -313,12 +313,20 @@ def view_stylesheet(request, title, key, stylesheet_id):
     response['Cache-Control'] = 'public'
     return response
 
-@login_required
-def download_epub(request, title, key):
-    document = _get_document(request, title, key)
-    response = HttpResponse(content=document.get_content(), content_type=epub_constants.MIMETYPE)
+def download_epub(request, title, key, nonce=None):
+    document = _get_document(request, title, key, nonce=nonce)
+    return _return_epub(document)
+
+def _return_epub(document):
+    '''Return the epub archive content.  If it's accidentally been deleted
+    off the storage mechanism (usually this happens in development), return
+    a 404 instead of a zero-byte download.'''
+    content = document.get_content()
+    if content is None:
+        raise Http404
+    response = HttpResponse(content=content, content_type=epub_constants.MIMETYPE)
     response['Content-Disposition'] = 'attachment; filename=%s' % document.name
-    return response
+    return response    
 
 @login_required
 def upload(request):
@@ -468,14 +476,16 @@ def _delete_document(request, document):
     # Delete the book itself
     document.delete()
 
-def _get_document(request, title, key, override_owner=False):
+def _get_document(request, title, key, override_owner=False, nonce=None):
     '''Return a document by id and owner.  Setting override_owner
     will search regardless of ownership, for use with admin accounts.'''
     user = request.user
 
     document = get_object_or_404(EpubArchive, pk=key)
+    if nonce and document.is_nonce_valid(nonce):
+        return document
 
-    if not override_owner and document.owner != user and not user.is_superuser:
+    if not document.is_public and not override_owner and document.owner != user and not user.is_superuser:
         log.error('User %s tried to access document %s, which they do not own' % (user, title))
         raise Http404
 
