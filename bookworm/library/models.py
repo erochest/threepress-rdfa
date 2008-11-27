@@ -110,11 +110,6 @@ class EpubArchive(BookwormModel):
             kwargs['name'] = os.path.basename(kwargs['name'])
         super(EpubArchive, self).__init__(*args, **kwargs)
 
-
-    def save(self, *args, **kwargs):
-        log.debug("being saved")
-        super(EpubArchive, self).save(*args, **kwargs)
-
     @property
     def publisher(self):
         '''Returns a displayable list of the publishers'''
