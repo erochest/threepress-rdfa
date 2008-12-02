@@ -26,8 +26,8 @@
 
 <div id="bw-content">
 
-{% if mobile %}
-  <h4><a href="epub://m.threepress.org/{{ document.nonce_url }}/">View in Stanza</a></h4>
+{% if stanza_compatible %}
+  <h4><a href="epub://{{ request.META.HTTP_HOST }}{{ document.nonce_url }}/">View in Stanza</a></h4>
 {% endif %}
 
 {% if message %}
