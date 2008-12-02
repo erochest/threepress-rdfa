@@ -314,13 +314,10 @@ def view_stylesheet(request, title, key, stylesheet_id):
     return response
 
 def download_epub(request, title, key, nonce=None):
-    document = _get_document(request, title, key, nonce=nonce)
-    return _return_epub(document)
-
-def _return_epub(document):
     '''Return the epub archive content.  If it's accidentally been deleted
     off the storage mechanism (usually this happens in development), return
     a 404 instead of a zero-byte download.'''
+    document = _get_document(request, title, key, nonce=nonce)
     content = document.get_content()
     if content is None:
         raise Http404

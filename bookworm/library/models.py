@@ -311,7 +311,6 @@ class EpubArchive(BookwormModel):
         # Update our timestamp
         self.last_nonce = datetime.datetime.now()
         self.save()
-        assert nonce != self._get_nonce()
         return valid
 
     def _get_nonce(self):
@@ -327,7 +326,12 @@ class EpubArchive(BookwormModel):
         try:
             container = z.read(self._CONTAINER)
         except KeyError:
-            raise InvalidEpubException('Was not able to locate container file %s' % self._CONTAINER, archive=self)
+            # Is this DOS-format?  If so, handle this as a special error
+            try:
+                container = z.read(self._CONTAINER.replace('/', '\\'))
+                raise InvalidEpubException("This ePub file was created with DOS/Windows path separators, which is not legal according to the PKZIP specification.")
+            except KeyError:
+                raise InvalidEpubException('Was not able to locate container file %s' % self._CONTAINER, archive=self)
         
         try:
             z.read(constants.RIGHTS)
@@ -588,13 +592,6 @@ class BookAuthor(BookwormModel):
     name = models.CharField(max_length=2000)
     def __unicode__(self):
         return self.name
-
-#class EpubNonce(BookwormModel):
-#    '''Stores a one-time hash for each book.  The hash should be
-#    computed through the use of a timestamp, the ID of the book
-#    and settings.SECRET_KEY for the particular Bookworm install.'''
-#    archive = models.ForeignKey(EpubArchive)
-#    nonce = models.CharField(max_length=1000)
 
 class BookwormFile(BookwormModel):
     '''Abstract class that represents a file in the database'''
