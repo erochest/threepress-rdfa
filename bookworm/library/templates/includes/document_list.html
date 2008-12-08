@@ -49,7 +49,7 @@
     </td>
     {% endif %}
     {% if stanza_compatible %}
-       <td><a href="epub://{{ request.META.HTTP_HOST }}{{ document.nonce_url }}/">&#x21E7;</a></td>  
+       <td><p style="text-align:center;font-size:x-large;margin:0;padding:0"><a href="epub://{{ request.META.HTTP_HOST }}{{ d.nonce_url }}/">&#x21E7;</a></p></td>  
     {% endif %}
   </tr>
   {% endfor %}
