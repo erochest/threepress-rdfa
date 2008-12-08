@@ -15,7 +15,7 @@
       {% endif %}
     </td>
     <td class="bw-attribution-container">
-    <span class="bw-attribution">{% if d.author %}<span class="bw-author">{{ d.author }}</span>{% endif %}</span>
+      <span class="bw-attribution">{% if d.author %}<span class="bw-author">{{ d.author }}</span>{% endif %}</span>
     </td>
     <td class="bw-added-container">
       <span class="bw-added">
@@ -48,8 +48,12 @@
       <span style="display:none" class="id_{{ d.safe_title}}">{{ d.id }}</span>
     </td>
     {% endif %}
+    {% if stanza_compatible %}
+       <td><a href="epub://{{ request.META.HTTP_HOST }}{{ document.nonce_url }}/">&#x21E7;</a></td>  
+    {% endif %}
   </tr>
   {% endfor %}
+
   {% include "includes/document_list_controls.html" %}
 
 </table>

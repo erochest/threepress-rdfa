@@ -20,7 +20,10 @@ def mobile(request):
             if b in request.META["HTTP_USER_AGENT"].lower():
                 log.debug('Setting true for stanza-compatible browser')
                 stanza_compatible = True
-
+    
+    if settings.DEBUG and settings.MOBILE:
+        log.debug("Forcing stanza compatibility")
+        stanza_compatible = True
     return { 'mobile': settings.MOBILE,
              'stanza_compatible': stanza_compatible}
 

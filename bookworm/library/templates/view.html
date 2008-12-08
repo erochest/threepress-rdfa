@@ -26,9 +26,6 @@
 
 <div id="bw-content">
 
-{% if stanza_compatible %}
-  <h4><a href="epub://{{ request.META.HTTP_HOST }}{{ document.nonce_url }}/">View in Stanza</a></h4>
-{% endif %}
 
 {% if message %}
  <div class="bw-message"> {{ message }} </div>
@@ -37,6 +34,11 @@
    <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
       <div id="bw-book-content" >{{ chapter.render|safe }}</div>
    <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
+
+   {% if stanza_compatible %}
+   <h4><a href="epub://{{ request.META.HTTP_HOST }}{{ document.nonce_url }}/">View in Stanza</a></h4>
+   {% endif %}
+
 {% else %}
  <!-- Title page -->
    <h1 class="bw-book_title">{{ document.title }}</h1>
@@ -84,8 +86,6 @@
          <td>{{ document.get_rights }}</td>
        </tr>
        {% endif %}
-
-
 
        <tr>
          <th>Download entire book</th>
