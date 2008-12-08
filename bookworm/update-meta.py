@@ -69,3 +69,5 @@ for users in os.listdir(settings.SEARCH_ROOT):
                 os.chmod(os.path.join(settings.SEARCH_ROOT, users, f, i), perms)
         else:
             os.chmod(os.path.join(settings.SEARCH_ROOT, users, f), perms)            
+
+log.info("Done.")
