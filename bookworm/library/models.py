@@ -210,9 +210,10 @@ class EpubArchive(BookwormModel):
 
     def get_major_language(self):
         lang = self.get_language()
-        for div in ('-', '_'):
-            if div in lang:
-                return lang.split(div)[0]
+        if lang:
+            for div in ('-', '_'):
+                if div in lang:
+                    return lang.split(div)[0]
         return lang
 
     def get_publisher(self):
@@ -392,7 +393,7 @@ class EpubArchive(BookwormModel):
     def _get_authors(self, opf):
         '''Retrieves a list of authors from the opf file, tagged as dc:creator.  It is acceptable
         to have no author or even an empty dc:creator'''
-        authors = [BookAuthor(name=a.text.strip()) for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG)) if a is not None and a.text is not None]
+        authors = [BookAuthor.objects.get_or_create(name=a.text.strip())[0] for a in opf.findall('.//{%s}%s' % (NS['dc'], constants.DC_CREATOR_TAG)) if a is not None and a.text is not None]
         if len(authors) == 0:
             log.warn('Got empty authors string for book %s' % self.name)
         for a in authors:
@@ -593,6 +594,7 @@ class EpubArchive(BookwormModel):
 
     class Meta:
         ordering = ('-created_time', 'title')
+        verbose_name_plural = 'ePub Archives'
 
     def __unicode__(self):
         return u'%s by %s (%s)' % (self.title, self.author, self.name)
@@ -756,11 +758,13 @@ class HTMLFile(BookwormFile):
 
     class Meta:
         ordering = ['order']
+        verbose_name_plural = 'HTML Files'
 
 class StylesheetFile(BookwormFile):
     '''A CSS stylesheet associated with a given book'''
     content_type = models.CharField(max_length=100, default="text/css")
-
+    class Meta:
+        verbose_name_plural = 'CSS'
 
 class ImageFile(BookwormFile):
     '''An image file associated with a given book.  Mime-type will vary.'''

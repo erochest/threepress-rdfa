@@ -24,8 +24,8 @@ langs = [l[0] for l in settings.LANGUAGES]
 log.info("Will index documents in languages: %s" % langs)
 
 for e in EpubArchive.objects.all().order_by('id'):
-    if e.indexed:
-        continue
+#    if e.indexed:
+#        continue
 
     log.info("Updating %s (%s)" % (e.title, e.name))
     if e.opf is None or e.opf == '':
