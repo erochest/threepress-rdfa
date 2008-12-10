@@ -1,4 +1,5 @@
 {% extends "base.html" %} 
+{% load bookworm %}
 {% block title %}{% spaceless %}
 {% if chapter.title %} '{{ chapter.title }}' in {% endif %} {{ document.title }} {% if document.author %} by {{ document.author }} {% endif %}
 {% endspaceless %}{% endblock title %}
@@ -32,7 +33,7 @@
 {% endif %}
 {% if chapter %}
    <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
-      <div id="bw-book-content" >{{ chapter.render|safe }}</div>
+      <div id="bw-book-content" >{% render chapter %}</div>
    <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
 
    {% if stanza_compatible %}

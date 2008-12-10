@@ -71,7 +71,6 @@ class EpubArchive(BookwormModel):
     '''Represents an entire epub container'''
 
     name = models.CharField(max_length=2000)
-    owner = models.ForeignKey(User)
     authors = models.ManyToManyField('BookAuthor')
     orderable_author = models.CharField(max_length=1000, default='')
 
@@ -80,7 +79,9 @@ class EpubArchive(BookwormModel):
     toc = models.TextField()
     has_stylesheets = models.BooleanField(default=False)
 
+    # Deprecated
     last_chapter_read = models.ForeignKey('HTMLFile', null=True)
+    owner = models.ForeignKey(User, null=True)
 
     # Is this book publicly-viewable?
     is_public = models.BooleanField(default=False)
@@ -168,23 +169,6 @@ class EpubArchive(BookwormModel):
         if len(a) == 1:
             return a[0].name
         return a[0].name + '...'
-
-    def _get_metadata(self, metadata_tag, opf, plural=False, as_string=False):
-        '''Returns a metdata item's text content by tag name, or a list if mulitple names match.
-        If as_string is set to True, then always return a comma-delimited string.'''
-        if self._parsed_metadata is None:
-            self._parsed_metadata = util.xml_from_string(opf)
-        text = []
-        alltext = self._parsed_metadata.findall('.//{%s}%s' % (NS['dc'], metadata_tag))
-        if as_string:
-            return ', '.join([t.text.strip() for t in alltext if t.text])
-        for t in alltext:
-            if t.text is not None:
-                text.append(t.text)
-        if len(text) == 1:
-            t = (text[0], ) if plural else text[0]
-            return t
-        return text
 
     def get_subjects(self):
         if self.subjects.count() > 0:
@@ -313,10 +297,15 @@ class EpubArchive(BookwormModel):
         self.save()
         return valid
 
-    def _get_nonce(self):
-        m = hashlib.sha1()
-        m.update(str(self.last_nonce) + settings.SECRET_KEY)
-        return m.hexdigest()
+    def is_owner(self, user):
+        '''Is this user an owner of the book?'''
+        return self.user_archive.filter(user=user).count() > 0
+
+    def get_last_chapter_read(self, user):
+        '''Get the last chapter read by this user.'''
+        ua = self.user_archive.filter(user=user, last_chapter_read__isnull=False).order_by('-id')
+        if len(ua) > 0:
+            return ua[0].last_chapter_read
 
     def explode(self):
         '''Explodes an epub archive'''
@@ -366,6 +355,11 @@ class EpubArchive(BookwormModel):
         self._get_stylesheets(z, items, content_path)
         self._get_images(z, items, content_path)
    
+    def _get_nonce(self):
+        m = hashlib.sha1()
+        m.update(str(self.last_nonce) + settings.SECRET_KEY)
+        return m.hexdigest()
+
  
     def _get_opf_filename(self, container):
         '''Parse the container to get the name of the opf file'''
@@ -576,6 +570,23 @@ class EpubArchive(BookwormModel):
                         order=order)
         html.save()
         
+    def _get_metadata(self, metadata_tag, opf, plural=False, as_string=False):
+        '''Returns a metdata item's text content by tag name, or a list if mulitple names match.
+        If as_string is set to True, then always return a comma-delimited string.'''
+        if self._parsed_metadata is None:
+            self._parsed_metadata = util.xml_from_string(opf)
+        text = []
+        alltext = self._parsed_metadata.findall('.//{%s}%s' % (NS['dc'], metadata_tag))
+        if as_string:
+            return ', '.join([t.text.strip() for t in alltext if t.text])
+        for t in alltext:
+            if t.text is not None:
+                text.append(t.text)
+        if len(text) == 1:
+            t = (text[0], ) if plural else text[0]
+            return t
+        return text
+
 
     def _blob_class(self):
         return EpubBlob
@@ -586,6 +597,14 @@ class EpubArchive(BookwormModel):
     def __unicode__(self):
         return u'%s by %s (%s)' % (self.title, self.author, self.name)
 
+class UserArchive(BookwormModel):
+    '''Through class for user-epub relationships'''
+    archive = models.ForeignKey(EpubArchive, related_name='user_archive')
+    user = models.ForeignKey(User, related_name='user_archive')
+    last_chapter_read = models.ForeignKey('HTMLFile', null=True)
+
+    def __unicode__(self):
+        return u'%s for %s' % (self.archive.title, self.user.username)
 
 class BookAuthor(BookwormModel):
     '''Authors are not normalized as there is no way to guarantee uniqueness across names'''
@@ -627,16 +646,15 @@ class HTMLFile(BookwormFile):
     order = models.PositiveSmallIntegerField(default=1)
     processed_content = models.TextField()
     content_type = models.CharField(max_length=100, default="application/xhtml")
-    is_read = models.BooleanField(default=False)
  
-    def render(self, mark_as_read=True):
+    def render(self, user=None):
         '''If we don't have any processed content, process it and cache the
         results in the database.'''
 
-        # Mark this chapter as last-read if selected
-        # (this is overridden during indexing)
-        if mark_as_read:
-            self.read()
+        # Mark this chapter as last-read if a user is passed
+        # (indexing will not create a last-read entry this way)
+        if user:
+            self.read(user)
 
         if self.processed_content:
             return self.processed_content
@@ -687,14 +705,12 @@ class HTMLFile(BookwormFile):
 
         return body_content
 
-    def read(self):
-        '''Mark this page as read by updating the related book object
-        if we're not just reloading the same page.'''
-        if self.archive.last_chapter_read != self:
-            self.archive.last_chapter_read = self
-            self.archive.save()
-            self.is_read = True
-            self.save()
+    def read(self, user):
+        '''Create a new userarchive instance tracking this read'''
+        log.debug("Updating last-read to %s for archive %s, user %s" % (self, self.archive, user))
+        UserArchive.objects.create(archive=self.archive,
+                                   user=user,
+                                   last_chapter_read=self)
 
     def _process_dtbook(self, xhtml):
         '''Turn DTBook content into XHTML'''
@@ -757,10 +773,10 @@ class ImageFile(BookwormFile):
             del kwargs['data']
         super(ImageFile, self).__init__(*args, **kwargs)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         '''Overridden to also create a related binary image'''
         # Save first so we have an id
-        super(ImageFile, self).save()
+        super(ImageFile, self).save(*args, **kwargs)
         if self.data:
             blob_class = self._blob_class()
             b = blob_class(archive=self.archive,
@@ -865,7 +881,7 @@ class BinaryBlob(BookwormFile):
 
         super(BinaryBlob, self).__init__(*args, **kwargs)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if not os.path.exists(self._get_storage_dir()):
             os.mkdir(self._get_storage_dir())
         if not self.data:
@@ -899,7 +915,7 @@ class BinaryBlob(BookwormFile):
         f = open(f.encode('utf8'), 'w')
         f.write(self.data)
         f.close()
-        super(BinaryBlob, self).save()
+        super(BinaryBlob, self).save(*args, **kwargs)
 
     def delete(self):
         storage = self._get_storage()

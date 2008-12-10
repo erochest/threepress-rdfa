@@ -92,7 +92,6 @@ class TestModels(unittest.TestCase):
         opf_file = 'two-authors.opf'
         expected_authors = [u'First Author', u'Second Author']
         document = MockEpubArchive(name=opf_file)
-        document.owner = self.user
         document.save()
         opf = epub.util.xml_from_string(_get_file(opf_file))
         
@@ -106,7 +105,6 @@ class TestModels(unittest.TestCase):
         '''An OPF document with no authors should return None.'''
         no_author_opf_file = 'no-author.opf'
         no_author_document = MockEpubArchive(name=no_author_opf_file)
-        no_author_document.owner = self.user
         no_author_document.save()
 
         opf = epub.util.xml_from_string(_get_file(no_author_opf_file))
@@ -339,7 +337,7 @@ class TestModels(unittest.TestCase):
     def test_metadata(self):
         '''All metadata should be returned using the public methods'''
         opf_file = 'all-metadata.opf'
-        document = MockEpubArchive(name=opf_file, owner=self.user)
+        document = MockEpubArchive(name=opf_file)
         opf = _get_file(opf_file)
 
         self.assertEquals('en-US', document.get_metadata(DC_LANGUAGE_TAG, opf))
@@ -448,17 +446,20 @@ class TestModels(unittest.TestCase):
         document.save()
         imagename = 'alice01a.gif'
         image = _get_file(imagename)
-        image_obj = MockImageFile(idref=imagename,
-                              archive=document)
-        image_obj.save()
 
-        i = MockImageBlob(archive=document,
-                      idref=imagename,
-                      image=image_obj,
-                      data=image,
-                      filename=imagename)
-        i.save()
-        i2 = MockImageBlob.objects.filter(idref=imagename)[0]
+        for i in MockImageBlob.objects.filter(idref=imagename):
+            i.delete()
+
+        image_obj = MockImageFile.objects.create(idref=imagename,
+                                                 archive=document)
+        i = MockImageBlob.objects.create(archive=document,
+                                         idref=imagename,
+                                         image=image_obj,
+                                         data=image,
+                                         filename=imagename)
+
+        i2 = MockImageBlob.objects.get(idref=imagename)
+        self.assertTrue(i2.get_data() is not None)
         self.assertEquals(image, i2.get_data())
         i2.delete()
 
@@ -469,12 +470,23 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         imagename = 'alice01a.gif'
+
+        for i in MockImageFile.objects.filter(idref=imagename):
+            i.delete()
+        for i in MockImageBlob.objects.filter(idref=imagename):
+            i.delete()
+
         image = _get_file(imagename)
-        image_obj = MockImageFile(idref=imagename,
-                              archive=document,
-                              data=image)
-        image_obj.save()
-        i2 = MockImageFile.objects.filter(idref=imagename)[0]
+        image_obj = MockImageFile.objects.create(idref=imagename,
+                                                 archive=document,
+                                                 data=image)
+        i = MockImageBlob.objects.create(archive=document,
+                                         idref=imagename,
+                                         image=image_obj,
+                                         data=image,
+                                         filename=imagename)
+        i2 = MockImageBlob.objects.get(idref=imagename)
+        self.assertTrue(i2.get_data() is not None)
         self.assertEquals(image, i2.get_data())
         i2.delete()
         
@@ -484,13 +496,17 @@ class TestModels(unittest.TestCase):
         document = self.create_document(filename)
         document.explode()
         document.save()
+
         imagename = 'alice2.gif'
+
+        for i in MockImageFile.objects.filter(idref=imagename):
+            i.delete()
+
         image = _get_file(imagename)
-        image_obj = MockImageFile(idref=imagename,
-                              archive=document,
-                              data=image)
-        image_obj.save()
-        i2 = MockImageFile.objects.filter(idref=imagename)[0]
+        image_obj = MockImageFile.objects.create(idref=imagename,
+                                  archive=document,
+                                  data=image)
+        i2 = MockImageFile.objects.get(idref=imagename)
         storage = i2._blob()._get_file()
         self.assert_(storage)
         i2.delete()
@@ -515,12 +531,10 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         epub = _get_file(filename)
-        bin = MockEpubBlob(idref=filename,
-                       archive=document,
-                       filename=filename,
-                       data=epub)
-        bin.save()
-        b2 = MockEpubBlob.objects.filter(idref=filename)[0]
+
+        b2 = MockEpubBlob.objects.get(archive=document)
+
+        self.assert_(b2.get_data())
 
         # Assert that we can read the file, and it's the same
         self.assertEquals(epub, b2.get_data())
@@ -540,11 +554,7 @@ class TestModels(unittest.TestCase):
         document.explode()
         document.save()
         epub = _get_file(filename)
-        bin = MockEpubBlob(idref=filename,
-                       archive=document,
-                       filename=filename,
-                       data=epub)
-        bin.save()
+
         b2 = MockEpubBlob.objects.filter(idref=filename)[0]        
         self.assert_(b2)
         b2.delete()
@@ -600,19 +610,20 @@ class TestModels(unittest.TestCase):
         document.user = self.user
         document.explode()
         document.save()
+        id = document.id
+
         chapter = HTMLFile.objects.filter(archive=document)[0]
-        chapter.read()
-        document = EpubArchive.objects.get(name=filename)
-        self.assertEquals(chapter, document.last_chapter_read)
+        chapter.render(user=self.user)
+
+        document = EpubArchive.objects.get(id__exact=id)
+        self.assertEquals(chapter, document.get_last_chapter_read(self.user))
 
         # Try rendering, then check that the last one is up-to-date
         chapter2 = HTMLFile.objects.filter(archive=document)[1]
-        chapter2.render()
-        document = EpubArchive.objects.get(name=filename)
-        self.assertEquals(chapter2, document.last_chapter_read)
+        chapter2.render(user=self.user)
 
-        chapter3 = HTMLFile.objects.filter(archive=document)[1]
-        self.assertTrue(chapter3.is_read)
+        document = EpubArchive.objects.get(id__exact=id)        
+        self.assertEquals(chapter2, document.get_last_chapter_read(self.user))
 
     def test_allow_no_playorder_in_toc(self):
         '''Assert that if we have no playOrder we can fall back to document order'''
@@ -673,8 +684,9 @@ class TestModels(unittest.TestCase):
     def create_document(self, document, identifier=''):
         epub = MockEpubArchive(name=document)
         epub.identifier = identifier
-        epub.owner = self.user
         epub.save()
+        user_archive = UserArchive.objects.get_or_create(archive=epub,
+                                                         user=self.user)
         epub.set_content(_get_file(document))
 
         return epub
@@ -709,21 +721,11 @@ class TestViews(DjangoTestCase):
         self.assertTemplateUsed(response, 'index.html')
         self.assertContains(response, 'testuser')
 
-    def _login(self):
-        self.assertTrue(self.client.login(username='testuser', password='testuser'))
-
     def test_upload(self):
         response = self._upload('Pride-and-Prejudice_Jane-Austen.epub')
         self.assertRedirects(response, '/', 
                              status_code=302, 
                              target_status_code=200)
-
-
-    def _upload(self, f):
-        self._login()
-        fh = _get_filehandle(f)
-        response = self.client.post('/upload/', {'epub':fh})
-        return response
 
     def test_upload_invalid_epub(self):
         response = self._upload('invalid-no-toc.epub')
@@ -1067,6 +1069,54 @@ class TestViews(DjangoTestCase):
                                             'language': 'en'})
         self.assertTemplateUsed(res, 'results.html')
         self.assertContains(res, 'original')
+
+    def test_public_book(self):
+        '''A book marked as 'is_public' should be viewable to
+        all users'''
+        # Upload a book 
+        name = 'Pride-and-Prejudice_Jane-Austen.epub'
+        self._upload(name)
+        document = EpubArchive.objects.filter(name=name)[0]
+        document.is_public = False
+        document.save()
+
+        # The user should be able to see their own book
+        response = self.client.get('/view/a/%s/' % document.id)
+        self.assertContains(response, 'Pride')
+
+        self.client.logout()
+        user = User.objects.create_user(username="testuser2",email="test2@example.com",password="testuser2")
+        user.save()        
+        profile = UserPref(user=user)
+        profile.save()
+        
+        self.assertTrue(self.client.login(username='testuser2', password='testuser2'))
+
+        response = self.client.get('/view/a/%s/' % document.id)
+        self.assertEquals(response.status_code, 404)
+
+        response = self.client.get('/view/a/%s/chapter-2.html' % document.id)
+        self.assertEquals(response.status_code, 302)
+        
+        document.is_public = True
+        document.save()        
+        
+        response = self.client.get('/view/a/%s/chapter-2.html' % document.id)
+        self.assertEquals(response.status_code, 200)
+        self.assertContains(response, 'Pride')
+
+        # Make sure their last-read values are different
+        self.assertEquals(user.user_archive.order_by('-id')[0].last_chapter_read.filename, 'chapter-2.html')
+        self.assertEquals(self.user.user_archive.order_by('-id')[0].last_chapter_read.filename, 'chapter-1.html')
+        
+    def _login(self):
+        self.assertTrue(self.client.login(username='testuser', password='testuser'))
+
+    def _upload(self, f):
+        self._login()
+        fh = _get_filehandle(f)
+        response = self.client.post('/upload/', {'epub':fh})
+        return response
 
 
 class TestTwill(DjangoTestCase):

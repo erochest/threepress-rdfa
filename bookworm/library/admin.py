@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import EpubArchive, BookAuthor,HTMLFile,StylesheetFile, ImageFile, UserPref, EpubPublisher, Subject
+from models import EpubArchive, BookAuthor,HTMLFile,StylesheetFile, ImageFile, UserPref, EpubPublisher, Subject, UserArchive
 
 
 class EpubArchiveAdmin(admin.ModelAdmin):
@@ -10,11 +10,15 @@ class EpubArchiveAdmin(admin.ModelAdmin):
     ordering = ('-created_time', 'title')
     list_per_page = 500
 
+class UserArchiveAdmin(admin.ModelAdmin):
+    fields=('archive', 'user', 'last_chapter_read')
+    list_per_page = 500
+    
 class BookAuthorAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 class HTMLFileAdmin(admin.ModelAdmin):
-    fields=('title','filename','processed_content','is_read', 'idref')
+    fields=('title','filename','processed_content','idref')
     ordering = ('title','path')
     search_fields = ['title', 'filename']
 
@@ -45,4 +49,4 @@ admin.site.register(ImageFile, ImageFileAdmin)
 admin.site.register(UserPref, UserPrefAdmin)
 admin.site.register(EpubPublisher, EpubPublisherAdmin)
 admin.site.register(Subject, SubjectAdmin)
-
+admin.site.register(UserArchive, UserArchiveAdmin)
