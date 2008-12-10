@@ -1041,8 +1041,6 @@ class TestViews(DjangoTestCase):
         self.assertTemplateUsed(response, 'view.html')        
         self.assertContains(response, 'Enlightenment')
         
-
-
     def test_search_form(self):
         name = 'Pride-and-Prejudice_Jane-Austen.epub'
         self._upload(name)
@@ -1108,7 +1106,23 @@ class TestViews(DjangoTestCase):
         # Make sure their last-read values are different
         self.assertEquals(user.user_archive.order_by('-id')[0].last_chapter_read.filename, 'chapter-2.html')
         self.assertEquals(self.user.user_archive.order_by('-id')[0].last_chapter_read.filename, 'chapter-1.html')
-        
+
+    def test_list_books_singly(self):
+        '''New code caused multiple duplicate items in the user's library list'''
+        name = 'test-single-listing.epub'
+        self._upload(name)
+        document = EpubArchive.objects.filter(name=name)[0]
+
+        response = self.client.get('/')
+        self.assertContains(response, 'Single Listing', 1)
+
+        response = self.client.get('/view/a/%s/' % document.id)
+        self.assertEquals(response.status_code, 200)
+
+        # Make sure the title only appears once
+        response = self.client.get('/')
+        self.assertContains(response, 'Single Listing', 1)
+
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
 

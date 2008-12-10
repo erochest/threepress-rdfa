@@ -56,7 +56,6 @@ def index(request,
     return direct_to_template(request, "public.html", {})
 
 def logged_in_home(request, page_number, order, dir):
-
     if not dir in settings.VALID_ORDER_DIRECTIONS:
         raise Exception("Direction %s was not in our list of known ordering directions" % dir)
     if not order in settings.VALID_ORDER_FIELDS:
@@ -72,7 +71,7 @@ def logged_in_home(request, page_number, order, dir):
         page_number = settings.DEFAULT_START_PAGE
     user = request.user
     form = EpubValidateForm()
-    paginator = Paginator(EpubArchive.objects.filter(user_archive__user=user).order_by(order_computed), settings.DEFAULT_NUM_RESULTS)
+    paginator = Paginator(EpubArchive.objects.filter(user_archive__user=user).order_by(order_computed).distinct(), settings.DEFAULT_NUM_RESULTS)
     try:
         page = paginator.page(page_number)
     except EmptyPage:
