@@ -655,7 +655,7 @@ class HTMLFile(BookwormFile):
 
         # Mark this chapter as last-read if a user is passed
         # (indexing will not create a last-read entry this way)
-        if user:
+        if user and not user.is_anonymous():
             self.read(user)
 
         if self.processed_content:

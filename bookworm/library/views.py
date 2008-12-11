@@ -25,24 +25,6 @@ from library.google_books.search import Request
 
 log = logging.getLogger('library.views')
 
-def register(request):
-    form = UserCreationForm()
-                                            
-    if request.method == 'POST':
-        data = request.POST.copy()
-        errors = form.get_validation_errors(data)
-        if not errors:
-            new_user = form.save(data)
-            user = auth.authenticate(username=new_user.username, password=request.POST['password1'])
-            if user is not None and user.is_active:
-                auth.login(request, user)
-                return HttpResponseRedirect(reverse('library.views.index'))
-    else:
-        data, errors = {}, {}
-
-    return direct_to_template(request, "auth/register.html", 
-                              { 'form' : form })
-
 def index(request, 
           page_number=settings.DEFAULT_START_PAGE, 
           order=settings.DEFAULT_ORDER_FIELD,
@@ -100,51 +82,6 @@ def logged_in_home(request, page_number, order, dir):
                                              }
                               )
 
-@login_required
-def profile(request):
-    uprofile = RequestContext(request).get('profile')
-    
-    if request.openid:
-        sreg = request.openid.sreg
-        # If we have the email from OpenID and not in their profile, pre-populate it
-        if not request.user.email and sreg.has_key('email'):
-            request.user.email = sreg['email']
-        if sreg.has_key('fullname'):
-            uprofile.fullname = sreg['fullname']
-        if sreg.has_key('nickname'):
-            uprofile.nickname = sreg['nickname']
-
-        # These should only be updated if they haven't already been changed
-        if uprofile.timezone is None and sreg.has_key('timezone'):
-            uprofile.timezone = sreg['timezone']
-        if uprofile.language is None and sreg.has_key('language'):
-            uprofile.language = sreg['language']
-        if uprofile.country is None and sreg.has_key('country'):
-            uprofile.country = sreg['country']
-        uprofile.save()
-    
-    if settings.LANGUAGE_COOKIE_NAME in request.session:
-        log.debug("Updating language to %s" % request.session.get(settings.LANGUAGE_COOKIE_NAME))
-        uprofile.language = request.session.get(settings.LANGUAGE_COOKIE_NAME)
-        uprofile.save()
-
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=uprofile)
-        if form.is_valid():
-            form.save()
-        message = "Your profile has been updated."
-    else:
-        form = ProfileForm(instance=uprofile)
-        message = None
-    if 'msg' in request.GET:
-        message = request.GET['msg']
-
-    return direct_to_template(request,
-                              'auth/profile.html', 
-                              {'form':form, 'prefs':uprofile, 'message':message})
-
-
-@login_required
 def view(request, title, key, first=False, resume=False):
     '''If we view just a document, we want to either see our last chapter,
     or see the first item in the <opf:spine>, as required by the epub specification.'''
@@ -153,13 +90,21 @@ def view(request, title, key, first=False, resume=False):
 
     document = _get_document(request, title, key)
 
-    uprofile = request.user.get_profile()
-    
-    last_chapter_read = document.get_last_chapter_read(request.user)
+    # If we got 'None' from get_document with an anonymous user, then prompt them
+    # to login; this is probably just a bookmark with an unauthenticated user
+    if document is None and request.user.is_anonymous():
+        return HttpResponseRedirect(reverse('login'))
+
+    if not request.user.is_anonymous():
+        uprofile = request.user.get_profile()
+        last_chapter_read = document.get_last_chapter_read(request.user)
+    else:
+        last_chapter_read = None
+        uprofile = None
 
     if resume and last_chapter_read is not None:
         chapter = last_chapter_read
-    elif not first and uprofile.open_to_last_chapter and last_chapter_read:
+    elif not first and uprofile and uprofile.open_to_last_chapter and last_chapter_read:
         chapter = last_chapter_read
     else:
         toc = document.get_toc()
@@ -170,58 +115,6 @@ def view(request, title, key, first=False, resume=False):
             raise Http404
     return view_chapter(request, title, key, None, chapter=chapter)
 
-  
-@login_required
-def view_document_metadata(request, title, key):
-    log.debug("Looking up metadata %s, key %s" % (title, key))
-    document = _get_document(request, title, key)
-    google_books = _get_google_books_info(document, request)
-    return direct_to_template(request, 'view.html', {'document':document, 'google_books':google_books})
-
-@login_required
-def delete(request):
-    '''Delete a book and associated metadata, and decrement our total books counter'''
-
-    if request.POST.has_key('key') and request.POST.has_key('title'):
-        title = request.POST['title']
-        key = request.POST['key']
-        log.debug("Deleting title %s, key %s" % (title, key))
-        if request.user.is_superuser:
-            document = _get_document(request, title, key, override_owner=True)
-        else:
-            document = _get_document(request, title, key)
-        _delete_document(request, document)
-
-    return HttpResponseRedirect('/')
-
-@login_required
-def profile_delete(request):
-
-    if not request.POST.has_key('delete'):
-        # Extra sanity-check that this is a POST request
-        log.error('Received deletion request but was not POST')
-        message = "There was a problem with your request to delete this profile."
-        return direct_to_template(request, 'profile.html', { 'message':message})
-
-    if not request.POST['delete'] == request.user.email:
-        # And that we're POSTing from our own form (this is a sanity check, 
-        # not a security feature.  The current logged-in user profile is always
-        # the one to be deleted, regardless of the value of 'delete')
-        log.error('Received deletion request but nickname did not match: received %s but current user is %s' % (request.POST['delete'], request.user.nickname()))
-        message = "There was a problem with your request to delete this profile."
-        return direct_to_template(request, 'profile.html', { 'message':message})
-
-    request.user.get_profile().delete()
-
-    # Delete all their books (this is likely to time out for large numbers of books)
-    documents = EpubArchive.objects.filter(user_archive__user=request.user)
-
-    for d in documents:
-        _delete_document(request, d)
-
-    return HttpResponseRedirect('/') # fixme: actually log them out here
-
-@login_required    
 def view_chapter(request, title, key, chapter_id, chapter=None, google_books=None, message=None):
     if chapter is not None:
         chapter_id = chapter.id
@@ -272,22 +165,6 @@ content.'''
                                             'google_books':google_books,
                                             'previous':previous})
 
-def _chapter_next_previous(document, chapter, dir='next'):
-    '''Returns the next or previous data object from the OPF'''
-    toc = document.get_toc()
-    item = toc.find_item_by_id(chapter.idref)
-
-    if dir == 'next':
-        target_item = toc.find_next_item(item)
-    else:
-        target_item = toc.find_previous_item(item)
-    if target_item is None:
-        return None
-    object = get_file_by_item(target_item, document)
-    return object
-
-
-@login_required    
 def view_chapter_image(request, title, key, image):
     log.debug("Image request: looking up title %s, key %s, image %s" % (title, key, image))        
     document = _get_document(request, title, key)
@@ -305,7 +182,6 @@ def view_chapter_image(request, title, key, image):
     return response
 
 
-@login_required
 def view_stylesheet(request, title, key, stylesheet_id):
     document = _get_document(request, title, key)
     log.debug('getting stylesheet %s' % stylesheet_id)
@@ -325,6 +201,115 @@ def download_epub(request, title, key, nonce=None):
     response = HttpResponse(content=content, content_type=epub_constants.MIMETYPE)
     response['Content-Disposition'] = 'attachment; filename=%s' % document.name
     return response    
+  
+def view_document_metadata(request, title, key):
+    log.debug("Looking up metadata %s, key %s" % (title, key))
+    document = _get_document(request, title, key)
+    google_books = _get_google_books_info(document, request)
+    return direct_to_template(request, 'view.html', {'document':document, 'google_books':google_books})
+
+@login_required
+def delete(request):
+    '''Delete a book and associated metadata, and decrement our total books counter'''
+
+    if 'key' in request.POST and 'title' in request.POST:
+        title = request.POST['title']
+        key = request.POST['key']
+        log.debug("Deleting title %s, key %s" % (title, key))
+        if request.user.is_superuser:
+            document = _get_document(request, title, key, override_owner=True)
+        else:
+            document = _get_document(request, title, key)
+        _delete_document(request, document)
+
+    return HttpResponseRedirect('/')
+
+def register(request):
+    '''Register a new user on Bookworm'''
+
+    form = UserCreationForm()
+                                            
+    if request.method == 'POST':
+        data = request.POST.copy()
+        errors = form.get_validation_errors(data)
+        if not errors:
+            new_user = form.save(data)
+            user = auth.authenticate(username=new_user.username, password=request.POST['password1'])
+            if user is not None and user.is_active:
+                auth.login(request, user)
+                return HttpResponseRedirect(reverse('library.views.index'))
+    return direct_to_template(request, "auth/register.html", { 'form' : form })
+
+@login_required
+def profile(request):
+    uprofile = RequestContext(request).get('profile')
+    
+    if request.openid:
+        sreg = request.openid.sreg
+        # If we have the email from OpenID and not in their profile, pre-populate it
+        if not request.user.email and sreg.has_key('email'):
+            request.user.email = sreg['email']
+        if sreg.has_key('fullname'):
+            uprofile.fullname = sreg['fullname']
+        if sreg.has_key('nickname'):
+            uprofile.nickname = sreg['nickname']
+
+        # These should only be updated if they haven't already been changed
+        if uprofile.timezone is None and sreg.has_key('timezone'):
+            uprofile.timezone = sreg['timezone']
+        if uprofile.language is None and sreg.has_key('language'):
+            uprofile.language = sreg['language']
+        if uprofile.country is None and sreg.has_key('country'):
+            uprofile.country = sreg['country']
+        uprofile.save()
+    
+    if settings.LANGUAGE_COOKIE_NAME in request.session:
+        log.debug("Updating language to %s" % request.session.get(settings.LANGUAGE_COOKIE_NAME))
+        uprofile.language = request.session.get(settings.LANGUAGE_COOKIE_NAME)
+        uprofile.save()
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=uprofile)
+        if form.is_valid():
+            form.save()
+        message = "Your profile has been updated."
+    else:
+        form = ProfileForm(instance=uprofile)
+        message = None
+    if 'msg' in request.GET:
+        message = request.GET['msg']
+
+    return direct_to_template(request,
+                              'auth/profile.html', 
+                              {'form':form, 'prefs':uprofile, 'message':message})
+
+@login_required
+def profile_delete(request):
+
+    if not request.POST.has_key('delete'):
+        # Extra sanity-check that this is a POST request
+        log.error('Received deletion request but was not POST')
+        message = "There was a problem with your request to delete this profile."
+        return direct_to_template(request, 'profile.html', { 'message':message})
+
+    if not request.POST['delete'] == request.user.email:
+        # And that we're POSTing from our own form (this is a sanity check, 
+        # not a security feature.  The current logged-in user profile is always
+        # the one to be deleted, regardless of the value of 'delete')
+        log.error('Received deletion request but nickname did not match: received %s but current user is %s' % (request.POST['delete'], request.user.nickname()))
+        message = "There was a problem with your request to delete this profile."
+        return direct_to_template(request, 'profile.html', { 'message':message})
+
+    request.user.get_profile().delete()
+
+    # Delete all their books (this is likely to time out for large numbers of books)
+    documents = EpubArchive.objects.filter(user_archive__user=request.user)
+
+    for d in documents:
+        _delete_document(request, d)
+
+    return HttpResponseRedirect('/') # fixme: actually log them out here
+
 
 @login_required
 def upload(request):
@@ -450,6 +435,21 @@ def upload(request):
 
     return direct_to_template(request, 'upload.html', {'form':form})
 
+def _chapter_next_previous(document, chapter, dir='next'):
+    '''Returns the next or previous data object from the OPF'''
+    toc = document.get_toc()
+    item = toc.find_item_by_id(chapter.idref)
+
+    if dir == 'next':
+        target_item = toc.find_next_item(item)
+    else:
+        target_item = toc.find_previous_item(item)
+    if target_item is None:
+        return None
+    object = get_file_by_item(target_item, document)
+    return object
+
+
 def _delete_document(request, document):
     # Delete the index before we've deleted the actual book
     epubindexer.delete_epub(document)
@@ -481,10 +481,16 @@ def _get_document(request, title, key, override_owner=False, nonce=None):
     user = request.user
 
     document = get_object_or_404(EpubArchive, pk=key)
+
     if nonce and document.is_nonce_valid(nonce):
         return document
 
-    if not document.is_public and not override_owner and not document.is_owner(user) and  not user.is_superuser:
+    # Anonymous users can never access non-public books
+    if not document.is_public and user.is_anonymous():
+        log.error('Anonymous user tried to access non-public document %s' % (document.title))
+        return None
+        
+    if not document.is_public and not override_owner and not document.is_owner(user) and not user.is_superuser:
         log.error('User %s tried to access document %s, which they do not own' % (user, title))
         raise Http404
 

@@ -9,7 +9,7 @@ class UserArchiveInline(admin.TabularInline):
     extra = 1
     
 class EpubArchiveAdmin(admin.ModelAdmin):
-    fields=('title','name','authors','toc', 'opf', 'publishers', 'subjects', 'language', 'identifier', 'rights', 'indexed')
+    fields=('title','name','authors','toc', 'opf', 'publishers', 'subjects', 'language', 'identifier', 'rights', 'indexed', 'is_public')
     list_display=('title','created_time','identifier','orderable_author', 'publisher')
     list_filter=('orderable_author',)
     search_fields = ['title']

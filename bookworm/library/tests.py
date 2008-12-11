@@ -705,8 +705,8 @@ class TestViews(DjangoTestCase):
     def test_is_inner_path_protected(self):
         self._login()
         self.client.logout()
-        response = self.client.get('/view/test/1/')
-        self.assertRedirects(response, '/account/signin/?next=/view/test/1/', 
+        response = self.client.get('/account/profile/')
+        self.assertRedirects(response, '/account/signin/?next=/account/profile/', 
                              status_code=302, 
                              target_status_code=200)
 
@@ -965,8 +965,8 @@ class TestViews(DjangoTestCase):
         self.assertRedirects(response, '/?msg=Your+account+has+been+deleted.',
                              status_code=302, 
                              target_status_code=200)   
-        response = self.client.get('/view/test/1/')
-        self.assertRedirects(response, '/account/signin/?next=/view/test/1/', 
+        response = self.client.get('/account/profile/')
+        self.assertRedirects(response, '/account/signin/?next=/account/profile/', 
                              status_code=302, 
                              target_status_code=200)   
         self.assertFalse(self.client.login(username='registertest', password='registertest'))                
@@ -1074,6 +1074,7 @@ class TestViews(DjangoTestCase):
         # Upload a book 
         name = 'Pride-and-Prejudice_Jane-Austen.epub'
         self._upload(name)
+
         document = EpubArchive.objects.filter(name=name)[0]
         document.is_public = False
         document.save()
@@ -1107,6 +1108,13 @@ class TestViews(DjangoTestCase):
         self.assertEquals(user.user_archive.order_by('-id')[0].last_chapter_read.filename, 'chapter-2.html')
         self.assertEquals(self.user.user_archive.order_by('-id')[0].last_chapter_read.filename, 'chapter-1.html')
 
+        # Now log out altogether and make sure the links all work
+        self.client.logout()
+
+        response = self.client.get('/view/a/%s/chapter-2.html' % document.id)
+        self.assertEquals(response.status_code, 200)
+        self.assertContains(response, 'Pride')
+        
     def test_list_books_singly(self):
         '''New code caused multiple duplicate items in the user's library list'''
         name = 'test-single-listing.epub'
