@@ -24,8 +24,8 @@ def delete_epub(epub):
         user_db_location = indexer.get_user_database_path(username)
         if not os.path.exists(user_db_location):
             return
-
         user_db = indexer.create_user_database(username)
+
         # Also delete from the user's database
         for c in models.HTMLFile.objects.filter(archive=epub):
             book_id = c.id

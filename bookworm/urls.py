@@ -28,7 +28,15 @@ urlpatterns = patterns('',
                        
                        # Search 
                        (r'^search/', include('bookworm.search.urls')),
+                       
+                       # Google Friend Connect trial
+                       url(r'^rpc_replay.html$', 'direct_to_template',
+                           {'template': 'rpc_replay.html'}, name='google_friend_connect_rpc_relay'),                       
+                       url(r'^canvas.html$', 'direct_to_template',
+                           {'template': 'canvas.html'}, name='google_friend_connect_canvas'),                       
                        )
+
+       
 
 
 
