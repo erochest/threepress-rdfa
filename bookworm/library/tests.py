@@ -1094,6 +1094,8 @@ class TestViews(DjangoTestCase):
         response = self.client.get('/view/a/%s/' % document.id)
         self.assertEquals(response.status_code, 404)
 
+        # Because of Django's weirdness, a URL not ending in a / will 302 
+        # in response to a 404
         response = self.client.get('/view/a/%s/chapter-2.html' % document.id)
         self.assertEquals(response.status_code, 302)
         
@@ -1110,6 +1112,9 @@ class TestViews(DjangoTestCase):
 
         # Now log out altogether and make sure the links all work
         self.client.logout()
+
+        response = self.client.get('/view/a/%s/' % document.id)
+        self.assertEquals(response.status_code, 200)
 
         response = self.client.get('/view/a/%s/chapter-2.html' % document.id)
         self.assertEquals(response.status_code, 200)
