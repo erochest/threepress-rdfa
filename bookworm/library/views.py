@@ -93,7 +93,7 @@ def view(request, title, key, first=False, resume=False):
     # If we got 'None' from get_document with an anonymous user, then prompt them
     # to login; this is probably just a bookmark with an unauthenticated user
     if document is None and request.user.is_anonymous():
-        return HttpResponseRedirect(reverse('login'))
+        return HttpResponseRedirect(reverse('user_signin'))
 
     if not request.user.is_anonymous():
         uprofile = request.user.get_profile()
