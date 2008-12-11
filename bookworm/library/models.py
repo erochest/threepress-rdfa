@@ -210,11 +210,11 @@ class EpubArchive(BookwormModel):
 
     def get_major_language(self):
         lang = self.get_language()
-        if lang:
-            for div in ('-', '_'):
-                if div in lang:
-                    return lang.split(div)[0]
-        return lang
+        if not lang:
+            return None
+        for div in ('-', '_'):
+            if div in lang:
+                return lang.split(div)[0]
 
     def get_publisher(self):
         if self.publishers.count() > 0:

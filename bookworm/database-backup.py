@@ -7,7 +7,7 @@ import logging
 from datetime import datetime
 from settings import DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD
 
-logging.basicConfig(level=logging.WARN)
+logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 
 BACKUP_DIR = "%s/backups" % os.path.dirname(__file__)
 MYSQL_CMD = 'mysqldump'

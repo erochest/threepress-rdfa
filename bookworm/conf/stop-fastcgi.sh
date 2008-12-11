@@ -1,1 +1,1 @@
-kill -9 `cat /home/liza/bookworm2/log/django.pid` 
+kill -9 `cat /home/liza/bookworm/log/django.pid` 

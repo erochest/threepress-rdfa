@@ -34,8 +34,6 @@ TIME_ZONE = 'America/New_York'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
-SITE_ID = 2
-
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = True
@@ -87,7 +85,7 @@ MIDDLEWARE_CLASSES = (
     'bookworm.minidetector.Middleware',
     'bookworm.middleware.Mobile',
 #    'django.contrib.csrf.middleware.CsrfMiddleware'
-    
+
 )
 ugettext = lambda s: s
 
@@ -143,6 +141,7 @@ AUTH_PROFILE_MODULE = "library.userpref"
 
 ugettext = lambda s: s
 LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
+SITE_ID = 2
 
 DEFAULT_NUM_RESULTS = 20
 DEFAULT_START_PAGE = 1
@@ -156,6 +155,7 @@ SEARCH_ROOT = os.path.join(ROOT_PATH, 'search')
 
 # Are we running with mobile settings on?
 MOBILE = False
+FORCE_SCRIPT_NAME = ''
 
 # Domain which to redirect requests that are coming from a mobile device
 MOBILE_HOST = 'http://m.threepress.org/'
@@ -176,19 +176,15 @@ DTBOOK2XHTML = os.path.join(XSLT_DIR, 'dtbook2xhtml.xsl')
 # Access time, filename/function#line-number message
 log_formatter = logging.Formatter("[%(asctime)s %(filename)s/%(funcName)s#%(lineno)d] %(message)s")
 
-try:
-    # This should roll logs over at midnight and date-stamp them appropriately
-    handler = logging.handlers.TimedRotatingFileHandler(filename="%s/%s" % (LOG_DIR, LOG_NAME),
+# This should roll logs over at midnight and date-stamp them appropriately
+handler = logging.handlers.TimedRotatingFileHandler(filename="%s/%s" % (LOG_DIR, LOG_NAME),
                                                         when='midnight')
-    handler.setFormatter(log_formatter)
-    log = logging.getLogger('')
-    log.setLevel(logging.INFO)
-    log.addHandler(handler)
+handler.setFormatter(log_formatter)
+log = logging.getLogger('')
+log.setLevel(logging.INFO)
+log.addHandler(handler)
 
-except IOError:
-    pass
 try:
     from local import *
 except:
     pass
-

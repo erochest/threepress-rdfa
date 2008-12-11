@@ -1,1 +1,1 @@
-kill -WINCH `cat /home/liza/bookworm2/log/nginx.pid` && kill -9 `cat /home/liza/bookworm2/log/nginx.pid`
+kill -WINCH `cat /home/liza/bookworm/log/nginx.pid` && kill -9 `cat /home/liza/bookworm/log/nginx.pid`
