@@ -1,5 +1,7 @@
 {% extends "base.html" %} 
 {% load bookworm %}
+{% load librarything_tags %}
+
 {% block title %}{% spaceless %}
 {% if chapter.title %} '{{ chapter.title }}' in {% endif %} {{ document.title }} {% if document.author %} by {{ document.author }} {% endif %}
 {% endspaceless %}{% endblock title %}
@@ -9,6 +11,7 @@
 {% block head %}
 {% spaceless %}
 <link rel="stylesheet" href="/static/document.css"></link>
+<link rel="stylesheet" href="/static/cycle.css"></link>
 {% include "includes/meta.html" %}
 {% endspaceless %}
 {% endblock head %}
@@ -95,6 +98,9 @@
 
      </tbody>
    </table>
+
+   {% works document %}
+
    
    {% if google_books.entries %}
      <h2>Editions of this work found in Google Books Search</h2>

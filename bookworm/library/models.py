@@ -86,6 +86,15 @@ class EpubArchive(BookwormModel):
     # Is this book publicly-viewable?
     is_public = models.BooleanField(default=False)
 
+    # Is this available in the public library?
+    is_viewable = models.BooleanField(default=False)
+
+    # Has it been deleted and is pending complete erasure?
+    is_deleted = models.BooleanField(default=False)
+
+    # Is it not possible to index this document because of an invalid language?
+    can_be_indexed = models.BooleanField(default=True)
+    
     # Last time a nonce was generated
     last_nonce = models.DateTimeField('last-nonce', default=datetime.datetime.now())
 
@@ -136,16 +145,24 @@ class EpubArchive(BookwormModel):
         blob = self._blob_class()
         epub = blob.objects.get(archive=self)
         return epub.get_data()
+  
+    def delete(self, true_delete=False):
+        '''Normal deletion simply sets the flag. Manual override will cause
+        actual normal deletion.'''
+        if true_delete:
+            self.delete_from_filesystem()
+            return super(EpubArchive, self).delete()
+        self.is_deleted = True
+        self.save()
 
-    def delete(self):
+    def delete_from_filesystem(self):
         blob = self._blob_class()
         try:
             epub = blob.objects.get(archive=self)
             epub.delete()
-            super(EpubArchive, self).delete()
         except blob.DoesNotExist:
             log.error('Could not find associated epubblob, maybe deleted from file system?')
-            super(EpubArchive, self).delete()            
+
 
     def set_content(self, c):
         if not self.id:

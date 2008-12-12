@@ -119,6 +119,7 @@ TEMPLATE_DIRS = (
     '%s/library/templates' % ROOT_PATH,
     '%s/library/templates/includes' % ROOT_PATH,    
     '%s/search/templates' % ROOT_PATH,    
+    '%s/librarything/templates' % ROOT_PATH,    
 )
 
 INSTALLED_APPS = (
@@ -135,6 +136,7 @@ INSTALLED_APPS = (
     'bookworm.minidetector',
     'bookworm.library',
     'bookworm.search',
+    'bookworm.librarything',
     )
 
 AUTH_PROFILE_MODULE = "library.userpref"
@@ -172,6 +174,8 @@ CACHE_BACKEND = 'file:///tmp/bookworm/django_cache'
 
 XSLT_DIR = os.path.join(ROOT_PATH, 'library', 'xsl')
 DTBOOK2XHTML = os.path.join(XSLT_DIR, 'dtbook2xhtml.xsl')
+
+LIBRARYTHING_KEY = ''
 
 # Access time, filename/function#line-number message
 log_formatter = logging.Formatter("[%(asctime)s %(filename)s/%(funcName)s#%(lineno)d] %(message)s")

@@ -8,7 +8,7 @@ from library.models import EpubArchive
 log = logging.getLogger('context_processors')
 
 def count_books(user):
-    return EpubArchive.objects.filter(user_archive__user=user).distinct().count()
+    return EpubArchive.objects.filter(user_archive__user=user,is_deleted=False).distinct().count()
  
 def search(request):
     form = None

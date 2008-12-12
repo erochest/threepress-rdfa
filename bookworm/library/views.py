@@ -48,12 +48,12 @@ def logged_in_home(request, page_number, order, dir):
     else:
         order_computed = order
         reverse_dir = 'desc'
-
+  
     if page_number is None:
         page_number = settings.DEFAULT_START_PAGE
     user = request.user
     form = EpubValidateForm()
-    paginator = Paginator(EpubArchive.objects.filter(user_archive__user=user).order_by(order_computed).distinct(), settings.DEFAULT_NUM_RESULTS)
+    paginator = Paginator(EpubArchive.objects.filter(user_archive__user=user,is_deleted=False).order_by(order_computed).distinct(), settings.DEFAULT_NUM_RESULTS)
     try:
         page = paginator.page(page_number)
     except EmptyPage:
@@ -451,9 +451,6 @@ def _chapter_next_previous(document, chapter, dir='next'):
 
 
 def _delete_document(request, document):
-    # Delete the index before we've deleted the actual book
-    epubindexer.delete_epub(document)
-
     # Delete the chapters of the book 
     toc = HTMLFile.objects.filter(archive=document)
     if toc:
@@ -472,7 +469,7 @@ def _delete_document(request, document):
         for i in images:
             i.delete()
 
-    # Delete the book itself
+    # Delete the book itself (here we will only be setting a flag)
     document.delete()
 
 def _get_document(request, title, key, override_owner=False, nonce=None):
