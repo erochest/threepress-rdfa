@@ -31,7 +31,11 @@ def get_isbns(document):
     # Try getting it from LibraryThing
     request = urllib2.Request('%s/%s/%s' % (API, TITLE_TO_ISBN, document.safe_title()))
     log.debug("Requesting %s" % request)
-    response = urllib2.urlopen(request).read()
+    try:
+        response = urllib2.urlopen(request)
+    except urllib2.URLError, e:
+        log.error('Got URL error from response: %s for \n%s' % (e, response))       
+        return []
     try:
         results = etree.fromstring(response)
     except etree.XMLSyntaxError, e:
