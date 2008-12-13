@@ -37,7 +37,7 @@ def get_isbns(document):
         log.error('Got URL error from response: %s for \n%s' % (e, response))       
         return []
     try:
-        results = etree.fromstring(response)
+        results = etree.fromstring(response.read())
     except etree.XMLSyntaxError, e:
         log.error('Got syntax error from response: %s for \n%s' % (e, response))
         return []
