@@ -6,7 +6,7 @@ import bookworm.settings
 setup_environ(bookworm.settings)
 
 from django.contrib.auth.models import User
-from library.models import EpubArchive, HTMLFile
+from library.models import EpubArchive, HTMLFile, UserArchive
 
 import search.indexer as indexer
 import search.epubindexer as epubindexer
@@ -333,10 +333,10 @@ def create_document(title='test',
                     username='test',
                     language='en'):
     user = create_user(username)
-    epub = EpubArchive(title=title,
-                       owner=user)
+    epub = EpubArchive(title=title)
     epub.language = language
     epub.save()
+    UserArchive.objects.create(user=user,archive=epub)
     html = HTMLFile(processed_content=content,
                     archive=epub,
                     title=chapter_title)

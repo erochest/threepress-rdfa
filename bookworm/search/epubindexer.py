@@ -45,7 +45,7 @@ def index_user_library(user):
         log.warn("Existing user database for user %s wasn't there; ignoring" % (user.username))
 
     indexer.create_user_database(user.username)    
-    books = models.EpubArchive.objects.filter(owner=user)
+    books =  [b.archive for b in models.UserArchive.objects.filter(user=user)]
     for b in books:
         index_epub([user.username], b)
     return len(books)
