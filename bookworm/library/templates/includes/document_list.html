@@ -48,7 +48,7 @@
     </td>
     {% endif %}
     {% if stanza_compatible %}
-       <td><p style="text-align:center;font-size:x-large;margin:0;padding:0"><a href="epub://{{ request.META.HTTP_HOST }}{{ d.nonce_url }}/">&#x21E7;</a></p></td>  
+       <td><p style="text-align:center;font-size:x-large;margin:0;padding:0"><a href="stanza://{{ request.META.HTTP_HOST }}{{ d.nonce_url }}/">&#x21E7;</a></p></td>  
     {% endif %}
   </tr>
   {% endfor %}
