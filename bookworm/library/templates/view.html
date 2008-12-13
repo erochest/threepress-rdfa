@@ -40,7 +40,7 @@
    <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
 
    {% if stanza_compatible %}
-   <h4><a href="epub://{{ request.META.HTTP_HOST }}{{ document.nonce_url }}/">View in Stanza</a></h4>
+   <h4><a href="stanza://{{ request.META.HTTP_HOST }}{{ document.nonce_url }}/">View in Stanza</a></h4>
    {% endif %}
 
 {% else %}
