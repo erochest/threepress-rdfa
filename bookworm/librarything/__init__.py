@@ -32,7 +32,11 @@ def get_isbns(document):
     request = urllib2.Request('%s/%s/%s' % (API, TITLE_TO_ISBN, document.safe_title()))
     log.debug("Requesting %s" % request)
     response = urllib2.urlopen(request).read()
-    results = etree.fromstring(response)
+    try:
+        results = etree.fromstring(response)
+    except etree.XMLSyntaxError, e:
+        log.error('Got syntax error from response: %s for \n%s' % (e, response))
+        return []
     return [ LibraryThingWork(i.text) for i in results.xpath('//isbn')][:20]
 
 class LibraryThingWork(object):
