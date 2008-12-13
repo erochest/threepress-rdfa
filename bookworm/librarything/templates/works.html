@@ -22,7 +22,7 @@
    <p>Click on a character name to find occurrences of that character in the work.</p>
   <ul>
     {% for character in works.0.character_names  %}
-      <li> <a href="{% url search %}?q={{ character }}">{{ character }}</a></li>
+      <li> <a href="{% url search %}?q={{ character }}&amp;language={{document.get_major_language }}">{{ character }}</a></li>
     {% endfor %}
   </ul>
 {% endif %}
