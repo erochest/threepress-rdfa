@@ -1114,8 +1114,8 @@ class TestViews(DjangoTestCase):
         self.assertEquals(response.status_code, 200)
         self.assertContains(response, 'Pride')
 
-        # Make sure their last-read values are different
-        self.assertEquals(user.user_archive.order_by('-id')[0].last_chapter_read.filename, 'chapter-2.html')
+        # The 2ndary user shouldn't have a user-archive entry for this
+        self.assertEquals(user.user_archive.count(), 0)
         self.assertEquals(self.user.user_archive.order_by('-id')[0].last_chapter_read.filename, 'chapter-1.html')
 
         # Now log out altogether and make sure the links all work
