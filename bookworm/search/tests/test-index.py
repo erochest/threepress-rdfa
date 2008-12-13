@@ -16,6 +16,7 @@ import search.results as results
 bookworm.settings.SEARCH_ROOT = os.path.join(bookworm.settings.ROOT_PATH, 'search', 'tests', 'dbs')
 
 log = logging.getLogger('search.test-index')
+log.setLevel(logging.DEBUG)
 
 username = 'testuser'
 book_name = 'book'
@@ -126,9 +127,13 @@ class TestEpubIndex(object):
         username1 = 'test_user_library'
         user = User(username=username1)
         user.save()
-        create_document(title='test1', username=username1)        
-        create_document(title='test2', username=username1)                
-        create_document(title='test3', username=username1)         
+        create_document(title='test1', username=username1)
+        assert_true(UserArchive.objects.filter(user=user).count(), 1)
+        create_document(title='test2', username=username1)
+        assert_true(UserArchive.objects.filter(user=user).count(), 2)        
+        create_document(title='test3', username=username1)
+        assert_true(UserArchive.objects.filter(user=user).count(), 3)        
+
         num_indexed = epubindexer.index_user_library(user)
         assert_equals(3, num_indexed)
 
