@@ -25,13 +25,17 @@ langs = [l[0] for l in settings.LANGUAGES]
 
 log.info("Will index documents in languages: %s" % langs)
 
+for e in EpubArchive.objects.filter(is_deleted=True).order_by('id'):
+    log.warn("Deleting %s because 'is_deleted' was True" % e.name)
+    e.delete(true_delete=True)
+    
 for e in EpubArchive.objects.filter(can_be_indexed=True).order_by('id'):
     if e.indexed:
         continue
 
     log.info("Updating %s (%s)" % (e.title, e.name))
-    if e.opf is None or e.opf == '' or e.is_deleted:
-        log.warn("Deleting " + e.name)
+    if e.opf is None or e.opf == '':
+        log.warn("Deleting % because OPF was empty " % e.name)
         e.delete(true_delete=True)
         continue
 
