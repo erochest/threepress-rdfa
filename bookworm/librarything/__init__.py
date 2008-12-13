@@ -59,12 +59,12 @@ class LibraryThingWork(object):
     @property
     def info(self):
         '''Return the LibraryThing Common Knowledge info for this work'''
-#        if self.cached_info is not None:
-#            return self.cached_info
+        if self.cached_info is not None:
+            return self.cached_info
         request = urllib2.Request('%s&isbn=%s' % (REST_API, self.isbn))
         response = urllib2.urlopen(request).read()
         results = etree.fromstring(response)
-        log.debug(etree.tostring(results, pretty_print=True))
+        #log.debug(etree.tostring(results, pretty_print=True))
         self.cached_info = results
         return self.cached_info
 
