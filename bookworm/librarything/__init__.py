@@ -84,7 +84,7 @@ class LibraryThingWork(object):
     
     @property
     def character_names(self):
-        return self._fields('characternames')
+        return self._fields('characternames')[:10]
 
     def _fields(self, fieldname):
         '''Return multiple items with fact names'''

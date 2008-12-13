@@ -1,6 +1,6 @@
 {% if works %}
 
-<h2>Editions {% if works.0.canonical_title %} of <em>{{ works.0.canonical_title }}</em> {% endif %} found in <a href="http://www.librarything.org/">LibraryThing</a></h2>
+<h2>Editions {% if works.0.canonical_title %} of <em>{{ works.0.canonical_title }}</em> {% endif %} found in <a href="{{ librarything_link }}/{{ works.0.isbn }}/">LibraryThing</a></h2>
 
 {% if works.0.first_words %}
 <h3>First words</h3>
