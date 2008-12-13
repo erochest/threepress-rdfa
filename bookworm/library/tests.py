@@ -361,6 +361,14 @@ class TestModels(unittest.TestCase):
         self.assertEquals('Subject 1', document.subjects.get(name='Subject 1').name)
         self.assertEquals('Subject 2', document.subjects.get(name='Subject 2').name)
         self.assertEquals('Subject 3', document.subjects.get(name='Subject 3').name)
+
+        # Test metadata without a hyphen -- was broken
+        opf_file = 'single-lang-metadata.opf'
+        opf = _get_file(opf_file)
+        document = MockEpubArchive(name=opf_file)
+        self.assertEquals('en', document.get_metadata(DC_LANGUAGE_TAG, opf))
+        self.assertEquals('en', document.get_major_language())
+        self.assertEquals('en', document.language)
     
     def test_publishers(self):
         name = 'Oxford University Press'
