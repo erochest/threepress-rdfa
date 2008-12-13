@@ -451,11 +451,13 @@ def _chapter_next_previous(document, chapter, dir='next'):
 
 
 def _delete_document(request, document):
-    # Delete the chapters of the book 
-    toc = HTMLFile.objects.filter(archive=document)
-    if toc:
-        for t in toc:
-            t.delete()
+    # Delete the chapters of the book
+    # Actually this should occur in the indexing phase since these chapters are needed for
+    # full deletion
+    #toc = HTMLFile.objects.filter(archive=document)
+    #if toc:
+    #    for t in toc:
+    #        t.delete()
 
     # Delete all the stylesheets in the book
     css = StylesheetFile.objects.filter(archive=document)

@@ -27,6 +27,7 @@ log.info("Will index documents in languages: %s" % langs)
 
 for e in EpubArchive.objects.filter(is_deleted=True).order_by('id'):
     log.warn("Deleting %s because 'is_deleted' was True" % e.name)
+    epubindexer.delete_epub(e)
     e.delete(true_delete=True)
     
 for e in EpubArchive.objects.filter(can_be_indexed=True).order_by('id'):

@@ -23,6 +23,7 @@ def delete_epub(epub):
         indexer.delete_book_database(username, epub.id)
         user_db_location = indexer.get_user_database_path(username)
         if not os.path.exists(user_db_location):
+            log.warn("Did not find userdb at %s" % user_db_location)
             return
         user_db = indexer.create_user_database(username)
 
@@ -33,7 +34,7 @@ def delete_epub(epub):
                 user_db.delete_document(book_id)
             except xapian.DocNotFoundError:
                 log.warn("Couldn't find doc %s in search index" % epub.name)
-
+            c.delete()    
         user_db.flush()
 
 def index_user_library(user):
