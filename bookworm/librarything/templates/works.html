@@ -1,12 +1,20 @@
 {% if works %}
 
-<h2>Editions {% if works.0.canonical_title %} of <em>{{ works.0.canonical_title }}</em> {% endif %} found in <a href="{{ librarything_link }}/{{ works.0.isbn }}/">LibraryThing</a></h2>
+<h2>Editions of <em>{{ document.title }}</em> found in <a href="{{ librarything_link }}/{{ works.0.isbn }}/">LibraryThing</a></h2>
+
+<p>The information listed here may be inaccurate or incomplete and is not provided by Bookworm.</p>
 
 {% if works.0.first_words %}
 <h3>First words</h3>
 <blockquote>{{ works.0.first_words|safe }}</blockquote>
 {% endif %}
 
+{% if works.0.quotations %}
+  <h3>Quotations</h3>
+  {% for q in works.0.quotations %}
+    <blockquote>{{ q|safe }}</blockquote>
+  {% endfor %}
+{% endif %}
 
 {% if works.0.character_names  %}
 
