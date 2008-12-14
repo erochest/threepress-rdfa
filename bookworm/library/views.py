@@ -481,8 +481,12 @@ def _get_document(request, title, key, override_owner=False, nonce=None):
 
     document = get_object_or_404(EpubArchive, pk=key)
 
-    if nonce and document.is_nonce_valid(nonce):
-        return document
+    if nonce:
+        if document.is_nonce_valid(nonce):
+            return document
+        else:
+            log.error("Got an expired or invalid nonce: '%s', nonce='%s'" % (title, nonce))
+            raise Http404
 
     # Anonymous users can never access non-public books
     if not document.is_public and user.is_anonymous():
