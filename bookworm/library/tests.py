@@ -1077,6 +1077,7 @@ class TestViews(DjangoTestCase):
         self.assertTemplateUsed(res, 'results.html')
         self.assertContains(res, 'original')
 
+    
     def test_public_book(self):
         '''A book marked as 'is_public' should be viewable to
         all users'''
@@ -1093,6 +1094,14 @@ class TestViews(DjangoTestCase):
         self.assertContains(response, 'Pride')
 
         self.client.logout()
+
+        # This shouldn't throw an exception, just complain we're not logged in
+        response = self.client.get('/metadata/a/%s/' % document.id)
+        self.assertEquals(response.status_code, 404)
+
+        response = self.client.get('/css/a/%s/' % document.id)
+        self.assertEquals(response.status_code, 404)
+
         user = User.objects.create_user(username="testuser2",email="test2@example.com",password="testuser2")
         user.save()        
         profile = UserPref(user=user)

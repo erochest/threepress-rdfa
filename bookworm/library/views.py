@@ -206,6 +206,8 @@ def download_epub(request, title, key, nonce=None):
 def view_document_metadata(request, title, key):
     log.debug("Looking up metadata %s, key %s" % (title, key))
     document = _get_document(request, title, key)
+    if not document:
+        raise Http404
     google_books = _get_google_books_info(document, request)
     return direct_to_template(request, 'view.html', {'document':document, 'google_books':google_books})
 
