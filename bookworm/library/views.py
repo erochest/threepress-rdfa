@@ -199,7 +199,7 @@ def download_epub(request, title, key, nonce=None):
     if content is None:
         raise Http404
     response = HttpResponse(content=content, content_type=epub_constants.MIMETYPE)
-    safe_name = unicodedata.normalize('NFKC', document.name).encode('ASCII', 'backslashreplace')
+    safe_name = unicodedata.normalize('NFKC', document.name).encode('ASCII', 'backslashreplace').replace(' ', '_')
     response['Content-Disposition'] = 'attachment; filename=%s' % safe_name
     return response    
   
