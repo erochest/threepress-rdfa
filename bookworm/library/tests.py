@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
-import shutil, os, re, unittest, logging, datetime
+import shutil, os, re, unittest, logging, datetime, time
 from os.path import isfile, isdir
 
 from django.contrib.auth.models import User
@@ -414,7 +414,7 @@ class TestModels(unittest.TestCase):
         self.assert_(len(chapters) > 0)
         for c in chapters:
             c.render()        
-        
+
     def test_remove_html_namespaces(self):
         filename = 'Cory_Doctorow_-_Little_Brother.epub'        
         document = self.create_document(filename)
@@ -688,6 +688,7 @@ class TestModels(unittest.TestCase):
 
         # Test the validation routine
         self.assertTrue(document.is_nonce_valid(document._get_nonce()))        
+
 
     def create_document(self, document, identifier=''):
         epub = MockEpubArchive(name=document)
@@ -1143,6 +1144,20 @@ class TestViews(DjangoTestCase):
         # Make sure the title only appears once
         response = self.client.get('/')
         self.assertContains(response, 'Single Listing', 1)
+
+    def test_download_utf8_title(self):
+        '''Django won't allow content-disposition to contain non-ASCII chars,
+        so check that we handle this gracefully'''
+        self._upload(u'天.epub')
+        response = self.client.get('/download/epub/天/1/')
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue( '\u5929.epub' in response['Content-Disposition'])
+        
+        # Other files should decompose better
+        self._upload(u'halála.epub')
+        response = self.client.get('/download/epub/halála/2/')        
+        self.assertEquals(response.status_code, 200)
+        self.assertTrue('.epub' in response['Content-Disposition'])
 
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
