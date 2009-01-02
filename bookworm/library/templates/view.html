@@ -6,7 +6,7 @@
 {% if chapter.title %} '{{ chapter.title }}' in {% endif %} {{ document.title }} {% if document.author %} by {{ document.author }} {% endif %}
 {% endspaceless %}{% endblock title %}
 
-{% block localstyles %}{% spaceless %}{% for css in stylesheets %}<link rel="stylesheet" href="{% url library.views.view_stylesheet document.safe_title,document.key,css.filename %}" />{% endfor %}{% endspaceless %}{% endblock %}
+{% block localstyles %}{% spaceless %}{% for css in stylesheets %}<link rel="stylesheet" href="{% url view_stylesheet document.safe_title,document.key,css.filename %}" />{% endfor %}{% endspaceless %}{% endblock %}
 
 {% block head %}
 {% spaceless %}
@@ -93,7 +93,7 @@
 
        <tr>
          <th>Download entire book</th>
-         <td><a href="{% url library.views.download_epub document.safe_title,document.key %}">epub format</a></td>
+         <td><a href="{% url download_epub document.safe_title,document.key %}">epub format</a></td>
        </tr>
 
      </tbody>

@@ -17,11 +17,11 @@ by
 
 <ol class="bw-nav">
   <li class="bw-first">
-    <a id="bw-download-link" href="{% url library.views.download_epub document.safe_title,document.key %}">Download this book</a>
+    <a id="bw-download-link" href="{% url download_epub document.safe_title,document.key %}">Download this book</a>
   </li>
   <li class="bw-first">
   {% if chapter %}
-  <a href="{% url library.views.view_document_metadata document.safe_title,document.key %}">Book information</a>
+  <a href="{% url view_document_metadata document.safe_title,document.key %}">Book information</a>
   {% else %}
   Book information
   {% endif %}
@@ -58,7 +58,7 @@ by
    {# Silly Django, no flexible 'else' #}
    {% ifnotequal parent_chapter c %}
      {% ifnotequal c.order chapter.order %}
-       <li><a href="{% url library.views.view_chapter document.safe_title,document.key,c.href %}">{{ c.title }}</a></li>
+       <li><a href="{% url view_chapter document.safe_title,document.key,c.href %}">{{ c.title }}</a></li>
      {% endifnotequal %}
    {% endifnotequal %}
 
@@ -70,7 +70,7 @@ by
   <h3>{{ l.title }}</h3>
   <ol class="bw-nav">
     {% for c in l.tree %}
-    <li><a href="{% url library.views.view_chapter document.safe_title,document.key,c.href %}">{{ c.title }}</a></li>    
+    <li><a href="{% url view_chapter document.safe_title,document.key,c.href %}">{{ c.title }}</a></li>    
     {% endfor %}
   </ol>
 {% endfor %}

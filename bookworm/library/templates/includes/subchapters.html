@@ -4,7 +4,7 @@
 <ol>
   {% for sub in find_children %}
   <li>
-    {% ifequal subchapter_href sub.href %}→{% endifequal %} <a href="{% url library.views.view_chapter document.safe_title,document.key,sub.href %}">{{ sub.title }}</a>
+    {% ifequal subchapter_href sub.href %}→{% endifequal %} <a href="{% url view_chapter document.safe_title,document.key,sub.href %}">{{ sub.title }}</a>
   </li>
   {% endfor %}
 </ol>

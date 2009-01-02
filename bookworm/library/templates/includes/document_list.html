@@ -36,7 +36,7 @@
     {% if not mobile %}
     <td>
       <span class="bw-delete">
-      <form action="{% url library.views.delete %}" method="post">
+      <form action="{% url delete %}" method="post">
         <input type="hidden" name="title" value="{{ d.safe_title }}" />
         <input type="hidden" name="key" value="{{ d.key }}" />
         <input type="submit" value="delete" onclick="return confirm('Are you sure?')" />

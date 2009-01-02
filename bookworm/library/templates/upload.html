@@ -48,7 +48,7 @@ ebook to add. </p>
 {% endif %}
 
 <div class="bw-info-box">
-<form action="{% url library.views.upload %}" method="post" enctype="multipart/form-data">
+<form action="{% url upload %}" method="post" enctype="multipart/form-data">
   <div id="bw-upload_form">
     <strong>Add an ePub from your computer by clicking on &lsquo;Browse&rsquo;:</strong>
     <p>{{ form.epub }}</p>

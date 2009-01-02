@@ -8,7 +8,7 @@
 
 {% block leftnav %}
 
-<div class="bw-status"><h2 class="bw-upload"><a href="{% url library.views.upload %}">Add a book</a></h2></div>
+<div class="bw-status"><h2 class="bw-upload"><a href="{% url upload %}">Add a book</a></h2></div>
 
 <div class="bw-status">
   <h2>Status</h2>
@@ -22,7 +22,7 @@
 </div>
 
 <div class="bw-status">
- <h3 class="bw-profile"><a href="{% url library.views.profile %}">Edit your profile</a></h3>
+ <h3 class="bw-profile"><a href="{% url profile %}">Edit your profile</a></h3>
 </div>
 
 
@@ -40,6 +40,7 @@
   {% if not mobile %}
     {% if order_text %}<p>Books are listed by <em>{{ order_text }}</em> in <em>{{ order_direction }}</em> order {{ order_adverb }}.</p>{% endif %}
   {% endif %}
+
 
   {% include "includes/document_list.html" %} 
 
@@ -81,7 +82,7 @@
    </p>
   {% endif %}
 
-  <form action="{% url library.views.upload %}" method="post" enctype="multipart/form-data" name="upload">
+  <form action="{% url upload %}" method="post" enctype="multipart/form-data" name="upload">
     <div id="bw-upload_form">
       {{ form.as_p }}
       <input type="submit" value="upload" name="submit-upload"/>
