@@ -1,6 +1,6 @@
 from django.core.mail import EmailMessage
 
-import logging, sys, urllib, MySQLdb, cStringIO, os.path, unicodedata, time
+import logging, sys, urllib, MySQLdb, cStringIO, os.path, unicodedata, traceback
 from zipfile import BadZipfile
 
 from django.contrib.auth.decorators import login_required
@@ -16,12 +16,11 @@ from django.conf import settings
 
 from django_authopenid.views import signin
 
-from search import epubindexer
-from library.epub import InvalidEpubException
-from library.models import EpubArchive, HTMLFile, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields, DRMEpubException, UnknownContentException, UserArchive
-from library.forms import EpubValidateForm, ProfileForm
-from library.epub import constants as epub_constants
-from library.google_books.search import Request
+from bookworm.library.epub import InvalidEpubException
+from bookworm.library.models import EpubArchive, HTMLFile, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields, DRMEpubException
+from bookworm.library.forms import EpubValidateForm, ProfileForm
+from bookworm.library.epub import constants as epub_constants
+from bookworm.library.google_books.search import Request
 
 log = logging.getLogger('library.views')
 
@@ -144,10 +143,7 @@ def view_chapter(request, title, key, chapter_id, chapter=None, google_books=Non
     try:
         chapter.render()
     except InvalidEpubException, e:
-        import traceback
-        tb =  traceback.format_exc()
-        log.error(tb)
-        log.error(e)
+        log.error(traceback.format_exc())
         chapter = None
         message = '''
 This book contained content that Bookworm couldn't read.  You may need to check with the 
@@ -361,9 +357,7 @@ def upload(request):
 
                 return direct_to_template(request, 'upload.html', {'form':form, 'message':message})                
             except DRMEpubException, e:
-                import traceback
-                tb =  traceback.format_exc()
-                log.error(tb)
+                log.error(traceback.format_exc())
                 # Delete it first so we don't end up with a broken document in the library
                 try:
                     # Email it to the admins
@@ -378,11 +372,8 @@ def upload(request):
                 message = "It appears that you've uploaded a book which contains DRM (Digital Rights Management).  This is a restriction that is meant to prevent illegal copying but also prevents legitimate owners from reading their ebooks wherever they like. You will probably need to use Adobe Digital Editions to read this ebook, but consider contacting the publisher or bookseller to ask them about releasing DRM-free ebooks."
                 return direct_to_template(request, 'upload.html', 
                                           { 'form':form, 'message':message})
-                
             except Exception, e:
-                import traceback
-                tb =  traceback.format_exc()
-                log.error(tb)
+                log.error(traceback.format_exc())
                 # Delete it first so we don't end up with a broken document in the library
                 try:
                     # Email it to the admins
@@ -426,6 +417,7 @@ def upload(request):
                 
                 return direct_to_template(request, 'upload.html', {'form':form, 
                                                                    'message':message})                
+                
             log.debug("Successfully added %s" % document.title)
             return HttpResponseRedirect('/')
 

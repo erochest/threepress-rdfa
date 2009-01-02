@@ -489,7 +489,11 @@ class EpubArchive(BookwormModel):
         stylesheets = []
         for item in items:
             if item.get('media-type') == constants.STYLESHEET_MIMETYPE:
-                content = archive.read("%s%s" % (content_path, item.get('href')))
+                try:
+                    content = archive.read("%s%s" % (content_path, item.get('href')))
+                except KeyError:
+                    log.warn("Could not find content %s " % item.get('href'))
+                    continue
                 parsed_content = self._parse_stylesheet(content)
                 stylesheets.append({'idref':item.get('id'),
                                     'filename':item.get('href'),
@@ -1010,7 +1014,7 @@ class ImageBlob(BinaryBlob):
 class InvalidBinaryException(InvalidEpubException):
     pass
 
-class DRMEpubException(InvalidEpubException):
+class DRMEpubException(Exception):
     pass
 
 class UnknownContentException(InvalidEpubException):
