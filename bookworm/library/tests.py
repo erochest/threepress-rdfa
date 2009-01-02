@@ -176,35 +176,38 @@ class TestModels(unittest.TestCase):
         self.assert_(False)
 
     def test_no_toc_attribute(self):
-        '''Test an OPF file that has no @toc in the <spine>'''
-        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
-        opf = _get_file('no-toc-attribute-in-spine.opf')
+        '''Test an OPF file that has no @toc in the <spine>.
+
+        Update: 1/2/09: this now should pass'''
+        filename = 'no-toc-attribute-in-spine.epub'
         document = self.create_document(filename)        
         document.explode()
-        parsed_opf = util.xml_from_string(opf)
-        items = [i for i in parsed_opf.iterdescendants(tag="{%s}item" % (NS['opf']))]
-        try:
-            document._get_toc(parsed_opf, items, 'OEBPS')
-        except InvalidEpubException:
-            err = str(sys.exc_info()[1])
-            logging.info(err)
-            self.assertTrue('Could not find toc attribute' in err)
-            return
-        self.assert_(False)
+        self.assert_(document)
+
+    def test_no_toc_attribute_incorrect_media_type(self):
+        '''Test an OPF file that has no @toc in the <spine> and
+        also has the wrong media type for NCX.'''
+
+        filename = 'no-toc-attribute-in-spine-incorrect-media-type.epub'
+        document = self.create_document(filename)        
+        document.explode()
+        self.assert_(document)
+
+
+    def test_no_toc_findable(self):
+        '''Test an OPF file that has an irrecovably-broken TOC declaration.'''
+
+        filename = 'invalid-no-findable-toc.epub'
+        document = self.create_document(filename)        
+        self.assertRaises(InvalidEpubException, document.explode)
+
 
     def test_no_toc(self):
         '''Test an OPF file that has has a TOC reference to a nonexistent file'''
         filename = 'invalid-no-toc.epub'
         document = self.create_document(filename)        
         document.save()
-        try:
-            document.explode()
-        except InvalidEpubException:
-            err = str(sys.exc_info()[1])
-            self.assertTrue('TOC file was referenced in OPF, but not found in archive' in err)
-            return
-        self.assert_(False)
-
+        self.assertRaises(InvalidEpubException, document.explode)
         
     def test_first_item_in_toc(self):
         '''Check that the first_item method returns the correct item based on the rules

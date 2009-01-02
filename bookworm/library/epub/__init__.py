@@ -8,10 +8,4 @@ class InvalidEpubException(Exception):
         
         super(InvalidEpubException, self).__init__(*args)
     
-    def __str__(self):
-        err = super(InvalidEpubException, self).__str__()
-        if self.archive and self.archive.name:
-            err += " [archive=%s]" % self.archive.name 
-        return err
-
 

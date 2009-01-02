@@ -401,13 +401,26 @@ class EpubArchive(BookwormModel):
         whose value is the the id attribute value of the required NCX document 
         declared in manifest)'''
         tocid = opf.find('.//{%s}spine' % NS['opf']).get('toc')
-        if not tocid:
-            raise InvalidEpubException('Could not find toc attribute in OFP <spine>', archive=self)
-        for item in items:
-            if item.get('id') == tocid:
-                toc_filename = item.get('href').strip()
-                return "%s%s" % (content_path, toc_filename)
-        raise InvalidEpubException("Could not find an item matching %s in OPF <item> list" % (tocid), archive=self)
+        if tocid:
+            try:
+                toc_filename = opf.xpath('//opf:item[@id="%s"]' % (tocid),
+                                         namespaces={'opf':NS['opf']})[0].get('href')
+            except IndexError:
+                raise InvalidEpubException("Could not find an item matching %s in OPF <item> list" % (tocid), archive=self)
+        else:
+            # Find by media type
+            log.warn("Did not have toc attribute on OPF spine; going to media-type")
+            try:
+                toc_filename = opf.xpath('//opf:item[@media-type="application/x-dtbncx+xml"]',
+                                         namespaces={'opf': NS['opf']})[0].get('href')
+            except IndexError:
+                # Last ditch effort, find an href with the .ncx extension
+                try:
+                    toc_filename = opf.xpath('//opf:item[contains(@href, ".ncx")]',
+                                             namespaces={'opf':NS['opf']})[0].get('href')
+                except IndexError:
+                    raise InvalidEpubException('Could not find toc attribute in OFP <spine>', archive=self)
+        return "%s%s" % (content_path, toc_filename)
 
     def _get_authors(self, opf):
         '''Retrieves a list of authors from the opf file, tagged as dc:creator.  It is acceptable
