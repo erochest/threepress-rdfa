@@ -10,10 +10,10 @@ setup_environ(settings)
 
 from django.contrib.auth.models import User
 
-import search.constants as constants
-from search import epubindexer
-from library.models import *
-from library.epub import InvalidEpubException
+import bookworm.search.constants as constants
+from bookworm.search import epubindexer
+from bookworm.library.models import *
+from bookworm.library.epub import InvalidEpubException
 
 log = logging.getLogger('update-meta')
 log.setLevel(logging.DEBUG)

@@ -1,10 +1,9 @@
 from lxml import etree
-from lxml import objectify
 import logging, urllib2
 
 from django.conf import settings
 
-from library.epub import constants
+from bookworm.library.epub import constants
 
 API = 'http://www.librarything.com/api'
 COVERS_API = 'http://covers.librarything.com/devkey/%s/medium/isbn' % settings.LIBRARYTHING_KEY

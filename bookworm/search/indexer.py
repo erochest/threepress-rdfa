@@ -1,6 +1,7 @@
 import os, logging, os.path, shutil
 import xapian
 from django.core.management import setup_environ
+
 import bookworm.settings
 import bookworm.search.constants as constants
 setup_environ(bookworm.settings)

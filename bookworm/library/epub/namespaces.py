@@ -1,6 +1,6 @@
 from xml.etree import ElementTree as ET
 import logging
-from constants import NAMESPACES as NS
+from bookworm.library.epub.constants import NAMESPACES as NS
 
 def register_namespace(prefix, uri):
     logging.debug('Registering prefix "%s" with uri "%s"' % (prefix, uri))

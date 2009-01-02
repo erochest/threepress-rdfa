@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 
-urlpatterns = patterns('library.views',
+urlpatterns = patterns('bookworm.library.views',
                        # Bookworm
                        url(r'^$', 'index', name="index"),                        
                        url(r'^page/(?P<page_number>\d+)$', 'index', name="index-paginate"),  

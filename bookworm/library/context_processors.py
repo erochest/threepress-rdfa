@@ -1,8 +1,8 @@
 import logging
 from django.conf import settings
 
-from library.forms import EpubValidateForm
-from library.models import SystemInfo, UserPref
+from bookworm.library.forms import EpubValidateForm
+from bookworm.library.models import SystemInfo, UserPref
 
 log = logging.getLogger('context_processors')
 

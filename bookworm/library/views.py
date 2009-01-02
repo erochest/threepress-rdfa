@@ -357,7 +357,8 @@ def upload(request):
 
                 return direct_to_template(request, 'upload.html', {'form':form, 'message':message})                
             except DRMEpubException, e:
-                log.error(traceback.format_exc())
+                tb = traceback.format_exc()
+                log.error(tb)
                 # Delete it first so we don't end up with a broken document in the library
                 try:
                     # Email it to the admins
@@ -373,7 +374,8 @@ def upload(request):
                 return direct_to_template(request, 'upload.html', 
                                           { 'form':form, 'message':message})
             except Exception, e:
-                log.error(traceback.format_exc())
+                tb = traceback.format_exc()
+                log.error(tb)
                 # Delete it first so we don't end up with a broken document in the library
                 try:
                     # Email it to the admins

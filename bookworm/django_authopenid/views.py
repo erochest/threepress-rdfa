@@ -521,7 +521,7 @@ def changepw(request):
             user_.save()
             msg = _("Password changed.") 
             redirect = "%s?msg=%s" % (
-                    reverse('library.views.profile'),
+                    reverse('bookworm.library.views.profile'),
                     urlquote_plus(msg))
             return HttpResponseRedirect(redirect)
     else:
@@ -552,7 +552,7 @@ def changeemail(request):
                 user_.email = form.cleaned_data['email']
                 user_.save()
                 msg = _("Email changed.") 
-                redirect = "%s?msg=%s" % (reverse('library.views.profile'),
+                redirect = "%s?msg=%s" % (reverse('bookworm.library.views.profile'),
                                       urlquote_plus(msg))
                 return HttpResponseRedirect(redirect)
             else:
@@ -676,7 +676,7 @@ def changeopenid_success(request, identity_url, openid_response):
 
     msg = _("This OpenID is now associated with your account.") 
     redirect = "%s?msg=%s" % (
-            reverse('library.views.profile'), 
+            reverse('bookworm.library.views.profile'), 
             urlquote_plus(msg))
     return HttpResponseRedirect(redirect)
     

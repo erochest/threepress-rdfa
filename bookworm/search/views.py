@@ -2,17 +2,13 @@ from django.core.mail import EmailMessage
 
 import logging
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, Http404, HttpResponse
-from django.shortcuts import get_object_or_404
-from django.template import RequestContext
-from django.core.paginator import Paginator, EmptyPage
+from django.http import HttpResponse
 from django.views.generic.simple import direct_to_template
-from django.conf import settings
 
-import results
-import epubindexer
-import constants
-from forms import EpubSearchForm
+import bookworm.search.results as results
+import bookworm.search.epubindexer as epubindexer
+import bookworm.search.constants as constants
+from bookworm.search.forms import EpubSearchForm
 
 log = logging.getLogger('search.views')
 

@@ -17,11 +17,11 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db.models import permalink
 
-from library.epub import constants, InvalidEpubException
-from library.epub.constants import ENC, BW_BOOK_CLASS, STYLESHEET_MIMETYPE, XHTML_MIMETYPE, DTBOOK_MIMETYPE
-from library.epub.constants import NAMESPACES as NS
-from library.epub.toc import NavPoint, TOC
-import library.epub.util as util
+from bookworm.library.epub import constants, InvalidEpubException
+from bookworm.library.epub.constants import ENC, BW_BOOK_CLASS, STYLESHEET_MIMETYPE, XHTML_MIMETYPE, DTBOOK_MIMETYPE
+from bookworm.library.epub.constants import NAMESPACES as NS
+from bookworm.library.epub.toc import NavPoint, TOC
+import bookworm.library.epub.util as util
 
 log = logging.getLogger('library.models')
 
