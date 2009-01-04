@@ -18,6 +18,12 @@ from bookworm.library.epub import InvalidEpubException
 log = logging.getLogger('update-meta')
 log.setLevel(logging.DEBUG)
 
+lockfile = '/tmp/update-meta.lck'
+try:
+    os.mkdir(lockfile)
+except OSError:
+    log.warn('Shutting down because already running')
+
 # Update all of the metadata in all of the objects on the site
 admin = User.objects.get(username='liza')
 
@@ -27,16 +33,17 @@ log.info("Will index documents in languages: %s" % langs)
 
 for e in EpubArchive.objects.filter(is_deleted=True).order_by('id'):
     log.warn("Deleting %s because 'is_deleted' was True" % e.name)
-    epubindexer.delete_epub(e)
-    e.delete(true_delete=True)
+    result = epubindexer.delete_epub(e)
+    if result:
+        e.delete(true_delete=True)
     
-for e in EpubArchive.objects.filter(can_be_indexed=True).order_by('id'):
+for e in EpubArchive.objects.filter(can_be_indexed=True,is_deleted=False).order_by('id'):
     if e.indexed:
         continue
 
     log.info("Updating %s (%s)" % (e.title, e.name))
     if e.opf is None or e.opf == '':
-        log.warn("Deleting % because OPF was empty " % e.name)
+        #log.warn("Deleting % because OPF was empty " % e.name)
         e.delete(true_delete=True)
         continue
 
@@ -80,3 +87,4 @@ for users in os.listdir(settings.SEARCH_ROOT):
             os.chmod(os.path.join(settings.SEARCH_ROOT, users, f), perms)            
 
 log.info("Done.")
+os.rmdir(lockfile)
