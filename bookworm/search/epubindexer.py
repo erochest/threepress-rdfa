@@ -24,7 +24,7 @@ def delete_epub(epub):
         user_db_location = indexer.get_user_database_path(username)
         if not os.path.exists(user_db_location):
             log.warn("Did not find userdb at %s" % user_db_location)
-            return
+            return True
         user_db = indexer.create_user_database(username)
 
         # Also delete from the user's database

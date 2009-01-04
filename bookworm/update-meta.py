@@ -24,9 +24,6 @@ try:
 except OSError:
     log.warn('Shutting down because already running')
 
-# Update all of the metadata in all of the objects on the site
-admin = User.objects.get(username='liza')
-
 langs = [l[0] for l in settings.LANGUAGES]
 
 log.info("Will index documents in languages: %s" % langs)
