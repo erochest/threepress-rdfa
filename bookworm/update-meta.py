@@ -3,6 +3,7 @@ import logging
 import os
 import os.path
 import stat
+import sys
 
 from django.core.management import setup_environ
 import settings
@@ -23,6 +24,7 @@ try:
     os.mkdir(lockfile)
 except OSError:
     log.warn('Shutting down because already running')
+    sys.exit()
 
 langs = [l[0] for l in settings.LANGUAGES]
 
