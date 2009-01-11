@@ -693,6 +693,13 @@ class TestModels(unittest.TestCase):
         self.assertTrue(document.is_nonce_valid(document._get_nonce()))        
 
 
+    def test_allow_missing_image(self):
+        '''Don't complain if an image is declared in the OPF 
+        but not actually in the epub'''
+        filename = 'missing-image.epub'
+        document = self.create_document(filename)
+        document.explode()
+
     def create_document(self, document, identifier=''):
         epub = MockEpubArchive(name=document)
         epub.identifier = identifier

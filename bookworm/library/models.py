@@ -446,8 +446,11 @@ class EpubArchive(BookwormModel):
         images = []
         for item in items:
             if 'image' in item.get('media-type'):
-                
-                content = archive.read("%s%s" % (content_path, item.get('href')))
+                try:
+                    content = archive.read("%s%s" % (content_path, item.get('href')))
+                except KeyError:
+                    log.warn("Missing image %s; skipping" % item.get('href'))
+                    continue
                 data = {}
                 data['data'] = None
                 data['file'] = None
@@ -481,7 +484,8 @@ class EpubArchive(BookwormModel):
                 path=i['path'],
                 content_type=i['content_type'],
                 archive=self)
-            image.save()  
+            image.save() 
+ 
     def _image_class(self):
         return ImageFile
 
@@ -492,7 +496,7 @@ class EpubArchive(BookwormModel):
                 try:
                     content = archive.read("%s%s" % (content_path, item.get('href')))
                 except KeyError:
-                    log.warn("Could not find content %s " % item.get('href'))
+                    log.warn("Could not find stylsheet %s; skipping " % item.get('href'))
                     continue
                 parsed_content = self._parse_stylesheet(content)
                 stylesheets.append({'idref':item.get('id'),
