@@ -62,8 +62,11 @@ class LibraryThingWork(object):
             return self.cached_info
         request = urllib2.Request('%s&isbn=%s' % (REST_API, self.isbn))
         response = urllib2.urlopen(request).read()
-        results = etree.fromstring(response)
-        #log.debug(etree.tostring(results, pretty_print=True))
+        try:
+            results = etree.fromstring(response)
+        except etree.XMLSyntaxError, e:
+            log.error('Got syntax error from response: %s for \n%s' % (e, response))
+            results = etree.fromstring('<resp/>')
         self.cached_info = results
         return self.cached_info
 
