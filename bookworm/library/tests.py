@@ -133,7 +133,7 @@ class TestModels(unittest.TestCase):
         self.failUnless(d)
 
     def test_bad_epub_fails(self):
-        """ePub documents with missing compontent should raise errors."""
+        """ePub documents with missing component should raise errors."""
         filename = 'invalid_no_container.epub'
         document = self.create_document(filename)
         self.assertRaises(InvalidEpubException, document.explode)
@@ -1178,9 +1178,14 @@ class TestViews(DjangoTestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTrue('.epub' in response['Content-Disposition'])
 
+    def test_invalid_file_with_utf8(self):
+        '''Exception was being thrown from error handling on non-ASCII data'''
+        response = self._upload(u'invalid_天.epub')
+        self.assertContains(response, 'problems')
+
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
-
+        
     def _upload(self, f):
         self._login()
         fh = _get_filehandle(f)

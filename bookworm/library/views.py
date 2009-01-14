@@ -401,7 +401,7 @@ def upload(request):
                             log.error('Got an error when trying to XML-ify the epubecheck response; ignoring: %s' % e2)
                 
                 log.error('Non epub zip file uploaded: %s' % document_name)
-                error = e.__unicode__()
+                error = e.message
                 if len(error) > 200:
                     error = error[0:200] + '...'
                 message = "The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is: <p style='color:black;font-weight:normal'>%s</p>" % error
