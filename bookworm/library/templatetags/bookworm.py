@@ -2,6 +2,7 @@ import logging
 from datetime import datetime
 
 from django import template
+log = logging.getLogger('library.templatetags')
 
 register = template.Library()
 
@@ -33,7 +34,7 @@ def date_metadata(document, field):
             except ValueError:
                 return metadata
         try:
-            datetime.strftime(t, "%A, %B %d %Y")
+            return datetime.strftime(t, "%A, %B %d %Y")
         except ValueError:
             return metadata
     except:
