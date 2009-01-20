@@ -1200,6 +1200,11 @@ class TestViews(DjangoTestCase):
         response = self._upload(u'invalid_天.epub')
         self.assertContains(response, 'problems')
 
+    def test_invalid_container(self):
+        '''Give a helpful message if the container is broken'''
+        response = self._upload(u'invalid-no-namespaced-container.epub')
+        self.assertContains(response, 'Check that your META-INF/container.xml file is correct')
+
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
         

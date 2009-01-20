@@ -383,7 +383,11 @@ class EpubArchive(BookwormModel):
  
     def _get_opf_filename(self, container):
         '''Parse the container to get the name of the opf file'''
-        return container.find('.//{%s}rootfile' % NS['container']).get('full-path')
+        try:
+            return container.find('.//{%s}rootfile' % NS['container']).get('full-path')
+        except AttributeError:
+            # We couldn't find the OPF, probably due to a malformed container file
+            raise InvalidEpubException("Bookworm was unable to open this ePub. Check that your META-INF/container.xml file is correct, including XML namespaces")
 
     def _get_content_path(self, opf_filename):
         '''Return the content path, which may be a named subdirectory or could be at the root of
