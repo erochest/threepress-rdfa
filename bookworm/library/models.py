@@ -702,8 +702,8 @@ class HTMLFile(BookwormFile):
         if user and not user.is_anonymous():
             self.read(user)
 
-#        if self.processed_content:
-#            return self.processed_content
+        if self.processed_content:
+            return self.processed_content
         
         f = smart_str(self.file, encoding=ENC)
         try:
