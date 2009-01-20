@@ -76,7 +76,7 @@
 
        <tr>
          <th>Date added to library</th>
-         <td>{{ document.created_time|date:"l, F Y" }}</td>
+         <td>{{ document.created_time|date:"l, F d Y" }}</td>
        </tr>
        {% if document.get_subjects.count %}
        <tr>
