@@ -52,6 +52,7 @@
      To read this book online, select any of the sections to the left.
    </p>
 
+</div>
    <table class="bw-meta">
      <thead>
        <tr>
@@ -98,6 +99,14 @@
 
      </tbody>
    </table>
+
+   <h4>Reload this book</h4>
+   <form action="{% url reload document.title document.id %}" method="post" enctype="multipart/form-data">
+     <div id="bw-upload_form">
+       <p>{{ form.epub }}</p>
+       <p><input type="submit" value="Replace this book" /></p>
+     </div>
+   </form>
 
    {% works document %}
 

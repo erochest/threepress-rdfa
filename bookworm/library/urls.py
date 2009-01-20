@@ -8,13 +8,14 @@ urlpatterns = patterns('bookworm.library.views',
                            'index', name="index-reorder"),  
                        
                        url(r'^upload/$', 'upload', name="upload"),
+                       url(r'^reload/(?P<title>[^/]+)/(?P<key>\d+)/$', 'upload', name="reload"),                       
 
                        # Images from within documents
                        url(r'^(view|chapter)/(?P<title>[^/]+)/(?P<key>\d+)/(first/|resume/)?(?P<image>.*(jpg|gif|png|svg)+)$', 
                            'view_chapter_image', name="view_chapter_image"),                       
                        
                        # Document metadata
-                       url(r'^metadata/(?P<title>[^/]+)/(?P<key>\d+)/$', 'view_document_metadata', name="view_document_metadata"),                       
+                       url(r'^metadata/(?P<title>[^/]+)/(?P<key>\d+)/$', 'view_document_metadata', name="view_document_metadata"), 
 
                        # Force reading the first page of a document
                        url(r'^view/(?P<title>[^/]+)/(?P<key>\d+)/(?P<first>first)/$', 'view', name="view_first"),

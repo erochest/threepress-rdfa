@@ -205,7 +205,8 @@ def view_document_metadata(request, title, key):
     if not document:
         raise Http404
     google_books = _get_google_books_info(document, request)
-    return direct_to_template(request, 'view.html', {'document':document, 'google_books':google_books})
+    form = EpubValidateForm()        
+    return direct_to_template(request, 'view.html', {'document':document, 'form': form, 'google_books':google_books})
 
 @login_required
 def delete(request):
@@ -311,21 +312,50 @@ def profile_delete(request):
 
 
 @login_required
-def upload(request):
-    '''Uploads a new document and stores it in the database'''
+def upload(request, title=None, key=None):
+    '''Uploads a new document and stores it in the database.  If 'title' and 'key'
+    are provided then this is a reload of an existing document, which should retain
+    the same ID.'''
     document = None 
-    
+    successful_redirect = reverse('index')
+
     if request.method == 'POST':
         form = EpubValidateForm(request.POST, request.FILES)
+
         if form.is_valid():
 
             data = cStringIO.StringIO()
             for c in request.FILES['epub'].chunks():
                 data.write(c)
             document_name = form.cleaned_data['epub'].name
-            log.debug("Uploading document name: %s" % document_name)
-            document = EpubArchive(name=document_name)
-            document.save()
+            if not key:
+                log.debug("Creating new document: '%s'" % document_name)
+                document = EpubArchive(name=document_name)
+                document.save()
+            else:
+                log.debug("Reloading existing document: '%s'" % document_name) 
+                try:
+                    document = EpubArchive.objects.get(id__exact=key)
+
+                    # Save off some metadata about it
+                    is_public = document.is_public
+
+                    # Delete the old one
+                    document.delete(true_delete=True)
+
+                    # Create a new one with the possibly-new name
+                    document = EpubArchive(name=document_name,id=key)
+                    document.is_public = is_public
+                    document.save()
+                    successful_redirect = reverse('view_first', kwargs={'key':key,
+                                                                        'title':title,
+                                                                        'first':'first'})
+
+                except EpubArchive.DoesNotExist:
+                    log.error("Key %s did not exist; creating new document" % (key))
+                    document = EpubArchive(name=document_name)                    
+                    document.save()
+
             document.set_content(data.getvalue())
 
             try:
@@ -421,7 +451,7 @@ def upload(request):
                                                                    'message':message})                
                 
             log.debug("Successfully added %s" % document.title)
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(successful_redirect)
 
         return direct_to_template(request, 'upload.html', {
                 'form':form})

@@ -758,7 +758,6 @@ class TestViews(DjangoTestCase):
         response = self._upload('Cory_Doctorow_-_Little_Brother.epub')
 
         id = '1'
-        self.assert_(id)
         response = self.client.get('/view/Little-Brother/%s/main5.xml' % id)
         self.assertTemplateUsed(response, 'view.html')
 
@@ -770,6 +769,24 @@ class TestViews(DjangoTestCase):
         id = '1'
         response = self.client.get('/view/The+Bible/%s/Genesis/Genesis3.html' % id)
         self.assertTemplateUsed(response, 'view.html')
+
+    def test_reload(self):
+        '''Test the ability to reload an existing book'''
+        response = self._upload('Cory_Doctorow_-_Little_Brother.epub')
+        id = '1'
+        response = self.client.get('/view/Little-Brother/%s/' % id)
+        self.assertTemplateUsed(response, 'view.html')        
+        self.assertContains(response, 'Brother')
+        self.assertNotContains(response, 'Prejudice')
+
+        # Now replace it with a different book
+        fh = _get_filehandle('Pride-and-Prejudice_Jane-Austen.epub')
+        response = self.client.post('/reload/Little-Brother/1/', {'epub':fh})
+        self.assertRedirects(response, '/view/Little-Brother/1/first/')
+        response = self.client.get('/view/Little-Brother/1/first/')
+        self.assertTemplateUsed(response, 'view.html')        
+        self.assertNotContains(response, 'Brother')
+        self.assertContains(response, 'Prejudice')
 
     def test_upload_with_images(self):
         ''' Image uploads should work whether or not their path is specified'''
