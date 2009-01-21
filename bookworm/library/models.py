@@ -746,8 +746,8 @@ class HTMLFile(BookwormFile):
         try:
             self.processed_content = body_content
             self.save()            
-        except: 
-            log.error("Could not cache processed document, error was: " + sys.exc_value)
+        except Exception, e: 
+            log.error("Could not cache processed error was: %s, content was %s" % (e, body_content))
 
         return body_content
 
