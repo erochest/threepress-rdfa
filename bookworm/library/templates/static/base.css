@@ -39,6 +39,7 @@ p {
     background-color: rgb(156, 175, 131); 
     padding: 10px 0 10px 60px;
     overflow:hidden;      
+    margin-bottom:0;
 }
 #bw-header a:link, #bw-header a:hover, #bw-header a:visited {
     text-decoration: none !important;

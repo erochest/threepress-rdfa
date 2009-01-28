@@ -7,6 +7,12 @@ from bookworm.library.models import SystemInfo, UserPref
 log = logging.getLogger('context_processors')
 
 stanza_browsers = ('iphone', )
+
+def local_settings(request):
+    return {
+        'MEDIA_URL': settings.MEDIA_URL,
+        'ORM_MEDIA_URL': settings.ORM_MEDIA_URL,
+    }
  
 def nav(request):
     form = EpubValidateForm()

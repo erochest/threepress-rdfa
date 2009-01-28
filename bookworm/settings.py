@@ -13,7 +13,7 @@ DATABASE_PASSWORD = '3press'
 DATABASE_HOST = ''             
 DATABASE_PORT = ''             
 
-SITE_ID = 2
+SITE_ID = 1
 
 # Django settings for bookworm project.
 
@@ -44,12 +44,11 @@ MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/static/'
+ORM_MEDIA_URL = '/orm-media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
@@ -70,6 +69,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "bookworm.library.context_processors.nav",
     "bookworm.library.context_processors.profile",
     "bookworm.library.context_processors.mobile",
+    "bookworm.library.context_processors.local_settings",
     "bookworm.search.context_processors.search"
 ) 
 
@@ -84,7 +84,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'bookworm.minidetector.Middleware',
     'bookworm.middleware.Mobile',
-#    'django.contrib.csrf.middleware.CsrfMiddleware'
 
 )
 ugettext = lambda s: s
@@ -112,14 +111,12 @@ ROOT_PATH = os.path.dirname(__file__)
 
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
     '%s/library/templates/auth' % ROOT_PATH,    
     '%s/library/templates' % ROOT_PATH,
     '%s/library/templates/includes' % ROOT_PATH,    
     '%s/search/templates' % ROOT_PATH,    
     '%s/librarything/templates' % ROOT_PATH,    
+    '%s/orm/templates' % ROOT_PATH,    
 )
 
 INSTALLED_APPS = (

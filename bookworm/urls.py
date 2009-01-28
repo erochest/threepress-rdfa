@@ -33,6 +33,7 @@ urlpatterns = patterns('',
 if settings.DEBUG:
     urlpatterns += patterns('',
                             (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.ROOT_PATH + '/library/templates/static'}),
+                            (r'^orm-media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.ROOT_PATH + '/orm/templates/orm-media'}),
                             (r'(?P<path>sitedown.html)$', 'django.views.static.serve', 
                              {'document_root': settings.ROOT_PATH + '/library/templates/'}),
                             )
