@@ -1,24 +1,26 @@
 #!/usr/bin/env python
 # encoding: utf-8
-import shutil, os, re, unittest, logging, datetime, time
+import shutil, os, re, unittest, logging, datetime, time, sys
 from os.path import isfile, isdir
 
 from django.contrib.auth.models import User
 from django.test import TestCase as DjangoTestCase
-from bookworm.search import epubindexer
+from django.conf import settings
 
-from models import *
-from testmodels import *
-from epub.toc import TOC
-from epub.constants import *
-import epub.util
+from bookworm.search import epubindexer, index
+from bookworm.library.models import *
+from bookworm.library.testmodels import *
+from bookworm.library.epub.toc import TOC
+from bookworm.library.epub.constants import *
+
+import bookworm.library.epub.util as util
 
 from twill import get_browser
 from twill.errors import TwillAssertionError
 from twill import add_wsgi_intercept
 from twill.commands import *
 
-from django.conf import settings
+
 
 settings.SITE_ID = 1
 
@@ -83,7 +85,7 @@ class TestModels(unittest.TestCase):
         expected_authors = [u'First Author', u'Second Author']
         opf_file = 'two-authors.opf'
         document = MockEpubArchive(name=opf_file)
-        opf = epub.util.xml_from_string(_get_file(opf_file))
+        opf = util.xml_from_string(_get_file(opf_file))
         authors = [a.name for a in document.get_authors(opf)]
         self.assertEquals(expected_authors, authors)
 
@@ -93,7 +95,7 @@ class TestModels(unittest.TestCase):
         expected_authors = [u'First Author', u'Second Author']
         document = MockEpubArchive(name=opf_file)
         document.save()
-        opf = epub.util.xml_from_string(_get_file(opf_file))
+        opf = util.xml_from_string(_get_file(opf_file))
         
         fuzz = 4
         len_first_author = len(expected_authors[0])
@@ -107,7 +109,7 @@ class TestModels(unittest.TestCase):
         no_author_document = MockEpubArchive(name=no_author_opf_file)
         no_author_document.save()
 
-        opf = epub.util.xml_from_string(_get_file(no_author_opf_file))
+        opf = util.xml_from_string(_get_file(no_author_opf_file))
 
         author = no_author_document.get_author(opf)
         self.failIf(author)
@@ -1080,27 +1082,21 @@ class TestViews(DjangoTestCase):
     def test_search_form(self):
         name = 'Pride-and-Prejudice_Jane-Austen.epub'
         self._upload(name)
-        epub = EpubArchive.objects.get(name=name)
-        epubindexer.index_epub([self.user.username], epub)
-        res = self.client.get('/search/', { 'q' : 'lizzy',
-                                            'language': 'en'})
+        index.index()
+        res = self.client.get('/search/', { 'q' : 'lizzy' })
+
         self.assertTemplateUsed(res, 'results.html')
-        self.assertContains(res, 'My dear')
+        self.assertContains(res, 'Jane')
         res = self.client.get('/search/', { 'q' : 'lizzy',
-                                            'language': 'en',
-                                            'start': '20',
-                                            'end': '40'})        
+                                            'page': '2'})
         self.assertTemplateUsed(res, 'results.html')
         self.assertContains(res, 'dearest')        
 
         # Test searching DTbook content
         name = 'hauy.epub'
         self._upload(name)
-
-        epub = EpubArchive.objects.get(name=name)
-        epubindexer.index_epub([self.user.username], epub)
-        res = self.client.get('/search/', { 'q' : 'modification',
-                                            'language': 'en'})
+        index.index()
+        res = self.client.get('/search/', { 'q' : 'modification'})
         self.assertTemplateUsed(res, 'results.html')
         self.assertContains(res, 'original')
 

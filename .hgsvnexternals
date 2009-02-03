@@ -1,2 +1,3 @@
 [bookworm]
  minidetector http://minidetector.googlecode.com/svn/trunk/minidetector
+ orm http://67.222.16.31/svn/bookworm-orm

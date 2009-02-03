@@ -1,7 +1,6 @@
 from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('search.views',
-                       url(r'^index$', 'index', name="index"),                        
                        url(r'^$', 'search', name="search"),                        
 )
 

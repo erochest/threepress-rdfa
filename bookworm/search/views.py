@@ -1,21 +1,21 @@
-from django.core.mail import EmailMessage
-
 import logging
+
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.views.generic.simple import direct_to_template
+from django.core.paginator import Paginator
 
-import bookworm.search.results as results
 import bookworm.search.epubindexer as epubindexer
 import bookworm.search.constants as constants
 from bookworm.search.forms import EpubSearchForm
+from bookworm.library.models import HTMLFile
 
 log = logging.getLogger('search.views')
 
 @login_required
-def search(request, book_id=None):
+def search(request):
 
-    if not 'q' in request.GET and not 'language' in request.GET:
+    if not 'q' in request.GET:
         return direct_to_template(request, 'results.html')
 
     form = EpubSearchForm(request.GET)
@@ -23,48 +23,34 @@ def search(request, book_id=None):
     if not form.is_valid():
         return direct_to_template(request, 'results.html', { 'search_form': form })     
 
-   
-    start = int(request.GET['start']) if request.GET.has_key('start') else 1
-    end = int(request.GET['end']) if request.GET.has_key('end') else constants.RESULTS_PAGESIZE
-    res = results.search(form.cleaned_data['q'], request.user.username, book_id, start=start, language=form.cleaned_data['language'])
-    if len(res) == 0:
+    search_terms = form.cleaned_data['q'].split(' ')
+    final_search_terms = []
+    for t in search_terms:
+        if not t.startswith('+') and not t.startswith('-') and not t.startswith('"'):
+            t = '+' + t
+        final_search_terms.append(t)
+            
+    cleaned_search_term = ' '.join(final_search_terms)
+    log.debug("Final search term: %s"  % cleaned_search_term)
+
+    html_res = HTMLFile.objects.filter(words__search=cleaned_search_term,
+                                       archive__user_archive__user=request.user).distinct()
+    if len(html_res) == 0:
         return direct_to_template(request, 'results.html', { 'term': form.cleaned_data['q'] } )        
 
-    total_results = res[0].total_results
-    page_size = res[0].page_size
+    page = 1
 
-    if page_size < end - start:
-        end = start + page_size
-    next_end = end + constants.RESULTS_PAGESIZE
+    if 'page' in request.GET:
+        try:
+            page = int(request.GET['page'])
+        except ValueError:
+            pass
 
-    show_previous = True if start != 1 else False
-    show_next = True if end < total_results else False
+
+    res = Paginator(html_res, constants.RESULTS_PER_PAGE)
     
-    next_start = start + constants.RESULTS_PAGESIZE
-
-    previous_start = start - constants.RESULTS_PAGESIZE
-    previous_end = previous_start + constants.RESULTS_PAGESIZE
-
     return direct_to_template(request, 'results.html', 
                               { 'results':res,
-                                'language':request.GET['language'],
-                                'start':start,
-                                'end': end,
-                                'total_results': total_results,
-                                'multiple_pages': True if show_next or show_previous else False,
-                                'next_start': next_start,
-                                'next_end' : next_end,
-                                'previous_start': previous_start,
-                                'previous_end' : previous_end,
-                                'end': end,
-                                'show_next': show_next,
-                                'show_previous': show_previous,
-                                'page_size':page_size,
-                                'term':form.cleaned_data['q']})
+                                'page':res.page(page),
+                                'term':form.cleaned_data['q']}) 
 
-@login_required
-def index(request, book_id=None):
-    '''Forceably index a user's books.  The user can only index
-    their own books; this will generally be used for testing only.'''
-    num_indexed = epubindexer.index_user_library(request.user)
-    return HttpResponse("Indexed %d documents" % num_indexed)

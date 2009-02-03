@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 
                        (r'^admin/(.*)',  admin.site.root),
                        ( r'^r/', include('django.conf.urls.shortcut')),
+
                        # Sitemaps
                        (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 

@@ -1,0 +1,8 @@
+ <li><a href="{{ result.get_absolute_url }}"><span class="bw-search-results-book-title">{{ result.title }}</span>{% if result.title %} ~ {% endif %}<span class="bw-search-results-title">{{ result.archive.title }}</span></a>
+   {% if result.archive.author %}
+     <div class="bw-search-results-author">by {{ result.archive.author }}</div>
+  {% endif %}
+   {% if context %}
+      <div class="bw-search-results-fragment">... {{ context|safe }} ...</div>
+   {% endif %}
+  </li>

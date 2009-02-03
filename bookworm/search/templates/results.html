@@ -1,52 +1,40 @@
 {% extends "base.html" %}
 {% load humanize %}
+{% load results %}
 
-{% block title %}Search results{% endblock %}
+{% block title %}Search results {% if term %} for '{{ term }}' {% endif %}{% endblock %}
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="/static/results.css"></link>
 {% endblock head %}
 
-
 {% block leftnav %}
-
 <p><a href="{% url search_help %}">About searching</a></p>
-
-<p><a href="{% url search_language %}">Help with search languages</a></p>
-
 {% endblock leftnav %}
 
 {% block main %}
 <div id="bw-content">
   
   {% if results %}
-  <p class="bw-search-results-info">{{ total_results|intcomma }} result{{ page_size|pluralize}} found for 
+  <p class="bw-search-results-info">{{ results.count|intcomma }} result{{ results.count|pluralize}} found for 
   <em>&lsquo;{{ term }}&rsquo;</em> in your library. Results are returned
   starting from the most relevant.</p>
-  {% if multiple_pages %}
-    <p class="bw-search-results-listed">Showing result{{ page_size|pluralize}} {{ start|intcomma }} &mdash; {{ end|intcomma }}</p>
+  {% if page.has_other_pages %}
+    <p class="bw-search-results-listed">Showing result{{ results.count|pluralize}} {{ page.start_index|intcomma }} &mdash; {{ page.end_index|intcomma }}</p>
   {% endif %}
 
-    <ol id="bw-search-results">
-      {% for result in results %}
-      <li><a href="{{ result.url }}"><span class="bw-search-results-book-title">{{ result.title }}</span> ~ <span class="bw-search-results-title">{{ result.chapter_title }}</span></a>
-      {% if result.author %}
-        <div class="bw-search-results-author">by {{ result.author }}</div>
-      {% endif %}
-      {% if result.result_fragment %}
-        <div class="bw-search-results-fragment">... {{ result.result_fragment|safe }} ...</div>
-      {% endif %}
-      </li>
+    <ol id="bw-search-results" start="{{ page.start_index}}">
+      {% for result in page.object_list %}
+        {% display_result result term %}
       {% endfor %}
     </ol>
 
 
-
-  {% if multiple_pages %}
+  {% if page.has_other_pages %}
   <div class="bw-search-results-nav">
-    <div class="bw-search-previous">{% if show_previous %} <a href="{% url search %}?q={{ term }}&amp;language={{ language }}&amp;start={{ previous_start }}&amp;end={{ previous_end }}">← previous</a> {% endif %} </div>
+    <div class="bw-search-previous">{% if page.has_previous %} <a href="{% url search %}?q={{ term }}&amp;page={{ page.previous_page_number }}">← previous</a> {% endif %} </div>
     <div class="bw-search-next">
-    {% if show_next %} <a href="{% url search %}?q={{ term }}&amp;language={{ language }}&amp;start={{ next_start }}&amp;end={{ next_end }}">next →</a> {% endif %} 
+    {% if page.has_next %} <a href="{% url search %}?q={{ term }}&amp;page={{ page.next_page_number }}">next →</a> {% endif %} 
     </div>
   </div>
   {% endif %}

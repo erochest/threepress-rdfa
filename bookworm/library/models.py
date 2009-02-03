@@ -4,7 +4,7 @@ import lxml
 import lxml.html
 from zipfile import ZipFile
 from StringIO import StringIO
-import logging, datetime, sys, os, os.path, hashlib
+import logging, datetime, os, os.path, hashlib
 from urllib import unquote_plus
 from xml.parsers.expat import ExpatError
 import cssutils
@@ -21,6 +21,8 @@ from bookworm.library.epub import constants, InvalidEpubException
 from bookworm.library.epub.constants import ENC, BW_BOOK_CLASS, STYLESHEET_MIMETYPE, XHTML_MIMETYPE, DTBOOK_MIMETYPE
 from bookworm.library.epub.constants import NAMESPACES as NS
 from bookworm.library.epub.toc import NavPoint, TOC
+from bookworm.search import epubindexer
+
 import bookworm.library.epub.util as util
 
 log = logging.getLogger('library.models')
@@ -89,17 +91,8 @@ class EpubArchive(BookwormModel):
     # Is this available in the public library?
     is_viewable = models.BooleanField(default=False)
 
-    # Has it been deleted and is pending complete erasure?
-    is_deleted = models.BooleanField(default=False)
-
-    # Is it not possible to index this document because of an invalid language?
-    can_be_indexed = models.BooleanField(default=True)
-    
     # Last time a nonce was generated
     last_nonce = models.DateTimeField('last-nonce', default=datetime.datetime.now())
-
-    # Has this epub been indexed for search?
-    indexed = models.BooleanField(default=False)
 
     # Metadata fields
     language = models.CharField(max_length=255, default='', db_index=True)
@@ -149,11 +142,8 @@ class EpubArchive(BookwormModel):
     def delete(self, true_delete=False):
         '''Normal deletion simply sets the flag. Manual override will cause
         actual normal deletion.'''
-        if true_delete:
-            self.delete_from_filesystem()
-            return super(EpubArchive, self).delete()
-        self.is_deleted = True
-        self.save()
+        self.delete_from_filesystem()
+        return super(EpubArchive, self).delete()
 
     def delete_from_filesystem(self):
         blob = self._blob_class()
@@ -687,12 +677,25 @@ class EpubPublisher(BookwormModel):
         return self.name
     
 class HTMLFile(BookwormFile):
-    '''Usually an individual page in the ebook'''
+    '''Usually an individual page in the ebook.'''
     title = models.CharField(max_length=5000)
     order = models.PositiveSmallIntegerField(default=1)
-    processed_content = models.TextField()
+
+    # XHTML content that has been sanitized.  This isn't done until
+    # the user requests to access the file or until the automated
+    # process hits it, whichever occurs first
+    processed_content = models.TextField(null=True)
+
+    # Only the words in the document; this is used for full-text indexing
+    words = models.TextField(null=True) 
+
     content_type = models.CharField(max_length=100, default="application/xhtml")
- 
+
+    @permalink
+    def get_absolute_url(self):
+        return ('view_chapter', (), { 'title':self.archive.safe_title(), 'key': self.archive.id,
+                                      'chapter_id': self.filename} )
+
     def render(self, user=None):
         '''If we don't have any processed content, process it and cache the
         results in the database.'''

@@ -1,11 +1,13 @@
 #bw-search-results {
-  list-style-type: none;
+  list-style-type: decimal;
+
   line-height: 1.2em;
-  margin:0;
+  margin-left: 2em;
   padding:0;
 }
 #bw-search-results li {
   padding: .5em 10em .5em 0;
+  list-style-type: decimal;
 }
 #bw-search-results .bw-match {
  font-weight:bold;
@@ -13,7 +15,10 @@
 #bw-search-results .bw-search-results-fragment {
   display:block;
   color: black;
-  font-size:small;
+  font-size:x-small;
+}
+#bw-search-results .bw-search-results-fragment p {
+  display:inline;
 }
 #bw-search-results .bw-search-results-title {
 

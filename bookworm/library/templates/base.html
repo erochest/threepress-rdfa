@@ -12,17 +12,7 @@
               <form action="{% url search %}" method="get">
                 <fieldset style="border:0;margin:0;padding:0">
                 {{ search_form.q }}
-                <div id="bw-search-lang-message">
-                  <p>Your current search language is {{ current_search_language|capfirst }}. 
-                  <span id="bw-search-lang-change"><a href="#" >Change</a></span>
-                  </p>
-                </div>
-                <div id="bw-search-lang-selection">
-                {{ search_form.language }}
-                <p>More about the <a href="{% url search_language %}">language support in Bookworm</a>.</p>
-                <span id="bw-search-lang-hide"><a href="#">Hide languages</a></span>
                 <div style="padding-top:1em"><input type="submit" value="search" style="width:6em" /></div>
-                </div>
                 </fieldset>
               </form>
             </div>
