@@ -6,6 +6,6 @@ Your account details are:
   Password: [not emailed]
 
 You can now sign in:
-{{ site_url }}signin/
+{{ site_url }}/
 
 

@@ -38,4 +38,9 @@ if settings.DEBUG:
                             (r'(?P<path>sitedown.html)$', 'django.views.static.serve', 
                              {'document_root': settings.ROOT_PATH + '/library/templates/'}),
                             )
+urlpatterns = patterns('django.views.generic.simple',
+                       (r'.*', 'direct_to_template', 
+                        {'template':'sitedown.html'}))
+
+
     
