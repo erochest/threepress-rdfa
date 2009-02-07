@@ -784,8 +784,7 @@ class TestViews(DjangoTestCase):
         # Now replace it with a different book
         fh = _get_filehandle('Pride-and-Prejudice_Jane-Austen.epub')
         response = self.client.post('/reload/Little-Brother/1/', {'epub':fh})
-        self.assertRedirects(response, '/view/Little-Brother/1/first/')
-        response = self.client.get('/view/Little-Brother/1/first/')
+        response = self.client.get('/view/Little-Brother/1/')
         self.assertTemplateUsed(response, 'view.html')        
         self.assertNotContains(response, 'Brother')
         self.assertContains(response, 'Prejudice')
@@ -1045,7 +1044,7 @@ class TestViews(DjangoTestCase):
         self.assertTemplateUsed(response, 'view.html')
         last_chapter_content = response.content
 
-        response = self.client.get('/view/Pride-and-Prejudice/1/resume/')
+        response = self.client.get('/view/resume/Pride-and-Prejudice/1/')
         self.assertTemplateUsed(response, 'view.html')        
         self.assertEquals(last_chapter_content, response.content)        
         self.assertNotEquals(first_page, response.content)        
@@ -1067,9 +1066,8 @@ class TestViews(DjangoTestCase):
         last_chapter_content = response.content
 
         # Force first chapter chapter
-        response = self.client.get('/view/Pride-and-Prejudice/1/first/')
-        self.assertTemplateUsed(response, 'view.html')        
-        self.assertEquals(first_page, response.content)        
+        response = self.client.get('/view/first/Pride-and-Prejudice/1/')
+        self.assertRedirects(response, '/view/Pride+and+Prejudice/1/chapter-1.html')
 
     def test_dtbook(self):
         '''We should be able to parse and expand out a DTBook-format

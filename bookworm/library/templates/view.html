@@ -17,7 +17,7 @@
 {% endblock head %}
 
 {% block header %}
-<a href="{% url view_first document.safe_title,document.key,"first" %}"><span class="bw-title">{{ document.title }}</span></a> 
+<a href="{% url view_first document.safe_title,document.key %}"><span class="bw-title">{{ document.title }}</span></a> 
 {% endblock header %}
 
 {% block leftnav %}

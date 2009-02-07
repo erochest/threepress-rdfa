@@ -100,6 +100,7 @@ def view(request, title, key, first=False, resume=False):
     else:
         last_chapter_read = None
         uprofile = None
+    log.debug("First: %s" % first)
 
     if resume and last_chapter_read is not None:
         chapter = last_chapter_read
@@ -107,11 +108,15 @@ def view(request, title, key, first=False, resume=False):
         chapter = last_chapter_read
     else:
         toc = document.get_toc()
-        first = toc.first_item()
-        chapter = get_file_by_item(first, document)
+        first_item = toc.first_item()
+        chapter = get_file_by_item(first_item, document)
         if chapter is None:
-            log.error('Could not find an item with the id of %s' % first)
+            log.error('Could not find an item with the id of %s' % first_item)
             raise Http404
+        if first:
+            log.debug("Forcing first chapter")
+            # Force an HTTP redirect so we get a clean URL but go to the correct chapter ID
+            return HttpResponseRedirect(reverse('view_chapter', kwargs={'title':document.safe_title(), 'key': document.id, 'chapter_id':chapter.filename}))
     return view_chapter(request, title, key, None, chapter=chapter)
 
 def view_chapter(request, title, key, chapter_id, chapter=None, google_books=None, message=None):
@@ -349,7 +354,7 @@ def upload(request, title=None, key=None):
                     document.save()
                     successful_redirect = reverse('view_first', kwargs={'key':key,
                                                                         'title':title,
-                                                                        'first':'first'})
+                                                                        })
 
                 except EpubArchive.DoesNotExist:
                     log.error("Key %s did not exist; creating new document" % (key))

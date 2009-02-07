@@ -18,10 +18,10 @@ urlpatterns = patterns('bookworm.library.views',
                        url(r'^metadata/(?P<title>[^/]+)/(?P<key>\d+)/$', 'view_document_metadata', name="view_document_metadata"), 
 
                        # Force reading the first page of a document
-                       url(r'^view/(?P<title>[^/]+)/(?P<key>\d+)/(?P<first>first)/$', 'view', name="view_first"),
+                       url(r'^view/first/(?P<title>[^/]+)/(?P<key>\d+)/$', 'view', {'first':True}, name="view_first"),
 
                        # Force resuming a document
-                       url(r'^view/(?P<title>[^/]+)/(?P<key>\d+)/(?P<resume>resume)/$', 'view', name="view_resume"),
+                       url(r'^view/resume/(?P<title>[^/]+)/(?P<key>\d+)/$', 'view', {'resume':True}, name="view_resume"),
 
                        # View a chapter 
                        url(r'^view/(?P<title>[^/]+)/(?P<key>\d+)/(?P<chapter_id>.+)$', 'view_chapter', name="view_chapter"),                       

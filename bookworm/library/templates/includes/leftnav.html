@@ -28,7 +28,7 @@ by
   </li>
 
   <li class="bw-first">
-    <a href="{% url view_first document.safe_title,document.key,"first" %}">First page</a>
+    <a href="{% url view_first document.safe_title,document.key %}">First page</a>
   </li>
 
 {% for c in document.get_top_level_toc %}
