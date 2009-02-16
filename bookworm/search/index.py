@@ -28,6 +28,13 @@ def index():
         try:
             if not h.processed_content:
                 h.render()
+                e = h.archive
+                e.get_subjects()
+                e.get_rights()
+                e.get_language()
+                e.get_publisher()
+                e.get_identifier()
+                e.save()
                 h.words = epubindexer.get_searchable_content(h.processed_content)
         except:
             import traceback

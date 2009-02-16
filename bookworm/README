@@ -1,7 +1,9 @@
 Prerequisites
 =============
     
-Latest version of Django trunk
+Django 1.0 release
+
+MySQL or other supported database (should be able to override in local.py)
 
 Via easy_install:
 
@@ -9,6 +11,8 @@ Via easy_install:
 - python-openid (2.x)
 - python-yadis
 - twill
+- lxml
+- BeautifulSoup
 
 Via subversion:
 
@@ -20,8 +24,13 @@ Via subversion:
 Database
 --------
 
-The first time you get here, manually setup MySQL database 
-and user permissions according to values in ./local.py
+The first time you get here, manually create the database 
+and user permissions according to values in ./settings.py
+
+create database bookworm default character set = UTF8;
+
+To set local settings, please write the modified values from settings.py in local.py, 
+do not change settings.py. local.py overwrites the default settings.
 
 Then, from the project root:
 
