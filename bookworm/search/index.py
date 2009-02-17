@@ -1,14 +1,14 @@
-import logging, os, sys
+import logging, os, sys, uuid
 
 from django.core.management import setup_environ
-import settings
-setup_environ(settings)
+import bookworm.settings
+setup_environ(bookworm.settings)
 
 from django.contrib.auth.models import User
 
 import bookworm.search.constants as constants
 from bookworm.search import epubindexer
-from bookworm.library.models import HTMLFile
+from bookworm.library.models import HTMLFile, EpubArchive
 from bookworm.library.epub import InvalidEpubException
 
 log = logging.getLogger('update-meta')
@@ -24,24 +24,28 @@ except OSError:
 
 
 def index():
-    for h in HTMLFile.objects.filter(words__isnull=True):
-        try:
-            if not h.processed_content:
-                h.render()
-                e = h.archive
-                e.get_subjects()
-                e.get_rights()
-                e.get_language()
-                e.get_publisher()
-                e.get_identifier()
-                e.save()
-                h.words = epubindexer.get_searchable_content(h.processed_content)
-        except:
-            import traceback
-            print traceback.format_exc()
-            h.words = "[Unsupported language]"
-        
-        h.save()
+    for e in EpubArchive.objects.filter(identifier='').order_by('id')[0:10]:
+        log.debug("Processing %s" % e.title)
+        for h in HTMLFile.objects.filter(archive=e):
+            try:
+                if not h.processed_content:
+                    log.debug("Rendering HTML content for %s:%s" % (e.title, h.filename))
+                    h.render()
+            except Exception, e:
+                log.error(e)
+                h.words = "[Unsupported language]"
+            h.words = epubindexer.get_searchable_content(h.processed_content)                
+            h.save()
+            
+        e.get_subjects()
+        e.get_rights()
+        e.get_language()
+        e.get_publisher()
+        identifier = e.get_identifier()
+        if identifier == None or identifier == '' or identifier == u'':
+            log.debug("Creating identifier because none present")
+            e.identifier = 'urn:uuid:' + str(uuid.uuid4())
+        e.save()
 
 os.rmdir(lockfile)
 
