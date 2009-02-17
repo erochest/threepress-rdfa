@@ -702,6 +702,15 @@ class TestModels(unittest.TestCase):
         document = self.create_document(filename)
         document.explode()
 
+    def test_allow_body_as_classname(self):
+        '''Was erroneously changing all CSS classnames '.body' to '.div'''
+        css = 'foo.body { color: black; } body { color: white; }'
+        epub = MockEpubArchive(name='css')
+        out = epub.parse_stylesheet(css) 
+        self.assertTrue('#bw-book-content foo.body' in out)
+        self.assertTrue('#bw-book-content div' in out)
+        self.assertTrue('#bw-book-content body' not in out)
+
     def create_document(self, document, identifier=''):
         epub = MockEpubArchive(name=document)
         epub.identifier = identifier

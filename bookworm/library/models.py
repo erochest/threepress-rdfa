@@ -506,7 +506,10 @@ class EpubArchive(BookwormModel):
         for rule in css.cssRules:
             try:
                 for selector in rule._selectorList:
-                    if 'body' in selector.selectorText:
+                    # Change body rules but not if someone has specified it as a classname (there's
+                    # probably a cleaner way to do this)
+                    if 'body' in selector.selectorText and not '.body' in selector.selectorText:
+
                         # Replace the body tag with a generic div, so the rules
                         # apply even though we've stripped out <body>
                         selector.selectorText = selector.selectorText.replace('body', 'div')

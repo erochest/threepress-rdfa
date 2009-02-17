@@ -17,6 +17,9 @@ class MockEpubArchive(EpubArchive):
     def get_title(self, opf):
         return self._get_title(opf)
 
+    def parse_stylesheet(self, css):
+        return self._parse_stylesheet(css)
+
     def _blob_class(self):
         return MockEpubBlob
 
