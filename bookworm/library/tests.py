@@ -6,6 +6,7 @@ from os.path import isfile, isdir
 from django.contrib.auth.models import User
 from django.test import TestCase as DjangoTestCase
 from django.conf import settings
+from django.http import HttpResponseNotFound
 
 from bookworm.search import epubindexer, index
 from bookworm.library.models import *
@@ -784,8 +785,7 @@ class TestViews(DjangoTestCase):
     def test_reload(self):
         '''Test the ability to reload an existing book'''
         response = self._upload('Cory_Doctorow_-_Little_Brother.epub')
-        id = '1'
-        response = self.client.get('/view/Little-Brother/%s/' % id)
+        response = self.client.get('/view/Little-Brother/1/')
         self.assertTemplateUsed(response, 'view.html')        
         self.assertContains(response, 'Brother')
         self.assertNotContains(response, 'Prejudice')
@@ -793,10 +793,43 @@ class TestViews(DjangoTestCase):
         # Now replace it with a different book
         fh = _get_filehandle('Pride-and-Prejudice_Jane-Austen.epub')
         response = self.client.post('/reload/Little-Brother/1/', {'epub':fh})
+
+        self.assertTrue(type(response) != HttpResponseNotFound)
         response = self.client.get('/view/Little-Brother/1/')
         self.assertTemplateUsed(response, 'view.html')        
         self.assertNotContains(response, 'Brother')
         self.assertContains(response, 'Prejudice')
+
+        response = self.client.get('/metadata/test/1/')
+        self.assertContains(response, 'Reload this book')
+
+        # Don't allow this if the book is public 
+        # todo allow it if the book is public and the logged-in
+        # user is an owner
+        epub = EpubArchive.objects.get(id=1)
+        epub.is_public = True
+        epub.save()
+
+        response = self.client.get('/metadata/test/1/')
+        self.assertNotContains(response, 'Reload this book')        
+
+    def test_no_reload_if_not_owner(self):
+        '''Don't allow reloading of a book if you don't own it'''
+        response = self._upload('Cory_Doctorow_-_Little_Brother.epub')
+        response = self.client.get('/view/Little-Brother/1/')
+        self.assertTemplateUsed(response, 'view.html')        
+
+        self.client.logout()
+        response = self.client.post('/account/signup/', { 'username':'reloadtest',
+                                                          'email':'reloadtest@example.com',
+                                                          'password1':'reloadtest',
+                                                          'password2':'reloadtest'})
+        
+        fh = _get_filehandle('Pride-and-Prejudice_Jane-Austen.epub')
+        response = self.client.post('/reload/Little-Brother/1/', {'epub':fh})
+        self.assertTrue(type(response) == HttpResponseNotFound)
+
+        
 
     def test_upload_with_images(self):
         ''' Image uploads should work whether or not their path is specified'''

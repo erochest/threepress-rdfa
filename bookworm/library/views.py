@@ -17,7 +17,7 @@ from django.conf import settings
 from django_authopenid.views import signin
 
 from bookworm.library.epub import InvalidEpubException
-from bookworm.library.models import EpubArchive, HTMLFile, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields, DRMEpubException
+from bookworm.library.models import EpubArchive, HTMLFile, StylesheetFile, ImageFile, SystemInfo, get_file_by_item, order_fields, DRMEpubException, UserArchive
 from bookworm.library.forms import EpubValidateForm, ProfileForm
 from bookworm.library.epub import constants as epub_constants
 from bookworm.library.google_books.search import Request
@@ -320,7 +320,7 @@ def profile_delete(request):
 def upload(request, title=None, key=None):
     '''Uploads a new document and stores it in the database.  If 'title' and 'key'
     are provided then this is a reload of an existing document, which should retain
-    the same ID.'''
+    the same ID.  The user must be an existing owner to reload a book.'''
     document = None 
     successful_redirect = reverse('index')
 
@@ -341,6 +341,9 @@ def upload(request, title=None, key=None):
                 log.debug("Reloading existing document: '%s'" % document_name) 
                 try:
                     document = EpubArchive.objects.get(id__exact=key)
+                    user_archive = UserArchive.objects.filter(user=request.user, archive=document)
+                    if user_archive.count() == 0:
+                        raise Http404
 
                     # Save off some metadata about it
                     is_public = document.is_public

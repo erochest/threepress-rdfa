@@ -105,6 +105,7 @@
      </tbody>
    </table>
 
+   {% if not document.is_public %}
    <h4>Reload this book</h4>
    <form action="{% url reload document.safe_title document.id %}" method="post" enctype="multipart/form-data">
      <div id="bw-upload_form">
@@ -112,6 +113,7 @@
        <p><input type="submit" value="Replace this book" /></p>
      </div>
    </form>
+   {% endif %}
 
    {% works document %}
 
