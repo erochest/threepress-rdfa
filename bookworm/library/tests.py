@@ -712,6 +712,15 @@ class TestModels(unittest.TestCase):
         self.assertTrue('#bw-book-content div' in out)
         self.assertTrue('#bw-book-content body' not in out)
 
+
+    def test_allow_duplicate_itemref(self):
+        '''Don't create duplicate resource files if the OPF file happens to declare them multiple times'''
+        document = self.create_document('duplicate-itemref.epub')
+        document.explode()
+        self.assertEquals(HTMLFile.objects.filter(archive=document,
+                                                  filename='chapter-1.html').count(), 1)
+
+
     def create_document(self, document, identifier=''):
         epub = MockEpubArchive(name=document)
         epub.identifier = identifier
@@ -1240,6 +1249,20 @@ class TestViews(DjangoTestCase):
         '''Give a helpful message if the container is broken'''
         response = self._upload(u'invalid-no-namespaced-container.epub')
         self.assertContains(response, 'Check that your META-INF/container.xml file is correct')
+
+
+    def test_duplicate_filerefs(self):
+        response = self._upload(u'duplicate-itemref.epub')
+        archive = EpubArchive.objects.get(id=1)
+        HTMLFile.objects.create(archive=archive, filename='chapter-1.html')
+
+        # Now there should be two; verify
+        self.assertEquals(2, HTMLFile.objects.filter(archive=archive, filename='chapter-1.html').count())
+        
+        # Now make sure we can still read it anyway
+        response = self.client.get('/view/a/1/chapter-1.html')
+        self.assertTemplateUsed(response, 'view.html')
+
 
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))

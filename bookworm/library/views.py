@@ -127,7 +127,11 @@ def view_chapter(request, title, key, chapter_id, chapter=None, google_books=Non
     document = _get_document(request, title, key)
 
     if chapter is None:
-        chapter = get_object_or_404(HTMLFile, archive=document, filename=chapter_id)
+        # Legacy objects may have more than one dupliate representation
+        h =  HTMLFile.objects.filter(archive=document, filename=chapter_id)
+        if h.count() == 0:
+            raise Http404
+        chapter = h[0]
 
     stylesheets = StylesheetFile.objects.filter(archive=document)
     next = _chapter_next_previous(document, chapter, 'next')

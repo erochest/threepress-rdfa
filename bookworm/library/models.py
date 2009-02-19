@@ -559,8 +559,15 @@ class EpubArchive(BookwormModel):
 
         pages = []
 
+        idrefs_already_processed = set()
+
         for ref in refs:
             idref = ref.get('idref')
+            if idref in idrefs_already_processed:
+                continue
+
+            idrefs_already_processed.add(idref)
+                
             if item_map.has_key(idref):
                 href = item_map[idref]
                 filename = '%s%s' % (content_path, href)
