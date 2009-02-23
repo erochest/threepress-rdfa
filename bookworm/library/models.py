@@ -798,17 +798,16 @@ class HTMLFile(BookwormFile):
         ns = u'{%s}' % NS['html']
         nsl = len(ns)
         for element in xhtml.getiterator():
-            
             if type(element.tag) == str and element.tag.startswith(ns):
                 element.tag = element.tag[nsl:]
  
             # if we have SVG, then we need to re-write the image links that contain svg in order to
             # make them work in most browsers
-            if element.tag == 'img' and 'svg' in element.get('src'):
-                p = element.getparent()         
-                e = etree.fromstring("""<a class="svg" href="%s">[ View linked image in SVG format ]</a>""" % element.get('src'))
-                p.remove(element)
-                p.append(e)
+            if element.tag == 'img' and element.get('src') is not None and 'svg' in element.get('src'):
+                    p = element.getparent()         
+                    e = etree.fromstring("""<a class="svg" href="%s">[ View linked image in SVG format ]</a>""" % element.get('src'))
+                    p.remove(element)
+                    p.append(e)
            
             # Script tags are removed
             if element.tag == 'script':

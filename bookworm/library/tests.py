@@ -721,6 +721,12 @@ class TestModels(unittest.TestCase):
                                                   filename='chapter-1.html').count(), 1)
 
 
+    def test_ignore_srcless_images(self):
+        '''Don't complain if the source includes an image that's missing a @src (wtf)'''
+        f = HTMLFile()
+        f._clean_xhtml(etree.fromstring('<img src="foo.jpg" />'))
+        f._clean_xhtml(etree.fromstring('<img alt="I have no src" />'))
+        
     def create_document(self, document, identifier=''):
         epub = MockEpubArchive(name=document)
         epub.identifier = identifier
