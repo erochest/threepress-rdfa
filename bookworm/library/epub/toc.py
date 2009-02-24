@@ -56,18 +56,26 @@ class TOC():
         # If we have a spine, we use that to define our next/previous tree, and then
         # find children of each spine element in the NCX, just for display
         if self.spine is not None:
+            navpoint_map = dict()
+            for np in self.parsed.xpath('//ncx:navPoint', namespaces=NS):
+                navpoint_map.setdefault(np.get('id'),list()).append(np)
+
+            item_map = dict()
+            for item in self.spine.xpath('//opf:item', namespaces=NS):
+                item_map[item.get('id')] = item
+            
+                
 
             for itemref in self.spine.xpath('//opf:spine/opf:itemref', namespaces=NS):
-                item_ref = self.spine.xpath('//opf:item[@id="%s"]' % itemref.get('idref'),
-                                        namespaces=NS)
+                item_ref = item_map.get(itemref.get('idref'))
                 # If this is null, we have a pointer to a non-existent item;
                 # bad but ignorable
-                if len(item_ref) == 0:
+                if item_ref is None:
                     continue
-                item = item_ref[0]
+                item = item_ref
                 # Get the navpoint that corresponds to this, if any!
                 try:
-                    np = self.parsed.xpath('//ncx:navPoint[@id="%s"]' % itemref.get('idref'), namespaces=NS)[0]
+                    np = navpoint_map.get(itemref.get('idref'),[])[0]
                     navpoint = NavPoint(np, doc_title=self.doc_title)
                 except IndexError:
                     navpoint = None
