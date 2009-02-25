@@ -215,6 +215,7 @@ class EpubArchive(BookwormModel):
             self.save()
             return self.language
 
+
     def get_major_language(self):
         lang = self.get_language()
         if not lang:
@@ -224,6 +225,10 @@ class EpubArchive(BookwormModel):
                 if div in lang:
                     return lang.split(div)[0]
         return lang
+
+    def get_description(self):
+        '''Return dc:description'''
+        return self._get_metadata(constants.DC_DESCRIPTION_TAG, self.opf, as_string=True)        
 
     def get_publisher(self):
         if self.publishers.count() > 0:

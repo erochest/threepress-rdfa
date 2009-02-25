@@ -92,6 +92,13 @@
        </tr>
        {% endif %}
 
+       {% if document.get_description %}
+       <tr>
+         <th>Description</th>
+         <td>{{ document.get_description }}</td>
+       </tr>
+       {% endif %}
+
        <tr>
          <th>Date published</th>
          <td>{% date_metadata document "date" %}</td>
