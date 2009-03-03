@@ -14,8 +14,6 @@ from bookworm.library.testmodels import *
 from bookworm.library.epub.toc import TOC
 from bookworm.library.epub.constants import *
 
-import bookworm.library.epub.util as util
-
 from twill import get_browser
 from twill.errors import TwillAssertionError
 from twill import add_wsgi_intercept
