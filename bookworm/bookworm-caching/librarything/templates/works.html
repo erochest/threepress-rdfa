@@ -1,0 +1,48 @@
+{% if works %}
+
+<h2>View in <a href="{{ librarything_link }}/{{ works.0.isbn }}/">LibraryThing</a></h2>
+<!--
+
+<h2>Editions of <em>{{ document.title }}</em> found in <a href="{{ librarything_link }}/{{ works.0.isbn }}/">LibraryThing</a></h2>
+
+<p>The information listed here may be inaccurate or incomplete and is not provided by Bookworm.</p>
+
+{% if works.0.first_words %}
+<h3>First words</h3>
+<blockquote>{{ works.0.first_words|safe }}</blockquote>
+{% endif %}
+
+{% if works.0.quotations %}
+  <h3>Quotations</h3>
+  {% for q in works.0.quotations %}
+    <blockquote>{{ q|safe }}</blockquote>
+  {% endfor %}
+{% endif %}
+
+{% if works.0.character_names  %}
+
+  <h3>Major characters</h3>
+   <p>Click on a character name to find occurrences of that character in the work.</p>
+  <ul>
+    {% for character in works.0.character_names  %}
+      <li> <a href="{% url search %}?q={{ character }}&amp;language={{document.get_major_language }}">{{ character }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if works.0.originalpublicationdate %}
+<h3>Originally published in {{ works.0.originalpublicationdate }}</h3>
+{% endif %}
+
+<div class="pics" id="bw-librarything-images">
+{% for work in works %}
+ <span>
+ <a href="{{ librarything_link }}/{{ work.isbn }}/"><img src="{{ work.img}}" alt="{{ document.title }} on LibraryThing" width="100" /></a> 
+ </span>
+{% endfor %}
+</div>
+
+<p>Click to cycle through covers. Cover images may not be available for all editions.</p>
+-->
+
+{% endif %}

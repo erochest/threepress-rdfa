@@ -1,0 +1,12 @@
+<li class="bw-current {% if find_children %} bw-has_children {% endif %}"> {{ current_chapter.title }} 
+
+{% if find_children %}
+<ol>
+  {% for sub in find_children %}
+  <li>
+    {% ifequal subchapter_href sub.href %}→{% endifequal %} <a href="{% url view_chapter document.safe_title,document.key,sub.href %}">{{ sub.title }}</a>
+  </li>
+  {% endfor %}
+</ol>
+{% endif %}
+</li>

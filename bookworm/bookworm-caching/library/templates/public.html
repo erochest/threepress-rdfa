@@ -1,0 +1,98 @@
+{% extends "shell.html" %}
+{% load cache %}
+{% cache CACHE_TEMPLATE_TIMEOUT public %}
+
+{% block title %}Read ePub ebooks online{% endblock %}
+
+{% block header %}&#160;{% endblock header %}
+{% block leftnav %}
+{% endblock %}
+
+{% block center %}
+<div id="bw-content" class="bw-public">
+<table id="bw-public-container">
+<tr>
+<td>
+  <h1 id="bw-logo-image-header" style="float:left;padding-right: 1em"><img src="/static/bookworm-logo.png" alt="Bookworm" id="bw-logo-image" /></h1>
+
+  <div id="bw-text-intro" style="padding-top:20px">  
+  <p class="bw-tagline">A free platform for reading ePub books online. 
+  <br/><a href="{% url about %}">Learn more</a>, or 
+  <a id="bw-public-register" href="{% url django_authopenid.views.signup %}" name="register">Sign up</a>.
+</p>
+
+  <div id="bw-public-quotes">
+    <p>&ldquo;The perfect tool for taking your own book collection anywhere that has an internet connection&rdquo; &mdash; <a href="http://www.jedisaber.com/ebooks/Readers.asp">ePub Reader Software reviews</a></p>
+ 
+    <p>&ldquo;It works great.&rdquo; &mdash; <a href="http://getsatisfaction.com/oreilly/topics/iphone_missing_manual_you_could_read_on_the_iphone#reply_561347">O&rsquo;Reilly ebook purchaser</a></p>
+  </div>
+  </div>
+
+  <div class="bw-home-block bw-home-block-first">
+    <h2>Readers</h2>
+    <ul>
+      <li>Read and search full-text books online </li>
+      <li>Download books to your <a href="{% url help %}#devices">Sony Reader or iLiad</a></li>
+      <li><a href="{% url tour %}#step4">Mobile reading</a>, online or with <a href="http://www.lexcycle.com/">Stanza</a> on the iPhone.</li>
+      <li><a href="{% url tour %}">Take a tour of Bookworm</a></li>
+    </ul>
+  </div>
+
+  <div class="bw-home-block" >
+    <h2>Publishers</h2>
+    <ul>
+      <li><a href="{% url ebooktesting %}">Test your ePub ebooks</a></li>
+      <li> Need strategy or technical help?
+          <a href="http://www.threepress.org/consulting/">Ebook and ePub consulting services</a></li>
+      <li>Details on the <a href="{% url epub %}">ePub</a> format </li>
+    </ul>
+  </div>
+
+  <div class="bw-home-block">
+    <h2>Developers</h2>
+    <ul>
+      <li>Open-source, <a href="http://www.opensource.org/licenses/bsd-license.php">BSD-licensed</a></li>
+      <li>How Bookworm <a href="{% url epub %}">implements ePub</a> </li>
+      <li>More <a href="http://www.threepress.org/download/">open-source ePub software</a></li>
+      <li>Follow announcements on the <a href="http://blog.threepress.org/">Bookworm blog</a></li>
+    </ul>
+  </div>
+
+<div id="bw-public-features"> 
+  <h2>What is Bookworm?</h2>
+  <p>
+    Bookworm allows readers to add ePub books to their online
+    library and read them on their web browser or mobile device.
+    If you have a portable device that supports ePub (such as the
+    Sony Reader or iRex iLiad), you can download your books 
+    to put on your e-reader. Bookworm is specially optimized for use in the iPhone
+    and can export directly to Stanza.
+  </p>
+  <div class="bw-public-screenshot-holder">
+    <a href="{% url tour %}"><img src="/static/screenshot-alice-sm.png" alt="Screenshot of Bookworm reading page" class="bw-public-screenshot"/></a>
+    <p class="bw-caption">A page in Bookworm, showing the
+    book's table of contents, illustrations, and text. Bookworm supports CSS styles, images in JPG, GIF, PNG and SVG format,
+    and full XHTML.</p>
+  </div>
+  <h2>What&rsquo;s an &ldquo;ePub book&rdquo;?</h2>
+  <p>
+    ePub is an ebook format. Your ebook is in ePub format if it
+    ends with <strong>.epub</strong>.  If so, you can <a href="{% url help %}">read
+    that ebook on Bookworm</a>. If not, tell the book publisher to start
+    supporting the only free and open ebook format with strong
+    industry support.
+  </p>
+  <h2>Try Bookworm out</h2>
+  <p>
+    Try the one-page <a href="{% url tour %}">Bookworm and ePub tour</a>.
+  </p>
+</div>
+
+</td>
+</tr>
+</table>
+</div>
+
+{% endblock center %}
+
+{% endcache %}

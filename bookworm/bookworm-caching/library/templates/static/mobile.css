@@ -1,0 +1,250 @@
+
+body {
+ font-size:inherit;
+}
+#bw-content {
+ padding:0em 1em 1em 1em !important;
+}
+
+h1 {
+  font-size:x-large;
+}
+h2 {
+  font-size:large;
+}
+
+h1.bw-mb-logo {
+  font-size:large;
+  display:inline;
+  float:left;
+  color:white;
+}
+h2.bw-mb-motto {
+  font-size:medium;
+  display:inline;
+  float:right;
+  color:white;
+  padding-right: .5em;
+  padding-bottom: .5em;
+  font-weight:normal;
+}
+#bw-header a:link, #bw-header a:visited, #bw-header a:hover 
+{
+  color:white !important;
+  padding: .5em;
+}
+div.login form fieldset {
+ /*border:none; */
+ margin-top:1em;
+}
+input {
+ -webkit-border-radius:10px;
+}
+div.login form input {
+/* display:block; */
+
+}
+#bw-logo-image {
+/*  display:none; */
+ margin:0;padding:0;
+}
+p.bw-tagline {
+  font-size:larger;
+  display:inline;
+}
+#bw-service-disclaimer { display:none; }
+#bw-mb-leftnav { 
+clear:both;}
+div.bw-status {
+  display:none;
+}
+
+#bw-header {
+  color: #9CAF83;
+  padding:0;
+}
+p {
+ color: black !important;
+ line-height: 1.5em;
+}
+#bw-book-content p {
+  font-size: medium;
+}
+
+#bw-mb-signed-in-message {
+  float:right;                         
+}
+#bw-leftnav {
+ width:auto;
+}
+#bw-leftnav ol.bw-nav {
+    padding-left:0; 
+    text-align:left;
+/*   display:inline; */
+}
+#bw-leftnav ol.bw-nav li {
+/*   display:inline; */
+}
+#bw-leftnav ol.bw-nav li a {
+   border-bottom: 1px dotted gray;
+}
+
+.bw-logo {
+    color: #2E4560 !important;
+}
+ol.bw-nav .bw-current  {
+  font-size: 1.5em !important;
+  padding:0 !important;
+  margin:0 !important;
+}
+ol.bw-nav .bw-current ol {
+  font-size: inherit;
+  text-align:inherit;
+  padding: 0;
+
+}
+.bw-mb-divider {
+  color:gray;
+}
+#bw-text-intro {
+/*
+ -webkit-border-radius:30px;
+ -moz-border-radius:30px;
+  border: 1px solid gray;
+  background-color: #F8FFEF;
+  margin:1em;
+  padding:1em;
+*/
+ margin:0;
+ padding-bottom:.5em;
+}
+#bw-logo-image-header {
+  margin:1em;
+}
+div.login label { 
+  /* display:none; */
+  font-size: smaller;
+  font-weight:normal;
+}
+div.login {
+/*  background-color: lightgray; */
+}
+div.login input {
+ font-size:x-large;
+}
+#bw-openid-form {
+  display:block;
+  font-size: x-large;
+}
+#bw-username-form legend {
+ display:none;
+}
+#bw-openid-form legend {
+ display:none;
+}
+
+#bw-username-form input {
+ font-size:x-small;
+
+}
+#bw-openid-form input {
+ font-size:x-small;
+}
+#bw-mb-openid-submit {
+ font-size:medium !important;
+}
+#bw-mb-username-submit {
+ font-size:medium !important;
+}
+#bw-username-form {
+  display:block;
+  font-size: x-large;
+}
+#bw-lost-password {
+  font-size:medium;
+}
+#bw-header p {
+ color: white !important;
+ padding-left: 1em;
+ font-size: x-small !important;
+}
+#bw-mb-leftnav {
+ padding:1em;
+ padding-top:0;
+ margin-top:0;
+ border-top:1px dotted rgb(200,200,200);
+}
+#bw-leftnav {
+  margin:0;padding:0;
+}
+#bw-mb-leftnav ol.bw-nav .bw-current {
+
+}
+.bw-has_children {
+ border: none !important;
+}
+#bw-mb-leftnav .bw-has_children ol li {
+  margin-left: 2em;
+  color: black !important;
+  font-size:inherit !important;	
+}
+span.bw-jump-to-toc {
+  text-align:center;
+}
+.bw-results_nav .bw-next {
+    float:right;
+    display:inline;
+ }
+.bw-results_nav .bw-previous {
+   display:inline;
+}
+span.bw-jump-to-toc a {
+    text-decoration: none;
+    font-size: large;
+    color: #2E4560 !important;
+   display:inline;
+}
+.bw-mb-document_title {
+    margin:0;
+    background-color: rgb(248, 255, 239);
+    border-bottom: 1px solid gray;
+}
+.bw-mb-document_title h1 {
+    margin:0; padding:.5em;
+    color: darkgray;
+}
+.bw-mb-document_title h1 a {
+ text-decoration: none;
+}
+#bw-header .bw-logout-link a:link {
+  color: gray !important;
+}
+.bw-profile-link {
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: large;
+}
+
+table.bw-meta  {
+width:auto;
+}
+table.bw-meta th {
+  width:auto;
+}
+
+.bw-last-read {
+  display:block;
+  font-size:inherit;
+  margin-top: .6em;
+  color:gray;
+}
+span.bw-last-read a:visited, span.bw-last-read a:link {
+  color:gray !important;
+}
+span.bw-title a{
+  font-size:large;
+  padding-bottom:.2em;
+}
+a.bw-what-is-openid-link {
+ font-size: smaller;
+}

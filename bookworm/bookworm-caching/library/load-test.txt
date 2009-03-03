@@ -1,0 +1,25 @@
+# Twill-based load testing
+add_auth Restricted http://205.209.146.131/ threepress 3press
+
+#go 'http://localhost:8000'
+go http://205.209.146.131/
+follow 'register'
+url 'signup'
+fv "2" "username" "twilltest"
+fv "2" "email" "twilltest@example.com"
+fv "2" "password1" "twill"
+fv "2" "password2" "twill"
+submit "register_local"
+
+go /
+fv "fauth" "username" "twilltest"
+fv "fauth" "password" "twill"
+submit
+
+go /
+
+
+formfile "upload" "epub" "/home/liza/designing_web_navigation-337bcb2fae.epub"
+submit "submit-upload"
+
+find 'Web Navigation'

@@ -1,0 +1,62 @@
+{% extends "base.html" %} 
+
+{% block title %}Add a book{% endblock title %}
+{% block header %}Add a book{% endblock header %}
+{% block head %}
+<link rel="stylesheet" href="/static/about.css"></link>
+<style type="text/css">
+dl { color: grey }
+dt { font-weight: bold; color: #2E4560;}
+dd { margin:0 0 1em 0; padding:0 10px 0 0; }
+li { padding-bottom: .5em; }
+.document_title a { text-decoration: none }
+#upload_form label { display:none }
+</style>
+{% endblock head %}
+
+{% block leftnav %}
+<h2>Need help?</h2>
+<p>Try reading the <a href="{% url help %}">Help</a> or <a href="{% url about %}">About</a> pages for more
+information, or email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
+for assistance.
+</p>
+<p style="font-size:smaller">If you get an error that you don't understand, please email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> with
+a description of the problem.
+</p>
+{% include "includes/about.html" %}
+
+{% endblock %}
+
+{% block main %}
+
+{% if message %}
+<p class="bw-message"><strong>{{ message|safe }}</strong></p>
+{% endif %}
+
+<p id="bw-about-description">
+To read an ebook on Bookworm, you must have first
+purchased or acquired it from a publisher or online book source, and downloaded that book 
+to your computer. Use this form to add it to Bookworm.</p>  
+
+<p>The ebook must be in the ePub format and have a filename ending in <strong>.epub</strong>.
+If you don't know what that is, please see the 
+<a href="{% url about %}">About</a> page for more information.
+</p>
+{% if form.errors %}
+<p class="bw-message">You need to click on the &lsquo;Browse&rsquo; button and select an 
+ebook to add. </p>
+{% endif %}
+
+<div class="bw-info-box">
+<form action="{% url upload %}" method="post" enctype="multipart/form-data">
+  <div id="bw-upload_form">
+    <strong>Add an ePub from your computer by clicking on &lsquo;Browse&rsquo;:</strong>
+    <p>{{ form.epub }}</p>
+    <p><input type="submit" value="Add to my library" /></p>
+  </div>
+ 
+</form>
+</div>
+
+
+{% endblock %}

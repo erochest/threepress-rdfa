@@ -1,0 +1,59 @@
+body {
+    background: white;
+    font-size: 10pt;
+    font-family: georgia, serif;
+    padding:0;
+    margin:0;
+}
+
+p { 
+    line-height: 12pt; 
+}
+
+#bw-main {
+    background: white;
+    float:none;
+    margin:0;
+    padding:0;
+    border:none;
+}
+#bw-header {
+    background: white;
+    float:none;
+}
+#bw-subheader {
+    background: white;
+    float:none;
+    display:none;
+}
+
+a:link, a:visited {
+    color: #520;
+    background: transparent;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+a:link:after, #bw-content a:visited:after {
+  font-size: 90%;
+}
+#bw-leftnav {
+  display:none;
+}
+#bw-rightnav {
+  display:none;
+}
+#bw-container {
+  margin:0;
+  padding:0;
+  display:block;
+  float:none;
+  border:none;
+}
+
+#bw-header_nav, .bw-results_nav, #bw-footer {
+ display:none;
+}
+#bw-printheader {
+ display:inline;
+}

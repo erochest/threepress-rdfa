@@ -1,0 +1,168 @@
+{% extends "base.html" %} 
+{% load bookworm %}
+{% load librarything_tags %}
+
+{% block title %}{% spaceless %}
+{% if chapter.title %} '{{ chapter.title }}' in {% endif %} {{ document.title }} {% if document.author %} by {{ document.author }} {% endif %}
+{% endspaceless %}{% endblock title %}
+
+{% block localstyles %}{% spaceless %}{% for css in stylesheets %}<link rel="stylesheet" href="{% url view_stylesheet document.safe_title,document.key,css.filename %}" />{% endfor %}{% endspaceless %}{% endblock %}
+
+{% block head %}
+{% spaceless %}
+<link rel="stylesheet" href="/static/document.css"></link>
+<link rel="stylesheet" href="/static/cycle.css"></link>
+{% include "includes/meta.html" %}
+{% endspaceless %}
+{% endblock head %}
+
+{% block header %}
+<a href="{% url view_first document.safe_title,document.key %}"><span class="bw-title">{{ document.title }}</span></a> 
+{% endblock header %}
+
+{% block leftnav %}
+
+  {% include "includes/leftnav.html" %}
+
+{% endblock leftnav %}
+
+{% block main %}
+
+<div id="bw-content">
+
+
+{% if message %}
+ <div class="bw-message"> {{ message }} </div>
+{% endif %}
+{% if chapter %}
+   <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
+      <div id="bw-book-content" >{% render chapter %}</div>
+   <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
+
+   {% if stanza_compatible %}
+   <h4><a href="stanza://{{ request.META.HTTP_HOST }}{{ document.nonce_url }}/">View in Stanza</a></h4>
+   {% endif %}
+
+{% else %}
+ <!-- Title page -->
+   <h1 class="bw-book_title">{{ document.title }}</h1>
+   <h2 class="bw-book_author">{% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}</h2>
+
+   <p>
+     To read this book online, select any of the sections to the left.
+   </p>
+
+</div>
+   <table class="bw-meta">
+     <thead>
+       <tr>
+         <th class="bw-table_header" colspan="2">Book information</th>
+       </tr>
+     </thead>     
+     <tbody>
+       {% if document.get_publisher.count %}
+       <tr>
+         <th>Publisher</th>
+         <td>{% for s in document.get_publisher.all %}{{ s.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+       </tr>
+       {% endif %}
+
+       {% if document.get_language %}
+       <tr>
+         <th>Language</th>
+         <td>{{ document.get_language }}</td>
+       </tr>
+       {% endif %}
+
+       <tr>
+         <th>Date added to library</th>
+         <td>{{ document.created_time|date:"l, F d Y" }}</td>
+       </tr>
+       {% if document.get_subjects.count %}
+       <tr>
+         <th>Subjects</th>
+         <td>{% for s in document.get_subjects.all %}{{ s.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+       </tr>
+       {% endif %}
+
+       {% if document.get_rights %}
+       <tr>
+         <th>Rights</th>
+         <td>{{ document.get_rights }}</td>
+       </tr>
+       {% endif %}
+
+       {% if document.get_description %}
+       <tr>
+         <th>Description</th>
+         <td>{{ document.get_description }}</td>
+       </tr>
+       {% endif %}
+
+       <tr>
+         <th>Date published</th>
+         <td>{% date_metadata document "date" %}</td>
+       </tr>
+
+       <tr>
+         <th>Download entire book</th>
+         <td><a href="{% url download_epub document.safe_title,document.key %}">epub format</a></td>
+       </tr>
+
+     </tbody>
+   </table>
+
+   {% if not document.is_public %}
+   <h4>Reload this book</h4>
+   <form action="{% url reload document.safe_title document.id %}" method="post" enctype="multipart/form-data">
+     <div id="bw-upload_form">
+       <p>{{ form.epub }}</p>
+       <p><input type="submit" value="Replace this book" /></p>
+     </div>
+   </form>
+   {% endif %}
+
+   {% if google_books.entries %}
+     <h2>Editions of this work found in Google Books Search</h2>
+     <a href="http://www.google.com"><img align="left" style="padding-right: 1em" src="http://books.google.com/googlebooks/images/poweredby.png" border="0" style="border: 0"/></a>
+     <p>This title and author were found to have the following entries through
+     the use of the Google Books Search service. 
+     The information listed here may be inaccurate or incomplete and is not 
+     provided by Bookworm.
+     </p>
+
+     <table class="bw-meta">
+         {% for e in google_books.entries %}
+         <tr>
+           <td align="center">
+              {% if e.thumbnail %}
+               <a href="{{ e.info }} "><img src="{{ e.thumbnail }}" /></a>
+              {% else %}
+               <a href="{{ e.info }}">Cover image not available from Google Books</a>
+              {% endif %}
+           </td>
+
+           <td colspan="2">
+               {% if e.publisher %}
+                 <p>Published by {{ e.publisher }}</p>
+               {% else %}
+                 <p><em>No publisher was listed</em></p>
+               {% endif %}
+               {% if e.pages %}
+                 <p>{{ e.pages }}</p>
+               {% endif %}
+               <!-- <p>{{ e.viewability }}</p> -->
+           </td>
+           <td>{% if e.description %}{{ e.description|safe }}{% endif %}</td>
+
+         </tr>
+         {% endfor %}
+     </table>
+
+     
+   {% endif %}
+{% endif %}
+
+</div>
+
+{% endblock main %}

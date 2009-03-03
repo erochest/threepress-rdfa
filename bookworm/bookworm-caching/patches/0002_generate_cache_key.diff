@@ -1,0 +1,96 @@
+Index: django/utils/cache.py
+===================================================================
+--- django/utils/cache.py	(revision 9212)
++++ django/utils/cache.py	(working copy)
+@@ -23,6 +23,7 @@
+     set
+ except NameError:
+     from sets import Set as set   # Python 2.3 fallback
++from Cookie import SimpleCookie
+ 
+ from django.conf import settings
+ from django.core.cache import cache
+@@ -141,6 +142,9 @@
+     ctx = md5_constructor()
+     for header in headerlist:
+         value = request.META.get(header, None)
++        if isinstance(value, SimpleCookie):
++            value = value.output()
++        
+         if value is not None:
+             ctx.update(value)
+     return 'views.decorators.cache.cache_page.%s.%s.%s' % (
+Index: tests/regressiontests/test_client_regress/views.py
+===================================================================
+--- tests/regressiontests/test_client_regress/views.py	(revision 9212)
++++ tests/regressiontests/test_client_regress/views.py	(working copy)
+@@ -46,4 +46,11 @@
+ 
+ def request_methods_view(request):
+     "A view that responds with the request method"
+-    return HttpResponse('request method: %s' % request.method)
+\ No newline at end of file
++    return HttpResponse('request method: %s' % request.method)
++
++def set_cookie_view(request):
++    "A view that sets a cookie."
++    response = HttpResponse('set cookie')
++    response.set_cookie('test_cookie', 'test_value')
++    
++    return response
+Index: tests/regressiontests/test_client_regress/models.py
+===================================================================
+--- tests/regressiontests/test_client_regress/models.py	(revision 9212)
++++ tests/regressiontests/test_client_regress/models.py	(working copy)
+@@ -2,8 +2,9 @@
+ Regression tests for the Test Client, especially the customized assertions.
+ """
+ import os
++from Cookie import SimpleCookie
++
+ from django.conf import settings
+-
+ from django.test import Client, TestCase
+ from django.core.urlresolvers import reverse
+ from django.core.exceptions import SuspiciousOperation
+@@ -261,6 +262,17 @@
+         # default client.
+         self.assertRedirects(response, "http://testserver/test_client_regress/get_view/")
+ 
++class CookieTests(TestCase):
++    
++    def test_cookies(self):
++        "Check that cookies work in the test client, see ticket #5176."
++
++        c = Client()
++        response = c.get('/test_client_regress/set_cookie/')
++
++        self.assert_(isinstance(response.cookies, SimpleCookie))
++        self.assert_(response.cookies.output().find('Set-Cookie: test_cookie=test_value; Path=/') >= 0)
++
+ class URLEscapingTests(TestCase):
+     def test_simple_argument_get(self):
+         "Get a view that has a simple string argument"
+Index: tests/regressiontests/test_client_regress/urls.py
+===================================================================
+--- tests/regressiontests/test_client_regress/urls.py	(revision 9212)
++++ tests/regressiontests/test_client_regress/urls.py	(working copy)
+@@ -10,4 +10,5 @@
+     (r'^set_session/$', views.set_session_view),
+     (r'^check_session/$', views.check_session_view),
+     (r'^request_methods/$', views.request_methods_view),
++    (r'^set_cookie/$', views.set_cookie_view)
+ )
+Index: AUTHORS
+===================================================================
+--- AUTHORS	(revision 9212)
++++ AUTHORS	(working copy)
+@@ -239,7 +239,7 @@
+     Lau Bech Lauritzen
+     Rune Rønde Laursen <runerl@skjoldhoej.dk>
+     Eugene Lazutkin <http://lazutkin.com/blog/>
+-    lcordier@point45.com
++    Louis Cordier <lcordier@gmail.com>
+     Jeong-Min Lee <falsetru@gmail.com>
+     Jannis Leidel <jl@websushi.org>
+     Christopher Lenz <http://www.cmlenz.net/>

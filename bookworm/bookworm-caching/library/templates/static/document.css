@@ -1,0 +1,101 @@
+/* These document-level styles should be displayed even with iframes */
+a.svg {
+    display:block;
+    background-image: url(/static/svg.png);
+    background-repeat: no-repeat;
+    height:50px;
+    text-align:right;
+    margin-left:50px;
+    width:250px;
+    padding-top:10px;
+}
+.bw-results_nav {
+    width:100%;
+    clear:both;
+    height:1em;
+    
+ }
+#bw-results_nav_top {
+    border-bottom: 1px dotted gray;
+    padding: .5em .5em 1em .5em;
+    margin-bottom: 1em;
+}
+
+#bw-results_nav_bottom {
+    border-top: 1px dotted gray;
+    padding: 1em .5em 1em .5em;
+}
+
+.bw-results_nav a:hover, .bw-results_nav a:visited, .bw-results_nav a:link 
+{
+    text-decoration: none;
+    font-size: large;
+    color: #2E4560 !important;
+ }
+.bw-results_nav .bw-previous {
+    float:left;
+ }
+.bw-results_nav .bw-next {
+    float:right;
+ }
+
+.bw-has_children {
+    border-bottom: 1px dotted gray;
+    border-top: 1px dotted gray;
+    margin-bottom: 1em;
+ }
+li.bw-has_children a:visited, li.bw-has_children a:link, li.bw-has_children a:hover {
+    color: gray !important;
+}
+
+/* subnavs */
+.bw-current ol {
+    font-weight:normal;
+    font-size: smaller;
+    padding:0;
+    margin:0;
+    text-align:right;
+    list-style-type: none;
+    padding-top:1em;
+ }
+
+.bw-current ol li {
+    padding:0;
+    margin:0;
+}
+.bw-book_title {
+    color: #746E53;
+    font-size:25px;
+    margin-top:.5em;
+    margin-bottom:0;
+ }
+.bw-book_author {
+    color: #746E53;
+    font-size:large;
+    margin-top:0;
+    margin-bottom:0;
+ }
+#bw-document_content h2 { display: none; }
+
+#bw-document_spacing {
+    padding-bottom:400px;
+}
+ol.bw-nav .bw-current {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: gray !important;
+    margin-left: -20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#bw-rightnav .bw-nextprevious {
+    color:#746E53;
+}
+#bw-rightnav .bw-nextprevious a:link, #bw-rightnav .bw-nextprevious a:visited {
+    color: gray;
+}
+#bw-download-link {
+    color: #2E4560 !important;
+    font-size: larger;
+    text-decoration: underline !important;
+}

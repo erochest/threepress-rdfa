@@ -1,0 +1,217 @@
+{% extends "base.html" %} 
+
+{% block title %}About Bookworm{% endblock title %}
+
+{% block header %}About Bookworm{% endblock header %}
+{% block head %}
+<link rel="stylesheet" href="/static/about.css"></link>
+{% endblock head %}
+
+{% block leftnav %}
+{% include "includes/about.html" %}
+
+<h2>Features</h2>
+<ul>
+  <li>Read your e-books from anywhere in the world</li>
+  <li>Usable on a computer or smartphone (iPhone, etc.)</li>
+  <li>Download to Stanza or your Sony Reader</li>
+</ul>
+<h2>Technical details</h2>
+
+<ul>
+  <li> True HTML rendering in your browser</li>
+  <li> Automatically-generated TOC based on document metadata</li>
+  <li> Uses legible, clear styles layered over the book's native stylesheets</li>
+  <li> Inline image support: PNG, JPG, GIF</li>
+  <li> Generated external link to SVG images</li>
+</ul>
+
+<hr />
+<p style="font-size:smaller">
+For questions or problems with Bookworm, please contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
+</p>
+
+<p style="font-size:smaller">
+For more information about Threepress, please visit our <a href="http://threepress.org/about/">About</a> page.
+</p>
+
+{% endblock %}
+{% block main %}
+
+<div id="bw-content">
+  <p id="bw-about-description">
+    <strong>Bookworm</strong> is an experimental platform for storing and reading ePub-format books online.
+  </p>
+  <div id="bw-tour-toc">
+    <a href="#how_does_it_work">How do I use Bookworm?</a>
+    ~
+    <a href="#whats_epub">What is ePub?</a>
+    ~
+    <a href="#mobile">Does it work on a mobile phone?</a>
+    ~ 
+    <a href="#where_epubs">Where can I get ePub books?</a>
+    ~
+    <a href="#cant_read">I'm having a problem</a>
+    ~
+    <a href="#publisher">I'm a publisher</a>
+    ~
+    <a href="#other_formats">What about other formats?</a>
+    ~
+    <a href="#sharing">Can I share my ePubs?</a>
+    ~
+    <a href="#backup">Are my books safe?</a>
+    ~
+    <a href="#who">Who is responsible for Bookworm?</a>
+  </div>
+
+  <a name="how_does_it_work"></a>
+  <h2>How does it work?  What do I download?</h2>
+  <p>
+    The great thing about Bookworm is there's nothing to download!  Here's how it works:
+  </p>
+  <div id="bw-howto" class="bw-info-box">
+    <ol id="bw-howto-list">
+      <li> <a href="{% url user_signup %}">Create a Bookworm account and log in</a> </li>
+      <li> <a href="{% url upload %}">Upload an ePub book</a></li>
+      <li> Start reading by just clicking on the book title in your library!</li>
+    </ol>
+  </div>
+
+  <p>
+    Because your books are stored on the Bookworm site, you can read them from any web browser
+    and on most mobile web devices, anywhere in the world!  We're working on ways to read your
+    book content on your mobile phone even when you aren't connected to the internet.
+  </p>
+  <p>
+    <a href="{% url tour %}">Take the tour</a> to see an example of Bookworm in action.
+  </p>
+  <a name="whats_epub"></a>
+  <h2>What's ePub?</h2>
+  <p>
+    ePub is the open ebook standard developed by the <a
+    href="http://www.idpf.org/">International Digital Publishing
+    Forum</a> (<acronym>IDPF</acronym>).  It is based on a number of
+    other open standards including XHTML, making it ideally suited to
+    be read on web browsers. 
+  </p>
+  <p>
+    ePub books can be read on your home computer (using Bookworm, Adobe Digital Editions or Stanza), 
+    on your iPhone (using Bookworm or Stanza) and on the Sony Reader PRS-505.
+  </p>
+  <p><a href="{% url epub %}">More about ePub</a></p>
+
+  <a name="mobile"></a>
+  <h2>Can I use Bookworm on my mobile device?</h2>
+  <p>
+    <a href="{% url tour %}#step3"><img src="/static/images/screenshots/iphone.png" alt="Bookworm on the iPhone" class="bw-screenshot-page" align="right" style="margin-bottom:10px" width="100"/></a>
+    Absolutely!  A special version of the site optimized for mobile devices (especially 
+    the iPhone) is available at <a href="http://m.bookworm.oreilly.com/">http://m.bookworm.oreilly.com/</a>.
+    It has also been tested on the Blackberry, Opera Mobile and the Kindle's Whispernet service.
+  </p>
+  <p>
+    In addition to reading material directly on Bookworm, iPhone users can export their
+    Bookworm books to <a href="http://www.lexcycle.com/">Stanza</a>.   For more
+    information, see the <a href="{% url tour %}#step4">tour</a>.
+  </p>
+  <a name="where_epubs"></a>
+  <h2>Where can I get ePubs?</h2>
+  <p>
+    As of December, 2008, many publishers are getting on board with
+    ePub. Penguin, Harper-Collins and Random House have all released titles in the format.
+    An updated list of ePub bookstores can be found at <a href="http://www.epubbooks.com/">epubbooks.com</a>.
+  </p>
+    <a name="cant_read"></a>
+  <h2>I'm not able to read this ePub book I uploaded</h2>
+  <p>
+    There may be a problem with the e-book (many publishers are still
+    learning how to create them), or there may be a bug in Bookworm.
+    If you encounter an error while uploading or reading a book, the
+    Bookworm developers are automatically notified and will fix the
+    problem if possible.
+  </p>
+  <p>
+    It may also be that you've uploaded a book that includes Digital
+    Rights Management (DRM).  Bookworm does not support DRM'ed books.
+    Check the website where you purchased the book for information on
+    how to read it (and complain to the publisher that you can't read
+    your books where you'd like!)
+  </p>
+  <p>
+    Please also see the <a href="{% url help %}">Help</a> page for more
+    tips on troubleshooting Bookworm.</p>
+  <a name="publisher"></a>
+  <h2>I'm a publisher and I have questions or feature requests</h2>
+  <p>
+    Threepress is a publisher-serving corporation with many years of experience in building
+    products in the industry.  We would be happy to discuss the ePub format, getting your books
+    into ePub and even extending Bookworm with custom features for your publications.  Please
+    contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
+    and we'll get back to you right away.
+  </p>
+  <a name="other_formats"></a>
+  <h2>Will other book formats be supported, such as PDF or mobi? What about DRM ebooks?</h2>
+  <p>
+    Bookworm is meant to push adoption of the open ePub format and there are no plans to 
+    support closed formats like mobi or those with limited flexibility like PDF.  
+  </p>
+  <p>
+    DRM (digital rights management) has been shown to be detrimental to technology adoption,
+    does not significantly prevent piracy, and provides a terrible user experience.
+    Bookworm will never support DRM'ed ebooks that require special software to unlock.
+    Instead we encourage publishers to explore forms of "soft" DRM (such as watermarking digital books with the name of the purchaser).
+  </p>
+  <a name="sharing"></a>
+  <h2>Is it possible to share my books with other Bookworm users, or link to one of my books?</h2>
+
+  <p>There is limited support for sharing on Bookworm.  Books that are in the public domain,
+  books uploaded by their own authors, or publishers who authorize books to be public
+  can all make Bookworm books accessible to the larger internet.  
+  </p>
+  <p>Public books are in a very early beta stage.  To request that a book be made public,
+  please contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> for more information.
+  </p>
+  <a name="backup"></a>
+  <h2>Are my books securely stored and backed up?</h2>
+  <p>
+    Although books are backed up, Bookworm is not a commercial product
+    and has limited financial and legal resources.
+    No guarantees are provided for the security of your books or the reliability of the service.
+    Store copies of all your books on your own computers.
+  </p>
+  <a name="who"></a>
+  <h2>Who is responsible for Bookworm?</h2>
+  <p>
+    Bookworm software is free and available for download under the
+    terms of the BSD license from the <a
+    href="http://threepress.org/tools/">tools page</a>. It
+    is a product of <a
+    href="http://threepress.org/">threepress</a>, a venue for
+    experimenting with open source publishing software, and is written
+    by <a href="http://threepress.org/about/">Liza Daly</a>
+    with contributions from <a href="http://kfahlgren.com/blog">Keith
+   Fahlgren</a>.  
+  </p>
+  <p>I'm indebted to a number of individuals who have helped with
+  testing and supported the project throughout:
+  <ul>
+    <li> Andrew Savikas and the rest of the <a
+    href="http://toc.oreilly.com/">Tools of Change</a> team at O'Reilly Media</li>
+    <li> Jon Noring</li>
+    <li> Mike Cook</li>
+    <li> David Rothman</li>
+    <li> Ryan Pollock</li>
+    <li> Dan Schmidt</li>
+  </ul>
+  </p>
+  
+  <p>
+    For problems and feature requests, visit  <a href="http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm">Get Satisfaction</a> 
+    or email <a
+    href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>.
+    You can also subscribe to the <a
+    href="http://blog.threepress.org">blog</a> to follow new announcements.
+  </p>
+
+</div>
+
+{% endblock %}
