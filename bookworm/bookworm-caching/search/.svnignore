@@ -1,6 +1,0 @@
-dbs
-*.pyc
-*~
-*.swp
-.DS_Store
-clear.sql

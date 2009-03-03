@@ -13,6 +13,8 @@ from django.template import RequestContext
 from django.core.paginator import Paginator, EmptyPage
 from django.views.generic.simple import direct_to_template
 from django.conf import settings
+from django.views.decorators.cache import cache_page, cache_control, never_cache
+from django.views.decorators.vary import vary_on_headers, vary_on_cookie
 
 from django_authopenid.views import signin
 
