@@ -12,6 +12,8 @@ def local_settings(request):
     return {
         'MEDIA_URL': settings.MEDIA_URL,
         'ORM_MEDIA_URL': settings.ORM_MEDIA_URL,
+        'CACHE_TEMPLATE_TIMEOUT' : settings.CACHE_TEMPLATE_TIMEOUT,
+        'OFFLINE':settings.OFFLINE,
     }
  
 def nav(request):

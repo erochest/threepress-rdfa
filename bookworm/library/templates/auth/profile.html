@@ -34,7 +34,6 @@ form input {
 {% if request.openid %}
 <li><h3><a href="{% url django_authopenid.views.changeopenid %}">Change associated OpenID</a></h3></li>
 {% endif %}
-<li><h3><a href="{% url profile_language %}">Set your default search language</a></h3></li>
 <li><h3><a href="{% url django_authopenid.views.delete %}">Delete this account</a></h3></li>
 </ol>
 

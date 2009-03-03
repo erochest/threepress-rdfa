@@ -46,9 +46,7 @@
 #bw-library td.bw-title-container {
    width: 50%;
 }
-#bw-library .bw-author {
-    padding-left: 5px;
-}
+
 #bw-library a:visited, #bw-library a:hover, #bw-library a:link { 
     text-decoration: none;
     color: black !important;

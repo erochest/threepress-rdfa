@@ -109,7 +109,6 @@ ROOT_URLCONF = 'urls'
 
 ROOT_PATH = os.path.dirname(__file__)
 
-
 TEMPLATE_DIRS = (
     '%s/library/templates/auth' % ROOT_PATH,    
     '%s/library/templates' % ROOT_PATH,
@@ -157,7 +156,7 @@ MOBILE = False
 FORCE_SCRIPT_NAME = ''
 
 # Domain which to redirect requests that are coming from a mobile device
-MOBILE_HOST = 'http://m.threepress.org/'
+MOBILE_HOST = 'http://m.bookworm.oreilly.com/'
 
 # Set up logging
 LOG_DIR = '%s/log/' % ROOT_PATH
@@ -168,10 +167,13 @@ TEST_DATABASE_CHARSET = 'utf8'
 SEARCH_ROOT = os.path.join(ROOT_PATH, 'search', 'dbs')
 
 CACHE_BACKEND = 'file:///tmp/bookworm/django_cache'
+CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+CACHE_TEMPLATE_TIMEOUT = 60 * 60 * 1
 
 XSLT_DIR = os.path.join(ROOT_PATH, 'library', 'xsl')
 DTBOOK2XHTML = os.path.join(XSLT_DIR, 'dtbook2xhtml.xsl')
 
+DATE_FORMAT = "l, N j Y"
 LIBRARYTHING_KEY = ''
 
 # Access time, filename/function#line-number message
@@ -184,6 +186,12 @@ handler.setFormatter(log_formatter)
 log = logging.getLogger('')
 log.setLevel(logging.INFO)
 log.addHandler(handler)
+
+# If set, the templates will load jQuery locally instead of from Google
+OFFLINE = False
+
+# Google Analytics key
+ANALYTICS_KEY = 'UA-162955-4'
 
 try:
     from local import *

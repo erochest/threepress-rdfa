@@ -1,4 +1,7 @@
 {% extends "shell.html" %}
+{% load cache %}
+{% cache CACHE_TEMPLATE_TIMEOUT public %}
+
 {% block title %}Read ePub ebooks online{% endblock %}
 
 {% block head %}
@@ -100,3 +103,4 @@
 
 {% endblock center %}
 
+{% endcache %}

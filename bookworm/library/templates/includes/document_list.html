@@ -1,5 +1,5 @@
 {% load bookworm %}
-
+{% load humanize %}
 <table class="bw-pagination">
   {% include "includes/pagination.html" %}
 </table>
@@ -18,11 +18,7 @@
     </td>
     <td class="bw-added-container">
       <span class="bw-added">
-         {% if mobile %}
-	    {{ d.created_time|date:"M j y"}}
-         {% else %}
-            {{ d.created_time|date:"l, F j Y" }}
-         {% endif %}
+         {{ d.created_time|naturalday|capfirst}}
        </span>
     </td>
     {% if request.user.is_superuser %}
@@ -59,3 +55,4 @@
 <table class="bw-pagination">
   {% include "includes/pagination.html" %}
 </table>
+

@@ -312,7 +312,10 @@ def xml_from_string(xml):
     document itself contains an encoding declaration, so convert from unicode
     first if necessary.'''
     if type(xml) == unicode:
-        return ET.fromstring(xml.encode(ENC))
+        try:
+            return ET.fromstring(xml.encode(ENC))
+        except ET.XMLSyntaxError:
+            raise InvalidEpubException("Unable to parse file")
     return ET.fromstring(xml)    
                             
 if __name__ == '__main__':

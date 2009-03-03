@@ -1,7 +1,7 @@
 {% if page.has_other_pages %}
   <tr>
-    <th colspan="1" style="text-align:left">&nbsp;{% if page.has_previous %}<a href="{% url index-paginate page.previous_page_number %}">← previous</a>{% endif %}</th>
+    <th colspan="1" style="text-align:left">&nbsp;{% if page.has_previous %}<a href="{% url library-paginate page.previous_page_number %}">← previous</a>{% endif %}</th>
     <th colspan="2" style="text-align:center">Page {{ page.number }} of {{ documents.num_pages }}</th>
-    <th colspan="1" style="text-align:right">&nbsp;{% if page.has_next %}<a href="{% url index-paginate page.next_page_number %}">next →</a>{% endif %}</th>
+    <th colspan="1" style="text-align:right">&nbsp;{% if page.has_next %}<a href="{% url library-paginate page.next_page_number %}">next →</a>{% endif %}</th>
   </tr>
 {% endif %}

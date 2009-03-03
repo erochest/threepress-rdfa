@@ -44,6 +44,7 @@ from django.utils.translation import ugettext as _
 from django.contrib.sites.models import Site
 from django.utils.http import urlquote_plus
 from django.core.mail import send_mail
+from django.views.decorators.cache import cache_page, cache_control, never_cache
 
 from bookworm.library.models import UserPref
 
@@ -155,7 +156,7 @@ def default_on_success(request, identity_url, openid_response):
     
     next = request.GET.get('next', '').strip()
     if not next or not is_valid_next_url(next):
-        next = getattr(settings, 'OPENID_REDIRECT_NEXT', '/')
+        next = getattr(settings, 'OPENID_REDIRECT_NEXT', reverse('library'))
     
     return HttpResponseRedirect(next)
 
@@ -171,12 +172,13 @@ def not_authenticated(func):
     he is already logged."""
     def decorated(request, **kwargs):
         if request.user.is_authenticated():
-            next = request.GET.get("next", "/")
+            next = request.GET.get("next", reverse('library'))
             return HttpResponseRedirect(next)
         return func(request, **kwargs)
     return decorated
 
 @not_authenticated
+@never_cache
 def signin(request):
     """
     signin page. It manage the legacy authentification (user/password) 
@@ -276,7 +278,7 @@ def signin_success(request, identity_url, openid_response):
 
     next = request.GET.get('next', '').strip()
     if not next or not is_valid_next_url(next):
-        next = getattr(settings, 'OPENID_REDIRECT_NEXT', '/')
+        next = getattr(settings, 'OPENID_REDIRECT_NEXT', reverse('library'))
     
     return HttpResponseRedirect(next)
 
@@ -290,6 +292,7 @@ def is_association_exist(openid_url):
     return is_exist
 
 @not_authenticated
+@never_cache
 def register(request):
     """
     register an openid.
@@ -308,7 +311,7 @@ def register(request):
     is_redirect = False
     next = request.GET.get('next', '').strip()
     if not next or not is_valid_next_url(next):
-        next = getattr(settings, 'OPENID_REDIRECT_NEXT', '/')
+        next = getattr(settings, 'OPENID_REDIRECT_NEXT', reverse('library'))
 
 
     openid_ = request.session.get('openid', None)
@@ -335,7 +338,7 @@ def register(request):
             if form1.is_valid():
                 next = form1.cleaned_data['next']
                 if not next:
-                    next = getattr(settings, 'OPENID_REDIRECT_NEXT', '/')
+                    next = getattr(settings, 'OPENID_REDIRECT_NEXT', reverse('library'))
                 is_redirect = True
                 tmp_pwd = User.objects.make_random_password()
                 user_ = User.objects.create_user(form1.cleaned_data['username'],
@@ -359,7 +362,7 @@ def register(request):
                 is_redirect = True
                 next = form2.cleaned_data['next']
                 if not next:
-                    next = getattr(settings, 'OPENID_REDIRECT_NEXT', '/')
+                    next = getattr(settings, 'OPENID_REDIRECT_NEXT', reverse('library'))
                 user_ = form2.get_user()
 
                 uassoc = UserAssociation(openid_url=str(openid_),
@@ -397,6 +400,7 @@ def signin_failure(request, message):
     }, context_instance=RequestContext(request))
 
 @not_authenticated
+@never_cache
 def signup(request):
     """
     signup page. Create a legacy account
@@ -409,7 +413,7 @@ def signup(request):
 
     next = request.GET.get('next', '')
     if not next or not is_valid_next_url(next):
-        next = getattr(settings, 'OPENID_REDIRECT_NEXT', '/')
+        next = getattr(settings, 'OPENID_REDIRECT_NEXT', reverse('library'))
 
     form = RegistrationForm(initial={'next':next})
     form_signin = OpenidSigninForm(initial={'next':next})
@@ -420,7 +424,7 @@ def signup(request):
 
             next = form.cleaned_data.get('next', '')
             if not next or not is_valid_next_url(next):
-                next = getattr(settings, 'OPENID_REDIRECT_NEXT', '/')
+                next = getattr(settings, 'OPENID_REDIRECT_NEXT', reverse('library'))
 
             user_ = User.objects.create_user( form.cleaned_data['username'],
                     form.cleaned_data['email'], form.cleaned_data['password1'])
@@ -474,6 +478,7 @@ def signout(request, msg=None):
     return HttpResponseRedirect(next)
 
 @login_required
+@never_cache
 def account_settings(request):
     """
     index pages to changes some basic account settings :
@@ -504,6 +509,7 @@ def account_settings(request):
         }, context_instance=RequestContext(request))
 
 @login_required
+@never_cache
 def changepw(request):
     """
     change password view.
@@ -531,6 +537,7 @@ def changepw(request):
                                 context_instance=RequestContext(request))
 
 @login_required
+@never_cache
 def changeemail(request):
     """ 
     changeemail view. It require password or openid to allow change.
@@ -607,6 +614,7 @@ def emailopenid_failure(request, message):
     return HttpResponseRedirect(redirect_to)
  
 @login_required
+@never_cache
 def changeopenid(request):
     """
     change openid view. Allow user to change openid 
@@ -688,6 +696,7 @@ def changeopenid_failure(request, message):
     return HttpResponseRedirect(redirect_to)
   
 @login_required
+@never_cache
 def delete(request):
     """
     delete view. Allow user to delete its account. Password/openid are required to 
@@ -758,7 +767,7 @@ def deleteopenid_failure(request, message):
     redirect_to = "%s?msg=%s" % (reverse('user_delete'), urlquote_plus(message))
     return HttpResponseRedirect(redirect_to)
 
-
+@never_cache
 def sendpw(request):
     """
     send a new password to the user. It return a mail with 
@@ -817,7 +826,7 @@ def confirmchangepw(request):
     view to set new password when the user click on confirm link
     in its mail. Basically it check if the confirm key exist, then
     replace old password with new password and remove confirm
-    ley from the queue. Then it redirect the user to signin
+    key from the queue. Then it redirect the user to signin
     page.
 
     url : /sendpw/confirm/?key

@@ -24,10 +24,10 @@ from bookworm.library.google_books.search import Request
 
 log = logging.getLogger('library.views')
 
-def index(request, 
-          page_number=settings.DEFAULT_START_PAGE, 
-          order=settings.DEFAULT_ORDER_FIELD,
-          dir=settings.DEFAULT_ORDER_DIRECTION):
+@never_cache
+def index(request):
+    '''Public home page.  This should be heavily cached (in fact eventually should be
+    served only by the web server.)'''
     if request.user.is_authenticated():
         return logged_in_home(request, page_number, order, dir)
 
@@ -36,7 +36,14 @@ def index(request,
         return signin(request)
     return direct_to_template(request, "public.html", {})
 
-def logged_in_home(request, page_number, order, dir):
+@login_required
+@never_cache
+def library(request,
+          page_number=settings.DEFAULT_START_PAGE, 
+          order=settings.DEFAULT_ORDER_FIELD,
+          dir=settings.DEFAULT_ORDER_DIRECTION):
+    '''Users's library listing.  The page itself should not be cached although 
+    individual items in the library should be cached at the model level.'''
     if not dir in settings.VALID_ORDER_DIRECTIONS:
         raise Exception("Direction %s was not in our list of known ordering directions" % dir)
     if not order in settings.VALID_ORDER_FIELDS:
@@ -81,6 +88,9 @@ def logged_in_home(request, page_number, order, dir):
                                              }
                               )
 
+# We can't cache this at the page level because the user may be
+# going to the last-read page rather than the document start
+@never_cache
 def view(request, title, key, first=False, resume=False):
     '''If we view just a document, we want to either see our last chapter,
     or see the first item in the <opf:spine>, as required by the epub specification.'''
@@ -100,16 +110,21 @@ def view(request, title, key, first=False, resume=False):
     else:
         last_chapter_read = None
         uprofile = None
-    log.debug("First: %s" % first)
 
     if resume and last_chapter_read is not None:
         chapter = last_chapter_read
     elif not first and uprofile and uprofile.open_to_last_chapter and last_chapter_read:
         chapter = last_chapter_read
     else:
-        toc = document.get_toc()
-        first_item = toc.first_item()
-        chapter = get_file_by_item(first_item, document)
+        try:
+            toc = document.get_toc()
+            first_item = toc.first_item()
+            chapter = get_file_by_item(first_item, document)
+        except InvalidEpubException:
+            # We got some kind of catastrophic error while trying to 
+            # parse this document
+            message = 'There was a problem reading the metadata for this document.'
+            return view_chapter(request, title, key, None, message=message)
         if chapter is None:
             log.error('Could not find an item with the id of %s' % first_item)
             raise Http404
@@ -119,6 +134,8 @@ def view(request, title, key, first=False, resume=False):
             return HttpResponseRedirect(reverse('view_chapter', kwargs={'title':document.safe_title(), 'key': document.id, 'chapter_id':chapter.filename}))
     return view_chapter(request, title, key, None, chapter=chapter)
 
+# Not cacheable either because it may be a different user
+@never_cache
 def view_chapter(request, title, key, chapter_id, chapter=None, google_books=None, message=None):
     if chapter is not None:
         chapter_id = chapter.id
@@ -231,7 +248,7 @@ def delete(request):
             document = _get_document(request, title, key)
         _delete_document(request, document)
 
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect(reverse('library'))
 
 def register(request):
     '''Register a new user on Bookworm'''
@@ -250,6 +267,7 @@ def register(request):
     return direct_to_template(request, "auth/register.html", { 'form' : form })
 
 @login_required
+@never_cache
 def profile(request):
     uprofile = RequestContext(request).get('profile')
     
@@ -326,7 +344,7 @@ def upload(request, title=None, key=None):
     are provided then this is a reload of an existing document, which should retain
     the same ID.  The user must be an existing owner to reload a book.'''
     document = None 
-    successful_redirect = reverse('index')
+    successful_redirect = reverse('library')
 
     if request.method == 'POST':
         form = EpubValidateForm(request.POST, request.FILES)
@@ -437,8 +455,8 @@ def upload(request, title=None, key=None):
                     d = resp.read()
                     if d:
                         try:
-                            from epub import util
-                            epubcheck_response =  util.xml_from_string(d)
+                            from epub import toc
+                            epubcheck_response =  toc.xml_from_string(d)
                         except Exception, e2:
                             log.error('Got an error when trying to XML-ify the epubecheck response; ignoring: %s' % e2)
                 
@@ -491,12 +509,10 @@ def _chapter_next_previous(document, chapter, dir='next'):
 
 def _delete_document(request, document):
     # Delete the chapters of the book
-    # Actually this should occur in the indexing phase since these chapters are needed for
-    # full deletion
-    #toc = HTMLFile.objects.filter(archive=document)
-    #if toc:
-    #    for t in toc:
-    #        t.delete()
+    toc = HTMLFile.objects.filter(archive=document)
+    if toc:
+        for t in toc:
+            t.delete()
 
     # Delete all the stylesheets in the book
     css = StylesheetFile.objects.filter(archive=document)
@@ -510,7 +526,7 @@ def _delete_document(request, document):
         for i in images:
             i.delete()
 
-    # Delete the book itself (here we will only be setting a flag)
+    # Delete the book itself
     document.delete()
 
 def _get_document(request, title, key, override_owner=False, nonce=None):

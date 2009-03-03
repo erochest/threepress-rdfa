@@ -1,6 +1,5 @@
 jQuery(document).ready(function() {
-        $("#bw-upload-box").hide();
-        $('#bw-search-lang-selection').hide();
+        //        $("#bw-upload-box").hide();
 
         $('#bw-upload-link').hover(function() {
                 $("#bw-upload-box").slideDown('fast');
@@ -24,17 +23,5 @@ jQuery(document).ready(function() {
                 $("#bw-search-lang-selection").fadeOut('normal');
             }
             );
-
-        $('#bw-librarything-images').cycle(
-                { 
-                    fx: 'fade', 
-                    speed:  300, 
-                    timeout: 0,
-                    next:   '#bw-librarything-images', 
-                    pause: 1
-                 }
-       );
-
-            
     });
 
