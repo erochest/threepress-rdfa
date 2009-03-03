@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/auth.css" ></link>
+{% endblock head %}
+
+{% block main %}
+<div id="bw-content">
+<h2>Reset your password</h2>
+
+<p>If you've forgotten your password, enter your username below and we'll 
+email you a new one.  The password won't be activated until you click on the link you see in the email.
+</p>
+{% if form.errors %}
+<p class="bw-message">Please correct the errors below:<br />
+	{% if form.username.errors %} 
+		<span class="bw-error">{{ form.username.errors|join:", " }}</span>
+	{% endif %}
+</p>
+{% endif %}
+
+{% if msg %}
+  <span class="bw-message">{{ msg }}</span>
+{% endif %}
+
+<div>
+  <form action="." method="post" accept-charset="utf-8">
+    <label for="id_username">Username</label>{{ form.username }}
+    <input type="submit" value="Reset password" />
+  </form>
+</div>
+</div>
+{% endblock %}

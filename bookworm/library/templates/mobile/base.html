@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" ></meta>    
+    <meta name="viewport" content="width=550" ></meta>
+    {% spaceless %}<title>{% block title %} Bookworm {% endblock title %} : Bookworm</title>{% endspaceless %}
+    {% block localstyles %}{% endblock localstyles %}
+
+    <link rel="stylesheet" type="text/css" href="/static/base.css"></link> 
+
+    {% block head %}{% endblock head %}
+    <link rel="stylesheet" type="text/css" href="/static/mobile.css"></link>
+
+  </head>
+  <body>
+    <!-- Header -->
+
+    <div id="bw-header">
+      <div id="bw-mb-header_logo">
+        <h1 class="bw-mb-logo"><a href="{% url index %}"><span class="bw-logo">bookworm ~</span> mobile ebooks</a></h1>
+        <h2 class="bw-mb-motto"><a href="/about/">about</a></h2>
+        <h2 class="bw-mb-motto"><a href="{% url help %}">help</a></h2>
+	{% if request.user.username %}
+        <h2 class="bw-mb-motto"><a href="{%  url index %}">my books</a></h2>
+	{% endif %}
+      </div>
+    </div>
+    <div class="bw-mb-document_title">
+     <div id="bw-mb-signed-in-message">
+          {% if request.user.is_authenticated %}
+             <p>
+             {% if request.user.is_superuser %}
+             <a class="bw-admin-link bw-profile-link" href="/admin">admin</a> ~
+             {% endif %}
+             <a class="bw-logout-link bw-profile-link" href="{% url user_signout %}">logout</a> 
+             {% endif %}
+             </p>
+        </div>
+     <h1><a name="bwmain" style="visibility:hidden">&nbsp;</a>{% block header %}Library{% endblock header %}</h1>
+
+    </div>
+    {% block main %}{% endblock main %}
+    <div id="bw-mb-leftnav"><div id="bw-leftnav"> {% block leftnav %}{% endblock leftnav %}</div></div>
+    {% if not OFFLINE %}
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      var pageTracker = _gat._getTracker("{{ ANALYTICS_KEY }}");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+    </script>
+    {% endif %}
+  </body>
+</html>

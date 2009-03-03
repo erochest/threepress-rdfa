@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block head %}
+<style type="text/css">
+  #goog-wm { }
+  #goog-wm h3.closest-match { }
+  #goog-wm h3.closest-match a { }
+  #goog-wm h3.other-things { }
+  #goog-wm ul li { }
+  #goog-wm li.search-goog { display: block; }
+</style>
+<script type="text/javascript">
+  var GOOG_FIXURL_LANG = 'en';
+  var GOOG_FIXURL_SITE = 'http://bookworm.threepress.org/';
+</script>
+{% endblock head %}
+{% block main %}
+
+<div id="bw-content">
+<h1>The page you requested was not found</h1>
+
+<p>You may have followed a bad link, or tried to access an ebook that you don't own.  If you
+believe this was an error, please contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>.
+</p>
+
+<script type="text/javascript" 
+    src="http://linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"></script>
+
+</div>
+
+{% endblock main %}
+

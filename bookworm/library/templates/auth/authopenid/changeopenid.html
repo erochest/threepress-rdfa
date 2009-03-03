@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block head %}
+
+{% endblock %}
+
+
+{% block main %}
+<div id="bw-content">
+<h1>Change OpenID URL associated with this account</h1>
+
+<p>You may change the OpenID URL which is associated with the current logged-in account.  Make sure you
+really mean to do this, as you will not be able to log in with the old URL again.
+</p>
+
+{% if form.errors %}
+<p class="bw-message">Please correct the errors below:<br />
+{% if form.openid_url.errors %} 
+<span class="bw-error">{{ form.openid_url.errors|join:", " }}</span>
+{% endif %}
+</p>
+
+{% endif %}
+{% if msg %}
+ <p class="bw-message">{{ msg }}</p>
+{% endif %}
+
+<form action="." method="post" accept-charset="utf-8">
+  
+  <label for="id_openid_url">OpenID URL</label>{{ form.openid_url }}
+  <p><input type="submit" value="Change OpenID"/></p>
+  
+</form>
+</div>
+{% endblock %}

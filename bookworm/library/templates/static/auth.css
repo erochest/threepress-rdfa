@@ -1,0 +1,20 @@
+#bw-content form input { 
+  display:block;
+  margin: 1em 1em 1em 1em;
+}
+#bw-content form label {
+  font-weight: bold;
+  color: #5F5B4B;
+  font-size: larger;
+
+}
+#bw-content form legend {
+  color: #5F5B4B;
+  font-weight:bold;
+  font-size:large;
+
+}
+
+#bw-content form fieldset {
+  border: 1px solid rgb(200,200,200) ;
+}

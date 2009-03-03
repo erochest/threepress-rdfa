@@ -1,0 +1,8 @@
+Apply the patches in this folder to your Django source package.
+
+This will likely be removed when Django 1.1 is released as these
+changes should be included.
+
+0002_generate_cache_key.diff: This patch applies only to the Django
+test client and should have no effect on the actual Django code.
+c.f. http://code.djangoproject.com/ticket/5176

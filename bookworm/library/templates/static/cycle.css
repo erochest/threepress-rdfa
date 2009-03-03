@@ -1,0 +1,14 @@
+.pics {  
+    height:  200px;  
+    width:   400px;  
+    padding: 0;  
+    margin:  0;  
+} 
+ 
+.pics img {  
+    padding: 15px;  
+    border:  1px solid #ccc;  
+    background-color: #eee;  
+    top:  0; 
+    left: 0 
+} 

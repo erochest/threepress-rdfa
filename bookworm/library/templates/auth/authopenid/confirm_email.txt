@@ -1,0 +1,11 @@
+Thank you for registering with Bookworm. 
+
+Your account details are:
+
+  Username: {{ username }}
+  Password: [not emailed]
+
+You can now sign in:
+{{ site_url }}/
+
+

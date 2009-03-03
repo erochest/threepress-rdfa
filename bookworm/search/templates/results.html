@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load results %}
+
+{% block title %}Search results {% if term %} for '{{ term }}' {% endif %}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="/static/results.css"></link>
+{% endblock head %}
+
+{% block leftnav %}
+<p><a href="{% url search_help %}">About searching</a></p>
+{% endblock leftnav %}
+
+{% block main %}
+<div id="bw-content">
+  
+  {% if results %}
+  <p class="bw-search-results-info">{{ results.count|intcomma }} result{{ results.count|pluralize}} found for 
+  <em>&lsquo;{{ term }}&rsquo;</em> in your library. Results are returned
+  starting from the most relevant.</p>
+  {% if page.has_other_pages %}
+    <p class="bw-search-results-listed">Showing result{{ results.count|pluralize}} {{ page.start_index|intcomma }} &mdash; {{ page.end_index|intcomma }}</p>
+  {% endif %}
+
+    <ol id="bw-search-results" start="{{ page.start_index}}">
+      {% for result in page.object_list %}
+        {% display_result result term %}
+      {% endfor %}
+    </ol>
+
+
+  {% if page.has_other_pages %}
+  <div class="bw-search-results-nav">
+    <div class="bw-search-previous">{% if page.has_previous %} <a href="{% url search %}?q={{ term }}&amp;page={{ page.previous_page_number }}">← previous</a> {% endif %} </div>
+    <div class="bw-search-next">
+    {% if page.has_next %} <a href="{% url search %}?q={{ term }}&amp;page={{ page.next_page_number }}">next →</a> {% endif %} 
+    </div>
+  </div>
+  {% endif %}
+
+  {% else %}
+    {% if term %}
+      <h2>No results were found</h2>
+      <p>No results were found for <em>&lsquo;{{ term }} &rsquo;</em> in <em>{{ current_search_language }}</em>.
+      Get <a href="{% url search_help %}">help with searching Bookworm</a>.
+      </p>
+      <p>
+        If you just added an ePub that you're expecting to search, please wait a 
+        few minutes.  The search engine checks periodically for new
+        material and should update shortly.
+      </p>
+     {% else %}
+     <h2>Search your ePubs on Bookworm</h2>
+      <p>Enter one or more words on the left to search your library, or get 
+        <a href="{% url search_help %}">help with searching Bookworm</a>.
+      </p>
+   {% endif %}
+
+  {% endif %}
+ 
+</div>
+{% endblock %}

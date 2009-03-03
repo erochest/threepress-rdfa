@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="/static/about.css"></link>
+{% endblock head %}
+
+{% block header %}Language support in Bookworm{% endblock header %}
+
+{% block title %}Language support in Bookworm{% endblock %}
+{% block leftnav %}
+{% include "includes/about.html" %}
+{% endblock %}
+
+{% block main %}
+
+<p id="bw-about-description">
+  The ePub standard is language-neutral and Bookworm is too.  
+  Bookworm search supports advanced full-text features in 
+  multiple languages.</p>
+
+<h3>Stemming</h3>
+<p>
+  Bookworm's full-text search feature supports an advanced feature known
+  as <em>stemming</em>.  Most European languages indicate part-of-speech by modifying
+  words with prefixes or (more commonly) suffixes.  <strong>Stemming is the process of
+  reducing all possible parts of speech for a word to a single root, or <em>stem</em>.</strong>
+</p>
+
+<p>
+  In English, for example, 'run' is the most basic or <em>stem</em> form of the 
+  verb <em>to run</em>.   To pluralize it, we append an &ndash;s and get 'runs'.
+  When using the word as a verb in the present continuous, we add &ndash;ing to get 
+  'running'.  Note that 'runs' can be a noun ("I went out for two runs this week") or a 
+  verb in the present tense ("He runs.")  From the point of view of a search engine,
+  grammar doesn't matter, just spelling. 
+</p>
+<p>
+  A <em>stemmer</em> is software which turns any form of a word &mdash; "run", "runs", "running" &mdash;
+  into a stem.  That means that if you search for one form of the word, all of them
+  will be found.  This usually provides a more satisfying search experience.
+</p>
+<p>
+  <strong>Changing your search language will not affect which ePubs are searched.</strong>
+  Not all ePubs correctly indicate what language they're in, so your search will
+  always be across all of your books, not just the ones in the language you specified.
+  Instead, the language setting determines which stemming rules will apply to your
+  word.
+</p>
+<p>
+  For example, if I set my stemmer to be English and search for 'spaghetti',
+  Bookworm will also search for 'spaghettis', 'spaghetting', 'spaghettied', etc.
+  (Stemmers don't know whether a given stem makes sense; they operate just on the
+  spelling.)  However, if I change my language setting to Italian, then 'spaghetti'
+  will stem to 'spaghett' (because &ndash;i is a plural marker in Italian, the 
+  way &ndash;s is in English).  A search for 'spaghetti' will find ePubs
+  containing 'spaghetti' whether the ePub is in English or Italian, because the
+  search term itself is always considered.
+</p>
+<p>
+  If you primarily read ePubs in languages other than English, you will likely
+  benefit from <a href="{% url profile_language %}">changing your default language</a>. 
+</p>
+<h3>Disabling stemming</h3>
+<p>
+  If you want to search for a word and have it <em>not</em> stem, enclose it in
+  quotation marks.  Quotation marks can also be used to perform phrase searches.
+</p>
+
+<h3>Languages with stemmers</h3>
+<p>
+  Bookworm uses the <a href="http://xapian.org">Xapian</a> search engine, which in turn uses the 
+  <a href="http://xapian.org/docs/stemming.html">Snowball Stemming Algorithms</a>.
+  All of the stemmers in Xapian are available for use in Bookworm:
+  <ul>
+  {% for lang in LANGUAGES %}
+    <li> {{ lang.1 }} </li>
+  {% endfor %}
+  </ul>
+</p>
+<p>The default language is English.</p>
+
+{% endblock main %}

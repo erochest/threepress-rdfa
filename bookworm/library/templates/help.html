@@ -1,0 +1,178 @@
+{% extends "base.html" %} 
+
+{% block title %}Help{% endblock title %}
+
+{% block header %}Help using Bookworm{% endblock header %}
+{% block head %}
+<link rel="stylesheet" href="/static/home.css"></link>
+<link rel="stylesheet" href="/static/about.css"></link>
+<style type="text/css">
+#bw-library a:link,#bw-library a:visited  {
+ text-decoration:underline;
+}
+#bw-library strong {
+  display:block;
+  text-align:center;
+}
+</style>
+{% endblock head %}
+
+{% block leftnav %}
+{% include "includes/about.html" %}
+{% endblock %}
+
+{% block main %}
+<div id="bw-content">
+  <p id="bw-about-description">
+    Confused about what to do, or having problems?  Check this list for common issues,
+    or email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> for help.
+  </p>
+  <div id="bw-tour-toc">
+    <a href="#upload">Problems adding a book?</a>
+    ~
+    <a href="#devices">Can I use Bookworm with my e-reader?</a>
+    ~ 
+    <a href="#openid">Do I need an OpenID to use Bookworm?</a>
+    ~ 
+    <a href="#additional">More questions</a>
+  </div>
+
+  <a name="first"></a>
+  <h2>What do I do first?</h2>
+  <p>The easiest way to get acquainted with Bookworm is to <a href="{% url tour %}">take the tour</a>. </p>
+  <p>For more information, try reading the <a href="{% url about %}">About</a> page for
+  some background on the goals and strengths of Bookworm.</p>
+
+  <a name="upload"></a>
+  <h2>I'm having problems adding a book</h2>
+  <p>
+    Here are some common things to check:
+  </p>
+  <h3>Is the book in &lsquo;ePub&rsquo; format?</h3>
+  <p>
+    Bookworm only accepts ePub books.  You'll know an ebook is in ePub format
+    if its name ends in <strong>.epub</strong>.  If it doesn't, it's probably 
+    a PDF or some other kind of ebook.  Check the website where you got the book
+    for help on what software to use when reading it.
+  </p>
+  <h3>Did Bookworm tell you there was a problem with the book?</h3>
+  <p>
+    You might get an error message like this when you add a book:
+  </p>
+  <div align="center"><a href="/static/images/screenshots/upload-error.png"><img src="/static/images/screenshots/upload-error.png" align="center" class="bw-screenshot-page" width="400"/></a>
+  <br />  <br />
+  (<a href="/static/images/screenshots/upload-error.png">click to enlarge</a>)
+  </div>
+  <p>
+    The ePub format is still  new, and not all ePub books are made 
+    quite right.  Bookworm tries to accept a wide variety of ePubs, but
+    sometimes it can't handle ebooks that are too unusual.
+  </p>
+ 
+  <p>On the other hand, Bookworm is also new and still has bugs.  When your
+  book was uploaded into Bookworm and a problem was detected, Bookworm contacted
+  an <a href="http://www.threepress.org/document/epub-validate/">ePub validation system</a>,
+  which uses a program called &lsquo;epubcheck&rsquo; by Adobe.  
+  Bookworm will tell you if epubcheck also thought there was a problem with the ebook.
+  If they both agree, it's likely that the publisher didn't make the ePub correctly.
+  </p>
+  <p>Whenever an ePub book fails to get added to the library, the Bookworm
+  developer is notified.  If a bug in Bookworm is found, it's usually fixed in a few days,
+  so check back or email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
+  for a status.
+  </p>
+  <h3>Does the book contain DRM (Digital Rights Management)?</h3>
+  <p>
+    Some ePub books have restrictions that prevent them from being read on 
+    unauthorized devices.  Bookworm does not support any kind of DRM and
+    the developers feel it is not a sufficient piracy deterrent to warrent
+    limiting where you can read.
+  </p>
+  <p>Consult the bookstore where you purchased the book or the publisher about
+  which software you should use to read your book.</p>
+  <h3>Is the book very large, or contain large images?</h3>
+  <p>
+    Some ebooks are too large to be safely stored and viewed in Bookworm.
+    Excessively-large books will be rejected.  An ePub is consider too large if it is 
+    over 30 megabytes in size.
+  </p>
+  <a name="devices"></a>
+  <h2>Can I use Bookworm with  my e-reader?</h2>
+  <p>
+    Yes, if your e-reader can open ePub books.  In each case you will need to
+    download your ebook to your computer and then add it to one of these
+    applications, or use the mobile version of Bookworm with a device
+    that is online.  
+    </p>
+    <p>
+      The number of e-readers out there
+      changes all the time, but as of October, 2008:
+  </p>
+  <table id="bw-library">
+    <thead>
+    <tr>
+      <th>Device</th>
+      <th>Supports ePub?</th>
+      <th>How-to</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>iPod Touch</td>
+        <td><strong>Yes</strong></td>
+        <td>Use <a href="http://www.lexcycle.com/">Stanza</a>.</td>
+      </tr>
+      <tr>
+        <td>iPhone</td>
+        <td><strong>Yes</strong></td>
+        <td>Use the mobile web version of Bookworm when online.
+        Point your phone at <a href="http://m.bookworm.oreilly.com">m.bookworm.oreilly.com</a>.
+        For offline reading, export directly from Bookworm to Stanza. <a href="http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone">More hints on this</a>.
+        </td>
+      </tr>
+      <tr>
+        <td>Other web-enabled phone</td>
+        <td><strong>Yes</strong></td>
+        <td>Use the mobile web version of Bookworm when online.
+        Point your phone at <a href="http://m.bookworm.oreilly.com">m.bookworm.oreilly.com</a>.
+        </td>
+      </tr>
+      <tr>
+        <td>Sony Reader</td>
+        <td><strong>Yes</strong></td>
+        <td>Use the PRS-505 or the new PRS-700.</td>
+      </tr>
+      <tr>
+        <td>iRex iLiad</td>
+        <td><strong>Yes</strong></td>
+        <td>&#160;</td>
+      </tr>
+      <tr>
+        <td>Amazon Kindle</td>
+        <td><strong>Indirectly</strong></td>
+        <td>The Kindle cannot read ePub files yet, but you can use
+        Bookworm's mobile version over the Kindle's Whispernet by pointing its
+        web browser at <a href="http://m.threepress.org">m.threepress.org</a>.</td>
+      </tr>
+    </tbody>
+  </table>
+  <a name="openid"></a>
+  <h2>I see OpenID mentioned on the <a href="{% url django_authopenid.views.signup %}">sign up</a> page.
+  Do I need one?</h2>
+  <p>
+    You don't need an OpenID to use Bookworm, but we recommend setting one up if you
+    haven't already.  In fact, you probably already have one.  <a href="{% url openid %}">Find out more about OpenID</a>.
+  </p>
+  <a name="additional"></a>
+  <h2>I have additional questions</h2>
+  <p>
+    There's more information about Bookworm on the <a href="{% url about %}">About</a> page.
+  </p>
+  <p>
+  <a href="http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"><img alt="Badge_get_help" src="http://getsatisfaction.com/images/badges/badge_get_help.png" border="0" align="right" /></a>
+  Also try our forums on <a href="http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm">Get Satisfaction</a> 
+  Feel free to also contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
+  with specific questions.</p>
+
+  </div>
+{% endblock %}

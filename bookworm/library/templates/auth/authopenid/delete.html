@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Delete {{ request.user.username }}'s profile{% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="/static/auth.css" ></link>
+{% endblock head %}
+
+
+{% block main %}
+
+<div id="bw-content">
+<br />
+<form action="." method="post">
+  <fieldset>
+    <legend>Delete account</legend>
+    <input type="hidden" name="delete" value="{{ request.user.email }}" />
+    <p>
+      You can <strong>delete all personal information</strong> from this application, including
+      any profile information and all e-books.
+    </p>
+    <p><strong>This action cannot be undone.</strong></p>
+
+    {% if form.errors %}
+    <p class="bw-message">Please correct the errors below:<br />
+    <span class="bw-error"> {{ form.non_field_errors }}</span>
+    {% endif %}
+    </p>
+    {% if msg %}
+    <p class="bw-message">Please correct the errors below:<br />
+    <span class="bw-error">{{ msg }}</span>
+    </p>
+    {% endif %}
+
+    {% if request.openid %}
+      <label style="display:block" for="id_openid">OpenID URL</label>
+      {{ form.openid_url }}
+    {% else %}
+      <label style="display:block" for="id_password">Password</label>
+      {{ form.password }}
+    {% endif %}
+
+    <label for="confirm" >I'm sure I want to delete all my personal information and books.</label>
+    {{ form.confirm }}
+    {{ form.confirm.errors }}
+    <input type="submit" value="Delete my profile" />
+  </fieldset>
+</form>
+</div>
+{% endblock main %}

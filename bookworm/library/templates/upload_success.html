@@ -1,0 +1,16 @@
+{% extends "base.html" %} 
+
+{% block title %}Upload an epub document{% endblock title %}
+
+{% block main %}
+
+<div id="bw-content">
+<p>
+Successfully uploaded  <a href="{% url view document.safe_title,document.safe_author %}">{{ document.title }}</a>.  
+</p>
+<p>
+You can <a href="{% url view document.safe_title,document.safe_author %}">read it now</a> or return to the <a href="{% url index %}">list of books</a>.
+
+</p>
+
+{% endblock %}

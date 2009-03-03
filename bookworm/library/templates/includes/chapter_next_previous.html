@@ -1,0 +1,16 @@
+{% if document %}
+<div class="bw-results_nav">
+<table width="100%">
+<tr>
+<td><span class="bw-previous"> {% if previous %} <a target="_self" href="{% url view_chapter document.safe_title,document.key,previous.filename %}{% if mobile %}#bwmain{% endif %}">← previous</a> {% endif %} </span></td>
+{% if mobile %}
+<td><span class="bw-jump-to-toc"><a href="#toc">Contents</a></span></td>
+{% endif %}
+<td><span class="bw-next">
+   {% if next %} <a target="_self" href="{% url view_chapter document.safe_title,document.key,next.filename %}{% if mobile %}#bwmain{% endif %}">next →</a> {% endif %} 
+  </span>
+</td>
+</tr>
+</table>
+</div>
+{% endif %}
