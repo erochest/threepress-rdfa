@@ -14,6 +14,7 @@ def local_settings(request):
         'ORM_MEDIA_URL': settings.ORM_MEDIA_URL,
         'CACHE_TEMPLATE_TIMEOUT' : settings.CACHE_TEMPLATE_TIMEOUT,
         'OFFLINE':settings.OFFLINE,
+        'ANALYTICS_KEY':settings.ANALYTICS_KEY
     }
  
 def nav(request):
