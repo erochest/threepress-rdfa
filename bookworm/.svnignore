@@ -6,3 +6,6 @@ clear.sql
 #*
 storage
 dbs
+*storage*
+*flymake*
+log
