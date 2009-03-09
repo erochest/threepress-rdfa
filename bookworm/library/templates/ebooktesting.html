@@ -1,10 +1,11 @@
 {% extends "base.html" %} 
+{% load i18n %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="/static/about.css"></link>
 {% endblock head %}
 
-{% block title %}Testing your ePubs with Bookworm{% endblock title %}
-{% block header %}For publishers: Testing your ePubs with Bookworm{% endblock header %}
+{% block title %}{% trans "Testing your ePubs with Bookworm" %}{% endblock title %}
+{% block header %}{% trans "For publishers" %} : {% trans "Testing your ePubs with Bookworm" %}{% endblock header %}
 
 {% block leftnav %}
 {% include "includes/about.html" %}
@@ -16,84 +17,125 @@
 <div id="bw-content" class="bw-generic">
 
   <p id="bw-about-description">
+    {% blocktrans %}
     Bookworm isn't just for readers.  Publishers can use it to test their ePub files
     before distributing them, and to experiment with advanced features such as
-    stylesheets and SVG.
+    stylesheets and SVG.    
+    {% endblocktrans %}
   </p>
   <div id="bw-tour-toc">
-    <a href="#validation">Validate</a>
+    <a href="#validation">{% trans "Validate <!-- trans: the ePub against the spec -->" %}</a>
     ~ 
-    <a href="#checklist">Checklist</a>
+    <a href="#checklist">{% trans "Checklist <!-- trans: of things to check when producing an ePub -->" %}</a>
     ~ 
-    <a href="#secure">Security</a>
+    <a href="#secure">{% trans "Security" %}</a>
   </div>
   <a name="validation"></a>
-  <h2>Be sure that your ePubs are correct</h2>
+  <h2>{% trans "Be sure that your ePubs are correct" %}</h2>
   <p>
+    {% blocktrans %}
     <strong>Verify that your ePub is valid</strong>. Many tools creating ePubs
     do not create them with all of the required attributes and files.
     Some ePub readers are very loose in what they accept, so checking your
     ePub in Adobe Digital Editions is not sufficient to be certain that your
     ebook will be readable everywhere.
+    {% endblocktrans %}
   </p>
-  <h3>Validating with epubcheck</h3>
+  <h3>{% trans "Validating with EpubCheck <!-- trans: do not translate epubcheck -->" %}</h3>
   <p>
+    {% blocktrans %}
     While developers can download and install their own copy of Adobe's <a href="http://code.google.com/p/epubcheck/">epubcheck</a>
     tool, it may be easier to use Threepress's web-based <a href="http://www.threepress.org/document/epub-validate/">ePub validator</a>.
     It uses epubcheck but wraps it in a convenient web form upload.
+    {% endblocktrans %}
   </p>
   <p>
+    {% blocktrans %}
     Although Bookworm will accept many kinds of ePubs which are not strictly
     valid, it is always best to test them first.  Valid ePubs are much more likely
     to work consistently with new ereaders that are developed in the future.
+    {% endblocktrans %}
   </p>
-  <h2>How to test ePubs with Bookworm</h2>
+  <h2>{% trans "How to test ePubs with Bookworm" %}</h2>
   <p>
+    {% url django_authopenid.views.signup as signupurl %}
+    {% url tour as toururl %}
+    {% blocktrans %}
     Like any other user, all you need to do to test ePubs with Bookworm
-    is to <a href="{% url django_authopenid.views.signup %}">sign up</a> and
-    <a href="{% url tour %}#step1">add a book</a>.
+    is to <a href="{{ signupurl }}">sign up</a> and
+    <a href="{{ toururl }}#step1">add a book</a>.
+    {% endblocktrans %}
   </p>
   <p>
+    {% blocktrans %}
+  
     Once your book has been added, click around and make sure it looks
-    right.
-    Here are some additional testing tips:
+    right. Here are some additional testing tips:
+    {% endblocktrans %}
   </p>
   <a name="checklist"></a>
   <div id="bw-testing-checklist" class="bw-info-box">
-  <h2>Testing checklist</h2>
+  <h2>{% trans "Testing checklist" %}</h2>
   <ol>
-    <li> <strong>Is the metadata is correct?</strong> You can view a book's
+    <li> {% blocktrans %}
+    <strong>Is the metadata correct?</strong> You can view a book's
     metadata on the <strong>Book information</strong> page available
-    from the table of contents of any book. </li>
-    <li> <strong>Is the copyright information in the metadata present and 
-    accurate?</strong>  Readers need to know if the book has full copyright
-    protection, is public domain, or is released with limited rights
-    via Creative Commons.</li>
-    <li> <strong>Is the table of contents correct and in the right order?</strong>
-    Bookworm uses the <code>playOrder</code> attribute of the NCX file
-    to determine the order of items in the TOC.</li>
-    <li> <strong>Are all images appearing?</strong> Bookworm can accommodate a wide
-    variety of link forms, from images linked directly from the TOC to
-    those found in anchor tags within content.</li>
-    <li> <strong>Are all special or foreign characters displaying correctly?</strong>
-    ePub books complying with the specification must be encoded with
-    either UTF-8 or UTF-16, but Bookworm supports only UTF-8.</li>
+    from the table of contents of any book. 
+    {% endblocktrans %}
+    </li>
+    <li> 
+      {% blocktrans %}
+      <strong>Is the copyright information in the metadata present and 
+      accurate?</strong>  Readers need to know if the book has full copyright
+      protection, is public domain, or is released with limited rights reserved
+      via Creative Commons.
+      {% endblocktrans %}
+    </li>
+    <li> 
+      {% blocktrans %}
+      <strong>Is the table of contents correct and in the right order?</strong>
+      Bookworm uses the <code>playOrder</code> attribute of the NCX file
+      and the ordering of the items in the TOC.
+      {% endblocktrans %}
+    </li>
+    <li> 
+      {% blocktrans %}
+      <strong>Are all images appearing?</strong> 
+      Bookworm can accommodate a wide
+      variety of link forms, from images linked directly from the TOC to
+      those found in anchor tags within content. The images <em>must</em> be 
+      listed in the OPF file to appear in Bookworm, as directed by the ePub specification.
+      {% endblocktrans %}
+
+    </li>
+    <li> 
+      {% blocktrans %}
+      <strong>Are all special or foreign characters displaying correctly?</strong>
+      ePub books complying with the specification must be encoded with
+      either UTF-8 or UTF-16, but Bookworm supports only UTF-8.  (Bidirectional text is supported
+      but you will need to include that directive in the CSS.)
+      {% endblocktrans %}
+    </li>
   </ol>
   </div>
   <a name="secure"></a>
-  <h2>Are ePub files on Bookworm secure?</h2>
+  <h2>{% trans "Are ePub files on Bookworm secure?" %}</h2>
   <p>
+    {% blocktrans %}
     Although Bookworm is designed to prevent file sharing and
     accidental release of books into the "wild," we accept no
     liability for software failure which may result in an ebook 
     becoming publicly viewable. 
+    {% endblocktrans %}
   </p>
   <p>
+    {% blocktrans %}
     However, Threepress can arrange for a private version of Bookworm
     to be set up for large-scale testing or especially-sensitive
     material. Contact <a
     href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
     for more details.
+    {% endblocktrans %}
   </p>
 
 </div>
