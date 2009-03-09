@@ -184,6 +184,9 @@ class EpubArchive(BookwormModel):
             return self.subjects
         added_subjects = False
         value = self._get_metadata(constants.DC_SUBJECT_TAG, self.opf, plural=True)
+        if not value:
+            self.save()
+            self.subjects = []
         for s in value:        
             is_lcsh = False
             if 'lcsh' or 'lcss' in s:

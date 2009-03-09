@@ -1,7 +1,8 @@
+{% load i18n %}
 {% spaceless %}
 <a name="toc">&nbsp;</a>
 {% if mobile %}
-<p><a href="#bwmain">Read current page</a></p>
+<p><a href="#bwmain">{% trans "Read current page" %}</a></p>
 {% endif %}
 
 {% if document.authors.all %}
@@ -9,7 +10,7 @@
 {% if request.session.common.mobile %}
 {{ document.title }}
 {% endif %}
-by 
+{% trans "by <!-- trans: this book is written by -->" %}
 {% for a in document.authors.all %}
   {{ a }}{% if not forloop.last %}, {% endif %}
 {% endfor %}
@@ -18,18 +19,18 @@ by
 
 <ol class="bw-nav">
   <li class="bw-first">
-    <a id="bw-download-link" href="{% url download_epub document.safe_title,document.key %}">Download this book</a>
+    <a id="bw-download-link" href="{% url download_epub document.safe_title,document.key %}">{% trans "Download this book" %}</a>
   </li>
   <li class="bw-first">
   {% if chapter %}
-  <a href="{% url view_document_metadata document.safe_title,document.key %}">Book information</a>
+  <a href="{% url view_document_metadata document.safe_title,document.key %}">{% trans "Book information" %}</a>
   {% else %}
-  Book information
+  {% trans "Book information" %}
   {% endif %}
   </li>
 
   <li class="bw-first">
-    <a href="{% url view_first document.safe_title,document.key %}">First page</a>
+    <a href="{% url view_first document.safe_title,document.key %}">{% trans "First page" %}</a>
   </li>
 
 {% for c in document.get_top_level_toc %}

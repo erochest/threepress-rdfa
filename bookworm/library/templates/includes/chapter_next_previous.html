@@ -1,13 +1,14 @@
+{% load i18n %}
 {% if document %}
 <div class="bw-results_nav">
 <table width="100%">
 <tr>
-<td><span class="bw-previous"> {% if previous %} <a target="_self" href="{% url view_chapter document.safe_title,document.key,previous.filename %}{% if mobile %}#bwmain{% endif %}">← previous</a> {% endif %} </span></td>
+<td><span class="bw-previous"> {% if previous %} <a target="_self" href="{% url view_chapter document.safe_title,document.key,previous.filename %}{% if mobile %}#bwmain{% endif %}">← {% trans "previous <!-- trans: previous chapter in the book -->" %}</a> {% endif %} </span></td>
 {% if mobile %}
-<td><span class="bw-jump-to-toc"><a href="#toc">Contents</a></span></td>
+<td><span class="bw-jump-to-toc"><a href="#toc">{% trans "Contents <!-- trans: table of contents -->" %}</a></span></td>
 {% endif %}
 <td><span class="bw-next">
-   {% if next %} <a target="_self" href="{% url view_chapter document.safe_title,document.key,next.filename %}{% if mobile %}#bwmain{% endif %}">next →</a> {% endif %} 
+   {% if next %} <a target="_self" href="{% url view_chapter document.safe_title,document.key,next.filename %}{% if mobile %}#bwmain{% endif %}">{% trans "next <!-- trans: next chapter in the book -->" %} →</a> {% endif %} 
   </span>
 </td>
 </tr>

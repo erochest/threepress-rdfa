@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
-{% block title %}{{ request.user.username }}'s profile{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Profile and preferences for <!-- trans: for person -->" %} {{ request.user.username }} {% endblock %}
 
 {% block searcharea %}{% endblock %}
 
@@ -25,16 +25,16 @@ form input {
 {% block leftnav %}
 <ol>
 {% if not request.openid %}
-<li><h3><a href="{% url django_authopenid.views.changepw %}">Change password</a></h3></li>
+<li><h3><a href="{% url django_authopenid.views.changepw %}">{% trans "Change password" %}</a></h3></li>
 {% endif %}
 
 {% if not request.openid %}
-<li><h3><a href="{% url django_authopenid.views.changeemail %}">Change email address</a></h3></li>
+<li><h3><a href="{% url django_authopenid.views.changeemail %}">{% trans "Change email address" %}</a></h3></li>
 {% endif %}
 {% if request.openid %}
-<li><h3><a href="{% url django_authopenid.views.changeopenid %}">Change associated OpenID</a></h3></li>
+<li><h3><a href="{% url django_authopenid.views.changeopenid %}">{% trans "Change associated OpenID" %}</a></h3></li>
 {% endif %}
-<li><h3><a href="{% url django_authopenid.views.delete %}">Delete this account</a></h3></li>
+<li><h3><a href="{% url django_authopenid.views.delete %}">{% trans "Delete this account" %}</a></h3></li>
 </ol>
 
 {% if request.openid %}
@@ -54,19 +54,19 @@ and should be changed with your OpenID provider, rather than with Bookworm.</p>
 {% endif %}
 
 
-<h1>User profile settings for {{ request.user.username }}</h1>
+<h1>{% trans "User profile and preferences for " %}{{ request.user.username }}</h1>
 
 <form action="{% url profile %}" method="post">
 
   <table class="bw-meta">
     <thead>
       <tr>
-        <th class="bw-table_header" colspan="2">User information</th>
+        <th class="bw-table_header" colspan="2">{% trans "User information" %}</th>
       </tr>
     </thead>     
     <tbody>
       <tr>
-        <th>Username</th>
+        <th>{% trans "Username" %}</th>
         <td>{{ request.user.username }}</td>
       </tr>
       {% if request.openid %}
@@ -85,34 +85,34 @@ and should be changed with your OpenID provider, rather than with Bookworm.</p>
     </tr>
     {% endif %}
     <tr>
-      <th>Full name</th>
+      <th>{% trans "Full name" %}</th>
       <td>{{ form.fullname }}</td>
     </tr>
 
     <tr>
-      <th>Email address</th>
+      <th>{% trans "Email address" %}</th>
       <td> {{ request.user.email }} {% if not request.openid %}<a href="{% url django_authopenid.views.changeemail %}">[change]</a>{% endif %} </td>
     </tr>
     {% if prefs.country %}
     <tr>
-      <th>Country</th>
+      <th>{% trans "Country" %}</th>
       <td> {{ prefs.country }}</td>
     </tr>
     {% endif %}
 
     <tr>
-      <th>Language</th>
-      <td> {{ prefs.language }} [<a href="{% url profile_language %}">change</a>]</td>
+      <th>{% trans "Language" %}</th>
+      <td> {{ prefs.language }} [<a href="{% url profile_language %}">{% trans "change <!-- trans: change the user's language setting -->" %}</a>]</td>
     </tr>
 
     <tr>
-      <th>Open to last-read chapter when reading a book?</th>
+      <th>{% trans "Open to last-read chapter when reading a book?" %}</th>
       <td> {{ form.open_to_last_chapter }}</td>
     </tr>
   </tbody>
 </table>
 
-<input type="submit" value="Update profile" />
+<input type="submit" value="{{ _("Update profile") }}" />
 
 </form>
 </div>

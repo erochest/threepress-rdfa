@@ -1,11 +1,12 @@
-<h2>Resources</h2>
+{% load i18n %}
+<h2>{% trans "Resources <!-- trans: for learning more about Bookworm -->" %}</h2>
 
 <ul style="font-size:larger">
-  <li> <a href="{% url about %}">About Bookworm</a></li>
-  <li> <a href="{% url tour %}">Take the tour</a></li>
-  <li> <a href="{% url help %}">Help </a></li>
-  <li style="padding-top:1em"> <a href="{% url epub %}">More about ePub</a></li>
-  <li> <a href="{% url ebooktesting %}">Test your ePubs</a></li>
-  <li> <a href="{% url search_help %}">About full-text search</a></li>
-  <li> <a href="http://blog.threepress.org/">Read the blog</a></li>
+  <li> <a href="{% url about %}">{% trans "About Bookworm" %}</a></li>
+  <li> <a href="{% url tour %}">{% trans "Take the tour" %}</a></li>
+  <li> <a href="{% url help %}">{% trans "Help" %} </a></li>
+  <li style="padding-top:1em"> <a href="{% url epub %}">{% trans "More about ePub" %}</a></li>
+  <li> <a href="{% url ebooktesting %}">{% trans "Test your ePubs" %}</a></li>
+  <li> <a href="{% url search_help %}">{% trans "About full-text search" %}</a></li>
+  <li> <a href="http://blog.threepress.org/">{% trans "Read the blog" %}</a></li>
 </ul>  

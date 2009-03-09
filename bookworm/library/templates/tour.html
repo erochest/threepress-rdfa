@@ -1,6 +1,6 @@
 {% extends "shell.html" %} 
-
-{% block title %}Take a tour{% endblock title %}
+{% load i18n %}
+{% block title %}{% trans "Take a tour of Bookworm" %}{% endblock title %}
 {% block head %}
 <link rel="stylesheet" href="/static/about.css"></link>
 <style type="text/css">
@@ -11,148 +11,178 @@
 </style>
 {% endblock head %}
 
-{% block header %}<a href="{% url about %}">About</a>: Take a tour of Bookworm{% endblock header %}
+{% block header %}<a href="{% url about %}">{% trans "About" %}</a>: {% trans "Take a tour of Bookworm" %}{% endblock header %}
 
 {% block center %}
 <div id="bw-content" class="bw-generic">
 
   <p id="bw-about-description">
+    {% url  django_authopenid.views.signup as signupurl %}
+    {% blocktrans %}
     This quick tour will show you all the major features of
     Bookworm, from adding your first ebook, to reading and searching it 
     on the web, and taking it on your mobile device. 
-    <a href="{% url django_authopenid.views.signup %}">Sign up</a>
+    <a href="{{ signupurl }}">Sign up</a>
     when you're done.
+    {% endblocktrans %}
   </p>
 
   <div id="bw-tour-toc">
-    <a href="#step1">Step 1: Adding a book</a>
+    <a href="#step1">{% trans "Step 1: Adding a book" %}</a>
     ~
-    <a href="#step2">Step 2: Reading a book</a>
+    <a href="#step2">{% trans "Step 2: Reading a book" %}</a>
     ~
     <br />
 
-    <a href="#step3">Step 3: Searching your library</a>
+    <a href="#step3">{% trans "Step 3: Searching your library" %}</a>
     ~
-    <a href="#step4">Step 4: Take your book on the road</a>
+    <a href="#step4">{% trans "Step 4: Take your book on the road" %}</a>
   </div>
 
   <a name="step1"></a>
-  <h1>Step 1: Adding a book</h1>
+  <h1>{% trans "Step 1: Adding a book" %}</h1>
 
   <div class="bw-tour-step">
   <img src="/static/images/screenshots/save-as-button.png" alt="Add a book link" align="right" />
 
   <h2>
+    {% blocktrans %}
     Select the <em>Add a book</em> link from the upper-right corner of
     every Bookworm page.
+    {% endblocktrans %}
   </h2>
   </div>
   <div class="bw-tour-step">
   <img src="/static/images/screenshots/upload-box.png" alt="Click to upload a file" align="right" width="400"/>        
   <h2>
+    {% blocktrans %}
     Then click the <em>Browse</em> button. 
+    {% endblocktrans %}
     </h2>
-    <p>Your computer will prompt you to 
+    <p>
+    {% blocktrans %}
+    Your computer will prompt you to 
     select a file to upload.  This should be an ebook file that 
     ends in <em>.epub</em>.
+    {% endblocktrans %}
     </p>
-    <h2>Click <em>Add to my library</em>.</h2>
+    <h2>{% trans "Click <!-- trans: imperative verb -->" %} <em>{% trans "Add to my library" %}</em>.</h2>
   </div>
 
 
   <div class="bw-tour-step">
   <img src="/static/images/screenshots/loaded-file.png" alt="An ebook loaded into Bookworm" align="right" width="400" />        
     <h2>
-    Your book is now available!
+    {% blocktrans %}    Your book is now available!     {% endblocktrans %}
     </h2>
-    <p>From the main library screen you can view the list of books
+    <p>    {% blocktrans %}From the main library screen you can view the list of books
     you've added, re-sort it by date, title or author, and delete
-    unwanted books.</p>
+    unwanted books.    {% endblocktrans %}</p>
   </div>
 
   <a name="step2"></a>
-  <h1>Step 2: Reading a book</h1>
+  <h1>    {% blocktrans %}Step 2: Reading a book    {% endblocktrans %}</h1>
 
   <img src="/static/images/screenshots/reading-screenshot.png" alt="Reading screenshot" align="right" class="bw-screenshot-page" width="400" />        
-    <h2>Click on the book's title from your library.</h2>
+    <h2>    {% blocktrans %}Click on the book's title from your library.    {% endblocktrans %}</h2>
     <p>
-      The book will automatically open to the first page.
+{% trans "The book will automatically open to the first page." %}
     </p>
     <p>
+    {% blocktrans %}
       The left side of the screen shows the book's <em>Table of Contents</em>.
       The current chapter you're reading will be in large gray type.
+    {% endblocktrans %}
     </p>
     <p>
+    {% blocktrans %}
       From the Table of Contents you can always click to <em>Download</em>
       your book in its original format, or click on <em>Book information</em>
       to see details about the book's copyright status, publisher, and 
       other editions available online.
+    {% endblocktrans %}
     </p>
 
 
-    <h2>The Book Information page</h2>
+    <h2>{% trans "The Book Information page" %}</h2>
     <img src="/static/images/screenshots/metadata-box.png" alt="Book information" class="bw-screenshot-page" align="right" style="margin-bottom:20px" />
     <p>
+    {% blocktrans %}
       Publisher, language, copyright and other information supplied
       with the ebook can be read here.  
+    {% endblocktrans %}
     </p>
     <p>
+    {% blocktrans %}
       Bookworm will also automatically look up other editions of this
       work in Google Book Search.
+    {% endblocktrans %}
     </p>
-    <h2>Moving through a book</h2>
+    <h2>    {% blocktrans %}Moving through a book    {% endblocktrans %}</h2>
     <p>
+    {% blocktrans %}
       Each page of your book will have <em>Next</em> and/or <em>Previous</em>
       arrows to move between pages.  You can also always jump to 
       another part or chapter by clicking on the <em>Table of Contents.</em>
+    {% endblocktrans %}
     </p>
   <div style="border-top:1px solid rgb(210,210,210);clear:both;">
   <a name="step3"></a>
-  <h1>Step 3: Searching your library</h1>
+  <h1>    {% blocktrans %}Step 3: Searching your library    {% endblocktrans %}</h1>
   <img src="/static/images/screenshots/bookworm-search.png" alt="Bookworm search" class="bw-screenshot-page" align="right" />
   <p>
+    {% blocktrans %}
     If you've loaded books into your library, you'll see a search box at the top left
     of most Bookworm pages.  Type a word or phrase in the box to find all occurrences of 
     it in your library.
+    {% endblocktrans %}
   </p>
   <p>
+    {% blocktrans %}
     Chapters in your books which contain this term will be displayed on the next page.
     Your search word or words will be highlighted in bold.  Click on the book title
     to go to the matching chapter.
+    {% endblocktrans %}
   </p>
   <img src="/static/images/screenshots/bookworm-search-results.png" alt="Bookworm search results" class="bw-screenshot-page" align="left" style="margin-bottom:20px"/>
 
   </div>
   <div style="border-top:1px solid rgb(210,210,210);clear:both">
     <a name="step4"></a>
-    <h1>Step 4: Take your book on the road</h1>
+    <h1>    {% blocktrans %}Step 4: Take your book on the road  <!-- trans: e.g. on a mobile device -->  {% endblocktrans %}</h1>
     <img src="/static/images/screenshots/iphone.png" width="250" alt="Bookworm on the iPhone" class="bw-screenshot-page" align="right" style="margin-bottom:10px" />
-    <h2>Bookworm on your mobile phone</h2>
+    <h2>    {% blocktrans %}Bookworm on your mobile phone    {% endblocktrans %}</h2>
     <p>
+    {% blocktrans %}
       If your phone has access to the web, then you can read your
       Bookworm books anywhere.  Just point your phone browser to
-      <strong><a href="http://m.threepress.org/">m.threepress.org</a></strong>.
+      <strong><a href="http://m.bookworm.oreilly.com/">m.bookworm.oreilly.com</a></strong>.
       This version of Bookworm has been specially adapted for
       small devices.
+    {% endblocktrans %}
     </p>
-    <h2>Stanza on the iPhone</h2>
+    <h2>    {% blocktrans %}Stanza on the iPhone    {% endblocktrans %}</h2>
     <p>
+    {% blocktrans %}
       When viewed in Safari on the iPhone, Bookworm can export your books directly to 
       <a href="http://www.lexcycle.com/">Stanza</a>.  From your library list, click on the &#x21E7; 
       arrow next to a title to add the book to your 
       personal Stanza library. <a href="http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone">Step-by-step instructions on the Stanza site</a>.
+    {% endblocktrans %}
     </p>
-    <h2>Download to the Sony Reader or iLiad</h2>
+    <h2>    {% blocktrans %}Download to the Sony Reader or iLiad    {% endblocktrans %}</h2>
     <p>
+    {% blocktrans %}
       By clicking on the <em>Download this book</em> link in the
       Table of Contents, you can retrieve the original version of
       the ebook at any time.  Follow the instructions in your
       ereader instructions for adding the book to your device.
+    {% endblocktrans %}
     </p>
-    <p><em>The Amazon Kindle cannot read ePub books at this time.</em></p>
+    <p><em>    {% blocktrans %}The Amazon Kindle cannot read ePub books at this time.    {% endblocktrans %}</em></p>
   </div>
   <br />  <br />  <br />  <br />
-  <h1>Ready to <a href="{% url django_authopenid.views.signup %}">sign up</a>?</h1>
+  <h1>    {% blocktrans %}Ready to <a href="{{ signupurl }}">sign up</a>?  <!-- trans: sign-up to use Bookworm -->  {% endblocktrans %}</h1>
 </div>
 
 

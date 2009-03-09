@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-
-{% block title %}Sign up{% endblock %}
-{% block header %}Sign up{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Sign up <!-- trans: open a Bookworm account --> " %}{% endblock %}
+{% block header %}{% trans "Sign up <!-- trans: open a Bookworm account --> " %}{% endblock %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="/static/about.css"></link>
 <link rel="stylesheet" type="text/css" href="/static/auth.css" ></link>
@@ -18,13 +18,15 @@ jQuery(document).ready(function() {
 {% endblock head %}
 
 {% block leftnav %}
-  <h2>Two ways to join:</h2>
+  <h2>{% trans "Two ways to join" %}:</h2>
   <ul>
-    <li><h3><a href="#openid">Use OpenID</a></h3> 
-    Just enter your OpenID and we'll link a Bookworm account to it.
-    <a href="{% url openid %}">What is OpenID</a>?</li>
-    <li><h3>Don't have an OpenID?</h3>  Sign up with a username and password just
-      for Bookworm.</li>
+    <li><h3><a href="#openid">{% trans "Use OpenID" %}</a></h3> 
+    {% trans "Just enter your OpenID and we'll link a Bookworm account to it." %}
+    <a href="{% url openid %}">{% trans "What is OpenID" %}</a>?</li>
+    <li><h3>{% trans "Don't have an OpenID?" %}</h3>  
+    {% trans "Sign up with a username and password just for Bookworm. <!-- trans: instead of using OpenID -->" %}
+
+    </li>
   </ul>
 {% endblock leftnav %}
 
@@ -32,12 +34,14 @@ jQuery(document).ready(function() {
 
 <div id="bw-content">
 <p id="bw-about-description">
+{% blocktrans %}
   Before you can start reading with Bookworm, you need to sign up so we can
   store your books in your private library.
+{% endblocktrans %}
 </p>
 
     {% if form.errors %}
-    <p class="bw-message">Please correct errors below:
+    <p class="bw-message">{% trans "Please correct errors below" %}:
     {% if form.username.errors %} 
     <span class="bw-error">{{ form.username.errors|join:", " }}</span>
     {% endif %}
@@ -52,23 +56,23 @@ jQuery(document).ready(function() {
     <table>
       <tr>
         <td valign="top">
-          <p>If you're not sure what to do, just fill out this form:</p>
+          <p>{% trans "If you're not sure what to do, just fill out this form" %}:</p>
           
     <div id="bw-local-signup" >
 
     <form action="{{ action }}" method="post" accept-charset="utf-8">	
       <fieldset>
-        <legend>Sign up locally</legend>
+        <legend>{% trans "Sign up locally <!-- trans: on Bookworm itself rather than via OpenID -->" %}</legend>
 
-        <label for="id_username"><br/>Username:</label>
+        <label for="id_username"><br/>{% trans "Username" %}:</label>
 	{{ form.username }}
 
-        <label for="id_email">Email:</label>{{ form.email }}
-        <label for="id_password1">Password:</label>{{ form.password1 }}
-        <label for="id_password2">Confirm password:</label>
+        <label for="id_email">{% trans "Email" %}:</label>{{ form.email }}
+        <label for="id_password1">{% trans "Password" %}:</label>{{ form.password1 }}
+        <label for="id_password2">{% trans "Confirm password" %}:</label>
 	{{ form.password2 }}
 
-	<input type="submit" value="Sign up" name="register_local"/>
+	<input type="submit" value="{{ _("Sign up") }}" name="register_local"/>
       </fieldset>
     </form>
     </div>
@@ -78,14 +82,14 @@ jQuery(document).ready(function() {
         <td>
           <a name="openid"></a>
           <div id="bw-openid-signup">
-          <p>If you have an OpenID, sign up here:</p>
+          <p>{% trans "If you have an OpenID, sign up here" %}:</p>
       <form name="fopenid" action="{{ action_signin }}" method="post">
 	<fieldset>
-          <legend>      <img src="/static/openid-logo.png" alt="Use my OpenID" /></legend>
+          <legend>      <img src="/static/openid-logo.png" alt="{{ _("Use my OpenID")}}" /></legend>
           {{ form2.openid_url }}
-          <input name="bsignin" type="submit" value="Sign up with OpenID" />
-          <p style="color:gray">(If you have a Yahoo account, try typing <em>yahoo.com</em> here.)</p>
-          <a href="#openid" class="bw-what-is-openid-link">What's this?</a>          
+          <input name="bsignin" type="submit" value="{{ _("Sign up with OpenID") }}" />
+          <p style="color:gray">({% trans "If you have a Yahoo account, try typing <em>yahoo.com</em> here." %})</p>
+          <a href="#openid" class="bw-what-is-openid-link">{% trans "What's this?" %}</a>          
 	</fieldset>
       </form>
     </div>
