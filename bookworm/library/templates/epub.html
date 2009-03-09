@@ -1,40 +1,49 @@
 {% extends "base.html" %} 
+{% load i18n %}
 {% block head %}
 <link rel="stylesheet" href="/static/about.css"></link>
 {% endblock head %}
 
-{% block title %}Bookworm and the ePub standard{% endblock title %}
-{% block header %}For publishers: Bookworm and ePub{% endblock header %}
+{% block title %}{% trans "Bookworm and the ePub standard" %} {% endblock title %}
+{% block header %}{% trans "For publishers"%}: {% trans "Bookworm and the ePub standard" %}{% endblock header %}
 
 {% block leftnav %}
 
-    <h1>About ePub</h1>
+    <h1>{% trans "About ePub" %}</h1>
     <p>
+      {% blocktrans %}
       ePub is an open format of the The International Digital Publishing Forum (IDPF).
       It is based on XML and XHTML, re-using existing standards for 
       digital books.
+      {% endblocktrans %}
     </p>
     <p>
+      {% blocktrans %}
       The technical details and specification are available from <a href="http://openebook.org/">http://openebook.org/</a>.
+      {% endblocktrans %}
     </p>
     <p>
+      {% blocktrans %}
       There's a lot of good, up-to-date information about where to buy ePubs
       and which devices and software support it at <a href="http://www.epubbooks.com/">ePub Books</a>.
+      {% endblocktrans %}
     </p>
     <p>
+      {% blocktrans %}
       Public domain <a href="http://www.threepress.org/epub/logos">ePub logos</a> are available from threepress.org.
+      {% endblocktrans %}
     </p>
  
-    <h2>Contents</h2>
+    <h2>{% trans "Table of contents" %}</h2>
     <ol style="margin:0;padding:0;list-style-type:none;line-height:2em">
-      <li><a href="#xhtml">XHTML Support</a></li>
-      <li><a href="#toc">NCX Table of Contents</a></li>
-      <li><a href="#reading">Conformance</a></li>
-      <li><a href="#images">Images and graphics</a></li>
+      <li><a href="#xhtml">{% trans "XHTML support" %}</a></li>
+      <li><a href="#toc">{% trans "NCX Table of Contents" %}</a></li>
+      <li><a href="#reading">{% trans "Conformance <!-- trans: to the specification -->" %}</a></li>
+      <li><a href="#images">{% trans "Images and graphics" %}</a></li>
       <li><a href="#dtbook">DTBook</a></li>
-      <li><a href="#fonts">Fonts</a></li>
-      <li><a href="#invalid">Invalid ePub handling</a></li>
-      <li><a href="#limitations">Limitations</a></li>
+      <li><a href="#fonts">{% trans "Fonts" %}</a></li>
+      <li><a href="#invalid">{% trans "Invalid ePub handling" %}</a></li>
+      <li><a href="#limitations">{% trans "Limitations" %}</a></li>
     </ol>
 {% include "includes/about.html" %}
 {% endblock leftnav %}
@@ -42,121 +51,172 @@
 <div id="bw-content" class="bw-generic">
 
     <p id="bw-about-description">
+      {% blocktrans %}
+
       This page is meant for developers, publishers and ebook
       enthusiasts who are interested in the
       ePub standard and how Bookworm uses it.
+      {% endblocktrans %}
+
     </p>
-    <h2>Tutorial</h2>
+    <h2>{% trans "Tutorial" %}</h2>
     <p>
+      {% blocktrans %}
       A complete tutorial on using the ePub format is available from IBM DeveloperWorks: <a href="http://www.ibm.com/developerworks/edu/x-dw-x-epubtut.html">Build a digital book with EPUB</a>.
       Examples from Bookworm are included.
+      {% endblocktrans %}
+    </p>
+    <p>
+      {% blocktrans %}
+      A comprehensive list of ePub resource was written by Keith Fahlgren at O'Reilly Media: <a href="http://labs.oreilly.com/2009/03/epub-resources-and-guides.html">ePub Resources and Guides</a>.
+      {% endblocktrans %}
     </p>
     <div>
       <a href="http://www.threepress.org/epub/logos"><img src="http://www.threepress.org/static/images/epub/epub-logo-color-box.png" alt="ePub" align="right" border="0"/></a>
     </div>
     <a name="xhtml"></a>
-    <h2>XHTML support</h2>
+    <h2>{% trans "XHTML support" %}</h2>
     <p>
+      {% blocktrans %}
       Because the most common content format for ePub is XHTML, ePub and the web browser
       are a natural fit.  
       This allows Bookworm to support advanced layout and markup
       that standalone reading software often does not, including:
+      {% endblocktrans %}
     </p>
     <ul>
-      <li>Tables</li>
-      <li>Lists</li>
-      <li>Fixed-width fonts</li>
+      <li>{% trans "Tables <!-- trans: HTML tables --> " %}</li>
+      <li>{% trans "Lists <!-- trans: HTML lists -->" %}</li>
+      <li>{% trans "Fixed-width fonts" %}</li>
     </ul>
     <p>
+      {% blocktrans %}
       These features are especially important in non-fiction works
       such as technical titles or scientific papers.
+      {% endblocktrans %}
     </p>
     <a name="css"></a>
-    <h2>Cascading Style Sheets (CSS) and JavaScript</h2>
+    <h2>{% trans "Cascading Style Sheets (CSS) and JavaScript" %}</h2>
     <p>
+      {% blocktrans %}
       Bookworm will render any CSS stylesheets that are packaged with an ebook.  In order to prevent 
       interference with Bookworm's native CSS, an ePub's included stylesheets are slightly modified
       to restrict their effects to the book's content area. 
+      {% endblocktrans %}
     </p>
     <p>
+      {% blocktrans %}
       Any external JavaScript files that might be bundled with the ePub are <em>not</em> loaded,
       and any &lt;script&gt; tags embedded in the content are removed.  This is a security feature
       to prevent malicious scripts from being uploaded to the site.
+      {% endblocktrans %}
     </p>
     <p>
+      {% blocktrans %}
       Bookworm includes its own stylesheets specially-formatted for the printed page.
       Try using your browser's "Print Preview" feature while reading an ePub
       to see how it would appear when printed.
+      {% endblocktrans %}
     </p>
     <a name="toc"></a>
-    <h2>NCX Table of Contents</h2>
+    <h2>NCX {% trans "Table of Contents" %}</h2>
     <img src="/static/images/screenshots/expanded-nav.png" alt="Expanded navigation" class="bw-screenshot-page" align="right" />
-    <p>The table of contents metadata contain chunks at levels other than 
-    the chapter. It might
+    <p>
+      {% blocktrans %}
+      The table of contents metadata contain chunks at levels other than 
+      the chapter. It might
       also include chunks at the "part" or sub-chapter level, 
       organized into a nested hierarchy.
-    </p>
-    <p>Bookworm will expand nested items in the Table of Contents 
-    when the user moves through them.
+      {% endblocktrans %}
     </p>
     <p>
+      {% blocktrans %}
+      Bookworm will expand nested items in the Table of Contents 
+      when the user moves through them.
+      {% endblocktrans %}
+    </p>
+    <p>
+      {% blocktrans %}
       When multiple sub-sections exist, a small arrow will appear next
       to the sub-section that is being read.
+      {% endblocktrans %}
     </p>
     <a name="reading"></a>
-    <h2>Reading system conformance</h2>
+    <h2>{% trans "Reading system conformance" %}</h2>
     <p>
+      {% blocktrans %}
       In accordance with the ePub specification, Bookworm will &lsquo;open&rsquo;
       the ePub to the first item in the NCX file with the attribute
       <code>linear</code> set to &lsquo;yes&rsquo;  Counterintuitively,
       this may mean that in some titles
       the default page for the ePub will not be the first item in the
       NCX file.
+      {% endblocktrans %}
     </p>
     <p>
+      {% blocktrans %}
       Bookworm is not yet a 100% conforming reading system;
       see the <a href="http://code.google.com/p/threepress/issues/list">issues</a>
       page for the status on several bugs related to ePub conformance
       issues.
+      {% endblocktrans %}
     </p>
 
     <a name="images"></a>
-    <h2>Images and graphics</h2>
+    <h2>{% trans "Images and graphics" %}</h2>
     <img src="/static/svg.png" alt="SVG logo" align="right"/>
-    <p>As a browser-based application, 
-    Bookworm supports illustrations and photos in all the 
-    formats that ePub does: <em>JPEG</em>, <em>GIF</em>
-    and <em>PNG</em>.  Scalable Vector Graphics (<em>SVG</em>) if
-    images are handled by linking to an external SVG file,
-    as many browsers do not have inline-SVG support via the
-    <code>&lt;img&gt;</code> tag.
+    <p>
+      {% blocktrans %}
+      As a browser-based application, 
+      Bookworm supports illustrations and photos in all the 
+      formats that ePub does: <em>JPEG</em>, <em>GIF</em>
+      and <em>PNG</em>.  Scalable Vector Graphics (<em>SVG</em>) if
+      images are handled by linking to an external SVG file,
+      as many browsers do not have inline-SVG support via the
+      <code>&lt;img&gt;</code> tag.
+      {% endblocktrans %}
     </p>
     <a name="dtbook"></a>
       <h2>DTBook</h2>
-      <p>The OPS specification indicates that valid ePubs may 
+      <p>
+      {% blocktrans %}
+      The OPS specification indicates that valid ePubs may 
       contain content in either XHTML or <a href="http://wiki.mobileread.com/wiki/DTBook">DTBook</a>.
-      </p>
-      <p>Bookworm supports DTBook-formatted ePubs by automatically converting
-      their content to XHTML.  This is done using XSLT derived from the <a href="http://daisymfc.sourceforge.net/">DAISY pipeline</a>.
+      {% endblocktrans %}      
       </p>
       <p>
-        You can always get back to the original DTBook content by downloading the ePub from any book page.</p>
+      {% blocktrans %}
+      Bookworm supports DTBook-formatted ePubs by automatically converting
+      their content to XHTML.  This is done using XSLT derived from the <a href="http://daisymfc.sourceforge.net/">DAISY pipeline</a>.
+      {% endblocktrans %}
+      </p>
+      <p>
+      {% blocktrans %}
+        You can always get back to the original DTBook content by downloading the ePub from any book page.
+      {% endblocktrans %}
+      </p>
     <a name="fonts"></a>      
-    <h2>Fonts</h2>
-    <p>Bookworm will support any font declarations made using CSS 1 or CSS 2.
-    In theory it could support embedded fonts as defined by CSS 3 if the browser
-    does, but this has not been tested (samples welcome!).
+    <h2>{% trans "Fonts" %}</h2>
+    <p>
+      {% blocktrans %}
+      Bookworm will support any font declarations made using CSS 1 or CSS 2.
+      In theory it could support embedded fonts as defined by CSS 3 if the browser
+      does, but this has not been tested (samples welcome!).
+      {% endblocktrans %}
     </p>
     <a name="invalid"></a>
-    <h2>How Bookworm treats invalid ePub</h2>
+    <h2>{% trans "How Bookworm treats invalid ePub" %}</h2>
     <p>
+      {% blocktrans %}
       One of the design goals of Bookworm is that it should
       render ePub documents which do not completely follow
       the specification.  However, there are many cases in which
       it will not be able to correctly parse all the parts
       of the file and will reject it.
+      {% endblocktrans %}
     </p>
     <p>
+      {% blocktrans %}
       Any ePub book which is found to be seriously malformed
       will be automatically handed off to the 
       <a href="http://www.threepress.org/document/epub-validate/">threepress.org epubcheck service</a>.
@@ -165,23 +225,29 @@ href="http://code.google.com/p/epubcheck/">epubcheck</a> are reported to the use
       the book.
       It is hoped that the messages from Bookworm and epubcheck 
       will clearly identify the problem with the ePub file.
+      {% endblocktrans %}
     </p>
     <a name="limitations"></a>
-    <h2>Limitations</h2>
+    <h2>{% trans "Limitations" %}</h2>
     <p>
+      {% blocktrans %}
       Obviously, Bookworm is limited by the features available in 
       the user's browser.  It is recommended
       to be used with recent versions of Firefox, Safari or Chrome,
       however Internet Explorer 6 and 7 are also supported.
+      {% endblocktrans %}
     </p>
     <p>
+      {% blocktrans %}
       Some extremely long-form ebooks, such as single 'page' comics
       or unbroken novel-length texts, are not appropriate for web-based reading.
       Document authors are advised to break up long texts into
-      individual XHTML files if at all appropriate.
+      individual XHTML files if at all appropriate.  
       This is especially important
       when creating ePub documents for mobile devices, which often
-      have problems with large file sizes.
+      have problems with large file sizes. (The Sony Reader cannot read XHTML files
+      larger than 300Kb in size, for example.)
+      {% endblocktrans %}
     </p>
 </div>
 
