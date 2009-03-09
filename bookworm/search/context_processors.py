@@ -12,12 +12,9 @@ def count_books(user):
  
 def search(request):
     form = None
-    current_search_language = 'English'
     if not request.user.is_anonymous():
         form = EpubSearchForm()
-    return {'search_form': form,
-            'current_search_language': current_search_language}
-    
+    return {'search_form': form }
 
 def _get_name_for_language(lang):
     for l in settings.LANGUAGES:

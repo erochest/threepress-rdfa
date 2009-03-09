@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.test import TestCase as DjangoTestCase
 from django.conf import settings
 from django.http import HttpResponseNotFound
+import django.utils.translation as translation
 
 from bookworm.search import epubindexer, index
 from bookworm.library.models import *
@@ -754,7 +755,9 @@ class TestViews(DjangoTestCase):
     def setUp(self):
         self.user = User.objects.create_user(username="testuser",email="test@example.com",password="testuser")
         self.user.save()        
+
         profile = UserPref(user=self.user)
+        profile.language = 'en'
         profile.save()
 
     def tearDown(self):
@@ -1084,6 +1087,16 @@ class TestViews(DjangoTestCase):
                              target_status_code=200)   
         self.assertFalse(self.client.login(username='registertest', password='registertest'))                
 
+    def test_uprofile_safes_language(self):
+        uprofile = UserPref.objects.get(user=self.user)
+        self.assertEqual(uprofile.language,'en')
+        uprofile.open_to_last_chapter = True
+        uprofile.language = 'en'
+        self.assertEqual(uprofile.language,'en')
+        uprofile.save()
+
+        uprofile_ = UserPref.objects.get(user=self.user)
+        self.assertEqual(uprofile_.language,'en')
 
     def test_open_to_last_chapter(self):
         self._upload('Pride-and-Prejudice_Jane-Austen.epub')
@@ -1294,6 +1307,21 @@ class TestViews(DjangoTestCase):
         response = self.client.get('/metadata/a/1/')
         self.assertContains(response, 'This is a description')
 
+
+    def test_translation_de(self):
+        '''Ensure that we're getting German content appropriately'''
+        name = 'Pride-and-Prejudice_Jane-Austen.epub'
+        self._upload(name)
+        response = self.client.get('/library/')        
+        self.assertContains(response, 'Signed in')
+
+        response = self.client.post('/i18n/setlang/',
+                                    { 'language':'de'})
+        response = self.client.get('/library/')        
+        self.assertContains(response, 'Angemeldet als')        
+
+        response = self.client.post('/i18n/setlang/',
+                                    { 'language':'en'})        
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
         

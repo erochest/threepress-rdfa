@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext as _
+
 from django.core.mail import EmailMessage
 
 import logging, sys, urllib, MySQLdb, cStringIO, os.path, unicodedata, traceback
@@ -85,8 +87,8 @@ def library(request,
                                              'total_books':sysinfo.get_total_books(),
                                              'reverse_dir':reverse_dir,
                                              'order_text': order_fields[order],
-                                             'order_direction': 'ascending' if dir == 'asc' else 'descending',
-                                             'order_adverb': 'alphabetically' if order != 'created_time' else 'by date value',
+                                             'order_direction': _('ascending') if dir == 'asc' else _('descending'),
+                                             'order_adverb': _('alphabetically') if order != 'created_time' else _('by date value'),
                                              }
                               )
 

@@ -1,15 +1,16 @@
+{% load i18n %}
   <tr>
-    <th><a href="{% url library-reorder page.number,"title",reverse_dir %}">Title
+    <th><a href="{% url library-reorder page.number,"title",reverse_dir %}">{% trans "Title" %}
     {% ifequal order "title" %}<span class="bw-pagination-arrow">{% ifequal "asc" reverse_dir %}↓{% else %}↑{% endifequal %}</span>{% endifequal %}
     </a></th>
-    <th><a href="{% url library-reorder page.number,"orderable_author",reverse_dir %}">Author
+    <th><a href="{% url library-reorder page.number,"orderable_author",reverse_dir %}">{% trans "Author" %}
     {% ifequal order "orderable_author" %}<span class="bw-pagination-arrow">{% ifequal "asc" reverse_dir %}↓{% else %}↑{% endifequal %}</span>{% endifequal %}
     </a></th>
     <th><a href="{% url library-reorder page.number,"created_time",reverse_dir %}">
       {% if mobile %}
-        Added
+        {% trans "Added" %}
       {% else %}
-        Date added
+        {% trans "Date added" %}
       {% endif %}
     {% ifequal order "created_time" %}<span class="bw-pagination-arrow">{% ifequal "asc" reverse_dir %}↓{% else %}↑{% endifequal %}</span>{% endifequal %}
 </a></th>
@@ -17,6 +18,6 @@
     <th>&nbsp;</th>
     {% endif %}
     {% if stanza_compatible %}
-      <th>Read in Stanza</th>
+      <th>{% trans "Read in Stanza" %}</th>
     {% endif %}
   </tr>

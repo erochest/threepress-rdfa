@@ -89,24 +89,14 @@ MIDDLEWARE_CLASSES = (
     'bookworm.middleware.Mobile',
 
 )
+
 ugettext = lambda s: s
 
-# Only allow the list of languages available in Xapian
-LANGUAGES = ( ('da', ugettext('Danish')), 
-              ('nl', ugettext('Dutch')),
-              ('en', ugettext('English')),
-              ('fi', ugettext('Finnish')),
-              ('fr', ugettext('French')),
-              ('de', ugettext('German')),
-              ('hu', ugettext('Hungarian')),
-              ('it', ugettext('Italian')),
-              ('no', ugettext('Norwegian')),
-              ('pt', ugettext('Portuguese')),
-              ('ro', ugettext('Romanian')),
-              ('ru', ugettext('Russian')),
-              ('es', ugettext('Spanish')),
-              ('sv', ugettext('Swedish')),
-              ('tr', ugettext('Turkish')))
+# Only allow the list of languages for which we have translations
+LANGUAGES = (
+  ('de', ugettext('German')),
+  ('en', ugettext('English')),
+)
 
 ROOT_URLCONF = 'urls'
 

@@ -1,4 +1,5 @@
 {% extends "shell.html" %}
+{% load i18n %}
 
 {% block center %}
 
@@ -8,11 +9,11 @@
           {% block searcharea %}
           {% if search_form %}
             <div id="bw-search-box">
-              <h3>Search your library</h3>
+              <h3>{% trans "Search your library" %}</h3>
               <form action="{% url search %}" method="get">
                 <fieldset style="border:0;margin:0;padding:0">
                 {{ search_form.q }}
-                <div style="padding-top:1em"><input type="submit" value="search" style="width:6em" /></div>
+                <div style="padding-top:1em"><input type="submit" value="{% trans "search" %}" style="width:6em" /></div>
                 </fieldset>
               </form>
             </div>

@@ -99,12 +99,11 @@ and should be changed with your OpenID provider, rather than with Bookworm.</p>
       <td> {{ prefs.country }}</td>
     </tr>
     {% endif %}
-    {% if prefs.language %}
+
     <tr>
       <th>Language</th>
-      <td> {{ current_search_language }} [<a href="{% url profile_language %}">change</a>]</td>
+      <td> {{ prefs.language }} [<a href="{% url profile_language %}">change</a>]</td>
     </tr>
-    {% endif %}
 
     <tr>
       <th>Open to last-read chapter when reading a book?</th>

@@ -1,29 +1,21 @@
 {% extends "base.html" %}
 
-{% block title %}{{ request.user.username }}'s default search language{% endblock %}
+{% block title %}{{ request.user.username }}'s default language{% endblock %}
 
 {% block searcharea %}{% endblock %} 
 {% block main %}
 
 
-<h2>Set or change your default search language</h2>
+<h2>Change your Bookworm language</h2>
 
 <p>
-  Although all of the site content on Bookworm is in English, it is possible
-  to upload, read and search content in many languages.
+  Bookworm is available in multiple languages.  To change the language
+  used when you log in, select from one of the translations listed here.
 </p>
 <p>
-  Bookworm will try to guess your preferred language in many ways:
-  <ol>
-    <li> Your web browser settings</li>
-    <li> If you imported your account via OpenID it will use your OpenID language setting</li>
-    <li> Your explicit setting on this page</li>
-    <li> The language you select while searching</li>
-  </ol>
-</p>
-<p>
-  Updating your language here will affect stemming in default language in which you search,
-  but nothing else.  More about <a href="{% url search_language %}">multi-lingual support in Bookworm</a>.
+  If you don't see your preferred language, <a href="mailto:bookworm@threepress.org">let us know if you're
+  willing to help translate</a>.  Bookworm can be translated into <a href="http://code.djangoproject.com/browser/django/trunk/django/conf/global_settings.py#L43">any of the languages supported by
+  the Django framework</a>.
 </p>
 <form action="/i18n/setlang/" method="post">
   <input name="next" type="hidden" value="{% url profile %}" />
