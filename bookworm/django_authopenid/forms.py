@@ -205,7 +205,7 @@ class OpenidVerifyForm(forms.Form):
                         username__exact = self.cleaned_data['username']
                 )
             except User.DoesNotExist:
-                raise forms.ValidationError(_("This username don't exist. \
+                raise forms.ValidationError(_("This username doesn't exist. \
                         Please choose another."))
             return self.cleaned_data['username']
             

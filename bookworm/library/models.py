@@ -10,6 +10,7 @@ import logging, datetime, os, os.path, hashlib
 from urllib import unquote_plus
 from xml.parsers.expat import ExpatError
 import cssutils
+import uuid
 
 from django.utils.http import urlquote_plus
 from django.db import models
@@ -128,7 +129,7 @@ class EpubArchive(BookwormModel):
         t = safe_name(self.title)  
         # Make sure this returns something, if even untitled
         if not t:
-            t = 'Untitled'
+            t = _('Untitled')
         return t
 
     def safe_author(self):
@@ -141,9 +142,7 @@ class EpubArchive(BookwormModel):
         epub = blob.objects.get(archive=self)
         return epub.get_data()
   
-    def delete(self, true_delete=False):
-        '''Normal deletion simply sets the flag. Manual override will cause
-        actual normal deletion.'''
+    def delete(self):
         self.delete_from_filesystem()
         return super(EpubArchive, self).delete()
 
@@ -185,8 +184,7 @@ class EpubArchive(BookwormModel):
         added_subjects = False
         value = self._get_metadata(constants.DC_SUBJECT_TAG, self.opf, plural=True)
         if not value:
-            self.save()
-            self.subjects = []
+            return None
         for s in value:        
             is_lcsh = False
             if 'lcsh' or 'lcss' in s:
@@ -252,26 +250,62 @@ class EpubArchive(BookwormModel):
     def get_identifier(self):
         if self.identifier != u'':
             return self.identifier
-        self.identifier = self._get_metadata(constants.DC_IDENTIFIER_TAG, self.opf, as_string=True)
-        if self.identifier != u'':
-            log.debug("Saving identifier as %s" % self.identifier)
-            self.save()
-            return self.identifier
+        identifier = self._get_metadata(constants.DC_IDENTIFIER_TAG, self.opf, as_list=True)
+        # There could be multiple identifiers.  We prefer IBSN or UUID,
+        # but failing that, we'll use what's marked as the unique identifier
+        if len(identifier) == 0:
+            log.debug("No identifier present; generating one")
+            self.identifier = 'urn:uuid:' + str(uuid.uuid4())
 
-    def identifier_type(self):
-        if 'isbn' in self.identifier:
+        elif len(identifier) > 1:
+            # If we have multiple ones, try to ID them
+            unique_identifier_tagname = self._parsed_metadata.xpath('//opf:package/@unique-identifier', namespaces={'opf':NS['opf']})
+            log.debug("Got unique identifier tagname as %s" % unique_identifier_tagname)
+            for i in identifier:
+                id_type = self._identifier_type(i)
+                log.debug("Got ID type as %s for %s" % (id_type, i))
+                if id_type == constants.IDENTIFIER_ISBN or id_type == constants.IDENTIFIER_ISBN_MAYBE:
+                    # Append the URN bit if absent
+                    try:
+                        int(i)
+                        i = 'urn:isbn:' + i
+                    except ValueError:
+                        pass
+                    self.identifier = i
+                elif id_type == constants.IDENTIFIER_UUID:
+                    if not i.startswith('urn:uuid'):
+                        i = 'urn:uuid' + i
+                    self.identifier = i
+
+            if not self.identifier:
+                self.identifier = self._parsed_metadata.xpath('//{%s}%s' % (NS['dc'], unique_identifier_tagname))[0]
+            if not self.identifier:                
+                # If we failed at getting the matching ID, just pick the first one
+                self.identifier = identifier[0]
+        else:
+            self.identifier = identifier[0]
+
+        log.debug("Saving identifier as %s" % self.identifier)
+        self.save()
+        return self.identifier
+
+    def _identifier_type(self, identifier):
+        if 'isbn' in identifier.lower():
             return constants.IDENTIFIER_ISBN
-        if 'uuid' in self.identifier:
+        if 'uuid' in identifier.lower():
             return constants.IDENTIFIER_UUID
-        if 'http' in self.identifier:
+        if 'http' in identifier.lower():
             return constants.IDENTIFIER_URL
-        if len(self.identifier) == 9 or len(self.identifier) == 13:
+        if len(identifier) == 10 or len(identifier) == 13:
             try:
-                int(self.identifier)
+                int(identifier)
                 return constants.IDENTIFIER_ISBN_MAYBE
             except ValueError:
                 return constants.IDENTIFIER_UNKNOWN
-        return constants.IDENTIFIER_UNKNOWN
+        return constants.IDENTIFIER_UNKNOWN            
+
+    def identifier_type(self):
+        return self._identifier_type(self.identifier)
 
 
     def get_top_level_toc(self):
@@ -624,7 +658,7 @@ class EpubArchive(BookwormModel):
                         order=order)
         html.save()
         
-    def _get_metadata(self, metadata_tag, opf, plural=False, as_string=False):
+    def _get_metadata(self, metadata_tag, opf, plural=False, as_string=False, as_list=False):
         '''Returns a metdata item's text content by tag name, or a list if mulitple names match.
         If as_string is set to True, then always return a comma-delimited string.'''
         if self._parsed_metadata is None:
@@ -634,6 +668,8 @@ class EpubArchive(BookwormModel):
                 return None
         text = []
         alltext = self._parsed_metadata.findall('.//{%s}%s' % (NS['dc'], metadata_tag))
+        if as_list:
+            return [t.text.strip() for t in alltext if t.text]
         if as_string:
             return ', '.join([t.text.strip() for t in alltext if t.text])
         for t in alltext:

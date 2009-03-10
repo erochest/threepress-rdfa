@@ -127,7 +127,7 @@ def view(request, title, key, first=False, resume=False):
         except InvalidEpubException:
             # We got some kind of catastrophic error while trying to 
             # parse this document
-            message = 'There was a problem reading the metadata for this document.'
+            message = _('There was a problem reading the metadata for this document.')
             return view_chapter(request, title, key, None, message=message)
         if chapter is None:
             log.error('Could not find an item with the id of %s' % first_item)
@@ -176,10 +176,10 @@ def view_chapter(request, title, key, chapter_id, chapter=None, google_books=Non
     except InvalidEpubException, e:
         log.error(traceback.format_exc())
         chapter = None
-        message = '''
+        message = _('''
 This book contained content that Bookworm couldn't read.  You may need to check with the 
 publisher that this is a valid ePub book that contains either XHTML or DTBook-formatted
-content.'''
+content.''')
 
     return direct_to_template(request, 'view.html', {'chapter':chapter,
                                             'document':document,
@@ -308,7 +308,7 @@ def profile(request):
         form = ProfileForm(request.POST, instance=uprofile)
         if form.is_valid():
             form.save()
-        message = "Your profile has been updated."
+        message = _("Your profile has been updated.")
     else:
         form = ProfileForm(instance=uprofile)
         message = None
@@ -325,7 +325,7 @@ def profile_delete(request):
     if not request.POST.has_key('delete'):
         # Extra sanity-check that this is a POST request
         log.error('Received deletion request but was not POST')
-        message = "There was a problem with your request to delete this profile."
+        message = _("There was a problem with your request to delete this profile.")
         return direct_to_template(request, 'profile.html', { 'message':message})
 
     if not request.POST['delete'] == request.user.email:
@@ -333,7 +333,7 @@ def profile_delete(request):
         # not a security feature.  The current logged-in user profile is always
         # the one to be deleted, regardless of the value of 'delete')
         log.error('Received deletion request but nickname did not match: received %s but current user is %s' % (request.POST['delete'], request.user.nickname()))
-        message = "There was a problem with your request to delete this profile."
+        message = _("There was a problem with your request to delete this profile.")
         return direct_to_template(request, 'profile.html', { 'message':message})
 
     request.user.get_profile().delete()
@@ -380,7 +380,7 @@ def upload(request, title=None, key=None):
                     is_public = document.is_public
 
                     # Delete the old one
-                    document.delete(true_delete=True)
+                    document.delete()
 
                     # Create a new one with the possibly-new name
                     document = EpubArchive(name=document_name,id=key)
@@ -406,14 +406,14 @@ def upload(request, title=None, key=None):
             except BadZipfile:
                 log.error('Non-zip archive uploaded: %s' % document_name)
                 log.error(sys.exc_value)
-                message = 'The file you uploaded was not recognized as an ePub archive and could not be added to your library.'
+                message = _('The file you uploaded was not recognized as an ePub archive and could not be added to your library.')
                 document.delete()
                 return direct_to_template(request, 'upload.html', 
                                           { 'form':form, 'message':message})
 
             except MySQLdb.OperationalError, e:
                 log.debug("Got operational error %s" % e)
-                message = "We detected a problem with your ebook that is most likely related to it being too big to display safely in a web browser. This can happen with very large images, or with extremely long chapters. Please check with the publisher that the book has been formatted correctly.  Very large pages would require a lot of scrolling and load very slowly, so they are not allowed to be added to Bookworm."
+                message = _("We detected a problem with your ebook that is most likely related to it being too big to display safely in a web browser. This can happen with very large images, or with extremely long chapters. Please check with the publisher that the book has been formatted correctly.  Very large pages would require a lot of scrolling and load very slowly, so they are not allowed to be added to Bookworm.")
                 try:
                     # Email it to the admins
                     email = EmailMessage('[bookworm] Too-large book added: %s' % document_name, e.__str__(), 'no-reply@threepress.org',
@@ -439,7 +439,7 @@ def upload(request, title=None, key=None):
                     log.error(f)
 
                 document.delete()
-                message = "It appears that you've uploaded a book which contains DRM (Digital Rights Management).  This is a restriction that is meant to prevent illegal copying but also prevents legitimate owners from reading their ebooks wherever they like. You will probably need to use Adobe Digital Editions to read this ebook, but consider contacting the publisher or bookseller to ask them about releasing DRM-free ebooks."
+                message = _("It appears that you've uploaded a book which contains DRM (Digital Rights Management).  This is a restriction that is meant to prevent illegal copying but also prevents legitimate owners from reading their ebooks wherever they like. You will probably need to use Adobe Digital Editions to read this ebook, but consider contacting the publisher or bookseller to ask them about releasing DRM-free ebooks.")
                 return direct_to_template(request, 'upload.html', 
                                           { 'form':form, 'message':message})
             except Exception, e:
@@ -473,16 +473,16 @@ def upload(request, title=None, key=None):
                 error = e.message
                 if len(error) > 200:
                     error = error[0:200] + '...'
-                message = "The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is: <p style='color:black;font-weight:normal'>%s</p>" % error
+                message = _("The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is: <p style='color:black;font-weight:normal'>%s</p>" % error)
                 if epubcheck_response is not None:
                     if epubcheck_response.findtext('.//is-valid') == 'True':
-                        message += "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm error)</p>"
+                        message += _("<p>(epubcheck thinks this file is valid, so this is probably a Bookworm error)</p>")
                     elif epubcheck_response.findtext('.//is-valid') == 'False':
                         epub_errors = epubcheck_response.findall('.//error')
                         epub_error_list = [i.text for i in epub_errors]
 
                         epub_errors = '<br/>'.join(epub_error_list)
-                        message += "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned: <pre style='color:black;font-weight:normal'>%s</pre></p>" % epub_errors
+                        message += _("<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned: <pre style='color:black;font-weight:normal'>%s</pre></p>" % epub_errors)
                     else:
                         log.error('Got an unexpected response from epubcheck, ignoring: %s' % d)
                 
