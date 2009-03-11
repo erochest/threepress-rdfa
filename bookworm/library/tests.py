@@ -1321,7 +1321,18 @@ class TestViews(DjangoTestCase):
         self.assertContains(response, 'Angemeldet als')        
 
         response = self.client.post('/i18n/setlang/',
-                                    { 'language':'en'})        
+                                    { 'language':'en'})       
+
+    def test_view_with_multiple_dates(self):
+        '''Was returning 'Unknown' rather than displaying a date.  Ultimately should
+        be able to handle all dates and provide appropriate opf:event information.'''
+        name = 'multiple-dc-dates.epub'
+        self._upload(name)
+        response = self.client.get('/metadata/test/1/')        
+        self.assertNotContains(response, 'Unknown')
+        self.assertContains(response, '01') # should be January but Python inanely doesn't handle <1900 dates
+        self.assertContains(response, '1888')
+        
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
         

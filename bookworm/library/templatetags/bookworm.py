@@ -24,20 +24,27 @@ def last_chapter_read(context, document):
 def date_metadata(document, field):
     '''Try some common date formats to get display in a Bookworm-style date,
     otherwise give up.'''
-    metadata = document._get_metadata(field, document.opf) 
+    metadata = document._get_metadata(field, document.opf, as_list=True) 
+    if not metadata:
+        return 'Unknown'
+    metadata = metadata[0]
+    print metadata
     try:
         try:
             t = datetime.strptime(metadata, "%Y-%m-%d %H:%M:%S")
         except ValueError:
             try:
                 t = datetime.strptime(metadata, "%Y-%m-%d")            
-            except ValueError:
+            except ValueError, e:
+                log.debug(e)
                 return metadata
         try:
             return datetime.strftime(t, "%A, %B %d %Y")
-        except ValueError:
+        except ValueError, e:
+            log.debug(e)
             return metadata
-    except:
+    except Exception, e:
+        log.error(e)
         return "Unknown"
 
 @register.simple_tag
