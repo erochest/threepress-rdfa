@@ -13,7 +13,7 @@ from bookworm.library.epub import InvalidEpubException
 import bookworm.library.epub.toc as util
 
 log = logging.getLogger('update-meta')
-log.setLevel(logging.INFO)
+log.setLevel(logging.DEBUG)
 
 lockfile = '/tmp/update-meta.lck'
 try:
@@ -34,6 +34,7 @@ def index():
         try:
             util.xml_from_string(e.opf)
         except InvalidEpubException:
+            log.debug("Will delete %s (Bookworm ID %s)" % (e.title, e.id))
             to_delete.append(e)
             continue
             
