@@ -13,7 +13,7 @@ from bookworm.library.epub import InvalidEpubException
 import bookworm.library.epub.toc as util
 
 log = logging.getLogger('update-meta')
-log.setLevel(logging.DEBUG)
+log.setLevel(logging.INFO)
 
 lockfile = '/tmp/update-meta.lck'
 try:
@@ -42,10 +42,11 @@ def index():
                 if not h.processed_content:
                     log.debug("Rendering HTML content for %s:%s" % (e.title, h.filename))
                     h.render()
-            except Exception, e:
-                log.error(e)
+            except Exception, e1:
+                log.error(e1)
                 h.words = "[Unsupported language]"
-            h.words = epubindexer.get_searchable_content(h.processed_content)                
+            if not h.words:
+                h.words = epubindexer.get_searchable_content(h.processed_content)                
             h.save()
         log.debug("Done processing HTML for %s" % e.title)
         # If we get None from any of these metadata items, then the document is
