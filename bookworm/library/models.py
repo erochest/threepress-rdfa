@@ -259,7 +259,7 @@ class EpubArchive(BookwormModel):
 
         elif len(identifier) > 1:
             # If we have multiple ones, try to ID them
-            unique_identifier_tagname = self._parsed_metadata.xpath('//opf:package/@unique-identifier', namespaces={'opf':NS['opf']})
+            unique_identifier_tagname = self._parsed_metadata.xpath('//opf:package/@unique-identifier', namespaces={'opf':NS['opf']})[0]
             log.debug("Got unique identifier tagname as %s" % unique_identifier_tagname)
             for i in identifier:
                 id_type = self._identifier_type(i)
@@ -277,8 +277,9 @@ class EpubArchive(BookwormModel):
                         i = 'urn:uuid' + i
                     self.identifier = i
 
-            if not self.identifier:
-                self.identifier = self._parsed_metadata.xpath('//{%s}%s' % (NS['dc'], unique_identifier_tagname))[0]
+            if not self.identifier and unique_identifier_tagname:
+                self.identifier = self._parsed_metadata.xpath('//dc:identifier[@id="%s"]' % unique_identifier_tagname,
+                                                              namespaces={'dc':NS['dc']})[0]
             if not self.identifier:                
                 # If we failed at getting the matching ID, just pick the first one
                 self.identifier = identifier[0]
