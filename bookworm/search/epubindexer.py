@@ -14,7 +14,7 @@ log = logging.getLogger('search.epubindexer')
 def get_searchable_content(content):
     '''Returns the content of a chapter as a searchable field'''
     try:
-        html = fromstring(str(content))
+        html = fromstring(content)
     except TypeError: # soupparser.py bug
         return None
     ns = get_namespace(content)
