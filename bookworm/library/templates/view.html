@@ -40,7 +40,11 @@
 {% endblock extra_javascript %}
 
 {% block rightnav %}
-<div id="bw-right-arrow">Forward ↳</div>
+  {% if request.user.get_profile.simple_reading_mode %}
+    {% if next %}
+      <div id="bw-right-arrow">Forward ↳</div>
+    {% endif %}
+  {% endif %}
 {% endblock rightnav %}
 
 {% block localstyles %}{% spaceless %}

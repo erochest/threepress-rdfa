@@ -85,7 +85,9 @@
 
 {# True if we are in reading mode #}
 
-<div id="bw-left-arrow">↲ Back</div>
+{% if previous %}
+  <div id="bw-left-arrow">↲ Back</div>
+{% endif %}
 
   {% endif %}
 
