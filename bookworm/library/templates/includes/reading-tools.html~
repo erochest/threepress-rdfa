@@ -1,3 +1,0 @@
-{% load i18n %}
-<span id="bw-font-label">{% trans "Font" %}</span> <a href="#" class="changer" id="bw-increase-font">+</a> / <a href="#" class="changer" id="bw-decrease-font">-</a>
-{% include "includes/toggle-reading-mode.html" %}            

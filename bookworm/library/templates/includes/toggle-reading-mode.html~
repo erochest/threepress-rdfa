@@ -1,2 +1,0 @@
-  <form action="{% url profile_toggle_reading_mode %}" method="post" id="bw-toggle-reading-mode" />
-  <span style="font-size: largest" onclick="$('#bw-toggle-reading-mode').submit()">❐</span>
