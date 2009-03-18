@@ -42,7 +42,6 @@ jQuery(document).ready(function() {
             }
             num = round_to(num, 5);
             update_font_size(main_text, num, unit);
-            console.log(get_font_sizing(main_text));
             jQuery.post('/account/profile/change-font-size/' + num + unit + '/');
             return false;
         });
