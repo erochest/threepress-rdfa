@@ -1,4 +1,7 @@
 {% load i18n %}
+
+{% if not request.user.get_profile.simple_reading_mode %}
+
 {% spaceless %}
 <a name="toc">&nbsp;</a>
 {% if mobile %}
@@ -10,7 +13,6 @@
 {% if request.session.common.mobile %}
 {{ document.title }}
 {% endif %}
-{% trans "by <!-- trans: this book is written by -->" %}
 {% for a in document.authors.all %}
   {{ a }}{% if not forloop.last %}, {% endif %}
 {% endfor %}
@@ -27,6 +29,7 @@
   {% else %}
   {% trans "Book information" %}
   {% endif %}
+
   </li>
 
   <li class="bw-first">
@@ -77,3 +80,13 @@
   </ol>
 {% endfor %}
 {% endspaceless %}
+
+{% else %}
+
+{# True if we are in reading mode #}
+
+<div id="bw-left-arrow">↲ Back</div>
+
+  {% endif %}
+
+

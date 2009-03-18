@@ -1,0 +1,5 @@
+{% load i18n %}
+<span id="bw-font-label">{% trans "Size" %}: <a href="#" class="bw-font-size-changer" title="{{ _("Increase font size") }}" id="bw-increase-font">+</a> / <a href="#" class="bw-font-size-changer" title="{{ _("Decrease font size") }}" id="bw-decrease-font">-</a></span>
+<span id="bw-font-label">{% trans "Font" %}: <a href="#" class="bw-font-family-changer" title="{{ _("Use a serif font") }}" id="bw-serif-font">T</a> / <a href="#" class="bw-font-family-changer" title="{{ _("Use a sans-serif font") }}" id="bw-sans-serif-font">T</a></span>
+
+{% include "includes/toggle-reading-mode.html" %}            

@@ -439,7 +439,11 @@ class EpubArchive(BookwormModel):
         (From OPF spec: The spine element must include the toc attribute, 
         whose value is the the id attribute value of the required NCX document 
         declared in manifest)'''
-        tocid = opf.find('.//{%s}spine' % NS['opf']).get('toc')
+        spine = opf.find('.//{%s}spine' % NS['opf'])
+        if spine is None:
+            raise InvalidEpubException("Could not find an opf:spine element in this document")
+        tocid = spine.get('toc')
+
         if tocid:
             try:
                 toc_filename = opf.xpath('//opf:item[@id="%s"]' % (tocid),
@@ -927,11 +931,10 @@ class UserPref(BookwormModel):
     timezone = models.CharField(max_length=50, blank=True)
     nickname = models.CharField(max_length=500, blank=True)
     open_to_last_chapter = models.BooleanField(default=False)
+    simple_reading_mode = models.BooleanField(default=False)
+    font_size = models.CharField(max_length=10, default='1')
+    font_family = models.CharField(max_length=20, blank=True)
 
-    # Deprecated
-    use_iframe = models.BooleanField(default=False)
-    show_iframe_note = models.BooleanField(default=True)
-    
     @property
     def username(self):
         return self.user.username

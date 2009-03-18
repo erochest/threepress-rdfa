@@ -4,6 +4,7 @@ from django.core.mail import EmailMessage
 
 import logging, sys, urllib, MySQLdb, cStringIO, os.path, unicodedata, traceback
 from zipfile import BadZipfile
+from decimal import Decimal
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, Http404, HttpResponse
@@ -345,6 +346,40 @@ def profile_delete(request):
         _delete_document(request, d)
 
     return HttpResponseRedirect('/') # fixme: actually log them out here
+
+
+@login_required
+def profile_toggle_reading_mode(request):
+    '''Toggle whether to use the simple reading more or the default mode.'''
+    if request.method == 'POST':
+        profile = request.user.get_profile()
+        profile.simple_reading_mode = not(profile.simple_reading_mode)
+        log.debug('setting reading mode to %s' % profile.simple_reading_mode)
+        profile.save()
+    url = request.META.get('HTTP_REFERER')
+    if url is None:
+        url = '/library/'
+    return HttpResponseRedirect(url)
+
+@login_required
+def profile_change_font_size(request, size):
+    '''Change the font size associated with the user's account'''
+    if request.method == 'POST':
+        profile = request.user.get_profile()
+        profile.font_size = size;
+        log.debug('setting font size to %s' % profile.font_size)
+        profile.save()
+    return HttpResponse('1')
+
+@login_required
+def profile_change_font_family(request, font):
+    '''Change the font family associated with the user's account'''
+    if request.method == 'POST':
+        profile = request.user.get_profile()
+        profile.font_family = font;
+        log.debug('setting font family to %s' % profile.font_family)
+        profile.save()
+    return HttpResponse('1')
 
 
 @login_required

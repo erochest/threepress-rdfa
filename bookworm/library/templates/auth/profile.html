@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}{% trans "Profile and preferences for <!-- trans: for person -->" %} {{ request.user.username }} {% endblock %}
+{% block title %}{% trans "Profile and preferences for" %} {{ request.user.username }} {% endblock %}
 
 {% block searcharea %}{% endblock %}
 
@@ -32,7 +32,7 @@ form input {
 <li><h3><a href="{% url django_authopenid.views.changeemail %}">{% trans "Change email address" %}</a></h3></li>
 {% endif %}
 {% if request.openid %}
-<li><h3><a href="{% url django_authopenid.views.changeopenid %}">{% trans "Change associated OpenID" %}</a></h3></li>
+<li><h3><a href="{% url django_authopenid.views.changeopenid %}">{% trans "Change linked OpenID" %}</a></h3></li>
 {% endif %}
 <li><h3><a href="{% url django_authopenid.views.delete %}">{% trans "Delete this account" %}</a></h3></li>
 </ol>
@@ -109,6 +109,7 @@ and should be changed with your OpenID provider, rather than with Bookworm.</p>
       <th>{% trans "Open to last-read chapter when reading a book?" %}</th>
       <td> {{ form.open_to_last_chapter }}</td>
     </tr>
+
   </tbody>
 </table>
 

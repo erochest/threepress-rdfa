@@ -47,6 +47,11 @@ urlpatterns = patterns('bookworm.library.views',
                        # User profile
                        url(r'^account/profile/$', 'profile', name='profile'),
                        url(r'^account/profile/delete/$', 'profile_delete', name='profile_delete'),
+                       url(r'^account/profile/toggle-reading-mode/$', 'profile_toggle_reading_mode', name='profile_toggle_reading_mode'),
+                       url(r'^account/profile/change-font-size/(?P<size>.+)/$', 'profile_change_font_size', name='profile_change_font_size'),
+                       url(r'^account/profile/change-font-family/(?P<font>.+)/$', 'profile_change_font_family', name='profile_change_font_family'),
+
+
 )
 
 urlpatterns += patterns('django.views.generic.simple',

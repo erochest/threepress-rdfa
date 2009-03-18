@@ -1,4 +1,5 @@
 {% extends "base.html" %} 
+{% load i18n %}
 {% load bookworm %}
 {% load librarything_tags %}
 
@@ -6,24 +7,72 @@
 {% if chapter.title %} '{{ chapter.title }}' in {% endif %} {{ document.title }} {% if document.author %} by {{ document.author }} {% endif %}
 {% endspaceless %}{% endblock title %}
 
-{% block localstyles %}{% spaceless %}{% for css in stylesheets %}<link rel="stylesheet" href="{% url view_stylesheet document.safe_title,document.key,css.filename %}" />{% endfor %}{% endspaceless %}{% endblock %}
+{% block orm_header %}{% endblock orm_header %}
+{% block overridestyles %}{% spaceless %}
+<link rel="stylesheet" href="/static/document.css"></link>
+{% if request.user.get_profile.simple_reading_mode %}
+  <link rel="stylesheet" href="{{ MEDIA_URL }}simple.css"></link>
+{% endif %}
+{% endspaceless %}
+{% endblock %}
+
+
+
+{% block reading_tools %}
+   <div style="padding-top: 3px">{% include "includes/reading-tools.html" %}</div>
+{% endblock %}
+
+{% block simple_reading_mode_override %}
+   {% if request.user.get_profile.simple_reading_mode %}
+    <h3 class="bw-signed-in" >   
+      {% include "includes/reading-tools.html" %}
+    </h3>
+   {% else %}
+      {{ block.super }}
+   {% endif %}
+{% endblock simple_reading_mode_override %}
+
+{% block extra_javascript %}
+  {% if request.user.get_profile.simple_reading_mode %}
+  <script type="text/javascript" src="{{ MEDIA_URL }}simple.js"></script>
+  {% else %}
+  {% endif %}
+{% endblock extra_javascript %}
+
+{% block rightnav %}
+<div id="bw-right-arrow">Forward ↳</div>
+{% endblock rightnav %}
+
+{% block localstyles %}{% spaceless %}
+{% for css in stylesheets %}<link rel="stylesheet" href="{% url view_stylesheet document.safe_title,document.key,css.filename %}" />{% endfor %}{% endspaceless %}{% endblock %}
 
 {% block head %}
 {% spaceless %}
-<link rel="stylesheet" href="/static/document.css"></link>
-<link rel="stylesheet" href="/static/cycle.css"></link>
 {% include "includes/meta.html" %}
+<style type="text/css">
+  #bw-book-content, #bw-book-content p, #bw-book-content div {
+    font-size: {{ request.user.get_profile.font_size}};
+    {% if request.user.get_profile.font_family %}
+      font-family: {{ request.user.get_profile.font_family}};
+    {% endif %}
+  }
+
+</style>
 {% endspaceless %}
 {% endblock head %}
 
 {% block header %}
-<a href="{% url view_first document.safe_title,document.key %}"><span class="bw-title">{{ document.title }}</span></a> 
+{% if request.user.get_profile.simple_reading_mode %}
+   <a href="{% url library %}">⇦</a>&#160;&#160;
+{% endif %}
+<a href="{% url view_first document.safe_title,document.key %}"><h2 class="bw-title">{{ document.title }}</h2></a> 
+{% if request.user.get_profile.simple_reading_mode %}
+  by {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
+{% endif %}
 {% endblock header %}
 
 {% block leftnav %}
-
   {% include "includes/leftnav.html" %}
-
 {% endblock leftnav %}
 
 {% block main %}
@@ -36,7 +85,7 @@
 {% endif %}
 {% if chapter %}
    <div id="bw-results_nav_top">{% include "includes/chapter_next_previous.html" %}</div>
-      <div id="bw-book-content" >{% render chapter %}</div>
+     <div>{% render chapter %}</div> 
    <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
 
    {% if stanza_compatible %}
@@ -166,3 +215,11 @@
 </div>
 
 {% endblock main %}
+{% block footer_block %}
+<span>
+   <a href="{% url library %}">⇦</a>&#160;&#160;
+   <a href="{% url view_first document.safe_title,document.key %}"><h2 class="bw-title">{{ document.title }}</h2></a> 
+  by {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
+on <a href="{% url library %}">Bookworm</a>
+</span>
+{% endblock footer_block %}

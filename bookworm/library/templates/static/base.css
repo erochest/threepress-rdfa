@@ -273,7 +273,7 @@ div.bw-generic {
   display:inline;
 }
 #bw-shell-table {
-  margin-left: 60px; padding: 0 60px 100px 0; background-color:white;
+  margin-left: 60px; padding: 0 60px 100px 0; background-color:white; 
 }
 #bw-shell-table-content {
    background-color:white;padding-right: 50px;width:100%;
@@ -580,8 +580,9 @@ table.bw-pagination th {
 #bw-library span.bw-added {
   color: gray;
 }
-#bw-library span.bw-title a {
-
+h2.bw-title {
+  display:inline;
+  font-size: 1em;
 }
 
 table.bw-pagination a {
@@ -625,4 +626,13 @@ table.bw-pagination a {
 
 #bw-content form fieldset {
   border: 1px solid rgb(200,200,200) ;
+}
+#bw-font-label {
+  padding-right: 1em;
+}
+#bw-sans-serif-font {
+  font-family: sans-serif !important;
+}
+#bw-serif-font {
+  font-family: serif !important;
 }

@@ -740,6 +740,12 @@ class TestModels(unittest.TestCase):
         self.assertEquals(document.get_description(),
                           'This is a description')
         
+
+    def test_invalid_no_spine(self):
+        '''Return a proper exception if this OPF has no spine (checked in model)'''
+        document = self.create_document('invalid-no-spine.epub')
+        self.assertRaises(InvalidEpubException, document.explode)
+        
     def create_document(self, document, identifier=''):
         epub = MockEpubArchive(name=document)
         epub.identifier = identifier
@@ -1333,6 +1339,36 @@ class TestViews(DjangoTestCase):
         self.assertContains(response, '01') # should be January but Python inanely doesn't handle <1900 dates
         self.assertContains(response, '1888')
         
+    def test_switch_reading_mode(self):
+        '''Allow users to toggle between simple and default reading modes'''
+        name = 'Pride-and-Prejudice_Jane-Austen.epub'
+        self._upload(name)
+        response = self.client.get('/library/')
+        self.assertEquals(False, self.user.get_profile().simple_reading_mode)
+
+        response = self.client.post('/account/profile/toggle-reading-mode/')
+        self.assertRedirects(response, '/library/')
+
+        self.assertEquals(True, UserPref.objects.get(user=self.user).simple_reading_mode)        
+
+        # Look for the appropriate css
+        response = self.client.get('/view/test/1/')
+        self.assertContains(response, 'simple.css')
+
+        response = self.client.post('/account/profile/toggle-reading-mode/')
+        self.assertRedirects(response, '/library/')
+        self.assertEquals(False, UserPref.objects.get(user=self.user).simple_reading_mode)        
+
+        # Now the CSS should be gone
+        response = self.client.get('/view/test/1/')
+        self.assertNotContains(response, 'simple.css')
+
+        # Nothing should happen if we used GET
+        response = self.client.get('/account/profile/toggle-reading-mode/')
+        self.assertRedirects(response, '/library/')
+        self.assertEquals(False, UserPref.objects.get(user=self.user).simple_reading_mode)        
+
+
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
         
