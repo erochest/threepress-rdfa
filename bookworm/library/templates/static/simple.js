@@ -26,3 +26,37 @@
         document.location.href = $('span.bw-next:first a').attr('href');
       }
     });
+
+       $(document).bind('keydown', function(e) {
+           var code = (e.keyCode ? e.keyCode : e.which);
+           console.log(code);
+           if (code == 78 ) {  // 'n'
+               if ($('span.bw-next:first a').attr('href') != null) {
+                   document.location.href = $('span.bw-next:first a').attr('href');
+               }
+           }
+           if (code == 80) {  // 'p'
+               if ($('span.bw-previous:first a').attr('href') != null) {
+                   document.location.href = $('span.bw-previous:first a').attr('href');
+               }
+           }
+           if (code == 74) { // 'j'
+               var current_top = $(window).scrollTop();
+               //               console.log('current top: ' + current_top);
+               var window_height = $(window).height();
+               //               console.log('window height ' + window_height);
+               $('html, body').animate({ 
+                       scrollTop: current_top + window_height
+               }, 300);
+           }
+           if (code == 75 ) { // 'k'
+               var current_top = $(window).scrollTop();
+               //               console.log('current top: ' + current_top);
+               var window_height = $(window).height();
+               //               console.log('window height ' + window_height);
+               var scroll_to = Math.floor(current_top - window_height);
+               $('html, body').animate({ 
+                       scrollTop: scroll_to
+               }, 300);
+           }
+           });
