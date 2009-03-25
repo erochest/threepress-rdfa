@@ -96,6 +96,7 @@ ugettext = lambda s: s
 LANGUAGES = (
   ('de', ugettext('German')),
   ('en', ugettext('English')),
+  ('da', ugettext('Danish')),
 )
 
 ROOT_URLCONF = 'urls'

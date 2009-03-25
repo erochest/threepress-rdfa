@@ -29,15 +29,11 @@
 
 <hr />
 <p style="font-size:smaller">
-{% blocktrans %}
-For questions or problems with Bookworm, please contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
-{% endblocktrans %}
+{% blocktrans %}For questions or problems with Bookworm, please contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>{% endblocktrans %}
 </p>
 
 <p style="font-size:smaller">
-{% blocktrans %}
-For more information about Threepress, please visit our <a href="http://threepress.org/about/">About</a> page.
-{% endblocktrans %}
+{% blocktrans %}For more information about Threepress, please visit our <a href="http://threepress.org/about/">About</a> page.{% endblocktrans %}
 </p>
 {% endblock leftnav %}
 
@@ -83,137 +79,104 @@ For more information about Threepress, please visit our <a href="http://threepre
   </div>
 
   <p>
-    {% blocktrans %}
-    Because your books are stored on the Bookworm site, you can read them from any web browser
+    {% blocktrans %}Because your books are stored on the Bookworm site, you can read them from any web browser
     and on most mobile web devices, anywhere in the world!  We're working on ways for you to read your
-    book content on your mobile phone even when you aren't connected to the internet.
-    {% endblocktrans %}
+    book content on your mobile phone even when you aren't connected to the internet.{% endblocktrans %}
   </p>
   <p>
     {% url tour as toururl %}
-    {% blocktrans %}
-    <a href="{{ toururl }}">Take the tour</a> to see an example of Bookworm in action. 
-    {% endblocktrans %}
+    {% blocktrans %}<a href="{{ toururl }}">Take the tour</a> to see an example of Bookworm in action.{% endblocktrans %}
     
   </p>
   <a name="whats_epub"></a>
   <h2>{{ _("What is ePub?") }}</h2>
   <p>
-    {% blocktrans %}
-    ePub is the open ebook standard developed by the <a
+    {% blocktrans %}ePub is the open ebook standard developed by the <a
     href="http://www.idpf.org/">International Digital Publishing
     Forum</a> (<acronym>IDPF</acronym>).  It is based on a number of
     other open standards including XHTML, making ePub books ideally suited to
-    be read on web browsers. 
-    {% endblocktrans %}
+    be read on web browsers. {% endblocktrans %}
   </p>
   <p>
-    {% blocktrans %}
-    ePub books can be read on your home computer (using Bookworm, Adobe Digital Editions or Stanza), 
-    on your iPhone (using Bookworm or Stanza) and on the Sony Reader.
-    {% endblocktrans %}
+    {% blocktrans %}ePub books can be read on your home computer (using Bookworm, Adobe Digital Editions or Stanza), 
+    on your iPhone (using Bookworm or Stanza) and on the Sony Reader{% endblocktrans %}
   </p>
   <p><a href="{% url epub %}">{{ _("More about ePub")}}</a></p>
 
   <a name="mobile"></a>
   <h2>{{ _("Can I use Bookworm on my mobile device?") }}</h2>
   <p>
-    {% blocktrans %}
-    <a href="{{ toururl }}}#step3"><img src="/static/images/screenshots/iphone.png" alt="Bookworm on the iPhone" class="bw-screenshot-page" align="right" style="margin-bottom:10px" width="100"/></a>
+    {% blocktrans %}<a href="{{ toururl }}}#step3"><img src="/static/images/screenshots/iphone.png" alt="Bookworm on the iPhone" class="bw-screenshot-page" align="right" style="margin-bottom:10px" width="100"/></a>
     Absolutely!  A special version of the site optimized for mobile devices (especially 
     the iPhone) is available at <a href="http://m.bookworm.oreilly.com/">http://m.bookworm.oreilly.com/</a>.
-    Bookworm has also been tested on the Blackberry, Opera Mobile and the Kindle's Whispernet service.
-    {% endblocktrans %}
+    Bookworm has also been tested on the Blackberry, Opera Mobile and the Kindle's Whispernet service.{% endblocktrans %}
   </p>
   <p>
-    {% blocktrans %}
-    In addition to reading material directly on Bookworm, iPhone users can export their
+    {% blocktrans %}In addition to reading material directly on Bookworm, iPhone users can export their
     Bookworm books to <a href="http://www.lexcycle.com/">Stanza</a>.   For more
-    information, see the <a href="{{ toururl }}#step4">tour</a>.
-    {% endblocktrans %}
+    information, see the <a href="{{ toururl }}#step4">tour</a>.{% endblocktrans %}
   </p>
   <a name="where_epubs"></a>
   <h2>{{ _("Where can I get ePubs?") }}</h2>
   <p>
-    {% blocktrans %}
-    As of March 2009, many publishers are getting on board with
+    {% blocktrans %}As of March 2009, many publishers are getting on board with
     ePub. O'Reilly, Penguin, Harper-Collins and Random House have all released titles in the format.
-    An updated list of ePub bookstores can be found at <a href="http://www.epubbooks.com/">epubbooks.com</a>.
-    {% endblocktrans %}
+    An updated list of ePub bookstores can be found at <a href="http://www.epubbooks.com/">epubbooks.com</a>.{% endblocktrans %}
   </p>
     <a name="cant_read"></a>
   <h2>{{ _("I'm not able to read this ePub book I uploaded")}}</h2>
   <p>
-    {% blocktrans %}
-    There may be a problem with the e-book (many publishers are still
+    {% blocktrans %}There may be a problem with the e-book (many publishers are still
     learning how to create them), or there may be a bug in Bookworm.
     If you encounter an error while uploading or reading a book, the
     Bookworm developers are automatically notified and will fix the
-    problem if possible.
-    {% endblocktrans %}
+    problem if possible.{% endblocktrans %}
   </p>
   <p>
-    {% blocktrans %}
-    It may also be that you've uploaded a book that includes Digital
+    {% blocktrans %}It may also be that you've uploaded a book that includes Digital
     Rights Management (DRM).  Bookworm does not support DRM'ed books.
     Check the website where you purchased the book for information on
     how to read it (and complain to the publisher that you can't read
-    your books where you'd like!)
-    {% endblocktrans %}
+    your books where you'd like!){% endblocktrans %}
   </p>
   <p>
     {% url help as helpurl %}
-    {% blocktrans %}
-    Please also see the <a href="{{ helpurl }}">Help</a> page for more
-    tips on troubleshooting Bookworm.
-    {% endblocktrans %}
+    {% blocktrans %}Please also see the <a href="{{ helpurl }}">Help</a> page for more
+    tips on troubleshooting Bookworm.{% endblocktrans %}
   </p>
   <a name="publisher"></a>
   <h2>{{ _("I'm a publisher and I have questions or feature requests") }}</h2>
   <p>
-    {% blocktrans %}
-    Threepress is a publisher-serving corporation with many years of experience in building
+    {% blocktrans %}Threepress is a publisher-serving corporation with many years of experience in building
     products in the industry.  We would be happy to discuss the ePub format, getting your books
     into ePub and even extending Bookworm with custom features for your publications.  Please
     contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
-    and we'll get back to you right away.
-    {% endblocktrans %}
+    and we'll get back to you right away.{% endblocktrans %}
   </p>
   <a name="other_formats"></a>
   <h2>{{ _("Will other book formats be supported, such as PDF or mobi? What about DRM ebooks?") }}</h2>
   <p>
-    {% blocktrans %}
-    Bookworm is meant to push adoption of the open ePub format and there are no plans to 
-    support closed formats like mobi or those with limited flexibility like PDF.  
-    {% endblocktrans %}
+    {% blocktrans %}Bookworm is meant to push adoption of the open ePub format and there are no plans to 
+    support closed formats like mobi or those with limited flexibility like PDF.  {% endblocktrans %}
   </p>
   <p>
-    {% blocktrans %}
-    DRM (digital rights management) has been shown to be detrimental to technology adoption,
+    {% blocktrans %}DRM (digital rights management) has been shown to be detrimental to technology adoption,
     does not significantly prevent piracy, and provides a terrible user experience.
     Bookworm will never support DRM'ed ebooks that require special software to unlock.
-    Instead we encourage publishers to explore forms of "soft" DRM (such as watermarking digital books with the name of the purchaser).
-    {% endblocktrans %}
+    Instead we encourage publishers to explore forms of "soft" DRM (such as watermarking digital books with the name of the purchaser).{% endblocktrans %}
   </p>
   <a name="sharing"></a>
   <h2>
-    {% blocktrans %}
-  Is it possible to share my books with other Bookworm users, or link to one of my books?
-    {% endblocktrans %}
+    {% blocktrans %}Is it possible to share my books with other Bookworm users, or link to one of my books?{% endblocktrans %}
   </h2>
 
   <p>
-    {% blocktrans %}
-    There is limited support for sharing on Bookworm.  Books that are in the public domain,
+    {% blocktrans %}There is limited support for sharing on Bookworm.  Books that are in the public domain,
     books uploaded by their own authors, or publishers who authorize books to be public
-    can all make Bookworm books accessible to the larger internet.  
-    {% endblocktrans %}
+    can all make Bookworm books accessible to the larger internet.{% endblocktrans %}
   </p>
   <p>
-    {% blocktrans %}
-    Public books are in a very early beta stage.  To request that a book be made public,
-    please contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> for more information.
-    {% endblocktrans %}
+    {% blocktrans %}Public books are in a very early beta stage.  To request that a book be made public, please contact <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> for more information.{% endblocktrans %}
   </p>
   <a name="backup"></a>
   <h2> {% blocktrans %} Are my books securely stored and backed up?{% endblocktrans %}
