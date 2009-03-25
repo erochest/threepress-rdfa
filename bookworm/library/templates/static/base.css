@@ -396,7 +396,7 @@ h3.bw-upload-message {
   background-image: url(/static/yellow-gradiant.png);
   background-repeat: repeat-x;
   height:500px;
-
+  width:700px;
 }
 #bw-public-features .bw-public-screenshot-holder {
   float:right;
@@ -418,8 +418,7 @@ h3.bw-upload-message {
   padding-left: 10px;
 }
 #bw-public-features p {
-  float:left;
-  width:350px;
+  width:325px;
   padding-left: 20px;
 }
 
