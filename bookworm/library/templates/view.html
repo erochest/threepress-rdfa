@@ -42,7 +42,7 @@
 {% block rightnav %}
   {% if request.user.get_profile.simple_reading_mode %}
     {% if next %}
-      <div id="bw-right-arrow">Forward ↳</div>
+      <div id="bw-right-arrow">Forward <img src="{{ MEDIA_URL }}images/forward-arrow.png" alt="-&gt;" /></div>
     {% endif %}
   {% endif %}
 {% endblock rightnav %}
@@ -67,11 +67,11 @@
 
 {% block header %}
 {% if request.user.get_profile.simple_reading_mode %}
-   <a href="{% url library %}">⇦</a>&#160;&#160;
+   <a href="{% url library %}"><img src="{{ MEDIA_URL }}images/left-arrow.png" alt="-&gt;" class="bw-tool-image"/></a>&#160;&#160;
 {% endif %}
 <a href="{% url view_first document.safe_title,document.key %}"><h2 class="bw-title">{{ document.title }}</h2></a> 
 {% if request.user.get_profile.simple_reading_mode %}
-  by {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
+&#160;&#160;  by {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
 {% endif %}
 {% endblock header %}
 
@@ -221,9 +221,9 @@
 {% endblock main %}
 {% block footer_block %}
 <span>
-   <a href="{% url library %}">⇦</a>&#160;&#160;
+   <a href="{% url library %}"><img src="{{ MEDIA_URL }}images/left-arrow.png" alt="&lt;-" class="bw-tool-image" /></a>&#160;&#160;
    <a href="{% url view_first document.safe_title,document.key %}"><h2 class="bw-title">{{ document.title }}</h2></a> 
-  by {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
+&#160;&#160;  by {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
 on <a href="{% url library %}">Bookworm</a>
 </span>
 {% endblock footer_block %}

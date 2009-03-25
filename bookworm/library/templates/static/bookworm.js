@@ -62,27 +62,30 @@ jQuery(document).ready(function() {
 
         
 });
+
 function round_to(n, sig) {
     var mult = Math.pow(10, sig - Math.floor(Math.log(n) / Math.LN10) - 1);
     return Math.round(n * mult) / mult;
 }
 
-
 function get_font_sizing(mainText) {
     return  mainText.css('font-size');
 }
+
 function get_font_num(current_size) {
     return parseFloat(current_size, 10);
 }
+
 function get_font_unit(current_size) {
     return current_size.slice(-2);        
 }
+
 function update_font_size(el, num, unit) {
     el.css('font-size', num + unit);
     el.find('p').css('font-size', num + unit);
     el.find('div').css('font-size', num + unit);
-
 }
+
 function update_font_family(el, font) {
     el.css('font-family', font);
     el.find('p').css('font-family', font);

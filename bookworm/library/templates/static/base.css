@@ -635,3 +635,8 @@ table.bw-pagination a {
 #bw-serif-font {
   font-family: serif !important;
 }
+.bw-tool-image {
+ padding:0;
+ margin:0;
+ border:0;
+}

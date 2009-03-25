@@ -70,14 +70,15 @@ height: 100%;
 }
 #bw-shell-table-content {
  margin:0;
- padding: 1em 3em 0 3em;
- width:inherit;
+ padding: 1em 0 0 3em;
+ width:70%;
 }
 
 #bw-main {
   border:0;
   margin:0;
   padding:0;
+  width:90%;
 }
 #bw-results_nav_top {
   border: 0;
