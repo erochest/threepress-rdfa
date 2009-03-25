@@ -17,11 +17,11 @@
 
     <div id="bw-header">
       <div id="bw-mb-header_logo">
-        <h1 class="bw-mb-logo"><a href="{% url index %}"><span class="bw-logo">bookworm ~</span> mobile ebooks</a></h1>
-        <h2 class="bw-mb-motto"><a href="/about/">about</a></h2>
-        <h2 class="bw-mb-motto"><a href="{% url help %}">help</a></h2>
+        <h1 class="bw-mb-logo"><a href="{% url index %}"><span class="bw-logo">bookworm ~</span> {{ _("mobile ebooks") }}</a></h1>
+        <h2 class="bw-mb-motto"><a href="/about/">{{ _("about") }}</a></h2>
+        <h2 class="bw-mb-motto"><a href="{% url help %}">{{ _("help")}}</a></h2>
 	{% if request.user.username %}
-        <h2 class="bw-mb-motto"><a href="{%  url index %}">my books</a></h2>
+        <h2 class="bw-mb-motto"><a href="{%  url index %}">{{ _("my books")}}</a></h2>
 	{% endif %}
       </div>
     </div>
@@ -32,11 +32,11 @@
              {% if request.user.is_superuser %}
              <a class="bw-admin-link bw-profile-link" href="/admin">admin</a> ~
              {% endif %}
-             <a class="bw-logout-link bw-profile-link" href="{% url user_signout %}">logout</a> 
+             <a class="bw-logout-link bw-profile-link" href="{% url user_signout %}">{{ _("logout") }}</a> 
              {% endif %}
              </p>
         </div>
-     <h1><a name="bwmain" style="visibility:hidden">&nbsp;</a>{% block header %}Library{% endblock header %}</h1>
+     <h1><a name="bwmain" style="visibility:hidden">&nbsp;</a>{% block header %}{{ _("Library") }}{% endblock header %}</h1>
 
     </div>
     {% block main %}{% endblock main %}
