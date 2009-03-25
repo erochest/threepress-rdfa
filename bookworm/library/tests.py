@@ -1329,6 +1329,23 @@ class TestViews(DjangoTestCase):
         response = self.client.post('/i18n/setlang/',
                                     { 'language':'en'})       
 
+    def test_translation_da(self):
+        '''Ensure that we're getting Danish content appropriately'''
+        name = 'Pride-and-Prejudice_Jane-Austen.epub'
+        self._upload(name)
+        response = self.client.get('/library/')        
+        self.assertContains(response, 'Signed in')
+
+        response = self.client.post('/i18n/setlang/',
+                                    { 'language':'da'})
+        response = self.client.get('/library/')        
+        self.assertContains(response, 'Onlinelæsning af ePub-ebøger')        
+
+        response = self.client.post('/i18n/setlang/',
+                                    { 'language':'en'})       
+
+
+
     def test_view_with_multiple_dates(self):
         '''Was returning 'Unknown' rather than displaying a date.  Ultimately should
         be able to handle all dates and provide appropriate opf:event information.'''

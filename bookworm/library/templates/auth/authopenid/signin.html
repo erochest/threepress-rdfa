@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Sign in{% endblock %}
+{% block title %}{{ _("Sign in") }}{% endblock %}
 
 {% block head %}
 
@@ -26,7 +26,7 @@ jQuery(document).ready(function() {
 
 {% block header %}
 {% if mobile %} 
-    Bookworm: ePub ebook reader 
+    Bookworm: {{ _("ePub ebook reader") }}
 {% else %}
 Sign in to Bookworm
 {% endif %}
@@ -35,10 +35,10 @@ Sign in to Bookworm
 {% endblock header %}
 
 {% block leftnav %}
-<h2>New to Bookworm?</h2>
+<h2>{{ _("New to Bookworm?") }}</h2>
 <ol>
-  <li><a href="{% url tour %}">Take the tour</a></li>
-  <li><a style="font-weight:bold" id="bw-public-register" href="{% url django_authopenid.views.signup %}" name="register">Sign up</a>!</li>
+  <li><a href="{% url tour %}">{{ _("Take the tour")}}</a></li>
+  <li><a style="font-weight:bold" id="bw-public-register" href="{% url django_authopenid.views.signup %}" name="register">{{ _("Sign up")}}</a>!</li>
 </ol>
 {% endblock %}
 
@@ -57,9 +57,8 @@ Sign in to Bookworm
       {% if form1.password.errors %} 
         <span class="bw-error">{{ form1.password.errors|join:", " }}</span>
       {% endif %}
-      <span>You may have created your account with an OpenID, in which case you won't need your password but should
-      enter your OpenID URL below. 
-      <br/><br/><strong>If you've never created an account, click &lsquo;Sign up&rsquo; on the left.</strong></span>
+      <span>{{ _("You may have created your account with an OpenID, in which case you won't need your password but should enter your OpenID URL below.") }}
+      <br/><br/><strong>{{ _("If you've never created an account, click &lsquo;Sign up&rsquo; on the left.") }}</strong></span>
     </p>
   {% endif %}
 
@@ -67,22 +66,22 @@ Sign in to Bookworm
     <form name="fauth" action="{{ action }}" method="post" id="bw-username-form">
       {{ form1.next }}
       <fieldset>
-        <legend>Sign in using a local Bookworm account</legend>
-        <label for="id_username">Username</label>{{ form1.username }}
+        <legend>{{ _("Sign in using a local Bookworm account") }}</legend>
+        <label for="id_username">{{ _("Username") }}</label>{{ form1.username }}
 	<br/>
-        <label id="bw-username-password-label" for="id_password">Password</label>{{ form1.password }}
-        <input type="submit" name="blogin" value="Sign in" id="bw-mb-username-submit"/>
-        <a id="bw-lost-password" href="{{ sendpw_url }}">Lost your password?</a>
+        <label id="bw-username-password-label" for="id_password">{{ _("Password") }}</label>{{ form1.password }}
+        <input type="submit" name="blogin" value="{{ _("Sign in") }}" id="bw-mb-username-submit"/>
+        <a id="bw-lost-password" href="{{ sendpw_url }}">{{ _("Lost your password?")}}</a>
       </fieldset>	
     </form>
 
     <form name="fopenid" action="{{ action }}" method="post" id="bw-openid-form">
       {{ form2.next }}
       <fieldset>
-        <legend>Sign in using your OpenID</legend>
+        <legend>{{ _("Sign in using your OpenID") }}</legend>
         <label for="id_openid_ul"><img src="/static/openid-logo.png" alt="OpenID" /></label>{{ form2.openid_url }}
-        <input name="bsignin" type="submit" value="Sign in with OpenID" id="bw-mb-openid-submit"/> 
-        <a href="#" class="bw-what-is-openid-link">What's this?</a>
+        <input name="bsignin" type="submit" value="{{ _("Sign in with OpenID") }}" id="bw-mb-openid-submit"/> 
+        <a href="#" class="bw-what-is-openid-link">{{ _("What's this?") }}</a>
       </fieldset>
     </form>	
     {% if not mobile %}

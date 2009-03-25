@@ -67,9 +67,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     "bookworm.library.context_processors.nav",
-    "bookworm.library.context_processors.profile",
     "bookworm.library.context_processors.mobile",
     "bookworm.library.context_processors.local_settings",
+    "bookworm.library.context_processors.profile",
     "bookworm.search.context_processors.search"
 ) 
 
@@ -77,8 +77,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'bookworm.middleware.Language',    
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django_authopenid.middleware.OpenIDMiddleware',
@@ -87,6 +88,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
     'bookworm.minidetector.Middleware',
     'bookworm.middleware.Mobile',
+
 
 )
 
