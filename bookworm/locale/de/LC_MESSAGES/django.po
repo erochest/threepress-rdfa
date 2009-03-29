@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-03-24 22:27-0400\n"
-"PO-Revision-Date: 2009-03-28 19:21+0100\n"
+"PO-Revision-Date: 2009-03-29 16:32+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -141,7 +141,7 @@ msgstr ""
 #: django_authopenid/templates/authopenid/settings.html:44
 #: library/templates/auth/authopenid/settings.html:44
 msgid "delete/"
-msgstr ""
+msgstr "Löschen"
 
 #: django_authopenid/views.py:114
 msgid "The password or OpenID was invalid"
@@ -296,7 +296,7 @@ msgstr "Neues Kennwort wiederholen"
 #: library/templates/auth/authopenid/changepw.html:12
 #: library/templates/auth/authopenid/changepw.html:25
 msgid "Change password"
-msgstr "Kennwortändern"
+msgstr "Kennwort ändern"
 
 #: django_authopenid/templates/authopenid/complete.html:12
 msgid "Your OpenID is verified! "
@@ -691,7 +691,7 @@ msgstr "Ich habe ein Problem festgestellt"
 
 #: library/templates/about.html:57
 msgid "I'm a publisher"
-msgstr "Ich bin ein Herausgeber"
+msgstr "Ich bin Herausgeber"
 
 #: library/templates/about.html:59
 msgid "What about other formats?"
@@ -717,7 +717,7 @@ msgstr "Wie funktioniert es? Was lade ich herunter? "
 msgid ""
 "The great thing about Bookworm is there's nothing to download!  Here's how "
 "it works:"
-msgstr ""
+msgstr "Das Gute an Bücherwurm ist, dass man nichts herunterladen muss! So funktioniert es:"
 
 #: library/templates/about.html:75
 msgid "Create a Bookworm account and log in"
@@ -729,7 +729,7 @@ msgstr "ePub-Buch hinzufügen"
 
 #: library/templates/about.html:77
 msgid "Start reading by just clicking on the book title in your library!"
-msgstr ""
+msgstr "Klicken Sie einfach auf den Buchtitel in Ihrer Bibliothek um anzufangen zu lesen!"
 
 #: library/templates/about.html:82
 msgid ""
@@ -1809,7 +1809,7 @@ msgid "Status"
 msgstr "Status"
 
 #: library/templates/index.html:20
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "There is one reader \n"
 "   "
@@ -1818,7 +1818,7 @@ msgstr[0] "Es gibt nur einen Bücherwurm-Benutzer."
 msgstr[1] "%(counter)s Leser verwenden Bücherwurm."
 
 #: library/templates/index.html:24
-#, fuzzy, python-format
+#, python-format
 msgid ""
 " and only one individual book.\n"
 "   "
@@ -1835,7 +1835,7 @@ msgid "Books in your library"
 msgstr "Bücher in Ihrer Bibliothek"
 
 #: library/templates/index.html:50
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "      Books are listed by <em>%(order_text)s</em> in <em>%(order_direction)"
@@ -1850,9 +1850,7 @@ msgstr ""
 msgid ""
 "You can re-order your books by clicking on  &quot;title&quot;, &quot;"
 "author&quot; or &quot;date added&quot;."
-msgstr ""
-"Sie können Ihre Bücher neu sortieren durch einen Klick auf &quot;"
-"Titel&quot;, &quot;Autor&quot; oder &quot;Hinzugefügt am&quot;."
+msgstr "Sie können Ihre Bücher durch einen Klick auf &quot;Titel&quot;, &quot;Autor&quot; oder &quot;Hinzugefügt am&quot; neu sortieren."
 
 #: library/templates/index.html:61
 msgid "Clicking on the same label twice will reverse the order."
@@ -1883,10 +1881,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"Sie können in den <a href=\"%(urlprofile)s\">Einstellungen</a> auswählen, ob "
-"sie immer zum zuletzt \n"
-"gelesenen Kapitel springen möchten, wenn Sie auf den Titel klicken \n"
-"  "
+"Sie können in den <a href=\"%(urlprofile)s\">Einstellungen</a> auswählen, ob sie immer zum zuletzt \n"
+"gelesenen Kapitel springen möchten, wenn Sie auf den Titel klicken."
 
 #: library/templates/index.html:84 library/templates/shell.html:6
 #: library/templates/shell.html.py:31
@@ -2117,7 +2113,7 @@ msgstr "Hilfe"
 
 #: library/templates/shell.html:54
 msgid "add"
-msgstr "hinzufügen"
+msgstr "Hinzufügen"
 
 #: library/templates/shell.html:55
 msgid "help"
@@ -2452,7 +2448,7 @@ msgstr "Verknüpfte OpenID ändern"
 
 #: library/templates/auth/profile.html:37
 msgid "Delete this account"
-msgstr ""
+msgstr "Dieses Konto löschen"
 
 #: library/templates/auth/profile.html:57
 msgid "User profile and preferences for "
