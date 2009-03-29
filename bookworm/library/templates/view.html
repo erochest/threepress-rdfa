@@ -33,8 +33,12 @@
   <script type="text/javascript" src="{{ MEDIA_URL }}simple.js"></script>
   {% endif %}
   {% if mobile %}
-  <script type="text/javascript" src="{{ MEDIA_URL }}simple.js"></script>
-  <script type="text/javascript" src="{{ MEDIA_URL }}mobile.js"></script>
+     <script type="text/javascript" src="{{ MEDIA_URL }}simple.js"></script>
+     {% if iphone %}
+          <script type="text/javascript" src="{{ MEDIA_URL }}iphone.js"></script>
+     {% else %}
+          <script type="text/javascript" src="{{ MEDIA_URL }}mobile.js"></script>
+     {% endif %}
   {% endif %}
 {% endspaceless %}{% endblock extra_javascript %}
 

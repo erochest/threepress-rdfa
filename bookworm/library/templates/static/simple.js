@@ -58,10 +58,15 @@ function previous() {
 // Track the last place we went down so we can tell if we've hit the end
 var last_down = '';
     
-function down(go_next_at_bottom) {
+function down(go_next_at_bottom, override_height) {
+    var speed = 50; // scrolling speed
     var current_top = $(window).scrollTop();
     var window_height = $(window).height();
     var document_height = $(document).height();
+    if (override_height != null) {
+       window_height = override_height; // for iphone
+       speed = 0;
+    }	
     var para_height = $('#bw-main p').css('line-height');
     var scroll_to = current_top + window_height;
     var test_bottom = scroll_to;
@@ -75,7 +80,7 @@ function down(go_next_at_bottom) {
     }
     $('html, body').animate({ 
             scrollTop: scroll_to
-                }, 50);
+                }, speed);
 
     last_down = scroll_to;
 }

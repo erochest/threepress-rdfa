@@ -254,3 +254,7 @@ a.bw-what-is-openid-link {
    clear:both;
    padding: .5em;
 }
+pre {
+ font-size: small;
+ white-space: pre-wrap;
+}

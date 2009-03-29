@@ -34,7 +34,9 @@ def mobile(request):
     if settings.DEBUG and settings.MOBILE:
         log.debug("Forcing stanza compatibility")
         stanza_compatible = True
+    is_iphone = 'iphone' in request.META["HTTP_USER_AGENT"].lower()
     return { 'mobile': settings.MOBILE,
+             'iphone': is_iphone,
              'stanza_compatible': stanza_compatible}
 
 def profile(request):
