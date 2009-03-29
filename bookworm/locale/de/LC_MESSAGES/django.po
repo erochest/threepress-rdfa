@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-03-24 22:27-0400\n"
-"PO-Revision-Date: 2009-02-10 17:57-0500\n"
+"PO-Revision-Date: 2009-03-28 19:21+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,38 +26,36 @@ msgid "English"
 msgstr "Englisch"
 
 #: settings.py:99
-#, fuzzy
 msgid "Danish"
-msgstr "Englisch"
+msgstr "Dänisch"
 
 #: settings.py:135
 msgid "account/"
-msgstr ""
+msgstr "Benutzerkonto"
 
 #: settings.py:135 django_authopenid/urls.py:7 django_authopenid/urls.py:9
-#, fuzzy
 msgid "signin/"
 msgstr "Anmelden"
 
 #: django_authopenid/forms.py:68 django_authopenid/views.py:108
 msgid "i-names are not supported"
-msgstr ""
+msgstr "i-names werden nicht unterstützt"
 
 #: django_authopenid/forms.py:76 django_authopenid/forms.py:137
 #, python-format
 msgid "next url \"%s\" is invalid"
-msgstr ""
+msgstr "die Folgende URL \"%s\" ist ungültig"
 
 #: django_authopenid/forms.py:104 django_authopenid/forms.py:160
 #: django_authopenid/forms.py:201
 msgid ""
 "Usernames can only contain                     letters, numbers and "
 "underscores"
-msgstr ""
+msgstr "Benutzernamen können nur Buchstaben, Ziffern und Unterstriche enthalten"
 
 #: django_authopenid/forms.py:111
 msgid "There is no account with this username."
-msgstr ""
+msgstr "Es gibt kein Konto mit diesem Benutzernamen"
 
 #: django_authopenid/forms.py:123 django_authopenid/forms.py:221
 msgid ""
@@ -67,47 +65,47 @@ msgstr ""
 
 #: django_authopenid/forms.py:127 django_authopenid/forms.py:225
 msgid "This account is inactive."
-msgstr ""
+msgstr "Dieses Konto ist inaktiv."
 
 #: django_authopenid/forms.py:168
 msgid "This username is already                 taken. Please choose another."
-msgstr ""
+msgstr "Diesen Benutzernamen gibt es bereits. Bitte wählen Sie einen anderen."
 
 #: django_authopenid/forms.py:178
 msgid ""
 "This email is already                 registered in our database. Please "
 "choose another."
-msgstr ""
+msgstr "Diese Email-Adresse ist bereits in der Datenbank vorhanden. Bitte wählen Sie eine andere."
 
 #: django_authopenid/forms.py:208
 msgid ""
 "This username doesn't exist.                         Please choose another."
-msgstr ""
+msgstr "Der Benutzername existiert nicht. Bitten wählen Sie enen anderen."
 
 #: django_authopenid/forms.py:312
 msgid ""
 "Old password is wrong.                     Please enter a valid password."
-msgstr ""
+msgstr "Das alte Kennwort ist falsch. Bitte geben Sie ein gültiges Kennwort ein."
 
 #: django_authopenid/forms.py:324
 msgid "new passwords do not match each other"
-msgstr ""
+msgstr "die neuen Kennwörter stimmen nicht überein"
 
 #: django_authopenid/forms.py:400
 msgid "Incorrect username."
-msgstr ""
+msgstr "Benutzername nicht korrekt."
 
 #: django_authopenid/urls.py:8
 msgid "signout/"
-msgstr ""
+msgstr "abmelden"
 
 #: django_authopenid/urls.py:9
 msgid "complete/"
-msgstr ""
+msgstr "fertig"
 
 #: django_authopenid/urls.py:11
 msgid "register/"
-msgstr ""
+msgstr "registrieren"
 
 #: django_authopenid/urls.py:12
 msgid "signup/"
@@ -147,51 +145,51 @@ msgstr ""
 
 #: django_authopenid/views.py:114
 msgid "The password or OpenID was invalid"
-msgstr ""
+msgstr "Das Kennwort oder die OpenID waren ungültig"
 
 #: django_authopenid/views.py:437
 msgid "Welcome"
-msgstr ""
+msgstr "Willkommen"
 
 #: django_authopenid/views.py:528
 msgid "Password changed."
-msgstr ""
+msgstr "Kennwort geändert."
 
 #: django_authopenid/views.py:561 django_authopenid/views.py:604
 msgid "Email changed."
-msgstr ""
+msgstr "Email geändert."
 
 #: django_authopenid/views.py:592
 msgid "No OpenID was found in our database"
-msgstr ""
+msgstr "Keine OpenID in der Datenbank nicht gefunden"
 
 #: django_authopenid/views.py:596 django_authopenid/views.py:759
 msgid "This OpenID isn't associated with the current logged-in user"
-msgstr ""
+msgstr "Diese OpenID gehört nicht dem angemeldeten Benutzer"
 
 #: django_authopenid/views.py:680
 msgid "This OpenID is already associated with another account."
-msgstr ""
+msgstr "Diee OpenID gehört einem anderen Benutzer."
 
 #: django_authopenid/views.py:685
 msgid "This OpenID is now associated with your account."
-msgstr ""
+msgstr "Diese OpenID wurde Ihrem Konto zugeordnet."
 
 #: django_authopenid/views.py:752
 msgid "This OpenID isn't associated in the system."
-msgstr ""
+msgstr "Diese OpenID ist im System nicht vorhanden."
 
 #: django_authopenid/views.py:761
 msgid "Account deleted."
-msgstr ""
+msgstr "Konto gelöscht."
 
 #: django_authopenid/views.py:801
 msgid "Request for a new password"
-msgstr ""
+msgstr "Neues Kennwort anfordern"
 
 #: django_authopenid/views.py:814
 msgid "A new password has been sent to your email"
-msgstr ""
+msgstr "Ein neues Kennwort wurde an Sie per Email versandt"
 
 #: django_authopenid/views.py:844
 #, python-format
@@ -202,16 +200,16 @@ msgstr ""
 
 #: django_authopenid/views.py:853
 msgid "Cannot change password, as this user doesn't exist in the database."
-msgstr ""
+msgstr "Das Kennwort kann nicht geändert werden, da der Benutzer nicht in der Datenbank vorhanden ist."
 
 #: django_authopenid/views.py:861
 #, python-format
 msgid "Password changed for %s. You could now sign in"
-msgstr ""
+msgstr "Kennwort für %s geändert. Sie können sich nun anmelden"
 
 #: django_authopenid/templates/authopenid/changeemail.html:8
 msgid "Account: change email"
-msgstr ""
+msgstr "Konto: ändere Email-Adresse"
 
 #: django_authopenid/templates/authopenid/changeemail.html:10
 msgid ""
@@ -232,11 +230,11 @@ msgstr ""
 #: library/templates/auth/authopenid/complete.html:22
 #: library/templates/auth/authopenid/complete.html:32
 msgid "Please correct errors below:"
-msgstr ""
+msgstr "Bitte korrigieren Sie die untenstehenden Fehler"
 
 #: django_authopenid/templates/authopenid/changeemail.html:29
 msgid "New email"
-msgstr ""
+msgstr "Neue Email-Adresse"
 
 #: django_authopenid/templates/authopenid/changeemail.html:30
 #: django_authopenid/templates/authopenid/complete.html:68
@@ -245,16 +243,16 @@ msgstr ""
 #: library/templates/auth/authopenid/delete.html:40
 #: library/templates/auth/authopenid/signup.html:71
 msgid "Password"
-msgstr ""
+msgstr "Kennwort"
 
 #: django_authopenid/templates/authopenid/changeemail.html:32
 #: library/templates/auth/authopenid/changeemail.html:35
 msgid "Change email"
-msgstr ""
+msgstr "Email-Adresse ändern"
 
 #: django_authopenid/templates/authopenid/changeopenid.html:5
 msgid "Account: change openid url"
-msgstr ""
+msgstr "Konto: die OpenID URL ändern"
 
 #: django_authopenid/templates/authopenid/changeopenid.html:7
 msgid ""
@@ -264,45 +262,45 @@ msgstr ""
 
 #: django_authopenid/templates/authopenid/changeopenid.html:24
 msgid "OpenID url:"
-msgstr ""
+msgstr "OpenID URL:"
 
 #: django_authopenid/templates/authopenid/changeopenid.html:25
 msgid "Change openid"
-msgstr ""
+msgstr "OpenID ändern"
 
 #: django_authopenid/templates/authopenid/changepw.html:11
 msgid "Account: change password"
-msgstr ""
+msgstr "Konto: Kennwort ändern"
 
 #: django_authopenid/templates/authopenid/changepw.html:13
 msgid "This is where you can change your password. Make sure you remember it!"
-msgstr ""
+msgstr "Hier können Sie Ihr Kennwort ändern. Merken Sie es sich!"
 
 #: django_authopenid/templates/authopenid/changepw.html:23
 #: library/templates/auth/authopenid/changepw.html:22
 msgid "Old password"
-msgstr ""
+msgstr "Altes Kennwort"
 
 #: django_authopenid/templates/authopenid/changepw.html:24
 #: library/templates/auth/authopenid/changepw.html:23
 msgid "New password"
-msgstr ""
+msgstr "Neues Kennwort"
 
 #: django_authopenid/templates/authopenid/changepw.html:25
 #: library/templates/auth/authopenid/changepw.html:24
 msgid "New password again"
-msgstr ""
+msgstr "Neues Kennwort wiederholen"
 
 #: django_authopenid/templates/authopenid/changepw.html:26
 #: library/templates/auth/profile.html:28
 #: library/templates/auth/authopenid/changepw.html:12
 #: library/templates/auth/authopenid/changepw.html:25
 msgid "Change password"
-msgstr ""
+msgstr "Kennwortändern"
 
 #: django_authopenid/templates/authopenid/complete.html:12
 msgid "Your OpenID is verified! "
-msgstr ""
+msgstr "Ihre OpenID ist verifiziert! "
 
 #: django_authopenid/templates/authopenid/complete.html:13
 msgid ""
@@ -327,7 +325,7 @@ msgstr ""
 
 #: django_authopenid/templates/authopenid/complete.html:50
 msgid "A new account"
-msgstr ""
+msgstr "Neues Benutzerkonto"
 
 #: django_authopenid/templates/authopenid/complete.html:51
 #: django_authopenid/templates/authopenid/complete.html:67
@@ -339,21 +337,21 @@ msgstr ""
 #: library/templates/auth/authopenid/changeemail.html:33
 #: library/templates/auth/authopenid/signup.html:70
 msgid "Email"
-msgstr ""
+msgstr "Email-Adresse"
 
 #: django_authopenid/templates/authopenid/complete.html:66
 msgid "An exisiting account"
-msgstr ""
+msgstr "Bestehendes Benutzerkonto"
 
 #: django_authopenid/templates/authopenid/delete.html:6
 msgid "Account: delete account"
-msgstr ""
+msgstr "Konto: Zugang löschen"
 
 #: django_authopenid/templates/authopenid/delete.html:8
 msgid ""
 "Note: After deleting your account, anyone will be able to register this "
 "username."
-msgstr ""
+msgstr "Hinweis: Nachdem Ihr Konto gelöscht wurde, kann sich jeder mit diesem Benutzernamen registrieren."
 
 #: django_authopenid/templates/authopenid/delete.html:12
 msgid "Check confirm box, if you want delete your account."
@@ -361,11 +359,11 @@ msgstr ""
 
 #: django_authopenid/templates/authopenid/delete.html:15
 msgid "Password:"
-msgstr ""
+msgstr "Kennwort:"
 
 #: django_authopenid/templates/authopenid/delete.html:27
 msgid "I am sure I want to delete my account."
-msgstr ""
+msgstr "Ich möchte mein Konto wirklich löschen."
 
 #: django_authopenid/templates/authopenid/delete.html:28
 msgid "Password/ OpenID URL"
@@ -373,15 +371,15 @@ msgstr ""
 
 #: django_authopenid/templates/authopenid/delete.html:28
 msgid "(required for your security)"
-msgstr ""
+msgstr "(zu Ihrer Sicherheit benötigt)"
 
 #: django_authopenid/templates/authopenid/delete.html:30
 msgid "delete account forever"
-msgstr ""
+msgstr "lösche Konto unwiderruflich"
 
 #: django_authopenid/templates/authopenid/sendpw.html:7
 msgid "Account: Send a new password"
-msgstr ""
+msgstr "Konto: neues Kennwort zusenden"
 
 #: django_authopenid/templates/authopenid/sendpw.html:9
 msgid ""
@@ -395,16 +393,16 @@ msgstr ""
 #: library/templates/auth/profile.html:69
 #: library/templates/auth/authopenid/signup.html:67
 msgid "Username"
-msgstr ""
+msgstr "Benutzername"
 
 #: django_authopenid/templates/authopenid/sendpw.html:26
 msgid "Send new password"
-msgstr ""
+msgstr "Neues Kennwort zusenden"
 
 #: django_authopenid/templates/authopenid/settings.html:22
 #: library/templates/auth/authopenid/settings.html:22
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: django_authopenid/templates/authopenid/settings.html:23
 #: library/templates/auth/authopenid/settings.html:23
@@ -418,47 +416,47 @@ msgstr ""
 #: django_authopenid/templates/authopenid/settings.html:33
 #: library/templates/auth/authopenid/settings.html:33
 msgid "Account"
-msgstr ""
+msgstr "Benutzerkonto"
 
 #: django_authopenid/templates/authopenid/settings.html:35
 #: library/templates/auth/authopenid/settings.html:35
 msgid "change password"
-msgstr ""
+msgstr "Passwort ändern"
 
 #: django_authopenid/templates/authopenid/settings.html:36
 #: library/templates/auth/authopenid/settings.html:36
 msgid "Give your  account a new password."
-msgstr ""
+msgstr "Neues Kennwort für Ihr Konto."
 
 #: django_authopenid/templates/authopenid/settings.html:37
 #: library/templates/auth/authopenid/settings.html:37
 msgid "change email"
-msgstr ""
+msgstr "Email-Adresse ändern"
 
 #: django_authopenid/templates/authopenid/settings.html:38
 #: library/templates/auth/authopenid/settings.html:38
 msgid "Add or update the email address associated with your account."
-msgstr ""
+msgstr "Email-Adresse Ihres Kontos hinzufügen oder ändern."
 
 #: django_authopenid/templates/authopenid/settings.html:40
 #: library/templates/auth/authopenid/settings.html:40
 msgid "change openid url"
-msgstr ""
+msgstr "OpenID URL ändern"
 
 #: django_authopenid/templates/authopenid/settings.html:41
 #: library/templates/auth/authopenid/settings.html:41
 msgid "Change openid associated to your account"
-msgstr ""
+msgstr "OpenID Ihres Kontos ändern"
 
 #: django_authopenid/templates/authopenid/settings.html:44
 #: library/templates/auth/authopenid/settings.html:44
 msgid "delete account"
-msgstr ""
+msgstr "Konto löschen"
 
 #: django_authopenid/templates/authopenid/settings.html:45
 #: library/templates/auth/authopenid/settings.html:45
 msgid "Erase your username and all your data from website"
-msgstr ""
+msgstr "Lösche Benutzername und alle Ihre Daten von der Website"
 
 #: django_authopenid/templates/authopenid/signup.html:7
 msgid ""
@@ -476,23 +474,23 @@ msgstr ""
 
 #: django_authopenid/templates/authopenid/signup.html:29
 msgid "Choose a Screen Name:"
-msgstr ""
+msgstr "Wäheln Sie den Anzeigenamen"
 
 #: django_authopenid/templates/authopenid/signup.html:31
 msgid "Enter Your Email Address:"
-msgstr ""
+msgstr "Geben Sie Ihre Email-Adresse ein:"
 
 #: django_authopenid/templates/authopenid/signup.html:32
 msgid "Choose a Password:"
-msgstr ""
+msgstr "Wählen Sie ein Kennwort"
 
 #: django_authopenid/templates/authopenid/signup.html:33
 msgid "Confirm Your Password:"
-msgstr ""
+msgstr "Bestätigen Sie Ihr Kennwort"
 
 #: django_authopenid/templates/authopenid/signup.html:35
 msgid "JOIN FREE"
-msgstr ""
+msgstr "Kostenlos teilnehmen"
 
 #: django_authopenid/templates/authopenid/signup.html:39
 msgid "OpenID Signup"
@@ -500,12 +498,11 @@ msgstr ""
 
 #: django_authopenid/templates/authopenid/signup.html:42
 msgid "Sign in with OPENID"
-msgstr ""
+msgstr "Mit OpenID anmelden"
 
 #: library/models.py:132
-#, fuzzy
 msgid "Untitled"
-msgstr "Titel"
+msgstr "Ohne Titel"
 
 #: library/models.py:1077
 msgid "book title"
@@ -553,7 +550,7 @@ msgstr ""
 
 #: library/views.py:312
 msgid "Your profile has been updated."
-msgstr ""
+msgstr "Ihr Profil wurde aktualisiert"
 
 #: library/views.py:329 library/views.py:337
 msgid "There was a problem with your request to delete this profile."
@@ -598,7 +595,7 @@ msgstr ""
 msgid ""
 "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
 "error)</p>"
-msgstr ""
+msgstr "<p>(für Epubcheck ist Ihre Datei gültig, deshalb ist dies vielleicht ein Bücherwurm Fehler)</p>"
 
 #: library/views.py:520
 #, python-format
@@ -611,21 +608,20 @@ msgstr ""
 
 #: library/templates/about.html:3 library/templates/about.html.py:5
 #: library/templates/includes/about.html:5
-#, fuzzy
 msgid "About Bookworm"
-msgstr "Bücherwurm"
+msgstr "Über Bücherwurm"
 
 #: library/templates/about.html:12
 msgid "Features"
-msgstr ""
+msgstr "Eigenschaften"
 
 #: library/templates/about.html:14
 msgid "Read your e-books from anywhere in the world"
-msgstr ""
+msgstr "Lesen Sie Ihre Ebooks von überall auf der Welt"
 
 #: library/templates/about.html:15
 msgid "Usable on a computer or smartphone such as the iPhone"
-msgstr ""
+msgstr "Benutzbar auf dem Computer oder einem Smartphone wie dem iPhone"
 
 #: library/templates/about.html:16
 msgid "Download to Stanza or your Sony Reader"
@@ -633,7 +629,7 @@ msgstr ""
 
 #: library/templates/about.html:19
 msgid "Technical details"
-msgstr ""
+msgstr "Technische Details"
 
 #: library/templates/about.html:22
 msgid "Faithfully renders all levels of HTML"
@@ -653,7 +649,7 @@ msgstr ""
 
 #: library/templates/about.html:26
 msgid "SVG image support"
-msgstr ""
+msgstr "Untersützung für SVG Grafiken"
 
 #: library/templates/about.html:32
 msgid ""
@@ -674,51 +670,48 @@ msgid ""
 msgstr ""
 
 #: library/templates/about.html:47
-#, fuzzy
 msgid "How do I use Bookworm?"
-msgstr "Bücherwurm"
+msgstr "Wie benutze ich Bücherwurm?"
 
 #: library/templates/about.html:49 library/templates/about.html.py:92
-#, fuzzy
 msgid "What is ePub?"
-msgstr "Bücherwurm"
+msgstr "Was ist ePub?"
 
 #: library/templates/about.html:51
 msgid "Does it work on a mobile phone?"
-msgstr ""
+msgstr "Funktioniert es mit einem Mobiltelefon?"
 
 #: library/templates/about.html:53
 msgid "Where can I get ePub books?"
-msgstr ""
+msgstr "Wo kann ich ePub Bücher erhalten?"
 
 #: library/templates/about.html:55
 msgid "I'm having a problem"
-msgstr ""
+msgstr "Ich habe ein Problem festgestellt"
 
 #: library/templates/about.html:57
 msgid "I'm a publisher"
-msgstr ""
+msgstr "Ich bin ein Herausgeber"
 
 #: library/templates/about.html:59
 msgid "What about other formats?"
-msgstr ""
+msgstr "Wie sieht es mit anderen Formaten aus?"
 
 #: library/templates/about.html:61
 msgid "Can I share my ePubs?"
-msgstr ""
+msgstr "Kann ich meine ePubs mit anderen teilen"
 
 #: library/templates/about.html:63
 msgid "Are my books safe?"
-msgstr ""
+msgstr "Sind meine Bücher sicher?"
 
 #: library/templates/about.html:65 library/templates/about.html.py:194
-#, fuzzy
 msgid "Who is responsible for Bookworm?"
-msgstr "Bücherwurm"
+msgstr "Wer ist für Bücherwurm verantwortlich?"
 
 #: library/templates/about.html:69
 msgid "How does it work?  What do I download?"
-msgstr ""
+msgstr "Wie funktioniert es? Was lade ich herunter? "
 
 #: library/templates/about.html:71
 msgid ""
@@ -728,12 +721,11 @@ msgstr ""
 
 #: library/templates/about.html:75
 msgid "Create a Bookworm account and log in"
-msgstr ""
+msgstr "Erstellen Sie ein Bücherwurm Konto und melden sich an"
 
 #: library/templates/about.html:76
-#, fuzzy
 msgid "Upload an ePub book"
-msgstr "ePub-Buch hinzufügen:"
+msgstr "ePub-Buch hinzufügen"
 
 #: library/templates/about.html:77
 msgid "Start reading by just clicking on the book title in your library!"
@@ -775,11 +767,11 @@ msgstr ""
 
 #: library/templates/about.html:104 library/templates/includes/about.html:8
 msgid "More about ePub"
-msgstr ""
+msgstr "Mehr über ePub"
 
 #: library/templates/about.html:107
 msgid "Can I use Bookworm on my mobile device?"
-msgstr ""
+msgstr "Kann ich Bücherwurm auf meinem mobilen Gerät benutzen?"
 
 #: library/templates/about.html:109
 #, python-format
@@ -807,7 +799,7 @@ msgstr ""
 
 #: library/templates/about.html:120
 msgid "Where can I get ePubs?"
-msgstr ""
+msgstr "Wo erhalte ich ePub Bücher?"
 
 #: library/templates/about.html:122
 msgid ""
@@ -820,7 +812,7 @@ msgstr ""
 
 #: library/templates/about.html:127
 msgid "I'm not able to read this ePub book I uploaded"
-msgstr ""
+msgstr "Ich kann das hochgeladene ePub Buch nicht lesen"
 
 #: library/templates/about.html:129
 msgid ""
@@ -849,7 +841,7 @@ msgstr ""
 
 #: library/templates/about.html:148
 msgid "I'm a publisher and I have questions or feature requests"
-msgstr ""
+msgstr "Ich bin Herausgeber und habe Fragen oder Anfragen wegen neuer Merkmale"
 
 #: library/templates/about.html:150
 msgid ""
@@ -914,7 +906,7 @@ msgstr ""
 
 #: library/templates/about.html:182
 msgid " Are my books securely stored and backed up?"
-msgstr ""
+msgstr "Werden meine Bücher sicher gespeichert und gesichert?"
 
 #: library/templates/about.html:185
 msgid ""
@@ -972,7 +964,6 @@ msgid ""
 msgstr ""
 
 #: library/templates/base.html:12
-#, fuzzy
 msgid "Search your library"
 msgstr "Bibliothek durchsuchen"
 
@@ -981,13 +972,12 @@ msgid "search"
 msgstr "Suche"
 
 #: library/templates/ebooktesting.html:7 library/templates/ebooktesting.html:8
-#, fuzzy
 msgid "Testing your ePubs with Bookworm"
-msgstr "Laden Sie Ihr erstes ePub-Buch hoch:"
+msgstr "Testen Sie Ihre ePubs mit Bücherwurm"
 
 #: library/templates/ebooktesting.html:8 library/templates/epub.html:8
 msgid "For publishers"
-msgstr ""
+msgstr "Für Herausgeber"
 
 #: library/templates/ebooktesting.html:20
 msgid ""
@@ -1002,19 +992,19 @@ msgstr ""
 
 #: library/templates/ebooktesting.html:27
 msgid "Validate <!-- trans: the ePub against the spec -->"
-msgstr ""
+msgstr "Überprüfen "
 
 #: library/templates/ebooktesting.html:29
 msgid "Checklist <!-- trans: of things to check when producing an ePub -->"
-msgstr ""
+msgstr "Prüfliste"
 
 #: library/templates/ebooktesting.html:31
 msgid "Security"
-msgstr ""
+msgstr "Sicherheit"
 
 #: library/templates/ebooktesting.html:34
 msgid "Be sure that your ePubs are correct"
-msgstr ""
+msgstr "Seien Sie sicher, dass Ihre ePubs fehlerfrei sind"
 
 #: library/templates/ebooktesting.html:36
 msgid ""
@@ -1031,7 +1021,7 @@ msgstr ""
 
 #: library/templates/ebooktesting.html:44
 msgid "Validating with EpubCheck <!-- trans: do not translate epubcheck -->"
-msgstr ""
+msgstr "Überprüfe mit EpubCheck "
 
 #: library/templates/ebooktesting.html:46
 msgid ""
@@ -1058,7 +1048,7 @@ msgstr ""
 
 #: library/templates/ebooktesting.html:59
 msgid "How to test ePubs with Bookworm"
-msgstr ""
+msgstr "Wie testet man ePubs mit Bücherwurm"
 
 #: library/templates/ebooktesting.html:63
 #, python-format
@@ -1081,7 +1071,7 @@ msgstr ""
 
 #: library/templates/ebooktesting.html:78
 msgid "Testing checklist"
-msgstr ""
+msgstr "Testprüfliste"
 
 #: library/templates/ebooktesting.html:80
 msgid ""
@@ -1141,7 +1131,7 @@ msgstr ""
 
 #: library/templates/ebooktesting.html:122
 msgid "Are ePub files on Bookworm secure?"
-msgstr ""
+msgstr "Sind ePub Dateien auf Bücherwurm sicher?"
 
 #: library/templates/ebooktesting.html:124
 msgid ""
@@ -1165,14 +1155,12 @@ msgid ""
 msgstr ""
 
 #: library/templates/epub.html:7 library/templates/epub.html.py:8
-#, fuzzy
 msgid "Bookworm and the ePub standard"
-msgstr "Bookworm ePub reader"
+msgstr "Bücherwurm und der ePub Standard"
 
 #: library/templates/epub.html:12
-#, fuzzy
 msgid "About ePub"
-msgstr "Über"
+msgstr "Über ePub"
 
 #: library/templates/epub.html:14
 msgid ""
@@ -1212,36 +1200,35 @@ msgstr ""
 
 #: library/templates/epub.html:37
 msgid "Table of contents"
-msgstr ""
+msgstr "Inhatsverzeichnis"
 
 #: library/templates/epub.html:39 library/templates/epub.html.py:78
 msgid "XHTML support"
-msgstr ""
+msgstr "XHTML Unterstützung"
 
 #: library/templates/epub.html:40
 msgid "NCX Table of Contents"
-msgstr ""
+msgstr "NCX Inhaltsverzeichnis"
 
 #: library/templates/epub.html:41
 msgid "Conformance <!-- trans: to the specification -->"
-msgstr ""
+msgstr "Konformität"
 
 #: library/templates/epub.html:42 library/templates/epub.html.py:166
 msgid "Images and graphics"
-msgstr ""
+msgstr "Bilder und Grafiken"
 
 #: library/templates/epub.html:44 library/templates/epub.html.py:199
 msgid "Fonts"
-msgstr ""
+msgstr "Fonts"
 
 #: library/templates/epub.html:45
-#, fuzzy
 msgid "Invalid ePub handling"
-msgstr "Online ePub-Bücher lesen"
+msgstr "Ungültige ePub Verarbeitung"
 
 #: library/templates/epub.html:46 library/templates/epub.html.py:231
 msgid "Limitations"
-msgstr ""
+msgstr "Enschränkungen"
 
 #: library/templates/epub.html:54
 msgid ""
@@ -1255,7 +1242,7 @@ msgstr ""
 
 #: library/templates/epub.html:62
 msgid "Tutorial"
-msgstr ""
+msgstr "Tutorium"
 
 #: library/templates/epub.html:64
 msgid ""
@@ -1289,11 +1276,11 @@ msgstr ""
 
 #: library/templates/epub.html:88
 msgid "Tables <!-- trans: HTML tables --> "
-msgstr ""
+msgstr "Tabellen "
 
 #: library/templates/epub.html:89
 msgid "Lists <!-- trans: HTML lists -->"
-msgstr ""
+msgstr "Listen "
 
 #: library/templates/epub.html:90
 msgid "Fixed-width fonts"
@@ -1309,7 +1296,7 @@ msgstr ""
 
 #: library/templates/epub.html:99
 msgid "Cascading Style Sheets (CSS) and JavaScript"
-msgstr ""
+msgstr "Cascading Style Sheets (CSS) und JavaScript"
 
 #: library/templates/epub.html:101
 msgid ""
@@ -1346,7 +1333,7 @@ msgstr ""
 
 #: library/templates/epub.html:122
 msgid "Table of Contents"
-msgstr ""
+msgstr "Inhaltsverzeichnis"
 
 #: library/templates/epub.html:125
 msgid ""
@@ -1455,7 +1442,7 @@ msgstr ""
 
 #: library/templates/epub.html:208
 msgid "How Bookworm treats invalid ePub"
-msgstr ""
+msgstr "Wie Bücherwrum ungültige ePubs behandelt"
 
 #: library/templates/epub.html:210
 msgid ""
@@ -1511,9 +1498,8 @@ msgid ""
 msgstr ""
 
 #: library/templates/help.html:3 library/templates/help.html.py:5
-#, fuzzy
 msgid "Help using Bookworm"
-msgstr "Bücherwurm"
+msgstr "Hilfe zur Benutzung von Bücherwurm"
 
 #: library/templates/help.html:27
 msgid ""
@@ -1527,24 +1513,23 @@ msgstr ""
 
 #: library/templates/help.html:33
 msgid "Problems adding a book?"
-msgstr ""
+msgstr "Probleme ein Buch hinzuzufügen?"
 
 #: library/templates/help.html:35 library/templates/help.html.py:129
 msgid "Can I use Bookworm with my e-reader?"
-msgstr ""
+msgstr "Kann ich Bücherwurm mit meinem E-Reader benutzen?"
 
 #: library/templates/help.html:37
 msgid "Do I need an OpenID to use Bookworm?"
-msgstr ""
+msgstr "Benötige ich eine OpenID um Bücherwurm zu benutzen?"
 
 #: library/templates/help.html:39
-#, fuzzy
 msgid "More questions"
-msgstr "Mobile Version"
+msgstr "Mehr Fragen"
 
 #: library/templates/help.html:43
 msgid "What do I do first? <!-- trans: to use Bookworm -->"
-msgstr ""
+msgstr "Was muß ich als Erstes tun?"
 
 #: library/templates/help.html:46
 #, python-format
@@ -1566,7 +1551,7 @@ msgstr ""
 
 #: library/templates/help.html:58
 msgid "I'm having problems adding a book"
-msgstr ""
+msgstr "Ich habe Probleme ein Buch hinzuzufügen"
 
 #: library/templates/help.html:60
 msgid "Here are some common things to check"
@@ -1574,7 +1559,7 @@ msgstr ""
 
 #: library/templates/help.html:62
 msgid "Is the book in &lsquo;ePub&rsquo; format?"
-msgstr ""
+msgstr "Ist das Buch im &lsquo;ePub&rsquo; Format?"
 
 #: library/templates/help.html:64
 msgid ""
@@ -1591,15 +1576,15 @@ msgstr ""
 
 #: library/templates/help.html:71
 msgid "Did Bookworm tell you there was a problem with the book?"
-msgstr ""
+msgstr "Sagte Ihnen Bücherwurm, dass es ein Problem mit dem Buch gab?"
 
 #: library/templates/help.html:73
 msgid "You might get an error message like this when you add a book"
-msgstr ""
+msgstr "Sie können eine Fehlermeldung wie diese erhalten, wenn Sie ein Buch hinzufügen"
 
 #: library/templates/help.html:77
 msgid "click to enlarge "
-msgstr ""
+msgstr "Zum Vergößern anklicken"
 
 #: library/templates/help.html:80
 msgid ""
@@ -1663,7 +1648,7 @@ msgstr ""
 
 #: library/templates/help.html:120
 msgid "Is the ebook very large, or contain large images?"
-msgstr ""
+msgstr "Ist das Buch sehr groß oder beinhaltet es große Bilder?"
 
 #: library/templates/help.html:122
 msgid ""
@@ -1696,29 +1681,29 @@ msgstr ""
 
 #: library/templates/help.html:147
 msgid "Device <!-- trans: e-reading device, should be short -->"
-msgstr ""
+msgstr "Gerät"
 
 #: library/templates/help.html:148
 msgid "Supports ePub? <!-- trans: Should be short phrase -->"
-msgstr ""
+msgstr "Unterstützt es ePub?"
 
 #: library/templates/help.html:149
 msgid "How-to <!-- trans: How to use Bookworm with this e-reader --> "
-msgstr ""
+msgstr "Howto"
 
 #: library/templates/help.html:154
 msgid "iPod Touch"
-msgstr ""
+msgstr "iPod Touch"
 
 #: library/templates/help.html:155 library/templates/help.html.py:160
 #: library/templates/help.html:171 library/templates/help.html.py:181
 #: library/templates/help.html:186
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: library/templates/help.html:156
 msgid "Use <!-- trans: Use this software program -->"
-msgstr ""
+msgstr "Benutzen Sie "
 
 #: library/templates/help.html:162
 msgid ""
@@ -1734,7 +1719,7 @@ msgstr ""
 
 #: library/templates/help.html:170
 msgid "Other web-enabled phone"
-msgstr ""
+msgstr "Anderes webfähiges Telefon"
 
 #: library/templates/help.html:173
 msgid ""
@@ -1748,11 +1733,11 @@ msgstr ""
 #: library/templates/help.html:182 library/templates/public.html:22
 #: library/templates/includes/openid.html:25
 msgid "or"
-msgstr ""
+msgstr "oder"
 
 #: library/templates/help.html:191
 msgid "Indirectly <!-- trans: can be used with this device only partially -->"
-msgstr ""
+msgstr "Indirekt"
 
 #: library/templates/help.html:193
 msgid ""
@@ -1788,7 +1773,7 @@ msgstr ""
 
 #: library/templates/help.html:218
 msgid "I have additional questions"
-msgstr ""
+msgstr "Ich habe zusätzliche Fragen"
 
 #: library/templates/help.html:221
 #, python-format
@@ -1816,7 +1801,6 @@ msgstr "Meine ePub-Bibliothek"
 
 #: library/templates/index.html:14 library/templates/shell.html:38
 #: library/templates/shell.html.py:53
-#, fuzzy
 msgid "Add a book"
 msgstr "Buch hinzufügen"
 
@@ -1890,7 +1874,7 @@ msgstr ""
 "  "
 
 #: library/templates/index.html:73
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "  There is a setting in your <a href=\"%(urlprofile)s\">profile</a> \n"
@@ -1906,12 +1890,10 @@ msgstr ""
 
 #: library/templates/index.html:84 library/templates/shell.html:6
 #: library/templates/shell.html.py:31
-#, fuzzy
 msgid "Bookworm"
 msgstr "Bücherwurm"
 
 #: library/templates/index.html:86
-#, fuzzy
 msgid ""
 "A free platform for reading ePub books online. <a "
 "href='{{ abouturl }}'>Learn more</a>."
@@ -1925,7 +1907,6 @@ msgstr ""
 "Um ein neues Buch hochzuladen, melden Sie sich bitte mit Ihrem Computer an"
 
 #: library/templates/index.html:95
-#, fuzzy
 msgid "Add a new ePub ebook:"
 msgstr "ePub-Buch hinzufügen:"
 
@@ -1940,47 +1921,41 @@ msgid ""
 msgstr ""
 
 #: library/templates/index.html:113
-#, fuzzy
 msgid "upload"
-msgstr "Upload"
+msgstr "Hochladen"
 
 #: library/templates/public.html:21
-#, fuzzy
 msgid "A free platform for reading ePub books online."
-msgstr ""
-"Eine freie Plattform, um ePub-Bücher online zu lesen. <a "
-"href='{{ abouturl }}'>Weitere Informationen</a>."
+msgstr "Eine freie Plattform, um ePub-Bücher online zu lesen."
 
 #: library/templates/public.html:22
 msgid "Learn more"
-msgstr ""
+msgstr "Erfahren Sie mehr"
 
 #: library/templates/public.html:23
 #: library/templates/auth/authopenid/signup.html:75
-#, fuzzy
 msgid "Sign up"
 msgstr "Anmelden"
 
 #: library/templates/public.html:34
 msgid "Readers"
-msgstr ""
+msgstr "Leser"
 
 #: library/templates/public.html:37
 msgid "Read and search full-text books online"
-msgstr ""
+msgstr "Bücher online lesen und nach Volltext durchsuchen"
 
 #: library/templates/public.html:39
 msgid "Download books to your "
-msgstr ""
+msgstr "Laden Sie Bücher zu Ihrem "
 
 #: library/templates/public.html:39
 msgid "Sony Reader or iLiad "
-msgstr ""
+msgstr "Sony Reade roderiLiad "
 
 #: library/templates/public.html:40
-#, fuzzy
 msgid "Mobile reading"
-msgstr "Mobile Version"
+msgstr "Unterwegs lesen"
 
 #: library/templates/public.html:41
 #, python-format
@@ -1997,20 +1972,19 @@ msgstr ""
 
 #: library/templates/public.html:50
 msgid "Publishers"
-msgstr ""
+msgstr "Herausgeber"
 
 #: library/templates/public.html:52
-#, fuzzy
 msgid "Test your ePub ebooks"
-msgstr "Laden Sie Ihr erstes ePub-Buch hoch:"
+msgstr "Testen Sie Ihre ePub Bücher"
 
 #: library/templates/public.html:53
 msgid "Need strategy or technical help?"
-msgstr ""
+msgstr "Benötigen Sie strategische oder technische Hilfe?"
 
 #: library/templates/public.html:54
 msgid "Ebook and ePub consulting services"
-msgstr ""
+msgstr "Ebook und ePub Beratungsdienste"
 
 #: library/templates/public.html:56
 #, python-format
@@ -2021,23 +1995,23 @@ msgstr ""
 
 #: library/templates/public.html:63
 msgid "Developers"
-msgstr ""
+msgstr "Entwickler"
 
 #: library/templates/public.html:65
 msgid "Open-source"
-msgstr ""
+msgstr "Open-Source"
 
 #: library/templates/public.html:65
 msgid "BSD-licensed"
-msgstr ""
+msgstr "BSD lizensiert"
 
 #: library/templates/public.html:66
 msgid "How Bookworm implements ePub"
-msgstr ""
+msgstr "Wie Bücherwurm ePub implementiert"
 
 #: library/templates/public.html:67
 msgid "More open-source ePub software"
-msgstr ""
+msgstr "Mehr Open-Source ePub Software"
 
 #: library/templates/public.html:68
 msgid ""
@@ -2046,9 +2020,8 @@ msgid ""
 msgstr ""
 
 #: library/templates/public.html:72
-#, fuzzy
 msgid "What is Bookworm?"
-msgstr "Bücherwurm"
+msgstr "Was ist Bücherwurm?"
 
 #: library/templates/public.html:73
 msgid ""
@@ -2075,7 +2048,7 @@ msgstr ""
 
 #: library/templates/public.html:92
 msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
-msgstr ""
+msgstr "Was ist ein &ldquo;ePub Buch&rdquo;?"
 
 #: library/templates/public.html:95
 #, python-format
@@ -2091,9 +2064,8 @@ msgid ""
 msgstr ""
 
 #: library/templates/public.html:103
-#, fuzzy
 msgid "Try Bookworm out"
-msgstr "Bücherwurm"
+msgstr "Bücherwurm ausprobieren"
 
 #: library/templates/public.html:106
 #, python-format
@@ -2127,7 +2099,6 @@ msgid "Mobile version"
 msgstr "Mobile Version"
 
 #: library/templates/shell.html:40
-#, fuzzy
 msgid "Search"
 msgstr "Suche"
 
@@ -2145,12 +2116,10 @@ msgid "Help"
 msgstr "Hilfe"
 
 #: library/templates/shell.html:54
-#, fuzzy
 msgid "add"
-msgstr "Hinzufügen"
+msgstr "hinzufügen"
 
 #: library/templates/shell.html:55
-#, fuzzy
 msgid "help"
 msgstr "Hilfe"
 
@@ -2163,7 +2132,6 @@ msgid "Signed in as"
 msgstr "Angemeldet als"
 
 #: library/templates/shell.html:73
-#, fuzzy
 msgid "edit profile"
 msgstr "Profil bearbeiten"
 
@@ -2173,14 +2141,14 @@ msgstr "Verwaltung"
 
 #: library/templates/shell.html:77
 msgid "logout"
-msgstr ""
+msgstr "abmelden"
 
 #: library/templates/shell.html:84
 msgid "Sign in"
 msgstr "Anmelden"
 
 #: library/templates/shell.html:95
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "                  From the Bookworm account of %(ruf)s &lt;%(rue)s&gt;\n"
@@ -2192,7 +2160,7 @@ msgstr ""
 
 #: library/templates/shell.html:114
 msgid "Privacy policy"
-msgstr ""
+msgstr "Datenschutz"
 
 #: library/templates/shell.html:115
 #, python-format
@@ -2224,22 +2192,20 @@ msgid ""
 msgstr ""
 
 #: library/templates/tour.html:31 library/templates/tour.html.py:43
-#, fuzzy
 msgid "Step 1: Adding a book"
-msgstr "Buch hinzufügen"
+msgstr "Schritt 1: Buch hinzufügen"
 
 #: library/templates/tour.html:33
 msgid "Step 2: Reading a book"
-msgstr ""
+msgstr "Schritt 2: ein Buch lesen"
 
 #: library/templates/tour.html:37
-#, fuzzy
 msgid "Step 3: Searching your library"
-msgstr "Bibliothek durchsuchen"
+msgstr "Schritt 3: Bibliothek durchsuchen"
 
 #: library/templates/tour.html:39
 msgid "Step 4: Take your book on the road"
-msgstr ""
+msgstr "Schritt 4: Nehmen Sie Ihr Buch mit für unterwegs"
 
 #: library/templates/tour.html:49
 msgid ""
@@ -2267,16 +2233,15 @@ msgstr ""
 
 #: library/templates/tour.html:69
 msgid "Click <!-- trans: imperative verb -->"
-msgstr ""
+msgstr "Anklicken"
 
 #: library/templates/tour.html:69
-#, fuzzy
 msgid "Add to my library"
-msgstr "dem Datum, an dem das Buch zur Bibliothek hinzugefügt wurde,"
+msgstr "Meiner Bibliothek hinzufügen"
 
 #: library/templates/tour.html:76
 msgid "    Your book is now available!     "
-msgstr ""
+msgstr "    Ihr Buch steht nun zur Verfügung!    "
 
 #: library/templates/tour.html:78
 msgid ""
@@ -2287,15 +2252,15 @@ msgstr ""
 
 #: library/templates/tour.html:84
 msgid "Step 2: Reading a book    "
-msgstr ""
+msgstr "Schritt 2: ein Buch lesen    "
 
 #: library/templates/tour.html:87
 msgid "Click on the book's title from your library.    "
-msgstr ""
+msgstr "Klicken Sie auf den Titel Ihres Buches in der Bibliothek.    "
 
 #: library/templates/tour.html:89
 msgid "The book will automatically open to the first page."
-msgstr ""
+msgstr "Das wird automatisch die erste Seite öffnen."
 
 #: library/templates/tour.html:92
 msgid ""
@@ -2319,7 +2284,7 @@ msgstr ""
 
 #: library/templates/tour.html:107
 msgid "The Book Information page"
-msgstr ""
+msgstr "Die Buch Informationsseite"
 
 #: library/templates/tour.html:110
 msgid ""
@@ -2339,7 +2304,7 @@ msgstr ""
 
 #: library/templates/tour.html:121
 msgid "Moving through a book    "
-msgstr ""
+msgstr "Durch ein Buch bewegen    "
 
 #: library/templates/tour.html:123
 msgid ""
@@ -2353,9 +2318,8 @@ msgid ""
 msgstr ""
 
 #: library/templates/tour.html:131
-#, fuzzy
 msgid "Step 3: Searching your library    "
-msgstr "Bibliothek durchsuchen"
+msgstr "Schritt 3: Bibliothek durchsuchen"
 
 #: library/templates/tour.html:134
 msgid ""
@@ -2382,11 +2346,11 @@ msgstr ""
 #: library/templates/tour.html:152
 msgid ""
 "Step 4: Take your book on the road  <!-- trans: e.g. on a mobile device -->  "
-msgstr ""
+msgstr "Schritt 4: nehmen Sie Ihr Buch mit für unterwegs "
 
 #: library/templates/tour.html:154
 msgid "Bookworm on your mobile phone    "
-msgstr ""
+msgstr "Bücherwurm auf Ihrem Mobiltelefon    "
 
 #: library/templates/tour.html:156
 msgid ""
@@ -2402,7 +2366,7 @@ msgstr ""
 
 #: library/templates/tour.html:164
 msgid "Stanza on the iPhone    "
-msgstr ""
+msgstr "Stanza auf dem iPhone    "
 
 #: library/templates/tour.html:166
 msgid ""
@@ -2420,7 +2384,7 @@ msgstr ""
 
 #: library/templates/tour.html:173
 msgid "Download to the Sony Reader or iLiad    "
-msgstr ""
+msgstr "Zum Sony Reader oder iLiad übertragen    "
 
 #: library/templates/tour.html:175
 msgid ""
@@ -2434,7 +2398,7 @@ msgstr ""
 
 #: library/templates/tour.html:182
 msgid "The Amazon Kindle cannot read ePub books at this time.    "
-msgstr ""
+msgstr "Das Amazon Kindle kann z.Z. keine ePub Bücher anzeigen.    "
 
 #: library/templates/tour.html:185
 #, python-format
@@ -2445,11 +2409,11 @@ msgstr ""
 
 #: library/templates/auth/language.html:3
 msgid "Change the default languge for <!-- trans: person name -->"
-msgstr ""
+msgstr "Die Standardsprache ändern für "
 
 #: library/templates/auth/language.html:9
 msgid "Change your Bookworm language"
-msgstr ""
+msgstr "Ändern Sie Ihre Bücherwurm Sprache"
 
 #: library/templates/auth/language.html:12
 msgid ""
@@ -2471,21 +2435,20 @@ msgstr ""
 
 #: library/templates/auth/language.html:32
 msgid "Change the language setting"
-msgstr ""
+msgstr "Ändern der Spracheinstellung"
 
 #: library/templates/auth/profile.html:3
 msgid "Profile and preferences for"
-msgstr ""
+msgstr "Profil und Einstellungen für"
 
 #: library/templates/auth/profile.html:32
 #: library/templates/auth/authopenid/changeemail.html:13
 msgid "Change email address"
-msgstr ""
+msgstr "EMail Adresse ändern"
 
 #: library/templates/auth/profile.html:35
-#, fuzzy
 msgid "Change linked OpenID"
-msgstr "Bücherwurm"
+msgstr "Verknüpfte OpenID ändern"
 
 #: library/templates/auth/profile.html:37
 msgid "Delete this account"
@@ -2493,67 +2456,66 @@ msgstr ""
 
 #: library/templates/auth/profile.html:57
 msgid "User profile and preferences for "
-msgstr ""
+msgstr "Benutzerprofil und Einstellungen für "
 
 #: library/templates/auth/profile.html:64
 msgid "User information"
-msgstr ""
+msgstr "Benutzer Information"
 
 #: library/templates/auth/profile.html:88
 msgid "Full name"
-msgstr ""
+msgstr "Vollständiger Name"
 
 #: library/templates/auth/profile.html:93
 msgid "Email address"
-msgstr ""
+msgstr "Email Adresse"
 
 #: library/templates/auth/profile.html:98
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 #: library/templates/auth/profile.html:104
 msgid "Language"
-msgstr ""
+msgstr "Sprache"
 
 #: library/templates/auth/profile.html:105
 msgid "change <!-- trans: change the user's language setting -->"
-msgstr ""
+msgstr "ändern"
 
 #: library/templates/auth/profile.html:109
 msgid "Open to last-read chapter when reading a book?"
-msgstr ""
+msgstr "Das zuletzt gelesene Kapitel öffnen wenn ein Buch gelesen wird?"
 
 #: library/templates/auth/profile.html:116
-#, fuzzy
 msgid "Update profile"
 msgstr "Profil bearbeiten"
 
 #: library/templates/auth/authopenid/changeemail.html:4
 msgid "Change email address for <!-- trans: for person -->"
-msgstr ""
+msgstr "Email Adresse ändern für "
 
 #: library/templates/auth/authopenid/changeemail.html:16
 #: library/templates/auth/authopenid/changepw.html:15
 #: library/templates/auth/authopenid/delete.html:26
 #: library/templates/auth/authopenid/delete.html:31
 msgid "Please correct the errors below"
-msgstr ""
+msgstr "Bitte korrigieren Sie die untenstehenden Fehler"
 
 #: library/templates/auth/authopenid/changepw.html:4
 msgid "Change password for <!-- trans: for person -->"
-msgstr ""
+msgstr "Kennwort ändern für "
 
 #: library/templates/auth/authopenid/complete.html:17
 msgid "Link an OpenID with your existing Bookworm account"
-msgstr ""
+msgstr "Verknüfen Sie eine OpenID mit Ihrem bestehenden Bücherwurm Benutzerkonto"
 
 #: library/templates/auth/authopenid/delete.html:4
 msgid "Delete profile of <!-- trans: person name -->"
-msgstr ""
+msgstr "Profil löschen für"
 
 #: library/templates/auth/authopenid/delete.html:15
 msgid "Delete account"
-msgstr ""
+msgstr "Benutzerkonto löschen"
 
 #: library/templates/auth/authopenid/delete.html:18
 msgid ""
@@ -2566,16 +2528,15 @@ msgstr ""
 
 #: library/templates/auth/authopenid/delete.html:23
 msgid "This action cannot be undone.      "
-msgstr ""
+msgstr "Dieser Vorgang kann nicht rückgängig gemacht werden.    "
 
 #: library/templates/auth/authopenid/delete.html:44
 msgid "I'm sure I want to delete all my personal information and books."
-msgstr ""
+msgstr "Ich bin sicher, dass ich alle persönlichen Informationen und Bücher löschen möchte."
 
 #: library/templates/auth/authopenid/delete.html:47
-#, fuzzy
 msgid "Delete my profile"
-msgstr "Profil bearbeiten"
+msgstr "Profil löschen"
 
 #: library/templates/auth/authopenid/signup.html:3
 #: library/templates/auth/authopenid/signup.html:4
@@ -2584,24 +2545,23 @@ msgstr ""
 
 #: library/templates/auth/authopenid/signup.html:21
 msgid "Two ways to join"
-msgstr ""
+msgstr "Zwei Möglichkeiten um teilzunehmen"
 
 #: library/templates/auth/authopenid/signup.html:23
 msgid "Use OpenID"
-msgstr ""
+msgstr "Benutzen Sie OpenID"
 
 #: library/templates/auth/authopenid/signup.html:24
 msgid "Just enter your OpenID and we'll link a Bookworm account to it."
-msgstr ""
+msgstr "Geben Sie Ihre OpenID ein und wir verknüfen diese mit Ihrem Bücherwurm Konto"
 
 #: library/templates/auth/authopenid/signup.html:25
-#, fuzzy
 msgid "What is OpenID"
-msgstr "Bücherwurm"
+msgstr "Was ist OpenID"
 
 #: library/templates/auth/authopenid/signup.html:26
 msgid "Don't have an OpenID?"
-msgstr ""
+msgstr "Sie haben keine OpenID?"
 
 #: library/templates/auth/authopenid/signup.html:27
 msgid ""
@@ -2618,7 +2578,7 @@ msgstr ""
 
 #: library/templates/auth/authopenid/signup.html:44
 msgid "Please correct errors below"
-msgstr ""
+msgstr "Bitte korrigieren Sie die untenstehenden Fehler"
 
 #: library/templates/auth/authopenid/signup.html:59
 msgid "If you're not sure what to do, just fill out this form"
@@ -2631,7 +2591,7 @@ msgstr ""
 
 #: library/templates/auth/authopenid/signup.html:72
 msgid "Confirm password"
-msgstr ""
+msgstr "Kennwort bestätigen"
 
 #: library/templates/auth/authopenid/signup.html:85
 msgid "If you have an OpenID, sign up here"
@@ -2639,7 +2599,7 @@ msgstr ""
 
 #: library/templates/auth/authopenid/signup.html:88
 msgid "Use my OpenID"
-msgstr ""
+msgstr "Benutze meine OpenID"
 
 #: library/templates/auth/authopenid/signup.html:90
 msgid "Sign up with OpenID"
@@ -2650,35 +2610,32 @@ msgid "If you have a Yahoo account, try typing <em>yahoo.com</em> here."
 msgstr ""
 
 #: library/templates/auth/authopenid/signup.html:92
-#, fuzzy
 msgid "What's this?"
-msgstr "Bücherwurm"
+msgstr "Was bedeutet dies?"
 
 #: library/templates/includes/about.html:2
 msgid "Resources <!-- trans: for learning more about Bookworm -->"
-msgstr ""
+msgstr "Informationsquellen"
 
 #: library/templates/includes/about.html:6
 msgid "Take the tour"
 msgstr ""
 
 #: library/templates/includes/about.html:9
-#, fuzzy
 msgid "Test your ePubs"
-msgstr "Laden Sie Ihr erstes ePub-Buch hoch:"
+msgstr "Testen Sie Ihre ePubs"
 
 #: library/templates/includes/about.html:10
 msgid "About full-text search"
-msgstr ""
+msgstr "Über die Volltext Suche"
 
 #: library/templates/includes/about.html:11
 msgid "Read the blog"
-msgstr ""
+msgstr "Lesen Sie das Blog"
 
 #: library/templates/includes/about_development.html:2
-#, fuzzy
 msgid "Bookworm development"
-msgstr "Bücherwurm"
+msgstr "Bücherwurm Entwicklung"
 
 #: library/templates/includes/about_development.html:4
 msgid ""
@@ -2688,23 +2645,23 @@ msgstr ""
 
 #: library/templates/includes/chapter_next_previous.html:6
 msgid "previous <!-- trans: previous chapter in the book -->"
-msgstr ""
+msgstr "zurück"
 
 #: library/templates/includes/chapter_next_previous.html:8
 msgid "Contents <!-- trans: table of contents -->"
-msgstr ""
+msgstr "Inhaltsverzeichnis"
 
 #: library/templates/includes/chapter_next_previous.html:11
 msgid "next <!-- trans: next chapter in the book -->"
-msgstr ""
+msgstr "vorwärts"
 
 #: library/templates/includes/document_list.html:28
 msgid "owned by"
-msgstr ""
+msgstr "Eigentümer"
 
 #: library/templates/includes/document_list.html:39
 msgid "Are you sure?"
-msgstr ""
+msgstr "Sind Sie sicher?"
 
 #: library/templates/includes/document_list_controls.html:3
 msgid "Title"
@@ -2728,25 +2685,24 @@ msgstr "Mit Stanza lesen"
 
 #: library/templates/includes/leftnav.html:8
 msgid "Read current page"
-msgstr ""
+msgstr "Aktuelle Seite lesen"
 
 #: library/templates/includes/leftnav.html:24
 msgid "Download this book"
-msgstr ""
+msgstr "Dieses Buch herunterladen"
 
 #: library/templates/includes/leftnav.html:28
 #: library/templates/includes/leftnav.html:30
 msgid "Book information"
-msgstr ""
+msgstr "Buch Information"
 
 #: library/templates/includes/leftnav.html:36
 msgid "First page"
-msgstr ""
+msgstr "Erste Seite"
 
 #: library/templates/includes/openid.html:5
-#, fuzzy
 msgid "What is OpenID?"
-msgstr "Bücherwurm"
+msgstr "Was ist OpenID"
 
 #: library/templates/includes/openid.html:8
 msgid ""
@@ -2778,7 +2734,7 @@ msgstr ""
 
 #: library/templates/includes/openid.html:27
 msgid "Your OpenID is"
-msgstr ""
+msgstr "Ihre OpenID lautet"
 
 #: library/templates/includes/openid.html:30
 msgid ""
@@ -2800,48 +2756,48 @@ msgstr ""
 
 #: library/templates/includes/pagination.html:4
 msgid "previous"
-msgstr ""
+msgstr "zurück"
 
 #: library/templates/includes/pagination.html:5
 #, python-format
 msgid " Page %(page_number)s of %(num_pages)s"
-msgstr ""
+msgstr "Seite %(page_number)s von %(num_pages)s"
 
 #: library/templates/includes/pagination.html:6
 msgid "next"
-msgstr ""
+msgstr "vorwärts"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Size"
-msgstr ""
+msgstr "Größe"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Increase font size"
-msgstr ""
+msgstr "Schriftgröße vergrössern"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Decrease font size"
-msgstr ""
+msgstr "Schriftgröße verkleinern"
 
 #: library/templates/includes/reading-tools.html:3
 msgid "Font"
-msgstr ""
+msgstr "Schrift"
 
 #: library/templates/includes/reading-tools.html:3
 msgid "Use a serif font"
-msgstr ""
+msgstr "Eine Serifenschrift benutzen"
 
 #: library/templates/includes/reading-tools.html:3
 msgid "Use a sans-serif font"
-msgstr ""
+msgstr "Eine serifenlose Schrift benutzen"
 
 #: library/templates/includes/toggle-reading-mode.html:2
 msgid "Change reading modes"
-msgstr ""
+msgstr "Lesemodus ändern"
 
 #: search/templates/search_help.html:7 search/templates/search_help.html:9
 msgid "Full-text search in Bookworm"
-msgstr ""
+msgstr "Volltext Suche in Bücherwurm"
 
 #: search/templates/search_help.html:16
 msgid ""
@@ -2855,7 +2811,7 @@ msgstr ""
 
 #: search/templates/search_help.html:24
 msgid "Bookworm uses MySQL full-text search"
-msgstr ""
+msgstr "Bücherwurm benutzt die Volltextsuche von MySQL"
 
 #: search/templates/search_help.html:26
 msgid ""
@@ -2880,7 +2836,7 @@ msgstr ""
 
 #: search/templates/search_help.html:41
 msgid "Phrase searching"
-msgstr ""
+msgstr "Ausdruck suchen"
 
 #: search/templates/search_help.html:43
 msgid ""
@@ -2894,7 +2850,7 @@ msgstr ""
 
 #: search/templates/search_help.html:49
 msgid "Case-sensitivity"
-msgstr ""
+msgstr "Groß-/Kleinschreibung beachten"
 
 #: search/templates/search_help.html:51
 msgid ""
@@ -2906,7 +2862,7 @@ msgstr ""
 
 #: search/templates/search_help.html:55
 msgid "Boolean operators"
-msgstr ""
+msgstr "Logische Operatoren"
 
 #: search/templates/search_help.html:57
 msgid ""
@@ -2924,9 +2880,8 @@ msgstr ""
 #: search/templates/search_help.html:66 search/templates/search_help.html:67
 #: search/templates/search_help.html:68 search/templates/search_help.html:69
 #: search/templates/search_help.html:70
-#, fuzzy
 msgid "white"
-msgstr "Titel"
+msgstr "weiß"
 
 #: search/templates/search_help.html:66 search/templates/search_help.html:67
 #: search/templates/search_help.html:68 search/templates/search_help.html:69
@@ -2936,11 +2891,11 @@ msgstr ""
 
 #: search/templates/search_help.html:66
 msgid "Both terms are required (like Google)."
-msgstr ""
+msgstr "Beide Ausdrücke sind erforderlich (wie bei Google)."
 
 #: search/templates/search_help.html:67
 msgid "Same as above."
-msgstr ""
+msgstr "Wie oben."
 
 #: search/templates/search_help.html:68
 msgid "Find ePubs with either word"
@@ -2948,7 +2903,7 @@ msgstr ""
 
 #: search/templates/search_help.html:69
 msgid "Find the exact phrase"
-msgstr ""
+msgstr "Finde den exakten Ausdruck"
 
 #: search/templates/search_help.html:70
 msgid ""
@@ -2958,7 +2913,7 @@ msgstr ""
 
 #: search/templates/search_help.html:73
 msgid "Ordering <!-- trans: e.g. alphabetical order -->"
-msgstr ""
+msgstr "Sortierung "
 
 #: search/templates/search_help.html:75
 msgid ""
@@ -2981,7 +2936,7 @@ msgstr ""
 
 #: search/templates/search_help.html:89
 msgid "Indexing"
-msgstr ""
+msgstr "Indizieren"
 
 #: search/templates/search_help.html:91
 msgid ""
