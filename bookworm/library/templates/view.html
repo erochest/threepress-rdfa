@@ -16,13 +16,9 @@
 {% endspaceless %}
 {% endblock %}
 
+{% block reading_tools %}<div class="bw-reading-tools" >{% include "includes/reading-tools.html" %}</div>{% endblock %}
 
-
-{% block reading_tools %}
-   <div style="padding-top: 3px">{% include "includes/reading-tools.html" %}</div>
-{% endblock %}
-
-{% block simple_reading_mode_override %}
+{% block simple_reading_mode_override %}{% spaceless %}
    {% if request.user.get_profile.simple_reading_mode %}
     <h3 class="bw-signed-in" >   
       {% include "includes/reading-tools.html" %}
@@ -30,14 +26,17 @@
    {% else %}
       {{ block.super }}
    {% endif %}
-{% endblock simple_reading_mode_override %}
+{% endspaceless %}{% endblock simple_reading_mode_override %}
 
-{% block extra_javascript %}
-  {% if request.user.get_profile.simple_reading_mode %}
+{% block extra_javascript %}{% spaceless %}
+  {% if request.user.get_profile.simple_reading_mode and not mobile %}
   <script type="text/javascript" src="{{ MEDIA_URL }}simple.js"></script>
-  {% else %}
   {% endif %}
-{% endblock extra_javascript %}
+  {% if mobile %}
+  <script type="text/javascript" src="{{ MEDIA_URL }}simple.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}mobile.js"></script>
+  {% endif %}
+{% endspaceless %}{% endblock extra_javascript %}
 
 {% block rightnav %}
   {% if request.user.get_profile.simple_reading_mode %}

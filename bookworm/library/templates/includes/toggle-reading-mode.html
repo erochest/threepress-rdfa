@@ -1,3 +1,5 @@
 {% load i18n %}
-<a href="#" title="{% trans 'Change reading modes' %}"><form style="display:inline" action="{% url profile_toggle_reading_mode %}" method="post" id="bw-toggle-reading-mode" ></form>
-<span style="font-size: largest" onclick="$('#bw-toggle-reading-mode').submit()"><img src="{{ MEDIA_URL }}images/reading-mode.png" alt="Toggle reading mode" class="bw-tool-image" /></span></a>
+{% if not mobile %}
+  <a href="#" title="{% trans 'Change reading modes' %}"><form style="display:inline" action="{% url profile_toggle_reading_mode %}" method="post" id="bw-toggle-reading-mode" ></form>
+  <span style="font-size: largest" onclick="$('#bw-toggle-reading-mode').submit()"><img src="{{ MEDIA_URL }}images/reading-mode.png" alt="Toggle reading mode" class="bw-tool-image" /></span></a>
+{% endif %}

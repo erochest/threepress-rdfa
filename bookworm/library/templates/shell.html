@@ -124,9 +124,7 @@
      {% endblock footer_block %}
     </div>
     <script type="text/javascript" src="{{ MEDIA_URL }}bookworm.js" ></script>
-    {% block extra_javascript %}
-
-    {% endblock extra_javascript %}
+    {% block extra_javascript %}{% endblock extra_javascript %}
 
     {% if not OFFLINE %}
       <script type="text/javascript">

@@ -248,3 +248,9 @@ span.bw-title a{
 a.bw-what-is-openid-link {
  font-size: smaller;
 }
+.bw-reading-tools {
+   padding-top: 3px;
+   text-align:right;   
+   clear:both;
+   padding: .5em;
+}
