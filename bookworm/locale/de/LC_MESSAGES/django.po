@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-03-24 22:27-0400\n"
-"PO-Revision-Date: 2009-03-29 20:33+0200\n"
+"PO-Revision-Date: 2009-03-31 20:38+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "Anmelden"
 #: django_authopenid/forms.py:68
 #: django_authopenid/views.py:108
 msgid "i-names are not supported"
-msgstr "i-names werden nicht unterstützt"
+msgstr "i-Names werden nicht unterstützt"
 
 #: django_authopenid/forms.py:76
 #: django_authopenid/forms.py:137
@@ -107,11 +107,11 @@ msgstr "Registrieren"
 
 #: django_authopenid/urls.py:12
 msgid "signup/"
-msgstr ""
+msgstr "Konto erstellen"
 
 #: django_authopenid/urls.py:13
 msgid "sendpw/"
-msgstr ""
+msgstr "Kennwort senden"
 
 #: django_authopenid/urls.py:14
 #: django_authopenid/urls.py:19
@@ -170,7 +170,7 @@ msgstr "Diese OpenID gehört nicht dem angemeldeten Benutzer"
 
 #: django_authopenid/views.py:680
 msgid "This OpenID is already associated with another account."
-msgstr "Diee OpenID gehört einem anderen Benutzer."
+msgstr "Die OpenID gehört einem anderen Benutzer."
 
 #: django_authopenid/views.py:685
 msgid "This OpenID is now associated with your account."
@@ -208,11 +208,11 @@ msgstr "Kennwort für %s geändert. Sie können sich nun anmelden"
 
 #: django_authopenid/templates/authopenid/changeemail.html:8
 msgid "Account: change email"
-msgstr "Konto: ändere Email-Adresse"
+msgstr "Konto: Email-Adresse ändern"
 
 #: django_authopenid/templates/authopenid/changeemail.html:10
 msgid "This is where you can change the email address associated with your account. Please keep this email address up to date so we can send you a password-reset email if you request one."
-msgstr ""
+msgstr "Hier können Sie die Email Adresse Ihres Kontos ändern. Bitte halten Sie dies Email Adresse aktuell, damit wir Ihnen einen Email zum Rücksetzen Ihres Kennworts zusenden können-"
 
 #: django_authopenid/templates/authopenid/changeemail.html:12
 #: django_authopenid/templates/authopenid/changeopenid.html:9
@@ -399,6 +399,8 @@ msgid ""
 msgstr ""
 "\n"
 " <p>Hier können Sie Ihr Konto ändern.</p>\n"
+"\n"
+"    "
 
 #: django_authopenid/templates/authopenid/settings.html:33
 #: library/templates/auth/authopenid/settings.html:33
@@ -459,7 +461,7 @@ msgstr ""
 
 #: django_authopenid/templates/authopenid/signup.html:29
 msgid "Choose a Screen Name:"
-msgstr "Wäheln Sie den Anzeigenamen"
+msgstr "Wählen Sie den Anzeigenamen"
 
 #: django_authopenid/templates/authopenid/signup.html:31
 msgid "Enter Your Email Address:"
@@ -586,7 +588,7 @@ msgstr "Benutzbar auf dem Computer oder einem Smartphone wie dem iPhone"
 
 #: library/templates/about.html:16
 msgid "Download to Stanza or your Sony Reader"
-msgstr "Zu Stanza oder Ihrem Sony Reader herunterladen"
+msgstr "In Stanza oder Ihren Sony Reader herunterladen"
 
 #: library/templates/about.html:19
 msgid "Technical details"
@@ -598,7 +600,7 @@ msgstr ""
 
 #: library/templates/about.html:23
 msgid "Automatically-generated TOC based on document metadata"
-msgstr ""
+msgstr "Automatisch erzeugtes Inhaltsverzeichnis, basierend auf den Metadaten des Dokumentes"
 
 #: library/templates/about.html:24
 msgid "Supports all levels of the CSS specification available to your browser"
@@ -696,11 +698,15 @@ msgid ""
 "    and on most mobile web devices, anywhere in the world!  We're working on ways for you to read your\n"
 "    book content on your mobile phone even when you aren't connected to the internet."
 msgstr ""
+"Da Ihre Bücher auf der Bücherwurm Site gespeichert sind, können Sie sie mit\n"
+"jedem Webbrowser und den meisten mobilen Web-Geräten überall auf der Welt lesen!\n"
+"Wir arbeiten an Lösungen für Sie, damit Sie Ihre Bücher auf Ihrem Mobiltelefon \n"
+"lesen können, falls Sie keine Verbindung zum Internet haben."
 
 #: library/templates/about.html:88
 #, python-format
 msgid "<a href=\"%(toururl)s\">Take the tour</a> to see an example of Bookworm in action."
-msgstr ""
+msgstr "<a href=\"%(toururl)s\">Machen Sie eine Führung</a> um Bücherwurm zu erleben."
 
 #: library/templates/about.html:94
 msgid ""
@@ -710,12 +716,20 @@ msgid ""
 "    other open standards including XHTML, making ePub books ideally suited to\n"
 "    be read on web browsers. "
 msgstr ""
+"ePub ist der offene Ebook Standard, der durch das \n"
+"<a href=\"http://www.idpf.org/\">International Digital Publishing Forum</a> \n"
+"(<acronym>IDPF)</acronym> entwickelt wird. Er basiert auf anderen \n"
+"offenen Standards, einschließlich XHTML. ePub Bücher sind damit ideal \n"
+"geeignet um in Webbrowsern gelesen zu werden. "
 
 #: library/templates/about.html:101
 msgid ""
 "ePub books can be read on your home computer (using Bookworm, Adobe Digital Editions or Stanza), \n"
 "    on your iPhone (using Bookworm or Stanza) and on the Sony Reader"
 msgstr ""
+"ePub Bücher können auf Ihrem Heimcomputer (mittels Bücherwurm, \n"
+"Adobe Digital Editions oder Stanza), auf Ihrem iPhone (mittels \n"
+"Bücherwurm oder Stanza) und dem Sony Reader gelesen werden.\n"
 
 #: library/templates/about.html:104
 #: library/templates/includes/about.html:8
@@ -798,7 +812,7 @@ msgstr ""
 
 #: library/templates/about.html:157
 msgid "Will other book formats be supported, such as PDF or mobi? What about DRM ebooks?"
-msgstr "Werdn andere Buchformate unterstützt werden, wie z.B. PDF oder mobi? Wie sieht es mit DRM-geschützten Ebooks aus?"
+msgstr "Werden andere Buchformate unterstützt werden, wie z.B. PDF oder mobi? Wie sieht es mit DRM-geschützten Ebooks aus?"
 
 #: library/templates/about.html:159
 msgid ""
@@ -855,6 +869,16 @@ msgid ""
 "    with contributions from <a href=\"http://kfahlgren.com/blog\">Keith\n"
 "    Fahlgren</a>.  Hosting is provided by <a href=\"http://oreilly.com/\">O'Reilly Media</a>.\n"
 msgstr ""
+"\n"
+"    Bücherwurm ist Freie Software unter der BSD Lizenz und kann von der\n"
+"   <a href=\"http://threepress.org/tools/\">Tools Seite</a> heruntergeladen \n"
+"   werden. Es ist ein Produkt von \n"
+"   <a href=\"http://threepress.org\">Threepress</a>, ein Treffpunkt, um mit \n"
+"   Open Source Publishing Software zu experimentieren und wird von \n"
+"   <a href=\"http:/threepress.org/about/\">Liza Daly</a> geschrieben,\n"
+"   unter Mitwirkung von <a href=\"http://kfahlgren.com/blog\">Keith Fahlgren</a>.\n"
+"   Das Hosting wird von <a href=\"http://oreilly.com/\">O'Reilly Media</a> zur\n"
+"   Verfügung gestellt.\n"
 
 #: library/templates/about.html:210
 msgid ""
@@ -862,7 +886,10 @@ msgid ""
 "Bookworm has been made possible by many individuals who have helped with\n"
 "  testing and supported the project throughout:\n"
 "  "
-msgstr "Bücherwurm wurde durch die Hilfe vieler Einzelner ermöglicht:"
+msgstr ""
+"\n"
+"Bücherwurm wurde durch die Hilfe vieler Einzelner ermöglicht:\n"
+"   "
 
 #: library/templates/about.html:216
 msgid ""
@@ -874,6 +901,7 @@ msgstr ""
 "\n"
 "      Andrew Savikas und der Rest des \n"
 "      <a href=\"http://toc.oreilly.com\">Tools of Change</a> Teams bei O'Reilly Media\n"
+"    "
 
 #: library/templates/about.html:230
 msgid ""
@@ -884,6 +912,13 @@ msgid ""
 "    You can also subscribe to the <a\n"
 "    href=\"http://blog.threepress.org\">blog</a> to follow new announcements.\n"
 msgstr ""
+"\n"
+"    Bei Problemen und Anfragen wegen neuer Merkmale besuchen Sie\n"
+"   <a href=\"http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a>\n"
+"   oder schreiben Sie eine Email an \n"
+"   <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>.\n"
+"   Sie können auch das <a href=\"http://blog.threepress.org\">Blog</a> besuchen,\n"
+"   um Ankündigungen zu verfolgen.\n"
 
 #: library/templates/base.html:12
 msgid "Search your library"
@@ -978,6 +1013,7 @@ msgstr ""
 "    Alles was Sie tun müssen, um ePub-Dateien mit Bücherwurm zu testen, \n"
 "    ist ein <a href=\"%(signupurl)s\">Konto erstellen</a> und ein\n"
 "    <a href=\"%(toururl)s#step1\">Buch hinzufügen</a>.\n"
+"    "
 
 #: library/templates/ebooktesting.html:70
 msgid ""
@@ -1004,6 +1040,7 @@ msgstr ""
 "     <strong>Sind die Metadaten korrekt?</strong> Sie können die Metadaten\n"
 "     eines Buches auf der <strong>Buch Information</strong> Seite ansehen,\n"
 "     die vom Inhaltsverzeichnis jedes Buches zugänglich ist.\n"
+"    "
 
 #: library/templates/ebooktesting.html:87
 msgid ""
@@ -1027,6 +1064,7 @@ msgstr ""
 "     <strong>Ist das Inhaltsverzeichnis korrekt und in der richtigen reihenfolge?</strong>\n"
 "     Bücherwurm benutzt das <code>playOrder</code> Attribut der NCX Datei\n"
 "     und die Reihenfolge der Einträge im Inhaltsverzeichnis.\n"
+"    "
 
 #: library/templates/ebooktesting.html:102
 msgid ""
@@ -1060,6 +1098,7 @@ msgstr ""
 "    oder UTF-16 kodiert sein. Bücherwrum unterstützt nur UTF-8. \n"
 "    (Bidirektionaler Text wird unterstützt, aber Sie müssen dies in der\n"
 "    CSS-Datei angeben.)\n"
+"    "
 
 #: library/templates/ebooktesting.html:122
 msgid "Are ePub files on Bookworm secure?"
@@ -1106,6 +1145,7 @@ msgstr ""
 "    ePub ist eine offenes Format des The International Digital Publishing Forum (IDPF).\n"
 "    Es basiert auf XML und XHTML und benutzt existierende Standards für\n"
 "    digitale Bücher.\n"
+"    "
 
 #: library/templates/epub.html:21
 msgid ""
@@ -1115,6 +1155,7 @@ msgid ""
 msgstr ""
 "    Technische Details und di Spezifikation sind erhältlich von\n"
 "    <a href=\"http://openebook.org\">http://openebook.org</a>.\n"
+"    "
 
 #: library/templates/epub.html:26
 msgid ""
@@ -1132,6 +1173,7 @@ msgid ""
 msgstr ""
 "     Public Domain <a href=\"http://www.threepress.org/epub/logos\">ePub Logos</a>\n"
 "     sind bei threepress.org erhältlich.\n"
+"    "
 
 #: library/templates/epub.html:37
 msgid "Table of contents"
@@ -1182,6 +1224,7 @@ msgstr ""
 "      Diese Seite ist gedacht für Entwickler, Herausgeber ud ePub Enthusiasten,\n"
 "      die am ePub Standard interessiert sind und wissen wollen, wie Bücherwurm\n"
 "      diesen benutzt.\n"
+"    "
 
 #: library/templates/epub.html:62
 msgid "Tutorial"
@@ -1461,6 +1504,7 @@ msgid ""
 msgstr ""
 "    Die einfachste Art mit Bücherwurm vertraut zu werden, ist \n"
 "    <a href=\"%(toururl)s\">Bücherwurm auszuprobieren</a>.\n"
+"    "
 
 #: library/templates/help.html:52
 #, python-format
@@ -1472,6 +1516,7 @@ msgstr ""
 "\n"
 "    Mehr Information finden Sie auf der <a href=\"%(abouturl)s\">Über</a> Seite\n"
 "    mit Hinweisen zu den Zielen und Stärken von Bücherwurm.\n"
+"    "
 
 #: library/templates/help.html:58
 msgid "I'm having problems adding a book"
@@ -1517,7 +1562,8 @@ msgid ""
 msgstr ""
 "    Das ePub Format ist noch ziemlich neu und nicht alle ePub Bücher wurden\n"
 "    richtg erstellt. Bücherwurm versucht eine Vielzahl von ePubs zu akzeptieren,\n"
-"    aber manchmal kann es Ebooks nicht verarbeiten, die zu ungewöhnlich sind."
+"    aber manchmal kann es Ebooks nicht verarbeiten, die zu ungewöhnlich sind.\n"
+"    "
 
 #: library/templates/help.html:88
 msgid ""
@@ -1578,6 +1624,7 @@ msgstr ""
 "    Einge Ebooks sind zu groß um in Bücherwurm sicher gespeichert und \n"
 "    angezeigt zu werden. Ausserordentlich große Bücher werden zurückgewiesen.\n"
 "    Ein ePub wird als zu groß betrachtet, wenn es größer als 30 MB ist.\n"
+"    "
 
 #: library/templates/help.html:131
 msgid ""
@@ -1695,7 +1742,9 @@ msgid ""
 "\n"
 "      There's more information about Bookworm on the <a href=\"%(abouturl)s\">About</a> page.\n"
 "    "
-msgstr "    Mehr Information über Bücherwurm finden Sie auf der <a href=\"%(abouturl)s\">Über</a> Seite.\n"
+msgstr ""
+"    Mehr Information über Bücherwurm finden Sie auf der <a href=\"%(abouturl)s\">Über</a> Seite.\n"
+"    "
 
 #: library/templates/help.html:228
 msgid ""
@@ -1707,6 +1756,7 @@ msgid ""
 msgstr ""
 "    Besuchen Sie auch unser Forum <a href=\"http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a>\n"
 "\"   Für spezielle Fragen kontaktieren Sie bitte <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>.</p>\n"
+"    "
 
 #: library/templates/index.html:6
 msgid "My epub library"
@@ -1728,7 +1778,7 @@ msgid ""
 "There is one reader \n"
 "   "
 msgid_plural "There are more than %(counter)s readers\n"
-msgstr[0] "Es gibt nur einen Bücherwurm-Benutzer."
+msgstr[0] "Es gibt nur einen Bücherwurm-Benutzer.\n"
 msgstr[1] "%(counter)s Leser verwenden Bücherwurm."
 
 #: library/templates/index.html:24
@@ -1737,7 +1787,7 @@ msgid ""
 " and only one individual book.\n"
 "   "
 msgid_plural " and over %(counter)s individual books.\n"
-msgstr[0] "Es gibt nur ein Buch."
+msgstr[0] "Es gibt nur ein Buch.\n"
 msgstr[1] "Es sind %(counter)s Bücher vorhanden."
 
 #: library/templates/index.html:32
@@ -1833,7 +1883,7 @@ msgstr "Erfahren Sie mehr"
 #: library/templates/public.html:23
 #: library/templates/auth/authopenid/signup.html:75
 msgid "Sign up"
-msgstr "Anmelden"
+msgstr "Konto erstellen"
 
 #: library/templates/public.html:34
 msgid "Readers"
@@ -1841,15 +1891,15 @@ msgstr "Leser"
 
 #: library/templates/public.html:37
 msgid "Read and search full-text books online"
-msgstr "Bücher online lesen und nach Volltext durchsuchen"
+msgstr "Bücher online lesen und im Volltext durchsuchen"
 
 #: library/templates/public.html:39
 msgid "Download books to your "
-msgstr "Laden Sie Bücher zu Ihrem "
+msgstr "Laden Sie Bücher auf Ihren "
 
 #: library/templates/public.html:39
 msgid "Sony Reader or iLiad "
-msgstr "Sony Reade roderiLiad "
+msgstr ""
 
 #: library/templates/public.html:40
 msgid "Mobile reading"
@@ -1862,12 +1912,15 @@ msgid ""
 "      online or with <a href=\"%(stanzaurl)s\">Stanza</a> on the iPhone.\n"
 "      "
 msgstr ""
+"\n"
+"      Online oder mit <a href=\"%(stanzaurl)s\">Stanza</a> auf dem iPhone.\n"
+"      "
 
 #: library/templates/public.html:45
 #: library/templates/tour.html:3
 #: library/templates/tour.html.py:14
 msgid "Take a tour of Bookworm"
-msgstr ""
+msgstr "Machen Sie eine Führung durch Bücherwurm"
 
 #: library/templates/public.html:50
 msgid "Publishers"
@@ -1891,6 +1944,8 @@ msgid ""
 " Details on the <a href=\"%(epuburl)s\">ePub format</a> \n"
 "      "
 msgstr ""
+" Details zum <a href=\"%(epuburl)s\">ePub Format</a>\n"
+"    "
 
 #: library/templates/public.html:63
 msgid "Developers"
@@ -1914,7 +1969,7 @@ msgstr "Mehr Open-Source ePub Software"
 
 #: library/templates/public.html:68
 msgid "Follow announcements on the <a href='http://blog.threepress.org/'>Bookworm blog</a>"
-msgstr ""
+msgstr "Verfolgen Sie Ankündigungen im <a href=\"http://blog.threepress.org/\">Bücherwurm Blog</a>"
 
 #: library/templates/public.html:72
 msgid "What is Bookworm?"
@@ -1940,6 +1995,11 @@ msgid ""
 "      and full XHTML.\n"
 "      "
 msgstr ""
+"\n"
+"    Eine Seite in Bücherwurm, die das Inhakltsverzeichnis, Bilder und \n"
+"    Text zeigt. Bücherwurm unterstützt CSS Stile, Grafiken im JPG, GIF, \n"
+"    PNG und SVG Format, sowie volständiges XHTML.\n"
+"    "
 
 #: library/templates/public.html:92
 msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
@@ -1956,6 +2016,14 @@ msgid ""
 "    industry support.\n"
 "    "
 msgstr ""
+"\n"
+"    ePub ist ein eBook Format. Ihre Ebook-Datei ist im ePub Format \n"
+"    falls es mit <strong>.epub</strong> endet. Falls ja, können Sie \n"
+"    dieses Buch auf  Bücherwurm <a href=\"%(helpurl)s\">lesen</a>. \n"
+"    Falls nein, sagen Sie Ihrem Buchhändler, dass er das einzige \n"
+"    freie und offene Ebook Format mit großer Unterstützung der \n"
+"    Industrie unterstützen soll.\n"
+"    "
 
 #: library/templates/public.html:103
 msgid "Try Bookworm out"
@@ -1968,6 +2036,9 @@ msgid ""
 "    Try the one-page <a href=\"%(toururl)s\">Bookworm and ePub tour</a>.\n"
 "    "
 msgstr ""
+"\n"
+"    Machen Sie die <a href=\"%(toururl)s\">Bücherwurm und ePub Führung</a>.\n"
+"    "
 
 #: library/templates/shell.html:6
 msgid "Bookworm ePub reader"
@@ -2010,7 +2081,7 @@ msgstr "Hilfe"
 
 #: library/templates/shell.html:54
 msgid "add"
-msgstr "Hinzufügen"
+msgstr "Hochladen"
 
 #: library/templates/shell.html:55
 msgid "help"
@@ -2314,7 +2385,7 @@ msgid ""
 msgstr ""
 "  \n"
 "  Falls Sie Ihre bevorzugte Sprache nicht sehen, <a href=\"mailto:bookworm@threepress.org\">lassen Sie uns wissen, ob Sie beim Übersetzen helfen wollen</a>. \n"
-"  Bücherwurm kann in <a href=\"http://code.djangoproject.com/browser/django/trunk/django/conf/global_settings.py#L43\">jede vom Django Framework unterstützte Sprache übersetzt</a> werden."
+"  Bücherwurm kann in <a href=\"http://code.djangoproject.com/browser/django/trunk/django/conf/global_settings.py#L43\">jede vom Django Framework unterstützte Sprache übersetzt</a> werden.\n"
 
 #: library/templates/auth/language.html:32
 msgid "Change the language setting"
@@ -2363,7 +2434,7 @@ msgstr "Sprache"
 
 #: library/templates/auth/profile.html:105
 msgid "change <!-- trans: change the user's language setting -->"
-msgstr "ändern"
+msgstr "Ändern"
 
 #: library/templates/auth/profile.html:109
 msgid "Open to last-read chapter when reading a book?"
@@ -2819,4 +2890,3 @@ msgid ""
 "  up in the search immediately.  Be patient; it'll be there soon.\n"
 "  "
 msgstr ""
-
