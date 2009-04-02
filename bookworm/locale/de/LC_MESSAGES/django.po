@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-02 14:36-0400\n"
-"PO-Revision-Date: 2009-04-02 20:22+0200\n"
+"PO-Revision-Date: 2009-04-02 21:53+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: DE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2065,22 +2065,18 @@ msgid "Status"
 msgstr "Status"
 
 #: library/templates/index.html:20
-#, fuzzy, python-format
+#, python-format
 msgid "There is one reader "
 msgid_plural "There are more than %(counter)s readers"
-msgstr[0] ""
-"Es gibt nur einen Bücherwurm-Benutzer.\n"
-"  "
-msgstr[1] "%(counter)s Leser verwenden Bücherwurm.\n"
+msgstr[0] "Es gibt nur einen Bücherwurm-Benutzer."
+msgstr[1] "%(counter)s Leser verwenden Bücherwurm."
 
 #: library/templates/index.html:22
-#, fuzzy, python-format
+#, python-format
 msgid " and only one individual book."
 msgid_plural " and over %(counter)s individual books."
-msgstr[0] ""
-"Es gibt nur ein Buch.\n"
-"  "
-msgstr[1] "Es sind %(counter)s Bücher vorhanden.\n"
+msgstr[0] "Es gibt nur ein Buch."
+msgstr[1] "Es sind %(counter)s Bücher vorhanden."
 
 #: library/templates/index.html:28
 msgid "Edit your profile"
@@ -2302,7 +2298,6 @@ msgid "What is Bookworm?"
 msgstr "Was ist Bücherwurm?"
 
 #: library/templates/public.html:84
-#, fuzzy
 msgid ""
 "\n"
 "  Bookworm allows readers to add ePub books to their online\n"
@@ -2316,8 +2311,8 @@ msgid ""
 msgstr ""
 "\n"
 " Bücherwurm erlaubt es Lesern ePub Bücher zu Ihrer Online Bibliothek\n"
-" hinzuzufügen und diese in ihrem Webbrowser oder  mobilen Gerät zu lesen.\n"
-" Falls Sie ein mobiles Gerät besitzen, das ePub untertsützt (wie z.B. den \n"
+" hinzuzufügen und diese in ihrem Webbrowser oder mobilen Gerät zu lesen.\n"
+" Falls Sie ein mobiles Gerät besitzen, das ePub unterstützt (wie z.B. den \n"
 " Sony Reader oder iRex iLiad), können Sie Ihre Bücher in ihren E-Reader\n"
 " herunterladen. Bücherwurm ist speziell für die Benutzung mit dem iPhone\n"
 " optimiert und kann direkt in Stanza exportieren.\n"
@@ -2473,7 +2468,7 @@ msgstr ""
 "        "
 
 #: library/templates/tour.html:22
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "\n"
@@ -2936,14 +2931,12 @@ msgid "Delete my profile"
 msgstr "Profil löschen"
 
 #: library/templates/auth/authopenid/signin.html:29
-#, fuzzy
 msgid "ePub ebook reader"
 msgstr "ePub-Bücher online lesen"
 
 #: library/templates/auth/authopenid/signin.html:38
-#, fuzzy
 msgid "New to Bookworm?"
-msgstr "Wie benutze ich Bücherwurm?"
+msgstr "Neu hier bei Bücherwurm?"
 
 #: library/templates/auth/authopenid/signin.html:40
 #: library/templates/includes/about.html:6
@@ -2962,24 +2955,20 @@ msgid ""
 msgstr ""
 
 #: library/templates/auth/authopenid/signin.html:69
-#, fuzzy
 msgid "Sign in using a local Bookworm account"
-msgstr "Konto erstellen"
+msgstr "Anmelden mit einem Bücherwurm Konto"
 
 #: library/templates/auth/authopenid/signin.html:74
-#, fuzzy
 msgid "Lost your password?"
-msgstr "Bestätigen Sie Ihr Kennwort"
+msgstr "Haben Sie Ihr Kennwort vergessen?"
 
 #: library/templates/auth/authopenid/signin.html:81
-#, fuzzy
 msgid "Sign in using your OpenID"
-msgstr "Konto erstellen mit OpenID"
+msgstr "Anmelden mit Ihrer OpenID"
 
 #: library/templates/auth/authopenid/signin.html:83
-#, fuzzy
 msgid "Sign in with OpenID"
-msgstr "Konto erstellen mit OpenID"
+msgstr "Anmelden mit OpenID"
 
 #: library/templates/auth/authopenid/signin.html:84
 #: library/templates/auth/authopenid/signup.html:92
@@ -3245,12 +3234,10 @@ msgid "mobile ebooks"
 msgstr ""
 
 #: library/templates/mobile/base.html:21
-#, fuzzy
 msgid "about"
 msgstr "Über"
 
 #: library/templates/mobile/base.html:24
-#, fuzzy
 msgid "my books"
 msgstr "Meine Bücher"
 
