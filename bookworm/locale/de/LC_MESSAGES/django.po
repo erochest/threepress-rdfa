@@ -5,16 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-03-24 22:27-0400\n"
-"PO-Revision-Date: 2009-03-31 21:27+0200\n"
+"PO-Revision-Date: 2009-04-01 18:25+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: DE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"X-Poedit-Language: German\n"
 
 #: settings.py:97
 msgid "German"
@@ -62,7 +63,7 @@ msgstr "Es gibt kein Konto mit diesem Benutzernamen"
 #: django_authopenid/forms.py:123
 #: django_authopenid/forms.py:221
 msgid "Please enter a correct                     username and password. Note that both fields are                     case-sensitive."
-msgstr ""
+msgstr "Bitte tragen Sie einen richtigen Benutzernamen und Kennwort ein. Beachten Sie die Groß-/Kleinschreibung in beiden Feldern."
 
 #: django_authopenid/forms.py:127
 #: django_authopenid/forms.py:225
@@ -252,7 +253,7 @@ msgstr "Konto: die OpenID URL ändern"
 
 #: django_authopenid/templates/authopenid/changeopenid.html:7
 msgid "This is where you can change your openid url used to connect to Bookworm. Make sure you remember it!"
-msgstr ""
+msgstr "Hier können Sie Ihre OpenID ändern, mit der Sie sich bei Bücherwurm anmelden. Stellen Sie sicher, dass Sie sie nicht vergessen!"
 
 #: django_authopenid/templates/authopenid/changeopenid.html:24
 msgid "OpenID url:"
@@ -302,6 +303,9 @@ msgid ""
 "\t<p>Your OpenID can now be associated with a new or existing membership. You can change the association later in your preferences</p>\n"
 "\t"
 msgstr ""
+"\n"
+"\t<p>Ihre OpenID kann nun einem neuen oder existierenden Konto zugeordnet werden. Sie können diese Zuordnung später in Ihren Einstellungen ändern.</p>\n"
+"\t"
 
 #: django_authopenid/templates/authopenid/complete.html:17
 msgid "Associate your OpenID"
@@ -501,7 +505,7 @@ msgstr "dem ersten Autor"
 
 #: library/models.py:1079
 msgid "date added to your library"
-msgstr "dem Datum, an dem das Buch zur Bibliothek hinzugefügt wurde,"
+msgstr "Datum, an dem das Buch zur Bibliothek hinzugefügt wurde,"
 
 #: library/views.py:91
 msgid "ascending"
@@ -532,6 +536,9 @@ msgid ""
 "publisher that this is a valid ePub book that contains either XHTML or DTBook-formatted\n"
 "content."
 msgstr ""
+"\n"
+" Der Inhalt dieses Buch konnte von Bücherwurm nicht gelesen werden. Fragen Sie den Herausgeber,\n"
+"  ob das ePub Buch entweder XHTML oder DTBook formatierten Inhalt enthält."
 
 #: library/views.py:312
 msgid "Your profile has been updated."
@@ -540,7 +547,7 @@ msgstr "Ihr Profil wurde aktualisiert"
 #: library/views.py:329
 #: library/views.py:337
 msgid "There was a problem with your request to delete this profile."
-msgstr ""
+msgstr "Es gab ein Problem mit der Anforderung diese Profil zu löschen."
 
 #: library/views.py:444
 msgid "The file you uploaded was not recognized as an ePub archive and could not be added to your library."
@@ -596,7 +603,7 @@ msgstr "Technische Details"
 
 #: library/templates/about.html:22
 msgid "Faithfully renders all levels of HTML"
-msgstr ""
+msgstr "Stellt alle Stufen von HTML dar"
 
 #: library/templates/about.html:23
 msgid "Automatically-generated TOC based on document metadata"
@@ -796,6 +803,9 @@ msgid ""
 "Please also see the <a href=\"%(helpurl)s\">Help</a> page for more\n"
 "    tips on troubleshooting Bookworm."
 msgstr ""
+"Mehr Hinweise zu Problemen mit Bücherwurm finden Sie auf der \n"
+"<a href=\"%(helpurl)s\">Hilfe</a> Seite\n"
+"  "
 
 #: library/templates/about.html:148
 msgid "I'm a publisher and I have questions or feature requests"
@@ -819,6 +829,9 @@ msgid ""
 "Bookworm is meant to push adoption of the open ePub format and there are no plans to \n"
 "    support closed formats like mobi or those with limited flexibility like PDF.  "
 msgstr ""
+"Bücherwurm will die Verbreitung des ePub Formates fördern und hat gibt keine Pläne\n"
+" proprietäre Formate wie mobi oder solche mit eingeschränkter Flexibiltät, wie z.B. PDF,\n"
+" zu unterstützen."
 
 #: library/templates/about.html:163
 msgid ""
@@ -1096,7 +1109,7 @@ msgstr ""
 "\n"
 "    <strong>Werden alle speziellen Zeichen richtig angezeigt?</strong>\n"
 "    ePub Bücher müssen enstsprechend der Spezifikation entweder in UTF-8\n"
-"    oder UTF-16 kodiert sein. Bücherwrum unterstützt nur UTF-8. \n"
+"    oder UTF-16 kodiert sein. Bücherwurm unterstützt nur UTF-8. \n"
 "    (Bidirektionaler Text wird unterstützt, aber Sie müssen dies in der\n"
 "    CSS-Datei angeben.)\n"
 "    "
@@ -1156,7 +1169,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"    Technische Details und di Spezifikation sind erhältlich von\n"
+"    Technische Details und die Spezifikation sind erhältlich von\n"
 "    <a href=\"http://openebook.org\">http://openebook.org</a>.\n"
 "    "
 
@@ -1213,7 +1226,7 @@ msgstr "Ungültige ePub Verarbeitung"
 #: library/templates/epub.html:46
 #: library/templates/epub.html.py:231
 msgid "Limitations"
-msgstr "Enschränkungen"
+msgstr "Einschränkungen"
 
 #: library/templates/epub.html:54
 msgid ""
@@ -1225,7 +1238,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      Diese Seite ist gedacht für Entwickler, Herausgeber ud ePub Enthusiasten,\n"
+"      Diese Seite ist gedacht für Entwickler, Herausgeber und ePub Enthusiasten,\n"
 "      die am ePub Standard interessiert sind und wissen wollen, wie Bücherwurm\n"
 "      diesen benutzt.\n"
 "    "
@@ -1414,7 +1427,7 @@ msgstr ""
 
 #: library/templates/epub.html:208
 msgid "How Bookworm treats invalid ePub"
-msgstr "Wie Bücherwrum ungültige ePubs behandelt"
+msgstr "Wie Bücherwurm ungültige ePubs behandelt"
 
 #: library/templates/epub.html:210
 msgid ""
@@ -1529,7 +1542,7 @@ msgstr "Ich habe Probleme ein Buch hinzuzufügen"
 
 #: library/templates/help.html:60
 msgid "Here are some common things to check"
-msgstr "Einige gängige Dinge, die Sie prüfen sollten"
+msgstr "Einige Dinge, die Sie überprüfen sollten"
 
 #: library/templates/help.html:62
 msgid "Is the book in &lsquo;ePub&rsquo; format?"
@@ -1544,6 +1557,12 @@ msgid ""
 "    for help on what software to use when reading it.\n"
 "    "
 msgstr ""
+"\n"
+" Bücherwurm akzeptiert nur ePub Bücher. Falls der Name mit <em>.epub</em>\n"
+" endet, ist es wahrschebnlich ein ePub Buch. Falls nicht, ist es wahrscheinlich ein\n"
+" PDF oder ein anderes Ebook Format. Überprüfen Sie auf der Website von der Sie\n"
+" das Buch erhalten haben, mit welcher Software Sie das Buch lesen können.\n"
+"  "
 
 #: library/templates/help.html:71
 msgid "Did Bookworm tell you there was a problem with the book?"
@@ -1582,6 +1601,14 @@ msgid ""
 "    If they both agree, it's likely that the publisher didn't make the ePub correctly.\n"
 "    "
 msgstr ""
+"\n"
+"  Allerdings ist Bücherwurm selbst noch ziemlich neu und ist fehlerhaft. Wenn Ihr Buch\n"
+" in Bücherwurm hochgeladen wurde und ein Problem festgestelt wurde, kontaktierte Bücherwurm ein <a href=\"http://www.threepress.org/document/epub-validate/\">ePub Validierungs System</a>,\n"
+" das ein Programm namens &lsquo;epubcheck&rsquo; von Adobe benutzt.\n"
+" Bücherwurm sagt Ihnen, ob epubcheck ebenfalls ein Problem mit dem Ebook festgestellt\n"
+" hat. Falls beide übereinstimmen, ist es wahrscheinlich, dass der Herausgeber\n"
+" das ePub nicht korrekt erstellt hat.\n"
+"   "
 
 #: library/templates/help.html:98
 msgid ""
@@ -1592,6 +1619,13 @@ msgid ""
 "    for a status.\n"
 "    "
 msgstr ""
+"\n"
+" Wannimmer ein ePub Buch nicht zu Ihrer Bibliothek hinzugefügt werden konnte\n"
+" werden die Bücherwurm Entwickler benachrichtigt. Falls ein Fehler gefunden wird,\n"
+" wird er normalerweise innerhalb weniger Tage korrigiert. Versuchen Sie es später \n"
+" noch einmal oder senden eine Email an <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>,\n"
+" um eine Statusmeldung zu erhalten.\n"
+"   "
 
 #: library/templates/help.html:105
 msgid "Does the book contain DRM (Digital Rights Management)?"
@@ -1606,6 +1640,13 @@ msgid ""
 "    limiting where you can read.\n"
 "    "
 msgstr ""
+"\n"
+" Einige ePub Bücher haben Einschränkungen, die verhindern, es auf einem\n"
+" nicht autorisierten Gerät zu lesen. Bücherwurm unterstützt keine Art von\n"
+" DRM (Digital Rights Management) und die Entwickler sind der Meinung, dass\n"
+" die Begrenzung auf bestimmte Geräte kein genügender Schutz gegen\n"
+" unerlaubte Benutzung darstellt.\n"
+"   "
 
 #: library/templates/help.html:115
 msgid ""
@@ -1614,6 +1655,10 @@ msgid ""
 "    which software you should use to read your book.\n"
 "    "
 msgstr ""
+"\n"
+" Kontaktieren Sie die Buchhandlung, in der Sie das Buch gekauft haben,\n"
+" um zu erfahren mit welcher Software Sie das Buch lesen können.\n"
+"   "
 
 #: library/templates/help.html:120
 msgid "Is the ebook very large, or contain large images?"
@@ -1650,6 +1695,10 @@ msgid ""
 "      changes all the time, but as of March 2009:\n"
 "    "
 msgstr ""
+"\n"
+" Die Zahl der Ereader ändert sich laufend, aber mit Stand von März 2009\n"
+" gibt es folgende Geräte:\n"
+"  "
 
 #: library/templates/help.html:147
 msgid "Device <!-- trans: e-reading device, should be short -->"
@@ -1687,6 +1736,12 @@ msgid ""
 "          For offline reading, export directly from Bookworm to Stanza. <a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone\">More hints on this</a>.\n"
 "          "
 msgstr ""
+"\n"
+"   Benutzen Sie die mobile Version von Bücherwurm wenn Sie online sind.\n"
+"   Besuchen Sie <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>.\n"
+"   Zum Offline Lesen exportieren Sie direkt in Stanza.\n"
+"  <a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone\">Mehr Hinweise hierzu</a>.\n"
+"    "
 
 #: library/templates/help.html:170
 msgid "Other web-enabled phone"
@@ -1699,6 +1754,10 @@ msgid ""
 "          Point your phone at <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>.\n"
 "          "
 msgstr ""
+"\n"
+"          Use the mobile web version of Bookworm when online.\n"
+"          Point your phone at <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>.\n"
+"  "
 
 #: library/templates/help.html:182
 #: library/templates/public.html:22
@@ -1718,6 +1777,12 @@ msgid ""
 "          web browser at <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>.\n"
 "          "
 msgstr ""
+"\n"
+"   Der Kindle Reader kann noch keine ePub Dateien lesen, Sie können aber\n"
+"   die mobile Version von Bücherwurm über Kindle Whispernet benutzen, indem Sie\n"
+"   mit dessen Webbrowser auf <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>\n"
+"   zeigen.\n"
+"  "
 
 #: library/templates/help.html:205
 #, python-format
@@ -1738,6 +1803,11 @@ msgid ""
 "    haven't already.  In fact, you probably already have one.  <a href=\"%(openidurl)s\">Find out more about OpenID</a>.\n"
 "    "
 msgstr ""
+" \n"
+"   Sie benötigen keine OpenID um Bücherwurm zu benutzen, wir empfehlen aber eine zu erstellen,\n"
+"   falls Sie das noch nicht getan haben. Möglicherweise haben Sie aber bereits eine. \n"
+"   <a href=\"%(openidurl)s\">Mehr über OpenID</a>.\n"
+"    "
 
 #: library/templates/help.html:218
 msgid "I have additional questions"
@@ -1763,8 +1833,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    Besuchen Sie auch unser Forum <a href=\"http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a>\n"
-"\"   Für spezielle Fragen kontaktieren Sie bitte <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>.</p>\n"
+"    Besuchen Sie auch unser Forum <a href=\"http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a>.\n"
+"    Für spezielle Fragen kontaktieren Sie bitte <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>.</p>\n"
 "    "
 
 #: library/templates/index.html:6
@@ -1787,7 +1857,9 @@ msgid ""
 "There is one reader \n"
 "   "
 msgid_plural "There are more than %(counter)s readers\n"
-msgstr[0] "Es gibt nur einen Bücherwurm-Benutzer.\n"
+msgstr[0] ""
+"Es gibt nur einen Bücherwurm-Benutzer.\n"
+"  "
 msgstr[1] "%(counter)s Leser verwenden Bücherwurm.\n"
 
 #: library/templates/index.html:24
@@ -1796,7 +1868,9 @@ msgid ""
 " and only one individual book.\n"
 "   "
 msgid_plural " and over %(counter)s individual books.\n"
-msgstr[0] "Es gibt nur ein Buch.\n"
+msgstr[0] ""
+"Es gibt nur ein Buch.\n"
+"  "
 msgstr[1] "Es sind %(counter)s Bücher vorhanden.\n"
 
 #: library/templates/index.html:32
@@ -1908,7 +1982,7 @@ msgstr "Laden Sie Bücher auf Ihren "
 
 #: library/templates/public.html:39
 msgid "Sony Reader or iLiad "
-msgstr ""
+msgstr "Sony Reader oder iLiad "
 
 #: library/templates/public.html:40
 msgid "Mobile reading"
@@ -1995,6 +2069,14 @@ msgid ""
 "    and can export directly to Stanza.\n"
 "    "
 msgstr ""
+"\n"
+" Bücherwurm erlaubt es Lesern ePub Bücher zu Ihrer Online Bibliothek\n"
+" hinzuzufügen und diese in ihrem Webbrowser oder  mobilen Gerät zu lesen.\n"
+" Falls Sie ein mobiles Gerät besitzen, das ePub untertsützt (wie z.B. den \n"
+" Sony Reader oder iRex iLiad), können Sie Ihre Bücher in ihren E-Reader\n"
+" herunterladen. Bücherwurm ist speziell für die Benutzung mit dem iPhone\n"
+" optimiert und kann direkt in Stanza exportieren.\n"
+"    "
 
 #: library/templates/public.html:85
 msgid ""
@@ -2059,7 +2141,7 @@ msgstr ""
 
 #: library/templates/shell.html:32
 msgid "Online ePub ebook reading"
-msgstr "Online ePub-Bücher lesen"
+msgstr "ePub-Bücher online lesen"
 
 #: library/templates/shell.html:37
 msgid "My books"
@@ -2151,7 +2233,7 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"        Lizensiert unter der <a href=\"%(bsdlicenseurl)s\">BSD Lizenz</a>\n"
+"        Lizenziert unter <a href=\"%(bsdlicenseurl)s\">BSD Lizenz</a>\n"
 "        "
 
 #: library/templates/tour.html:21
@@ -2165,6 +2247,12 @@ msgid ""
 "    when you're done.\n"
 "    "
 msgstr ""
+"\n"
+" Diese schnelle Führung wird Ihnen alle Merkmale von Bücherwurm\n"
+" zeigen, angefangen vom Hinzufügen Ihres ersten Buches, über das Online\n"
+" Lesen und Suchen bis zum Speichern auf Ihrem mobilen Gerät.\n"
+" <a href=\"%(signupurl)s\">Erstellen Sie ein Konto</a> wenn Sie fertig sind.\n"
+"   "
 
 #: library/templates/tour.html:31
 #: library/templates/tour.html.py:43
@@ -2190,6 +2278,10 @@ msgid ""
 "    every Bookworm page.\n"
 "    "
 msgstr ""
+"\n"
+" Wählen Sie den <em>Buch hinzufügen</em> Link in der oberen rechten Ecke\n"
+" jeder Bücherwurm Seite.\n"
+"    "
 
 #: library/templates/tour.html:58
 msgid ""
@@ -2197,6 +2289,9 @@ msgid ""
 "    Then click the <em>Browse</em> button. \n"
 "    "
 msgstr ""
+"\n"
+" Dann klicken Sie auf die <em>Durchsuchen...<em> Schaltfläche.\n"
+"    "
 
 #: library/templates/tour.html:63
 msgid ""
@@ -2206,10 +2301,14 @@ msgid ""
 "    ends in <em>.epub</em>.\n"
 "    "
 msgstr ""
+"\n"
+" Ihr Computer wird Sie auffordern, eine Datei zum Hochladen auszuwählen.\n"
+" Dieses sollte eine Ebook-Datei mit der Endung <em>.epub>/em> sein.\n"
+"   "
 
 #: library/templates/tour.html:69
 msgid "Click <!-- trans: imperative verb -->"
-msgstr "Anklicken"
+msgstr "Klicken Sie auf "
 
 #: library/templates/tour.html:69
 msgid "Add to my library"
@@ -2225,6 +2324,10 @@ msgid ""
 "    you've added, re-sort it by date, title or author, and delete\n"
 "    unwanted books.    "
 msgstr ""
+"Auf der Hauptseite der Bibliothek sehen Sie eine Liste der Bücher,\n"
+" die Sie hinzugefügt haben. Sie können diese nach Datum, Titel oder Autor\n"
+" umsortieren und Bücher löschen.\n"
+"   "
 
 #: library/templates/tour.html:84
 msgid "Step 2: Reading a book    "
@@ -2236,7 +2339,7 @@ msgstr "Klicken Sie auf den Titel Ihres Buches in der Bibliothek.    "
 
 #: library/templates/tour.html:89
 msgid "The book will automatically open to the first page."
-msgstr "Das wird automatisch die erste Seite öffnen."
+msgstr "Die erste Seite des Buches wiurd automatisch geöffnet."
 
 #: library/templates/tour.html:92
 msgid ""
@@ -2245,6 +2348,10 @@ msgid ""
 "      The current chapter you're reading will be in large gray type.\n"
 "    "
 msgstr ""
+"\n"
+" Die linke Seite zeigt das <em>Inhaltsverzeichnis</em> des Buches.\n"
+" Das Kapitel, das Sie gerade lesen wird größer und grau angezeigt.\n"
+"  "
 
 #: library/templates/tour.html:98
 msgid ""
@@ -2255,6 +2362,11 @@ msgid ""
 "      other editions available online.\n"
 "    "
 msgstr ""
+"\n"
+" Vom Inhaltsverzeichnis aus können Sie das Buch im Originalformat <em>Herunterladen</em>,\n"
+" oder Sie klicken auf <em>Buch Information</em>, um die Details zu Copyright, Herausgeber\n"
+" und anderen Online Ausgaben sehen.\n"
+"   "
 
 #: library/templates/tour.html:107
 msgid "The Book Information page"
@@ -2267,6 +2379,10 @@ msgid ""
 "      with the ebook can be read here.  \n"
 "    "
 msgstr ""
+"\n"
+" Herausgeber, Sprache, Copyright und andere Informationen, die\n"
+" das Buch zur Verfügung stellt, werden hier angezeigt.\n"
+"   "
 
 #: library/templates/tour.html:116
 msgid ""
@@ -2275,6 +2391,10 @@ msgid ""
 "      work in Google Book Search.\n"
 "    "
 msgstr ""
+"\n"
+"  Bücherwurm sucht automatisch andere Ausgaben dieses Werkes\n"
+" in Google Book Search.\n"
+"  "
 
 #: library/templates/tour.html:121
 msgid "Moving through a book    "
@@ -2288,6 +2408,11 @@ msgid ""
 "      another part or chapter by clicking on the <em>Table of Contents.</em>\n"
 "    "
 msgstr ""
+"\n"
+" Auf jeder Seite Ihres Buches kann durch <em>Vorwärts</em> und/oder <em>Rückwärts</em>\n"
+" Pfeile zwischen den Seiten gewechselt werden. Sie können durch Klicken auf die\n"
+" <em>Inhaltsverzeichnis</em> Schaltfläche in andere Kapitel springen.\n"
+"   "
 
 #: library/templates/tour.html:131
 msgid "Step 3: Searching your library    "
@@ -2301,6 +2426,11 @@ msgid ""
 "    it in your library.\n"
 "    "
 msgstr ""
+"\n"
+"  Falls Sie Bücher in Ihre Bibliothek geladen haben, sehen Sie auf den meisten Seiten oben links\n"
+" ein Sucheingabefeld. Tippen Sie ein WEort oder einen Satzteil ein, um alle Fundstellen in Ihrer\n"
+" Bibliothek zu finden.\n"
+"   "
 
 #: library/templates/tour.html:141
 msgid ""
@@ -2310,6 +2440,11 @@ msgid ""
 "    to go to the matching chapter.\n"
 "    "
 msgstr ""
+"\n"
+" Diejenigen Kapitel Ihrer Bücher, die das Suchwort enthalten, werden auf der nächsten\n"
+" Seite angezeigt. Ihre Sucheingabe werden fett hervorgehoben. Klicken Sie auf den Buchtitel,\n"
+" um direkt zum entsprechenden Kapitel zu gehen.\n"
+"   "
 
 #: library/templates/tour.html:152
 msgid "Step 4: Take your book on the road  <!-- trans: e.g. on a mobile device -->  "
@@ -2329,6 +2464,12 @@ msgid ""
 "      small devices.\n"
 "    "
 msgstr ""
+"\n"
+" Falls Ihr Mobiltelefon Internetzugang hat, können Sie Ihre Bücherwurm Bücher\n"
+" überall elsen. Gehen Sie mit Ihrem Webbrowser auf\n"
+" <strong><a href=\"http://m.bookworm.oreilly.com/\">m.bookworm.oreilly.com</a></strong>.\n"
+" Diese Version von Bücherwurm wurde speziell für Geräte mit kleiner Anzeige angepasst.\n"
+"   "
 
 #: library/templates/tour.html:164
 msgid "Stanza on the iPhone    "
@@ -2343,6 +2484,13 @@ msgid ""
 "      personal Stanza library. <a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone\">Step-by-step instructions on the Stanza site</a>.\n"
 "    "
 msgstr ""
+"\n"
+" Wenn Sie Bücherwurm mit Safari auf dem iPhone besuchen, kann Bücherwurm Ihre Bücher direkt\n"
+" in <a href=\"http://www.lexcycel.com/\">Stanza</a> exportieren. Klicken Sie von Ihrer Bibliotheksliste aus\n"
+" auf den &#x21E7; Pfeil neben einem Titel, um das Buch in Ihre persönliche Stanza bibliothek hinzuzufügen.\n"
+" <a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone\">Schritt-für-Schritt Anleitung</a>\n"
+" auf der Stanza Website.\n"
+"   "
 
 #: library/templates/tour.html:173
 msgid "Download to the Sony Reader or iLiad    "
@@ -2357,6 +2505,12 @@ msgid ""
 "      ereader instructions for adding the book to your device.\n"
 "    "
 msgstr ""
+"\n"
+" Durch Klicken auf <em>Dieses Buch herunterladen</em> (im\n"
+" Inhaltsvezreichnis), können Sie die Originalversion  des Ebooks zu jeder\n"
+" Zeit herunterladen. Folgen Sie den Anweisungen Ihres Ereaders um\n"
+" ein Buch Ihrem Gerät hinzuzufügen.\n"
+"  "
 
 #: library/templates/tour.html:182
 msgid "The Amazon Kindle cannot read ePub books at this time.    "
@@ -2503,7 +2657,7 @@ msgstr "Profil löschen"
 #: library/templates/auth/authopenid/signup.html:3
 #: library/templates/auth/authopenid/signup.html:4
 msgid "Sign up <!-- trans: open a Bookworm account --> "
-msgstr ""
+msgstr "Konto erstellen"
 
 #: library/templates/auth/authopenid/signup.html:21
 msgid "Two ways to join"
@@ -2554,7 +2708,7 @@ msgstr "Kennwort bestätigen"
 
 #: library/templates/auth/authopenid/signup.html:85
 msgid "If you have an OpenID, sign up here"
-msgstr ""
+msgstr "Falls Sie eine OpenID besitzen, fahren Sie hier fort"
 
 #: library/templates/auth/authopenid/signup.html:88
 msgid "Use my OpenID"
@@ -2877,6 +3031,10 @@ msgid ""
 "  higher in the results.\n"
 "  "
 msgstr ""
+"\n"
+"  Einfach gesagt erscheinen ePubs mit mehr Fundstellen des Suchausdrucks\n"
+"  weiter oben in den Ergebnissen.\n"
+"  "
 
 #: search/templates/search_help.html:89
 msgid "Indexing"
@@ -2899,3 +3057,9 @@ msgid ""
 "  up in the search immediately.  Be patient; it'll be there soon.\n"
 "  "
 msgstr ""
+"\n"
+" Dies bedeutet, dass ein Buch, das Sie gerade hinzugefügt haben,\n"
+" in der Suche nicht sofort erscheint. Haben Sie Geduld, es wird bald\n"
+" da sein.\n"
+"  "
+
