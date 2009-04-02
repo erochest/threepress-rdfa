@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-02 13:42-0400\n"
-"PO-Revision-Date: 2009-04-02 19:15+0200\n"
+"POT-Creation-Date: 2009-04-02 14:36-0400\n"
+"PO-Revision-Date: 2009-04-02 20:22+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: DE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1645,6 +1645,13 @@ msgid ""
 "org</a> for help.\n"
 "    "
 msgstr ""
+"\n"
+"  Sie wissen nicht was Sie tun sollen oder haben Probleme?\n"
+"  Lesen Sie diese Liste zu häufigen Fragen oder senden eine\n"
+"  Email an \n"
+"  <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
+"  um Hilfe zu erhalten.\n"
+"  "
 
 #: library/templates/help.html:33
 msgid "Problems adding a book?"
@@ -2465,9 +2472,10 @@ msgstr ""
 "        Lizenziert unter <a href=\"%(bsdlicenseurl)s\">BSD Lizenz</a>\n"
 "        "
 
-#: library/templates/tour.html:21
-#, python-format
+#: library/templates/tour.html:22
+#, fuzzy, python-format
 msgid ""
+"\n"
 "\n"
 "    This quick tour will show you all the major features of\n"
 "    Bookworm, from adding your first ebook, to reading and searching it \n"
@@ -2484,23 +2492,23 @@ msgstr ""
 "sind.\n"
 "   "
 
-#: library/templates/tour.html:31 library/templates/tour.html.py:43
+#: library/templates/tour.html:33 library/templates/tour.html.py:45
 msgid "Step 1: Adding a book"
 msgstr "Schritt 1: Buch hinzufügen"
 
-#: library/templates/tour.html:33
+#: library/templates/tour.html:35
 msgid "Step 2: Reading a book"
 msgstr "Schritt 2: ein Buch lesen"
 
-#: library/templates/tour.html:37
+#: library/templates/tour.html:39
 msgid "Step 3: Searching your library"
 msgstr "Schritt 3: Bibliothek durchsuchen"
 
-#: library/templates/tour.html:39
+#: library/templates/tour.html:41
 msgid "Step 4: Take your book on the road"
 msgstr "Schritt 4: Nehmen Sie Ihr Buch mit für unterwegs"
 
-#: library/templates/tour.html:49
+#: library/templates/tour.html:51
 msgid ""
 "\n"
 "    Select the <em>Add a book</em> link from the upper-right corner of\n"
@@ -2512,17 +2520,17 @@ msgstr ""
 " jeder Bücherwurm Seite.\n"
 "    "
 
-#: library/templates/tour.html:58
+#: library/templates/tour.html:60
 msgid ""
 "\n"
 "    Then click the <em>Browse</em> button. \n"
 "    "
 msgstr ""
 "\n"
-" Dann klicken Sie auf die <em>Durchsuchen...<em> Schaltfläche.\n"
+" Dann klicken Sie auf die <em>Durchsuchen...</em> Schaltfläche.\n"
 "    "
 
-#: library/templates/tour.html:63
+#: library/templates/tour.html:65
 msgid ""
 "\n"
 "    Your computer will prompt you to \n"
@@ -2535,19 +2543,19 @@ msgstr ""
 " Dieses sollte eine Ebook-Datei mit der Endung <em>.epub</em> sein.\n"
 "   "
 
-#: library/templates/tour.html:69
+#: library/templates/tour.html:71
 msgid "Click <!-- trans: imperative verb -->"
 msgstr "Klicken Sie auf "
 
-#: library/templates/tour.html:69
+#: library/templates/tour.html:71
 msgid "Add to my library"
 msgstr "Meiner Bibliothek hinzufügen"
 
-#: library/templates/tour.html:76
+#: library/templates/tour.html:78
 msgid "    Your book is now available!     "
 msgstr "    Ihr Buch steht nun zur Verfügung!    "
 
-#: library/templates/tour.html:78
+#: library/templates/tour.html:80
 msgid ""
 "From the main library screen you can view the list of books\n"
 "    you've added, re-sort it by date, title or author, and delete\n"
@@ -2558,19 +2566,19 @@ msgstr ""
 " umsortieren und Bücher löschen.\n"
 "   "
 
-#: library/templates/tour.html:84
+#: library/templates/tour.html:86
 msgid "Step 2: Reading a book    "
 msgstr "Schritt 2: ein Buch lesen    "
 
-#: library/templates/tour.html:87
+#: library/templates/tour.html:89
 msgid "Click on the book's title from your library.    "
 msgstr "Klicken Sie auf den Titel Ihres Buches in der Bibliothek.    "
 
-#: library/templates/tour.html:89
+#: library/templates/tour.html:91
 msgid "The book will automatically open to the first page."
 msgstr "Die erste Seite des Buches wiurd automatisch geöffnet."
 
-#: library/templates/tour.html:92
+#: library/templates/tour.html:94
 msgid ""
 "\n"
 "      The left side of the screen shows the book's <em>Table of Contents</"
@@ -2583,7 +2591,7 @@ msgstr ""
 " Das Kapitel, das Sie gerade lesen, wird größer und grau angezeigt.\n"
 "  "
 
-#: library/templates/tour.html:98
+#: library/templates/tour.html:100
 msgid ""
 "\n"
 "      From the Table of Contents you can always click to <em>Download</em>\n"
@@ -2601,11 +2609,11 @@ msgstr ""
 " und anderen Online Ausgaben sehen.\n"
 "   "
 
-#: library/templates/tour.html:107
+#: library/templates/tour.html:109
 msgid "The Book Information page"
 msgstr "Die Buch Informationsseite"
 
-#: library/templates/tour.html:110
+#: library/templates/tour.html:112
 msgid ""
 "\n"
 "      Publisher, language, copyright and other information supplied\n"
@@ -2617,7 +2625,7 @@ msgstr ""
 " das Buch zur Verfügung stellt, werden hier angezeigt.\n"
 "   "
 
-#: library/templates/tour.html:116
+#: library/templates/tour.html:118
 msgid ""
 "\n"
 "      Bookworm will also automatically look up other editions of this\n"
@@ -2629,11 +2637,11 @@ msgstr ""
 " in Google Book Search.\n"
 "  "
 
-#: library/templates/tour.html:121
+#: library/templates/tour.html:123
 msgid "Moving through a book    "
 msgstr "Sich durch ein Buch bewegen    "
 
-#: library/templates/tour.html:123
+#: library/templates/tour.html:125
 msgid ""
 "\n"
 "      Each page of your book will have <em>Next</em> and/or <em>Previous</"
@@ -2651,11 +2659,11 @@ msgstr ""
 " Schaltfläche <em>Inhaltsverzeichnis</em> in andere Kapitel springen.\n"
 "   "
 
-#: library/templates/tour.html:131
+#: library/templates/tour.html:133
 msgid "Step 3: Searching your library    "
 msgstr "Schritt 3: Bibliothek durchsuchen"
 
-#: library/templates/tour.html:134
+#: library/templates/tour.html:136
 msgid ""
 "\n"
 "    If you've loaded books into your library, you'll see a search box at the "
@@ -2673,7 +2681,7 @@ msgstr ""
 " Bibliothek zu finden.\n"
 "   "
 
-#: library/templates/tour.html:141
+#: library/templates/tour.html:143
 msgid ""
 "\n"
 "    Chapters in your books which contain this term will be displayed on the "
@@ -2691,16 +2699,16 @@ msgstr ""
 " um direkt zum entsprechenden Kapitel zu gehen.\n"
 "   "
 
-#: library/templates/tour.html:152
+#: library/templates/tour.html:154
 msgid ""
 "Step 4: Take your book on the road  <!-- trans: e.g. on a mobile device -->  "
 msgstr "Schritt 4: nehmen Sie Ihr Buch mit für unterwegs "
 
-#: library/templates/tour.html:154
+#: library/templates/tour.html:156
 msgid "Bookworm on your mobile phone    "
 msgstr "Bücherwurm auf Ihrem Mobiltelefon    "
 
-#: library/templates/tour.html:156
+#: library/templates/tour.html:158
 msgid ""
 "\n"
 "      If your phone has access to the web, then you can read your\n"
@@ -2721,11 +2729,11 @@ msgstr ""
 "angepasst.\n"
 "   "
 
-#: library/templates/tour.html:164
+#: library/templates/tour.html:166
 msgid "Stanza on the iPhone    "
 msgstr "Stanza auf dem iPhone    "
 
-#: library/templates/tour.html:166
+#: library/templates/tour.html:168
 msgid ""
 "\n"
 "      When viewed in Safari on the iPhone, Bookworm can export your books "
@@ -2750,11 +2758,11 @@ msgstr ""
 " auf der Stanza Website.\n"
 "   "
 
-#: library/templates/tour.html:173
+#: library/templates/tour.html:175
 msgid "Download to the Sony Reader or iLiad    "
 msgstr "Zum Sony Reader oder iLiad übertragen    "
 
-#: library/templates/tour.html:175
+#: library/templates/tour.html:177
 msgid ""
 "\n"
 "      By clicking on the <em>Download this book</em> link in the\n"
@@ -2770,11 +2778,11 @@ msgstr ""
 " ein Buch Ihrem Gerät hinzuzufügen.\n"
 "  "
 
-#: library/templates/tour.html:182
+#: library/templates/tour.html:184
 msgid "The Amazon Kindle cannot read ePub books at this time.    "
 msgstr "Das Amazon Kindle kann z.Z. keine ePub Bücher anzeigen.    "
 
-#: library/templates/tour.html:185
+#: library/templates/tour.html:187
 #, python-format
 msgid ""
 "Ready to <a href=\"%(signupurl)s\">sign up</a>?  <!-- trans: sign-up to use "
@@ -3259,6 +3267,12 @@ msgid ""
 "  those supported by Google.\n"
 "  "
 msgstr ""
+"\n"
+"  Die Volltextsuche in Bücherwurm erlaubt es Ihnen, Wörter in \n"
+"  allen Ihren ePub Büchern zu suchen. Sie können in mehreren\n"
+"  Sprachen suchen und fortgeschrittene Ausdruckssuche und\n"
+"  logische Operatoren, wie bei Google, benutzen.\n"
+"  "
 
 #: search/templates/search_help.html:24
 msgid "Bookworm uses MySQL full-text search"
@@ -3334,7 +3348,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Alle Sucheanfragen sind unabhängig von Groß-/Kleinschrebung. Dies "
+"  Alle Sucheanfragen sind unabhängig von Groß-/Kleinschreibung. Dies "
 "bedeutet, dass\n"
 "  \"White\" sowohl \"white\" als auch \"WHITE\" findet.\n"
 "  "
@@ -3358,8 +3372,8 @@ msgstr ""
 "\n"
 "  Wie bei Google ist der Standard Operator AND, das bedeutet, dass in "
 "einer \n"
-"  Suche nach mehreren Worten alle Wörter erscheinen müssen um ein Ergebis zu "
-"erzielen.\n"
+"  Suche nach mehreren Worten alle Wörter erscheinen müssen um ein Ergebnis "
+"zu erzielen.\n"
 "  Bücherwurm fügt automatisch ein '+' zu allen Ihren Suchausdrücken an.\n"
 "  Sie können diese Verhalten ändern, indem Sie ein '+' oder '-' Zeichen "
 "Ihrer Suche\n"
@@ -3417,13 +3431,13 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Die Ergebnisse werden in der reihenfolge mit der größten Relevanz "
+"  Die Ergebnisse werden in der Reihenfolge mit der größten Relevanz "
 "angezeigt.\n"
-"  <em>Relevanz</em> bedeutet, wie wahrscheinblich es ist, dass ein Ergebnis\n"
+"  <em>Relevanz</em> bedeutet, wie wahrscheinlich es ist, dass ein Ergebnis\n"
 "  das ist, was Sie gesucht haben. Die Algoritmen, die die Relevanz "
 "bestimmen,\n"
 "  sind sehr kompliziert und die Ergebnisse sind nicht immer so intuitiv "
-"verständlich\n"
+"verständlich,\n"
 "  wie bei großen Suchmaschinen wie z.B. Google.\n"
 "  "
 
