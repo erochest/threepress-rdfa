@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-03 18:07-0400\n"
+"POT-Creation-Date: 2009-04-03 18:40-0400\n"
 "PO-Revision-Date: 2009-04-03 21:50+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: DE <LL@li.org>\n"
@@ -2618,7 +2618,7 @@ msgid "Reading Mode shown using a larger font"
 msgstr ""
 
 #: library/templates/reading-mode.html:109
-msgid "The same page after the font size is increaed."
+msgid "The same page after the font size is increased."
 msgstr ""
 
 #: library/templates/reading-mode.html:115
