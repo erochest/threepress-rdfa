@@ -28,7 +28,6 @@ def date_metadata(document, field):
     if not metadata:
         return 'Unknown'
     metadata = metadata[0]
-    print metadata
     try:
         try:
             t = datetime.strptime(metadata, "%Y-%m-%d %H:%M:%S")
