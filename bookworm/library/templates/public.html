@@ -35,14 +35,13 @@
 
     <ul>
       <li>{{ _("Read and search full-text books online") }}</li>
-
+      <li>{{ _("Clutter-free reading mode")}}</li>
       <li>{{ _("Download books to your ") }}<a href="{% url help %}#devices">{{ _("Sony Reader or iLiad ") }}</a></li>
       <li><a href="{% url tour %}#step4">{{ _("Mobile reading") }}</a>, 
       {% blocktrans with "http://www.lexcycle.com/" as stanzaurl %}
       online or with <a href="{{ stanzaurl }}">Stanza</a> on the iPhone.
       {% endblocktrans %}
       </li>
-      <li><a href="{% url tour %}">{{ _("Take a tour of Bookworm") }}</a></li>
     </ul>
   </div>
 
@@ -98,7 +97,7 @@
     ends with <strong>.epub</strong>.  If so, you can <a href="{{ helpurl }}">read
     that ebook on Bookworm</a>. If not, tell the book publisher to start
     supporting the only free and open ebook format with strong
-    industry support.
+    industry backing.
     {% endblocktrans %}
   </p>
   <h2>{{ _("Try Bookworm out") }}</h2>

@@ -17,13 +17,9 @@
 <div class="bw-status">
   <h2>{% trans "Status" %}</h2>
   <p style="text-transform:none">
-{% blocktrans count total_users as counter %}There is one reader 
-   {% plural %}There are more than {{ counter }} readers
-{% endblocktrans %}
+{% blocktrans count total_users as counter %}There is one reader {% plural %}There are more than {{ counter }} readers{% endblocktrans %}
 
-{% blocktrans count total_books as counter %} and only one individual book.
-   {% plural %} and over {{ counter }} individual books.
-{% endblocktrans %}
+{% blocktrans count total_books as counter %} and only one individual book.{% plural %} and over {{ counter }} individual books.{% endblocktrans %}
   </p>
 </div>
 {% endcache %}

@@ -256,8 +256,12 @@ def delete(request):
             document = _get_document(request, title, key, override_owner=True)
         else:
             document = _get_document(request, title, key)
-        _delete_document(request, document)
 
+        # They should be the owner of this book to delete it
+        if document is not None and document.is_owner(request.user):
+            _delete_document(request, document)
+        else:
+            raise Http404
     return HttpResponseRedirect(reverse('library'))
 
 def register(request):

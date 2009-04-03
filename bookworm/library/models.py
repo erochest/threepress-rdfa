@@ -103,8 +103,8 @@ class EpubArchive(BookwormModel):
     identifier = models.CharField(max_length=255, default='', db_index=True)
 
     # MTM fields
-    subjects = models.ManyToManyField('Subject')
-    publishers = models.ManyToManyField('EpubPublisher')
+    subjects = models.ManyToManyField('Subject', default=None, null=True, blank=True)
+    publishers = models.ManyToManyField('EpubPublisher', default=None, null=True, blank=True)
 
     _CONTAINER = constants.CONTAINER     
     _parsed_metadata = None
@@ -354,7 +354,15 @@ class EpubArchive(BookwormModel):
 
     def is_owner(self, user):
         '''Is this user an owner of the book?'''
-        return self.user_archive.filter(user=user).count() > 0
+        return self.user_archive.filter(user=user) and self.user_archive.filter(user=user)[0].owner==True
+
+    def set_owner(self, user):
+        '''Sets the ownership of ths book to a particular user'''
+        for ua in self.user_archive.all():
+            ua.user = user
+            ua.owner = True
+            ua.save()
+        self.save()
 
     def get_last_chapter_read(self, user):
         '''Get the last chapter read by this user.'''
@@ -700,6 +708,7 @@ class UserArchive(BookwormModel):
     '''Through class for user-epub relationships'''
     archive = models.ForeignKey(EpubArchive, related_name='user_archive')
     user = models.ForeignKey(User, related_name='user_archive')
+    owner = models.BooleanField(default=True, help_text='Is this the owner of the book?')
     last_chapter_read = models.ForeignKey('HTMLFile', null=True)
 
     def __unicode__(self):
@@ -734,12 +743,18 @@ class Subject(BookwormModel):
     is_lcsh = models.BooleanField(default=False)
     def __unicode__(self):
         return self.name
+    class Meta:
+        ordering = ('name',)
         
 class EpubPublisher(BookwormModel):
     '''Represents a publisher'''
     name = models.CharField(max_length=255, default='', db_index=True)
+
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        ordering = ('name',)
     
 class HTMLFile(BookwormFile):
     '''Usually an individual page in the ebook.'''

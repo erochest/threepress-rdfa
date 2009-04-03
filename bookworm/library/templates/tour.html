@@ -128,6 +128,11 @@
       another part or chapter by clicking on the <em>Table of Contents.</em>
     {% endblocktrans %}
     </p>
+    <h2> {{ _("Reading Mode") }}</h2>  
+    <p>
+      {% url reading_mode as reading_mode_url %}
+      {% blocktrans %}Using <a href="{{ reading_mode_url }}">Reading Mode</a> makes the Bookworm experience even better. <a href="{{ reading_mode_url }}">Find out more</a>.{% endblocktrans %}
+    </p>
   <div style="border-top:1px solid rgb(210,210,210);clear:both;">
   <a name="step3"></a>
   <h1>    {% blocktrans %}Step 3: Searching your library    {% endblocktrans %}</h1>

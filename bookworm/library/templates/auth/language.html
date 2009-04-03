@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}{% trans "Change the default languge for <!-- trans: person name -->" %}{{ request.user.username }}{% endblock %}
+{% block title %}{% trans "Change the default languge for" %}{{ request.user.username }}{% endblock %}
 
 {% block searcharea %}{% endblock %} 
 {% block main %}
@@ -15,11 +15,11 @@
 {% endblocktrans %}
 </p>
 <p>
-{% blocktrans %}
-  If you don't see your preferred language, <a href="mailto:bookworm@threepress.org">let us know if you're
-  willing to help translate</a>.  Bookworm can be translated into <a href="http://code.djangoproject.com/browser/django/trunk/django/conf/global_settings.py#L43">any of the languages supported by
-  the Django framework</a>.
-{% endblocktrans %}
+{% blocktrans %}If you don't see your preferred language, <a href="mailto:bookworm@threepress.org">let us know if you're willing to help translate</a>.  Bookworm can be translated into <a href="http://code.djangoproject.com/browser/django/trunk/django/conf/global_settings.py#L43">any of the languages supported by the Django framework</a>.{% endblocktrans %}
+</p>
+
+<p>
+{% blocktrans %}Information on translating Bookworm is available on <a href="http://labs.oreilly.com/2009/03/how-to-contribute-translations-to-bookworm.html">O'Reilly Labs</a>{% endblocktrans %}
 </p>
 <form action="/i18n/setlang/" method="post">
   <input name="next" type="hidden" value="{% url profile %}" />

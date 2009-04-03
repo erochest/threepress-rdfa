@@ -75,6 +75,8 @@
             | <a class="bw-admin-link" href="/admin">{% trans "admin" %}</a>
             {% endif %}
             | <a class="bw-logout-link" href="{% url user_signout %}">{% trans "logout" %}</a> 
+            |
+            <a href="{% url profile_language %}">{% trans "language" %}</a>
             </span>
 
             {% block reading_tools %}{% endblock reading_tools %}            

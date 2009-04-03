@@ -1025,6 +1025,32 @@ class TestViews(DjangoTestCase):
                              status_code=302, 
                              target_status_code=200)   
         
+
+    def test_delete_not_owner(self):
+        self._upload('Pride-and-Prejudice_Jane-Austen.epub')        
+        user = User.objects.create_user(username="testnotowner",email="testnotowner@example.com",password="testnowowner")        
+        book = EpubArchive.objects.get(id=1)
+        book.set_owner(user)
+
+        self.assertTrue(book.is_owner(user))
+        
+        response = self.client.post('/delete/', { 'title':'Pride+and+Prejudice',
+                                       'key':'1'})
+        assert response.status_code == 404
+
+        # Make sure the book is still there
+        book = EpubArchive.objects.get(id=1)        
+
+        # Ensure this works for public books too
+        book.is_public = True
+        book.save()
+        response = self.client.post('/delete/', { 'title':'Pride+and+Prejudice',
+                                       'key':'1'})
+        assert response.status_code == 404
+
+        # Make sure the book is still there
+        book = EpubArchive.objects.get(id=1)        
+
     def test_view_profile(self):
         self._login()
         response = self.client.get('/account/profile/')

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-02 10:08-0400\n"
+"POT-Creation-Date: 2009-04-03 18:01-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,16 +24,11 @@ msgstr "tysk"
 msgid "English"
 msgstr "engelsk"
 
-#: settings.py:101
-#, fuzzy
-msgid "Danish"
-msgstr "engelsk"
-
-#: settings.py:137
+#: settings.py:141
 msgid "account/"
 msgstr "konto/"
 
-#: settings.py:137
+#: settings.py:141
 msgid "signin/"
 msgstr "log på/"
 
@@ -501,15 +496,15 @@ msgstr "Log in med OPENID"
 msgid "Untitled"
 msgstr "uden navn"
 
-#: library/models.py:1077
+#: library/models.py:1092
 msgid "book title"
 msgstr "bogtitel"
 
-#: library/models.py:1078
+#: library/models.py:1093
 msgid "first author"
 msgstr "hovedforfatter"
 
-#: library/models.py:1079
+#: library/models.py:1094
 msgid "date added to your library"
 msgstr "dato for tilføjelse til dit bibliotek"
 
@@ -546,15 +541,15 @@ msgstr ""
 "at bekræfte, at bogen er en valid epub-bog og indeholder enten XHTML- eller "
 "DTBook-formatteret indhold."
 
-#: library/views.py:312
+#: library/views.py:316
 msgid "Your profile has been updated."
 msgstr "Din profil er nu opdateret"
 
-#: library/views.py:329 library/views.py:337
+#: library/views.py:333 library/views.py:341
 msgid "There was a problem with your request to delete this profile."
 msgstr "Der opstod problemer med din anmodning om at slette profilen."
 
-#: library/views.py:444
+#: library/views.py:448
 msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
@@ -562,7 +557,7 @@ msgstr ""
 "Den fil, du oploadede, kunne ikke genkendes som et epub-arkiv og kunne ikke "
 "føjes til dit bibliotek."
 
-#: library/views.py:451
+#: library/views.py:455
 msgid ""
 "We detected a problem with your ebook that is most likely related to it "
 "being too big to display safely in a web browser. This can happen with very "
@@ -578,7 +573,7 @@ msgstr ""
 "sider kræver at man scroller meget og de loades kun meget langsomt. de kan "
 "derfor ikke indlæses i Bookworm."
 
-#: library/views.py:477
+#: library/views.py:481
 msgid ""
 "It appears that you've uploaded a book which contains DRM (Digital Rights "
 "Management).  This is a restriction that is meant to prevent illegal copying "
@@ -594,7 +589,7 @@ msgstr ""
 "Adobe Digital Editions, men du bør også overveje at kontakte forlaget eller "
 "bogens forhandler og foreslå dem at udsende ebøger uden DRM."
 
-#: library/views.py:511
+#: library/views.py:515
 #, python-format
 msgid ""
 "The file you uploaded looks like an ePub archive, but it has some problems "
@@ -607,7 +602,7 @@ msgstr ""
 "Bookworm eller med den måde ePub-filen blev skabt. Den fulde fejlmeddelelse "
 "er: <p style='color:black;font-weight:normal'>%s</p>"
 
-#: library/views.py:514
+#: library/views.py:518
 msgid ""
 "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
 "error)</p>"
@@ -615,7 +610,7 @@ msgstr ""
 "<p>(epubcheck tror at denne fil er valid, så der er nok tale om en fejl i "
 "Bookworm)</p>"
 
-#: library/views.py:520
+#: library/views.py:524
 #, python-format
 msgid ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that "
@@ -2144,32 +2139,28 @@ msgid "Status"
 msgstr "Status"
 
 #: library/templates/index.html:20
-#, python-format
-msgid ""
-"There is one reader \n"
-"   "
-msgid_plural "There are more than %(counter)s readers\n"
+#, fuzzy, python-format
+msgid "There is one reader "
+msgid_plural "There are more than %(counter)s readers"
 msgstr[0] "Der er én læser"
 msgstr[1] "Der er flere end %(counter)s læsere\n"
 
-#: library/templates/index.html:24
-#, python-format
-msgid ""
-" and only one individual book.\n"
-"   "
-msgid_plural " and over %(counter)s individual books.\n"
+#: library/templates/index.html:22
+#, fuzzy, python-format
+msgid " and only one individual book."
+msgid_plural " and over %(counter)s individual books."
 msgstr[0] " og kun en enkelt bog"
 msgstr[1] " og flere end %(counter)s selvstændige bøger"
 
-#: library/templates/index.html:32
+#: library/templates/index.html:28
 msgid "Edit your profile"
 msgstr "Redigér din profil"
 
-#: library/templates/index.html:46
+#: library/templates/index.html:42
 msgid "Books in your library"
 msgstr "Bøger i dit bibliotek"
 
-#: library/templates/index.html:50
+#: library/templates/index.html:46
 #, python-format
 msgid ""
 "\n"
@@ -2180,7 +2171,7 @@ msgstr ""
 "Bøgerne sorteres efter <em>%(order_text)s</em> i <em>%(order_direction)s</"
 "em> orden %(order_adverb)s."
 
-#: library/templates/index.html:60
+#: library/templates/index.html:56
 msgid ""
 "You can re-order your books by clicking on  &quot;title&quot;, &quot;"
 "author&quot; or &quot;date added&quot;."
@@ -2188,12 +2179,12 @@ msgstr ""
 "Du kan sortere dine ebøger på en anden måde ved at klikke på &quot;"
 "titel&quot;, &quot;forfatter&quot; or &quot;tilføjet dato&quot;."
 
-#: library/templates/index.html:61
+#: library/templates/index.html:57
 msgid "Clicking on the same label twice will reverse the order."
 msgstr ""
 "To klik på samme overskrift vil bevirke sortering i den omvendte rækkefølge"
 
-#: library/templates/index.html:66
+#: library/templates/index.html:62
 #, python-format
 msgid ""
 "\n"
@@ -2204,7 +2195,7 @@ msgstr ""
 "Du har sat din konto op til altid at gå til det senest læste kapitel i en "
 "bog.  (<a href=\"%(urlprofile)s\">ændring af dette</a>)."
 
-#: library/templates/index.html:73
+#: library/templates/index.html:69
 #, python-format
 msgid ""
 "\n"
@@ -2216,12 +2207,12 @@ msgstr ""
 "I din profil kan du indstille Bookworm til altid at gå til det senest læste "
 "kapitel i en bog, når du klikker på dens titel."
 
-#: library/templates/index.html:84 library/templates/shell.html:6
+#: library/templates/index.html:80 library/templates/shell.html:6
 #: library/templates/shell.html.py:31
 msgid "Bookworm"
 msgstr "Bookworm"
 
-#: library/templates/index.html:86
+#: library/templates/index.html:82
 msgid ""
 "A free platform for reading ePub books online. <a "
 "href='{{ abouturl }}'>Learn more</a>."
@@ -2229,19 +2220,19 @@ msgstr ""
 "En gratis platform for onlinelæsning af ePub-bøger <a "
 "href='{{ abouturl }}'>Læs mere</a>."
 
-#: library/templates/index.html:90
+#: library/templates/index.html:86
 msgid "To add a new book, log in using your computer."
 msgstr "For at tilføje en ny bog, skal du logge ind fra din computer"
 
-#: library/templates/index.html:95
+#: library/templates/index.html:91
 msgid "Add a new ePub ebook:"
 msgstr "Tilføj en ny ePub-ebog:"
 
-#: library/templates/index.html:97
+#: library/templates/index.html:93
 msgid "Add your first ePub ebook:"
 msgstr "Tilføj din første ePub-ebog:"
 
-#: library/templates/index.html:106
+#: library/templates/index.html:102
 msgid ""
 "Once you've gotten one of these books on your computer, you can upload them "
 "to your new Bookworm account."
@@ -2249,7 +2240,7 @@ msgstr ""
 "Når du har fået én af disse bøger ned på din computer, kan du oploade den "
 "til din nye Bookworm-konto."
 
-#: library/templates/index.html:113
+#: library/templates/index.html:109
 msgid "upload"
 msgstr "opload"
 
@@ -2275,6 +2266,11 @@ msgstr "Læsere"
 msgid "Read and search full-text books online"
 msgstr "Læs og søg online i komplette bøger"
 
+#: library/templates/public.html:38
+#, fuzzy
+msgid "Clutter-free reading mode"
+msgstr "Ændring af email-adresse"
+
 #: library/templates/public.html:39
 msgid "Download books to your "
 msgstr "Download bøger til din "
@@ -2283,7 +2279,7 @@ msgstr "Download bøger til din "
 msgid "Sony Reader or iLiad "
 msgstr "Sony Reader eller iLiad"
 
-#: library/templates/public.html:40
+#: library/templates/public.html:40 library/templates/reading-mode.html:123
 msgid "Mobile reading"
 msgstr "Læsning på mobilen"
 
@@ -2296,55 +2292,50 @@ msgid ""
 msgstr ""
 "online eller med en <a href=\"%(stanzaurl)s\">Stanza</a> på din iPhone."
 
-#: library/templates/public.html:45 library/templates/tour.html:3
-#: library/templates/tour.html.py:14
-msgid "Take a tour of Bookworm"
-msgstr "Tag en rundtur på Bookworm"
-
-#: library/templates/public.html:50
+#: library/templates/public.html:49
 msgid "Publishers"
 msgstr "Udgivere"
 
-#: library/templates/public.html:52
+#: library/templates/public.html:51
 msgid "Test your ePub ebooks"
 msgstr "Kontrollér dine ePub-bøger"
 
-#: library/templates/public.html:53
+#: library/templates/public.html:52
 msgid "Need strategy or technical help?"
 msgstr "Har du brug for strategisk eller teknisk hjælp?"
 
-#: library/templates/public.html:54
+#: library/templates/public.html:53
 msgid "Ebook and ePub consulting services"
 msgstr "Ebogs- og ePub-konsulentydelser"
 
-#: library/templates/public.html:56
+#: library/templates/public.html:55
 #, python-format
 msgid ""
 " Details on the <a href=\"%(epuburl)s\">ePub format</a> \n"
 "      "
 msgstr "Detaljer om <a href=\"%(epuburl)s\">ePub-formatet</a>"
 
-#: library/templates/public.html:63
+#: library/templates/public.html:62
 msgid "Developers"
 msgstr "Udviklere"
 
-#: library/templates/public.html:65
+#: library/templates/public.html:64
 msgid "Open-source"
 msgstr "Open-source"
 
-#: library/templates/public.html:65
+#: library/templates/public.html:64
 msgid "BSD-licensed"
 msgstr "med BSD-licens"
 
-#: library/templates/public.html:66
+#: library/templates/public.html:65
 msgid "How Bookworm implements ePub"
 msgstr "Sådan er ePub implementeret i Bookworm"
 
-#: library/templates/public.html:67
+#: library/templates/public.html:66
 msgid "More open-source ePub software"
 msgstr "Mere open-source ePub-software"
 
-#: library/templates/public.html:68
+#: library/templates/public.html:67
 msgid ""
 "Follow announcements on the <a href='http://blog.threepress.org/'>Bookworm "
 "blog</a>"
@@ -2352,7 +2343,7 @@ msgstr ""
 "Få meddelelser om nyt på <a href='http://blog.threepress.org/'>Bookworm "
 "blog</a>"
 
-#: library/templates/public.html:75
+#: library/templates/public.html:74
 msgid ""
 "\n"
 "      A page in Bookworm, showing the\n"
@@ -2365,11 +2356,11 @@ msgstr ""
 "tekst. Bookworm understøtter CSS styles, billeder i JPG-, GIF-, PNG- og SVG-"
 "format, og fuld XHTML."
 
-#: library/templates/public.html:83
+#: library/templates/public.html:82
 msgid "What is Bookworm?"
 msgstr "Hvad er Bookworm?"
 
-#: library/templates/public.html:84
+#: library/templates/public.html:83
 #, fuzzy
 msgid ""
 "\n"
@@ -2388,12 +2379,12 @@ msgstr ""
 "downloade dine bøger til ebogslæseren. Bookworm er særlig optimeret til brug "
 "på iPhone, og der kan eksporteres direkte til Stanza."
 
-#: library/templates/public.html:93
+#: library/templates/public.html:92
 msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
 msgstr "Hvad er en &ldquo;ePub book&rdquo;?"
 
-#: library/templates/public.html:96
-#, python-format
+#: library/templates/public.html:95
+#, fuzzy, python-format
 msgid ""
 "\n"
 "    ePub is an ebook format. Your ebook is in ePub format if it\n"
@@ -2401,7 +2392,7 @@ msgid ""
 "\">read\n"
 "    that ebook on Bookworm</a>. If not, tell the book publisher to start\n"
 "    supporting the only free and open ebook format with strong\n"
-"    industry support.\n"
+"    industry backing.\n"
 "    "
 msgstr ""
 "ePub er et ebogsformat. Din ebog er i ePub-formatet if dens navn ender på "
@@ -2410,11 +2401,11 @@ msgstr ""
 "understøtte det eneste gratis og åbne ebogsformat med stærk opbakning fra "
 "industrien"
 
-#: library/templates/public.html:104
+#: library/templates/public.html:103
 msgid "Try Bookworm out"
 msgstr "Prøv Bookworm"
 
-#: library/templates/public.html:107
+#: library/templates/public.html:106
 #, python-format
 msgid ""
 "\n"
@@ -2423,6 +2414,236 @@ msgid ""
 msgstr ""
 "Prøv den kun én side lange <a href=\"%(toururl)s\">rundvisning i Bookworm og "
 "ePub</a>."
+
+#: library/templates/reading-mode.html:3 library/templates/reading-mode.html:5
+#: library/templates/tour.html:131 library/templates/includes/about.html:10
+#, fuzzy
+msgid "Reading Mode"
+msgstr "Ændring af email-adresse"
+
+#: library/templates/reading-mode.html:22
+msgid ""
+"Reading Mode provides a clean user interface for reading your ebooks without "
+"the clutter, customized to your preferences"
+msgstr ""
+
+#: library/templates/reading-mode.html:28
+msgid "Choose a serif or sans-serif font"
+msgstr ""
+
+#: library/templates/reading-mode.html:29
+#, fuzzy
+msgid "Change the font size"
+msgstr "Ændring af sprogindstillinger"
+
+#: library/templates/reading-mode.html:30
+msgid ""
+"Use keyboard shortcuts to page up or page down, or go next and previous "
+"through chapters"
+msgstr ""
+
+#: library/templates/reading-mode.html:31
+msgid "Enhanced mobile reading experience"
+msgstr ""
+
+#: library/templates/reading-mode.html:36
+#: library/templates/reading-mode.html:39
+msgid "How to turn on Reading Mode"
+msgstr ""
+
+#: library/templates/reading-mode.html:37
+msgid ""
+"Reading Mode can be activated by clicking on the icon displaying a stack of "
+"pages. This icon will appear on any book page, in the upper right of the "
+"screen."
+msgstr ""
+
+#: library/templates/reading-mode.html:41
+msgid "Turning off Reading Mode"
+msgstr ""
+
+#: library/templates/reading-mode.html:43
+msgid ""
+"To return to the normal book display, click on the same icon as it appears "
+"in the Reading Mode layout.  It will also appear in the upper right of the "
+"screen."
+msgstr ""
+
+#: library/templates/reading-mode.html:45
+#: library/templates/reading-mode.html:93
+msgid "How to turn off Reading Mode"
+msgstr ""
+
+#: library/templates/reading-mode.html:47
+#, fuzzy
+msgid "Navigating Reading Mode"
+msgstr "Ændring af email-adresse"
+
+#: library/templates/reading-mode.html:51
+msgid ""
+"Reading Mode removes most of the Bookworm headers and footers and suppresses "
+"the display of the table of contents.  Instead, the content is laid out in "
+"the center of the screen with ample whitespace to let you focus on reading."
+msgstr ""
+
+#: library/templates/reading-mode.html:53
+msgid ""
+"In place of cumbersome \"next\" and \"previous\" links, Reading Mode allows "
+"you to <strong>click anywhere in the right margin to turn to the next page</"
+"strong>, and <strong> click anywhere in the left margin to turn to the "
+"previous page</strong>."
+msgstr ""
+
+#: library/templates/reading-mode.html:55
+#: library/templates/reading-mode.html:56
+msgid "This control moves forward one page"
+msgstr ""
+
+#: library/templates/reading-mode.html:58
+msgid ""
+"Bookworm provides subtle hints on how to operate the navigation. If you "
+"hover your mouse pointer over the margin areas, light-gray indicators will "
+"fade in to show that you are in a clickable navigation area."
+msgstr ""
+
+#: library/templates/reading-mode.html:60
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: library/templates/reading-mode.html:64
+msgid "Jump down one page"
+msgstr ""
+
+#: library/templates/reading-mode.html:65
+msgid "'n' or Page-Down"
+msgstr ""
+
+#: library/templates/reading-mode.html:68
+msgid "Jump up one page"
+msgstr ""
+
+#: library/templates/reading-mode.html:69
+msgid "'p' or Page-Up"
+msgstr ""
+
+#: library/templates/reading-mode.html:72
+msgid "Go to next chapter"
+msgstr ""
+
+#: library/templates/reading-mode.html:73
+msgid "'k' or click on right margin"
+msgstr ""
+
+#: library/templates/reading-mode.html:76
+msgid "Go to previous chapter"
+msgstr ""
+
+#: library/templates/reading-mode.html:77
+msgid "'j' or click on left margin"
+msgstr ""
+
+#: library/templates/reading-mode.html:81
+#, fuzzy
+msgid "Go back to your library"
+msgstr "dato for tilføjelse til dit bibliotek"
+
+#: library/templates/reading-mode.html:83
+msgid ""
+"To exit Reading Mode and return to the main library page, click on the arrow "
+"at the top or bottom next to your book's title."
+msgstr ""
+
+#: library/templates/reading-mode.html:85
+msgid "Exit Reading Mode and go back to library"
+msgstr ""
+
+#: library/templates/reading-mode.html:87
+msgid "Bookworm will remember whether you prefer to use Reading Mode or not."
+msgstr ""
+
+#: library/templates/reading-mode.html:89
+#, fuzzy
+msgid "Customizations"
+msgstr "Begrænsninger"
+
+#: library/templates/reading-mode.html:91
+msgid ""
+"Both standard mode and Reading Mode provide methods to customize the fonts "
+"and font size of the ebooks.  You can use use a sans-serif or serif font, "
+"and you can increase and decrease your font size. <strong>Bookworm will "
+"remember your font size preferences</strong>. These preferences will "
+"override whatever fonts and sizes were specified in the stylesheet that came "
+"with the ePub."
+msgstr ""
+
+#: library/templates/reading-mode.html:95
+msgid ""
+"In order to keep the user-interface simple, Bookworm does not provide more "
+"advanced font selectors such as picking a specific named font. However, it "
+"will use your preferred font by default while in Reading Mode. Use your "
+"browser's preferences menu to assign your favorite font as the default."
+msgstr ""
+
+#: library/templates/reading-mode.html:101
+msgid "Reading Mode shown using a small font"
+msgstr ""
+
+#: library/templates/reading-mode.html:103
+msgid "This page is displayed using the default font size and family."
+msgstr ""
+
+#: library/templates/reading-mode.html:107
+msgid "Reading Mode shown using a larger font"
+msgstr ""
+
+#: library/templates/reading-mode.html:109
+msgid "The same page after the font size is increaed."
+msgstr ""
+
+#: library/templates/reading-mode.html:115
+msgid "Reading Mode shown using a serif font"
+msgstr ""
+
+#: library/templates/reading-mode.html:117
+msgid "You can also switch to a serif font, as shown here."
+msgstr ""
+
+#: library/templates/reading-mode.html:124
+msgid "Font controls are available on the mobile version of Bookworm"
+msgstr ""
+
+#: library/templates/reading-mode.html:127
+msgid ""
+"There is no specific Reading Mode for the <a href=\"http://m.bookworm."
+"oreilly.com/\">mobie version of Bookworm</a> because the mobile version is "
+"already optimized to be simple.  However, some of the features of Reading "
+"Mode are also available in the mobile version:"
+msgstr ""
+
+#: library/templates/reading-mode.html:130
+msgid "Font size adjustment"
+msgstr ""
+
+#: library/templates/reading-mode.html:131
+msgid "Font family adjustment"
+msgstr ""
+
+#: library/templates/reading-mode.html:132
+msgid "Click to jump to the next page (iPhone)"
+msgstr ""
+
+#: library/templates/reading-mode.html:135
+msgid "Font size controls are also available on the mobile version."
+msgstr ""
+
+#: library/templates/reading-mode.html:138
+msgid ""
+"When using an iPhone, you can also  <strong>click to advance the page down</"
+"strong>. This is not quite the same experience as using a page-based ePub "
+"viewer such as <a href=\"http://lexcycle.com/\">Stanza</a>, but it may be "
+"preferable to scrolling for some people. <em>This feature should be "
+"considered experimental</em>. "
+msgstr ""
 
 #: library/templates/shell.html:6
 msgid "Bookworm ePub reader"
@@ -2495,13 +2716,18 @@ msgstr "administrator"
 msgid "logout"
 msgstr "log af"
 
-#: library/templates/shell.html:84
+#: library/templates/shell.html:79
+#, fuzzy
+msgid "language"
+msgstr "Sprog"
+
+#: library/templates/shell.html:86
 #: library/templates/auth/authopenid/signin.html:2
 #: library/templates/auth/authopenid/signin.html:73
 msgid "Sign in"
 msgstr "Log ind"
 
-#: library/templates/shell.html:95
+#: library/templates/shell.html:97
 #, python-format
 msgid ""
 "\n"
@@ -2509,11 +2735,11 @@ msgid ""
 "                "
 msgstr "Fra Bookwormkontoen for %(ruf)s &lt;%(rue)s&gt;\n"
 
-#: library/templates/shell.html:114
+#: library/templates/shell.html:116
 msgid "Privacy policy"
 msgstr "Beskyttelse af privatliv"
 
-#: library/templates/shell.html:115
+#: library/templates/shell.html:117
 #, python-format
 msgid ""
 "\n"
@@ -2524,7 +2750,7 @@ msgstr ""
 "Software ved <a href=\"%(tpcurl)s\">Threepress Consulting Inc.</a> og <a "
 "href=\"%(djpurl)s\">Django</a>"
 
-#: library/templates/shell.html:120
+#: library/templates/shell.html:122
 #, python-format
 msgid ""
 "\n"
@@ -2532,9 +2758,14 @@ msgid ""
 "\t"
 msgstr "Omfattet af <a href=\"%(bsdlicenseurl)s\">BSD-licensen</a>"
 
-#: library/templates/tour.html:21
-#, python-format
+#: library/templates/tour.html:3 library/templates/tour.html.py:14
+msgid "Take a tour of Bookworm"
+msgstr "Tag en rundtur på Bookworm"
+
+#: library/templates/tour.html:22
+#, fuzzy, python-format
 msgid ""
+"\n"
 "\n"
 "    This quick tour will show you all the major features of\n"
 "    Bookworm, from adding your first ebook, to reading and searching it \n"
@@ -2548,23 +2779,23 @@ msgstr ""
 "man kan se bogen fra sin mobile enhed a href=\"%(signupurl)s\">Tilmeld dig</"
 "a> når du er førdig"
 
-#: library/templates/tour.html:31 library/templates/tour.html.py:43
+#: library/templates/tour.html:33 library/templates/tour.html.py:45
 msgid "Step 1: Adding a book"
 msgstr "Trin 1: Tilføj en bog"
 
-#: library/templates/tour.html:33
+#: library/templates/tour.html:35
 msgid "Step 2: Reading a book"
 msgstr "Trin 2: Læs en bog"
 
-#: library/templates/tour.html:37
+#: library/templates/tour.html:39
 msgid "Step 3: Searching your library"
 msgstr "Trin 3: Søg i dit bibliotek"
 
-#: library/templates/tour.html:39
+#: library/templates/tour.html:41
 msgid "Step 4: Take your book on the road"
 msgstr "Trin 4: Tag bogen med dig"
 
-#: library/templates/tour.html:49
+#: library/templates/tour.html:51
 msgid ""
 "\n"
 "    Select the <em>Add a book</em> link from the upper-right corner of\n"
@@ -2574,14 +2805,14 @@ msgstr ""
 "Klik på <em>Tilføj en bog</em>-linket i øverste højre hjørne af enhver "
 "Bookwormside"
 
-#: library/templates/tour.html:58
+#: library/templates/tour.html:60
 msgid ""
 "\n"
 "    Then click the <em>Browse</em> button. \n"
 "    "
 msgstr "Klik så på <em>Browse</em>-knappen"
 
-#: library/templates/tour.html:63
+#: library/templates/tour.html:65
 msgid ""
 "\n"
 "    Your computer will prompt you to \n"
@@ -2592,19 +2823,19 @@ msgstr ""
 "Din computer vil bede dig vælge en fil, der skal oploades. Det skal være en "
 "ebogsfil, hvis navn ender på <em>.epub</em>."
 
-#: library/templates/tour.html:69
+#: library/templates/tour.html:71
 msgid "Click <!-- trans: imperative verb -->"
 msgstr "Klik "
 
-#: library/templates/tour.html:69
+#: library/templates/tour.html:71
 msgid "Add to my library"
 msgstr "Tilføj til mit bibliotek"
 
-#: library/templates/tour.html:76
+#: library/templates/tour.html:78
 msgid "    Your book is now available!     "
 msgstr "Nu er din bog tilgængelig"
 
-#: library/templates/tour.html:78
+#: library/templates/tour.html:80
 msgid ""
 "From the main library screen you can view the list of books\n"
 "    you've added, re-sort it by date, title or author, and delete\n"
@@ -2614,19 +2845,19 @@ msgstr ""
 "Du kan sortere dem efter dato, titel eller forfatter, og du kan slette dem "
 "du ikke længere vil have."
 
-#: library/templates/tour.html:84
+#: library/templates/tour.html:86
 msgid "Step 2: Reading a book    "
 msgstr "Trin 2: Læse en bog"
 
-#: library/templates/tour.html:87
+#: library/templates/tour.html:89
 msgid "Click on the book's title from your library.    "
 msgstr "Klik på bogens titel i dit bibliotek"
 
-#: library/templates/tour.html:89
+#: library/templates/tour.html:91
 msgid "The book will automatically open to the first page."
 msgstr "Bogen åbnes automatisk på første side"
 
-#: library/templates/tour.html:92
+#: library/templates/tour.html:94
 msgid ""
 "\n"
 "      The left side of the screen shows the book's <em>Table of Contents</"
@@ -2637,7 +2868,7 @@ msgstr ""
 "I venstre side af skærmen kan man se bogens <em>indholdsfortegnelse</em>. "
 "Det kapitel, du er i gang med, vises med stor, grå skrift."
 
-#: library/templates/tour.html:98
+#: library/templates/tour.html:100
 msgid ""
 "\n"
 "      From the Table of Contents you can always click to <em>Download</em>\n"
@@ -2651,11 +2882,11 @@ msgstr ""
 "at klikke fra indholdsfortegnelsen, eller ved at klikke på <em>Information "
 "om bogen</em>"
 
-#: library/templates/tour.html:107
+#: library/templates/tour.html:109
 msgid "The Book Information page"
 msgstr "Bogens informationsside"
 
-#: library/templates/tour.html:110
+#: library/templates/tour.html:112
 msgid ""
 "\n"
 "      Publisher, language, copyright and other information supplied\n"
@@ -2665,7 +2896,7 @@ msgstr ""
 "Oplysning om udgiver, sprog, ophavsret og anden information fra/om ebogen "
 "kan læses her"
 
-#: library/templates/tour.html:116
+#: library/templates/tour.html:118
 msgid ""
 "\n"
 "      Bookworm will also automatically look up other editions of this\n"
@@ -2675,11 +2906,11 @@ msgstr ""
 "Bookworm vil automatisk lede efter andre udgaver af dette værk i Google Book "
 "Search."
 
-#: library/templates/tour.html:121
+#: library/templates/tour.html:123
 msgid "Moving through a book    "
 msgstr "At bevæge sig gennem en bog"
 
-#: library/templates/tour.html:123
+#: library/templates/tour.html:125
 msgid ""
 "\n"
 "      Each page of your book will have <em>Next</em> and/or <em>Previous</"
@@ -2693,11 +2924,18 @@ msgstr ""
 "pil der bruges til at bladre frem og tilbage. Du kan også hoppe til et andet "
 "sted i bogen ved at klikke på <em>Indholdsfortegnelse</em>"
 
-#: library/templates/tour.html:131
+#: library/templates/tour.html:134
+#, python-format
+msgid ""
+"Using <a href=\"%(reading_mode_url)s\">Reading Mode</a> makes the Bookworm "
+"experience even better. <a href=\"%(reading_mode_url)s\">Find out more</a>."
+msgstr ""
+
+#: library/templates/tour.html:138
 msgid "Step 3: Searching your library    "
 msgstr "Trin 3: Søg i dit bibliotek"
 
-#: library/templates/tour.html:134
+#: library/templates/tour.html:141
 msgid ""
 "\n"
 "    If you've loaded books into your library, you'll see a search box at the "
@@ -2711,7 +2949,7 @@ msgstr ""
 "det øverste venstre hjørne på de fleste Bookworm-sider. Indtast et ord eller "
 "en ordforbindelse for at finde alle forekomster af den/dem i dit bibliotek."
 
-#: library/templates/tour.html:141
+#: library/templates/tour.html:148
 msgid ""
 "\n"
 "    Chapters in your books which contain this term will be displayed on the "
@@ -2725,16 +2963,16 @@ msgstr ""
 "den næste side. Søgeord fremhæves med fed skrift. Klik på en bogens titel "
 "for at gå til det fundne kapitel"
 
-#: library/templates/tour.html:152
+#: library/templates/tour.html:159
 msgid ""
 "Step 4: Take your book on the road  <!-- trans: e.g. on a mobile device -->  "
 msgstr "Trin 4: Tag bogen med dig"
 
-#: library/templates/tour.html:154
+#: library/templates/tour.html:161
 msgid "Bookworm on your mobile phone    "
 msgstr "Bookworm på mobiltelefonen"
 
-#: library/templates/tour.html:156
+#: library/templates/tour.html:163
 msgid ""
 "\n"
 "      If your phone has access to the web, then you can read your\n"
@@ -2750,11 +2988,11 @@ msgstr ""
 "oreilly.com/\">m.bookworm.oreilly.com</a></strong>. Denne Bookwormversion er "
 "udviklet specielt til små apparater."
 
-#: library/templates/tour.html:164
+#: library/templates/tour.html:171
 msgid "Stanza on the iPhone    "
 msgstr "Stanza på din iPhone"
 
-#: library/templates/tour.html:166
+#: library/templates/tour.html:173
 msgid ""
 "\n"
 "      When viewed in Safari on the iPhone, Bookworm can export your books "
@@ -2774,11 +3012,11 @@ msgstr ""
 "how_to_get_books_onto_stanza_iphone\">Trin for trin-instruktioner på Stanzas "
 "hjemmeside</a>."
 
-#: library/templates/tour.html:173
+#: library/templates/tour.html:180
 msgid "Download to the Sony Reader or iLiad    "
 msgstr "Download til din Sony Reader eller iLiad"
 
-#: library/templates/tour.html:175
+#: library/templates/tour.html:182
 msgid ""
 "\n"
 "      By clicking on the <em>Download this book</em> link in the\n"
@@ -2791,11 +3029,11 @@ msgstr ""
 "du klikker på linket <em>Download denne bog</em> i indholdsfortegnelsen. "
 "Følg din ebogslæsers vejledning for at loade bogen ind i den."
 
-#: library/templates/tour.html:182
+#: library/templates/tour.html:189
 msgid "The Amazon Kindle cannot read ePub books at this time.    "
 msgstr "Amazons Kindle har endnu ikke kunnet læse epub-filer."
 
-#: library/templates/tour.html:185
+#: library/templates/tour.html:192
 #, python-format
 msgid ""
 "Ready to <a href=\"%(signupurl)s\">sign up</a>?  <!-- trans: sign-up to use "
@@ -2804,7 +3042,8 @@ msgstr ""
 "Er du klar til at <a href=\"%(signupurl)s\">registrere dig som bruger</a>?"
 
 #: library/templates/auth/language.html:3
-msgid "Change the default languge for <!-- trans: person name -->"
+#, fuzzy
+msgid "Change the default languge for"
 msgstr "Her kan du ændre det foretrukne sprog for"
 
 #: library/templates/auth/language.html:9
@@ -2821,20 +3060,26 @@ msgstr ""
 "denne liste. Sproget ændres derefter næste gang du logger ind."
 
 #: library/templates/auth/language.html:18
+#, fuzzy
 msgid ""
-"\n"
-"  If you don't see your preferred language, <a href=\"mailto:"
-"bookworm@threepress.org\">let us know if you're\n"
-"  willing to help translate</a>.  Bookworm can be translated into <a href="
-"\"http://code.djangoproject.com/browser/django/trunk/django/conf/"
-"global_settings.py#L43\">any of the languages supported by\n"
-"  the Django framework</a>.\n"
+"If you don't see your preferred language, <a href=\"mailto:"
+"bookworm@threepress.org\">let us know if you're willing to help translate</"
+"a>.  Bookworm can be translated into <a href=\"http://code.djangoproject.com/"
+"browser/django/trunk/django/conf/global_settings.py#L43\">any of the "
+"languages supported by the Django framework</a>."
 msgstr ""
 "Hvis du ikke kan finde det sprog, du har brug for, så <a href=\"mailto:"
 "bookworm@threepress.org\">skriv til os hvis du vil hjælpe med at oversætte</"
 "a>. Bookworm kan oversættes til <a href=\"http://code.djangoproject.com/"
 "browser/django/trunk/django/conf/global_settings.py#L43\">ethvert af de "
 "sporg, der understøttes i Django Framework'et</a>."
+
+#: library/templates/auth/language.html:22
+msgid ""
+"Information on translating Bookworm is available on <a href=\"http://labs."
+"oreilly.com/2009/03/how-to-contribute-translations-to-bookworm.html"
+"\">O'Reilly Labs</a>"
+msgstr ""
 
 #: library/templates/auth/language.html:32
 msgid "Change the language setting"
@@ -3079,11 +3324,11 @@ msgstr "Læs mere"
 msgid "Test your ePubs"
 msgstr "Kontroller dine ePubs"
 
-#: library/templates/includes/about.html:10
+#: library/templates/includes/about.html:11
 msgid "About full-text search"
 msgstr "Om fritekstsøgning"
 
-#: library/templates/includes/about.html:11
+#: library/templates/includes/about.html:12
 msgid "Read the blog"
 msgstr "Læs vores blog"
 
@@ -3476,6 +3721,10 @@ msgid ""
 msgstr ""
 "Derfor kommer en bog, der lige er tilføjet dit bibliotek, ikke altid til "
 "synes med det samme. Men hold ud: den kommer snart."
+
+#, fuzzy
+#~ msgid "Danish"
+#~ msgstr "engelsk"
 
 #~ msgid "signout/"
 #~ msgstr "log af/"
