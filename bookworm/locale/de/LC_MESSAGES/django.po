@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-02 14:36-0400\n"
-"PO-Revision-Date: 2009-04-03 19:23+0200\n"
+"PO-Revision-Date: 2009-04-03 21:50+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: DE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -259,7 +259,7 @@ msgstr ""
 
 #: django_authopenid/templates/authopenid/complete.html:17
 msgid "Associate your OpenID"
-msgstr ""
+msgstr "Zuordnung Ihrer OpenID"
 
 #: django_authopenid/templates/authopenid/complete.html:18
 msgid ""
@@ -838,6 +838,12 @@ msgid ""
 "    No guarantees are provided for the security of your books or the reliability of the service.\n"
 "    Store copies of all your books on your own computers.\n"
 msgstr ""
+"\n"
+"  Obwohl die Bücher gesichert werden, ist Bücherwurm kein kommerzielles\n"
+"  Produkt und hat nur begrenzte finanzielle und rechtliche Ressourcen.\n"
+"  Für die Sicherheit Ihrer Bücher oder die Zuverlässigkeit des Dienstes\n"
+"  kann keine Garantie übernommen werden.\n"
+"  Sichern Sie Kopien Ihrer Bücher auf Ihrem eigenen Computer.\n"
 
 #: library/templates/about.html:196
 msgid ""
@@ -983,6 +989,12 @@ msgid ""
 "    to work consistently with new ereaders that are developed in the future.\n"
 "    "
 msgstr ""
+"\n"
+"  Obwohl Bücherwurm viele Arten von Epub Dateien akzeptiert, die nicht\n"
+"  strikt konform sind, ist es immer besser, diese vorher zu überprüfen.\n"
+"  Gültige ePub Dateien werden voraussichtlich besser mit neu entwickelten\n"
+"  E-Readern arbeiten.\n"
+"   "
 
 #: library/templates/ebooktesting.html:59
 msgid "How to test ePubs with Bookworm"
@@ -1011,6 +1023,12 @@ msgid ""
 "    right. Here are some additional testing tips:\n"
 "    "
 msgstr ""
+"\n"
+"\n"
+"  Wurde Ihr Buch hinzugefügt, klicken Sie durch das Buch und stellen\n"
+"  Sie sicher, dass es richtig aussieht. Hier einige zusätzliche Tipps\n"
+"  zum Testen:\n"
+"   "
 
 #: library/templates/ebooktesting.html:78
 msgid "Testing checklist"
@@ -1250,6 +1268,11 @@ msgid ""
 "      A comprehensive list of ePub resource was written by Keith Fahlgren at O'Reilly Media: <a href=\"http://labs.oreilly.com/2009/03/epub-resources-and-guides.html\">ePub Resources and Guides</a>.\n"
 "      "
 msgstr ""
+"\n"
+"  Eine umfangreiche Liste von ePub Informationsquellen wurde von\n"
+"  Keith Fahlgren von O'Reilly Media zusammengstellt: \n"
+"  <a href=\"http://labs.oreilly.com/2009/03/epub-resources-and-guides.html\">ePub Resources and Guides</a>.\n"
+"  "
 
 #: library/templates/epub.html:80
 msgid ""
@@ -1357,6 +1380,13 @@ msgid ""
 "      NCX file.\n"
 "      "
 msgstr ""
+"\n"
+"  Entsprechend der ePub Spezifikation &lsquo;öffnet&rsquo; Bücherwurm\n"
+"  die ePub Datei am ersten Eintrag in der NCX Datei, dessen Attribut\n"
+"  <code>linear</code> den Wert &lsquo;yes&rsquo; hat. Entgegen der\n"
+"  Intuition kann dies bedeuten, dass in einigen Titeln die Defaultseite\n"
+"  nicht die erste Seite in der NCX Datei ist.\n"
+"  "
 
 #: library/templates/epub.html:157
 #, python-format
@@ -1401,6 +1431,12 @@ msgid ""
 "      their content to XHTML.  This is done using XSLT derived from the <a href=\"http://daisymfc.sourceforge.net/\">DAISY pipeline</a>.\n"
 "      "
 msgstr ""
+"\n"
+" Bücherwurm unterstützt DTBook-formatierte ePub Dateien, in dem es dessen\n"
+" Inhalt automatisch nach XHTML konvertiert. Dies wird mittels XSLT gemacht, \n"
+" das von <a href=\\\"http://daisymfc.sourceforge.net/\\\">DAISY pipeline</a>\n"
+" abgeleitet wurde.\n"
+"   "
 
 #: library/templates/epub.html:194
 msgid ""
@@ -2228,6 +2264,9 @@ msgid ""
 "        Software by <a href=\"%(tpcurl)s\">Threepress Consulting Inc.</a> and <a href=\"%(djpurl)s\">Django</a>\n"
 "      "
 msgstr ""
+"\n"
+"        Software by <a href=\"%(tpcurl)s\">Threepress Consulting Inc.</a> and <a href=\"%(djpurl)s\">Django</a>\n"
+"  "
 
 #: library/templates/shell.html:120
 #, python-format
@@ -2672,7 +2711,7 @@ msgstr "Neu hier bei Bücherwurm?"
 #: library/templates/auth/authopenid/signin.html:40
 #: library/templates/includes/about.html:6
 msgid "Take the tour"
-msgstr ""
+msgstr "Anleitung"
 
 #: library/templates/auth/authopenid/signin.html:60
 msgid "You may have created your account with an OpenID, in which case you won't need your password but should enter your OpenID URL below."
