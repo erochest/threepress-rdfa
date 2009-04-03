@@ -1,0 +1,142 @@
+{% extends "base.html" %} 
+{% load i18n %}
+{% block title %}{{ _("Reading Mode") }}{% endblock title %}
+
+{% block header %}{{ _("Reading Mode") }}{% endblock header %}
+{% block head %}
+<link rel="stylesheet" href="/static/about.css"></link>
+<style type="text/css">
+   table th { text-align:left; padding-right: 2em;}
+</style>
+{% endblock head %}
+
+{% block leftnav %}
+{% include "includes/about.html" %}
+
+{% endblock leftnav %}
+
+{% block main %}
+
+<div id="bw-content">
+  <p id="bw-about-description">
+    {% blocktrans %}Reading Mode provides a clean user interface for reading your ebooks, without the clutter and customized to your preferences{% endblocktrans %}</p>
+  </p>
+
+  <div class="bw-info-box">
+    <ul>
+      
+      <li> {{ _("Choose a serif or sans-serif font") }}</li>
+      <li> {{ _("Change the font size") }}</li>
+      <li> {{ _("Use keyboard shortcuts to page up or page down, or go next and previous through chapters") }}</li>
+      <li> {{ _("Enhanced mobile reading experience") }}</li>
+    </ul>
+  </div>
+    
+
+  <h2>{{ _("How to turn on Reading Mode") }}</h2>
+  <p>{% blocktrans %}Reading Mode can be activated by clicking on the icon displaying a stack of pages. This icon will appear on any book page, in the upper right of the screen.{% endblocktrans %}</p>
+
+   <img src="{{ MEDIA_URL }}images/screenshots/reading-mode-turn-on.png" alt="{{ _("How to turn on Reading Mode") }}" class="bw-screenshot-page" />  
+
+   <h3>{{ _("Turning off Reading Mode") }}</h3>
+   <p>
+     {% blocktrans %}To return to the normal book display, click on the same icon as it appears in the Reading Mode layout.  It will also appear in the upper right of the screen.{% endblocktrans %}
+   </p>
+   <img src="{{ MEDIA_URL }}images/screenshots/reading-mode-font-controls.png" alt="{{ _("How to turn off Reading Mode") }}" class="bw-screenshot-page" width="200"/>  
+
+  <h2 style="clear:both">{{ _("Navigating Reading Mode") }}</h2>
+
+   <img src="{{ MEDIA_URL }}images/screenshots/reading-mode-google-sketchup.png" alt="Reading Mode" class="bw-screenshot-page" align="right" width="300"/>
+
+   <p>{% blocktrans %}Reading Mode removes most of the Bookworm headers and footers and suppresses the display of the table of contents.  Instead, the content is laid out in the center of the screen with ample whitespace to let you focus on reading.{% endblocktrans %}</p>
+
+   <p>{% blocktrans %}In place of cumbersome "next" and "previous" links, Reading Mode allows you to <strong>click anywhere in the right margin to turn to the next page</strong>, and <strong> click anywhere in the left margin to turn to the previous page</strong>.{% endblocktrans %}</p>
+
+   <img src="{{ MEDIA_URL }}images/screenshots/reading-mode-back.png" alt="{{ _("This control moves forward one page") }}" class="bw-screenshot-page" align="right" />
+   <img src="{{ MEDIA_URL }}images/screenshots/reading-mode-forward.png" alt="{{ _("This control moves forward one page") }}" class="bw-screenshot-page" align="right" />
+
+   <p>{% blocktrans %}Bookworm provides subtle hints on how to operate the navigation. If you hover your mouse pointer over the margin areas, light-gray indicators will fade in to show that you are in a clickable navigation area.{% endblocktrans %}</p>
+
+   <h3>{{ _("Keyboard shortcuts") }}</h3>
+
+   <table>
+     <tr>
+       <th>{{ _("Jump down one page") }}</th>
+       <td>{{ _("'n' or Page-Down") }}</td>
+     </tr>
+     <tr>
+       <th>{{ _("Jump up one page") }}</th>
+       <td>{{ _("'p' or Page-Up") }}</td>
+     </tr>
+     <tr>
+       <th>{{ _("Go to next chapter") }}</th>
+       <td>{{ _("'k' or click on right margin") }}</td>
+     </tr>
+     <tr>
+       <th>{{ _("Go to previous chapter") }}</th>
+       <td>{{ _("'j' or click on left margin") }}</td>
+     </tr>
+   </table>
+
+   <h3>{{ _("Go back to your library") }}</h3>
+   <p>
+     {% blocktrans %}To exit Reading Mode and return to the main library page, click on the arrow at the top or bottom next to your book's title.{% endblocktrans %}
+   </p>
+   <img src="{{ MEDIA_URL }}images/screenshots/reading-mode-turn-off.png" alt="{{ _("Exit Reading Mode and go back to library") }}" class="bw-screenshot-page" />  
+   <p>
+     {% blocktrans %}Bookworm will remember whether you prefer to use Reading Mode or not.{% endblocktrans %}
+   </p>
+  <h2>{{ _("Customizations") }}</h2>
+  <p>
+    {% blocktrans %}Both standard mode and Reading Mode provide methods to customize the fonts and font size of the ebooks.  You can use use a sans-serif or serif font, and you can increase and decrease your font size. <strong>Bookworm will remember your font size preferences</strong>. These preferences will override whatever fonts and sizes were specified in the stylesheet that came with the ePub.{% endblocktrans %}
+  </p>
+   <img src="{{ MEDIA_URL }}images/screenshots/reading-mode-font-controls.png" alt="{{ _("How to turn off Reading Mode") }}" class="bw-screenshot-page" width="200"/>  
+   <p>
+     {% blocktrans %}In order to keep the user-interface simple, Bookworm does not provide more advanced font selectors such as picking a specific named font. However, it will use your preferred font by default while in Reading Mode. Use your browser's preferences menu to assign your favorite font as the default.{% endblocktrans %}
+   </p>
+
+   <table>
+     <tr>
+       <td>
+         <img src="{{ MEDIA_URL }}images/screenshots/reading-mode-small-font.png" alt="{{ _("Reading Mode shown using a small font") }}" class="bw-screenshot-page" />  
+         <p class="bw-caption">
+           {% blocktrans %}This page is displayed using the default font size and family.{% endblocktrans %}
+         </p>
+       </td>
+       <td>
+         <img src="{{ MEDIA_URL }}images/screenshots/reading-mode-large-font.png" alt="{{ _("Reading Mode shown using a larger font") }}" class="bw-screenshot-page" />  
+         <p class="bw-caption">
+           {% blocktrans %}The same page after the font size is increaed.{% endblocktrans %}
+         </p>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <img src="{{ MEDIA_URL }}images/screenshots/reading-mode-serif-font.png" alt="{{ _("Reading Mode shown using a serif font") }}" class="bw-screenshot-page" />  
+         <p class="bw-caption">
+           {% blocktrans %}You can also switch to a serif font, as shown here.{% endblocktrans %}
+         </p>
+       </td>
+     </tr>
+   </table>
+
+  <h2>{{ _("Mobile reading") }}</h2>
+  <img src="{{ MEDIA_URL }}images/screenshots/mobile-font-controls.jpg" alt="{{ _("Font controls are available on the mobile version of Bookworm") }}" class="bw-screenshot-page" align="right" width="200" />    
+
+  <p>
+    {% blocktrans %}There is no specific Reading Mode for the <a href="http://m.bookworm.oreilly.com/">mobie version of Bookworm</a> because the mobile version is already optimized to be simple.  However, some of the features of Reading Mode are also available in the mobile version:{% endblocktrans %}
+  </p>
+  <ul>
+    <li> {{ _("Font size adjustment") }}</li>
+    <li> {{ _("Font family adjustment") }}</li>
+    <li> {{ _("Click to jump to the next page (iPhone)") }}</li>
+  </ul>
+  <p>
+    {% blocktrans %}Font size controls are also available on the mobile version.{% endblocktrans %}
+  </p>
+  <p>
+    {% blocktrans %}When using an iPhone, you can also  <strong>click to advance the page down</strong>. This is not quite the same experience as using a page-based ePub viewer such as <a href="http://lexcycle.com/">Stanza</a>, but it may be preferable to scrolling for some people. <em>This feature should be considered experimental</em>. {% endblocktrans %}
+  </p>
+</div>
+
+{% endblock main %}
