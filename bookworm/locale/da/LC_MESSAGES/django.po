@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-03 18:01-0400\n"
+"POT-Creation-Date: 2009-04-03 18:07-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2423,8 +2423,8 @@ msgstr "Ændring af email-adresse"
 
 #: library/templates/reading-mode.html:22
 msgid ""
-"Reading Mode provides a clean user interface for reading your ebooks without "
-"the clutter, customized to your preferences"
+"Reading Mode provides a clean user interface for reading your ebooks, "
+"without the clutter and customized to your preferences"
 msgstr ""
 
 #: library/templates/reading-mode.html:28
