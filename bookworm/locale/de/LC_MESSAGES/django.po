@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-03 18:40-0400\n"
-"PO-Revision-Date: 2009-04-03 21:50+0200\n"
+"PO-Revision-Date: 2009-04-04 10:54+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: DE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -470,7 +470,7 @@ msgstr ""
 
 #: django_authopenid/templates/authopenid/signup.html:13
 msgid "Regular Signup"
-msgstr ""
+msgstr "Konto normal erstellen"
 
 #: django_authopenid/templates/authopenid/signup.html:29
 msgid "Choose a Screen Name:"
@@ -494,7 +494,7 @@ msgstr "Kostenlos teilnehmen"
 
 #: django_authopenid/templates/authopenid/signup.html:39
 msgid "OpenID Signup"
-msgstr ""
+msgstr "Konto mit OpenID erstellen"
 
 #: django_authopenid/templates/authopenid/signup.html:42
 msgid "Sign in with OPENID"
@@ -1537,6 +1537,10 @@ msgid ""
 "      when the user moves through them.\n"
 "      "
 msgstr ""
+"\n"
+"  Bücherwurm klappt verschachtelte Einträge im Inhaltsverzeichnis auf,\n"
+"  wenn sich der Benutzer durch sie bewegt.\n"
+"  "
 
 #: library/templates/epub.html:139
 msgid ""
@@ -1548,7 +1552,7 @@ msgstr ""
 
 #: library/templates/epub.html:145
 msgid "Reading system conformance"
-msgstr ""
+msgstr "Konformität des Lesevorganges"
 
 #: library/templates/epub.html:147
 msgid ""
@@ -1645,6 +1649,12 @@ msgid ""
 "      does, but this has not been tested (samples welcome!).\n"
 "      "
 msgstr ""
+"\n"
+"  Bücherwurm unterstützt Deklaration von Schriftarten, die \n"
+"  mit CSS 1 oder CSS 2 gemacht wurden. Theoretisch untersützt es Schriftarten,\n"
+"  wie sie CSS 3 definiert, sofern der Browser diese versteht, aber dies \n"
+"  wurde nicht getestet (Beispiele sind willkommen!).\n"
+"  "
 
 #: library/templates/epub.html:208
 msgid "How Bookworm treats invalid ePub"
@@ -2247,6 +2257,8 @@ msgid ""
 "Once you've gotten one of these books on your computer, you can upload them "
 "to your new Bookworm account."
 msgstr ""
+"Sobald Sie eines dieser Bücher auf Ihrem Computer haben, können \n"
+"Sie es in Ihr Büchrwurm Konto hochladen."
 
 #: library/templates/index.html:109
 msgid "upload"
@@ -2275,9 +2287,8 @@ msgid "Read and search full-text books online"
 msgstr "Bücher online lesen und im Volltext durchsuchen"
 
 #: library/templates/public.html:38
-#, fuzzy
 msgid "Clutter-free reading mode"
-msgstr "Lesemodus ändern"
+msgstr "Störungsfreier Lesemodus"
 
 #: library/templates/public.html:39
 msgid "Download books to your "
@@ -2388,11 +2399,11 @@ msgid ""
 msgstr ""
 "\n"
 " Bücherwurm erlaubt es Lesern ePub Bücher zu Ihrer Online Bibliothek\n"
-" hinzuzufügen und diese in ihrem Webbrowser oder mobilen Gerät zu lesen.\n"
-" Falls Sie ein mobiles Gerät besitzen, das ePub unterstützt (wie z.B. den \n"
-" Sony Reader oder iRex iLiad), können Sie Ihre Bücher in ihren E-Reader\n"
-" herunterladen. Bücherwurm ist speziell für die Benutzung mit dem iPhone\n"
-" optimiert und kann direkt in Stanza exportieren.\n"
+" hinzuzufügen und diese in ihrem Webbrowser oder auf ihrem mobilen \n"
+" Gerät zu lesen. Falls Sie ein mobiles Gerät besitzen, das ePub \n"
+" unterstützt (wie z.B. den Sony Reader oder iRex iLiad), können Sie Ihre\n"
+" Bücher in ihren E-Reader herunterladen. Bücherwurm ist speziell für die \n"
+" Benutzung mit dem iPhone optimiert und kann direkt in Stanza exportieren.\n"
 "    "
 
 #: library/templates/public.html:92
@@ -2400,7 +2411,7 @@ msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
 msgstr "Was ist ein &ldquo;ePub Buch&rdquo;?"
 
 #: library/templates/public.html:95
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    ePub is an ebook format. Your ebook is in ePub format if it\n"
@@ -2412,7 +2423,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    ePub ist ein eBook Format. Ihre Ebook-Datei ist im ePub Format \n"
+"    ePub ist ein Ebook Format. Ihre Ebook-Datei ist im ePub Format \n"
 "    falls es mit <strong>.epub</strong> endet. Falls ja, können Sie \n"
 "    dieses Buch auf  Bücherwurm <a href=\"%(helpurl)s\">lesen</a>. \n"
 "    Falls nein, sagen Sie Ihrem Buchhändler, dass er das einzige \n"
@@ -2437,9 +2448,8 @@ msgstr ""
 
 #: library/templates/reading-mode.html:3 library/templates/reading-mode.html:5
 #: library/templates/tour.html:131 library/templates/includes/about.html:10
-#, fuzzy
 msgid "Reading Mode"
-msgstr "Lesemodus ändern"
+msgstr "Lesemodus"
 
 #: library/templates/reading-mode.html:22
 msgid ""
@@ -2448,20 +2458,20 @@ msgid ""
 msgstr ""
 
 #: library/templates/reading-mode.html:28
-#, fuzzy
 msgid "Choose a serif or sans-serif font"
-msgstr "Eine serifenlose Schrift benutzen"
+msgstr "Wäheln Sie eine Schrift mit oder ohne Serifen"
 
 #: library/templates/reading-mode.html:29
-#, fuzzy
 msgid "Change the font size"
-msgstr "Schriftgröße vergrössern"
+msgstr "Schriftgröße ändern"
 
 #: library/templates/reading-mode.html:30
 msgid ""
 "Use keyboard shortcuts to page up or page down, or go next and previous "
 "through chapters"
 msgstr ""
+"Benutzen Sie Tastaturkürzel um vor- oder rückwärts, \n"
+"oder zum vorherigen oder nächsten Kapitel zu blättern"
 
 #: library/templates/reading-mode.html:31
 msgid "Enhanced mobile reading experience"
@@ -2470,7 +2480,7 @@ msgstr ""
 #: library/templates/reading-mode.html:36
 #: library/templates/reading-mode.html:39
 msgid "How to turn on Reading Mode"
-msgstr ""
+msgstr "Wie stelle ich den Lesemodus ein"
 
 #: library/templates/reading-mode.html:37
 msgid ""
@@ -2481,7 +2491,7 @@ msgstr ""
 
 #: library/templates/reading-mode.html:41
 msgid "Turning off Reading Mode"
-msgstr ""
+msgstr "Den Lesemodus ausschalten"
 
 #: library/templates/reading-mode.html:43
 msgid ""
@@ -2493,12 +2503,11 @@ msgstr ""
 #: library/templates/reading-mode.html:45
 #: library/templates/reading-mode.html:93
 msgid "How to turn off Reading Mode"
-msgstr ""
+msgstr "Wie schalte ich den Lesemodus aus"
 
 #: library/templates/reading-mode.html:47
-#, fuzzy
 msgid "Navigating Reading Mode"
-msgstr "Lesemodus ändern"
+msgstr "Lesemodus mit Navigation"
 
 #: library/templates/reading-mode.html:51
 msgid ""
@@ -2529,44 +2538,43 @@ msgstr ""
 
 #: library/templates/reading-mode.html:60
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Tastaturkürzel"
 
 #: library/templates/reading-mode.html:64
 msgid "Jump down one page"
-msgstr ""
+msgstr "Eine Seite weiter"
 
 #: library/templates/reading-mode.html:65
 msgid "'n' or Page-Down"
-msgstr ""
+msgstr "'n' oder Page-Down"
 
 #: library/templates/reading-mode.html:68
 msgid "Jump up one page"
-msgstr ""
+msgstr "Eine Seite zurück"
 
 #: library/templates/reading-mode.html:69
 msgid "'p' or Page-Up"
-msgstr ""
+msgstr "'p' oder Page-Up"
 
 #: library/templates/reading-mode.html:72
 msgid "Go to next chapter"
-msgstr ""
+msgstr "Zum nächsten Kapitel"
 
 #: library/templates/reading-mode.html:73
 msgid "'k' or click on right margin"
-msgstr ""
+msgstr "'k' oder auf den rechten Rand klicken"
 
 #: library/templates/reading-mode.html:76
 msgid "Go to previous chapter"
-msgstr ""
+msgstr "Zum vorherigen Kapitel"
 
 #: library/templates/reading-mode.html:77
 msgid "'j' or click on left margin"
-msgstr ""
+msgstr "'j' oder auf den linken Rand klicken"
 
 #: library/templates/reading-mode.html:81
-#, fuzzy
 msgid "Go back to your library"
-msgstr "Datum, an dem das Buch zur Bibliothek hinzugefügt wurde,"
+msgstr "Zurück zu Ihrer Bibliothek"
 
 #: library/templates/reading-mode.html:83
 msgid ""
@@ -2576,16 +2584,15 @@ msgstr ""
 
 #: library/templates/reading-mode.html:85
 msgid "Exit Reading Mode and go back to library"
-msgstr ""
+msgstr "Den Lesemodus verlassen und zurück zur Bibliothek"
 
 #: library/templates/reading-mode.html:87
 msgid "Bookworm will remember whether you prefer to use Reading Mode or not."
-msgstr ""
+msgstr "Bücherwurm merkt sich, ob Sie den Lesemodus bevorzugen oder nicht."
 
 #: library/templates/reading-mode.html:89
-#, fuzzy
 msgid "Customizations"
-msgstr "Einschränkungen"
+msgstr "Anpassungen"
 
 #: library/templates/reading-mode.html:91
 msgid ""
@@ -2607,27 +2614,27 @@ msgstr ""
 
 #: library/templates/reading-mode.html:101
 msgid "Reading Mode shown using a small font"
-msgstr ""
+msgstr "Lesemodus mit kleiner Schrift"
 
 #: library/templates/reading-mode.html:103
 msgid "This page is displayed using the default font size and family."
-msgstr ""
+msgstr "Diese Seite wird mit der Standard Schriftart und Größe angezeigt."
 
 #: library/templates/reading-mode.html:107
 msgid "Reading Mode shown using a larger font"
-msgstr ""
+msgstr "Lesemodus mit größerer Schrift"
 
 #: library/templates/reading-mode.html:109
 msgid "The same page after the font size is increased."
-msgstr ""
+msgstr "Die gleiche Seite nachdem die die Schriftgröße vergrößert wurde."
 
 #: library/templates/reading-mode.html:115
 msgid "Reading Mode shown using a serif font"
-msgstr ""
+msgstr "Lesemodus mit einer Serifenschrift"
 
 #: library/templates/reading-mode.html:117
 msgid "You can also switch to a serif font, as shown here."
-msgstr ""
+msgstr "Sie können, wie hier gezeigt, auch eine Serifenschrift benutzen."
 
 #: library/templates/reading-mode.html:124
 msgid "Font controls are available on the mobile version of Bookworm"
@@ -2643,15 +2650,15 @@ msgstr ""
 
 #: library/templates/reading-mode.html:130
 msgid "Font size adjustment"
-msgstr ""
+msgstr "Veränderung der Schriftgröße"
 
 #: library/templates/reading-mode.html:131
 msgid "Font family adjustment"
-msgstr ""
+msgstr "Veränderung der Schriftart"
 
 #: library/templates/reading-mode.html:132
 msgid "Click to jump to the next page (iPhone)"
-msgstr ""
+msgstr "Klicken Sie, um zur nächsten Seite zu gelangen (iPhone)"
 
 #: library/templates/reading-mode.html:135
 msgid "Font size controls are also available on the mobile version."
@@ -2735,7 +2742,6 @@ msgid "logout"
 msgstr "abmelden"
 
 #: library/templates/shell.html:79
-#, fuzzy
 msgid "language"
 msgstr "Sprache"
 
@@ -2822,7 +2828,7 @@ msgstr "Schritt 3: Bibliothek durchsuchen"
 
 #: library/templates/tour.html:41
 msgid "Step 4: Take your book on the road"
-msgstr "Schritt 4: Nehmen Sie Ihr Buch mit für unterwegs"
+msgstr "Schritt 4: nehmen Sie Ihr Buch mit für unterwegs"
 
 #: library/templates/tour.html:51
 msgid ""
@@ -2982,6 +2988,9 @@ msgid ""
 "Using <a href=\"%(reading_mode_url)s\">Reading Mode</a> makes the Bookworm "
 "experience even better. <a href=\"%(reading_mode_url)s\">Find out more</a>."
 msgstr ""
+"Der <a href=\"%(reading_mode_url)s\">Lesemodus</a> macht die \n"
+"Bürcherwurm Erfahrung sogar noch besser. \n"
+"<a href=\"%(reading_mode_url)s\">Erfahren Sie mehr darüber</a>."
 
 #: library/templates/tour.html:138
 msgid "Step 3: Searching your library    "
@@ -3113,7 +3122,6 @@ msgid ""
 msgstr "Sind Sie bereit ein <a href=\"%(signupurl)s\">Konto zu erstellen</a>?"
 
 #: library/templates/auth/language.html:3
-#, fuzzy
 msgid "Change the default languge for"
 msgstr "Die Standardsprache ändern für "
 
@@ -3134,7 +3142,6 @@ msgstr ""
 "aus.\n"
 
 #: library/templates/auth/language.html:18
-#, fuzzy
 msgid ""
 "If you don't see your preferred language, <a href=\"mailto:"
 "bookworm@threepress.org\">let us know if you're willing to help translate</"
@@ -3142,13 +3149,9 @@ msgid ""
 "browser/django/trunk/django/conf/global_settings.py#L43\">any of the "
 "languages supported by the Django framework</a>."
 msgstr ""
-"\n"
-"  Falls Sie Ihre bevorzugte Sprache nicht sehen, <a href=\"mailto:"
-"bookworm@threepress.org\">lassen Sie uns wissen, ob Sie beim Übersetzen "
-"helfen wollen</a>. \n"
-"  Bücherwurm kann in <a href=\"http://code.djangoproject.com/browser/django/"
-"trunk/django/conf/global_settings.py#L43\">jede vom Django Framework "
-"unterstützte Sprache übersetzt</a> werden.\n"
+"  Falls Sie Ihre bevorzugte Sprache nicht sehen, \n"
+"  <a href=\"mailto:bookworm@threepress.org\">lassen Sie uns wissen, ob Sie beim Übersetzen helfen wollen</a>. \n"
+"  Bücherwurm kann in <a href=\"http://code.djangoproject.com/browser/django/trunk/django/conf/global_settings.py#L43\">jede vom Django Framework unterstützte Sprache übersetzt</a> werden."
 
 #: library/templates/auth/language.html:22
 msgid ""
@@ -3156,6 +3159,8 @@ msgid ""
 "oreilly.com/2009/03/how-to-contribute-translations-to-bookworm.html"
 "\">O'Reilly Labs</a>"
 msgstr ""
+"Informationen zum Übersetzen von Bücherwurm finden Sie hier: \n"
+"<a href=\"http://labs.oreilly.com/2009/03/how-to-contribute-translations-to-bookworm.html\">O'Reilly Labs</a>"
 
 #: library/templates/auth/language.html:32
 msgid "Change the language setting"
@@ -3416,6 +3421,8 @@ msgid ""
 "Get announcements and suggest features on the <a href=\"http://blog."
 "threepress.org/\">threepress blog</a>"
 msgstr ""
+"Erhalten Sie Ankündigungen oder schlagen Erweiterungen auf dem \n"
+"<a href=\"http://blog.threepress.org/\">Threepress Blog</a> vor."
 
 #: library/templates/includes/chapter_next_previous.html:6
 msgid "previous <!-- trans: previous chapter in the book -->"
@@ -3577,7 +3584,7 @@ msgstr "Lesemodus ändern"
 
 #: library/templates/mobile/base.html:20
 msgid "mobile ebooks"
-msgstr ""
+msgstr "Mobile Ebooks"
 
 #: library/templates/mobile/base.html:21
 msgid "about"
