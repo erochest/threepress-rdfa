@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-03 18:40-0400\n"
-"PO-Revision-Date: 2009-04-04 17:43+0200\n"
+"PO-Revision-Date: 2009-04-05 16:52+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -289,17 +289,6 @@ msgid ""
 "account.</p>\n"
 "\t"
 msgstr ""
-"Project-Id-Version: BOOKWORM\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-03 18:40-0400\n"
-"PO-Revision-Date: 2009-04-04 14:09+0200\n"
-"Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
-"Language-Team: German\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
-"X-Poedit-Language: German\n"
 
 #: django_authopenid/templates/authopenid/complete.html:50
 msgid "A new account"
@@ -476,6 +465,12 @@ msgid ""
 "p>\n"
 "    "
 msgstr ""
+"\n"
+"  <h1>Teilnehmen</h1>\n"
+"  <p>Es gibt zwei Wege teilzunehmen: mit einer Email-Adresse und Anzeigename\n"
+"  oder mit einer OpenID.<br />Geben Sie nur für den gewünschten \n"
+"  Teilnahme-Typ die Information ein.</p>\n"
+"  "
 
 #: django_authopenid/templates/authopenid/signup.html:13
 msgid "Regular Signup"
@@ -585,6 +580,12 @@ msgid ""
 "would require a lot of scrolling and load very slowly, so they are not "
 "allowed to be added to Bookworm."
 msgstr ""
+"Wir haben ein Problem mit Ihrem Ebook festgestellt, das wahrscheinlich \n"
+"damit zusammenhängt, dass es zu groß ist, um sicher in einem Webbrowser \n"
+"dargestellt werden zu können. Dies kann mit shr großen Bildern geschehen \n"
+"oder mit sehr langen Kapiteln. Bitte prüfen Sie mit dem Hersteller, dass \n"
+"das Buch korrekt formatiert wurde. Sehr lange Seiten laden sehr langsam \n"
+"und sind deshalb in Bookworm nicht erlaubt."
 
 #: library/views.py:481
 msgid ""
@@ -821,6 +822,14 @@ msgid ""
 "    Bookworm has also been tested on the Blackberry, Opera Mobile and the "
 "Kindle's Whispernet service."
 msgstr ""
+"<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone.png\" \n"
+"alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align=\"right\" \n"
+"style=\"margin-bottom:10px\" width=\"100\"/></a>\n"
+"   Auf jeden Fall! Eine spezielle Version der Website, die für mobile  \n"
+"   Geräte (vor allem das iPhone) optimiert wurde, ist online unter\n"
+"   <a href=\"http://m.bookworm.oreilly.com/\">http://m.bookworm.oreilly.com/</a>\n"
+"   erreichbar. Bookworm wurde auch auf dem Blackberry, Opera Mobil und \n"
+"   Kindles Whispernet Dienst getestet."
 
 #: library/templates/about.html:115
 #, python-format
@@ -831,6 +840,9 @@ msgid ""
 "more\n"
 "    information, see the <a href=\"%(toururl)s#step4\">tour</a>."
 msgstr ""
+" iPhone Benutzer können, ausser direkt in Bookworm zu lesen, Ihre\n"
+" Bücher in <a href=\\\"http://www.lexcycle.com/\\\">Stanza</a> exportieren.\n"
+" Mehr Information finden Sie in der <a href=\"%(toururl)s#step4\">Führung</a>."
 
 #: library/templates/about.html:120
 msgid "Where can I get ePubs?"
@@ -844,6 +856,11 @@ msgid ""
 "    An updated list of ePub bookstores can be found at <a href=\"http://www."
 "epubbooks.com/\">epubbooks.com</a>."
 msgstr ""
+"Seit März 2009 springen viele Herausgeber auf den Zug mit ePub. \n"
+"O'Reilly, Penguin, Harper-Collins und Random-House haben  \n"
+"Titel in diesem Format herausgebracht. Ein aktuelle Liste mit \n"
+"Buchhändler, die ePub führen, findet man hier: \n"
+"<a href=\\\"http://www.epubbooks.com/>epubbooks.com</a>."
 
 #: library/templates/about.html:127
 msgid "I'm not able to read this ePub book I uploaded"
@@ -857,6 +874,11 @@ msgid ""
 "    Bookworm developers are automatically notified and will fix the\n"
 "    problem if possible."
 msgstr ""
+"Das kann ein Problem mit dem Ebook sein (viele Herausgeber sind noch in \n"
+"den Anfängen, wie man diese herstellt), oder ein Fehler in Bookworm. \n"
+"Falls Sie eine Fehler beim Hochladen oder Lesen eines Buches feststellen \n"
+"werden die Entwickler von Bookworm automatisch per Email benachrichtigt \n"
+"und werden das Problem, falls möglich, beheben."
 
 #: library/templates/about.html:136
 msgid ""
@@ -866,6 +888,12 @@ msgid ""
 "    how to read it (and complain to the publisher that you can't read\n"
 "    your books where you'd like!)"
 msgstr ""
+"Es kann auch sein, dass Sie ein Buch hochgeladen haben, das durch \n"
+"Digital Rights Management (DRM) geschützt ist. Bookworm unterstützt \n"
+"keine DRM-geschützen Bücher. Suchen Sie auf der Website, auf der Sie \n"
+"das Buch gekauft haben, nach Informationen, wie Sie das Buch lesen \n"
+"können (und beklagen Sie sich beim Herausgeber, dass Sie Ihre Bücher \n"
+"nicht so lesen können, wie Sie wollen!)"
 
 #: library/templates/about.html:144
 #, python-format
@@ -938,6 +966,11 @@ msgid ""
 "to be public\n"
 "    can all make Bookworm books accessible to the larger internet."
 msgstr ""
+"Es gibt nur eingeschränkte Unterstützung auf Bookworm, um Bücher zu teilen. \n"
+"Bücher, die in Public Domain liegen, die durch ihre Autoren selbst \n"
+"hochgeladen wurden oder durch Herausgeber, die ihre Bücher autorisieren \n"
+"öffentlich zugänglich zu sein, können Ihre Bücher im Internet \n"
+"zur Verfügung stellen."
 
 #: library/templates/about.html:179
 msgid ""
@@ -1283,6 +1316,12 @@ msgid ""
 "    becoming publicly viewable. \n"
 "    "
 msgstr ""
+"\n"
+"  Obwohl Bookworm so entworfen wurde, um Filesharing und zufälliges\n"
+"  \"wildes\" Verteilen von Bücher zu unterbinden, übernehmen wir\n"
+"  keine Haftung für Software-Fehler, die dazu führen dass ein\n"
+"  Ebook öffentlich zugänglich wird.\n"
+"  "
 
 #: library/templates/ebooktesting.html:132
 msgid ""
@@ -1551,6 +1590,10 @@ msgid ""
 "      to the sub-section that is being read.\n"
 "      "
 msgstr ""
+"\n"
+"  Existieren mehrere Unter-Kapitel, erscheint neben dem gerade gelesenen\n"
+"  ein kleiner Pfeil.\n"
+"  "
 
 #: library/templates/epub.html:145
 msgid "Reading system conformance"
@@ -1638,6 +1681,10 @@ msgid ""
 "downloading the ePub from any book page.\n"
 "      "
 msgstr ""
+"\n"
+"  Sie können jederzeit wieder das Original DTBook erhalten, in dem Sie\n"
+"  die ePub Datei von jeder Buchseite aus herunterladen.\n"
+"  "
 
 #: library/templates/epub.html:201
 msgid ""
@@ -2434,10 +2481,13 @@ msgid ""
 "Reading Mode provides a clean user interface for reading your ebooks, "
 "without the clutter and customized to your preferences"
 msgstr ""
+"Der Lesemodus stellt eine klare Bentzer-Schnittstelle zur Verfügung, \n"
+"der es erlaubt Ihre Bücher ohne störendes Wirrwarr und angepasst durch \n"
+"Ihre Einstellungen, zu lesen"
 
 #: library/templates/reading-mode.html:28
 msgid "Choose a serif or sans-serif font"
-msgstr "Wäheln Sie eine Schrift mit oder ohne Serifen"
+msgstr "Wählen Sie eine Schrift mit oder ohne Serifen"
 
 #: library/templates/reading-mode.html:29
 msgid "Change the font size"
@@ -2453,7 +2503,7 @@ msgstr ""
 
 #: library/templates/reading-mode.html:31
 msgid "Enhanced mobile reading experience"
-msgstr ""
+msgstr "Verbesserte mobile Leseerfahrung"
 
 #: library/templates/reading-mode.html:36
 #: library/templates/reading-mode.html:39
@@ -2466,6 +2516,9 @@ msgid ""
 "pages. This icon will appear on any book page, in the upper right of the "
 "screen."
 msgstr ""
+"Der Lesemodus kann durch Klicken auf das Symbol, das einen Stapel \n"
+"Papier darstellt, aktiviert werden. Dieses Symbol erscheint oben \n"
+"rechts auf jeder Buchseite."
 
 #: library/templates/reading-mode.html:41
 msgid "Turning off Reading Mode"
@@ -2477,6 +2530,9 @@ msgid ""
 "in the Reading Mode layout.  It will also appear in the upper right of the "
 "screen."
 msgstr ""
+"Um zur normalen Bücheransicht zurückzukehren, klicken Sie auf das \n"
+"gleiche Symbol, wie es in der Lesemodus Ansicht erscheint. Es wird \n"
+"auch oben rechts auf dem Bildschirm angezeigt."
 
 #: library/templates/reading-mode.html:45
 #: library/templates/reading-mode.html:93
@@ -2559,6 +2615,8 @@ msgid ""
 "To exit Reading Mode and return to the main library page, click on the arrow "
 "at the top or bottom next to your book's title."
 msgstr ""
+"Um den Lesemodus zu verlassen und zur Bibliotheks-Seite zurückzukehren, \n"
+"klicken Sie auf den Pfeil oben oder unten neben dem Buchtitel."
 
 #: library/templates/reading-mode.html:85
 msgid "Exit Reading Mode and go back to library"
@@ -2640,7 +2698,7 @@ msgstr "Klicken Sie, um zur nächsten Seite zu gelangen (iPhone)"
 
 #: library/templates/reading-mode.html:135
 msgid "Font size controls are also available on the mobile version."
-msgstr ""
+msgstr "Die Steuerung der Schriftgröße ist auch in der mobilen Version möglich."
 
 #: library/templates/reading-mode.html:138
 msgid ""
@@ -2661,6 +2719,10 @@ msgid ""
 "Liza Daly at threepress.org, a project to expand the reach of open source "
 "software in academic and trade publishing."
 msgstr ""
+"Bookworm ist der web-basierte E-Reader für ePub Bücher. Bookworm \n"
+"wurde von Liza Daly von threepress.org entwickelt, einem Projekt, um \n"
+"die Nutzung von Open Source Software im akademischen und kommerziellen \n"
+"Verlagswesen zu verbreiten."
 
 #: library/templates/shell.html:32
 msgid "Online ePub ebook reading"
@@ -3225,6 +3287,11 @@ msgid ""
 "      any profile information and all e-books.\n"
 "      "
 msgstr ""
+"\n"
+"  Sie können <strong>jegliche persönliche Information</strong> aus \n"
+"  dieser Anwendung löschen, einschließlich der persönlichen \n"
+"  Einstellungen undf alle e-Books.\n"
+"  "
 
 #: library/templates/auth/authopenid/delete.html:23
 msgid "This action cannot be undone.      "
@@ -3258,6 +3325,9 @@ msgid ""
 "You may have created your account with an OpenID, in which case you won't "
 "need your password but should enter your OpenID URL below."
 msgstr ""
+"Vielleicht haben Sie Ihr Konto mit einer OpenID eingerichtet, dann \n"
+"brauchen Sie kein Kennwort, Sie sollten aber Ihre OpenID URL \n"
+"unten eingeben."
 
 #: library/templates/auth/authopenid/signin.html:61
 msgid ""
