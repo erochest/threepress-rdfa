@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-03 18:40-0400\n"
-"PO-Revision-Date: 2009-04-05 16:52+0200\n"
+"PO-Revision-Date: 2009-04-05 20:06+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -605,6 +605,11 @@ msgid ""
 "may be a problem with the way the ePub file was created. The complete error "
 "message is: <p style='color:black;font-weight:normal'>%s</p>"
 msgstr ""
+"Die hochgeladene Datei sieht wie ein ePub Archiv aus, es gab aber \n"
+"Probleme, die verhindern, dass es geladen werden konnte. \n"
+"Dies kann ein Fehler in Bookworm sein oder ein Problem mit der \n"
+"Art und Weise wie die ePub Datei erzeugt wurde. Die komplette \n"
+"Fehlermeldung lautet: <p style='color:black;font-weight:normal'>%s</p>"
 
 #: library/views.py:518
 msgid ""
@@ -620,6 +625,10 @@ msgid ""
 "content creator. It returned: <pre style='color:black;font-weight:normal'>%"
 "s</pre></p>"
 msgstr ""
+"<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> sagt \n"
+"ebenfalls, dass dies keine gültige ePub Datei ist. Deshalb sollten \n"
+"Sie den Herausgeber kontaktieren. Das Ergebnis war: \n"
+"<pre style='color:black;font-weight:normal'>%s</pre></p>"
 
 #: library/templates/about.html:3 library/templates/about.html.py:5
 #: library/templates/includes/about.html:5
@@ -1157,6 +1166,15 @@ msgid ""
 "    It uses epubcheck but wraps it in a convenient web form upload.\n"
 "    "
 msgstr ""
+"\n"
+"  Während Entwickler eine Kopie von Adobes \n"
+"  <a href=\"http://code.google.com/p/epubcheck/\">epubcheck</a> \n"
+"  herunterladen und installieren können, kann es einfacher sein, \n"
+"  den web-basierten \n"
+"  <a href=\"http://www.threepress.org/document/epub-validate/\">ePub Validator</a> \n"
+"  von Threepress zu benutzen. Er benutzt ebenfalls epubcheck, kapselt \n"
+"  es aber in einem komfortablen Webformular.\n"
+"  "
 
 #: library/templates/ebooktesting.html:53
 msgid ""
@@ -1333,6 +1351,12 @@ msgid ""
 "    for more details.\n"
 "    "
 msgstr ""
+"\n"
+"  Bookworm kann jedoch eine private Version von Bookworm für Tests \n"
+"  in großem Umfang oder speziell sensitives Material, aufsetzen.\n"
+"  Wegen mehr Details kontaktieren Sie bitte\n"
+"  <a href=\\\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>.\n"
+"  "
 
 #: library/templates/epub.html:7 library/templates/epub.html.py:8
 msgid "Bookworm and the ePub standard"
@@ -1743,6 +1767,12 @@ msgid ""
 "      however Internet Explorer 6 and 7 are also supported.\n"
 "      "
 msgstr ""
+"\n"
+"  Offensichtlich wird Bookworm durch die Möglichkeiten des benutzten\n"
+"  Browsers begrenzt. Deshalb wird die Benutzung einer aktuelle Version \n"
+"  von Firefox, Safari oder Chrome empfohlen. Internet Explorer 6 und 7\n"
+"  werden jedoch auch unterstützt.\n"
+"  "
 
 #: library/templates/epub.html:241
 msgid ""
@@ -2481,8 +2511,8 @@ msgid ""
 "Reading Mode provides a clean user interface for reading your ebooks, "
 "without the clutter and customized to your preferences"
 msgstr ""
-"Der Lesemodus stellt eine klare Bentzer-Schnittstelle zur Verfügung, \n"
-"der es erlaubt Ihre Bücher ohne störendes Wirrwarr und angepasst durch \n"
+"Der Lesemodus stellt eine klare Benutzer-Schnittstelle zur Verfügung, \n"
+"die es erlaubt Ihre Bücher ohne störendes Wirrwarr, angepasst durch \n"
 "Ihre Einstellungen, zu lesen"
 
 #: library/templates/reading-mode.html:28
@@ -2549,6 +2579,10 @@ msgid ""
 "the display of the table of contents.  Instead, the content is laid out in "
 "the center of the screen with ample whitespace to let you focus on reading."
 msgstr ""
+"Der Lesemodus entfernt die meisten Kopf- und Fußzeilen von Bookworm \n"
+"und unterdrückt die Anzeige des Inhaltsverzeichnisses. Stattdessen \n"
+"wird der Inhalt mit großzügigem Rand zentriert dargestellt, damit Sie \n"
+"sich auf das Lesen konzentrieren können."
 
 #: library/templates/reading-mode.html:53
 msgid ""
@@ -2561,7 +2595,7 @@ msgstr ""
 #: library/templates/reading-mode.html:55
 #: library/templates/reading-mode.html:56
 msgid "This control moves forward one page"
-msgstr ""
+msgstr "Dieses Bedienelement blättert eine Seite weiter"
 
 #: library/templates/reading-mode.html:58
 msgid ""
@@ -2675,6 +2709,8 @@ msgstr "Sie können, wie hier gezeigt, auch eine Serifenschrift benutzen."
 #: library/templates/reading-mode.html:124
 msgid "Font controls are available on the mobile version of Bookworm"
 msgstr ""
+"Steuerungselemente für die Schrift stehen in der mobilen Version von \n"
+"Bookworm zur Verfügung"
 
 #: library/templates/reading-mode.html:127
 msgid ""
@@ -3595,15 +3631,15 @@ msgstr "vorwärts"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Size"
-msgstr "Größe"
+msgstr "Schriftgröße"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Increase font size"
-msgstr "Schriftgröße vergrössern"
+msgstr "Grösser"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Decrease font size"
-msgstr "Schriftgröße verkleinern"
+msgstr "Kleiner"
 
 #: library/templates/includes/reading-tools.html:3
 msgid "Font"
@@ -3611,11 +3647,11 @@ msgstr "Schrift"
 
 #: library/templates/includes/reading-tools.html:3
 msgid "Use a serif font"
-msgstr "Eine Serifenschrift benutzen"
+msgstr "Serifenschrift"
 
 #: library/templates/includes/reading-tools.html:3
 msgid "Use a sans-serif font"
-msgstr "Eine serifenlose Schrift benutzen"
+msgstr "Serifenlose Schrift"
 
 #: library/templates/includes/toggle-reading-mode.html:3
 msgid "Change reading modes"
