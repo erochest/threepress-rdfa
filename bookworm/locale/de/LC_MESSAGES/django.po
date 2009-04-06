@@ -1,5 +1,5 @@
 # Bookworm Message file - GERMAN - 
-# Copyright (C) Jens Quade
+# Copyright (C) Jens Quade, Michael Wiedmann
 # This file is distributed under the same license as the BOOKWORM package.
 # JENS QUADE <jq@qdevelop.de> 2009
 #
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-06 09:44-0400\n"
-"PO-Revision-Date: 2009-04-05 20:06+0200\n"
+"PO-Revision-Date: 2009-04-06 18:52+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -677,11 +677,11 @@ msgstr "Unterstützt alle Stufen der CSS-Spezifikation in Ihrem Browser"
 
 #: library/templates/about.html:25
 msgid "Inline image support: PNG, JPG, GIF"
-msgstr "Untersützung für Inline-Grafiken: PNG, JPG, GIF"
+msgstr "Unterstützung für Inline-Grafiken: PNG, JPG, GIF"
 
 #: library/templates/about.html:26
 msgid "SVG image support"
-msgstr "Untersützung für SVG Grafiken"
+msgstr "Unterstützung für SVG Grafiken"
 
 #: library/templates/about.html:32
 msgid ""
@@ -1613,6 +1613,11 @@ msgid ""
 "      to see how it would appear when printed.\n"
 "      "
 msgstr ""
+"\n"
+"  Bookworm hat eigene spezielle Stylesheets für die zu druckenden Seiten.  \n"
+"  Probieren Sie die \"Druckvorschau\" Ihres Browsers beim Llesen einer ePub \n"
+"  Datei, um zu sehen, wie es gedruckt werden würde.\n"
+"  "
 
 #: library/templates/epub.html:122
 msgid "Table of Contents"
@@ -2647,6 +2652,10 @@ msgid ""
 "strong>, and <strong> click anywhere in the left margin to turn to the "
 "previous page</strong>."
 msgstr ""
+"Anstatt sperrige \"vorwärts\" und \"rückwärts\" Links zu benutzen, erlaubt \n"
+"es der Lesemodus <strong>überall innerhalb des rechten Randes zu klicken, \n"
+"um zur nächsten Seite zu blättern</strong> und <strong>überall innerhalb \n"
+"im linken Rand zu klicken, um zur vorherigen Seite zu blättern</strong>."
 
 #: library/templates/reading-mode.html:55
 #: library/templates/reading-mode.html:56
@@ -2729,6 +2738,13 @@ msgid ""
 "override whatever fonts and sizes were specified in the stylesheet that came "
 "with the ePub."
 msgstr ""
+"Sowohl der Standardmodus als auch der Lesemodus stellt Wege zur Verfügung, \n"
+"um die Schriftart und Schriftgröße Ihrer Ebooks anzupassen. \n"
+"Sie können eine Serifenschrift oder eine Schrift ohne Serifen benutzen, \n"
+"ausserdem können Sie die Schriftgröße vergößern und verkleinern. \n"
+"<strong>Bookworm merkt sich Ihre Einstellung der Schriftgröße</strong>. \n"
+"Diese Einstellungen heben alle Schriftarten und Schriftgrößen auf, \n"
+"die im Stylesheet der ePub Datei enthalten sind."
 
 #: library/templates/reading-mode.html:95
 msgid ""
@@ -2775,6 +2791,10 @@ msgid ""
 "already optimized to be simple.  However, some of the features of Reading "
 "Mode are also available in the mobile version:"
 msgstr ""
+"Für die <a href=\"http://m.bookworm.oreilly.com/\">mobile Version von Bookworm</a> \n"
+"gibt es keinen speziellen Lesemodus, da die mobile Version bereits \n"
+"optimiert ist. Einige der Merkmale des Lesemodus stehen allerdings \n"
+"auch in der mobilen Version zur Verfügung:"
 
 #: library/templates/reading-mode.html:130
 msgid "Font size adjustment"
@@ -3637,6 +3657,11 @@ msgid ""
 "        websites, including Yahoo.\n"
 "        "
 msgstr ""
+"\n"
+"  OpenID eliminiert die Notwendigkeit von verschiedenen Benutzernamen \n"
+"  auf Websites und vereinfacht damit Ihre Online-Erfahrung. Es ist \n"
+"  ein Standard, der von vielen Websites benutzt wird, einschließlich Yahoo.\n"
+"  "
 
 #: library/templates/includes/openid.html:15
 msgid ""
@@ -3648,6 +3673,11 @@ msgid ""
 "        they offer:\n"
 "        "
 msgstr ""
+"\n"
+"  Es kann sein, dass Sie bereits eine OpenID bei einer dieser Websites \n"
+"  haben. Klicken Sie auf den Namen, um mehr Informationen über deren \n"
+"  OpenID Dienste zu erhalten:\n"
+"  "
 
 #: library/templates/includes/openid.html:23
 msgid ""
@@ -3670,6 +3700,11 @@ msgid ""
 "myopenid.com/\">MyOpenID</a>.\n"
 "        "
 msgstr ""
+"\n"
+"  Falls Sie kein Konto bei einem dieser Dienste haben, oder diese nicht \n"
+"  benutzen wollen, probieren Sie \n"
+"  <a href=\"https://www.myopenid.com/\">MyOpenID</a>.\n"
+"  "
 
 #: library/templates/includes/openid.html:36
 msgid ""
