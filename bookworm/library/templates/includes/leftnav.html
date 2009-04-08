@@ -1,6 +1,6 @@
 {% load i18n %}
 
-{% if not request.user.get_profile.simple_reading_mode %}
+{% if not request.user.get_profile.simple_reading_mode or mobile %}
 
 {% spaceless %}
 <a name="toc">&nbsp;</a>
