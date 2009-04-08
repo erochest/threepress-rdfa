@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-06 09:44-0400\n"
-"PO-Revision-Date: 2009-04-08 18:52+0200\n"
+"PO-Revision-Date: 2009-04-08 22:04+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -158,7 +158,10 @@ msgstr "Konto: Email-Adresse ändern"
 
 #: django_authopenid/templates/authopenid/changeemail.html:10
 msgid "This is where you can change the email address associated with your account. Please keep this email address up to date so we can send you a password-reset email if you request one."
-msgstr "Hier können Sie die Email Adresse Ihres Kontos ändern. Bitte halten Sie dies Email Adresse aktuell, damit wir Ihnen einen Email zum Rücksetzen Ihres Kennworts zusenden können."
+msgstr ""
+"Hier können Sie die Email Adresse Ihres Kontos ändern. Bitte halten \n"
+"Sie diesen Einrag aktuell, damit wir Ihnen eine Email zum \n"
+"Rücksetzen Ihres Kennworts zusenden können."
 
 #: django_authopenid/templates/authopenid/changeemail.html:12
 #: django_authopenid/templates/authopenid/changeopenid.html:9
@@ -199,7 +202,7 @@ msgstr "Konto: OpenID URL ändern"
 
 #: django_authopenid/templates/authopenid/changeopenid.html:7
 msgid "This is where you can change your openid url used to connect to Bookworm. Make sure you remember it!"
-msgstr "Hier können Sie Ihre OpenID ändern, mit der Sie sich bei Bookworm anmelden. Vergessen Sie sie nicht vergessen!"
+msgstr "Hier können Sie Ihre OpenID ändern, mit der Sie sich bei Bookworm anmelden. Vergessen Sie sie nicht!"
 
 #: django_authopenid/templates/authopenid/changeopenid.html:24
 msgid "OpenID url:"
@@ -433,7 +436,7 @@ msgid ""
 msgstr ""
 "\n"
 "  <h1>Teilnehmen</h1>\n"
-"  <p>Es gibt zwei Wege teilzunehmen: mit einer Email-Adresse und Anzeigename\n"
+"  <p>Es gibt zwei Wege teilzunehmen: mit einer Email-Adresse und Anzeigenamen \n"
 "  oder mit einer OpenID.<br />Geben Sie nur für den gewünschten \n"
 "  Teilnahme-Typ die Information ein.</p>\n"
 "  "
@@ -537,7 +540,7 @@ msgid "We detected a problem with your ebook that is most likely related to it b
 msgstr ""
 "Wir haben ein Problem mit Ihrem Ebook festgestellt, das wahrscheinlich \n"
 "damit zusammenhängt, dass es zu groß ist, um sicher in einem Webbrowser \n"
-"dargestellt werden zu können. Dies kann mit shr großen Bildern geschehen \n"
+"dargestellt werden zu können. Dies kann mit sehr großen Bildern geschehen \n"
 "oder mit sehr langen Kapiteln. Bitte prüfen Sie mit dem Hersteller, dass \n"
 "das Buch korrekt formatiert wurde. Sehr lange Seiten laden sehr langsam \n"
 "und sind deshalb in Bookworm nicht erlaubt."
@@ -581,7 +584,7 @@ msgstr "Eigenschaften"
 
 #: library/templates/about.html:14
 msgid "Read your e-books from anywhere in the world"
-msgstr "Lesen Sie Ihre Ebooks von überall auf der Welt"
+msgstr "Lesen Sie Ihre Ebooks überall auf der Welt"
 
 #: library/templates/about.html:15
 msgid "Usable on a computer or smartphone such as the iPhone"
@@ -687,7 +690,7 @@ msgstr "Erstellen Sie ein Bookworm Konto und melden sich an"
 
 #: library/templates/about.html:76
 msgid "Upload an ePub book"
-msgstr "ePub-Buch hinzufügen"
+msgstr "ePub Buch hinzufügen"
 
 #: library/templates/about.html:77
 msgid "Start reading by just clicking on the book title in your library!"
