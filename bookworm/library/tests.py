@@ -1109,7 +1109,8 @@ class TestViews(DjangoTestCase):
         self.assertFalse(self.client.login(username='registertest', password='registertest'))        
 
     def test_change_name(self):
-        '''Change a standard Django account password'''
+        '''Change a standard Django account fullname'''
+        # Regression from http://code.google.com/p/threepress/issues/detail?id=132
         self.test_register_standard()
         response = self.client.post('/account/profile/', { 'fullname':'my new name' })
         self.assertNotContains(response, 'font_size')
