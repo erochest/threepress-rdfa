@@ -36,7 +36,7 @@
       <form action="{% url delete %}" method="post">
         <input type="hidden" name="title" value="{{ d.safe_title }}" />
         <input type="hidden" name="key" value="{{ d.key }}" />
-        <input type="submit" value="delete" onclick="return confirm('{% trans "Are you sure?" %}')" />
+        <input type="submit" value="{{ _("delete") }}" onclick="return confirm('{% trans "Are you sure?" %}')" />
       </form>
       </span>
     </td>

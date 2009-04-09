@@ -1,3 +1,4 @@
+{% load i18n %}
 {% if last_chapter_read and last_chapter_read.title %}
-<span class="bw-last-read">last read <a href="{% url view_chapter document.safe_title,document.id,last_chapter_read.filename %}">{{ last_chapter_read.title }}</a></span>
+<span class="bw-last-read">{{ _("last read") }} <a href="{% url view_chapter document.safe_title,document.id,last_chapter_read.filename %}">{{ last_chapter_read.title }}</a></span>
 {% endif %}

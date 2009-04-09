@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-06 09:44-0400\n"
+"POT-Creation-Date: 2009-04-09 09:33-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1346,10 +1346,9 @@ msgid ""
 msgstr ""
 
 #: library/templates/epub.html:157
-#, python-format
 msgid ""
 "\n"
-"      Bookworm is not yet a 100% conforming reading system;\n"
+"      Bookworm is not yet a truly conforming reading system;\n"
 "      see the <a href=\"http://code.google.com/p/threepress/issues/list"
 "\">issues</a>\n"
 "      page for the status on several bugs related to ePub conformance\n"
@@ -1767,7 +1766,8 @@ msgid "My epub library"
 msgstr ""
 
 #: library/templates/index.html:14 library/templates/shell.html:38
-#: library/templates/shell.html.py:53
+#: library/templates/shell.html.py:53 library/templates/upload.html:4
+#: library/templates/upload.html.py:5
 msgid "Add a book"
 msgstr ""
 
@@ -1866,6 +1866,10 @@ msgstr ""
 
 #: library/templates/index.html:109
 msgid "upload"
+msgstr ""
+
+#: library/templates/last-read.html:3
+msgid "last read"
 msgstr ""
 
 #: library/templates/public.html:21
@@ -2412,7 +2416,7 @@ msgstr ""
 msgid "Click <!-- trans: imperative verb -->"
 msgstr ""
 
-#: library/templates/tour.html:71
+#: library/templates/tour.html:71 library/templates/upload.html:59
 msgid "Add to my library"
 msgstr ""
 
@@ -2589,6 +2593,50 @@ msgstr ""
 msgid ""
 "Ready to <a href=\"%(signupurl)s\">sign up</a>?  <!-- trans: sign-up to use "
 "Bookworm -->  "
+msgstr ""
+
+#: library/templates/upload.html:23
+msgid "Need help?"
+msgstr ""
+
+#: library/templates/upload.html:25
+#, python-format
+msgid ""
+"Try reading the <a href=\"%(helpurl)s\">Help</a> or <a href=\"%(abouturl)s"
+"\">About</a> pages for more information, or email <a href=\"mailto:"
+"bookworm@threepress.org\">bookworm@threepress.org</a>for assistance."
+msgstr ""
+
+#: library/templates/upload.html:27
+msgid ""
+"If you get an error that you don't understand, please email <a href=\"mailto:"
+"bookworm@threepress.org\">bookworm@threepress.org</a> with a description of "
+"the problem."
+msgstr ""
+
+#: library/templates/upload.html:43
+msgid ""
+"To read an ebook on Bookworm, you must have first purchased or acquired it "
+"from a publisher or online book source, and downloaded that book to your "
+"computer. Use this form to add it to Bookworm."
+msgstr ""
+
+#: library/templates/upload.html:46
+#, python-format
+msgid ""
+"The ebook must be in the ePub format and have a filename ending in <strong>."
+"epub</strong>.If you don't know what that is, please see the <a href=\"%"
+"(abouturl)s\">About</a> page for more information."
+msgstr ""
+
+#: library/templates/upload.html:50
+msgid ""
+"You need to click on the &lsquo;Browse&rsquo; button and select an ebook to "
+"add."
+msgstr ""
+
+#: library/templates/upload.html:57
+msgid "Add an ePub from your computer by clicking on &lsquo;Browse&rsquo;:"
 msgstr ""
 
 #: library/templates/auth/language.html:3
@@ -2883,6 +2931,10 @@ msgstr ""
 
 #: library/templates/includes/document_list.html:28
 msgid "owned by"
+msgstr ""
+
+#: library/templates/includes/document_list.html:39
+msgid "delete"
 msgstr ""
 
 #: library/templates/includes/document_list.html:39

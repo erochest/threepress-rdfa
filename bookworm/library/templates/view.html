@@ -161,6 +161,11 @@
        </tr>
 
        <tr>
+         <th>Identifier</th>
+         <td>{% date_metadata document "identifier" %}</td>
+       </tr>
+
+       <tr>
          <th>Download entire book</th>
          <td><a href="{% url download_epub document.safe_title,document.key %}">epub format</a></td>
        </tr>
