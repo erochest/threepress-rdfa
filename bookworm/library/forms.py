@@ -7,4 +7,4 @@ class EpubValidateForm(forms.Form):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = UserPref
-        exclude = ('user', 'created_time','username', 'country', 'language')
+        exclude = ('user', 'created_time','username', 'country', 'language', 'font_size', 'font_family')
