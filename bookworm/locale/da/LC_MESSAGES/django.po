@@ -1,7 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FIRST AUTHOR &lt;EMAIL@ADDRESS&gt;, YEAR.
 #
 #, fuzzy
 msgid ""
@@ -10,8 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-09 09:33-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt;\n"
+"Language-Team: LANGUAGE &lt;LL@li.org&gt;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -56,8 +55,7 @@ msgstr "Der findes ingen konto med dette brugernavn."
 msgid ""
 "Please enter a correct                     username and password. Note that "
 "both fields are                     case-sensitive."
-msgstr ""
-"Indtast venligst korrekt brugernavn og password. NB! der skelnes i begge "
+msgstr "Indtast venligst korrekt brugernavn og password. NB! der skelnes i begge "
 "felter mellem store og små bogstaver."
 
 #: django_authopenid/forms.py:127 django_authopenid/forms.py:225
@@ -154,7 +152,7 @@ msgstr "Password kan ikke ændres, da brugeren ikke findes i databasen."
 #: django_authopenid/views.py:861
 #, python-format
 msgid "Password changed for %s. You could now sign in"
-msgstr "Password for %s er ændret. Nu kan du logge på."
+msgstr "Password for %s er ændret. Nu kan du logge ind."
 
 #: django_authopenid/templates/authopenid/changeemail.html:8
 msgid "Account: change email"
@@ -165,8 +163,7 @@ msgid ""
 "This is where you can change the email address associated with your account. "
 "Please keep this email address up to date so we can send you a password-"
 "reset email if you request one."
-msgstr ""
-"Her kan du ændre den emailadresse, der hører til din konto. Vær venlig at "
+msgstr "Her kan du ændre den emailadresse, der hører til din konto. Vær venlig at "
 "ajourføre din emailadresse, så vi altid kan sende dig en mail med "
 "nulstilling af dit password, når du måtte ønske det."
 
@@ -211,8 +208,7 @@ msgstr "Konto: ændring af openid url"
 msgid ""
 "This is where you can change your openid url used to connect to Bookworm. "
 "Make sure you remember it!"
-msgstr ""
-"Her kan du ændre den openid url der bruges til at forbinde dig med \n"
+msgstr "Her kan du ændre den openid url der bruges til at forbinde dig med \n"
 "Bookworm. Gør dig umage med at huske den!"
 
 #: django_authopenid/templates/authopenid/changeopenid.html:24
@@ -260,14 +256,12 @@ msgstr "Dit OpenID er verificeret!"
 #: django_authopenid/templates/authopenid/complete.html:13
 msgid ""
 "\n"
-"\t<p>Your OpenID can now be associated with a new or existing membership. "
-"You can change the association later in your preferences</p>\n"
+"\t&lt;p&gt;Your OpenID can now be associated with a new or existing membership. "
+"You can change the association later in your preferences&lt;/p&gt;\n"
 "\t"
-msgstr ""
-"\n"
-"\t<p>Dit OpenId kan nu knyttes til et nyt eller et eksisterende medlemskab. "
-"Du kan senere ændre tilknytning under dine indstillinger</p>"
-
+msgstr "\n\t&lt;p&gt;Dit OpenId kan nu knyttes til et nyt eller et eksisterende medlemskab. "
+"Du kan senere ændre tilknytning under dine indstillinger&lt;/p&gt;"
+"\t"
 #: django_authopenid/templates/authopenid/complete.html:17
 msgid "Associate your OpenID"
 msgstr "Tilknyt dit OpenID"
@@ -275,13 +269,11 @@ msgstr "Tilknyt dit OpenID"
 #: django_authopenid/templates/authopenid/complete.html:18
 msgid ""
 "\n"
-"\t<p>If you're joining <strong>Sitename</strong>, associate your OpenID with "
+"\t&lt;p&gt;If you're joining &lt;strong&gt;Sitename&lt;/strong&gt;, associate your OpenID with "
 "a new account. If you're already a member, associate with your existing "
-"account.</p>\n"
+"account.&lt;/p&gt;\n"
 "\t"
-msgstr ""
-"\n"
-"\t<p>Hvis du vil meldes til <strog>Sitename</strong>, så knyt dit OpenID til "
+msgstr "\t&lt;p&gt;Hvis du vil meldes til &lt;strog&gt;Sitename&lt;/strong&gt;, så knyt dit OpenID til "
 "en ny konto. Hvis du allerede er medlem, så knyt til din eksisterende konto."
 
 #: django_authopenid/templates/authopenid/complete.html:50
@@ -312,8 +304,7 @@ msgstr "Konto: slet konto"
 msgid ""
 "Note: After deleting your account, anyone will be able to register this "
 "username."
-msgstr ""
-"NB! Når du har slettet din konto vil enhver kunne registrere dette brugernavn"
+msgstr "NB! Når du har slettet din konto vil enhver kunne registrere dette brugernavn"
 
 #: django_authopenid/templates/authopenid/delete.html:12
 msgid "Check confirm box, if you want delete your account."
@@ -349,8 +340,7 @@ msgid ""
 "username you use  and you will get a confirm mail with your new password. "
 "This new password will be activated only after you clicked on the link you "
 "will find in the email"
-msgstr ""
-"Har du glemt dit password? Her kan du anmode om et nyt password. Indtast dit "
+msgstr "Har du glemt dit password? Her kan du anmode om et nyt password. Indtast dit "
 "brugernavn, så vil du modtage en bekræftende mail med dit nye password. Det "
 "ny password bliver først aktiveret når du klikker på det link, der står i "
 "mailen"
@@ -375,12 +365,10 @@ msgstr "Indstillinger"
 #: library/templates/auth/authopenid/settings.html:23
 msgid ""
 "\n"
-"    <p>This is where you can make changes to your account.</p>\n"
+"    &lt;p&gt;This is where you can make changes to your account.&lt;/p&gt;\n"
 "\n"
 "    "
-msgstr ""
-"\n"
-"<p>Her kan du ændre din konto.</p>"
+msgstr "&lt;p&gt;Her kan du ændre din konto.&lt;/p&gt;"
 
 #: django_authopenid/templates/authopenid/settings.html:33
 #: library/templates/auth/authopenid/settings.html:33
@@ -450,15 +438,14 @@ msgstr "Slet dit brugernavn og alle dine data fra websitet"
 #: django_authopenid/templates/authopenid/signup.html:7
 msgid ""
 "\n"
-"    <h1>Join</h1>\n"
-"    <p>There are two ways to join: with an email + screen name, or with "
-"OpenID.<br />Enter information only for the type of sign up you want to do.</"
-"p>\n"
+"    &lt;h1&gt;Join&lt;/h1&gt;\n"
+"    &lt;p&gt;There are two ways to join: with an email + screen name, or with "
+"OpenID.&lt;br /&gt;Enter information only for the type of sign up you want to do.&lt;/"
+"p&gt;\n"
 "    "
-msgstr ""
-"<h1>Tilmeld</h1><p>Du kan tilmelde dig på to måder: enten med emailadresse + "
-"skærmnavn eller med OpenID.<br/>Indtast kun oplysninger til den "
-"tilmeldingsmetode, du vil benytte.</p>"
+msgstr "&lt;h1&gt;Tilmeld&lt;/h1&gt;&lt;p&gt;Du kan tilmelde dig på to måder: enten med emailadresse + "
+"skærmnavn eller med OpenID.&lt;br/&gt;Indtast kun oplysninger til den "
+"tilmeldingsmetode, du vil benytte.&lt;/p&gt;"
 
 #: django_authopenid/templates/authopenid/signup.html:13
 msgid "Regular Signup"
@@ -536,8 +523,7 @@ msgid ""
 "publisher that this is a valid ePub book that contains either XHTML or "
 "DTBook-formatted\n"
 "content."
-msgstr ""
-"Denne bog har indhold som Bookworm ikke kunne læse. Du bør få forlaget til "
+msgstr "Denne bog har indhold som Bookworm ikke kunne læse. Du bør få forlaget til "
 "at bekræfte, at bogen er en valid epub-bog og indeholder enten XHTML- eller "
 "DTBook-formatteret indhold."
 
@@ -553,8 +539,7 @@ msgstr "Der opstod problemer med din anmodning om at slette profilen."
 msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
-msgstr ""
-"Den fil, du oploadede, kunne ikke genkendes som et epub-arkiv og kunne ikke "
+msgstr "Den fil, du oploadede, kunne ikke genkendes som et epub-arkiv og kunne ikke "
 "føjes til dit bibliotek."
 
 #: library/views.py:455
@@ -565,8 +550,7 @@ msgid ""
 "publisher that the book has been formatted correctly.  Very large pages "
 "would require a lot of scrolling and load very slowly, so they are not "
 "allowed to be added to Bookworm."
-msgstr ""
-"Der opstod et problem med din ebog, der swandsynligvis har at gøre med, at "
+msgstr "Der opstod et problem med din ebog. Det skyldes sandsynligvis, at "
 "den er for stor til at blive vist sikkert i en webbrowser. Dette sker gerne "
 "med meget store billeder eller virkelig lange kapitler. Vær venlig at få "
 "forlaget til at kontrollere, at bogen er korrekt formatteret. Meget store "
@@ -581,8 +565,7 @@ msgid ""
 "like. You will probably need to use Adobe Digital Editions to read this "
 "ebook, but consider contacting the publisher or bookseller to ask them about "
 "releasing DRM-free ebooks."
-msgstr ""
-"Det lader til at du har oploadet en bog, der indeholder DRM (Digital Rights "
+msgstr "Det lader til at du har oploadet en bog, der indeholder DRM (Digital Rights "
 "Management). Det er en begrænsning beregnet på at forhindre ulovlig "
 "kopiering men det forhindrer også ebøgernes retmæssige ejere i at læse deres "
 "bøger hvor de selv ønsker det. Du bliver nok nødt til at læse din ebog med "
@@ -595,33 +578,30 @@ msgid ""
 "The file you uploaded looks like an ePub archive, but it has some problems "
 "that prevented it from being loaded.  This may be a bug in Bookworm, or it "
 "may be a problem with the way the ePub file was created. The complete error "
-"message is: <p style='color:black;font-weight:normal'>%s</p>"
-msgstr ""
-"Den fil du oploadede ligner et ePub-arkiv, men der er nogle problemer ved "
+"message is: &lt;p style='color:black;font-weight:normal'&gt;%s&lt;/p&gt;"
+msgstr "Den fil du oploadede ligner et ePub-arkiv, men der er nogle problemer ved "
 "den, der forhindrede den i at blive indlæst. Det kan enten skyldes en fejl i "
 "Bookworm eller med den måde ePub-filen blev skabt. Den fulde fejlmeddelelse "
-"er: <p style='color:black;font-weight:normal'>%s</p>"
+"er: &lt;p style='color:black;font-weight:normal'&gt;%s&lt;/p&gt;"
 
 #: library/views.py:518
 msgid ""
-"<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
-"error)</p>"
-msgstr ""
-"<p>(epubcheck tror at denne fil er valid, så der er nok tale om en fejl i "
-"Bookworm)</p>"
+"&lt;p&gt;(epubcheck thinks this file is valid, so this is probably a Bookworm "
+"error)&lt;/p&gt;"
+msgstr "&lt;p&gt;(epubcheck tror at denne fil er valid, så der er nok tale om en fejl i "
+"Bookworm)&lt;/p&gt;"
 
 #: library/views.py:524
 #, python-format
 msgid ""
-"<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that "
+"&lt;p&gt;&lt;a href='http://code.google.com/p/epubcheck/'&gt;epubcheck&lt;/a&gt; agrees that "
 "this is not a valid ePub file, so you should check with the publisher or "
-"content creator. It returned: <pre style='color:black;font-weight:normal'>%"
-"s</pre></p>"
-msgstr ""
-"<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> er enig i at "
+"content creator. It returned: &lt;pre style='color:black;font-weight:normal'&gt;%"
+"s&lt;/pre&gt;&lt;/p&gt;"
+msgstr "&lt;p&gt;&lt;a href='http://code.google.com/p/epubcheck/'&gt;epubcheck&lt;/a&gt; er enig i at "
 "dette ikke er en valid ePub-fil, så du bør kontakte med forlaget eller den "
-"der producerede indholdet. Der returneredes: <pre style='color:black;font-"
-"weight:normal'>%s</pre></p>"
+"der producerede indholdet. Der returneredes: &lt;pre style='color:black;font-"
+"weight:normal'&gt;%s&lt;/pre&gt;&lt;/p&gt;"
 
 #: library/templates/about.html:3 library/templates/about.html.py:5
 #: library/templates/includes/about.html:5
@@ -646,20 +626,19 @@ msgstr "Download til Stanza eller til din Sony Reader"
 
 #: library/templates/about.html:19
 msgid "Technical details"
-msgstr "Teksniske detaljer"
+msgstr "Tekniske detaljer"
 
 #: library/templates/about.html:22
 msgid "Faithfully renders all levels of HTML"
-msgstr ""
+msgstr "Viser alle HTML-niveauer korrekt"
 
 #: library/templates/about.html:23
 msgid "Automatically-generated TOC based on document metadata"
-msgstr ""
-"Automatisk genereret Indholdsfortegnelse på grundlag af dokumentets metadata"
+msgstr "Automatisk genereret Indholdsfortegnelse på grundlag af dokumentets metadata"
 
 #: library/templates/about.html:24
 msgid "Supports all levels of the CSS specification available to your browser"
-msgstr ""
+msgstr "Understøtter alle de af CSS-specifikationens niveauer, som din browser kan håndtere"
 
 #: library/templates/about.html:25
 msgid "Inline image support: PNG, JPG, GIF"
@@ -667,32 +646,29 @@ msgstr "Inline-billeder, understøttelse: PNG, JPG, GIF"
 
 #: library/templates/about.html:26
 msgid "SVG image support"
-msgstr ""
+msgstr "Understøttelse af SVG-billeder"
 
 #: library/templates/about.html:32
 #, fuzzy
 msgid ""
-"For questions or problems with Bookworm, please contact <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>"
-msgstr ""
-"Hvis du har spørgsmål eller problemer med Bookworm, så kontakt <a href="
-"\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>"
+"For questions or problems with Bookworm, please contact &lt;a href=\"mailto:"
+"bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt;"
+msgstr "Hvis du har spørgsmål eller problemer med Bookworm, så kontakt &lt;a href="
+"\"mailto:bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt;"
 
 #: library/templates/about.html:36
 #, fuzzy
 msgid ""
-"For more information about Threepress, please visit our <a href=\"http://"
-"threepress.org/about/\">About</a> page."
-msgstr ""
-"Vil du vide mere om Threepress, kan du besøge vores <a href=\"http://"
-"threepress.org/about/\">Om</a>-side."
+"For more information about Threepress, please visit our &lt;a href=\"http://"
+"threepress.org/about/\"&gt;About&lt;/a&gt; page."
+msgstr "Vil du vide mere om Threepress, kan du besøge vores &lt;a href=\"http://"
+"threepress.org/about/\"&gt;Om&lt;/a&gt;-side."
 
 #: library/templates/about.html:44
 msgid ""
-"<strong>Bookworm</strong> is an experimental platform for storing and "
+"&lt;strong&gt;Bookworm&lt;/strong&gt; is an experimental platform for storing and "
 "reading ePub-format books online."
-msgstr ""
-"<strong>Bookworm</strong> er en eksperimenterende platform platform for "
+msgstr "&lt;strong&gt;Bookworm&lt;/strong&gt; er en eksperimenterende platform til "
 "onlinelagring og -læsning af ebøger i ePub-format."
 
 #: library/templates/about.html:47
@@ -729,7 +705,7 @@ msgstr "Kan jeg dele mine ePub-filer med andre?"
 
 #: library/templates/about.html:63
 msgid "Are my books safe?"
-msgstr "Er min ebøger i sikkerhed?"
+msgstr "Er mine ebøger i sikkerhed?"
 
 #: library/templates/about.html:65 library/templates/about.html.py:194
 msgid "Who is responsible for Bookworm?"
@@ -743,8 +719,7 @@ msgstr "Hvordan virker det? Hvad skal jeg downloade?"
 msgid ""
 "The great thing about Bookworm is there's nothing to download!  Here's how "
 "it works:"
-msgstr ""
-"Det gode ved Bookworm er at der ikke skal downloades noget! Det virker sådan "
+msgstr "Det gode ved Bookworm er at der ikke skal downloades noget! Det virker sådan "
 "her:"
 
 #: library/templates/about.html:75
@@ -768,38 +743,31 @@ msgid ""
 "ways for you to read your\n"
 "    book content on your mobile phone even when you aren't connected to the "
 "internet."
-msgstr ""
-"\n"
-"Fordi dine bøger er lagret på Bookworm-sitet, kan du læse dem i enhver "
-"browser og på de fleste mobile enheder - uanset hvor i verden du befinder "
-"dig! Vi arbejder på at udvikle metoder så du kan læse dine ebøger på din "
-"mobiltelefon, selv når du ikke er på internettet"
+msgstr "Dine bøger er gemt på Bookworm-sitet. Derfor kan du læses dem fra enhver webbrowser "
+"og fra de fleste mobile onlineenheder i verden. Vi arbejder på også at gøre det muligt "
+"for dig at læse dine bøger på mobilen når du ikke har forbindelse til internettet."
 
 #: library/templates/about.html:88
 #, fuzzy, python-format
 msgid ""
-"<a href=\"%(toururl)s\">Take the tour</a> to see an example of Bookworm in "
+"&lt;a href=\"%(toururl)s\"&gt;Take the tour&lt;/a&gt; to see an example of Bookworm in "
 "action."
-msgstr ""
-"\n"
-"<a href=\"%(toururl)s\">Tag på rundvisning</a>\" for at se eksempler på "
-"Bookworm i funktion."
+msgstr "&lt;a href=\"%(toururl)s\"&gt;Tag på rundtur&lt;/a&gt;\" for at se et eksempel på "
+"Bookworm i brug."
 
 #: library/templates/about.html:94
 #, fuzzy
 msgid ""
-"ePub is the open ebook standard developed by the <a\n"
-"    href=\"http://www.idpf.org/\">International Digital Publishing\n"
-"    Forum</a> (<acronym>IDPF</acronym>).  It is based on a number of\n"
+"ePub is the open ebook standard developed by the "
+"&lt;a href=\"http://www.idpf.org/\"&gt;International Digital Publishing "
+"Forum&lt;/a&gt; (&lt;acronym&gt;IDPF&lt;/acronym&gt;).  It is based on a number of\n"
 "    other open standards including XHTML, making ePub books ideally suited "
 "to\n"
 "    be read on web browsers. "
-msgstr ""
-"\n"
-"epub-formatet er standarden for \"open ebooks\", som udvikles af <a href="
-"\"http://www.idpf.org/\">International Digital Publishing Forum</a> "
-"(<acronym>IDPF</acronym>). Det bygger på en række åbne standarder, bl.a. "
-"XHTML, og det er derfor uhyre velegnet til at blive læst i webbrowsere."
+msgstr "epub-formatet er en åben ebogsstandard, som er udviklet af &lt;a href="
+"\"http://www.idpf.org/\"&gt;International Digital Publishing Forum&lt;/a&gt; "
+"(&lt;acronym&gt;IDPF&lt;/acronym&gt;). Formatet er baseret på en række åbne standarder, herunder "
+"XHTML. Det gør ePub-formatet overordentlig velegnet til læsning i webbrowsere."
 
 #: library/templates/about.html:101
 #, fuzzy
@@ -807,8 +775,7 @@ msgid ""
 "ePub books can be read on your home computer (using Bookworm, Adobe Digital "
 "Editions or Stanza), \n"
 "    on your iPhone (using Bookworm or Stanza) and on the Sony Reader"
-msgstr ""
-"ePub-bøger kan læses på din computer (med Bookworm, Adobe Digital Editions "
+msgstr "Du kan læse ePub-bøger på din computer (i Bookworm, Adobe Digital Editions "
 "eller Stanza), på din iPhone (med Bookworm eller Stanza) og på din Sony "
 "Reader."
 
@@ -823,36 +790,34 @@ msgstr "Kan jeg bruge Bookworm på min mobile enhed?"
 #: library/templates/about.html:109
 #, fuzzy, python-format
 msgid ""
-"<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
+"&lt;a href=\"%(toururl)s}#step3\"&gt;&lt;img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
-"\"right\" style=\"margin-bottom:10px\" width=\"100\"/></a>\n"
+"\"right\" style=\"margin-bottom:10px\" width=\"100\"/&gt;&lt;/a&gt;\n"
 "    Absolutely!  A special version of the site optimized for mobile devices "
 "(especially \n"
-"    the iPhone) is available at <a href=\"http://m.bookworm.oreilly.com/"
-"\">http://m.bookworm.oreilly.com/</a>.\n"
+"    the iPhone) is available at &lt;a href=\"http://m.bookworm.oreilly.com/"
+"\"&gt;http://m.bookworm.oreilly.com/&lt;/a&gt;.\n"
 "    Bookworm has also been tested on the Blackberry, Opera Mobile and the "
 "Kindle's Whispernet service."
-msgstr ""
-"<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
+msgstr "&lt;a href=\"%(toururl)s}#step3\"&gt;&lt;img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm på iPhone\" class=\"bw-screenshot-page\" align=\"right"
-"\" style=\"margin-bottom:10px\" width=\"100\"/></a> Det kan du! der findes "
-"en særlig version af sitet, der er optimeret for mobile enheder (især "
-"iPhone). Den finder du på <a href=\"http://m.bookworm.oreilly.com/\">http://"
-"m.bookworm.oreilly.com/</a>. Den er også blevet afprøvet på Blackberry, "
-"Opera Mobile og på Kindles Whispernet service."
+"\" style=\"margin-bottom:10px\" width=\"100\"/&gt;&lt;/a&gt; Selvfølgelig! Du finder "
+"en særlig version af sitet, der er optimeret til brug på mobile enheder (i særdeleshed "
+"iPhone), på &lt;a href=\"http://m.bookworm.oreilly.com/\"&gt;http://"
+"m.bookworm.oreilly.com/&lt;/a&gt;. Bookworm har også været testet på Blackberry, "
+"Opera Mobile og på Kindles Whispernet-service."
 
 #: library/templates/about.html:115
 #, fuzzy, python-format
 msgid ""
 "In addition to reading material directly on Bookworm, iPhone users can "
 "export their\n"
-"    Bookworm books to <a href=\"http://www.lexcycle.com/\">Stanza</a>.   For "
+"    Bookworm books to &lt;a href=\"http://www.lexcycle.com/\"&gt;Stanza&lt;/a&gt;.   For "
 "more\n"
-"    information, see the <a href=\"%(toururl)s#step4\">tour</a>."
-msgstr ""
-"ud over at læse direkte på Bookworm, kan iPhone-brugere eksportere deres "
-"Bookworm-bøger til <a href=\"http://www.lexcycle.com/\">Stanza</a>. For "
-"yderligere information, se <a href=\"%(toururl)s#step4\">rundtur</a>."
+"    information, see the &lt;a href=\"%(toururl)s#step4\"&gt;tour&lt;/a&gt;."
+msgstr "iPhone-brugere kan desuden eksportere deres Bookworm-bøger til "
+"&lt;a href=\"http://www.lexcycle.com/\"&gt;Stanza&lt;/a&gt;-readered. For "
+"yderligere info, se &lt;a href=\"%(toururl)s#step4\"&gt;rundturen&lt;/a&gt;."
 
 #: library/templates/about.html:120
 msgid "Where can I get ePubs?"
@@ -864,13 +829,12 @@ msgid ""
 "As of March 2009, many publishers are getting on board with\n"
 "    ePub. O'Reilly, Penguin, Harper-Collins and Random House have all "
 "released titles in the format.\n"
-"    An updated list of ePub bookstores can be found at <a href=\"http://www."
-"epubbooks.com/\">epubbooks.com</a>."
-msgstr ""
-"Siden Marts 2009, har mange forlag kastet sig ud i at udgive ebøger i ePub-"
-"format. Det gælder bl.a. O'Reilly, Penguin og Harper-Collins. En opdateret "
-"liste over forhandlere af ebøger i ePub-format finder du på <a href=\"http://"
-"www.epubbooks.com/\">epubbooks.com</a>."
+"    An updated list of ePub bookstores can be found at &lt;a href=\"http://www."
+"epubbooks.com/\"&gt;epubbooks.com&lt;/a&gt;."
+msgstr "Pr. marts 2009 er mange forlag begyndt at arbejde med ePub-"
+"formatet. Bl.a. har O'Reilly, Penguin og Harper-Collins allerede udgivet værker i ePub-format. "
+"På &lt;a href=\"http://www.epubbooks.com/\"&gt;epubbooks.com&lt;/a&gt; finder du en "
+"opdateret liste over ePub-boghandler."
 
 #: library/templates/about.html:127
 msgid "I'm not able to read this ePub book I uploaded"
@@ -884,10 +848,9 @@ msgid ""
 "    If you encounter an error while uploading or reading a book, the\n"
 "    Bookworm developers are automatically notified and will fix the\n"
 "    problem if possible."
-msgstr ""
-"Der er måske noget galt med ebogen (de fleste forlag er stadig kun ved at "
-"lære hvordan man producerer dem). Der kan også være tale om en fejl i "
-"Bookworm. Hvis du får en fejl når du oploader eller læser en bog, får "
+msgstr "Enten er der noget galt med ebogen (de fleste forlag er stadig ved at "
+"lære at producere dem), eller der kan være tale om en fejl i Bookworm. "
+"Hvis det opstår en fejl når du oploader eller læser en bog, får "
 "udviklerne bag Bookworm automatisk besked. De vil forsøge at løse problemet, "
 "hvis de kan."
 
@@ -899,25 +862,22 @@ msgid ""
 "    Check the website where you purchased the book for information on\n"
 "    how to read it (and complain to the publisher that you can't read\n"
 "    your books where you'd like!)"
-msgstr ""
-"Det kan også være, at du har oplodet en bog med Digital Rights Management "
-"(DRM). Bookworm understøtter ikke bøger med DRM. På det website, hvor du "
+msgstr "Det kan også være, at du har oplodet en bog med kopibeskyttelse (Digital Rights Management, "
+"DRM). Bookworm understøtter ikke bøger med DRM. På det website, hvor du "
 "købte ebogen, kan du få information om hvordan den kan læses. (Og klag til "
 "forlaget over, at du ikke kan få lov at læse dine bøger hvor du vil!)"
 
 #: library/templates/about.html:144
 #, fuzzy, python-format
 msgid ""
-"Please also see the <a href=\"%(helpurl)s\">Help</a> page for more\n"
+"Please also see the &lt;a href=\"%(helpurl)s\"&gt;Help&lt;/a&gt; page for more\n"
 "    tips on troubleshooting Bookworm."
-msgstr ""
-"Se også <a href=\"%(helpurl)s\">Hjælp</a>, hvor der er gode råd om "
+msgstr "Se også &lt;a href=\"%(helpurl)s\"&gt;Hjælp&lt;/a&gt;, for at få flere tips til "
 "problemløsning i Bookworm."
 
 #: library/templates/about.html:148
 msgid "I'm a publisher and I have questions or feature requests"
-msgstr ""
-"Jeg er forlægger og jeg har spørgsmål eller ønsker til funktionaliteten"
+msgstr "Jeg er forlægger og jeg har spørgsmål eller ønsker til funktionaliteten"
 
 #: library/templates/about.html:150
 #, fuzzy
@@ -928,24 +888,22 @@ msgid ""
 "getting your books\n"
 "    into ePub and even extending Bookworm with custom features for your "
 "publications.  Please\n"
-"    contact <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
-"org</a>\n"
+"    contact &lt;a href=\"mailto:bookworm@threepress.org\"&gt;bookworm@threepress."
+"org&lt;/a&gt;\n"
 "    and we'll get back to you right away."
-msgstr ""
-"Threepress er en virksomhed, der agerer i forlagsbranchen. Vi har mange års "
-"erfaring i at udvikle produkter til branchen. Vi vil meget gerne snakke om "
-"både ePub-formatet og om at få jeres bøger konverteret til ePub-format, og "
-"vi vil endda også gerne drøfte muligheden for at udvikle Bookworm-features, "
-"der er særligt tilpassede jeres udgivelser. Kontakt venligst: <a href="
-"\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a> så vender vi "
-"tilbage hurtigst muligt."
+msgstr "Threepress er en virksomhed, der har mange års erfaring med at arbejde "
+"for branchen, bl.a. med at udvikle nye produkter til den. Vi vil meget gerne snakke "
+"med jer om ePub-formatet, om konvertering af jeres bøger til ePub-format, og "
+"vi vil også gerne drøfte muligheden for at udvikle særlig Bookworm-funktionalitet, "
+"der er passer til jeres udgivelser. Kontakt venligst: &lt;a href="
+"\"mailto:bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt; så vender vi "
+"tilbage til jer."
 
 #: library/templates/about.html:157
 msgid ""
 "Will other book formats be supported, such as PDF or mobi? What about DRM "
 "ebooks?"
-msgstr ""
-"Kommer Bookworm til at unbderstøtte andre formater, som fx PDF eller mobi? "
+msgstr "Vil Bookworm i fremtiden understøtte andre formater, som fx PDF eller mobi? "
 "Og hvad med ebøger med DRM?"
 
 #: library/templates/about.html:159
@@ -955,10 +913,8 @@ msgid ""
 "plans to \n"
 "    support closed formats like mobi or those with limited flexibility like "
 "PDF.  "
-msgstr ""
-"\n"
-"Formålet med Bookworm er at fremme udbredelsen af det åbne ePub-format og "
-"der er ingen planer om at understøtte lukkede formater som mobi eller meget "
+msgstr "Ét af formålene med Bookworm er at fremme udbredelsen af det åbne ePub-format og "
+"der er således ingen planer om at understøtte lukkede formater som mobi eller meget "
 "ufleksible formater som PDF."
 
 #: library/templates/about.html:163
@@ -972,11 +928,10 @@ msgid ""
 "to unlock.\n"
 "    Instead we encourage publishers to explore forms of \"soft\" DRM (such "
 "as watermarking digital books with the name of the purchaser)."
-msgstr ""
-"Det har vist sig, at DRM (digital rights management) hæmmer udbredelsen af "
-"teknologi, at det ikke forhindrer piratkopiering i nogen nævneværdig grad "
-"og, at det gør brugeroplevelsen til en rædsom affære. Bookworm kommer aldrig "
-"til at understøtte ebøger med DRM, hvor det kræver særlig software at \"låse "
+msgstr "Undersøgelser har vist, at kopibeskyttelse (Digital Rights Management, DRM) hæmmer udbredelsen af "
+"ny teknologi, at det ikke forhindrer piratkopiering i nævneværdig grad "
+"og, at det forringer brugeroplevelsen voldsomt. Bookworm kommer aldrig "
+"til at understøtte ebøger med DRM, hvor der kræves særlig software for at \"låse "
 "bøgerne op\". I stedet opfordrer vi forlagene til at udnytte \"blød\" DRM "
 "(som fx at vandmærke de digitale bøger med køberens navn)."
 
@@ -985,8 +940,7 @@ msgstr ""
 msgid ""
 "Is it possible to share my books with other Bookworm users, or link to one "
 "of my books?"
-msgstr ""
-"Kan jeg dele mine bøger med andre Bookworm-brugere eller linke til en af "
+msgstr "Kan jeg dele mine bøger med andre Bookworm-brugere eller linke til en af "
 "mine bøger?"
 
 #: library/templates/about.html:174
@@ -997,23 +951,21 @@ msgid ""
 "    books uploaded by their own authors, or publishers who authorize books "
 "to be public\n"
 "    can all make Bookworm books accessible to the larger internet."
-msgstr ""
-"Bogdeling understøttes kun i begrænset omfang på Bookworm. Bøger, der ikke "
+msgstr "Bogdeling understøttes kun i begrænset omfang i Bookworm. Bøger, der ikke "
 "er omfattet af ophavsret, bøger, der er oploadet af forfatteren selv eller "
-"bøger, hvor forlaget har givet tilladelse dertil, kan alle gøres tilgængelig "
+"bøger, hvor forlaget har givet tilladelse dertil, kan alle gøres tilgængelige "
 "for det store internet."
 
 #: library/templates/about.html:179
 #, fuzzy
 msgid ""
 "Public books are in a very early beta stage.  To request that a book be made "
-"public, please contact <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a> for more information."
-msgstr ""
-"Frit tilgængelige bøger er kun i et tidligt betastadium. For at anmode om, "
-"at en bog bliver gjort offentligt tilgængelig, kontakt <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a> for yderliger "
-"information.\n"
+"public, please contact &lt;a href=\"mailto:bookworm@threepress.org"
+"\"&gt;bookworm@threepress.org&lt;/a&gt; for more information."
+msgstr "Håndteringen af de frit tilgængelige bøger befinder sig stadig kun på et tidligt "
+"betastadium. Vil du gøre en bog frit tilgængelig beder vi dig kontakte &lt;a href=\"mailto:"
+"bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt; for yderligere "
+"info."
 
 #: library/templates/about.html:182
 msgid " Are my books securely stored and backed up?"
@@ -1027,33 +979,31 @@ msgid ""
 "    No guarantees are provided for the security of your books or the "
 "reliability of the service.\n"
 "    Store copies of all your books on your own computers.\n"
-msgstr ""
-"På trods af, at der tages backup af de oploadede bøger, er Bookworm ikke et "
+msgstr "På trods af, at der tages backup af de oploadede bøger, er Bookworm ikke et "
 "kommercielt produkt, og vi har begrænsede økonomiske og juridiske "
 "ressourcer. Der gives hverken garanti for bøgernes sikkerhed eller "
-"tjenestens pålidelighed. Du bør gemme alle dine ebøger på din egen computer."
+"tjenestens pålidelighed. Du bør selv gemme alle dine ebøger på din egen computer."
 
 #: library/templates/about.html:196
 msgid ""
 "\n"
 "    Bookworm software is free and available for download under the\n"
-"    terms of the BSD license from the <a\n"
-"    href=\"http://threepress.org/tools/\">tools page</a>. It\n"
-"    is a product of <a\n"
-"    href=\"http://threepress.org/\">Threepress</a>, a venue for\n"
+"    terms of the BSD license from the &lt;a\n"
+"    href=\"http://threepress.org/tools/\"&gt;tools page&lt;/a&gt;. It\n"
+"    is a product of &lt;a\n"
+"    href=\"http://threepress.org/\"&gt;Threepress&lt;/a&gt;, a venue for\n"
 "    experimenting with open source publishing software, and is written\n"
-"    by <a href=\"http://threepress.org/about/\">Liza Daly</a>\n"
-"    with contributions from <a href=\"http://kfahlgren.com/blog\">Keith\n"
-"    Fahlgren</a>.  Hosting is provided by <a href=\"http://oreilly.com/"
-"\">O'Reilly Media</a>.\n"
-msgstr ""
-"Bookworms software er gratis og kan downlodes under BSD-betingelserne som "
-"beskrevet på <a href=\"http://threepress.org/tools/\">værktøjssiden</a>. "
-"Bookworm produceres af <a href=\"http://threepress.org/\">Threepress</a>, "
+"    by &lt;a href=\"http://threepress.org/about/\"&gt;Liza Daly&lt;/a&gt;\n"
+"    with contributions from &lt;a href=\"http://kfahlgren.com/blog\"&gt;Keith\n"
+"    Fahlgren&lt;/a&gt;.  Hosting is provided by &lt;a href=\"http://oreilly.com/"
+"\"&gt;O'Reilly Media&lt;/a&gt;.\n"
+msgstr "Bookworms software er gratis og kan downlodes under BSD-betingelserne som "
+"beskrevet på &lt;a href=\"http://threepress.org/tools/\"&gt;værktøjssiden&lt;/a&gt;. "
+"Bookworm produceres af &lt;a href=\"http://threepress.org/\"&gt;Threepress&lt;/a&gt;, "
 "hvor der eksperimenteres med open source publiceringssoftware. Bookworm er "
-"skrevet af <a href=\"http://threepress.org/about/\">Liza Daly</a> med bidrag "
-"fra <a href=\"http://kfahlgren.com/blog\">Keith Fahlgren</a>. Bookworm "
-"hostes hos <a href=\"http://oreilly.com/\">O'Reilly Media</a>."
+"skrevet af &lt;a href=\"http://threepress.org/about/\"&gt;Liza Daly&lt;/a&gt; med bidrag "
+"fra &lt;a href=\"http://kfahlgren.com/blog\"&gt;Keith Fahlgren&lt;/a&gt;. Bookworm "
+"hostes hos &lt;a href=\"http://oreilly.com/\"&gt;O'Reilly Media&lt;/a&gt;."
 
 #: library/templates/about.html:210
 msgid ""
@@ -1061,38 +1011,35 @@ msgid ""
 "Bookworm has been made possible by many individuals who have helped with\n"
 "  testing and supported the project throughout:\n"
 "  "
-msgstr ""
-"Bookworm er gjort muligt ved hjælp fra de mange, der har hjulpet med test og "
-"som har støttet projektet undervejs: "
+msgstr "Bookworm er blevet til ved hjælp fra de mange mennesker, der har testet og "
+"støttet projektet undervejs: "
 
 #: library/templates/about.html:216
 msgid ""
 "\n"
-"      Andrew Savikas and the rest of the <a\n"
-"      href=\"http://toc.oreilly.com/\">Tools of Change</a> team at O'Reilly "
+"      Andrew Savikas and the rest of the &lt;a\n"
+"      href=\"http://toc.oreilly.com/\"&gt;Tools of Change&lt;/a&gt; team at O'Reilly "
 "Media\n"
 "      "
-msgstr ""
-"Andrew Savikas og resten af holdet fra <a href=\"http://toc.oreilly.com/"
-"\">Tools of Change</a>-holdet hos O'Reilly Media"
+msgstr "Andrew Savikas og resten af &lt;a href=\"http://toc.oreilly.com/"
+"\"&gt;Tools of Change&lt;/a&gt;-holdet hos O'Reilly Media"
 
 #: library/templates/about.html:230
 msgid ""
 "\n"
-"    For problems and feature requests, visit  <a href=\"http://"
+"    For problems and feature requests, visit  &lt;a href=\"http://"
 "getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
-"\">Get Satisfaction</a> \n"
-"    or email <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>.\n"
-"    You can also subscribe to the <a\n"
-"    href=\"http://blog.threepress.org\">blog</a> to follow new "
+"\"&gt;Get Satisfaction&lt;/a&gt; \n"
+"    or email &lt;a\n"
+"    href=\"mailto:bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt;.\n"
+"    You can also subscribe to the &lt;a\n"
+"    href=\"http://blog.threepress.org\"&gt;blog&lt;/a&gt; to follow new "
 "announcements.\n"
-msgstr ""
-"Problemer eller gode forslag rapporteres på <a href=\"http://getsatisfaction."
-"com/threepress/topics/post_ideas_and_questions_about_bookworm\">Get "
-"Satisfaction</a> eller sendes pr. email til <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>. Du kan også abonnere "
-"på <a href=\"http://blog.threepress.org\">bloggen</a> for at få nyheder."
+msgstr "Problemer eller gode forslag rapporteres på &lt;a href=\"http://getsatisfaction."
+"com/threepress/topics/post_ideas_and_questions_about_bookworm\"&gt;Get "
+"Satisfaction&lt;/a&gt; eller sendes pr. email til &lt;a href=\"mailto:"
+"bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt;. Du kan også tilmelde dig et nyhedsabonnement "
+"på &lt;a href=\"http://blog.threepress.org\"&gt;bloggen&lt;/a&gt;."
 
 #: library/templates/base.html:12
 msgid "Search your library"
@@ -1119,17 +1066,16 @@ msgid ""
 "as\n"
 "    stylesheets and SVG.    \n"
 "    "
-msgstr ""
-"Bookworm er ikke kun for læsere. Udgivere can bruge programmet til at "
-"kontrollere deres ePub-filer før distribution, og til at eksperimentere med "
+msgstr "Bookworm er ikke kun for læsere. Udgivere kan bruge programmet til at "
+"validere deres ePub-filer før distribution, og til at eksperimentere med "
 "mere avanceret indhold og funktionalitet, fx stylesheets og SVG"
 
 #: library/templates/ebooktesting.html:27
-msgid "Validate <!-- trans: the ePub against the spec -->"
+msgid "Validate &lt;!-- trans: the ePub against the spec --&gt;"
 msgstr "Validér"
 
 #: library/templates/ebooktesting.html:29
-msgid "Checklist <!-- trans: of things to check when producing an ePub -->"
+msgid "Checklist &lt;!-- trans: of things to check when producing an ePub --&gt;"
 msgstr "Tjekliste"
 
 #: library/templates/ebooktesting.html:31
@@ -1143,7 +1089,7 @@ msgstr "Forvis dig om, at dine ePubs er korrekte"
 #: library/templates/ebooktesting.html:36
 msgid ""
 "\n"
-"    <strong>Verify that your ePub is valid</strong>. Many tools creating "
+"    &lt;strong&gt;Verify that your ePub is valid&lt;/strong&gt;. Many tools creating "
 "ePubs\n"
 "    do not create them with all of the required attributes and files.\n"
 "    Some ePub readers are very loose in what they accept, so checking your\n"
@@ -1151,31 +1097,29 @@ msgid ""
 "your\n"
 "    ebook will be readable everywhere.\n"
 "    "
-msgstr ""
-"<strong>Verificér at din ePub er valid</strong>. Mange af de værktøjer, der "
+msgstr "&lt;strong&gt;Tjek at din ePub er valid&lt;/strong&gt;. Mange af de værktøjer, der "
 "kan producere ePubs, får ikke forsynet filerne med alle de obligatoriske "
 "attributter og filer. Nogle ePub-læsere er meget tolerante over for den "
 "slags mangler, så det er ikke tilstrækkeligt at kontrollere din ePub i Adobe "
 "Digital Editions, hvis du vil have, at den skal kunne læses alle vegne."
 
 #: library/templates/ebooktesting.html:44
-msgid "Validating with EpubCheck <!-- trans: do not translate epubcheck -->"
+msgid "Validating with EpubCheck &lt;!-- trans: do not translate epubcheck --&gt;"
 msgstr "Validér med EpubCheck"
 
 #: library/templates/ebooktesting.html:46
 msgid ""
 "\n"
-"    While developers can download and install their own copy of Adobe's <a "
-"href=\"http://code.google.com/p/epubcheck/\">epubcheck</a>\n"
-"    tool, it may be easier to use Threepress's web-based <a href=\"http://"
-"www.threepress.org/document/epub-validate/\">ePub validator</a>.\n"
+"    While developers can download and install their own copy of Adobe's &lt;a "
+"href=\"http://code.google.com/p/epubcheck/\"&gt;epubcheck&lt;/a&gt;\n"
+"    tool, it may be easier to use Threepress's web-based &lt;a href=\"http://"
+"www.threepress.org/document/epub-validate/\"&gt;ePub validator&lt;/a&gt;.\n"
 "    It uses epubcheck but wraps it in a convenient web form upload.\n"
 "    "
-msgstr ""
-"Udviklere kan downloade og installere deres egen kopi af Adobes <a href="
-"\"http://code.google.com/p/epubcheck/\">epubcheck</a>-værktøj. For andre er "
-"det givetvis lettere at bruge Threepress' web-baserede <a href=\"http://www."
-"threepress.org/document/epub-validate/\">ePub validator</a>. Den bruger "
+msgstr "Udviklere kan downloade og installere deres egen kopi af Adobes &lt;a href="
+"\"http://code.google.com/p/epubcheck/\"&gt;epubcheck&lt;/a&gt;-værktøj. For andre er "
+"det givetvis lettere at bruge Threepress' web-baserede &lt;a href=\"http://www."
+"threepress.org/document/epub-validate/\"&gt;ePub validator&lt;/a&gt;. Den bruger "
 "epubcheck men pakker den ind i et web-formularbaseret upload."
 
 #: library/templates/ebooktesting.html:53
@@ -1188,27 +1132,25 @@ msgid ""
 "    to work consistently with new ereaders that are developed in the "
 "future.\n"
 "    "
-msgstr ""
-"Selv om Bookworm kan acceptere mange slags ikke helt valid ePub, så er det "
+msgstr "Selv om Bookworm kan acceptere mange slags ikke helt valid ePub, så er det "
 "altid bedst at teste filerne først. Valide ePubs vil have meget større "
-"chance for at fungere korrekt i fremtidige ebogslæsere."
+"chance for også at fungere korrekt i fremtidige ebogslæsere."
 
 #: library/templates/ebooktesting.html:59
 msgid "How to test ePubs with Bookworm"
-msgstr "Sådan kontrollerer du ePubs med Bookworm"
+msgstr "Sådan tjekker du ePubs med Bookworm"
 
 #: library/templates/ebooktesting.html:63
 #, python-format
 msgid ""
 "\n"
 "    Like any other user, all you need to do to test ePubs with Bookworm\n"
-"    is to <a href=\"%(signupurl)s\">sign up</a> and\n"
-"    <a href=\"%(toururl)s#step1\">add a book</a>.\n"
+"    is to &lt;a href=\"%(signupurl)s\"&gt;sign up&lt;/a&gt; and\n"
+"    &lt;a href=\"%(toururl)s#step1\"&gt;add a book&lt;/a&gt;.\n"
 "    "
-msgstr ""
-"For at teste dine ePubs med Bookworm, skal du blot - som alle andre brugere "
-"- <a href=\"%(signupurl)s\">registrere dig</a> og <a href=\"%(toururl)s#step1"
-"\">tilføje en bog</a>."
+msgstr "For at teste dine ePubs validitet med Bookworm, skal du blot - som alle andre brugere "
+"- &lt;a href=\"%(signupurl)s\"&gt;tilmelde dig&lt;/a&gt; og &lt;a href=\"%(toururl)s#step1"
+"\"&gt;tilføje en bog&lt;/a&gt;."
 
 #: library/templates/ebooktesting.html:70
 msgid ""
@@ -1217,8 +1159,7 @@ msgid ""
 "    Once your book has been added, click around and make sure it looks\n"
 "    right. Here are some additional testing tips:\n"
 "    "
-msgstr ""
-"Når du har tilføjet din bog, bør du klikke lidt rundt for at sikre dig, at "
+msgstr "Når du har tilføjet din bog, bør du klikke lidt rundt for at sikre dig, at "
 "den er i orden. Her er nogle ekstra tips til dit tjek:"
 
 #: library/templates/ebooktesting.html:78
@@ -1226,110 +1167,97 @@ msgid "Testing checklist"
 msgstr "Tjekliste for testen"
 
 #: library/templates/ebooktesting.html:80
-msgid ""
-"\n"
-"    <strong>Is the metadata correct?</strong> You can view a book's\n"
-"    metadata on the <strong>Book information</strong> page available\n"
+msgid "    &lt;strong&gt;Is the metadata correct?&lt;/strong&gt; You can view a book's\n"
+"    metadata on the &lt;strong&gt;Book information&lt;/strong&gt; page available\n"
 "    from the table of contents of any book. \n"
 "    "
-msgstr ""
-"<strobg>Er metadata korrekte?</strong> Du kan se bogens metadata på "
-"<strong>boginformations</strong>-siden, der findes i enhver bogs "
+msgstr "&lt;strobg&gt;Er metadata korrekte?&lt;/strong&gt; Du kan se bogens metadata på "
+"&lt;strong&gt;boginformations&lt;/strong&gt;-siden, der findes i enhver bogs "
 "indholdsfortegnelse."
 
 #: library/templates/ebooktesting.html:87
 msgid ""
 "\n"
-"      <strong>Is the copyright information in the metadata present and \n"
-"      accurate?</strong>  Readers need to know if the book has full "
+"      &lt;strong&gt;Is the copyright information in the metadata present and \n"
+"      accurate?&lt;/strong&gt;  Readers need to know if the book has full "
 "copyright\n"
 "      protection, is public domain, or is released with limited rights "
 "reserved\n"
 "      via Creative Commons.\n"
 "      "
-msgstr ""
-"<strong>Er oplysninge om de ophavsretslige forhold med i metadata? Og er de "
-"korrekte?</strong> Det er vigtigt at læserne oplyses om bogen er omfattet af "
-"ophavsret eller om den er frit tilgængelig eller udgivet med begrænsede "
+msgstr "&lt;strong&gt;Er der oplysning om de ophavsretslige forhold med i metadata? Og er de "
+"korrekte?&lt;/strong&gt; Det er vigtigt, at læserne oplyses om hvorvidt bogen er omfattet af "
+"ophavsret eller om den er frit tilgængelig eller om den er udgivet med begrænsede "
 "rettigheder via Creative Commons."
 
 #: library/templates/ebooktesting.html:95
 msgid ""
 "\n"
-"      <strong>Is the table of contents correct and in the right order?</"
-"strong>\n"
-"      Bookworm uses the <code>playOrder</code> attribute of the NCX file\n"
+"      &lt;strong&gt;Is the table of contents correct and in the right order?&lt;/"
+"strong&gt;\n"
+"      Bookworm uses the &lt;code&gt;playOrder&lt;/code&gt; attribute of the NCX file\n"
 "      and the ordering of the items in the TOC.\n"
 "      "
-msgstr ""
-"Bookworm anvender NCX-fielns <code>playOrder</code>-attribut og rækkefølgen "
+msgstr "Bookworm anvender NCX-filens &lt;code&gt;playOrder&lt;/code&gt;-attribut og rækkefølgen "
 "i indholdsfortegnelsen."
 
 #: library/templates/ebooktesting.html:102
-msgid ""
-"\n"
-"      <strong>Are all images appearing?</strong> \n"
+msgid "      &lt;strong&gt;Are all images appearing?&lt;/strong&gt; \n"
 "      Bookworm can accommodate a wide\n"
 "      variety of link forms, from images linked directly from the TOC to\n"
-"      those found in anchor tags within content. The images <em>must</em> "
+"      those found in anchor tags within content. The images &lt;em&gt;must&lt;/em&gt; "
 "be \n"
 "      listed in the OPF file to appear in Bookworm, as directed by the ePub "
 "specification.\n"
 "      "
-msgstr ""
-"<strong>Bliver alle billeder vist?</strong> Bookworm kan håndtere en bred "
-"vifte af linktyper; fra billeder, der refereres direkte fra "
-"indholdsfortegnelsen til dem der refereres fra indholdets anchor-tags. "
-"Billederne <em>skal</em> registreres i OPF-filen, hvis Bookworm skal vise "
+msgstr "&lt;strong&gt;Bliver alle billeder vist?&lt;/strong&gt; Bookworm kan håndtere en bred "
+"vifte af linktyper; fra billeder der refereres direkte fra "
+"indholdsfortegnelsen, til dem der refereres fra indholdets anchor-tags. "
+"Billederne &lt;em&gt;skal&lt;/em&gt; registreres i OPF-filen, hvis Bookworm skal vise "
 "dem, som ePub-specifikationen foreskriver det."
 
 #: library/templates/ebooktesting.html:112
 msgid ""
 "\n"
-"      <strong>Are all special or foreign characters displaying correctly?</"
-"strong>\n"
+"      &lt;strong&gt;Are all special or foreign characters displaying correctly?&lt;/"
+"strong&gt;\n"
 "      ePub books complying with the specification must be encoded with\n"
 "      either UTF-8 or UTF-16, but Bookworm supports only UTF-8.  "
 "(Bidirectional text is supported\n"
 "      but you will need to include that directive in the CSS.)\n"
 "      "
-msgstr ""
-"<strong>Vises alle specialtegn og udenlandske tegn korrekt?</strong> ePub-"
+msgstr "&lt;strong&gt;Bliver alle specialtegn og udenlandske tegn vist korrekt?&lt;/strong&gt; ePub-"
 "bøger, der følger specifikationen, skal være kodet i enten UTF-8 eller UTF-"
 "16. Bookworm understøtter dog kun UTF-8. (Bidirektionel tekst understøttes, "
-"men dette skal angives i den tilhørende CSS)."
+"men dette skal angives i det tilhørende CSS)."
 
 #: library/templates/ebooktesting.html:122
 msgid "Are ePub files on Bookworm secure?"
-msgstr "Er ePub-filer i Bookworm sikre?"
+msgstr "Er ePub-filer sikre i Bookworm?"
 
 #: library/templates/ebooktesting.html:124
-msgid ""
-"\n"
-"    Although Bookworm is designed to prevent file sharing and\n"
+msgid "    Although Bookworm is designed to prevent file sharing and\n"
 "    accidental release of books into the \"wild,\" we accept no\n"
 "    liability for software failure which may result in an ebook \n"
 "    becoming publicly viewable. \n"
 "    "
-msgstr ""
-"På trods af, at Bookworm er designet til at forebygge fildeling og "
+msgstr "På trods af at Bookworm er designet til at forebygge fildeling og "
 "utilsigtet frigivelse, så påtager vi os intet ansvar for softwarefejl, der "
-"måtte resusltere i at en ebog blev offentligt tilgængelig."
+"måtte resultere i at en ebog blev offentligt tilgængelig."
 
 #: library/templates/ebooktesting.html:132
 msgid ""
 "\n"
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
-"    material. Contact <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
+"    material. Contact &lt;a\n"
+"    href=\"mailto:bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt;\n"
 "    for more details.\n"
 "    "
-msgstr ""
-"Til gengæld kan Threepress hjælpe med opsætning af en lukket version af "
+msgstr "Til gengæld kan Threepress hjælpe med opsætning af en lukket version af "
 "Bookworm til brug for test i stor skala eller til håndtering af særlig "
-"følsomt materiale. Kontakt da <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a> for nærmere oplysning."
+"følsomt materiale. Kontakt da &lt;a href=\"mailto:bookworm@threepress.org"
+"\"&gt;bookworm@threepress.org&lt;/a&gt; for nærmere oplysning."
 
 #: library/templates/epub.html:7 library/templates/epub.html.py:8
 msgid "Bookworm and the ePub standard"
@@ -1340,50 +1268,42 @@ msgid "About ePub"
 msgstr "Om ePub"
 
 #: library/templates/epub.html:14
-msgid ""
-"\n"
-"      ePub is an open format of the The International Digital Publishing "
+msgid "      ePub is an open format of the The International Digital Publishing "
 "Forum (IDPF).\n"
 "      It is based on XML and XHTML, re-using existing standards for \n"
 "      digital books.\n"
 "      "
-msgstr ""
-"ePub er et åbent format, udviklet hos The Intenational Digital Publishing "
+msgstr "ePub er et åbent format, udviklet hos The Intenational Digital Publishing "
 "Forum (IDPF). Formatet er baseret på XML og XHTML og genanvendelse af "
 "standarder for digitale bøger."
 
 #: library/templates/epub.html:21
-msgid ""
-"\n"
-"      The technical details and specification are available from <a href="
-"\"http://openebook.org/\">http://openebook.org/</a>.\n"
+msgid "      The technical details and specification are available from &lt;a href="
+"\"http://openebook.org/\"&gt;http://openebook.org/&lt;/a&gt;.\n"
 "      "
-msgstr ""
-"Teksniske detaljer og selve specifikationen kan fås på <a href=\"http://"
-"openebook.org/\">http://openebook.org/</a>."
+msgstr "Teksniske detaljer og selve specifikationen kan fås på &lt;a href=\"http://"
+"openebook.org/\"&gt;http://openebook.org/&lt;/a&gt;."
 
 #: library/templates/epub.html:26
 msgid ""
 "\n"
 "      There's a lot of good, up-to-date information about where to buy "
 "ePubs\n"
-"      and which devices and software support it at <a href=\"http://www."
-"epubbooks.com/\">ePub Books</a>.\n"
+"      and which devices and software support it at &lt;a href=\"http://www."
+"epubbooks.com/\"&gt;ePub Books&lt;/a&gt;.\n"
 "      "
-msgstr ""
-"Der kan findes en masse god, opdateret information om hvor man kan købe "
-"ePubs og hvilke apparater og hvilken software, der kan læse ePubs, på <a "
-"href=\"http://www.epubbooks.com/\">ePub Books</a>."
+msgstr "Der kan findes en masse god, opdateret information om hvor man kan købe "
+"ePubs og hvilke apparater og hvilken software, der kan læse ePubs, på &lt;a "
+"href=\"http://www.epubbooks.com/\"&gt;ePub Books&lt;/a&gt;."
 
 #: library/templates/epub.html:32
 msgid ""
 "\n"
-"      Public domain <a href=\"http://www.threepress.org/epub/logos\">ePub "
-"logos</a> are available from threepress.org.\n"
+"      Public domain &lt;a href=\"http://www.threepress.org/epub/logos\"&gt;ePub "
+"logos&lt;/a&gt; are available from threepress.org.\n"
 "      "
-msgstr ""
-"Offentlige og frie <a href=\"http://www.threepress.org/epub/logos\">ePub "
-"logoer</a> fås hos threepress.org."
+msgstr "Offentlige og gratis &lt;a href=\"http://www.threepress.org/epub/logos\"&gt;ePub "
+"logoer&lt;/a&gt; fås hos threepress.org."
 
 #: library/templates/epub.html:37
 msgid "Table of contents"
@@ -1398,7 +1318,7 @@ msgid "NCX Table of Contents"
 msgstr "NCX-indhold"
 
 #: library/templates/epub.html:41
-msgid "Conformance <!-- trans: to the specification -->"
+msgid "Conformance &lt;!-- trans: to the specification --&gt;"
 msgstr "Overensstemmelse"
 
 #: library/templates/epub.html:42 library/templates/epub.html.py:166
@@ -1425,8 +1345,7 @@ msgid ""
 "      enthusiasts who are interested in the\n"
 "      ePub standard and how Bookworm uses it.\n"
 "      "
-msgstr ""
-"Denne side er for udviklere, udgivere og ebogsentusiaster, der interesserer "
+msgstr "Denne side er skrevet til udviklere, udgivere og ebogsentusiaster, der interesserer "
 "sig for ePub-standarden og for hvordan Bookworm bruger den."
 
 #: library/templates/epub.html:62
@@ -1437,27 +1356,25 @@ msgstr "Lær dig selv-program"
 msgid ""
 "\n"
 "      A complete tutorial on using the ePub format is available from IBM "
-"DeveloperWorks: <a href=\"http://www.ibm.com/developerworks/edu/x-dw-x-"
-"epubtut.html\">Build a digital book with EPUB</a>.\n"
+"DeveloperWorks: &lt;a href=\"http://www.ibm.com/developerworks/edu/x-dw-x-"
+"epubtut.html\"&gt;Build a digital book with EPUB&lt;/a&gt;.\n"
 "      Examples from Bookworm are included.\n"
 "      "
-msgstr ""
-"Et fuldt \"lær dig selv\"-program om brugen af epub-formatet kan fås hos IBM "
-"DeveloperWorks: <a href=\"http://www.ibm.com/developerworks/edu/x-dw-x-"
-"epubtut.html\">Byg en digital bog med EPUB</a>. Det indeholder eksempler fra "
+msgstr "Et fuldt \"lær dig selv\"-program om brugen af epub-formatet kan fås hos IBM "
+"DeveloperWorks: &lt;a href=\"http://www.ibm.com/developerworks/edu/x-dw-x-"
+"epubtut.html\"&gt;Byg en digital bog med EPUB&lt;/a&gt;. Det indeholder eksempler fra "
 "Bookworm."
 
 #: library/templates/epub.html:70
 msgid ""
 "\n"
 "      A comprehensive list of ePub resource was written by Keith Fahlgren at "
-"O'Reilly Media: <a href=\"http://labs.oreilly.com/2009/03/epub-resources-and-"
-"guides.html\">ePub Resources and Guides</a>.\n"
+"O'Reilly Media: &lt;a href=\"http://labs.oreilly.com/2009/03/epub-resources-and-"
+"guides.html\"&gt;ePub Resources and Guides&lt;/a&gt;.\n"
 "      "
-msgstr ""
-"Keith Fahlgren fra O'Reilly Media har skrevet en omfattense liste over ePub-"
-"ressourcer: <a href=\"http://labs.oreilly.com/2009/03/epub-resources-and-"
-"guides.html\">ePub-ressourcer og guides</a>."
+msgstr "Keith Fahlgren fra O'Reilly Media har skrevet en omfattende liste over ePub-"
+"ressourcer: &lt;a href=\"http://labs.oreilly.com/2009/03/epub-resources-and-"
+"guides.html\"&gt;ePub-ressourcer og guides&lt;/a&gt;."
 
 #: library/templates/epub.html:80
 msgid ""
@@ -1468,18 +1385,17 @@ msgid ""
 "      This allows Bookworm to support advanced layout and markup\n"
 "      that standalone reading software often does not, including:\n"
 "      "
-msgstr ""
-"Da det hyppigst anvendte indholdsformat i ePub-filer er XHTML, passer epub "
+msgstr "Da det hyppigst anvendte indholdsformat i ePub-filer er XHTML, passer epub "
 "naturligt til læsning i en browser. Dette gør, at Bookworm understøtter "
 "avanceret layout og opmærkning, som standalone-læseprogrammer ofte ikke gør, "
 "bl.a.:"
 
 #: library/templates/epub.html:88
-msgid "Tables <!-- trans: HTML tables --> "
+msgid "Tables &lt;!-- trans: HTML tables --&gt; "
 msgstr "Tabeller"
 
 #: library/templates/epub.html:89
-msgid "Lists <!-- trans: HTML lists -->"
+msgid "Lists &lt;!-- trans: HTML lists --&gt;"
 msgstr "Lister"
 
 #: library/templates/epub.html:90
@@ -1492,8 +1408,7 @@ msgid ""
 "      These features are especially important in non-fiction works\n"
 "      such as technical titles or scientific papers.\n"
 "      "
-msgstr ""
-"Disse egenskaber er særligt vigtige i fagbøger samt teknisk og videnskabelig "
+msgstr "Disse egenskaber er særligt vigtige i fagbøger samt teknisk og videnskabelig "
 "litteratur"
 
 #: library/templates/epub.html:99
@@ -1509,8 +1424,7 @@ msgid ""
 "stylesheets are slightly modified\n"
 "      to restrict their effects to the book's content area. \n"
 "      "
-msgstr ""
-"Bookworm viser ethvert CSS stylesheet, der er pakket sammen med en ebog. For "
+msgstr "Bookworm viser ethvert CSS stylesheet, der er pakket sammen med en ebog. For "
 "at undgå sammenblanding med Bookworms indbyggede CSS, modificeres ebøgernes "
 "stylesheets en smule med henblik på at begrænse deres virkefelt til den "
 "selvsamme bog."
@@ -1519,15 +1433,14 @@ msgstr ""
 msgid ""
 "\n"
 "      Any external JavaScript files that might be bundled with the ePub are "
-"<em>not</em> loaded,\n"
-"      and any &lt;script&gt; tags embedded in the content are removed.  This "
+"&lt;em&gt;not&lt;/em&gt; loaded,\n"
+"      and any &amp;lt;script&amp;gt; tags embedded in the content are removed.  This "
 "is a security feature\n"
 "      to prevent malicious scripts from being uploaded to the site.\n"
 "      "
-msgstr ""
-"Der loades ingen eksterne JavaScript-filer, der kommer som del af en ePub-"
-"pakke, og alle &lt;script&gt;-tags fjernes fra indholdet. Dette sker af "
-"sikkerhedshensyn for at forhindre at ondsinde scripts oploades til sitet."
+msgstr "Der loades ingen eksterne JavaScript-filer, der kommer som del af en ePub-"
+"pakke, og alle &amp;lt;script&amp;gt;-tags fjernes fra indholdet. Dette sker af "
+"sikkerhedshensyn for at forhindre at ondsindede scripts oploades til sitet."
 
 #: library/templates/epub.html:115
 msgid ""
@@ -1538,8 +1451,7 @@ msgid ""
 "ePub\n"
 "      to see how it would appear when printed.\n"
 "      "
-msgstr ""
-"Bookworm indeholder sine egne stylesheets, der er specielt beregnet til "
+msgstr "Bookworm indeholder sine egne stylesheets, der er specielt beregnet til "
 "trykte sider. Prøv at vælge \"Vis Udskrift\" i din browser, når du læser en "
 "ePub, for at se hvordan en side ville se ud på tryk."
 
@@ -1555,9 +1467,8 @@ msgid ""
 "      also include chunks at the \"part\" or sub-chapter level, \n"
 "      organized into a nested hierarchy.\n"
 "      "
-msgstr ""
-"Metadata for indholdsfortegnelsen indeholder størrelser på andre niveauer "
-"end \"kapitel\". Der kan være indeholdt størrelser på \"del\"- eller "
+msgstr "Metadata for indholdsfortegnelsen indeholder størrelser på andre niveauer "
+"end \"kapitel\". Der kan fx forekomme størrelser på \"del\"- eller "
 "underkapitel-niveau, i en hierarkisk ordnet struktur."
 
 #: library/templates/epub.html:133
@@ -1566,8 +1477,7 @@ msgid ""
 "      Bookworm will expand nested items in the Table of Contents \n"
 "      when the user moves through them.\n"
 "      "
-msgstr ""
-"Bookworm viser indlejrede elementer i Indholdsfortegnelsen, når brugeren "
+msgstr "Bookworm viser indlejrede elementer i indholdsfortegnelsen, når brugeren "
 "bevæger sig ned gennem dem."
 
 #: library/templates/epub.html:139
@@ -1576,8 +1486,7 @@ msgid ""
 "      When multiple sub-sections exist, a small arrow will appear next\n"
 "      to the sub-section that is being read.\n"
 "      "
-msgstr ""
-"Når der findes flere underafsnit, vil man kunne se en lille pil ud for det "
+msgstr "Når der findes flere underafsnit, vil man kunne se en lille pil ud for det "
 "afsnit der læses."
 
 #: library/templates/epub.html:145
@@ -1587,18 +1496,17 @@ msgstr "Overensstemmelse med læseprogrammet"
 #: library/templates/epub.html:147
 msgid ""
 "\n"
-"      In accordance with the ePub specification, Bookworm will &lsquo;"
-"open&rsquo;\n"
+"      In accordance with the ePub specification, Bookworm will &amp;lsquo;"
+"open&amp;rsquo;\n"
 "      the ePub to the first item in the NCX file with the attribute\n"
-"      <code>linear</code> set to &lsquo;yes&rsquo;  Counterintuitively,\n"
+"      &lt;code&gt;linear&lt;/code&gt; set to &amp;lsquo;yes&amp;rsquo;  Counterintuitively,\n"
 "      this may mean that in some titles\n"
 "      the default page for the ePub will not be the first item in the\n"
 "      NCX file.\n"
 "      "
-msgstr ""
-"I overensstemmelse med ePub-specifikationen, vil Bookworm &lsquo;åbne&rsquo; "
-"ePub-filen til det første element i NCX-filen med attributen <code>linear</"
-"code> sat til &lsquo;yes&rsquo;.I modsætning til, hvad man skulle tro, "
+msgstr "I overensstemmelse med ePub-specifikationen, vil Bookworm &amp;lsquo;åbne&amp;rsquo; "
+"ePub-filen til det første element i NCX-filen med attributen &lt;code&gt;linear&lt;/"
+"code&gt; sat til &amp;lsquo;yes&amp;rsquo;.I modsætning til, hvad man skulle tro, "
 "betyder dette, at default-siden i nogle værker ikke vil være det første "
 "element i NCX-filen."
 
@@ -1607,15 +1515,14 @@ msgstr ""
 msgid ""
 "\n"
 "      Bookworm is not yet a truly conforming reading system;\n"
-"      see the <a href=\"http://code.google.com/p/threepress/issues/list"
-"\">issues</a>\n"
+"      see the &lt;a href=\"http://code.google.com/p/threepress/issues/list"
+"\"&gt;issues&lt;/a&gt;\n"
 "      page for the status on several bugs related to ePub conformance\n"
 "      issues.\n"
 "      "
-msgstr ""
-"Bookworm er endnu ikke 100% i overensstemmelse med specifikationen; se <a "
-"href=\"http://code.google.com/p/threepress/issues/list\">issues</a>-siden "
-"for yderligere information om status for forskellige fejl, der vedrører "
+msgstr "Bookworm er endnu ikke 100% i overensstemmelse med specifikationen; se &lt;a "
+"href=\"http://code.google.com/p/threepress/issues/list\"&gt;issues&lt;/a&gt;-siden "
+"for yderligere information om status for de fejl, der vedrører "
 "forskellige former for ePub-performance."
 
 #: library/templates/epub.html:169
@@ -1623,42 +1530,39 @@ msgid ""
 "\n"
 "      As a browser-based application, \n"
 "      Bookworm supports illustrations and photos in all the \n"
-"      formats that ePub does: <em>JPEG</em>, <em>GIF</em>\n"
-"      and <em>PNG</em>.  Scalable Vector Graphics (<em>SVG</em>) if\n"
+"      formats that ePub does: &lt;em&gt;JPEG&lt;/em&gt;, &lt;em&gt;GIF&lt;/em&gt;\n"
+"      and &lt;em&gt;PNG&lt;/em&gt;.  Scalable Vector Graphics (&lt;em&gt;SVG&lt;/em&gt;) if\n"
 "      images are handled by linking to an external SVG file,\n"
 "      as many browsers do not have inline-SVG support via the\n"
-"      <code>&lt;img&gt;</code> tag.\n"
+"      &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tag.\n"
 "      "
-msgstr ""
-"Bookworm er en browserbaseret applikation og understøtter illustrationer og "
-"foto i alle de formater som ePub understøtter: em>JPEG</em>, <em>GIF</em> "
-"and <em>PNG</em>.  Scalable Vector Graphics (<em>SVG</em> hvis billeder "
-"håndteres ved link til en ekstern SVG.fil, da mange browsere ikke har inline-"
-"SVG-support ved hjælp af <code>&lt;img&gt;</code>-tagget."
+msgstr "Bookworm er en browserbaseret applikation og understøtter illustrationer og "
+"foto i alle de formater som ePub understøtter: &lt;em&gt;JPEG&lt;/em&gt;, &lt;em&gt;GIF&lt;/em&gt; "
+"og &lt;em&gt;PNG&lt;/em&gt;. Scalable Vector Graphics (&lt;em&gt;SVG&lt;/em&gt;) understøttes kun hvis billederne "
+"håndteres ved link til en ekstern SVG.fil, da mange browsere ikke understøtter inline-"
+"SVG med brug af &lt;code&gt;&amp;lt;img&amp;gt;&lt;/code&gt;-tagget."
 
 #: library/templates/epub.html:182
 msgid ""
 "\n"
 "      The OPS specification indicates that valid ePubs may \n"
-"      contain content in either XHTML or <a href=\"http://wiki.mobileread."
-"com/wiki/DTBook\">DTBook</a>.\n"
+"      contain content in either XHTML or &lt;a href=\"http://wiki.mobileread."
+"com/wiki/DTBook\"&gt;DTBook&lt;/a&gt;.\n"
 "      "
-msgstr ""
-"OPS-specifikationen foreskriver, at valide ePubs kan have indhold i enten "
-"XHTML- eller <a href=\"http://wiki.mobileread.com/wiki/DTBook\">DTBook</a>-"
+msgstr "OPS-specifikationen foreskriver, at valide ePubs kan have indhold i enten "
+"XHTML- eller &lt;a href=\"http://wiki.mobileread.com/wiki/DTBook\"&gt;DTBook&lt;/a&gt;-"
 "format."
 
 #: library/templates/epub.html:188
 msgid ""
 "\n"
 "      Bookworm supports DTBook-formatted ePubs by automatically converting\n"
-"      their content to XHTML.  This is done using XSLT derived from the <a "
-"href=\"http://daisymfc.sourceforge.net/\">DAISY pipeline</a>.\n"
+"      their content to XHTML.  This is done using XSLT derived from the &lt;a "
+"href=\"http://daisymfc.sourceforge.net/\"&gt;DAISY pipeline&lt;/a&gt;.\n"
 "      "
-msgstr ""
-"Bookworm understøtter DTBook-formatterede ePubs ved automatisk at konvertere "
+msgstr "Bookworm understøtter DTBook-formatterede ePubs ved automatisk at konvertere "
 "deres indhold til XHTML. Det gøres ved hjælp af en XSLT-transformation, "
-"hentet fra <a href=\"http://daisymfc.sourceforge.net/\">DAISY-pipelinen</a>."
+"hentet fra &lt;a href=\"http://daisymfc.sourceforge.net/\"&gt;DAISY-pipelinen&lt;/a&gt;."
 
 #: library/templates/epub.html:194
 msgid ""
@@ -1666,9 +1570,8 @@ msgid ""
 "        You can always get back to the original DTBook content by "
 "downloading the ePub from any book page.\n"
 "      "
-msgstr ""
-"Du kan altid komme tilbage til det original DTBook-indhold\" ved at "
-"dowwnloade ePub-fiel fra hvilken som helst side i bogen."
+msgstr "Du kan altid komme tilbage til det original DTBook-indhold ved at "
+"downloade ePub-filen fra hvilken som helst side i bogen."
 
 #: library/templates/epub.html:201
 msgid ""
@@ -1679,11 +1582,10 @@ msgid ""
 "browser\n"
 "      does, but this has not been tested (samples welcome!).\n"
 "      "
-msgstr ""
-"Bookworm understøtter enhver font, der er erklæret med CSS 1 eller CSS 2. "
+msgstr "Bookworm understøtter enhver font, der er erklæret med CSS 1 eller CSS 2. "
 "Teoretisk set understøttes også indlejrede fonte, som defineret i CSS 3, "
 "hvis browseren også gør det, men dette er endnu ikke testet (testeksempler "
-"modtages gerne!)."
+"modtages gerne!)"
 
 #: library/templates/epub.html:208
 msgid "How Bookworm treats invalid ePub"
@@ -1698,10 +1600,9 @@ msgid ""
 "      it will not be able to correctly parse all the parts\n"
 "      of the file and will reject it.\n"
 "      "
-msgstr ""
-"Det er ét af Bookworms designmål at kunne vise ePub-dokumenter, som ikke "
+msgstr "Det er ét af Bookworms designmål at kunne vise ePub-dokumenter, som ikke "
 "følger specifikationen fuldstændigt. Der er dog mange tilfælde, hvor det "
-"ikke vil være muligt at parse alle dele af filen, der derfor vil blive "
+"ikke er muligt at parse alle dele af filen, der derfor vil blive "
 "afvist."
 
 #: library/templates/epub.html:219
@@ -1709,20 +1610,19 @@ msgid ""
 "\n"
 "      Any ePub book which is found to be seriously malformed\n"
 "      will be automatically handed off to the \n"
-"      <a href=\"http://www.threepress.org/document/epub-validate/"
-"\">threepress.org epubcheck service</a>.\n"
-"      The results from <a\n"
-"href=\"http://code.google.com/p/epubcheck/\">epubcheck</a> are reported to "
+"      &lt;a href=\"http://www.threepress.org/document/epub-validate/"
+"\"&gt;threepress.org epubcheck service&lt;/a&gt;.\n"
+"      The results from &lt;a\n"
+"href=\"http://code.google.com/p/epubcheck/\"&gt;epubcheck&lt;/a&gt; are reported to "
 "the user who is uploading\n"
 "      the book.\n"
 "      It is hoped that the messages from Bookworm and epubcheck \n"
 "      will clearly identify the problem with the ePub file.\n"
 "      "
-msgstr ""
-"Enhver virkelig misdannet epub-fil, sendes automatisk videre til <a href="
-"\"http://www.threepress.org/document/epub-validate/\">threepress.org "
-"epubcheck service</a>. Resultaterne fra <a href=\"http://code.google.com/p/"
-"epubcheck/\">epubcheck</a> rapporteres til brugeren, der oploadede bogen. Vi "
+msgstr "Enhver virkelig misdannet epub-fil, sendes automatisk videre til &lt;a href="
+"\"http://www.threepress.org/document/epub-validate/\"&gt;threepress.org "
+"epubcheck service&lt;/a&gt;. Resultaterne fra &lt;a href=\"http://code.google.com/p/"
+"epubcheck/\"&gt;epubcheck&lt;/a&gt; rapporteres til brugeren, der oploadede bogen. Vi "
 "håber, at meddelelserne fra Bookworm og epubcheck er tydelige nok til at "
 "afdække problemerne i ePub-filen."
 
@@ -1734,8 +1634,7 @@ msgid ""
 "      to be used with recent versions of Firefox, Safari or Chrome,\n"
 "      however Internet Explorer 6 and 7 are also supported.\n"
 "      "
-msgstr ""
-"Naturligvis begrænses Bookworms funktionalitet af den browser, som brugeren "
+msgstr "Naturligvis begrænses Bookworms funktionalitet af den browser, som brugeren "
 "anvender. Vi anbefaler at Bookworm bruges med nyere versioner af Firefox, "
 "safari eller Chrome, men Internet Explorer 6 og 7 understøttes også."
 
@@ -1753,8 +1652,7 @@ msgid ""
 "XHTML files\n"
 "      larger than 300Kb in size, for example.)\n"
 "      "
-msgstr ""
-"Visse ekstremt lange ebøger, som fx 'enkeltside'-tegneserier eller ubrudte, "
+msgstr "Visse ekstremt lange ebøger, som fx 'enkeltside'-tegneserier eller ubrudte, "
 "romanlange tekster, er uegnede til webbaseret læsning. Vi tilråder "
 "forfattere at dele lange tekster op i selvstændige XHTML-filer, hvis det "
 "overhovedet kan lade sig gøre. Dette er endnu vigtigere når der skabes ePub-"
@@ -1771,13 +1669,12 @@ msgid ""
 "\n"
 "    Confused about what to do, or having problems?  Check this list for "
 "common issues,\n"
-"    or email <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
-"org</a> for help.\n"
+"    or email &lt;a href=\"mailto:bookworm@threepress.org\"&gt;bookworm@threepress."
+"org&lt;/a&gt; for help.\n"
 "    "
-msgstr ""
-"Er du i tvivl om hvad du skal gøre eller har du problemer? Tjek denne liste "
-"med udbredte problemer, eller send en email til <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a> for at få hjælp."
+msgstr "Er du i tvivl om hvad du skal gøre eller har du problemer? Tjek denne liste "
+"med kendte problemer, eller send en email til &lt;a href=\"mailto:"
+"bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt; for at få hjælp."
 
 #: library/templates/help.html:33
 msgid "Problems adding a book?"
@@ -1793,32 +1690,30 @@ msgstr "Skal jeg have et OpenID for at bruge Bookworm?"
 
 #: library/templates/help.html:39
 msgid "More questions"
-msgstr "Flere sprøgsmål"
+msgstr "Flere spørgsmål"
 
 #: library/templates/help.html:43
-msgid "What do I do first? <!-- trans: to use Bookworm -->"
+msgid "What do I do first? &lt;!-- trans: to use Bookworm --&gt;"
 msgstr "Hvordan kommer jeg i gang"
 
 #: library/templates/help.html:46
 #, python-format
 msgid ""
 "\n"
-"    The easiest way to get acquainted with Bookworm is to <a href=\"%"
-"(toururl)s\">take the tour</a>. \n"
+"    The easiest way to get acquainted with Bookworm is to &lt;a href=\"%"
+"(toururl)s\"&gt;take the tour&lt;/a&gt;. \n"
 "    "
-msgstr ""
-"Den letteste måde at lære Bookworm at kende på, er at <a href=\"%(toururl)s"
-"\">tage på rundtur</a>."
+msgstr "Den letteste måde at lære Bookworm at kende på, er at &lt;a href=\"%(toururl)s"
+"\"&gt;tage på rundtur&lt;/a&gt;."
 
 #: library/templates/help.html:52
 #, python-format
 msgid ""
 "\n"
-"    For more information, try reading the <a href=\"%(abouturl)s\">About</a> "
+"    For more information, try reading the &lt;a href=\"%(abouturl)s\"&gt;About&lt;/a&gt; "
 "page for some background on the goals and strengths of Bookworm.\n"
 "    "
-msgstr ""
-"For yderligere information, læs på <a href=\"%(abouturl)s\">Om</a>-siden om "
+msgstr "Hvis du har brug for yderligere info, kan du på &lt;a href=\"%(abouturl)s\"&gt;Om&lt;/a&gt;-siden læse mere om "
 "baggrunden for Bookworms målsætninger og kvaliteter."
 
 #: library/templates/help.html:58
@@ -1830,25 +1725,24 @@ msgid "Here are some common things to check"
 msgstr "her er nogle ting, du bør tjekke"
 
 #: library/templates/help.html:62
-msgid "Is the book in &lsquo;ePub&rsquo; format?"
-msgstr "Er bogen i &lsquo;ePub&rsquo;-format?"
+msgid "Is the book in &amp;lsquo;ePub&amp;rsquo; format?"
+msgstr "Er bogen i &amp;lsquo;ePub&amp;rsquo;-format?"
 
 #: library/templates/help.html:64
 msgid ""
 "\n"
 "    Bookworm only accepts ePub books.  You'll know an ebook is in ePub "
 "format\n"
-"    if its name ends in <strong>.epub</strong>.  If it doesn't, it's "
+"    if its name ends in &lt;strong&gt;.epub&lt;/strong&gt;.  If it doesn't, it's "
 "probably \n"
 "    a PDF or some other kind of ebook.  Check the website where you got the "
 "book\n"
 "    for help on what software to use when reading it.\n"
 "    "
-msgstr ""
-"Bookworm accepterer kun ePub-bøger. En ebog er i ePub-format, hvis dens "
-"filnavn ender på <strong>.epub</strong>. Gør den ikke det, er det sikkert en "
+msgstr "Bookworm accepterer kun ePub-bøger. En ebog er i ePub-format, hvis dens "
+"filnavn ender på &lt;strong&gt;.epub&lt;/strong&gt;. Gør den ikke det, er det sikkert en "
 "PDF-baseret ebog eller en anden form for ebog. Tjek den hjemmeside hvor du "
-"fik ebogen, for information om hvilken software der skal bruges til at læse "
+"hentede ebogen, for at få information om hvilken software der skal bruges til at læse "
 "den."
 
 #: library/templates/help.html:71
@@ -1857,8 +1751,7 @@ msgstr "Har Bookworm fortalt dig, at der er problemer med bogen?"
 
 #: library/templates/help.html:73
 msgid "You might get an error message like this when you add a book"
-msgstr ""
-"Du kan risikere at få en fejlmeddelelse som denne, når du tilføjer en bog"
+msgstr "Du kan risikere at få en fejlmeddelelse som denne, når du tilføjer en bog"
 
 #: library/templates/help.html:77
 msgid "click to enlarge "
@@ -1871,9 +1764,8 @@ msgid ""
 "    quite right.  Bookworm tries to accept a wide variety of ePubs, but\n"
 "    sometimes it can't handle ebooks that are too unusual.\n"
 "    "
-msgstr ""
-"ePub-formatet er stadig nyt, og ikke alle ePub-ebøger laves helt rigtigt. "
-"Bookworm forsøger at godtage mange slags ePub, men det sker, at ebøger er "
+msgstr "ePub-formatet er stadig nyt, og ikke alle ePub-ebøger er helt korrekt udformet. "
+"Bookworm forsøger at acceptere mange slags ePub, men det sker, at nogle ebøger er "
 "for afvigende til at kunne håndteres."
 
 #: library/templates/help.html:88
@@ -1882,20 +1774,19 @@ msgid ""
 "    On the other hand, Bookworm is also new and still has bugs.  When your\n"
 "    book was uploaded into Bookworm and a problem was detected, Bookworm "
 "contacted\n"
-"    an <a href=\"http://www.threepress.org/document/epub-validate/\">ePub "
-"validation system</a>,\n"
-"    which uses a program called &lsquo;epubcheck&rsquo; by Adobe.  \n"
+"    an &lt;a href=\"http://www.threepress.org/document/epub-validate/\"&gt;ePub "
+"validation system&lt;/a&gt;,\n"
+"    which uses a program called &amp;lsquo;epubcheck&amp;rsquo; by Adobe.  \n"
 "    Bookworm will tell you if epubcheck also thought there was a problem "
 "with the ebook.\n"
 "    If they both agree, it's likely that the publisher didn't make the ePub "
 "correctly.\n"
 "    "
-msgstr ""
-"På den anden side er Bookworm også meget ny, og det har stadig nogle fejl. "
-"Da din bog blev oplaodet til Bookworm og der opstod et problem, kontaktede "
-"Bookworm et <a href=\"http://www.threepress.org/document/epub-validate/"
-"\">ePub-valideringssystem</a>, der bruger et program, der hedder &lsquo;"
-"epubcheck&rsquo; fra Adobe. Bookworm fortæller dig, om epubcheck også mener "
+msgstr "På den anden side er Bookworm også meget ny, og programmet har stadig nogle fejl. "
+"Da din bog blev oplaodet til Bookworm og problemet opstod, kontaktede "
+"Bookworm af sig selv et &lt;a href=\"http://www.threepress.org/document/epub-validate/"
+"\"&gt;ePub-valideringssystem&lt;/a&gt;. Dette system bruger et program, der hedder &amp;lsquo;"
+"epubcheck&amp;rsquo; fra Adobe. Bookworm fortæller dig, om epubcheck også mener "
 "der er noget galt med ebogen. Hvis begge programmer kommer til den "
 "konklusion, er det sandsynligt, at udgiveren ikke har lavet ePub-filen "
 "korrekt."
@@ -1906,21 +1797,19 @@ msgid ""
 "    Whenever an ePub book fails to get added to the library, the Bookworm\n"
 "    developer is notified.  If a bug in Bookworm is found, it's usually "
 "fixed in a few days,\n"
-"    so check back or email <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a>\n"
+"    so check back or email &lt;a href=\"mailto:bookworm@threepress.org"
+"\"&gt;bookworm@threepress.org&lt;/a&gt;\n"
 "    for a status.\n"
 "    "
-msgstr ""
-"Hver gang det ikke lykkes at føje en ePub-bog til biblioteket, vil Bookworm-"
+msgstr "Hver eneste gang det ikke lykkes at føje en ePub-bog til biblioteket, vil Bookworm-"
 "udvikleren få besked. Hvis der findes en fejl i Bookworm, tager det "
-"sædvanligvis et par dage at rette den. så prøv igen eller send en email <a "
-"href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a> for at "
+"normalt et par dage at rette den. Så prøv igen på et senere tidspunkt eller send en email til "
+"&lt;a href=\"mailto:bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt; for at "
 "få en status."
 
 #: library/templates/help.html:105
 msgid "Does the book contain DRM (Digital Rights Management)?"
-msgstr ""
-"Er ebogen udstyret med DRM (Digital Rights Management/kopibeskyttelse)?"
+msgstr "Er ebogen udstyret med kopibeskyttelse (Digital Rights Management, DRM)?"
 
 #: library/templates/help.html:107
 msgid ""
@@ -1930,8 +1819,7 @@ msgid ""
 "    the developers feel it is not a sufficient piracy deterrent to warrent\n"
 "    limiting where you can read.\n"
 "    "
-msgstr ""
-"Visse ebøger har begrænsninger, der forhindrer at man læser dem på ikke-"
+msgstr "Visse ebøger har begrænsninger, der forhindrer at man læser dem på ikke-"
 "godkendte apparater. Bookworm understøtter ingen former for DRM og "
 "udviklerne mener ikke, at DRM afskrækker folk fra piratkopiering i "
 "tilstrækkelig høj grad til at berettige begrænsning af hvor man må læse sin "
@@ -1944,8 +1832,7 @@ msgid ""
 "about\n"
 "    which software you should use to read your book.\n"
 "    "
-msgstr ""
-"Kontakt den boghandel, hvor du købte bogen, eller udgiveren, for at få "
+msgstr "Tag kontakt til den boghandel hvor du købte bogen, eller til ebogsudgiveren, for at få "
 "oplysning om hvilken software bogen kan læses med."
 
 #: library/templates/help.html:120
@@ -1960,10 +1847,9 @@ msgid ""
 "if it is \n"
 "    over 30 megabytes in size.\n"
 "    "
-msgstr ""
-"Visse ebøger er for store til at kunne lagres sikkert og ses i Bookworm."
+msgstr "Visse ebøger er for store til at kunne lagres sikkert og vises i Bookworm. "
 "Overdrevent store bøger vil blive afvist. En ebog anses for at være for "
-"store hvis den fylder mere end 30 megabyte."
+"stor hvis den fylder mere end 30 megabytes."
 
 #: library/templates/help.html:131
 msgid ""
@@ -1974,8 +1860,7 @@ msgid ""
 "    applications, or use the mobile version of Bookworm with a device\n"
 "    that is online.  \n"
 "    "
-msgstr ""
-"Ja, hvis din e-reader kan læse ePub-bøger. I hvert tilfælde skal du "
+msgstr "Ja, hvis din e-reader kan læse ePub-bøger. I hvert tilfælde skal du "
 "downloade ebogen til din computer og derefter tilføje den til én af disse "
 "programmer, eller også kan du bruge den mobile version af Bookworm, hvis dit "
 "apparat er online."
@@ -1986,18 +1871,18 @@ msgid ""
 "      The number of e-readers out there\n"
 "      changes all the time, but as of March 2009:\n"
 "    "
-msgstr "Udbuddet af ebogslæsere stiger hele tiden, men pr. marts 2009:"
+msgstr "Udbuddet af ebogslæsere stiger hele tiden, men pr. marts 2009 findes flg.:"
 
 #: library/templates/help.html:147
-msgid "Device <!-- trans: e-reading device, should be short -->"
+msgid "Device &lt;!-- trans: e-reading device, should be short --&gt;"
 msgstr "Apparat"
 
 #: library/templates/help.html:148
-msgid "Supports ePub? <!-- trans: Should be short phrase -->"
+msgid "Supports ePub? &lt;!-- trans: Should be short phrase --&gt;"
 msgstr "Kan læse ePub?"
 
 #: library/templates/help.html:149
-msgid "How-to <!-- trans: How to use Bookworm with this e-reader --> "
+msgid "How-to &lt;!-- trans: How to use Bookworm with this e-reader --&gt; "
 msgstr "Sådan gør du "
 
 #: library/templates/help.html:154
@@ -2011,25 +1896,24 @@ msgid "Yes"
 msgstr "Ja"
 
 #: library/templates/help.html:156
-msgid "Use <!-- trans: Use this software program -->"
+msgid "Use &lt;!-- trans: Use this software program --&gt;"
 msgstr "Brug"
 
 #: library/templates/help.html:162
 msgid ""
 "\n"
 "          Use the mobile web version of Bookworm when online.\n"
-"          Point your phone at <a href=\"http://m.bookworm.oreilly.com\">m."
-"bookworm.oreilly.com</a>.\n"
-"          For offline reading, export directly from Bookworm to Stanza. <a "
+"          Point your phone at &lt;a href=\"http://m.bookworm.oreilly.com\"&gt;m."
+"bookworm.oreilly.com&lt;/a&gt;.\n"
+"          For offline reading, export directly from Bookworm to Stanza. &lt;a "
 "href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone"
-"\">More hints on this</a>.\n"
+"\"&gt;More hints on this&lt;/a&gt;.\n"
 "          "
-msgstr ""
-"Brug mobilversionen af Bookworm når du er online. Slå fra mobiltelefonen op "
-"på <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>. "
+msgstr "Brug mobilversionen af Bookworm når du er online. Slå fra mobiltelefonen op "
+"på &lt;a href=\"http://m.bookworm.oreilly.com\"&gt;m.bookworm.oreilly.com&lt;/a&gt;. "
 "Hvis du vil læse offline, kan du eksportere direkte fra Bookworm til Stanza. "
-"<a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone"
-"\">Flere tips om dtte</a>."
+"&lt;a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone"
+"\"&gt;Flere tips om dtte&lt;/a&gt;."
 
 #: library/templates/help.html:170
 msgid "Other web-enabled phone"
@@ -2039,12 +1923,11 @@ msgstr "Anden mobiltelefon med webadgang"
 msgid ""
 "\n"
 "          Use the mobile web version of Bookworm when online.\n"
-"          Point your phone at <a href=\"http://m.bookworm.oreilly.com\">m."
-"bookworm.oreilly.com</a>.\n"
+"          Point your phone at &lt;a href=\"http://m.bookworm.oreilly.com\"&gt;m."
+"bookworm.oreilly.com&lt;/a&gt;.\n"
 "          "
-msgstr ""
-"Brug mobilversionen af Bookworm når du er online. Slå fra mobiltelefonen op "
-"på <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>."
+msgstr "Brug mobilversionen af Bookworm når du er online. Slå fra mobiltelefonen op "
+"på &lt;a href=\"http://m.bookworm.oreilly.com\"&gt;m.bookworm.oreilly.com&lt;/a&gt;."
 
 #: library/templates/help.html:182 library/templates/public.html:22
 #: library/templates/includes/openid.html:25
@@ -2052,7 +1935,7 @@ msgid "or"
 msgstr "eller"
 
 #: library/templates/help.html:191
-msgid "Indirectly <!-- trans: can be used with this device only partially -->"
+msgid "Indirectly &lt;!-- trans: can be used with this device only partially --&gt;"
 msgstr "Kun delvist"
 
 #: library/templates/help.html:193
@@ -2061,24 +1944,22 @@ msgid ""
 "          The Kindle cannot read ePub files yet, but you can use\n"
 "          Bookworm's mobile version over the Kindle's Whispernet by pointing "
 "its\n"
-"          web browser at <a href=\"http://m.bookworm.oreilly.com\">m."
-"bookworm.oreilly.com</a>.\n"
+"          web browser at &lt;a href=\"http://m.bookworm.oreilly.com\"&gt;m."
+"bookworm.oreilly.com&lt;/a&gt;.\n"
 "          "
-msgstr ""
-"Kindle kan endnu ikke læse ePub-filer, men du kan bruge mobilversionen af "
+msgstr "Kindle kan indtil videre ikke læse ePub-filer, men du kan bruge mobilversionen af "
 "Bookworm ovre på Kindles Whispernet ved fra din mobiltelefons browser at slå "
-"op på <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>."
+"op på &lt;a href=\"http://m.bookworm.oreilly.com\"&gt;m.bookworm.oreilly.com&lt;/a&gt;."
 
 #: library/templates/help.html:205
 #, python-format
 msgid ""
 " \n"
-"    I see OpenID mentioned on the <a href=\"%(signupurl)s\">sign up</a> "
+"    I see OpenID mentioned on the &lt;a href=\"%(signupurl)s\"&gt;sign up&lt;/a&gt; "
 "page.\n"
 "    Do I need one? \n"
 "    "
-msgstr ""
-"Jeg kan se, at OpenID nævnes på <a href=\"%(signupurl)s\">registrer</a>-"
+msgstr "Jeg kan se, at OpenID nævnes på &lt;a href=\"%(signupurl)s\"&gt;tilmeldings&lt;/a&gt;-"
 "siden. Skal jeg bruge sådan ét?"
 
 #: library/templates/help.html:212
@@ -2087,13 +1968,12 @@ msgid ""
 " \n"
 "    You don't need an OpenID to use Bookworm, but we recommend setting one "
 "up if you\n"
-"    haven't already.  In fact, you probably already have one.  <a href=\"%"
-"(openidurl)s\">Find out more about OpenID</a>.\n"
+"    haven't already.  In fact, you probably already have one.  &lt;a href=\"%"
+"(openidurl)s\"&gt;Find out more about OpenID&lt;/a&gt;.\n"
 "    "
-msgstr ""
-"Du behøver ikke have et OpenID for at bruge Bookworm, men vi anbefaler dig "
+msgstr "Du behøver ikke have et OpenID for at bruge Bookworm, men vi anbefaler dig "
 "at få et, hvis du ikke har et i forvejen. Faktisk har du sandsynligvis ét. "
-"<a href=\"%(openidurl)s\">Lær mere om OpenID</a>."
+"&lt;a href=\"%(openidurl)s\"&gt;Lær mere om OpenID&lt;/a&gt;."
 
 #: library/templates/help.html:218
 msgid "I have additional questions"
@@ -2103,27 +1983,25 @@ msgstr "Jeg har flere spørgsmål"
 #, python-format
 msgid ""
 "\n"
-"      There's more information about Bookworm on the <a href=\"%(abouturl)s"
-"\">About</a> page.\n"
+"      There's more information about Bookworm on the &lt;a href=\"%(abouturl)s"
+"\"&gt;About&lt;/a&gt; page.\n"
 "    "
-msgstr ""
-"Du kan læse mere om Bookworm på <a href=\"%(abouturl)s\">About</a>-siden."
+msgstr "Du kan læse mere om Bookworm på &lt;a href=\"%(abouturl)s\"&gt;About&lt;/a&gt;-siden."
 
 #: library/templates/help.html:228
 msgid ""
 "\n"
-"    Also try our forums on <a href=\"http://getsatisfaction.com/threepress/"
-"topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a> \n"
-"    Feel free to also contact <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a>\n"
-"    with specific questions.</p>\n"
+"    Also try our forums on &lt;a href=\"http://getsatisfaction.com/threepress/"
+"topics/post_ideas_and_questions_about_bookworm\"&gt;Get Satisfaction&lt;/a&gt; \n"
+"    Feel free to also contact &lt;a href=\"mailto:bookworm@threepress.org"
+"\"&gt;bookworm@threepress.org&lt;/a&gt;\n"
+"    with specific questions.&lt;/p&gt;\n"
 "    "
-msgstr ""
-"Besøg også vores forummer på a href=\"http://getsatisfaction.com/threepress/"
-"topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a> Du må "
-"også meget gerne kontakte <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a>\n"
-" med specifikke spørgsmål.</p>"
+msgstr "Besøg også vores forummer på &lt;a href=\"http://getsatisfaction.com/threepress/"
+"topics/post_ideas_and_questions_about_bookworm\"&gt;Get Satisfaction&lt;/a&gt; Du må "
+"også meget gerne kontakte &lt;a href=\"mailto:bookworm@threepress.org"
+"\"&gt;bookworm@threepress.org&lt;/a&gt;\n"
+" med specifikke spørgsmål.&lt;/p&gt;"
 
 #: library/templates/index.html:6
 msgid "My epub library"
@@ -2165,47 +2043,42 @@ msgstr "Bøger i dit bibliotek"
 #, python-format
 msgid ""
 "\n"
-"      Books are listed by <em>%(order_text)s</em> in <em>%(order_direction)"
-"s</em> order %(order_adverb)s.\n"
+"      Books are listed by &lt;em&gt;%(order_text)s&lt;/em&gt; in &lt;em&gt;%(order_direction)"
+"s&lt;/em&gt; order %(order_adverb)s.\n"
 "    "
-msgstr ""
-"Bøgerne sorteres efter <em>%(order_text)s</em> i <em>%(order_direction)s</"
-"em> orden %(order_adverb)s."
+msgstr "Bøgerne sorteres efter &lt;em&gt;%(order_text)s&lt;/em&gt; i &lt;em&gt;%(order_direction)s&lt;/"
+"em&gt; orden %(order_adverb)s."
 
 #: library/templates/index.html:56
 msgid ""
-"You can re-order your books by clicking on  &quot;title&quot;, &quot;"
-"author&quot; or &quot;date added&quot;."
-msgstr ""
-"Du kan sortere dine ebøger på en anden måde ved at klikke på &quot;"
-"titel&quot;, &quot;forfatter&quot; or &quot;tilføjet dato&quot;."
+"You can re-order your books by clicking on  &amp;quot;title&amp;quot;, &amp;quot;"
+"author&amp;quot; or &amp;quot;date added&amp;quot;."
+msgstr "Du kan sortere dine ebøger på en anden måde ved at klikke på &amp;quot;"
+"titel&amp;quot;, &amp;quot;forfatter&amp;quot; or &amp;quot;tilføjet dato&amp;quot;."
 
 #: library/templates/index.html:57
 msgid "Clicking on the same label twice will reverse the order."
-msgstr ""
-"To klik på samme overskrift vil bevirke sortering i den omvendte rækkefølge"
+msgstr "To klik på samme overskrift vil bevirke sortering i den omvendte rækkefølge"
 
 #: library/templates/index.html:62
 #, python-format
 msgid ""
 "\n"
 "  You've set your account to always go to the last-read chapter in \n"
-"  a book (<a href=\"%(urlprofile)s\">change this</a>).\n"
+"  a book (&lt;a href=\"%(urlprofile)s\"&gt;change this&lt;/a&gt;).\n"
 "  "
-msgstr ""
-"Du har sat din konto op til altid at gå til det senest læste kapitel i en "
-"bog.  (<a href=\"%(urlprofile)s\">ændring af dette</a>)."
+msgstr "Du har sat din konto op til altid at gå til det senest læste kapitel i en "
+"bog.  (&lt;a href=\"%(urlprofile)s\"&gt;ændring af dette&lt;/a&gt;)."
 
 #: library/templates/index.html:69
 #, python-format
 msgid ""
 "\n"
-"  There is a setting in your <a href=\"%(urlprofile)s\">profile</a> \n"
+"  There is a setting in your &lt;a href=\"%(urlprofile)s\"&gt;profile&lt;/a&gt; \n"
 "  to enable always going to the last-read chapter in a book when\n"
 "  clicking on a book's title.\n"
 "  "
-msgstr ""
-"I din profil kan du indstille Bookworm til altid at gå til det senest læste "
+msgstr "I din profil kan du indstille Bookworm til altid at gå til det senest læste "
 "kapitel i en bog, når du klikker på dens titel."
 
 #: library/templates/index.html:80 library/templates/shell.html:6
@@ -2215,11 +2088,10 @@ msgstr "Bookworm"
 
 #: library/templates/index.html:82
 msgid ""
-"A free platform for reading ePub books online. <a "
-"href='{{ abouturl }}'>Learn more</a>."
-msgstr ""
-"En gratis platform for onlinelæsning af ePub-bøger <a "
-"href='{{ abouturl }}'>Læs mere</a>."
+"A free platform for reading ePub books online. &lt;a "
+"href='{{ abouturl }}'&gt;Learn more&lt;/a&gt;."
+msgstr "Gratis platform til onlinelæsning af ePub-bøger &lt;a "
+"href='{{ abouturl }}'&gt;Læs mere&lt;/a&gt;."
 
 #: library/templates/index.html:86
 msgid "To add a new book, log in using your computer."
@@ -2237,8 +2109,7 @@ msgstr "Tilføj din første ePub-ebog:"
 msgid ""
 "Once you've gotten one of these books on your computer, you can upload them "
 "to your new Bookworm account."
-msgstr ""
-"Når du har fået én af disse bøger ned på din computer, kan du oploade den "
+msgstr "Når du har fået én af disse bøger ned på din computer, kan du oploade den "
 "til din nye Bookworm-konto."
 
 #: library/templates/index.html:109
@@ -2247,11 +2118,11 @@ msgstr "opload"
 
 #: library/templates/last-read.html:3
 msgid "last read"
-msgstr ""
+msgstr "senest læst"
 
 #: library/templates/public.html:21
 msgid "A free platform for reading ePub books online."
-msgstr "En gratis platform til onlinelæsning af ePub-bøger"
+msgstr "Gratis platform til onlinelæsning af ePub-bøger"
 
 #: library/templates/public.html:22
 msgid "Learn more"
@@ -2261,7 +2132,7 @@ msgstr "Læs mere"
 #: library/templates/auth/authopenid/signin.html:41
 #: library/templates/auth/authopenid/signup.html:75
 msgid "Sign up"
-msgstr "registrér dig"
+msgstr "tilmeld dig"
 
 #: library/templates/public.html:34
 msgid "Readers"
@@ -2286,16 +2157,15 @@ msgstr "Sony Reader eller iLiad"
 
 #: library/templates/public.html:40 library/templates/reading-mode.html:123
 msgid "Mobile reading"
-msgstr "Læsning på mobilen"
+msgstr "Læs på mobilen"
 
 #: library/templates/public.html:41
 #, python-format
 msgid ""
 "\n"
-"      online or with <a href=\"%(stanzaurl)s\">Stanza</a> on the iPhone.\n"
+"      online or with &lt;a href=\"%(stanzaurl)s\"&gt;Stanza&lt;/a&gt; on the iPhone.\n"
 "      "
-msgstr ""
-"online eller med en <a href=\"%(stanzaurl)s\">Stanza</a> på din iPhone."
+msgstr "online eller med en &lt;a href=\"%(stanzaurl)s\"&gt;Stanza&lt;/a&gt;-reader på din iPhone."
 
 #: library/templates/public.html:49
 msgid "Publishers"
@@ -2303,7 +2173,7 @@ msgstr "Udgivere"
 
 #: library/templates/public.html:51
 msgid "Test your ePub ebooks"
-msgstr "Kontrollér dine ePub-bøger"
+msgstr "Tjek dine ePub-bøger"
 
 #: library/templates/public.html:52
 msgid "Need strategy or technical help?"
@@ -2311,14 +2181,14 @@ msgstr "Har du brug for strategisk eller teknisk hjælp?"
 
 #: library/templates/public.html:53
 msgid "Ebook and ePub consulting services"
-msgstr "Ebogs- og ePub-konsulentydelser"
+msgstr "Konsulentydelser vedr. ebøger og ePub-formatet"
 
 #: library/templates/public.html:55
 #, python-format
 msgid ""
-" Details on the <a href=\"%(epuburl)s\">ePub format</a> \n"
+" Details on the &lt;a href=\"%(epuburl)s\"&gt;ePub format&lt;/a&gt; \n"
 "      "
-msgstr "Detaljer om <a href=\"%(epuburl)s\">ePub-formatet</a>"
+msgstr "Detaljer om &lt;a href=\"%(epuburl)s\"&gt;ePub-formatet&lt;/a&gt;"
 
 #: library/templates/public.html:62
 msgid "Developers"
@@ -2342,11 +2212,10 @@ msgstr "Mere open-source ePub-software"
 
 #: library/templates/public.html:67
 msgid ""
-"Follow announcements on the <a href='http://blog.threepress.org/'>Bookworm "
-"blog</a>"
-msgstr ""
-"Få meddelelser om nyt på <a href='http://blog.threepress.org/'>Bookworm "
-"blog</a>"
+"Follow announcements on the &lt;a href='http://blog.threepress.org/'&gt;Bookworm "
+"blog&lt;/a&gt;"
+msgstr "Få nyheder på &lt;a href='http://blog.threepress.org/'&gt;Bookworm "
+"blog&lt;/a&gt;"
 
 #: library/templates/public.html:74
 msgid ""
@@ -2356,10 +2225,9 @@ msgid ""
 "CSS styles, images in JPG, GIF, PNG and SVG format,\n"
 "      and full XHTML.\n"
 "      "
-msgstr ""
-"En Bookworm-side, der viser bogen indholdsfortegnelse, illustrationer og "
+msgstr "En Bookworm-side der viser bogens indholdsfortegnelse, illustrationer og "
 "tekst. Bookworm understøtter CSS styles, billeder i JPG-, GIF-, PNG- og SVG-"
-"format, og fuld XHTML."
+"format, samt fuld XHTML."
 
 #: library/templates/public.html:82
 msgid "What is Bookworm?"
@@ -2377,34 +2245,32 @@ msgid ""
 "iPhone\n"
 "  and can export directly to Stanza.\n"
 "  "
-msgstr ""
-"Med Bookworm kan læsere tilføje ePub-bøger til deres onlinebibliotek og læse "
-"dem i deres webbrowser eller på en mobil enhed. Hvis du har en bærbar enhed, "
-"der understøtter ePub-formatet (som fx Sony Reader eller iRex iLiad), kan du "
-"downloade dine bøger til ebogslæseren. Bookworm er særlig optimeret til brug "
-"på iPhone, og der kan eksporteres direkte til Stanza."
+msgstr "Med Bookworm kan læsere gemme ePub-bøger i deres eget onlinebibliotek og læse "
+"bøgerne i en webbrowser eller på deres mobile enhed. Hvis du har en bærbar ebogslæser, "
+"der understøtter ePub-formatet (fx en Sony Reader eller en iRex iLiad), kan du "
+"downloade dine bøger fra Bookworm og lægge dem på din ebogslæser. Bookworm er optimeret til brug "
+"på en iPhone, og du kan eksportere bøgerne direkte til Stanza-readeren."
 
 #: library/templates/public.html:92
-msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
-msgstr "Hvad er en &ldquo;ePub book&rdquo;?"
+msgid "What&amp;rsquo;s an &amp;ldquo;ePub book&amp;rdquo;?"
+msgstr "Hvad er en &amp;ldquo;ePub-bog&amp;rdquo;?"
 
 #: library/templates/public.html:95
 #, fuzzy, python-format
 msgid ""
 "\n"
 "    ePub is an ebook format. Your ebook is in ePub format if it\n"
-"    ends with <strong>.epub</strong>.  If so, you can <a href=\"%(helpurl)s"
-"\">read\n"
-"    that ebook on Bookworm</a>. If not, tell the book publisher to start\n"
+"    ends with &lt;strong&gt;.epub&lt;/strong&gt;.  If so, you can &lt;a href=\"%(helpurl)s"
+"\"&gt;read\n"
+"    that ebook on Bookworm&lt;/a&gt;. If not, tell the book publisher to start\n"
 "    supporting the only free and open ebook format with strong\n"
 "    industry backing.\n"
 "    "
-msgstr ""
-"ePub er et ebogsformat. Din ebog er i ePub-formatet if dens navn ender på "
-"<strong>.epub</strong>. Gør den dét, kan du <a href=\"%(helpurl)s\">læse "
-"ebogen med Bookworm</a>. Hvis ikke, bør du bede udgiveren om at begynde at "
-"understøtte det eneste gratis og åbne ebogsformat med stærk opbakning fra "
-"industrien"
+msgstr "ePub er et ebogsformat. Din ebog er i ePub-formatet hvis dens filnavn ender på "
+"&lt;strong&gt;.epub&lt;/strong&gt;. Gør den dét, kan du &lt;a href=\"%(helpurl)s\"&gt;læse "
+"ebogen med Bookworm&lt;/a&gt;. Hvis ikke, bør du bede bogudgiveren om at "
+"understøtte det eneste gratis og åbne ebogsformat der har stærk opbakning fra "
+"branchen"
 
 #: library/templates/public.html:103
 msgid "Try Bookworm out"
@@ -2414,11 +2280,10 @@ msgstr "Prøv Bookworm"
 #, python-format
 msgid ""
 "\n"
-"    Try the one-page <a href=\"%(toururl)s\">Bookworm and ePub tour</a>.\n"
+"    Try the one-page &lt;a href=\"%(toururl)s\"&gt;Bookworm and ePub tour&lt;/a&gt;.\n"
 "    "
-msgstr ""
-"Prøv den kun én side lange <a href=\"%(toururl)s\">rundvisning i Bookworm og "
-"ePub</a>."
+msgstr "Prøv den kun én side lange &lt;a href=\"%(toururl)s\"&gt;rundtur i Bookworm og "
+"ePub&lt;/a&gt;."
 
 #: library/templates/reading-mode.html:3 library/templates/reading-mode.html:5
 #: library/templates/tour.html:131 library/templates/includes/about.html:10
@@ -2430,11 +2295,12 @@ msgstr "Ændring af email-adresse"
 msgid ""
 "Reading Mode provides a clean user interface for reading your ebooks, "
 "without the clutter and customized to your preferences"
-msgstr ""
+msgstr "I Læsemodus kan du læse dine ebøger i en renere grænseflade uden "
+"forstyrrende elementer og med mulighed for personlig tilpasning"
 
 #: library/templates/reading-mode.html:28
 msgid "Choose a serif or sans-serif font"
-msgstr ""
+msgstr "Vælg en font med eller uden seriffer"
 
 #: library/templates/reading-mode.html:29
 #, fuzzy
@@ -2445,39 +2311,42 @@ msgstr "Ændring af sprogindstillinger"
 msgid ""
 "Use keyboard shortcuts to page up or page down, or go next and previous "
 "through chapters"
-msgstr ""
+msgstr "Brug tastaturets PageUp og PageDown til at bladre en side op eller "
+"ned eller klik dig gennem kapitlerne med Næste og Forrige"
 
 #: library/templates/reading-mode.html:31
 msgid "Enhanced mobile reading experience"
-msgstr ""
+msgstr "Forbedret læseoplevelse på mobiltelefonen"
 
 #: library/templates/reading-mode.html:36
 #: library/templates/reading-mode.html:39
 msgid "How to turn on Reading Mode"
-msgstr ""
+msgstr "Sådan skifter du til Læsemodus"
 
 #: library/templates/reading-mode.html:37
 msgid ""
 "Reading Mode can be activated by clicking on the icon displaying a stack of "
 "pages. This icon will appear on any book page, in the upper right of the "
 "screen."
-msgstr ""
+msgstr "Læsemodus aktiveresved klik på ikonet, der forestiller en stak papir. "
+"Ikonet vises i øverste højre hjørne på alle sider i en bog."
 
 #: library/templates/reading-mode.html:41
 msgid "Turning off Reading Mode"
-msgstr ""
+msgstr "Sådan slås Læsemodus fra"
 
 #: library/templates/reading-mode.html:43
 msgid ""
 "To return to the normal book display, click on the same icon as it appears "
 "in the Reading Mode layout.  It will also appear in the upper right of the "
 "screen."
-msgstr ""
+msgstr "Hvis du vil tilbage til den normale sidevisning, skal du klikke på det "
+"samme ikon. I Læsemodus vises det også i skærmens øverste højre hjørne."
 
 #: library/templates/reading-mode.html:45
 #: library/templates/reading-mode.html:93
 msgid "How to turn off Reading Mode"
-msgstr ""
+msgstr "Sådan slås Læsemodus fra"
 
 #: library/templates/reading-mode.html:47
 #, fuzzy
@@ -2489,82 +2358,89 @@ msgid ""
 "Reading Mode removes most of the Bookworm headers and footers and suppresses "
 "the display of the table of contents.  Instead, the content is laid out in "
 "the center of the screen with ample whitespace to let you focus on reading."
-msgstr ""
+msgstr "I Læsemodus fjernes Bookworms top- og bundtekster og indholdsfortegnelsen "
+"skjules. I stedet vises teksten midt på skærmen med så megen luft omkring, at du bedre "
+"kan koncentrere dig om at læse."
 
 #: library/templates/reading-mode.html:53
 msgid ""
 "In place of cumbersome \"next\" and \"previous\" links, Reading Mode allows "
-"you to <strong>click anywhere in the right margin to turn to the next page</"
-"strong>, and <strong> click anywhere in the left margin to turn to the "
-"previous page</strong>."
-msgstr ""
+"you to &lt;strong&gt;click anywhere in the right margin to turn to the next page&lt;/"
+"strong&gt;, and &lt;strong&gt; click anywhere in the left margin to turn to the "
+"previous page&lt;/strong&gt;."
+msgstr "I stedet for om stændeligt at skulle klikke på \"næste\"- og \"forrige\"-linkene, "
+"kan du i Læsemodus &lt;strong&gt;klikke hvorsomhelst i højremargin for at gå til den næste side&lt;/strong&gt;, "
+"og &lt;strong&gt;klikke hvorsomhelst i venstremargin for at gå til den forrige side&lt;/strong&gt;."
 
 #: library/templates/reading-mode.html:55
 #: library/templates/reading-mode.html:56
 msgid "This control moves forward one page"
-msgstr ""
+msgstr "Denne knap fører én side frem"
 
 #: library/templates/reading-mode.html:58
 msgid ""
 "Bookworm provides subtle hints on how to operate the navigation. If you "
 "hover your mouse pointer over the margin areas, light-gray indicators will "
 "fade in to show that you are in a clickable navigation area."
-msgstr ""
+msgstr "I Bookworm får du diskrete vink om hvordan du navigerer. Hvis du "
+"holder musen stille i et marginområde, vil der tone nogle lysegrå markeringer frem, "
+"som viser, at du befinder dig i et klikbart navigeringsområde."
 
 #: library/templates/reading-mode.html:60
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Tastaturgenveje"
 
 #: library/templates/reading-mode.html:64
 msgid "Jump down one page"
-msgstr ""
+msgstr "Hop én side ned"
 
 #: library/templates/reading-mode.html:65
 msgid "'n' or Page-Down"
-msgstr ""
+msgstr "'n' eller PageDown"
 
 #: library/templates/reading-mode.html:68
 msgid "Jump up one page"
-msgstr ""
+msgstr "Hop én side op"
 
 #: library/templates/reading-mode.html:69
 msgid "'p' or Page-Up"
-msgstr ""
+msgstr "'p' eller PageUp"
 
 #: library/templates/reading-mode.html:72
 msgid "Go to next chapter"
-msgstr ""
+msgstr "Gå til næste kapitel"
 
 #: library/templates/reading-mode.html:73
 msgid "'k' or click on right margin"
-msgstr ""
+msgstr "'k' eller klik i højremargin"
 
 #: library/templates/reading-mode.html:76
 msgid "Go to previous chapter"
-msgstr ""
+msgstr "Gå til forrige kapitel"
 
 #: library/templates/reading-mode.html:77
 msgid "'j' or click on left margin"
-msgstr ""
+msgstr "'j' eller klik på venstremargin"
 
 #: library/templates/reading-mode.html:81
 #, fuzzy
 msgid "Go back to your library"
-msgstr "dato for tilføjelse til dit bibliotek"
+msgstr "gå tilbage til dit bibliotek"
 
 #: library/templates/reading-mode.html:83
 msgid ""
 "To exit Reading Mode and return to the main library page, click on the arrow "
 "at the top or bottom next to your book's title."
-msgstr ""
+msgstr "For at afslutte Læsemodus og gå tilbage til hovedbibliotekssiden, skal du "
+"klikke på pilen for oven eller for neden, ved siden af bogens titel."
 
 #: library/templates/reading-mode.html:85
 msgid "Exit Reading Mode and go back to library"
-msgstr ""
+msgstr "Forlad Læsemodus og vend tilbage til biblioteket"
 
 #: library/templates/reading-mode.html:87
 msgid "Bookworm will remember whether you prefer to use Reading Mode or not."
-msgstr ""
+msgstr "Bookworm husker om du foretrækker at læse i Læsemodus eller ej."
 
 #: library/templates/reading-mode.html:89
 #, fuzzy
@@ -2575,11 +2451,15 @@ msgstr "Begrænsninger"
 msgid ""
 "Both standard mode and Reading Mode provide methods to customize the fonts "
 "and font size of the ebooks.  You can use use a sans-serif or serif font, "
-"and you can increase and decrease your font size. <strong>Bookworm will "
-"remember your font size preferences</strong>. These preferences will "
+"and you can increase and decrease your font size. &lt;strong&gt;Bookworm will "
+"remember your font size preferences&lt;/strong&gt;. These preferences will "
 "override whatever fonts and sizes were specified in the stylesheet that came "
 "with the ePub."
-msgstr ""
+msgstr "Der findes i både standard- og Læsemodus måder at tilpasse ebøgernes font "
+"og skriftstørrelse. Du kan både bruge fonte med og uden seriffer, og du kan både øge "
+"og mindske skriftstørrelsen. &lt;strong&gt;Bookworm husker dine indstillinger&lt;/strong&gt;. "
+"Disse indstillinger følges uanset hvilken skrift og skriftstørrelse, der specificeres i "
+"den enkelte epub-bog."
 
 #: library/templates/reading-mode.html:95
 msgid ""
@@ -2587,68 +2467,78 @@ msgid ""
 "advanced font selectors such as picking a specific named font. However, it "
 "will use your preferred font by default while in Reading Mode. Use your "
 "browser's preferences menu to assign your favorite font as the default."
-msgstr ""
+msgstr "For at holde grænsefladen enkel, tilbyder Bookworm ikke mere avancerede "
+"måder at vælge fonte på, som fx at vælge en bestemt navngiven font. Bookworm "
+"bruger dog din foretrukne font når du læser i Læsemodus. Du angiver din foretrukne font "
+"ved at vælge den som default under din browsers indstillinger."
 
 #: library/templates/reading-mode.html:101
 msgid "Reading Mode shown using a small font"
-msgstr ""
+msgstr "Læsemodus med en lille font"
 
 #: library/templates/reading-mode.html:103
 msgid "This page is displayed using the default font size and family."
-msgstr ""
+msgstr "Denne side bruger den forudbestemte fontstørrelse og skriftsnit"
 
 #: library/templates/reading-mode.html:107
 msgid "Reading Mode shown using a larger font"
-msgstr ""
+msgstr "Læsemodus med en større skrift"
 
 #: library/templates/reading-mode.html:109
 msgid "The same page after the font size is increased."
-msgstr ""
+msgstr "Samme side efter forstørrelse af skriften"
 
 #: library/templates/reading-mode.html:115
 msgid "Reading Mode shown using a serif font"
-msgstr ""
+msgstr "Læsemodus med serif-font"
 
 #: library/templates/reading-mode.html:117
 msgid "You can also switch to a serif font, as shown here."
-msgstr ""
+msgstr "Du kan også skifte til en serif-font, som det ses her"
 
 #: library/templates/reading-mode.html:124
 msgid "Font controls are available on the mobile version of Bookworm"
-msgstr ""
+msgstr "Du kan også vælge fontindstillinger på den mobile version af Bookworm"
 
 #: library/templates/reading-mode.html:127
 msgid ""
-"There is no specific Reading Mode for the <a href=\"http://m.bookworm."
-"oreilly.com/\">mobile version of Bookworm</a> because the mobile version is "
+"There is no specific Reading Mode for the &lt;a href=\"http://m.bookworm."
+"oreilly.com/\"&gt;mobile version of Bookworm&lt;/a&gt; because the mobile version is "
 "already optimized to be simple.  However, some of the features of Reading "
 "Mode are also available in the mobile version:"
-msgstr ""
+msgstr "Der findes ingen særlig Læsemodus for &lt;a href=\"http://m.bookworm."
+"oreilly.com/\"&gt;mobilversionen af Bookworm&lt;/a&gt;, fordi mobilversionen "
+"allerede er optimeret til forenklet vsning. Nogle af egenskaberne ved Læsemodus "
+"er dog tilgængelige i mobilversionen: "
 
 #: library/templates/reading-mode.html:130
 msgid "Font size adjustment"
-msgstr ""
+msgstr "Ændring af skriftstørrelse"
 
 #: library/templates/reading-mode.html:131
 msgid "Font family adjustment"
-msgstr ""
+msgstr "Ændring af font"
 
 #: library/templates/reading-mode.html:132
 msgid "Click to jump to the next page (iPhone)"
-msgstr ""
+msgstr "Klik for at hoppe til næste side (på iPhone)"
 
 #: library/templates/reading-mode.html:135
 msgid "Font size controls are also available on the mobile version."
-msgstr ""
+msgstr "Det er også muligt at tilpasse skriftstørrelsen i den moble version"
 
 #: library/templates/reading-mode.html:138
 msgid ""
-"When using an iPhone, you can also  <strong>click to advance the page down</"
-"strong>. This is not quite the same experience as using a page-based ePub "
-"viewer such as <a href=\"http://lexcycle.com/\">Stanza</a>, but it may be "
-"preferable to scrolling for some people. <em>This feature should be "
-"considered experimental</em>. "
-msgstr ""
+"When using an iPhone, you can also  &lt;strong&gt;click to advance the page down&lt;/"
+"strong&gt;. This is not quite the same experience as using a page-based ePub "
+"viewer such as &lt;a href=\"http://lexcycle.com/\"&gt;Stanza&lt;/a&gt;, but it may be "
+"preferable to scrolling for some people. &lt;em&gt;This feature should be "
+"considered experimental&lt;/em&gt;. "
+msgstr "På en iPhone kan du også &lt;strong&gt;klikke for at gå til bunden af siden&lt;/"
+"strong&gt;. Det giver ikke helt den samme oplevelse som når man bruger en sidebevidst ePub-læser "
+"som fx &lt;a href=\"http://lexcycle.com/\"&gt;Stanza&lt;/a&gt;-readeren, men nogle mennesker vil nok "
+"foretræke denne løsning frem for at scrolle. &lt;em&gt;Denne funktionalitet må anses for at være af "
+"eksperimentel karakter&lt;/em&gt;. "
 
 #: library/templates/shell.html:6
 msgid "Bookworm ePub reader"
@@ -2659,14 +2549,13 @@ msgid ""
 "Bookworm is the web-based ereader for ePub ebooks. Bookworm was developed by "
 "Liza Daly at threepress.org, a project to expand the reach of open source "
 "software in academic and trade publishing."
-msgstr ""
-"Bookworm er den webbaserede ebogslæser for ePub-ebøger. Bookworm er udviklet "
+msgstr "Bookworm er den webbaserede ebogslæser for ePub-ebøger. Bookworm er udviklet "
 "af Liza Daly hos threepress.org, som et projekt der skal udbrede open source-"
 "software inden for akademisk og kommerciel udgivervirksomhed."
 
 #: library/templates/shell.html:32
 msgid "Online ePub ebook reading"
-msgstr "Onlinelæsning af ePub-ebøger"
+msgstr "Læs ePub-bøger online"
 
 #: library/templates/shell.html:37
 msgid "My books"
@@ -2736,9 +2625,9 @@ msgstr "Log ind"
 #, python-format
 msgid ""
 "\n"
-"                  From the Bookworm account of %(ruf)s &lt;%(rue)s&gt;\n"
+"                  From the Bookworm account of %(ruf)s &amp;lt;%(rue)s&amp;gt;\n"
 "                "
-msgstr "Fra Bookwormkontoen for %(ruf)s &lt;%(rue)s&gt;\n"
+msgstr "Fra Bookwormkontoen for %(ruf)s &amp;lt;%(rue)s&amp;gt;\n"
 
 #: library/templates/shell.html:116
 msgid "Privacy policy"
@@ -2748,20 +2637,19 @@ msgstr "Beskyttelse af privatliv"
 #, python-format
 msgid ""
 "\n"
-"        Software by <a href=\"%(tpcurl)s\">Threepress Consulting Inc.</a> "
-"and <a href=\"%(djpurl)s\">Django</a>\n"
+"        Software by &lt;a href=\"%(tpcurl)s\"&gt;Threepress Consulting Inc.&lt;/a&gt; "
+"and &lt;a href=\"%(djpurl)s\"&gt;Django&lt;/a&gt;\n"
 "      "
-msgstr ""
-"Software ved <a href=\"%(tpcurl)s\">Threepress Consulting Inc.</a> og <a "
-"href=\"%(djpurl)s\">Django</a>"
+msgstr "Software ved &lt;a href=\"%(tpcurl)s\"&gt;Threepress Consulting Inc.&lt;/a&gt; og &lt;a "
+"href=\"%(djpurl)s\"&gt;Django&lt;/a&gt;"
 
 #: library/templates/shell.html:122
 #, python-format
 msgid ""
 "\n"
-"\t  Licensed under the <a href=\"%(bsdlicenseurl)s\">BSD License</a>\n"
+"\t  Licensed under the &lt;a href=\"%(bsdlicenseurl)s\"&gt;BSD License&lt;/a&gt;\n"
 "\t"
-msgstr "Omfattet af <a href=\"%(bsdlicenseurl)s\">BSD-licensen</a>"
+msgstr "Omfattet af &lt;a href=\"%(bsdlicenseurl)s\"&gt;BSD-licensen&lt;/a&gt;"
 
 #: library/templates/tour.html:3 library/templates/tour.html.py:14
 msgid "Take a tour of Bookworm"
@@ -2775,14 +2663,13 @@ msgid ""
 "    This quick tour will show you all the major features of\n"
 "    Bookworm, from adding your first ebook, to reading and searching it \n"
 "    on the web, and taking it on your mobile device. \n"
-"    <a href=\"%(signupurl)s\">Sign up</a>\n"
+"    &lt;a href=\"%(signupurl)s\"&gt;Sign up&lt;/a&gt;\n"
 "    when you're done.\n"
 "    "
-msgstr ""
-"På denne korte rundtur vil du få Bookworms vigtigste funktioner at se; fra "
-"at tilføje din første ebog til at læse og søge i den på web'e,n og hvordan "
-"man kan se bogen fra sin mobile enhed a href=\"%(signupurl)s\">Tilmeld dig</"
-"a> når du er førdig"
+msgstr "På denne korte rundtur får du Bookworms vigtigste funktioner at se; fra "
+"at tilføje din første ebog til at læse og søge i den på web og hvordan "
+"du kan se bogen fra din mobile enhed &lt;a href=\"%(signupurl)s\"&gt;Tilmeld dig&lt;/"
+"a&gt; når du er førdig"
 
 #: library/templates/tour.html:33 library/templates/tour.html.py:45
 msgid "Step 1: Adding a book"
@@ -2803,34 +2690,32 @@ msgstr "Trin 4: Tag bogen med dig"
 #: library/templates/tour.html:51
 msgid ""
 "\n"
-"    Select the <em>Add a book</em> link from the upper-right corner of\n"
+"    Select the &lt;em&gt;Add a book&lt;/em&gt; link from the upper-right corner of\n"
 "    every Bookworm page.\n"
 "    "
-msgstr ""
-"Klik på <em>Tilføj en bog</em>-linket i øverste højre hjørne af enhver "
-"Bookwormside"
+msgstr "Klik på &lt;em&gt;Tilføj en bog&lt;/em&gt;-linket i øverste højre hjørne - det findes på alle "
+"Bookwormsider"
 
 #: library/templates/tour.html:60
 msgid ""
 "\n"
-"    Then click the <em>Browse</em> button. \n"
+"    Then click the &lt;em&gt;Browse&lt;/em&gt; button. \n"
 "    "
-msgstr "Klik så på <em>Browse</em>-knappen"
+msgstr "Klik så på &lt;em&gt;Browse&lt;/em&gt;-knappen"
 
 #: library/templates/tour.html:65
 msgid ""
 "\n"
 "    Your computer will prompt you to \n"
 "    select a file to upload.  This should be an ebook file that \n"
-"    ends in <em>.epub</em>.\n"
+"    ends in &lt;em&gt;.epub&lt;/em&gt;.\n"
 "    "
-msgstr ""
-"Din computer vil bede dig vælge en fil, der skal oploades. Det skal være en "
-"ebogsfil, hvis navn ender på <em>.epub</em>."
+msgstr "Din computer beder dig dernæst vælge en fil, der skal oploades. Ebogens "
+"filnavn skal ende på &lt;em&gt;.epub&lt;/em&gt;."
 
 #: library/templates/tour.html:71
-msgid "Click <!-- trans: imperative verb -->"
-msgstr "Klik "
+msgid "Click &lt;!-- trans: imperative verb --&gt;"
+msgstr "Klik på "
 
 #: library/templates/tour.html:71 library/templates/upload.html:59
 msgid "Add to my library"
@@ -2845,14 +2730,13 @@ msgid ""
 "From the main library screen you can view the list of books\n"
 "    you've added, re-sort it by date, title or author, and delete\n"
 "    unwanted books.    "
-msgstr ""
-"Fra hoved-bibliotekssiden kan du se en liste med de bøger, du har tilføjet. "
+msgstr "På hovedbibliotekssiden kan du se en liste med de bøger, du har tilføjet. "
 "Du kan sortere dem efter dato, titel eller forfatter, og du kan slette dem "
 "du ikke længere vil have."
 
 #: library/templates/tour.html:86
 msgid "Step 2: Reading a book    "
-msgstr "Trin 2: Læse en bog"
+msgstr "Trin 2: Læs en bog"
 
 #: library/templates/tour.html:89
 msgid "Click on the book's title from your library.    "
@@ -2865,27 +2749,25 @@ msgstr "Bogen åbnes automatisk på første side"
 #: library/templates/tour.html:94
 msgid ""
 "\n"
-"      The left side of the screen shows the book's <em>Table of Contents</"
-"em>.\n"
+"      The left side of the screen shows the book's &lt;em&gt;Table of Contents&lt;/"
+"em&gt;.\n"
 "      The current chapter you're reading will be in large gray type.\n"
 "    "
-msgstr ""
-"I venstre side af skærmen kan man se bogens <em>indholdsfortegnelse</em>. "
+msgstr "I venstre side af skærmen kan du se bogens &lt;em&gt;indholdsfortegnelse&lt;/em&gt;. "
 "Det kapitel, du er i gang med, vises med stor, grå skrift."
 
 #: library/templates/tour.html:100
 msgid ""
 "\n"
-"      From the Table of Contents you can always click to <em>Download</em>\n"
-"      your book in its original format, or click on <em>Book information</"
-"em>\n"
+"      From the Table of Contents you can always click to &lt;em&gt;Download&lt;/em&gt;\n"
+"      your book in its original format, or click on &lt;em&gt;Book information&lt;/"
+"em&gt;\n"
 "      to see details about the book's copyright status, publisher, and \n"
 "      other editions available online.\n"
 "    "
-msgstr ""
-"Du kan til hver en tid <em>downloade</em> din bog i det originale format ved "
-"at klikke fra indholdsfortegnelsen, eller ved at klikke på <em>Information "
-"om bogen</em>"
+msgstr "Du kan til hver en tid &lt;em&gt;downloade&lt;/em&gt; din bog i det originale format, enten ved "
+"at klikke fra indholdsfortegnelsen, eller ved at klikke på &lt;em&gt;Information "
+"om bogen&lt;/em&gt;"
 
 #: library/templates/tour.html:109
 msgid "The Book Information page"
@@ -2897,9 +2779,7 @@ msgid ""
 "      Publisher, language, copyright and other information supplied\n"
 "      with the ebook can be read here.  \n"
 "    "
-msgstr ""
-"Oplysning om udgiver, sprog, ophavsret og anden information fra/om ebogen "
-"kan læses her"
+msgstr "Her finder du oplysning om udgiver, sprog, ophavsret og anden information fra/om ebogen."
 
 #: library/templates/tour.html:118
 msgid ""
@@ -2907,8 +2787,7 @@ msgid ""
 "      Bookworm will also automatically look up other editions of this\n"
 "      work in Google Book Search.\n"
 "    "
-msgstr ""
-"Bookworm vil automatisk lede efter andre udgaver af dette værk i Google Book "
+msgstr "Bookworm vil automatisk lede efter andre udgaver af værket i Google Book "
 "Search."
 
 #: library/templates/tour.html:123
@@ -2918,23 +2797,23 @@ msgstr "At bevæge sig gennem en bog"
 #: library/templates/tour.html:125
 msgid ""
 "\n"
-"      Each page of your book will have <em>Next</em> and/or <em>Previous</"
-"em>\n"
+"      Each page of your book will have &lt;em&gt;Next&lt;/em&gt; and/or &lt;em&gt;Previous&lt;/"
+"em&gt;\n"
 "      arrows to move between pages.  You can also always jump to \n"
-"      another part or chapter by clicking on the <em>Table of Contents.</"
-"em>\n"
+"      another part or chapter by clicking on the &lt;em&gt;Table of Contents.&lt;/"
+"em&gt;\n"
 "    "
-msgstr ""
-"På hver side i bogen findes en <em>Næste</em>- og/eller en <em>Forrige</em>-"
-"pil der bruges til at bladre frem og tilbage. Du kan også hoppe til et andet "
-"sted i bogen ved at klikke på <em>Indholdsfortegnelse</em>"
+msgstr "På hver side i bogen findes en &lt;em&gt;Næste&lt;/em&gt;-pil og/eller en &lt;em&gt;Forrige&lt;/em&gt;-"
+"pil der bruges til at bladre frem og tilbage. Du kan også hoppe direkte til et andet "
+"sted i bogen ved at klikke på &lt;em&gt;Indholdsfortegnelse&lt;/em&gt;"
 
 #: library/templates/tour.html:134
 #, python-format
 msgid ""
-"Using <a href=\"%(reading_mode_url)s\">Reading Mode</a> makes the Bookworm "
-"experience even better. <a href=\"%(reading_mode_url)s\">Find out more</a>."
-msgstr ""
+"Using &lt;a href=\"%(reading_mode_url)s\"&gt;Reading Mode&lt;/a&gt; makes the Bookworm "
+"experience even better. &lt;a href=\"%(reading_mode_url)s\"&gt;Find out more&lt;/a&gt;."
+msgstr "Du kan gøre læseoplevelsen endnu bedre ved at bruge &lt;a href=\"%(reading_mode_url)s\"&gt;Læsemodus. "
+"&lt;a href=\"%(reading_mode_url)s\"&gt;Læs mere&lt;/a&gt;."
 
 #: library/templates/tour.html:138
 msgid "Step 3: Searching your library    "
@@ -2949,10 +2828,9 @@ msgid ""
 "occurrences of \n"
 "    it in your library.\n"
 "    "
-msgstr ""
-"Hvis du har tilføjet bøger til dit bibliotek, vil du kunne se en søgeboks i "
+msgstr "Hvis du har tilføjet bøger til dit bibliotek, vil du kunne se en søgeboks i "
 "det øverste venstre hjørne på de fleste Bookworm-sider. Indtast et ord eller "
-"en ordforbindelse for at finde alle forekomster af den/dem i dit bibliotek."
+"en ordforbindelse i boksen for at finde alle forekomster i dit bibliotek."
 
 #: library/templates/tour.html:148
 msgid ""
@@ -2963,14 +2841,13 @@ msgid ""
 "book title\n"
 "    to go to the matching chapter.\n"
 "    "
-msgstr ""
-"De kapitler i dine bøger, der indeholder dit/dine søgeord, bliver vist på "
-"den næste side. Søgeord fremhæves med fed skrift. Klik på en bogens titel "
+msgstr "På den næste side vises hvilke kapitler, der indeholder dit/dine søgeord. "
+"Søgeord fremhæves med fed skrift. Klik på bogens titel "
 "for at gå til det fundne kapitel"
 
 #: library/templates/tour.html:159
 msgid ""
-"Step 4: Take your book on the road  <!-- trans: e.g. on a mobile device -->  "
+"Step 4: Take your book on the road  &lt;!-- trans: e.g. on a mobile device --&gt;  "
 msgstr "Trin 4: Tag bogen med dig"
 
 #: library/templates/tour.html:161
@@ -2982,15 +2859,14 @@ msgid ""
 "\n"
 "      If your phone has access to the web, then you can read your\n"
 "      Bookworm books anywhere.  Just point your phone browser to\n"
-"      <strong><a href=\"http://m.bookworm.oreilly.com/\">m.bookworm.oreilly."
-"com</a></strong>.\n"
+"      &lt;strong&gt;&lt;a href=\"http://m.bookworm.oreilly.com/\"&gt;m.bookworm.oreilly."
+"com&lt;/a&gt;&lt;/strong&gt;.\n"
 "      This version of Bookworm has been specially adapted for\n"
 "      small devices.\n"
 "    "
-msgstr ""
-"Hvis din telefon kan gå på nettet, kan du læse dine Bookworm-bøger hvor som "
-"helst. Slå fra telefonens browser op på <strong><a href=\"http://m.bookworm."
-"oreilly.com/\">m.bookworm.oreilly.com</a></strong>. Denne Bookwormversion er "
+msgstr "Hvis din telefon kan gå på nettet, kan du læse dine Bookworm-bøger hvor som "
+"helst. Slå fra telefonens browser op på &lt;strong&gt;&lt;a href=\"http://m.bookworm."
+"oreilly.com/\"&gt;m.bookworm.oreilly.com&lt;/a&gt;&lt;/strong&gt;. Denne Bookwormversion er "
 "udviklet specielt til små apparater."
 
 #: library/templates/tour.html:171
@@ -3002,20 +2878,19 @@ msgid ""
 "\n"
 "      When viewed in Safari on the iPhone, Bookworm can export your books "
 "directly to \n"
-"      <a href=\"http://www.lexcycle.com/\">Stanza</a>.  From your library "
-"list, click on the &#x21E7; \n"
+"      &lt;a href=\"http://www.lexcycle.com/\"&gt;Stanza&lt;/a&gt;.  From your library "
+"list, click on the &amp;#x21E7; \n"
 "      arrow next to a title to add the book to your \n"
-"      personal Stanza library. <a href=\"http://www.lexcycle.com/faq/"
-"how_to_get_books_onto_stanza_iphone\">Step-by-step instructions on the "
-"Stanza site</a>.\n"
+"      personal Stanza library. &lt;a href=\"http://www.lexcycle.com/faq/"
+"how_to_get_books_onto_stanza_iphone\"&gt;Step-by-step instructions on the "
+"Stanza site&lt;/a&gt;.\n"
 "    "
-msgstr ""
-"Når Bookworm åbnes med Safari på din iPhone, kan du eksportere dine bøger "
-"direkte til <a href=\"http://www.lexcycle.com/\">Stanza</a>. Klik fra dit "
-"bibliotek på &#x21E7;-pilen ved siden af titlen for at tilføje bogen til dit "
-"personlige Stanza-bibliotek. <a href=\"http://www.lexcycle.com/faq/"
-"how_to_get_books_onto_stanza_iphone\">Trin for trin-instruktioner på Stanzas "
-"hjemmeside</a>."
+msgstr "Når Bookworm åbnes i Safari-browseren på din iPhone, kan du eksportere dine bøger "
+"direkte til &lt;a href=\"http://www.lexcycle.com/\"&gt;Stanza&lt;/a&gt;-readeren. Klik fra dit "
+"bibliotek på &amp;#x21E7;-pilen ved siden af titlen for at tilføje bogen til dit "
+"personlige Stanza-bibliotek. Se &lt;a href=\"http://www.lexcycle.com/faq/"
+"how_to_get_books_onto_stanza_iphone\"&gt;Trin for trin-instruktioner på Stanzas "
+"hjemmeside&lt;/a&gt;."
 
 #: library/templates/tour.html:180
 msgid "Download to the Sony Reader or iLiad    "
@@ -3024,74 +2899,77 @@ msgstr "Download til din Sony Reader eller iLiad"
 #: library/templates/tour.html:182
 msgid ""
 "\n"
-"      By clicking on the <em>Download this book</em> link in the\n"
+"      By clicking on the &lt;em&gt;Download this book&lt;/em&gt; link in the\n"
 "      Table of Contents, you can retrieve the original version of\n"
 "      the ebook at any time.  Follow the instructions in your\n"
 "      ereader instructions for adding the book to your device.\n"
 "    "
-msgstr ""
-"Du kan altid få fat i den originale version af ebogen, hvis \n"
-"du klikker på linket <em>Download denne bog</em> i indholdsfortegnelsen. "
+msgstr "Du kan altid få fat i den originale version af ebogen, hvis \n"
+"du klikker på linket &lt;em&gt;Download denne bog&lt;/em&gt; i indholdsfortegnelsen. "
 "Følg din ebogslæsers vejledning for at loade bogen ind i den."
 
 #: library/templates/tour.html:189
 msgid "The Amazon Kindle cannot read ePub books at this time.    "
-msgstr "Amazons Kindle har endnu ikke kunnet læse epub-filer."
+msgstr "Amazons Kindle har indtil videre ikke kunnet læse epub-filer."
 
 #: library/templates/tour.html:192
 #, python-format
 msgid ""
-"Ready to <a href=\"%(signupurl)s\">sign up</a>?  <!-- trans: sign-up to use "
-"Bookworm -->  "
-msgstr ""
-"Er du klar til at <a href=\"%(signupurl)s\">registrere dig som bruger</a>?"
+"Ready to &lt;a href=\"%(signupurl)s\"&gt;sign up&lt;/a&gt;?  &lt;!-- trans: sign-up to use "
+"Bookworm --&gt;  "
+msgstr "Er du klar til at &lt;a href=\"%(signupurl)s\"&gt;tilmelde dig som bruger&lt;/a&gt;?"
 
 #: library/templates/upload.html:23
 msgid "Need help?"
-msgstr ""
+msgstr "Har du brug for hjælp?"
 
 #: library/templates/upload.html:25
 #, python-format
 msgid ""
-"Try reading the <a href=\"%(helpurl)s\">Help</a> or <a href=\"%(abouturl)s"
-"\">About</a> pages for more information, or email <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>for assistance."
-msgstr ""
+"Try reading the &lt;a href=\"%(helpurl)s\"&gt;Help&lt;/a&gt; or &lt;a href=\"%(abouturl)s"
+"\"&gt;About&lt;/a&gt; pages for more information, or email &lt;a href=\"mailto:"
+"bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt;for assistance."
+msgstr "Læs på &lt;a href=\"%(helpurl)s\"&gt;Hjælp&lt;/a&gt;- eller &lt;a href=\"%(abouturl)s"
+"\"&gt;Om&lt;/a&gt;-siden for yderligere info, eller send en email til &lt;a href=\"mailto:"
+"bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt; for at få hjælp."
 
 #: library/templates/upload.html:27
 #, fuzzy
 msgid ""
-"If you get an error that you don't understand, please email <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a> with a description of "
+"If you get an error that you don't understand, please email &lt;a href=\"mailto:"
+"bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt; with a description of "
 "the problem."
-msgstr ""
-"Hvis du har spørgsmål eller problemer med Bookworm, så kontakt <a href="
-"\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>"
+msgstr "Hvis du har spørgsmål eller problemer med Bookworm, så kontakt &lt;a href="
+"\"mailto:bookworm@threepress.org\"&gt;bookworm@threepress.org&lt;/a&gt;"
 
 #: library/templates/upload.html:43
 msgid ""
 "To read an ebook on Bookworm, you must have first purchased or acquired it "
 "from a publisher or online book source, and downloaded that book to your "
 "computer. Use this form to add it to Bookworm."
-msgstr ""
+msgstr "For at læse en ebog på Bookworm, må du først anskaffe dig den fra et forlag eller "
+"en onlineboghandel og downloade ebogen på din computer. udfyld denne formular for at føje "
+"ebogen til dit bibliotek."
 
 #: library/templates/upload.html:46
 #, python-format
 msgid ""
-"The ebook must be in the ePub format and have a filename ending in <strong>."
-"epub</strong>.If you don't know what that is, please see the <a href=\"%"
-"(abouturl)s\">About</a> page for more information."
-msgstr ""
+"The ebook must be in the ePub format and have a filename ending in &lt;strong&gt;."
+"epub&lt;/strong&gt;.If you don't know what that is, please see the &lt;a href=\"%"
+"(abouturl)s\"&gt;About&lt;/a&gt; page for more information."
+msgstr "Ebogen skal være lagret i ePub-format og have et filnavn, der ender på &lt;strong&gt;.epub"
+"&lt;/strong&gt;. Hvis du ikke ved hvad ePub er, kan du læse mere på &lt;a href=\"%"
+"(abouturl)s\"&gt;Om&lt;/a&gt;-siden."
 
 #: library/templates/upload.html:50
 msgid ""
-"You need to click on the &lsquo;Browse&rsquo; button and select an ebook to "
+"You need to click on the &amp;lsquo;Browse&amp;rsquo; button and select an ebook to "
 "add."
-msgstr ""
+msgstr "Du skal klikke på &amp;lsquo;Browse&amp;rsquo;-knappen og vælge den ebog, der skal tilføjes."
 
 #: library/templates/upload.html:57
-msgid "Add an ePub from your computer by clicking on &lsquo;Browse&rsquo;:"
-msgstr ""
+msgid "Add an ePub from your computer by clicking on &amp;lsquo;Browse&amp;rsquo;:"
+msgstr "Tilføj en ePub fra din computer ved at klikke på &amp;lsquo;Browse&amp;rsquo;:"
 
 #: library/templates/auth/language.html:3
 #, fuzzy
@@ -3107,31 +2985,31 @@ msgid ""
 "\n"
 "  Bookworm is available in multiple languages.  To change the language\n"
 "  used when you log in, select from one of the translations listed here.\n"
-msgstr ""
-"Bookworm fås på flere sprog. For at skifte sprog, skal du vælge et sprog på "
+msgstr "Bookworm fås på flere sprog. For at skifte sprog, skal du vælge et sprog på "
 "denne liste. Sproget ændres derefter næste gang du logger ind."
 
 #: library/templates/auth/language.html:18
 #, fuzzy
 msgid ""
-"If you don't see your preferred language, <a href=\"mailto:"
-"bookworm@threepress.org\">let us know if you're willing to help translate</"
-"a>.  Bookworm can be translated into <a href=\"http://code.djangoproject.com/"
-"browser/django/trunk/django/conf/global_settings.py#L43\">any of the "
-"languages supported by the Django framework</a>."
-msgstr ""
-"Hvis du ikke kan finde det sprog, du har brug for, så <a href=\"mailto:"
-"bookworm@threepress.org\">skriv til os hvis du vil hjælpe med at oversætte</"
-"a>. Bookworm kan oversættes til <a href=\"http://code.djangoproject.com/"
-"browser/django/trunk/django/conf/global_settings.py#L43\">ethvert af de "
-"sporg, der understøttes i Django Framework'et</a>."
+"If you don't see your preferred language, &lt;a href=\"mailto:"
+"bookworm@threepress.org\"&gt;let us know if you're willing to help translate&lt;/"
+"a&gt;.  Bookworm can be translated into &lt;a href=\"http://code.djangoproject.com/"
+"browser/django/trunk/django/conf/global_settings.py#L43\"&gt;any of the "
+"languages supported by the Django framework&lt;/a&gt;."
+msgstr "Hvis du ikke kan finde det sprog, du har brug for, så &lt;a href=\"mailto:"
+"bookworm@threepress.org\"&gt;skriv til os hvis du vil hjælpe med at oversætte&lt;/"
+"a&gt;. Bookworm kan oversættes til &lt;a href=\"http://code.djangoproject.com/"
+"browser/django/trunk/django/conf/global_settings.py#L43\"&gt;ethvert af de "
+"sporg, der understøttes i Django Framework'et&lt;/a&gt;."
 
 #: library/templates/auth/language.html:22
 msgid ""
-"Information on translating Bookworm is available on <a href=\"http://labs."
+"Information on translating Bookworm is available on &lt;a href=\"http://labs."
 "oreilly.com/2009/03/how-to-contribute-translations-to-bookworm.html"
-"\">O'Reilly Labs</a>"
-msgstr ""
+"\"&gt;O'Reilly Labs&lt;/a&gt;"
+msgstr "Info om oversættelse af Bookworm fås på &lt;a href=\"http://labs."
+"oreilly.com/2009/03/how-to-contribute-translations-to-bookworm.html"
+"\"&gt;O'Reilly Labs&lt;/a&gt;"
 
 #: library/templates/auth/language.html:32
 msgid "Change the language setting"
@@ -3181,7 +3059,7 @@ msgid "Language"
 msgstr "Sprog"
 
 #: library/templates/auth/profile.html:105
-msgid "change <!-- trans: change the user's language setting -->"
+msgid "change &lt;!-- trans: change the user's language setting --&gt;"
 msgstr "Skift "
 
 #: library/templates/auth/profile.html:109
@@ -3193,7 +3071,7 @@ msgid "Update profile"
 msgstr "Opdatér profil"
 
 #: library/templates/auth/authopenid/changeemail.html:4
-msgid "Change email address for <!-- trans: for person -->"
+msgid "Change email address for &lt;!-- trans: for person --&gt;"
 msgstr "Skift emailadresse for "
 
 #: library/templates/auth/authopenid/changeemail.html:16
@@ -3201,18 +3079,18 @@ msgstr "Skift emailadresse for "
 #: library/templates/auth/authopenid/delete.html:26
 #: library/templates/auth/authopenid/delete.html:31
 msgid "Please correct the errors below"
-msgstr ""
+msgstr "Vær venlig at rette fejlene herunder"
 
 #: library/templates/auth/authopenid/changepw.html:4
-msgid "Change password for <!-- trans: for person -->"
+msgid "Change password for &lt;!-- trans: for person --&gt;"
 msgstr "Skift Password for "
 
 #: library/templates/auth/authopenid/complete.html:17
 msgid "Link an OpenID with your existing Bookworm account"
-msgstr ""
+msgstr "Knyt et OpenID til din eksisterende Bookworm-konto"
 
 #: library/templates/auth/authopenid/delete.html:4
-msgid "Delete profile of <!-- trans: person name -->"
+msgid "Delete profile of &lt;!-- trans: person name --&gt;"
 msgstr "Slet profilen for "
 
 #: library/templates/auth/authopenid/delete.html:15
@@ -3222,12 +3100,11 @@ msgstr "Slet konto"
 #: library/templates/auth/authopenid/delete.html:18
 msgid ""
 "\n"
-"      You can <strong>delete all personal information</strong> from this "
+"      You can &lt;strong&gt;delete all personal information&lt;/strong&gt; from this "
 "application, including\n"
 "      any profile information and all e-books.\n"
 "      "
-msgstr ""
-"Du kan <strong>slette alle personlige oplysninger</strong> fra denne "
+msgstr "Du kan &lt;strong&gt;slette alle personlige oplysninger&lt;/strong&gt; fra denne "
 "applikation, inkl. al profilinformation og alle ebøger."
 
 #: library/templates/auth/authopenid/delete.html:23
@@ -3236,8 +3113,7 @@ msgstr "Denne handling kan ikke fortrydes."
 
 #: library/templates/auth/authopenid/delete.html:44
 msgid "I'm sure I want to delete all my personal information and books."
-msgstr ""
-"Ja, jeg er sikker på, at jeg vil slette al min personlig information og alle "
+msgstr "Ja, jeg er sikker på, at jeg vil slette al min personlig information og alle "
 "mine bøger."
 
 #: library/templates/auth/authopenid/delete.html:47
@@ -3247,7 +3123,7 @@ msgstr "Slet min profil"
 #: library/templates/auth/authopenid/signin.html:29
 #, fuzzy
 msgid "ePub ebook reader"
-msgstr "Onlinelæsning af ePub-ebøger"
+msgstr "Læs ePub-bøger online"
 
 #: library/templates/auth/authopenid/signin.html:38
 #, fuzzy
@@ -3263,32 +3139,33 @@ msgstr "Tag på rundtur"
 msgid ""
 "You may have created your account with an OpenID, in which case you won't "
 "need your password but should enter your OpenID URL below."
-msgstr ""
+msgstr "Hvis du har oprettet en konto med et OpenID, skal du ikke bruge "
+"dit password men i stedet indtatse din OpenID-URL herunder."
 
 #: library/templates/auth/authopenid/signin.html:61
 msgid ""
-"If you've never created an account, click &lsquo;Sign up&rsquo; on the left."
-msgstr ""
+"If you've never created an account, click &amp;lsquo;Sign up&amp;rsquo; on the left."
+msgstr "Hvis du aldrig har oprettet en konto, så klik på &amp;lsquo;Tilmlelding&amp;rsquo; i venstre side"
 
 #: library/templates/auth/authopenid/signin.html:69
 #, fuzzy
 msgid "Sign in using a local Bookworm account"
-msgstr "Registrér dig"
+msgstr "Log ind med lokal Bookworm-konto"
 
 #: library/templates/auth/authopenid/signin.html:74
 #, fuzzy
 msgid "Lost your password?"
-msgstr "Bekræft dit password:"
+msgstr "Har du glemt dit password:"
 
 #: library/templates/auth/authopenid/signin.html:81
 #, fuzzy
 msgid "Sign in using your OpenID"
-msgstr "Registrering med OpenID"
+msgstr "Log ind med OpenID"
 
 #: library/templates/auth/authopenid/signin.html:83
 #, fuzzy
 msgid "Sign in with OpenID"
-msgstr "Registrering med OpenID"
+msgstr "Log ind med OpenID"
 
 #: library/templates/auth/authopenid/signin.html:84
 #: library/templates/auth/authopenid/signup.html:92
@@ -3297,8 +3174,8 @@ msgstr "Hvad er dette?"
 
 #: library/templates/auth/authopenid/signup.html:3
 #: library/templates/auth/authopenid/signup.html:4
-msgid "Sign up <!-- trans: open a Bookworm account --> "
-msgstr "Registrér dig"
+msgid "Sign up &lt;!-- trans: open a Bookworm account --&gt; "
+msgstr "Tilmeld dig"
 
 #: library/templates/auth/authopenid/signup.html:21
 msgid "Two ways to join"
@@ -3322,17 +3199,16 @@ msgstr "Har du ikke et OpenID?"
 
 #: library/templates/auth/authopenid/signup.html:27
 msgid ""
-"Sign up with a username and password just for Bookworm. <!-- trans: instead "
-"of using OpenID -->"
-msgstr "Registrér dig med brugernavn og password"
+"Sign up with a username and password just for Bookworm. &lt;!-- trans: instead "
+"of using OpenID --&gt;"
+msgstr "Tilmeld dig med brugernavn og password"
 
 #: library/templates/auth/authopenid/signup.html:37
 msgid ""
 "\n"
 "  Before you can start reading with Bookworm, you need to sign up so we can\n"
 "  store your books in your private library.\n"
-msgstr ""
-"Før du kan begynde at læse med Bookworm, skal du oprette dig som bruger, så "
+msgstr "Før du kan læse med Bookworm, skal du oprette dig som bruger, så "
 "vi kan gemme dine bøger i dit personlige bibliotek."
 
 #: library/templates/auth/authopenid/signup.html:44
@@ -3341,12 +3217,12 @@ msgstr "Vær venlig at rette fejlene herunder"
 
 #: library/templates/auth/authopenid/signup.html:59
 msgid "If you're not sure what to do, just fill out this form"
-msgstr "Hvis du er i tvivl, kan du blot udfylde dette"
+msgstr "Hvis du er i tvivl, kan du blot udfylde følgende"
 
 #: library/templates/auth/authopenid/signup.html:65
 msgid ""
-"Sign up locally <!-- trans: on Bookworm itself rather than via OpenID -->"
-msgstr "Registrér dig kun på Bookworm"
+"Sign up locally &lt;!-- trans: on Bookworm itself rather than via OpenID --&gt;"
+msgstr "Tilmeld dig (kun på Bookworm)"
 
 #: library/templates/auth/authopenid/signup.html:72
 msgid "Confirm password"
@@ -3354,7 +3230,7 @@ msgstr "Bekræft password"
 
 #: library/templates/auth/authopenid/signup.html:85
 msgid "If you have an OpenID, sign up here"
-msgstr "Hvis du har et OpenID, skal du registrere dig her"
+msgstr "Hvis du har et OpenID, skal du tilmelde dig her"
 
 #: library/templates/auth/authopenid/signup.html:88
 msgid "Use my OpenID"
@@ -3362,14 +3238,14 @@ msgstr "Brug mit OpenID"
 
 #: library/templates/auth/authopenid/signup.html:90
 msgid "Sign up with OpenID"
-msgstr "Registrering med OpenID"
+msgstr "Tilmelding med OpenID"
 
 #: library/templates/auth/authopenid/signup.html:91
-msgid "If you have a Yahoo account, try typing <em>yahoo.com</em> here."
-msgstr "Hvis du har en Yahoo-konto, så prøv at taste <em>yahoo.com</em> her"
+msgid "If you have a Yahoo account, try typing &lt;em&gt;yahoo.com&lt;/em&gt; here."
+msgstr "Hvis du har en Yahoo-konto, så prøv at taste &lt;em&gt;yahoo.com&lt;/em&gt; her"
 
 #: library/templates/includes/about.html:2
-msgid "Resources <!-- trans: for learning more about Bookworm -->"
+msgid "Resources &lt;!-- trans: for learning more about Bookworm --&gt;"
 msgstr "Læs mere"
 
 #: library/templates/includes/about.html:9
@@ -3378,7 +3254,7 @@ msgstr "Kontroller dine ePubs"
 
 #: library/templates/includes/about.html:11
 msgid "About full-text search"
-msgstr "Om fritekstsøgning"
+msgstr "Om fuldtekstsøgning"
 
 #: library/templates/includes/about.html:12
 msgid "Read the blog"
@@ -3390,22 +3266,21 @@ msgstr "Udvikling af Bookworm"
 
 #: library/templates/includes/about_development.html:4
 msgid ""
-"Get announcements and suggest features on the <a href=\"http://blog."
-"threepress.org/\">threepress blog</a>"
-msgstr ""
-"Få nyheder og foreslå ny funktionalitet på <a href=\"http://blog.threepress."
-"org/\">threepress blog</a>"
+"Get announcements and suggest features on the &lt;a href=\"http://blog."
+"threepress.org/\"&gt;threepress blog&lt;/a&gt;"
+msgstr "Få nyheder og foreslå ny funktionalitet på &lt;a href=\"http://blog.threepress."
+"org/\"&gt;threepress blog&lt;/a&gt;"
 
 #: library/templates/includes/chapter_next_previous.html:6
-msgid "previous <!-- trans: previous chapter in the book -->"
+msgid "previous &lt;!-- trans: previous chapter in the book --&gt;"
 msgstr "forrige"
 
 #: library/templates/includes/chapter_next_previous.html:8
-msgid "Contents <!-- trans: table of contents -->"
+msgid "Contents &lt;!-- trans: table of contents --&gt;"
 msgstr "Indhold"
 
 #: library/templates/includes/chapter_next_previous.html:11
-msgid "next <!-- trans: next chapter in the book -->"
+msgid "next &lt;!-- trans: next chapter in the book --&gt;"
 msgstr "næste"
 
 #: library/templates/includes/document_list.html:28
@@ -3472,8 +3347,7 @@ msgid ""
 "different\n"
 "        websites, including Yahoo.\n"
 "        "
-msgstr ""
-"OpenID overflødiggør de mange forskellige brugernavne, man har på diverse "
+msgstr "OpenID overflødiggør de mange forskellige brugernavne, man har på diverse "
 "websites og gør onlineoplevelsen enklere. Det er en standard, der anvendes "
 "på mange forskellige websites, heriblandt Yahoo."
 
@@ -3486,16 +3360,14 @@ msgid ""
 "OpenID services\n"
 "        they offer:\n"
 "        "
-msgstr ""
-"Måske har du allerede et OpenID, hvis du er bruger på et af disse websites. "
+msgstr "Måske har du allerede et OpenID, hvis du er bruger på et af disse websites. "
 "Klik på navnet for at læse mere om et sites OpenID-praksis"
 
 #: library/templates/includes/openid.html:23
 msgid ""
-"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</"
-"em>        "
-msgstr ""
-"For AOL- og AIM-brugere: Dit OpenID er <em>openid.aol.com/dit-skærmnavn</em>"
+"AOL or AIM users: Your OpenID is &lt;em&gt;openid.aol.com/your-screenname&lt;/"
+"em&gt;        "
+msgstr "For AOL- og AIM-brugere: Dit OpenID er &lt;em&gt;openid.aol.com/dit-skærmnavn&lt;/em&gt;"
 
 #: library/templates/includes/openid.html:27
 msgid "Your OpenID is"
@@ -3506,23 +3378,21 @@ msgid ""
 "\n"
 "        If you don't have an account with any of these services, or don't "
 "want to use\n"
-"        them to manage your online identity, try <a href=\"https://www."
-"myopenid.com/\">MyOpenID</a>.\n"
+"        them to manage your online identity, try &lt;a href=\"https://www."
+"myopenid.com/\"&gt;MyOpenID&lt;/a&gt;.\n"
 "        "
-msgstr ""
-"Hvis du ikke er oprettet som bruger på nogen af disse sites, eller hvis du "
-"ikke ønsker at lad dem administrere din online-identitet, så prøv hér: <a "
-"href=\"https://www.myopenid.com/\">MyOpenID</a>."
+msgstr "Hvis du ikke er oprettet som bruger på nogen af disse sites, eller hvis du "
+"ikke ønsker at lad dem administrere din online-identitet, så prøv hér: &lt;a "
+"href=\"https://www.myopenid.com/\"&gt;MyOpenID&lt;/a&gt;."
 
 #: library/templates/includes/openid.html:36
 msgid ""
 "\n"
-"        The official page for OpenID is <a href=\"http://openid.net/"
-"\">http://openid.net/</a>.\n"
+"        The official page for OpenID is &lt;a href=\"http://openid.net/"
+"\"&gt;http://openid.net/&lt;/a&gt;.\n"
 "        "
-msgstr ""
-"OpenID's officielle hjemmeside er <a href=\"http://openid.net/\">http://"
-"openid.net/</a>."
+msgstr "OpenID's officielle hjemmeside er &lt;a href=\"http://openid.net/\"&gt;http://"
+"openid.net/&lt;/a&gt;."
 
 #: library/templates/includes/pagination.html:4
 msgid "previous"
@@ -3539,15 +3409,15 @@ msgstr "næste"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Size"
-msgstr ""
+msgstr "Størrelse"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Increase font size"
-msgstr ""
+msgstr "Forøg skriftstørrelsen"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Decrease font size"
-msgstr ""
+msgstr "Foirmindsk skriftstørrelsen"
 
 #: library/templates/includes/reading-tools.html:3
 #, fuzzy
@@ -3556,11 +3426,11 @@ msgstr "Fonte"
 
 #: library/templates/includes/reading-tools.html:3
 msgid "Use a serif font"
-msgstr ""
+msgstr "Vælg en font med seriffer"
 
 #: library/templates/includes/reading-tools.html:3
 msgid "Use a sans-serif font"
-msgstr ""
+msgstr "Vælg en font uden seriffer"
 
 #: library/templates/includes/toggle-reading-mode.html:3
 #, fuzzy
@@ -3569,7 +3439,7 @@ msgstr "Ændring af email-adresse"
 
 #: library/templates/mobile/base.html:20
 msgid "mobile ebooks"
-msgstr ""
+msgstr "Mobile ebøger"
 
 #: library/templates/mobile/base.html:21
 #, fuzzy
@@ -3583,7 +3453,7 @@ msgstr "Mine bøger"
 
 #: search/templates/search_help.html:7 search/templates/search_help.html:9
 msgid "Full-text search in Bookworm"
-msgstr "Fritekstsøgning i Bookworm"
+msgstr "Fuldtekstsøgning i Bookworm"
 
 #: search/templates/search_help.html:16
 msgid ""
@@ -3593,14 +3463,13 @@ msgid ""
 "  and use advanced phrase searching and boolean operators similar to\n"
 "  those supported by Google.\n"
 "  "
-msgstr ""
-"Med Bookworms fritekstsøgning kan du finde ord på tværs af alle dine ePubs. "
+msgstr "Med Bookworms fuldtekstsøgning kan du finde ord på tværs af alle dine ePubs. "
 "Du kan søge på forskellige sprog og bruge avanceret flerordssøgning og "
 "logiske operatorer, som du kender det fra Google."
 
 #: search/templates/search_help.html:24
 msgid "Bookworm uses MySQL full-text search"
-msgstr "Bookworm anvender MySQL's fritekstsøgning"
+msgstr "Bookworm anvender MySQL's tekstsøgning"
 
 #: search/templates/search_help.html:26
 msgid ""
@@ -3609,29 +3478,27 @@ msgid ""
 "index content\n"
 "  in most languages, but doesn't support stemming.\n"
 "  "
-msgstr ""
-"I MySQL-søgningen understøttes logiske operatorer og flerordssøgning. "
+msgstr "I MySQL-søgningen understøttes logiske operatorer og flerordssøgning. "
 "Indhold indekseres på de fleste sprog, men der foretages ingen stemming."
 
 #: search/templates/search_help.html:33
 msgid ""
 "\n"
-"  Prior to January 2008, Bookworm used <a href=\"http://xapian.org/"
-"\">Xapian</a>,\n"
+"  Prior to January 2008, Bookworm used &lt;a href=\"http://xapian.org/"
+"\"&gt;Xapian&lt;/a&gt;,\n"
 "  a free, open-source search engine.  Xapian is an excellent product, but\n"
 "  it requires a separate search index. This added enough maintenance "
 "overhead\n"
 "  to make the simpler MySQL approach more desirable.\n"
 "  "
-msgstr ""
-"Før januar 2008, anvendte Bookworm <a href=\"http://xapian.org/\">Xapian</"
-"a>, en gratis, opensource-søgemaskine. Xapian er et fremragende produkt, men "
-"det kræver, at der etableres et separat søgeindeks. Dette krævede så megen "
-"vedligeholdelse, at den mere simple MySQL var at foretrække."
+msgstr "Før januar 2008, anvendte Bookworm &lt;a href=\"http://xapian.org/\"&gt;Xapian&lt;/"
+"a&gt;, en gratis, opensource-søgemaskine. Xapian er et fremragende produkt, men "
+"den kræver, at der etableres et separat søgeindeks. Dette krævede så megen "
+"vedligeholdelse at den mere simple MySQL var at foretrække."
 
 #: search/templates/search_help.html:41
 msgid "Phrase searching"
-msgstr "Sætningssøgning"
+msgstr "Søgning efter ordforbindelser"
 
 #: search/templates/search_help.html:43
 msgid ""
@@ -3642,10 +3509,10 @@ msgid ""
 "  \"house\" separately), then enclose them in quotation marks.\n"
 "  "
 msgstr ""
-"Som på Google, kan du begrænse din flerordssøgning til kun at finde bestemte "
-"flerordsforbindelser (fx bøger, der indeholder ordene \"Det Hvide Hus\" i "
-"netop den rækkefølge, i modsætning til alle bøger, der indeholder de tre ord "
-"\"Det\", \"Hvide\" og \"Hus\". For at finde faste ordforbindelser skal du "
+"Ligesom på Google, kan du begrænse din flerordssøgning til kun at finde bestemte "
+"ordforbindelser (fx bøger, der indeholder ordene \"White House\" i "
+"netop den rækkefølge, i modsætning til alle bøger, der indeholder begge ordene "
+"\"White\" og \"House\". For at finde faste ordforbindelser skal du "
 "sætte ordene i citationstegn."
 
 #: search/templates/search_help.html:49
@@ -3658,9 +3525,8 @@ msgid ""
 "  All searches are case-insensitive.  This means that \"White\" will find "
 "\"white\" or \"WHITE\".\n"
 "  "
-msgstr ""
-"Alle søgninger ser bort fra forskellen på store og små bogstaver. Det "
-"betyder, at søgning efter \"Hvide\" også finder \"´hvide\" og \"HVIDE\"."
+msgstr "Søgning tager ikke højde for forskellen på store og små bogstaver. Det "
+"betyder, at søgning efter \"White\" også finder \"white\" og \"WHITE\"."
 
 #: search/templates/search_help.html:55
 msgid "Boolean operators"
@@ -3677,13 +3543,11 @@ msgid ""
 "your search,\n"
 "  or including quotation marks, which overrides the default.\n"
 "  "
-msgstr ""
-"Som på Google, er den underforståede operator det logiske OG. det betyder, "
+msgstr "Ligesom på Google er den underforståede operator det logiske OG. Det betyder "
 "at alle ord i en flerordssøgning skal forekomme i en tekst, for at der kan "
-"tales om match. Bookworm sikrer dette ved automatis at føje et '+'-tegn på "
-"alle dine søgeord. Du kan ændre dette, ved selv at tilføje '+' og '-'tegn "
-"til dine søgeord eller ved at bruge citationstegn. ændrer "
-"forhåndsindstillingerne."
+"tales om match. Bookworm sikrer dette ved automatisk at sætte et '+'-tegn på "
+"alle dine søgeord. Du kan ændre denne automatik, ved selv at sætte '+'- og '-'-tegn "
+"efter dine søgeord eller ved at bruge citationstegn. På den måde ændrer du forhåndsindstillingerne."
 
 #: search/templates/search_help.html:66 search/templates/search_help.html:67
 #: search/templates/search_help.html:68 search/templates/search_help.html:69
@@ -3699,7 +3563,7 @@ msgstr "house"
 
 #: search/templates/search_help.html:66
 msgid "Both terms are required (like Google)."
-msgstr "Begge ord skal med (som på Google)"
+msgstr "Begge ord skal forekomme (som på Google)"
 
 #: search/templates/search_help.html:67
 msgid "Same as above."
@@ -3707,38 +3571,36 @@ msgstr "Som ovenfor."
 
 #: search/templates/search_help.html:68
 msgid "Find ePubs with either word"
-msgstr "Find ePubs med begge ord"
+msgstr "Finder ePubs der indeholder begge ord"
 
 #: search/templates/search_help.html:69
 msgid "Find the exact phrase"
-msgstr "Find den præcise ordforbindelse"
+msgstr "Finder den præcise ordforbindelse"
 
 #: search/templates/search_help.html:70
 msgid ""
-"This is a good way to find ePubs that <em>don't</em> contain the phrase "
+"This is a good way to find ePubs that &lt;em&gt;don't&lt;/em&gt; contain the phrase "
 "\"White House\" but do contain the word \"white\""
-msgstr ""
-"Her er en god måde at finde ePubs, der <em>ikke</em> indeholder "
-"ordforbindelsen \"hvide hus\" men som indeholder ordet \"ordet \"white\""
+msgstr "Dette er en nem måde at de finde ePubs, der &lt;em&gt;ikke&lt;/em&gt; indeholder "
+"ordforbindelsen \"White House\" men som indeholder ordet \"ordet \"white\""
 
 #: search/templates/search_help.html:73
-msgid "Ordering <!-- trans: e.g. alphabetical order -->"
+msgid "Ordering &lt;!-- trans: e.g. alphabetical order --&gt;"
 msgstr "Rækkefølge"
 
 #: search/templates/search_help.html:75
 msgid ""
 "\n"
-"  Results are returned in relevance order.  <em>Relevance</em>\n"
+"  Results are returned in relevance order.  &lt;em&gt;Relevance&lt;/em&gt;\n"
 "  is how likely it is that a given result is what you were looking for.\n"
 "  The algorithms used to determine relevance are complex and results\n"
 "  aren't always as intuitive as those in a massive commercial search engine "
 "like Google.\n"
 "  "
-msgstr ""
-"Søgeresultater bliver sorteret efter relevans. <em>Relevan</em> fortolkes "
+msgstr "Søgeresultater sorteres efter relevans. &lt;em&gt;Relevans&lt;/em&gt; fortolkes "
 "som sandsynligheden for, at et givet resultat svarer til det du leder efter. "
-"De algoritmer, der bruges til at afgøre relevansen er meget komplekse og "
-"resultaterne virker ikke altid så intuitive som den der findes med en "
+"De algoritmer der bruges til at afgøre relevansen er meget komplekse og "
+"resultaterne virker ikke altid så intuitive som dem der findes med en "
 "kommerciel søgemaskine som Google."
 
 #: search/templates/search_help.html:83
@@ -3747,8 +3609,7 @@ msgid ""
 "  Simply put, ePubs with more occurrences of your search terms will appear\n"
 "  higher in the results.\n"
 "  "
-msgstr ""
-"Lidt forsimplet kan man sige, at ePubs med flere forekomster af dine søgeord "
+msgstr "Lidt forsimplet kan man sige, at ePubs med flere forekomster af dine søgeord "
 "betragtes som mere relevante end dem med færre."
 
 #: search/templates/search_help.html:89
@@ -3763,8 +3624,7 @@ msgid ""
 "  to your personal search library.   (It's not possible to search books \n"
 "  that are only in other people's libraries.)\n"
 "  "
-msgstr ""
-"Hvert femte minut kontrollerer Bookworm om der er tilføjet nye ePubs. Hvis "
+msgstr "Hvert femte minut kontrollerer Bookworm om der er tilføjet nye ePubs. Hvis "
 "der er det, bliver de nye bøgers indhold indekseret og føjet til dit "
 "personlige søgebibliotek. (Man kan ikke søge i bøger, der (kun) befinder sig "
 "i andre brugeres biblioteker)."
@@ -3775,13 +3635,12 @@ msgid ""
 "  This means a book you've just added might not show\n"
 "  up in the search immediately.  Be patient; it'll be there soon.\n"
 "  "
-msgstr ""
-"Derfor kommer en bog, der lige er tilføjet dit bibliotek, ikke altid til "
-"synes med det samme. Men hold ud: den kommer snart."
+msgstr "Derfor kommer en bog, der lige er tilføjet dit bibliotek, ikke altid til "
+"syne med det samme. Men hold ud: der går ikke lang tid."
 
 #, fuzzy
 #~ msgid "Danish"
-#~ msgstr "engelsk"
+#~ msgstr "Dansk"
 
 #~ msgid "signout/"
 #~ msgstr "log af/"
@@ -3799,7 +3658,7 @@ msgstr ""
 #~ msgstr "bekræft/"
 
 #~ msgid "True HTML rendering in your browser"
-#~ msgstr "Ægte HTML-visning i din rowser"
+#~ msgstr "Ægte HTML-visning i din browser"
 
 #~ msgid ""
 #~ "Uses legible, clear styles layered over the book's native stylesheets"
@@ -3810,8 +3669,8 @@ msgstr ""
 #~ msgid "Generated external link to SVG images"
 #~ msgstr "Der genereres eksterne links til SVG-billeder"
 
-#~ msgid "Are you sure? <!-- trans: you want to perform that action -->"
-#~ msgstr "Er du sikker?"
+#~ msgid "Are you sure? &lt;!-- trans: you want to perform that action --&gt;"
+#~ msgstr "Er du helt sikker?"
 
-#~ msgid "by <!-- trans: this book is written by -->"
+#~ msgid "by &lt;!-- trans: this book is written by --&gt;"
 #~ msgstr "af "
