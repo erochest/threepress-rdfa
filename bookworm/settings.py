@@ -99,7 +99,7 @@ LANGUAGES = (
   ('de', ugettext('German')),
   ('en', ugettext('English')),
   ('da', ugettext('Danish')),
-#  ('fi', ugettext('Finnish')),
+  ('fi', ugettext('Finnish')),
 #  ('es', ugettext('Spanish')),
 #  ('zh-tw', ugettext('Simplified Chinese')),
 #  ('he', ugettext('Hebrew')),
