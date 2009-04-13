@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-01 22:00-0400\n"
-"PO-Revision-Date: 2009-04-13 11:05-0400\n"
+"PO-Revision-Date: 2009-04-13 11:11-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -633,8 +633,7 @@ msgstr "Jos sinulla on kysymyksiä tai ongelmia, jotka koskevat Bookworm -palvel
 msgid ""
 "For more information about Threepress, please visit our <a href=\"http://"
 "threepress.org/about/\">About</a> page."
-msgstr "Lisää tietoja Threepress -palvelusta sivuillamme: <a href=\"http://"
-"threepress.org/about/"
+msgstr "Lisää tietoja Threepress -palvelusta sivuillamme: <a href=\"http://threepress.org/about/\">About</a>"
 
 #: library/templates/about.html:44
 msgid ""
