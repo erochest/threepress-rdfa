@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-14 10:52-0400\n"
+"POT-Creation-Date: 2009-04-14 10:56-0400\n"
 "PO-Revision-Date: 2009-04-13 11:11-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
@@ -1972,6 +1972,10 @@ msgstr ""
 
 #: library/templates/last-read.html:3
 msgid "last read"
+msgstr ""
+
+#: library/templates/public.html:6
+msgid "Read ePub ebooks online"
 msgstr ""
 
 #: library/templates/public.html:21

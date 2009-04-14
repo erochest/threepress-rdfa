@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-14 10:52-0400\n"
-"PO-Revision-Date: 2009-04-14 10:52-0400\n"
+"POT-Creation-Date: 2009-04-14 10:56-0400\n"
+"PO-Revision-Date: 2009-04-14 10:56-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2374,6 +2374,10 @@ msgstr "opload"
 #: library/templates/last-read.html:3
 msgid "last read"
 msgstr "senest læst"
+
+#: library/templates/public.html:6
+msgid "Read ePub ebooks online"
+msgstr "Læs og søg online i komplette bøger"
 
 #: library/templates/public.html:21
 msgid "A free platform for reading ePub books online."
