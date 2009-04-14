@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-13 12:01-0400\n"
+"POT-Creation-Date: 2009-04-14 10:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -346,7 +346,7 @@ msgid ""
 msgstr ""
 
 #: django_authopenid/templates/authopenid/sendpw.html:24
-#: library/templates/auth/profile.html:69
+#: library/templates/auth/profile.html:68
 #: library/templates/auth/authopenid/signin.html:70
 #: library/templates/auth/authopenid/signup.html:67
 msgid "Username"
@@ -2699,39 +2699,44 @@ msgstr ""
 msgid "Delete this account"
 msgstr ""
 
-#: library/templates/auth/profile.html:57
+#: library/templates/auth/profile.html:56
 msgid "User profile and preferences for "
 msgstr ""
 
-#: library/templates/auth/profile.html:64
+#: library/templates/auth/profile.html:63
 msgid "User information"
 msgstr ""
 
-#: library/templates/auth/profile.html:88
+#: library/templates/auth/profile.html:83
+#: library/templates/auth/profile.html:93
+msgid "change"
+msgstr ""
+
+#: library/templates/auth/profile.html:87
 msgid "Full name"
 msgstr ""
 
-#: library/templates/auth/profile.html:93
+#: library/templates/auth/profile.html:92
 msgid "Email address"
 msgstr ""
 
-#: library/templates/auth/profile.html:98
+#: library/templates/auth/profile.html:97
 msgid "Country"
 msgstr ""
 
-#: library/templates/auth/profile.html:104
+#: library/templates/auth/profile.html:103
 msgid "Language"
 msgstr ""
 
-#: library/templates/auth/profile.html:105
+#: library/templates/auth/profile.html:104
 msgid "change <!-- trans: change the user's language setting -->"
 msgstr ""
 
-#: library/templates/auth/profile.html:109
+#: library/templates/auth/profile.html:108
 msgid "Open to last-read chapter when reading a book?"
 msgstr ""
 
-#: library/templates/auth/profile.html:116
+#: library/templates/auth/profile.html:115
 msgid "Update profile"
 msgstr ""
 

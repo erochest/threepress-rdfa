@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-13 11:17-0400\n"
+"POT-Creation-Date: 2009-04-14 10:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME &lt;EMAIL@ADDRESS&gt;\n"
 "Language-Team: LANGUAGE &lt;LL@li.org&gt;\n"
@@ -370,7 +370,7 @@ msgstr ""
 "mailen"
 
 #: django_authopenid/templates/authopenid/sendpw.html:24
-#: library/templates/auth/profile.html:69
+#: library/templates/auth/profile.html:68
 #: library/templates/auth/authopenid/signin.html:70
 #: library/templates/auth/authopenid/signup.html:67
 msgid "Username"
@@ -3490,40 +3490,46 @@ msgstr "Ændring af det tilknyttede OpenID"
 msgid "Delete this account"
 msgstr "Slet denne konto"
 
-#: library/templates/auth/profile.html:57
+#: library/templates/auth/profile.html:56
 msgid "User profile and preferences for "
 msgstr "Brugerprofil og præferencer for"
 
-#: library/templates/auth/profile.html:64
+#: library/templates/auth/profile.html:63
 msgid "User information"
 msgstr "Brugerinformation"
 
-#: library/templates/auth/profile.html:88
+#: library/templates/auth/profile.html:83
+#: library/templates/auth/profile.html:93
+#, fuzzy
+msgid "change"
+msgstr "Ændring af email"
+
+#: library/templates/auth/profile.html:87
 msgid "Full name"
 msgstr "Fulde navn"
 
-#: library/templates/auth/profile.html:93
+#: library/templates/auth/profile.html:92
 msgid "Email address"
 msgstr "email-adresse"
 
-#: library/templates/auth/profile.html:98
+#: library/templates/auth/profile.html:97
 msgid "Country"
 msgstr "Land"
 
-#: library/templates/auth/profile.html:104
+#: library/templates/auth/profile.html:103
 msgid "Language"
 msgstr "Sprog"
 
-#: library/templates/auth/profile.html:105
+#: library/templates/auth/profile.html:104
 #, fuzzy
 msgid "change <!-- trans: change the user's language setting -->"
 msgstr "Skift "
 
-#: library/templates/auth/profile.html:109
+#: library/templates/auth/profile.html:108
 msgid "Open to last-read chapter when reading a book?"
 msgstr "Skal en bog altid åbnes i det kapitel du sidst har læst i?"
 
-#: library/templates/auth/profile.html:116
+#: library/templates/auth/profile.html:115
 msgid "Update profile"
 msgstr "Opdatér profil"
 

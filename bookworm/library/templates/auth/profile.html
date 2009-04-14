@@ -38,8 +38,7 @@ form input {
 </ol>
 
 {% if request.openid %}
-<p>Some fields such as email and country have been imported via OpenID
-and should be changed with your OpenID provider, rather than with Bookworm.</p>
+<p>{% trans %}Some fields such as email and country have been imported via OpenID and should be changed with your OpenID provider, rather than with Bookworm.{% endtrans %}</p>
 {% endif %}
 
 
@@ -81,7 +80,7 @@ and should be changed with your OpenID provider, rather than with Bookworm.</p>
             {{ request.openid }}
           {% endif %}
           
-      <a href="{% url django_authopenid.views.changeopenid %}">[change]</a></td>
+      <a href="{% url django_authopenid.views.changeopenid %}">[{{ _("change")}}]</a></td>
     </tr>
     {% endif %}
     <tr>
@@ -91,7 +90,7 @@ and should be changed with your OpenID provider, rather than with Bookworm.</p>
 
     <tr>
       <th>{% trans "Email address" %}</th>
-      <td> {{ request.user.email }} {% if not request.openid %}<a href="{% url django_authopenid.views.changeemail %}">[change]</a>{% endif %} </td>
+      <td> {{ request.user.email }} {% if not request.openid %}<a href="{% url django_authopenid.views.changeemail %}">[{{ _("change") }}]</a>{% endif %} </td>
     </tr>
     {% if prefs.country %}
     <tr>
