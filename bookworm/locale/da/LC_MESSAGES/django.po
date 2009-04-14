@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-14 10:56-0400\n"
-"PO-Revision-Date: 2009-04-14 10:56-0400\n"
+"PO-Revision-Date: 2009-04-14 11:07-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -2519,7 +2519,7 @@ msgstr ""
 
 #: library/templates/public.html:92
 msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
-msgstr "Hvad er en &amp;ldquo;ePub-bog&amp;rdquo;?"
+msgstr "Hvad er en &ldquo;ePub-bog&rdquo;?"
 
 #: library/templates/public.html:95
 #, python-format
