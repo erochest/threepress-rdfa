@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-16 11:01-0400\n"
+"POT-Creation-Date: 2009-04-16 11:33-0400\n"
 "PO-Revision-Date: 2009-04-13 11:11-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
@@ -1942,9 +1942,10 @@ msgid "Bookworm"
 msgstr ""
 
 #: library/templates/index.html:82
+#, python-format
 msgid ""
-"A free platform for reading ePub books online. <a "
-"href='{{ abouturl }}'>Learn more</a>."
+"A free platform for reading ePub books online. <a href='%(abouturl)s'>Learn "
+"more</a>."
 msgstr ""
 
 #: library/templates/index.html:86

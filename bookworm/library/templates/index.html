@@ -79,7 +79,7 @@
 {% else %}
   <h1 id="bw-logo-image-header"><img id="bw-logo-image" src="/static/bookworm-logo.png" alt="{% trans "Bookworm" %}" /></h1> 
   {% url about as abouturl %}
-  <p class="bw-tagline">{% trans "A free platform for reading ePub books online. <a href='{{ abouturl }}'>Learn more</a>." %}</p> 
+  <p class="bw-tagline">{% blocktrans %}A free platform for reading ePub books online. <a href='{{ abouturl }}'>Learn more</a>.{% endblocktrans %}</p> 
 {% endif %}
 
 {% if mobile %}
