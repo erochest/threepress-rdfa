@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-16 11:01-0400\n"
-"PO-Revision-Date: 2009-04-16 11:03-0400\n"
+"PO-Revision-Date: 2009-04-16 11:19-0400\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -632,7 +632,7 @@ msgstr ""
 "Probleme, die verhindern, dass es geladen werden konnte. \n"
 "Dies kann ein Fehler in Bookworm sein oder ein Problem mit der \n"
 "Art und Weise wie die ePub Datei erzeugt wurde. Die komplette \n"
-"Fehlermeldung lautet: <p style='color:black;font-weight:normal'>%s</p>"
+"Fehlermeldung lautet:"
 
 #: library/views.py:521
 msgid ""
@@ -651,7 +651,7 @@ msgstr ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> sagt \n"
 "ebenfalls, dass dies keine gültige ePub Datei ist. Deshalb sollten \n"
 "Sie den Herausgeber kontaktieren. Das Ergebnis war: \n"
-"<pre style='color:black;font-weight:normal'>%s</pre></p>"
+"</p>"
 
 #: library/templates/about.html:3 library/templates/about.html.py:5
 #: library/templates/includes/about.html:5
