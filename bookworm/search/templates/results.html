@@ -1,26 +1,28 @@
 {% extends "base.html" %}
 {% load humanize %}
 {% load results %}
-
-{% block title %}Search results {% if term %} for '{{ term }}' {% endif %}{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Search results" %}{% if term %}: {{ term }}{% endif %}{% endblock %}
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="/static/results.css"></link>
 {% endblock head %}
 
 {% block leftnav %}
-<p><a href="{% url search_help %}">About searching</a></p>
+<p><a href="{% url search_help %}">{% trans "About searching" %}</a></p>
 {% endblock leftnav %}
 
 {% block main %}
 <div id="bw-content">
+  {% url search_help as search_help_url %}
   
   {% if results %}
-  <p class="bw-search-results-info">{{ results.count|intcomma }} result{{ results.count|pluralize}} found for 
-  <em>&lsquo;{{ term }}&rsquo;</em> in your library. Results are returned
-  starting from the most relevant.</p>
+  <p class="bw-search-results-info">{% blocktrans count results.count as resultscount %} One result found for <em>&lsquo;{{ term }}&rsquo;</em> in your library. {% plural %} {{ resultscount }} results found for for <em>&lsquo;{{ term }}&rsquo;</em> in your library.{% endblocktrans %}
+
+  {% blocktrans %}Results are returned starting from the most relevant.{% endblocktrans %}</p>
+
   {% if page.has_other_pages %}
-    <p class="bw-search-results-listed">Showing result{{ results.count|pluralize}} {{ page.start_index|intcomma }} &mdash; {{ page.end_index|intcomma }}</p>
+    <p class="bw-search-results-listed">{% blocktrans with page.start_index|intcomma as startindex and page.end_index|intcomma as endindex %} Showing results {{ startindex }} &mdash; {{ endindex }}{% endblocktrans %}</p>
   {% endif %}
 
     <ol id="bw-search-results" start="{{ page.start_index}}">
@@ -32,29 +34,24 @@
 
   {% if page.has_other_pages %}
   <div class="bw-search-results-nav">
-    <div class="bw-search-previous">{% if page.has_previous %} <a href="{% url search %}?q={{ term }}&amp;page={{ page.previous_page_number }}">← previous</a> {% endif %} </div>
+    <div class="bw-search-previous">{% if page.has_previous %} <a href="{% url search %}?q={{ term }}&amp;page={{ page.previous_page_number }}">← {% trans "previous" %}</a> {% endif %} </div>
     <div class="bw-search-next">
-    {% if page.has_next %} <a href="{% url search %}?q={{ term }}&amp;page={{ page.next_page_number }}">next →</a> {% endif %} 
+    {% if page.has_next %} <a href="{% url search %}?q={{ term }}&amp;page={{ page.next_page_number }}">{% trans "next" %} →</a> {% endif %} 
     </div>
   </div>
   {% endif %}
 
   {% else %}
     {% if term %}
-      <h2>No results were found</h2>
-      <p>No results were found for <em>&lsquo;{{ term }} &rsquo;</em> in <em>{{ current_search_language }}</em>.
-      Get <a href="{% url search_help %}">help with searching Bookworm</a>.
+      <h2>{% trans "No search results were found" %}</h2>
+      <p>{% blocktrans %}No results were found for <em>&lsquo;{{ term }}&rsquo;</em>.{% endblocktrans %}
+      {% blocktrans %}Get <a href="{{ search_help_url }}">help with searching Bookworm</a>.{% endblocktrans %}
       </p>
       <p>
-        If you just added an ePub that you're expecting to search, please wait a 
-        few minutes.  The search engine checks periodically for new
-        material and should update shortly.
-      </p>
+        {% blocktrans %}If you just added an ePub that you're expecting to search, please wait a few minutes.  The search engine checks periodically for new material and should update shortly.{% endblocktrans %} </p>
      {% else %}
-     <h2>Search your ePubs on Bookworm</h2>
-      <p>Enter one or more words on the left to search your library, or get 
-        <a href="{% url search_help %}">help with searching Bookworm</a>.
-      </p>
+     <h2>{% trans "Search your ePubs on Bookworm" %}</h2>
+      <p>{% blocktrans %}Enter one or more words on the left to search your library, or get <a href="{{ search_help_url }}">help with searching Bookworm</a>.{% endblocktrans %}</p>
    {% endif %}
 
   {% endif %}

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-14 10:56-0400\n"
-"PO-Revision-Date: 2009-04-14 11:07-0400\n"
+"POT-Creation-Date: 2009-04-16 11:00-0400\n"
+"PO-Revision-Date: 2009-04-16 11:01-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -518,27 +518,27 @@ msgstr "hovedforfatter"
 msgid "date added to your library"
 msgstr "dato for tilføjelse til dit bibliotek"
 
-#: library/views.py:91
+#: library/views.py:93
 msgid "ascending"
 msgstr "stigende"
 
-#: library/views.py:91
+#: library/views.py:93
 msgid "descending"
 msgstr "faldende"
 
-#: library/views.py:92
+#: library/views.py:94
 msgid "alphabetically"
 msgstr "alfabetisk"
 
-#: library/views.py:92
+#: library/views.py:94
 msgid "by date value"
 msgstr "i datoorden"
 
-#: library/views.py:131
+#: library/views.py:133
 msgid "There was a problem reading the metadata for this document."
 msgstr "Dokumentets metadata kunne ikke læses."
 
-#: library/views.py:180
+#: library/views.py:182
 msgid ""
 "\n"
 "This book contained content that Bookworm couldn't read.  You may need to "
@@ -553,15 +553,15 @@ msgstr ""
 "at bekræfte, at bogen er en valid epub-bog og indeholder enten XHTML- eller "
 "DTBook-formatteret indhold."
 
-#: library/views.py:316
+#: library/views.py:318
 msgid "Your profile has been updated."
 msgstr "Din profil er nu opdateret"
 
-#: library/views.py:333 library/views.py:341
+#: library/views.py:335 library/views.py:343
 msgid "There was a problem with your request to delete this profile."
 msgstr "Der opstod problemer med din anmodning om at slette profilen."
 
-#: library/views.py:448
+#: library/views.py:450
 msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
@@ -569,7 +569,7 @@ msgstr ""
 "Den fil, du oploadede, kunne ikke genkendes som et epub-arkiv og kunne ikke "
 "føjes til dit bibliotek."
 
-#: library/views.py:455
+#: library/views.py:457
 msgid ""
 "We detected a problem with your ebook that is most likely related to it "
 "being too big to display safely in a web browser. This can happen with very "
@@ -585,7 +585,7 @@ msgstr ""
 "man scroller meget og de loades kun meget langsomt. de kan derfor ikke "
 "indlæses i Bookworm."
 
-#: library/views.py:481
+#: library/views.py:483
 msgid ""
 "It appears that you've uploaded a book which contains DRM (Digital Rights "
 "Management).  This is a restriction that is meant to prevent illegal copying "
@@ -601,20 +601,19 @@ msgstr ""
 "Adobe Digital Editions, men du bør også overveje at kontakte forlaget eller "
 "bogens forhandler og foreslå dem at udsende ebøger uden DRM."
 
-#: library/views.py:515
-#, python-format
+#: library/views.py:517
 msgid ""
 "The file you uploaded looks like an ePub archive, but it has some problems "
 "that prevented it from being loaded.  This may be a bug in Bookworm, or it "
 "may be a problem with the way the ePub file was created. The complete error "
-"message is: <p style='color:black;font-weight:normal'>%s</p>"
+"message is:"
 msgstr ""
 "Den fil du oploadede ligner et ePub-arkiv, men der er nogle problemer ved "
 "den, der forhindrede den i at blive indlæst. Det kan enten skyldes en fejl i "
 "Bookworm eller med den måde ePub-filen blev skabt. Den fulde fejlmeddelelse "
 "er: <p style='color:black;font-weight:normal'>%s</p>"
 
-#: library/views.py:518
+#: library/views.py:521
 msgid ""
 "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
 "error)</p>"
@@ -622,13 +621,11 @@ msgstr ""
 "<p>(epubcheck tror at denne fil er valid, så der er nok tale om en fejl i "
 "Bookworm)</p>"
 
-#: library/views.py:524
-#, python-format
+#: library/views.py:527
 msgid ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that "
 "this is not a valid ePub file, so you should check with the publisher or "
-"content creator. It returned: <pre style='color:black;font-weight:normal'>%"
-"s</pre></p>"
+"content creator. It returned:"
 msgstr ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> er enig i at "
 "dette ikke er en valid ePub-fil, så du bør kontakte med forlaget eller den "
@@ -3018,7 +3015,7 @@ msgstr ""
 msgid "Click <!-- trans: imperative verb -->"
 msgstr "Klik på "
 
-#: library/templates/tour.html:71 library/templates/upload.html:59
+#: library/templates/tour.html:71 library/templates/upload.html:58
 msgid "Add to my library"
 msgstr "Tilføj til mit bibliotek"
 
@@ -3278,7 +3275,7 @@ msgstr ""
 "Hvis du har spørgsmål eller problemer med Bookworm, så kontakt <a href="
 "\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>"
 
-#: library/templates/upload.html:43
+#: library/templates/upload.html:42
 msgid ""
 "To read an ebook on Bookworm, you must have first purchased or acquired it "
 "from a publisher or online book source, and downloaded that book to your "
@@ -3288,7 +3285,7 @@ msgstr ""
 "eller en onlineboghandel og downloade ebogen på din computer. udfyld denne "
 "formular for at føje ebogen til dit bibliotek."
 
-#: library/templates/upload.html:46
+#: library/templates/upload.html:45
 #, python-format
 msgid ""
 "The ebook must be in the ePub format and have a filename ending in <strong>."
@@ -3299,7 +3296,7 @@ msgstr ""
 "<strong>.epub</strong>. Hvis du ikke ved hvad ePub er, kan du læse mere på "
 "<a href=\"%(abouturl)s\">Om</a>-siden."
 
-#: library/templates/upload.html:50
+#: library/templates/upload.html:49
 msgid ""
 "You need to click on the &lsquo;Browse&rsquo; button and select an ebook to "
 "add."
@@ -3307,7 +3304,7 @@ msgstr ""
 "Du skal klikke på &amp;lsquo;Browse&amp;rsquo;-knappen og vælge den ebog, "
 "der skal tilføjes."
 
-#: library/templates/upload.html:57
+#: library/templates/upload.html:56
 msgid "Add an ePub from your computer by clicking on &lsquo;Browse&rsquo;:"
 msgstr ""
 "Tilføj en ePub fra din computer ved at klikke på &amp;lsquo;Browse&amp;"
@@ -3377,6 +3374,12 @@ msgstr "Ændring af det tilknyttede OpenID"
 #: library/templates/auth/profile.html:37
 msgid "Delete this account"
 msgstr "Slet denne konto"
+
+#: library/templates/auth/profile.html:41
+msgid ""
+"Some fields such as email and country have been imported via OpenID and "
+"should be changed with your OpenID provider, rather than with Bookworm."
+msgstr ""
 
 #: library/templates/auth/profile.html:56
 msgid "User profile and preferences for "
@@ -3760,6 +3763,7 @@ msgstr ""
 "openid.net/</a>."
 
 #: library/templates/includes/pagination.html:4
+#: search/templates/results.html:37
 msgid "previous"
 msgstr "forrige"
 
@@ -3769,6 +3773,7 @@ msgid " Page %(page_number)s of %(num_pages)s"
 msgstr " Side %(page_number)s af %(num_pages)s"
 
 #: library/templates/includes/pagination.html:6
+#: search/templates/results.html:39
 msgid "next"
 msgstr "næste"
 
@@ -3811,6 +3816,64 @@ msgstr "Om"
 #: library/templates/mobile/base.html:24
 msgid "my books"
 msgstr "Mine bøger"
+
+#: search/templates/results.html:5
+msgid "Search results"
+msgstr "Søg"
+
+#: search/templates/results.html:12
+msgid "About searching"
+msgstr "Om fuldtekstsøgning"
+
+#: search/templates/results.html:20
+#, python-format
+msgid " One result found for <em>&lsquo;%(term)s&rsquo;</em> in your library. "
+msgid_plural ""
+" %(resultscount)s results found for for <em>&lsquo;%(term)s&rsquo;</em> in "
+"your library."
+msgstr[0] ""
+msgstr[1] ""
+
+#: search/templates/results.html:22
+msgid "Results are returned starting from the most relevant."
+msgstr ""
+
+#: search/templates/results.html:25
+#, python-format
+msgid " Showing results %(startindex)s &mdash; %(endindex)s"
+msgstr ""
+
+#: search/templates/results.html:46
+msgid "No search results were found"
+msgstr ""
+
+#: search/templates/results.html:47
+#, python-format
+msgid "No results were found for <em>&lsquo;%(term)s&rsquo;</em>."
+msgstr ""
+
+#: search/templates/results.html:48
+#, python-format
+msgid "Get <a href=\"%(search_help_url)s\">help with searching Bookworm</a>."
+msgstr ""
+
+#: search/templates/results.html:51
+msgid ""
+"If you just added an ePub that you're expecting to search, please wait a few "
+"minutes.  The search engine checks periodically for new material and should "
+"update shortly."
+msgstr ""
+
+#: search/templates/results.html:53
+msgid "Search your ePubs on Bookworm"
+msgstr "Kontroller dine ePubs med Bookworm"
+
+#: search/templates/results.html:54
+#, python-format
+msgid ""
+"Enter one or more words on the left to search your library, or get <a href="
+"\"%(search_help_url)s\">help with searching Bookworm</a>."
+msgstr ""
 
 #: search/templates/search_help.html:7 search/templates/search_help.html:9
 msgid "Full-text search in Bookworm"
