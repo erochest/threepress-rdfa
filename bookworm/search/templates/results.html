@@ -17,7 +17,7 @@
   {% url search_help as search_help_url %}
   
   {% if results %}
-  <p class="bw-search-results-info">{% blocktrans count results.count as resultscount %} One result found for <em>&lsquo;{{ term }}&rsquo;</em> in your library. {% plural %} {{ resultscount }} results found for for <em>&lsquo;{{ term }}&rsquo;</em> in your library.{% endblocktrans %}
+  <p class="bw-search-results-info">{% blocktrans count results.count as resultscount %} One result found for <em>&lsquo;{{ term }}&rsquo;</em> in your library. {% plural %} {{ resultscount }} results found for <em>&lsquo;{{ term }}&rsquo;</em> in your library.{% endblocktrans %}
 
   {% blocktrans %}Results are returned starting from the most relevant.{% endblocktrans %}</p>
 
