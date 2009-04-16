@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-16 11:33-0400\n"
-"PO-Revision-Date: 2009-04-16 11:19-0400\n"
+"PO-Revision-Date: 2009-04-16 17:45+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2444,13 +2444,13 @@ msgid "Bookworm"
 msgstr "Bookworm"
 
 #: library/templates/index.html:82
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "A free platform for reading ePub books online. <a href='%(abouturl)s'>Learn "
 "more</a>."
 msgstr ""
-"Eine freie Plattform, um ePub-Bücher online zu lesen. <a "
-"href='{{ abouturl }}'>Weitere Informationen</a>."
+"Eine freie Plattform, um ePub-Bücher online zu lesen. \n"
+"<a href='%(abouturl)s'>Weitere Informationen</a>."
 
 #: library/templates/index.html:86
 msgid "To add a new book, log in using your computer."
@@ -3526,6 +3526,9 @@ msgid ""
 "Some fields such as email and country have been imported via OpenID and "
 "should be changed with your OpenID provider, rather than with Bookworm."
 msgstr ""
+"Einige Einträge wie z.B. Email und Land wurden über OpenID \n"
+"importiert und sollten bei Ihrem OpenID Dienstleister \n"
+"geändert werden anstatt bei Bookworm."
 
 #: library/templates/auth/profile.html:56
 msgid "User profile and preferences for "
@@ -3986,30 +3989,34 @@ msgid_plural ""
 " %(resultscount)s results found for for <em>&lsquo;%(term)s&rsquo;</em> in "
 "your library."
 msgstr[0] ""
+"Ein Ergebnis in Ihrer Bibliothek zu <em>&lsquo;%(term)s&rsquo;</em> \n"
+"gefunden. "
 msgstr[1] ""
+" %(resultscount)s Ergebnisse zu <em>&lsquo;%(term)s&rsquo;</em> \n"
+"in Ihrer Bibliothek gefunden. "
 
 #: search/templates/results.html:22
 msgid "Results are returned starting from the most relevant."
-msgstr ""
+msgstr "Die relevantesten Ergebnisse werden zuerst angezeigt."
 
 #: search/templates/results.html:25
 #, python-format
 msgid " Showing results %(startindex)s &mdash; %(endindex)s"
-msgstr ""
+msgstr "Ergebnisse %(startindex)s &mdash; %(endindex)s"
 
 #: search/templates/results.html:46
 msgid "No search results were found"
-msgstr ""
+msgstr "Kein Sucherergebnisse gefunden"
 
 #: search/templates/results.html:47
 #, python-format
 msgid "No results were found for <em>&lsquo;%(term)s&rsquo;</em>."
-msgstr ""
+msgstr "Zu <em>&lsquo;%(term)s&rsquo;</em> keine Ergebnisse gefunden."
 
 #: search/templates/results.html:48
 #, python-format
 msgid "Get <a href=\"%(search_help_url)s\">help with searching Bookworm</a>."
-msgstr ""
+msgstr "<a href=\"%(search_help_url)s\">Hilfe zur Suche auf Bookworm</a>."
 
 #: search/templates/results.html:51
 msgid ""
@@ -4017,11 +4024,13 @@ msgid ""
 "minutes.  The search engine checks periodically for new material and should "
 "update shortly."
 msgstr ""
+"Falls Sie gerade ein ePub Buch hinzugefügt haben, das Sie durchsuchen \n"
+"wollen, warten Sie bitte ein paar Minuten. Die Suchsoftware prüft \n"
+"periodisch, ob Neues hinzugekommen ist und sollte in Kürze updaten."
 
 #: search/templates/results.html:53
-#, fuzzy
 msgid "Search your ePubs on Bookworm"
-msgstr "Testen Sie Ihre ePubs mit Bookworm"
+msgstr "Durchsuchen Sie Ihre ePub Bücher auf Bookworm"
 
 #: search/templates/results.html:54
 #, python-format
@@ -4029,6 +4038,9 @@ msgid ""
 "Enter one or more words on the left to search your library, or get <a href="
 "\"%(search_help_url)s\">help with searching Bookworm</a>."
 msgstr ""
+"Geben Sie links ein oder zwei Suchwörter ein um Ihre Bibliothek zu \n"
+"durchsuchen oder erhalten Sie <a href=\"%(search_help_url)s\">Hilfe zum \n"
+"Suchen auf Bookworm</a>."
 
 #: search/templates/search_help.html:7 search/templates/search_help.html:9
 msgid "Full-text search in Bookworm"
