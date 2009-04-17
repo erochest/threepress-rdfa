@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 {% block title %}{{ _("Sign in") }}{% endblock %}
 
 {% block head %}
@@ -28,7 +30,7 @@ jQuery(document).ready(function() {
 {% if mobile %} 
     Bookworm: {{ _("ePub ebook reader") }}
 {% else %}
-Sign in to Bookworm
+{% trans "Sign in to Bookworm" %}
 {% endif %}
 
 

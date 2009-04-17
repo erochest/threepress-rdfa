@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-16 11:33-0400\n"
+"POT-Creation-Date: 2009-04-17 10:11-0400\n"
 "PO-Revision-Date: 2009-04-13 11:11-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
@@ -204,7 +204,7 @@ msgstr "Uusi sähköposti"
 #: library/templates/auth/authopenid/changeemail.html:34
 #: library/templates/auth/authopenid/complete.html:63
 #: library/templates/auth/authopenid/delete.html:40
-#: library/templates/auth/authopenid/signin.html:72
+#: library/templates/auth/authopenid/signin.html:74
 #: library/templates/auth/authopenid/signup.html:71
 msgid "Password"
 msgstr "Salasana"
@@ -308,6 +308,7 @@ msgstr "Käyttäjänimi"
 
 #: django_authopenid/templates/authopenid/complete.html:52
 #: library/templates/auth/authopenid/changeemail.html:33
+#: library/templates/auth/authopenid/complete.html:48
 #: library/templates/auth/authopenid/signup.html:70
 msgid "Email"
 msgstr "Sähköposti"
@@ -369,7 +370,9 @@ msgstr ""
 
 #: django_authopenid/templates/authopenid/sendpw.html:24
 #: library/templates/auth/profile.html:68
-#: library/templates/auth/authopenid/signin.html:70
+#: library/templates/auth/authopenid/complete.html:47
+#: library/templates/auth/authopenid/sendpw.html:27
+#: library/templates/auth/authopenid/signin.html:72
 #: library/templates/auth/authopenid/signup.html:67
 msgid "Username"
 msgstr "Käyttäjänimi"
@@ -384,7 +387,6 @@ msgid "Settings"
 msgstr "Asetukset"
 
 #: django_authopenid/templates/authopenid/settings.html:23
-#: library/templates/auth/authopenid/settings.html:23
 msgid ""
 "\n"
 "    <p>This is where you can make changes to your account.</p>\n"
@@ -1987,7 +1989,9 @@ msgid "Learn more"
 msgstr ""
 
 #: library/templates/public.html:23
-#: library/templates/auth/authopenid/signin.html:41
+#: library/templates/auth/authopenid/signin.html:43
+#: library/templates/auth/authopenid/signup.html:3
+#: library/templates/auth/authopenid/signup.html:4
 #: library/templates/auth/authopenid/signup.html:75
 msgid "Sign up"
 msgstr ""
@@ -2429,8 +2433,8 @@ msgid "language"
 msgstr ""
 
 #: library/templates/shell.html:86
-#: library/templates/auth/authopenid/signin.html:2
-#: library/templates/auth/authopenid/signin.html:73
+#: library/templates/auth/authopenid/signin.html:4
+#: library/templates/auth/authopenid/signin.html:75
 msgid "Sign in"
 msgstr ""
 
@@ -2852,8 +2856,9 @@ msgid "Update profile"
 msgstr ""
 
 #: library/templates/auth/authopenid/changeemail.html:4
-msgid "Change email address for <!-- trans: for person -->"
-msgstr ""
+#, fuzzy
+msgid "Change email address for"
+msgstr "Vaihda sähköposti"
 
 #: library/templates/auth/authopenid/changeemail.html:16
 #: library/templates/auth/authopenid/changepw.html:15
@@ -2862,16 +2867,74 @@ msgstr ""
 msgid "Please correct the errors below"
 msgstr ""
 
+#: library/templates/auth/authopenid/changeopenid.html:11
+#, fuzzy
+msgid "Change OpenID URL linked with this account"
+msgstr "Tämä OpenID -tunnus on jo toisen tilin käytössä."
+
+#: library/templates/auth/authopenid/changeopenid.html:13
+msgid ""
+"You may change the OpenID URL which is linked with the current logged-in "
+"account.  Make sure you really mean to do this, as you will not be able to "
+"log in with the old URL again."
+msgstr ""
+
+#: library/templates/auth/authopenid/changeopenid.html:17
+#: library/templates/auth/authopenid/sendpw.html:14
+#, fuzzy
+msgid "Please correct the errors below:"
+msgstr "Ole hyvä ja korjaa alla olevat virheet:"
+
+#: library/templates/auth/authopenid/changeopenid.html:30
+#, fuzzy
+msgid "OpenID URL"
+msgstr "OpenID url:"
+
+#: library/templates/auth/authopenid/changeopenid.html:31
+#, fuzzy
+msgid "Change OpenID"
+msgstr "Vaihda openid -tunnus"
+
 #: library/templates/auth/authopenid/changepw.html:4
 msgid "Change password for <!-- trans: for person -->"
 msgstr ""
+
+#: library/templates/auth/authopenid/complete.html:10
+#, fuzzy
+msgid ""
+"If you're new to Bookworm, link your OpenID with a new account. If you're "
+"already a Bookworm member, link it with your existing account."
+msgstr ""
+"\n"
+"Jos avaat käyttäjätilin <strong>Sitename</strong> -palvelussa, liitä OpenID -"
+"tunnuksesi uuteen tiliin. Jos sinulla on jo tili, voit liittää tunnuksesi "
+"kyseiseen tiliin."
 
 #: library/templates/auth/authopenid/complete.html:17
 msgid "Link an OpenID with your existing Bookworm account"
 msgstr ""
 
+#: library/templates/auth/authopenid/complete.html:46
+msgid "I'm new here"
+msgstr ""
+
+#: library/templates/auth/authopenid/complete.html:49
+#, fuzzy
+msgid "Create a new Bookworm account"
+msgstr "Luo käyttäjätili ja kirjaudu palveluun"
+
+#: library/templates/auth/authopenid/complete.html:61
+#, fuzzy
+msgid "I already have a Bookworm account"
+msgstr "Luo käyttäjätili ja kirjaudu palveluun"
+
+#: library/templates/auth/authopenid/complete.html:64
+#, fuzzy
+msgid "Associate with my OpenID"
+msgstr "Liitä OpenID -tunnuksesi"
+
 #: library/templates/auth/authopenid/delete.html:4
-msgid "Delete profile of <!-- trans: person name -->"
+msgid "Delete profile of"
 msgstr ""
 
 #: library/templates/auth/authopenid/delete.html:15
@@ -2899,54 +2962,82 @@ msgstr ""
 msgid "Delete my profile"
 msgstr ""
 
-#: library/templates/auth/authopenid/signin.html:29
+#: library/templates/auth/authopenid/sendpw.html:9
+#, fuzzy
+msgid "Reset your password"
+msgstr "Tee uusi salasana."
+
+#: library/templates/auth/authopenid/sendpw.html:11
+#, fuzzy
+msgid ""
+"If you've forgotten your password, enter your username below and we'll email "
+"you a new one.  The password won't be activated until you click on the link "
+"you see in the email."
+msgstr ""
+"Salasana hukassa? Poista vanha salasana seuraavasti: Kirjoita käyttämäsi "
+"käyttäjänimi ja saat sähköpostiisi uuden salasanan. Voit kirjautua uudella "
+"salasanalla, kun olet klikannut sähköpostissa olevaa linkkiä."
+
+#: library/templates/auth/authopenid/sendpw.html:28
+#, fuzzy
+msgid "Reset password"
+msgstr "Uusi salasana"
+
+#: library/templates/auth/authopenid/settings.html:23
+#, fuzzy
+msgid "This is where you can make changes to your account."
+msgstr ""
+"\n"
+"<p> Muuta käyttäjätilisi tietoja.</p>"
+
+#: library/templates/auth/authopenid/signin.html:31
 msgid "ePub ebook reader"
 msgstr ""
 
-#: library/templates/auth/authopenid/signin.html:38
+#: library/templates/auth/authopenid/signin.html:33
+#, fuzzy
+msgid "Sign in to Bookworm"
+msgstr "Tietoja Bookworm -palvelusta."
+
+#: library/templates/auth/authopenid/signin.html:40
 msgid "New to Bookworm?"
 msgstr ""
 
-#: library/templates/auth/authopenid/signin.html:40
+#: library/templates/auth/authopenid/signin.html:42
 #: library/templates/includes/about.html:6
 msgid "Take the tour"
 msgstr ""
 
-#: library/templates/auth/authopenid/signin.html:60
+#: library/templates/auth/authopenid/signin.html:62
 msgid ""
 "You may have created your account with an OpenID, in which case you won't "
 "need your password but should enter your OpenID URL below."
 msgstr ""
 
-#: library/templates/auth/authopenid/signin.html:61
+#: library/templates/auth/authopenid/signin.html:63
 msgid ""
 "If you've never created an account, click &lsquo;Sign up&rsquo; on the left."
 msgstr ""
 
-#: library/templates/auth/authopenid/signin.html:69
+#: library/templates/auth/authopenid/signin.html:71
 msgid "Sign in using a local Bookworm account"
 msgstr ""
 
-#: library/templates/auth/authopenid/signin.html:74
+#: library/templates/auth/authopenid/signin.html:76
 msgid "Lost your password?"
 msgstr ""
 
-#: library/templates/auth/authopenid/signin.html:81
+#: library/templates/auth/authopenid/signin.html:83
 msgid "Sign in using your OpenID"
 msgstr ""
 
-#: library/templates/auth/authopenid/signin.html:83
+#: library/templates/auth/authopenid/signin.html:85
 msgid "Sign in with OpenID"
 msgstr ""
 
-#: library/templates/auth/authopenid/signin.html:84
+#: library/templates/auth/authopenid/signin.html:86
 #: library/templates/auth/authopenid/signup.html:92
 msgid "What's this?"
-msgstr ""
-
-#: library/templates/auth/authopenid/signup.html:3
-#: library/templates/auth/authopenid/signup.html:4
-msgid "Sign up <!-- trans: open a Bookworm account --> "
 msgstr ""
 
 #: library/templates/auth/authopenid/signup.html:21
@@ -3224,8 +3315,8 @@ msgstr ""
 #, python-format
 msgid " One result found for <em>&lsquo;%(term)s&rsquo;</em> in your library. "
 msgid_plural ""
-" %(resultscount)s results found for for <em>&lsquo;%(term)s&rsquo;</em> in "
-"your library."
+" %(resultscount)s results found for <em>&lsquo;%(term)s&rsquo;</em> in your "
+"library."
 msgstr[0] ""
 msgstr[1] ""
 

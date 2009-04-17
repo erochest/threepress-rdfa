@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 {% block head %}
 
 {% endblock %}
@@ -6,14 +8,13 @@
 
 {% block main %}
 <div id="bw-content">
-<h1>Change OpenID URL linked with this account</h1>
+<h1>{% trans "Change OpenID URL linked with this account" %}</h1>
 
-<p>You may change the OpenID URL which is linked with the current logged-in account.  Make sure you
-really mean to do this, as you will not be able to log in with the old URL again.
+<p>{% trans "You may change the OpenID URL which is linked with the current logged-in account.  Make sure you really mean to do this, as you will not be able to log in with the old URL again." %}
 </p>
 
 {% if form.errors %}
-<p class="bw-message">Please correct the errors below:<br />
+<p class="bw-message">{% trans "Please correct the errors below:" %}<br />
 {% if form.openid_url.errors %} 
 <span class="bw-error">{{ form.openid_url.errors|join:", " }}</span>
 {% endif %}
@@ -26,8 +27,8 @@ really mean to do this, as you will not be able to log in with the old URL again
 
 <form action="." method="post" accept-charset="utf-8">
   
-  <label for="id_openid_url">OpenID URL</label>{{ form.openid_url }}
-  <p><input type="submit" value="Change OpenID"/></p>
+  <label for="id_openid_url">{% trans "OpenID URL" %}</label>{{ form.openid_url }}
+  <p><input type="submit" value="{{ _("Change OpenID") }}"/></p>
   
 </form>
 </div>

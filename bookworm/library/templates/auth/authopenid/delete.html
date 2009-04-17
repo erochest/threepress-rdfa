@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans "Delete profile of <!-- trans: person name -->" %}{{ request.user.username }}{% endblock %}
+{% block title %}{% trans "Delete profile of" %}{{ request.user.username }}{% endblock %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="/static/auth.css" ></link>
 {% endblock head %}
