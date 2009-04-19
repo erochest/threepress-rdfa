@@ -3,7 +3,7 @@ import os, sys, subprocess
 
 lang = sys.argv[1]
 
-#print "Running format for %s with corrections" % lang
+print "Running format for %s with corrections" % lang
 
 mo_file = 'locale/%s/LC_MESSAGES/django.mo' % lang
 po_file = 'locale/%s/LC_MESSAGES/django.po' % lang
