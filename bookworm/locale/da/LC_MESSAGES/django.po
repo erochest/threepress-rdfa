@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 10:11-0400\n"
-"PO-Revision-Date: 2009-04-17 10:18-0400\n"
+"POT-Creation-Date: 2009-04-19 11:37-0400\n"
+"PO-Revision-Date: 2009-04-19 11:38-0400\n"
 "Last-Translator: Marie Bilde Rasmussen <mariebilderas@gmail.com>\n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -1656,7 +1656,14 @@ msgid ""
 "      the default page for the ePub will not be the first item in the\n"
 "      NCX file.\n"
 "      "
-msgstr "\n\nI overensstemmelse med ePub-specifikationen, vil Bookworm &lsquo;åbne&rsquo; ePub-filen til det første element i NCX-filen med attributen <code>linear</code> sat til &lsquo;yes&rsquo;. I modsætning til, hvad man skulle tro, betyder dette, at default-siden i nogle værker ikke vil være det første element i NCX-filen."
+msgstr ""
+"\n"
+"\n"
+"I overensstemmelse med ePub-specifikationen, vil Bookworm &lsquo;åbne&rsquo; "
+"ePub-filen til det første element i NCX-filen med attributen <code>linear</"
+"code> sat til &lsquo;yes&rsquo;. I modsætning til, hvad man skulle tro, "
+"betyder dette, at default-siden i nogle værker ikke vil være det første "
+"element i NCX-filen."
 
 #: library/templates/epub.html:157
 msgid ""
@@ -1685,7 +1692,14 @@ msgid ""
 "      as many browsers do not have inline-SVG support via the\n"
 "      <code>&lt;img&gt;</code> tag.\n"
 "      "
-msgstr "\n\nBookworm er en browserbaseret applikation og understøtter illustrationer og foto i alle de formater som ePub understøtter: <em>JPEG</em>, <em>GIF</em> og <em>PNG</em>. Scalable Vector Graphics (<em>SVG</em>) understøttes kun hvis billederne håndteres ved link til en ekstern SVG.fil, da mange browsere ikke understøtter inline-SVG med brug af <code>&lt;img&gt;</code>-tagget."
+msgstr ""
+"\n"
+"\n"
+"Bookworm er en browserbaseret applikation og understøtter illustrationer og "
+"foto i alle de formater som ePub understøtter: <em>JPEG</em>, <em>GIF</em> "
+"og <em>PNG</em>. Scalable Vector Graphics (<em>SVG</em>) understøttes kun "
+"hvis billederne håndteres ved link til en ekstern SVG.fil, da mange browsere "
+"ikke understøtter inline-SVG med brug af <code>&lt;img&gt;</code>-tagget."
 
 #: library/templates/epub.html:182
 msgid ""
@@ -1966,7 +1980,17 @@ msgid ""
 "    If they both agree, it's likely that the publisher didn't make the ePub "
 "correctly.\n"
 "    "
-msgstr "\n\nPå den anden side er Bookworm også meget ny, og programmet har stadig nogle fejl. Da din bog blev oploadet til Bookworm og problemet opstod, kontaktede Bookworm af sig selv et <a href=\"http://www.threepress.org/document/epub-validate/\">ePub-valideringssystem</a>. Dette system bruger et program, der hedder &lsquo;epubcheck&rsquo; fra Adobe. Bookworm fortæller dig, om epubcheck også mener der er noget galt med ebogen. Hvis begge programmer kommer til den konklusion, er det sandsynligt, at udgiveren ikke har lavet ePub-filen korrekt."
+msgstr ""
+"\n"
+"\n"
+"På den anden side er Bookworm også meget ny, og programmet har stadig nogle "
+"fejl. Da din bog blev oploadet til Bookworm og problemet opstod, kontaktede "
+"Bookworm af sig selv et <a href=\"http://www.threepress.org/document/epub-"
+"validate/\">ePub-valideringssystem</a>. Dette system bruger et program, der "
+"hedder &lsquo;epubcheck&rsquo; fra Adobe. Bookworm fortæller dig, om "
+"epubcheck også mener der er noget galt med ebogen. Hvis begge programmer "
+"kommer til den konklusion, er det sandsynligt, at udgiveren ikke har lavet "
+"ePub-filen korrekt."
 
 #: library/templates/help.html:98
 msgid ""
@@ -3289,6 +3313,118 @@ msgstr ""
 "Tilføj en ePub fra din computer ved at klikke på &amp;lsquo;Browse&amp;"
 "rsquo;:"
 
+#: library/templates/view.html:7
+#, python-format
+msgid " '%(chapter.title)s' in "
+msgstr ""
+
+#: library/templates/view.html:7
+#, python-format
+msgid " by %(author)s "
+msgstr ""
+
+#: library/templates/view.html:48
+msgid "Forward"
+msgstr ""
+
+#: library/templates/view.html:77 library/templates/view.html.py:231
+msgid "by <!-- trans written by -->"
+msgstr "af "
+
+#: library/templates/view.html:99
+msgid "View in Stanza"
+msgstr "Læs i Stanza"
+
+#: library/templates/view.html:108
+msgid "To read this book online, select any of the sections to the left."
+msgstr ""
+
+#: library/templates/view.html:115 library/templates/includes/leftnav.html:28
+#: library/templates/includes/leftnav.html:30
+msgid "Book information"
+msgstr "Boginformation"
+
+#: library/templates/view.html:121
+#, fuzzy
+msgid "Publisher"
+msgstr "Udgivere"
+
+#: library/templates/view.html:128 library/templates/auth/profile.html:103
+msgid "Language"
+msgstr "Sprog"
+
+#: library/templates/view.html:134
+msgid "Date added to library"
+msgstr "dato for tilføjelse til dit bibliotek"
+
+#: library/templates/view.html:139
+msgid "Subjects"
+msgstr ""
+
+#: library/templates/view.html:146
+msgid "Rights"
+msgstr ""
+
+#: library/templates/view.html:153
+msgid "Description"
+msgstr ""
+
+#: library/templates/view.html:159
+#, fuzzy
+msgid "Date published"
+msgstr "Jeg er forlægger"
+
+#: library/templates/view.html:164
+#, fuzzy
+msgid "Identifier <!-- trans: unique ID for this book -->"
+msgstr "næste"
+
+#: library/templates/view.html:169
+msgid "Download entire book"
+msgstr "Download denne bog"
+
+#: library/templates/view.html:170
+msgid "epub format"
+msgstr ""
+
+#: library/templates/view.html:177
+msgid "Reload this book"
+msgstr "Download denne bog"
+
+#: library/templates/view.html:181
+msgid "Replace this book"
+msgstr "Download denne bog"
+
+#: library/templates/view.html:187
+msgid "Editions of this work found in Google Books Search"
+msgstr ""
+
+#: library/templates/view.html:189
+msgid ""
+"This title and author were found to have the following entries through the "
+"use of the Google Books Search service. The information listed here may be "
+"inaccurate or incomplete and is not provided by Bookworm."
+msgstr ""
+
+#: library/templates/view.html:199
+msgid "Cover image not available from Google Books"
+msgstr ""
+
+#: library/templates/view.html:205
+#, fuzzy
+msgid "Published by"
+msgstr "Udgivere"
+
+#: library/templates/view.html:207
+#, fuzzy
+msgid "No publisher was listed"
+msgstr "For udgivere"
+
+#: library/templates/view.html:233
+#, python-format
+msgid "on <a href=\"%(libraryurl)s\">Bookworm</a>"
+msgstr ""
+
 #: library/templates/auth/language.html:3
 msgid "Change the default languge for"
 msgstr "Her kan du ændre det foretrukne sprog for"
@@ -3385,10 +3521,6 @@ msgstr "emailadresse"
 msgid "Country"
 msgstr "Land"
 
-#: library/templates/auth/profile.html:103
-msgid "Language"
-msgstr "Sprog"
-
 #: library/templates/auth/profile.html:104
 msgid "change <!-- trans: change the user's language setting -->"
 msgstr "Skift "
@@ -3444,7 +3576,9 @@ msgstr "Skift Password for "
 msgid ""
 "If you're new to Bookworm, link your OpenID with a new account. If you're "
 "already a Bookworm member, link it with your existing account."
-msgstr "Hvis du vil meldes til Bookworm, så knyt dit OpenID til en ny konto. Hvis du allerede er medlem, så knyt til din eksisterende konto."
+msgstr ""
+"Hvis du vil meldes til Bookworm, så knyt dit OpenID til en ny konto. Hvis du "
+"allerede er medlem, så knyt til din eksisterende konto."
 
 #: library/templates/auth/authopenid/complete.html:17
 msgid "Link an OpenID with your existing Bookworm account"
@@ -3726,11 +3860,6 @@ msgstr "Læs denne side"
 #: library/templates/includes/leftnav.html:24
 msgid "Download this book"
 msgstr "Download denne bog"
-
-#: library/templates/includes/leftnav.html:28
-#: library/templates/includes/leftnav.html:30
-msgid "Book information"
-msgstr "Boginformation"
 
 #: library/templates/includes/leftnav.html:36
 msgid "First page"
@@ -4179,6 +4308,3 @@ msgstr ""
 
 #~ msgid "Are you sure? <!-- trans: you want to perform that action -->"
 #~ msgstr "Er du helt sikker?"
-
-#~ msgid "by <!-- trans: this book is written by -->"
-#~ msgstr "af "

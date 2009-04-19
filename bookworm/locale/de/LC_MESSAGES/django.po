@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 10:11-0400\n"
+"POT-Creation-Date: 2009-04-19 11:37-0400\n"
 "PO-Revision-Date: 2009-04-17 18:37+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
@@ -3460,6 +3460,124 @@ msgstr ""
 "Fügen Sie ein ePub Buch von Ihrem Computer durch Klicken auf &lsquo;"
 "Durchsuchen&rsquo; hinzu:"
 
+#: library/templates/view.html:7
+#, python-format
+msgid " '%(chapter.title)s' in "
+msgstr ""
+
+#: library/templates/view.html:7
+#, python-format
+msgid " by %(author)s "
+msgstr ""
+
+#: library/templates/view.html:48
+msgid "Forward"
+msgstr ""
+
+#: library/templates/view.html:77 library/templates/view.html.py:231
+#, fuzzy
+msgid "by <!-- trans written by -->"
+msgstr "Klicken Sie auf "
+
+#: library/templates/view.html:99
+#, fuzzy
+msgid "View in Stanza"
+msgstr "Mit Stanza lesen"
+
+#: library/templates/view.html:108
+msgid "To read this book online, select any of the sections to the left."
+msgstr ""
+
+#: library/templates/view.html:115 library/templates/includes/leftnav.html:28
+#: library/templates/includes/leftnav.html:30
+msgid "Book information"
+msgstr "Buch Information"
+
+#: library/templates/view.html:121
+#, fuzzy
+msgid "Publisher"
+msgstr "Herausgeber"
+
+#: library/templates/view.html:128 library/templates/auth/profile.html:103
+msgid "Language"
+msgstr "Sprache"
+
+#: library/templates/view.html:134
+#, fuzzy
+msgid "Date added to library"
+msgstr "Datum, an dem das Buch zur Bibliothek hinzugefügt wurde,"
+
+#: library/templates/view.html:139
+msgid "Subjects"
+msgstr ""
+
+#: library/templates/view.html:146
+msgid "Rights"
+msgstr ""
+
+#: library/templates/view.html:153
+msgid "Description"
+msgstr ""
+
+#: library/templates/view.html:159
+#, fuzzy
+msgid "Date published"
+msgstr "Ich bin Herausgeber"
+
+#: library/templates/view.html:164
+#, fuzzy
+msgid "Identifier <!-- trans: unique ID for this book -->"
+msgstr "vorwärts"
+
+#: library/templates/view.html:169
+#, fuzzy
+msgid "Download entire book"
+msgstr "Dieses Buch herunterladen"
+
+#: library/templates/view.html:170
+msgid "epub format"
+msgstr ""
+
+#: library/templates/view.html:177
+#, fuzzy
+msgid "Reload this book"
+msgstr "Dieses Buch herunterladen"
+
+#: library/templates/view.html:181
+#, fuzzy
+msgid "Replace this book"
+msgstr "Dieses Buch herunterladen"
+
+#: library/templates/view.html:187
+msgid "Editions of this work found in Google Books Search"
+msgstr ""
+
+#: library/templates/view.html:189
+msgid ""
+"This title and author were found to have the following entries through the "
+"use of the Google Books Search service. The information listed here may be "
+"inaccurate or incomplete and is not provided by Bookworm."
+msgstr ""
+
+#: library/templates/view.html:199
+msgid "Cover image not available from Google Books"
+msgstr ""
+
+#: library/templates/view.html:205
+#, fuzzy
+msgid "Published by"
+msgstr "Herausgeber"
+
+#: library/templates/view.html:207
+#, fuzzy
+msgid "No publisher was listed"
+msgstr "Für Herausgeber"
+
+#: library/templates/view.html:233
+#, fuzzy, python-format
+msgid "on <a href=\"%(libraryurl)s\">Bookworm</a>"
+msgstr "<a href=\"%(search_help_url)s\">Hilfe zur Suche auf Bookworm</a>."
+
 #: library/templates/auth/language.html:3
 msgid "Change the default languge for"
 msgstr "Die Standardsprache ändern für "
@@ -3558,10 +3676,6 @@ msgstr "Email Adresse"
 #: library/templates/auth/profile.html:97
 msgid "Country"
 msgstr "Land"
-
-#: library/templates/auth/profile.html:103
-msgid "Language"
-msgstr "Sprache"
 
 #: library/templates/auth/profile.html:104
 msgid "change <!-- trans: change the user's language setting -->"
@@ -3913,11 +4027,6 @@ msgstr "Aktuelle Seite lesen"
 #: library/templates/includes/leftnav.html:24
 msgid "Download this book"
 msgstr "Dieses Buch herunterladen"
-
-#: library/templates/includes/leftnav.html:28
-#: library/templates/includes/leftnav.html:30
-msgid "Book information"
-msgstr "Buch Information"
 
 #: library/templates/includes/leftnav.html:36
 msgid "First page"

@@ -4,7 +4,7 @@
 {% load librarything_tags %}
 
 {% block title %}{% spaceless %}
-{% if chapter.title %} '{{ chapter.title }}' in {% endif %} {{ document.title }} {% if document.author %} by {{ document.author }} {% endif %}
+{% if chapter.title %}{% blocktrans %} '{{ chapter.title }}' in {% endblocktrans %}{% endif %} {{ document.title }} {% if document.author %}{% blocktrans with document.author as author %} by {{ author }} {% endblocktrans %} {% endif %}
 {% endspaceless %}{% endblock title %}
 
 {% block orm_header %}{% endblock orm_header %}
@@ -45,7 +45,7 @@
 {% block rightnav %}
   {% if request.user.get_profile.simple_reading_mode %}
     {% if next %}
-      <div id="bw-right-arrow">Forward <img src="{{ MEDIA_URL }}images/forward-arrow.png" alt="-&gt;" /></div>
+      <div id="bw-right-arrow">{% trans "Forward" %} <img src="{{ MEDIA_URL }}images/forward-arrow.png" alt="-&gt;" /></div>
     {% endif %}
   {% endif %}
 {% endblock rightnav %}
@@ -74,7 +74,7 @@
 {% endif %}
 <a href="{% url view_first document.safe_title,document.key %}"><h2 class="bw-title">{{ document.title }}</h2></a> 
 {% if request.user.get_profile.simple_reading_mode %}
-&#160;&#160;  by {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
+&#160;&#160; {% trans "by <!-- trans written by -->" %} {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
 {% endif %}
 {% endblock header %}
 
@@ -96,7 +96,7 @@
    <div id="bw-results_nav_bottom">{% include "includes/chapter_next_previous.html" %}</div>
 
    {% if stanza_compatible %}
-   <h4><a href="stanza://{{ request.META.HTTP_HOST }}{{ document.nonce_url }}/">View in Stanza</a></h4>
+   <h4><a href="stanza://{{ request.META.HTTP_HOST }}{{ document.nonce_url }}/">{% trans "View in Stanza" %}</a></h4>
    {% endif %}
 
 {% else %}
@@ -105,91 +105,88 @@
    <h2 class="bw-book_author">{% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}</h2>
 
    <p>
-     To read this book online, select any of the sections to the left.
+    {% trans "To read this book online, select any of the sections to the left." %}
    </p>
 
 </div>
    <table class="bw-meta">
      <thead>
        <tr>
-         <th class="bw-table_header" colspan="2">Book information</th>
+         <th class="bw-table_header" colspan="2">{% trans "Book information" %}</th>
        </tr>
      </thead>     
      <tbody>
        {% if document.get_publisher.count %}
        <tr>
-         <th>Publisher</th>
+         <th>{% trans "Publisher" %}</th>
          <td>{% for s in document.get_publisher.all %}{{ s.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
        </tr>
        {% endif %}
 
        {% if document.get_language %}
        <tr>
-         <th>Language</th>
+         <th>{% trans "Language" %}</th>
          <td>{{ document.get_language }}</td>
        </tr>
        {% endif %}
 
        <tr>
-         <th>Date added to library</th>
+         <th>{% trans "Date added to library" %}</th>
          <td>{{ document.created_time|date:"l, F d Y" }}</td>
        </tr>
        {% if document.get_subjects.count %}
        <tr>
-         <th>Subjects</th>
+         <th>{% trans "Subjects" %}</th>
          <td>{% for s in document.get_subjects.all %}{{ s.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
        </tr>
        {% endif %}
 
        {% if document.get_rights %}
        <tr>
-         <th>Rights</th>
+         <th>{% trans "Rights" %}</th>
          <td>{{ document.get_rights }}</td>
        </tr>
        {% endif %}
 
        {% if document.get_description %}
        <tr>
-         <th>Description</th>
+         <th>{% trans "Description" %}</th>
          <td>{{ document.get_description }}</td>
        </tr>
        {% endif %}
 
        <tr>
-         <th>Date published</th>
+         <th>{% trans "Date published" %}</th>
          <td>{% date_metadata document "date" %}</td>
        </tr>
 
        <tr>
-         <th>Identifier</th>
+         <th>{% trans "Identifier <!-- trans: unique ID for this book -->" %}</th>
          <td>{% date_metadata document "identifier" %}</td>
        </tr>
 
        <tr>
-         <th>Download entire book</th>
-         <td><a href="{% url download_epub document.safe_title,document.key %}">epub format</a></td>
+         <th>{% trans "Download entire book" %}</th>
+         <td><a href="{% url download_epub document.safe_title,document.key %}">{% trans "epub format" %}</a></td>
        </tr>
 
      </tbody>
    </table>
 
    {% if not document.is_public %}
-   <h4>Reload this book</h4>
+   <h4>{% trans "Reload this book" %}</h4>
    <form action="{% url reload document.safe_title document.id %}" method="post" enctype="multipart/form-data">
      <div id="bw-upload_form">
        <p>{{ form.epub }}</p>
-       <p><input type="submit" value="Replace this book" /></p>
+       <p><input type="submit" value="{{ _("Replace this book") }}" /></p>
      </div>
    </form>
    {% endif %}
 
    {% if google_books.entries %}
-     <h2>Editions of this work found in Google Books Search</h2>
+     <h2>{% trans "Editions of this work found in Google Books Search" %}</h2>
      <a href="http://www.google.com"><img align="left" style="padding-right: 1em" src="http://books.google.com/googlebooks/images/poweredby.png" border="0" style="border: 0"/></a>
-     <p>This title and author were found to have the following entries through
-     the use of the Google Books Search service. 
-     The information listed here may be inaccurate or incomplete and is not 
-     provided by Bookworm.
+     <p>{% trans "This title and author were found to have the following entries through the use of the Google Books Search service. The information listed here may be inaccurate or incomplete and is not provided by Bookworm." %}
      </p>
 
      <table class="bw-meta">
@@ -197,17 +194,17 @@
          <tr>
            <td align="center">
               {% if e.thumbnail %}
-               <a href="{{ e.info }} "><img src="{{ e.thumbnail }}" /></a>
+               <a href="{{ e.info }} "><img src="{{ e.thumbnail }}" alt="Book cover" /></a>
               {% else %}
-               <a href="{{ e.info }}">Cover image not available from Google Books</a>
+               <a href="{{ e.info }}">{% trans "Cover image not available from Google Books" %}</a>
               {% endif %}
            </td>
 
            <td colspan="2">
                {% if e.publisher %}
-                 <p>Published by {{ e.publisher }}</p>
+                 <p>{% trans "Published by" %} {{ e.publisher }}</p>
                {% else %}
-                 <p><em>No publisher was listed</em></p>
+                 <p><em>{% trans "No publisher was listed" %}</em></p>
                {% endif %}
                {% if e.pages %}
                  <p>{{ e.pages }}</p>
@@ -231,7 +228,8 @@
 <span>
    <a href="{% url library %}"><img src="{{ MEDIA_URL }}images/left-arrow.png" alt="&lt;-" class="bw-tool-image" /></a>&#160;&#160;
    <a href="{% url view_first document.safe_title,document.key %}"><h2 class="bw-title">{{ document.title }}</h2></a> 
-&#160;&#160;  by {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
-on <a href="{% url library %}">Bookworm</a>
+&#160;&#160; {% trans "by <!-- trans written by -->" %} {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
+{% url library as libraryurl %}
+{% blocktrans %}on <a href="{{ libraryurl }}">Bookworm</a>{% endblocktrans %}
 </span>
 {% endblock footer_block %}
