@@ -4,7 +4,7 @@
 {% load librarything_tags %}
 
 {% block title %}{% spaceless %}
-{% if chapter.title %}{% blocktrans %} '{{ chapter.title }}' in {% endblocktrans %}{% endif %} {{ document.title }} {% if document.author %}{% blocktrans with document.author as author %} by {{ author }} {% endblocktrans %} {% endif %}
+{% if chapter.title %}{% blocktrans with chapter.title as chaptertitle %} '{{ chaptertitle }}' in {% endblocktrans %}{% endif %} {{ document.title }} {% if document.author %}{% blocktrans with document.author as author %} by {{ author }} {% endblocktrans %} {% endif %}
 {% endspaceless %}{% endblock title %}
 
 {% block orm_header %}{% endblock orm_header %}
