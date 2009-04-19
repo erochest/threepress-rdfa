@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-19 11:37-0400\n"
+"POT-Creation-Date: 2009-04-19 11:45-0400\n"
 "PO-Revision-Date: 2009-04-19 11:38-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
@@ -3338,7 +3338,7 @@ msgstr "Siirrä tietokoneeltasi ePub klikkaamalla &lsquo;selaa&rsquo;:"
 
 #: library/templates/view.html:7
 #, python-format
-msgid " '%(chapter.title)s' in "
+msgid " '%(chaptertitle)s' in "
 msgstr ""
 
 #: library/templates/view.html:7

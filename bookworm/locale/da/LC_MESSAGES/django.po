@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-19 11:37-0400\n"
+"POT-Creation-Date: 2009-04-19 11:45-0400\n"
 "PO-Revision-Date: 2009-04-19 11:38-0400\n"
 "Last-Translator: Marie Bilde Rasmussen <mariebilderas@gmail.com>\n"
 "Language-Team: Danish\n"
@@ -3315,7 +3315,7 @@ msgstr ""
 
 #: library/templates/view.html:7
 #, python-format
-msgid " '%(chapter.title)s' in "
+msgid " '%(chaptertitle)s' in "
 msgstr ""
 
 #: library/templates/view.html:7
