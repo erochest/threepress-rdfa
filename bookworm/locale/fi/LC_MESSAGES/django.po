@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-18 21:25-0400\n"
-"PO-Revision-Date: 2009-04-19 15:56-0400\n"
+"PO-Revision-Date: 2009-04-20 11:13-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -605,7 +605,7 @@ msgstr ""
 "suojatun tiedoston. Suojauksen tarkoituksena on estää laiton kopiointi. "
 "Samalla se estää laillisia omistajia lukemasta digikirjojaan missä ja miten "
 "he haluavat. Jos tiedosto on suojattu, kokeile Adobe Digital Editions -"
-"lukijaa. Kannattaa myös ottaa yhteys julkaisijaan ja pyytä heiltä DRM -"
+"lukuohjelmaaa. Kannattaa myös ottaa yhteys julkaisijaan ja pyytä heiltä DRM -"
 "vapaita tiedostoja."
 
 #: library/views.py:517
@@ -1518,7 +1518,8 @@ msgid ""
 msgstr ""
 "\n"
 "      Koska XHTML 1.1 on epub -tiedostojen yleisin merkkauskieli, epub- julkaisut ja www-selaimet toimivat hyvin \n"
-"       yhdessä. Tämän vuoksi Bookworm tukee hyvin sivun suunnittelua ja merkkausta. -Päätelaitteiden lukijasovellukset eivät välttämättä osaa esittää esimerkiksi: "
+"       yhdessä. Tämän vuoksi Bookworm tukee hyvin sivun suunnittelua ja merkkausta. -Päätelaitteiden \n"
+"lukijasovellukset eivät välttämättä osaa esittää esimerkiksi: "
 
 #: library/templates/epub.html:88
 msgid "Tables <!-- trans: HTML tables --> "
@@ -2128,7 +2129,7 @@ msgstr ""
 "         Käytä puhelimessa mobiilisivustoa, mene osoitteeseen:\n"
 "         <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>.\n"
 "         Kun et ole verkossa, siirrä kirja sivustolta suoraan Stanzaan:\n"
-"<a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone\">Lisää ohjeitä tästä</a>."
+"<a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone\">Lisää ohjeitä täältä</a>."
 
 #: library/templates/help.html:170
 msgid "Other web-enabled phone"
@@ -2241,7 +2242,7 @@ msgstr "Oma epub -kokoelmani"
 #: library/templates/shell.html.py:53 library/templates/upload.html:4
 #: library/templates/upload.html.py:5
 msgid "Add a book"
-msgstr "Lisää kirja"
+msgstr "Siirrä kirja"
 
 #: library/templates/index.html:18
 msgid "Status"
@@ -2313,7 +2314,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Omissa <a href=\"%(urlprofile)s\">tiedoissasi</a>on asetus, jolla\n"
+"  Omissa <a href=\"%(urlprofile)s\">tiedoissa</a> on asetus, jolla\n"
 "  siirryt aina viimeksi luettuun lukuun, kun klikkaat kirjan nimeä.\n"
 "  "
 
@@ -2936,7 +2937,7 @@ msgstr ""
 "\n"
 "    Tutustu sivuston tärkeimpiin ominaisuuksiin: siirrä ensimmäinen kirjasi,\n"
 "    lue ja tee haku tekstissä, sekä käytä mobiililaitteilla. \n"
-"    <a href=\"%(signupurl)s\">Luo kkäyttäjätili</a> kun olet valmis. "
+"    <a href=\"%(signupurl)s\">Luo käyttäjätili</a> kun olet valmis. "
 
 #: library/templates/tour.html:33 library/templates/tour.html.py:45
 msgid "Step 1: Adding a book"
@@ -2991,7 +2992,7 @@ msgstr "Klikkaa"
 
 #: library/templates/tour.html:71 library/templates/upload.html:58
 msgid "Add to my library"
-msgstr "Lisää kokoelmaani"
+msgstr "Siirrä kokoelmaani"
 
 #: library/templates/tour.html:78
 msgid "    Your book is now available!     "
@@ -3793,7 +3794,7 @@ msgstr "edellinen"
 #: library/templates/includes/pagination.html:5
 #, python-format
 msgid " Page %(page_number)s of %(num_pages)s"
-msgstr "Sivu %(page_number)s %(num_pages)s sivusta"
+msgstr "Sivu %(page_number)s %(num_pages)sivusta"
 
 #: library/templates/includes/pagination.html:6
 #: search/templates/results.html:39
