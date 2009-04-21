@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-19 11:45-0400\n"
-"PO-Revision-Date: 2009-04-19 18:47+0200\n"
+"PO-Revision-Date: 2009-04-21 08:13+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2949,7 +2949,7 @@ msgstr ""
 
 #: library/templates/shell.html:6
 msgid "Bookworm ePub reader"
-msgstr "Bookworm ePub reader"
+msgstr "Bookworm ePub Reader"
 
 #: library/templates/shell.html:7
 msgid ""
