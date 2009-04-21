@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-19 11:45-0400\n"
+"POT-Creation-Date: 2009-04-21 09:54-0400\n"
 "PO-Revision-Date: 2009-04-21 08:13+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
@@ -3484,7 +3484,8 @@ msgstr "Mit Stanza lesen"
 
 #: library/templates/view.html:108
 msgid "To read this book online, select any of the sections to the left."
-msgstr "Um dieses Buch online zu lesen, wählen Sie links einen beliebigen Abschnitt."
+msgstr ""
+"Um dieses Buch online zu lesen, wählen Sie links einen beliebigen Abschnitt."
 
 #: library/templates/view.html:115 library/templates/includes/leftnav.html:28
 #: library/templates/includes/leftnav.html:30
@@ -3528,7 +3529,8 @@ msgid "Download entire book"
 msgstr "Buch herunterladen"
 
 #: library/templates/view.html:170
-msgid "epub format"
+#, fuzzy
+msgid "ePub format"
 msgstr "ePub Format"
 
 #: library/templates/view.html:177
@@ -3571,7 +3573,8 @@ msgid "on <a href=\"%(libraryurl)s\">Bookworm</a>"
 msgstr "auf <a href=\"%(libraryurl)s\">Bookworm</a>"
 
 #: library/templates/auth/language.html:3
-msgid "Change the default languge for"
+#, fuzzy
+msgid "Change the default language for"
 msgstr "Die Standardsprache ändern für "
 
 #: library/templates/auth/language.html:9

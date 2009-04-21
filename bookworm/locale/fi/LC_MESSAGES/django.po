@@ -1,13 +1,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-18 21:25-0400\n"
-"PO-Revision-Date: 2009-04-20 11:13-0400\n"
+"POT-Creation-Date: 2009-04-21 09:54-0400\n"
+"PO-Revision-Date: 2009-04-21 09:58-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,6 @@ msgid "Danish"
 msgstr "Tanska"
 
 #: settings.py:102
-#, fuzzy
 msgid "Finnish"
 msgstr "Suomi"
 
@@ -92,8 +91,7 @@ msgstr "Tätä käyttäjänimeä                         ei ole. Kirjaudu uudest
 #: django_authopenid/forms.py:312
 msgid ""
 "Old password is wrong.                     Please enter a valid password."
-msgstr ""
-"Kirjoitit väärin vanhan salasanan.                    Yritä uudestaan."
+msgstr "Kirjoitit väärin vanhan salasanan.                    Yritä uudestaan."
 
 #: django_authopenid/forms.py:324
 msgid "new passwords do not match each other"
@@ -275,7 +273,11 @@ msgid ""
 "\t<p>Your OpenID can now be associated with a new or existing membership. "
 "You can change the association later in your preferences</p>\n"
 "\t"
-msgstr "\n\n\t<p>Voit nyt liittää OpenID -tunnuksesi olemassaolevaan tai uuteen käyttäjätiliin. Voit muuttaa tilin ja tunnuksen tietoja asetuksissa.</p>\\t"
+msgstr ""
+"\n"
+"\n"
+"\t<p>Voit nyt liittää OpenID -tunnuksesi olemassaolevaan tai uuteen "
+"käyttäjätiliin. Voit muuttaa tilin ja tunnuksen tietoja asetuksissa.</p>\\t"
 
 #: django_authopenid/templates/authopenid/complete.html:17
 msgid "Associate your OpenID"
@@ -588,9 +590,9 @@ msgstr ""
 "Digikirjasi on virheellinen. Saattaa olla, että tiedosto on liian suuri "
 "selaimelle. Syy voi olla, että kuvat ovat hyvin suuria tai kappaleet "
 "erittäin pitkiä. Voit joutua joutua tarkistamaan julkaisijalta, että "
-"tiedosto on formatoitu oikein. Hyvin suuret ikkunoitavat tiedostot "
-"vaativat paljon vieritystä ja latautuvat hitaasti, joten Bookworm joutuu "
-"kieltämään vastaavat tiedostot."
+"tiedosto on formatoitu oikein. Hyvin suuret ikkunoitavat tiedostot vaativat "
+"paljon vieritystä ja latautuvat hitaasti, joten Bookworm joutuu kieltämään "
+"vastaavat tiedostot."
 
 #: library/views.py:483
 msgid ""
@@ -695,8 +697,8 @@ msgid ""
 "For more information about Threepress, please visit our <a href=\"http://"
 "threepress.org/about/\">About</a> page."
 msgstr ""
-"Lisää tietoja Threepress -palvelusta <a href=\"http://"
-"threepress.org/about/\">sivuillamme</a>."
+"Lisää tietoja Threepress -palvelusta <a href=\"http://threepress.org/about/"
+"\">sivuillamme</a>."
 
 #: library/templates/about.html:44
 msgid ""
@@ -813,9 +815,8 @@ msgid ""
 "Editions or Stanza), \n"
 "    on your iPhone (using Bookworm or Stanza) and on the Sony Reader"
 msgstr ""
-"Voit lukea epub -kirjoja kotikoneellasi, (käytä joko Bookworm -palvelua "
-"tai Adobe Digital Editions -lukuohjelmaa, myös Stanza ja "
-"Sony Reader käyvät)."
+"Voit lukea epub -kirjoja kotikoneellasi, (käytä joko Bookworm -palvelua tai "
+"Adobe Digital Editions -lukuohjelmaa, myös Stanza ja Sony Reader käyvät)."
 
 #: library/templates/about.html:104 library/templates/includes/about.html:8
 msgid "More about ePub"
@@ -941,7 +942,8 @@ msgid ""
 msgstr ""
 "Threepres on julkaisualan palveluyritys, jolla on usean vuoden kokemus\n"
 "toiminnasta julkaisuteollisuudessa. Kun haluat julkaista epub -formaatissa,\n"
-"tai kun haluat muokata Boookworm -sivuston julkaisusi tarpeisiin, <a href=\"mailto:bookworm@threepress.org\">ota yhteyttä</a>."
+"tai kun haluat muokata Boookworm -sivuston julkaisusi tarpeisiin, <a href="
+"\"mailto:bookworm@threepress.org\">ota yhteyttä</a>."
 
 #: library/templates/about.html:157
 msgid ""
@@ -975,11 +977,10 @@ msgstr ""
 "DRM (digital rights management) hidastaa uusien tekniikoiden omaksumista ja "
 "käytännnössä\n"
 "     ei estä piraattikopioiden tuottamista, ja käyttäjäkokemus on hirveä.\n"
-"    Bookworm ei vastakaan tue drm -ekirjoja, joiden avaamiseen "
-"tarvitaan erillinen sovellus.\n"
-"    Neuvomme julkaisijoita kokeilemaan \"pehmeitä\" keinoja, "
-"(esimerkiksi käyttämään digitaalista leimaa ostajatiedon merkitsemiseksi "
-"julkaisuun)."
+"    Bookworm ei vastakaan tue drm -ekirjoja, joiden avaamiseen tarvitaan "
+"erillinen sovellus.\n"
+"    Neuvomme julkaisijoita kokeilemaan \"pehmeitä\" keinoja, (esimerkiksi "
+"käyttämään digitaalista leimaa ostajatiedon merkitsemiseksi julkaisuun)."
 
 #: library/templates/about.html:170
 msgid ""
@@ -997,10 +998,10 @@ msgid ""
 "to be public\n"
 "    can all make Bookworm books accessible to the larger internet."
 msgstr ""
-"Bookworm tukee rajoitetusti tiedostojen jakoa. Tekijänoikeuksista "
-"vapaat julkaisut,\n"
-"    tekijänoikeuksien haltijan lataama julkaisu tai "
-"kustantajan hyväksymä vapaaseen\n"
+"Bookworm tukee rajoitetusti tiedostojen jakoa. Tekijänoikeuksista vapaat "
+"julkaisut,\n"
+"    tekijänoikeuksien haltijan lataama julkaisu tai kustantajan hyväksymä "
+"vapaaseen\n"
 "    jakoon tarkoitettu teos voidaan jakaa muiden internetin käyttäjien "
 "kanssa."
 
@@ -1011,8 +1012,8 @@ msgid ""
 "\">bookworm@threepress.org</a> for more information."
 msgstr ""
 "Tiedostojen jakaminen on vielä varhaisessa beta -vaiheessa. Jos haluat "
-"julkaisun vapaaksi, <a href=\"mailto:bookworm@threepress.org"
-"\">ota yhteyttä</a> ja kerromme lisää."
+"julkaisun vapaaksi, <a href=\"mailto:bookworm@threepress.org\">ota yhteyttä</"
+"a> ja kerromme lisää."
 
 #: library/templates/about.html:182
 msgid " Are my books securely stored and backed up?"
@@ -1102,7 +1103,8 @@ msgstr ""
 "    tai <a\n"
 "    href=\"mailto:bookworm@threepress.org\">lähetä sähköpostia </a>.\n"
 "    Voit lisätä myös sivuston <a\n"
-" href=\"http://blog.threepress.org\">blogin</a> rss-lukijaasi ja pysyt ajan tasalla.\n"
+" href=\"http://blog.threepress.org\">blogin</a> rss-lukijaasi ja pysyt ajan "
+"tasalla.\n"
 
 #: library/templates/base.html:12
 msgid "Search your library"
@@ -1131,8 +1133,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    Muutkin voivat käyttää Bookworm -palvelua. Julkaisijat voivat "
-"käyttää sivustoa kokeillaakseen\n"
+"    Muutkin voivat käyttää Bookworm -palvelua. Julkaisijat voivat käyttää "
+"sivustoa kokeillaakseen\n"
 "    julkaisujen toimivuuden ennen jakelua. Kokeneet käyttäjät voivat "
 "kokeilla myös\n"
 "    CSS -tyylisivujen ja SVG -grafiikan toimivuutta.    \n"
@@ -1192,9 +1194,8 @@ msgstr ""
 "\n"
 "    Kehittäjät voivat asentaa oman kopion Adoben validointityökalusta <a "
 "href=\"http://code.google.com/p/epubcheck/\">epubcheck</a>.\n"
-"    Voi olla helpompaa käyttää Threepressin sivuston tarkistajaa "
-"<a href=\"http://www.threepress.org/document/epub-validate/"
-"\">ePubtarkastaja</a>.\n"
+"    Voi olla helpompaa käyttää Threepressin sivuston tarkistajaa <a href="
+"\"http://www.threepress.org/document/epub-validate/\">ePubtarkastaja</a>.\n"
 "    Ohjelma on sama, mutta julkaisun siirtäminen on helpompaa sivustolla.\n"
 "    "
 
@@ -1320,9 +1321,11 @@ msgid ""
 msgstr ""
 "\n"
 "<strong>Näkyykö jokainen kuva?</strong> \n"
-"    Bookworm käyttää erilaisia linkitystapoja, kuvat voi linkittää sisällysluettelosta \n"
+"    Bookworm käyttää erilaisia linkitystapoja, kuvat voi linkittää "
+"sisällysluettelosta \n"
 " tai sisällön ankkuritageista. Kuvien <em>täytyy</em> \n"
-" olla listattuna OPF -tiedoston manifest -elementissä, jotta Bookworm voi ne esittää \n"
+" olla listattuna OPF -tiedoston manifest -elementissä, jotta Bookworm voi ne "
+"esittää \n"
 " - kuten ePub -suosituskin vaatii. "
 
 #: library/templates/ebooktesting.html:112
@@ -1340,7 +1343,8 @@ msgstr ""
 "<strong>Ovatko kaikki kirjoitusmerkit oikein esitetty?</strong> \n"
 " Suositusta noudattavien epub -kirjojen täytyy käyttää\n"
 " merkistön koodaukseen UTF-8:aa tai UTF-16:a \n"
-"mutta Bookworm tukee vain UTF-8:aa (myös kaksisuuntainen kirjoitus on tuettu \n"
+"mutta Bookworm tukee vain UTF-8:aa (myös kaksisuuntainen kirjoitus on "
+"tuettu \n"
 "kun sen toteuttamiseksi komento on CSS -tiedostossa)."
 
 #: library/templates/ebooktesting.html:122
@@ -1358,7 +1362,8 @@ msgid ""
 msgstr ""
 "\n"
 "Vaikka Bookworm kieltää tiedostojen jaon \n"
-"ja tekijänoikeuksin suojatun teoksen joutumisen vahingossa vapaaseen jakeluun, \n"
+"ja tekijänoikeuksin suojatun teoksen joutumisen vahingossa vapaaseen "
+"jakeluun, \n"
 "Bookworm -palvelu ei ota vastuuta sovelluksen virheistä, joiden \n"
 "seurauksena suojattu teos päätyy kaikkien nähtäväksi."
 
@@ -1375,8 +1380,10 @@ msgstr ""
 "\n"
 "    Threepress voi kuitenkin tarvittaessa tehdä\n"
 "    Bookworm -sivustosta käyttäjälle paikallisen version\n"
-"    jos testattavan aineiston määrä on suuri tai jos se pitää pitää salaisena.\n"
-"    <a href=\"mailto:bookworm@threepress.org\">Ota yhteyttä</a>\" ja kerromme lisää."
+"    jos testattavan aineiston määrä on suuri tai jos se pitää pitää "
+"salaisena.\n"
+"    <a href=\"mailto:bookworm@threepress.org\">Ota yhteyttä</a>\" ja "
+"kerromme lisää."
 
 #: library/templates/epub.html:7 library/templates/epub.html.py:8
 msgid "Bookworm and the ePub standard"
@@ -1396,7 +1403,8 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"IDPF (The International Digital Publishing Forum) on ePub -suositusten ylläpitäjä. \n"
+"IDPF (The International Digital Publishing Forum) on ePub -suositusten "
+"ylläpitäjä. \n"
 "Suositus perustuu jo käytössä oleviin standardeihin: XHTML 1.1 ja XML."
 
 #: library/templates/epub.html:21
@@ -1493,10 +1501,12 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"ePub -formaatin käytöstä julkaisun tekemisessä löytyy ohjeet IBM:n DeveloperWorks -sivuilta <a href=\"http://www.ibm.com/developerworks/edu/x-dw-x-epubtut.html\">Build a digital book with EPUB.</a> \n"
+"ePub -formaatin käytöstä julkaisun tekemisessä löytyy ohjeet IBM:n "
+"DeveloperWorks -sivuilta <a href=\"http://www.ibm.com/developerworks/edu/x-"
+"dw-x-epubtut.html\">Build a digital book with EPUB.</a> \n"
 "Mukana on esimerkkejä Bookworm -sivuston käytöstä."
 
-#
+# 
 #: library/templates/epub.html:70
 msgid ""
 "\n"
@@ -1504,7 +1514,11 @@ msgid ""
 "O'Reilly Media: <a href=\"http://labs.oreilly.com/2009/03/epub-resources-and-"
 "guides.html\">ePub Resources and Guides</a>.\n"
 "      "
-msgstr "\nO'Reilly Mediassa työskentelevä Keith Fahlgren koosti kattavan luettelon ePub tiedonlähteistä: <a href=\"http://labs.oreilly.com/2009/03/epub-resources-and-guides.html\">ePub ohjeita ja oppaita</a>."
+msgstr ""
+"\n"
+"O'Reilly Mediassa työskentelevä Keith Fahlgren koosti kattavan luettelon "
+"ePub tiedonlähteistä: <a href=\"http://labs.oreilly.com/2009/03/epub-"
+"resources-and-guides.html\">ePub ohjeita ja oppaita</a>."
 
 #: library/templates/epub.html:80
 msgid ""
@@ -1517,8 +1531,10 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      Koska XHTML 1.1 on epub -tiedostojen yleisin merkkauskieli, epub- julkaisut ja www-selaimet toimivat hyvin \n"
-"       yhdessä. Tämän vuoksi Bookworm tukee hyvin sivun suunnittelua ja merkkausta. -Päätelaitteiden \n"
+"      Koska XHTML 1.1 on epub -tiedostojen yleisin merkkauskieli, epub- "
+"julkaisut ja www-selaimet toimivat hyvin \n"
+"       yhdessä. Tämän vuoksi Bookworm tukee hyvin sivun suunnittelua ja "
+"merkkausta. -Päätelaitteiden \n"
 "lukijasovellukset eivät välttämättä osaa esittää esimerkiksi: "
 
 #: library/templates/epub.html:88
@@ -1541,7 +1557,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      Nämä ominaisuudet ovat tärkeitä varsinkin tieteellisessä\n" 
+"      Nämä ominaisuudet ovat tärkeitä varsinkin tieteellisessä\n"
 "      ja teknisessä asiaproosassa.\n"
 "      "
 
@@ -1560,9 +1576,10 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Bookworm esittää kaikki CSS -tyylisivut, jotka sisältyvät epub -pakkaukseen.\n"
-" Pakkauksen CSS -sivuja muutetaan vain sen veran, että ne eivät "
-"vaikuta sivuston toimintaan."
+"Bookworm esittää kaikki CSS -tyylisivut, jotka sisältyvät epub -"
+"pakkaukseen.\n"
+" Pakkauksen CSS -sivuja muutetaan vain sen veran, että ne eivät vaikuta "
+"sivuston toimintaan."
 
 #: library/templates/epub.html:108
 msgid ""
@@ -1592,7 +1609,8 @@ msgid ""
 msgstr ""
 "\n"
 "Bookwormin omissa tyylitiedostoissa on komennot tiedoston tulostamiseksi.\n"
-"        Kokeile www-selaimesi \"tulostuksen esikatselua\" kun olet Bookworm -palvelussa,\n"
+"        Kokeile www-selaimesi \"tulostuksen esikatselua\" kun olet Bookworm -"
+"palvelussa,\n"
 "      niin näet miltä kirja näyttäisi tulostettuna."
 
 #: library/templates/epub.html:122
@@ -1633,8 +1651,7 @@ msgid ""
 msgstr ""
 "\n"
 "      Jos kirjan luvulla on useita alatasoja, pieni nuoli näyttää\n"
-"      missä kohden sisältöä mennään."
-"      "
+"      missä kohden sisältöä mennään.      "
 
 #: library/templates/epub.html:145
 msgid "Reading system conformance"
@@ -1690,8 +1707,7 @@ msgid ""
 msgstr ""
 "\n"
 "      Bookworm on www-selaimessa toimiva sovellus\n"
-"      ja tukee samoja grafiikka- ja kuvatiedostoja  kuin epub -"
-"suosituskin:\n"
+"      ja tukee samoja grafiikka- ja kuvatiedostoja  kuin epub -suosituskin:\n"
 "      <em>JPG</em>, <em>GIF</em> ja <em>PNG</em>. <em>SVG</em> (Scalable\n"
 "      Vector Graphics) käsitellään linkittämällä ulkopuoliseen\n"
 "      SVG -tiedostoon. Monet selaimet eivät vielä tue SVG:n käyttöä inline\n"
@@ -1710,7 +1726,8 @@ msgstr ""
 "\n"
 "      OPS -suositus määrittää, että hyvin muotoiltu epub\n"
 "      on koodattu käyttäen joko XHTML:ää tai \n"
-"      <a href=\"http://wiki.mobileread.com/wiki/DTBook\">DTBook </a>-suositusta.\n"
+"      <a href=\"http://wiki.mobileread.com/wiki/DTBook\">DTBook </a>-"
+"suositusta.\n"
 "      "
 
 #: library/templates/epub.html:188
@@ -1723,7 +1740,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"      Bookworm tukee DTBook -muotoisia epub -kirjoja ja muuntaa automaattisesti\n"
+"      Bookworm tukee DTBook -muotoisia epub -kirjoja ja muuntaa "
+"automaattisesti\n"
 "      sisällön XHTML -muotoon. XSLT tekee muunnoksen soveltaen\n"
 "      <a href=\"http://daisymfc.sourceforge.net/\">DAISY työjärjestystä</a>."
 
@@ -1733,7 +1751,11 @@ msgid ""
 "        You can always get back to the original DTBook content by "
 "downloading the ePub from any book page.\n"
 "      "
-msgstr "\n\n      Pääset aina takaisin alkuperäiseen DTbook -tiedostoon lataamalla epub-tiedoston mistä tahansa kirjan kohdasta."
+msgstr ""
+"\n"
+"\n"
+"      Pääset aina takaisin alkuperäiseen DTbook -tiedostoon lataamalla epub-"
+"tiedoston mistä tahansa kirjan kohdasta."
 
 #: library/templates/epub.html:201
 msgid ""
@@ -1791,11 +1813,13 @@ msgstr ""
 "\n"
 "      Jokainen digikirja, jonka sivusto huomaa huonosti muotoilluksi, \n"
 "      siirtyy automaattisesti \n"
-"      <a href=\"http://www.threepress.org/document/epub-validate/\"> muotoilun tarkistimeen</a>. \n"
-"      Tarkastuksen "
-"<a href=\"http://code.google.com/p/epubcheck/\">tulos</a> näytetään \n"
+"      <a href=\"http://www.threepress.org/document/epub-validate/\"> "
+"muotoilun tarkistimeen</a>. \n"
+"      Tarkastuksen <a href=\"http://code.google.com/p/epubcheck/\">tulos</a> "
+"näytetään \n"
 "palveluun kirjaa siirtävälle käyttäjälle.\n"
-"       Tavoiteemme on että Bookwormin ja epubcheck -tarkastajan virheilmoitus\n"
+"       Tavoiteemme on että Bookwormin ja epubcheck -tarkastajan "
+"virheilmoitus\n"
 "       kertoisi selkeästi käyttäjälle, mitä vikaa tiedostossa on."
 
 #: library/templates/epub.html:233
@@ -1810,7 +1834,8 @@ msgstr ""
 "\n"
 "\n"
 "      Bookworm -palvelu rajoitukset ovat samat kuin mitä käyttäjän\n"
-"      selaimessa ovat. Kannattaa siis asentaa uusin versio Firefox-, Safari-\n"
+"      selaimessa ovat. Kannattaa siis asentaa uusin versio Firefox-, "
+"Safari-\n"
 "      tai Chrome -selaimista. Internet Explorer 6 ja 7 ovat myös tuettuja."
 
 #: library/templates/epub.html:241
@@ -1855,8 +1880,7 @@ msgid ""
 msgstr ""
 "\n"
 "      Etkö tiedä miten aloittaa? Seuraavassa on ohjeita, myös \n"
-"      <a href=\"mailto:bookworm@threepress.org\">sähköpostitse</"
-"a>.\n"
+"      <a href=\"mailto:bookworm@threepress.org\">sähköpostitse</a>.\n"
 "      "
 
 #: library/templates/help.html:33
@@ -1901,8 +1925,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    Lisää tietoja saat <a href=\"%(abouturl)s\">lukemalla</a> sivun palvelun tavoitteista ja "
-"ominaisuuksista\n"
+"    Lisää tietoja saat <a href=\"%(abouturl)s\">lukemalla</a> sivun palvelun "
+"tavoitteista ja ominaisuuksista\n"
 "    "
 
 #: library/templates/help.html:58
@@ -1930,8 +1954,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    Bookworm ottaa vastaan vain ePub -kirjoja. Digikirja on ePub -"
-"kirja\n"
+"    Bookworm ottaa vastaan vain ePub -kirjoja. Digikirja on ePub -kirja\n"
 "    jos sen tiedostopääte on <strong>.epub</strong>. Jos se on jotain "
 "muuta,\n"
 "    hallussasi on PDF tai jokin muu digikirja. Tarkista julkaisun "
@@ -1961,8 +1984,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"    Pub -tiedostomuoto on vielä tuore ja kaikkia ePub -kirjoja ei ole koottu\n"
-"    virheittä. Bookworm yrittää esittää mahdollisimman erilaisia ePub -kirjoja\n"
+"    Pub -tiedostomuoto on vielä tuore ja kaikkia ePub -kirjoja ei ole "
+"koottu\n"
+"    virheittä. Bookworm yrittää esittää mahdollisimman erilaisia ePub -"
+"kirjoja\n"
 "    mutta voi käydä niin että liian erilaiset kirjat eivät siirry."
 
 #: library/templates/help.html:88
@@ -1982,9 +2007,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"    Toisaalta Bookworm on vielä nuori ja siinä on bugeja. Kun siirsit kirjan\n"
+"    Toisaalta Bookworm on vielä nuori ja siinä on bugeja. Kun siirsit "
+"kirjan\n"
 "    palveluun ja sait virheilmoituksen, Bookworm siirsi sen\n"
-"    <a href=\"http://www.threepress.org/document/epub-validate/\">ePub tarkastajaan</a>; \n"
+"    <a href=\"http://www.threepress.org/document/epub-validate/\">ePub "
+"tarkastajaan</a>; \n"
 "    Adoben kehittämä sovellus &lsquo;epubcheck&rsquo;.\n"
 "    Bookworm ilmoittaa sinulle, jos myös epubcheck ilmoittaa virheestä.\n"
 "    Jos niin käy, todennäköisesti julkaisija ei tehnyt kirjaa oikein."
@@ -2055,7 +2082,8 @@ msgid ""
 msgstr ""
 "\n"
 "    Jotkin kirjat ovat liian suuria Bookworm -sivuston käsiteltäväksi.\n"
-"    Ylisuuret kirjat hylätään. Julkaisu on liian suuri jos se on yli 30Mt:a.\n"
+"    Ylisuuret kirjat hylätään. Julkaisu on liian suuri jos se on yli 30Mt:"
+"a.\n"
 "    "
 
 #: library/templates/help.html:131
@@ -2127,9 +2155,11 @@ msgstr ""
 "\n"
 "\n"
 "         Käytä puhelimessa mobiilisivustoa, mene osoitteeseen:\n"
-"         <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>.\n"
+"         <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</"
+"a>.\n"
 "         Kun et ole verkossa, siirrä kirja sivustolta suoraan Stanzaan:\n"
-"<a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone\">Lisää ohjeitä täältä</a>."
+"<a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone"
+"\">Lisää ohjeitä täältä</a>."
 
 #: library/templates/help.html:170
 msgid "Other web-enabled phone"
@@ -2172,7 +2202,8 @@ msgstr ""
 "\n"
 "          Kindle ei vielä lue ePub -tiedostoja. Voit käyttää Bookworm\n"
 "          mobiilisivustoa Kindlen Whispernetillä, selaa osoitteeseen:\n"
-"          <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</a>"
+"          <a href=\"http://m.bookworm.oreilly.com\">m.bookworm.oreilly.com</"
+"a>"
 
 #: library/templates/help.html:205
 #, python-format
@@ -2196,8 +2227,10 @@ msgid ""
 "(openidurl)s\">Find out more about OpenID</a>.\n"
 "    "
 msgstr ""
-"    Palvelua voi käyttää ilman OpenID -tunnusta. Mutta kannattaa hankkia     sellainen.\n"
-"    Sinulla saattaa jo olla OpenID <a href=\"%(openidurl)s\">tietämättäsi</a>."
+"    Palvelua voi käyttää ilman OpenID -tunnusta. Mutta kannattaa hankkia     "
+"sellainen.\n"
+"    Sinulla saattaa jo olla OpenID <a href=\"%(openidurl)s\">tietämättäsi</"
+"a>."
 
 #: library/templates/help.html:218
 msgid "I have additional questions"
@@ -2230,8 +2263,7 @@ msgstr ""
 "    Käy myös <a href=\"http://getsatisfaction.com/threepress/topics/"
 "post_ideas_and_questions_about_bookworm\">keskustelusivuilla</a>.\n"
 "    Ota vapaasti yhteyttä <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a> jos sinulla on jokin erityinen kysymys.</"
-"p>\n"
+"\">bookworm@threepress.org</a> jos sinulla on jokin erityinen kysymys.</p>\n"
 "    "
 
 #: library/templates/index.html:6
@@ -2277,7 +2309,11 @@ msgid ""
 "      Books are listed by <em>%(order_text)s</em> in <em>%(order_direction)"
 "s</em> order %(order_adverb)s.\n"
 "    "
-msgstr "\n\n      Kokoelman järjestyksen operaattorit: <em>%(order_text)s,</em> <em>%(order_direction)s:ssä</em> ja %(order_adverb)s ."
+msgstr ""
+"\n"
+"\n"
+"      Kokoelman järjestyksen operaattorit: <em>%(order_text)s,</em> <em>%"
+"(order_direction)s:ssä</em> ja %(order_adverb)s ."
 
 #: library/templates/index.html:56
 msgid ""
@@ -2349,8 +2385,8 @@ msgid ""
 "Once you've gotten one of these books on your computer, you can upload them "
 "to your new Bookworm account."
 msgstr ""
-"Kun olet siirtänyt yhden tällaisista kirjoista tietokoneellesi, voit "
-"siirtää sen uudelle Bookworm -käyttäjätilillesi."
+"Kun olet siirtänyt yhden tällaisista kirjoista tietokoneellesi, voit siirtää "
+"sen uudelle Bookworm -käyttäjätilillesi."
 
 #: library/templates/index.html:109
 msgid "upload"
@@ -2436,7 +2472,9 @@ msgstr "Epub- ja digikirjojen asiantuntijapalveluita"
 msgid ""
 " Details on the <a href=\"%(epuburl)s\">ePub format</a> \n"
 "      "
-msgstr "    Bookworm ja ePub <a href=\"%(epuburl)s\">-esittely yhdellä sivulla</a>.    "
+msgstr ""
+"    Bookworm ja ePub <a href=\"%(epuburl)s\">-esittely yhdellä sivulla</"
+"a>.    "
 
 #: library/templates/public.html:62
 msgid "Developers"
@@ -2477,8 +2515,8 @@ msgid ""
 msgstr ""
 "\n"
 "      Esimerkki näyttää kuinka teksti, kuvitus ja sisällysluettelo\n"
-"      esitetään sivustolla. Bookworm tukee CSS -tyylejä, JPG, GIF, PNG "
-"ja SVG muotoisia kuvia\n"
+"      esitetään sivustolla. Bookworm tukee CSS -tyylejä, JPG, GIF, PNG ja "
+"SVG muotoisia kuvia\n"
 "      ja kaikkia XHTML -elementtejä."
 
 #: library/templates/public.html:82
@@ -2542,7 +2580,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    Bookworm ja ePub<a href=\"%(toururl)s\">-esittely yhdellä sivulla</a>.    "
+"    Bookworm ja ePub<a href=\"%(toururl)s\">-esittely yhdellä sivulla</"
+"a>.    "
 
 #: library/templates/reading-mode.html:3 library/templates/reading-mode.html:5
 #: library/templates/tour.html:131 library/templates/includes/about.html:10
@@ -2554,8 +2593,8 @@ msgid ""
 "Reading Mode provides a clean user interface for reading your ebooks, "
 "without the clutter and customized to your preferences"
 msgstr ""
-"Lukunäyttö jättää näytölle vain tekstin. Voit kuitenkin valita "
-"kirjasimet ja suurentaa tai pienentää tekstiä."
+"Lukunäyttö jättää näytölle vain tekstin. Voit kuitenkin valita kirjasimet ja "
+"suurentaa tai pienentää tekstiä."
 
 #: library/templates/reading-mode.html:28
 msgid "Choose a serif or sans-serif font"
@@ -2570,8 +2609,8 @@ msgid ""
 "Use keyboard shortcuts to page up or page down, or go next and previous "
 "through chapters"
 msgstr ""
-"Näppäinkomennoilla pääset sivua ylös tai alas, sekä edelliseen tai seuraavaan "
-"lukuun."
+"Näppäinkomennoilla pääset sivua ylös tai alas, sekä edelliseen tai "
+"seuraavaan lukuun."
 
 #: library/templates/reading-mode.html:31
 msgid "Enhanced mobile reading experience"
@@ -2602,8 +2641,8 @@ msgid ""
 "in the Reading Mode layout.  It will also appear in the upper right of the "
 "screen."
 msgstr ""
-"Pääset perusnäyttöön klikkaamalla taas samaa kuvaketta "
-"lukunäytössä. Sekin on näytön oikeassa yläkulmassa. "
+"Pääset perusnäyttöön klikkaamalla taas samaa kuvaketta lukunäytössä. Sekin "
+"on näytön oikeassa yläkulmassa. "
 
 #: library/templates/reading-mode.html:45
 #: library/templates/reading-mode.html:93
@@ -2633,8 +2672,8 @@ msgid ""
 msgstr ""
 "Lukunäyttö jättää pois kömpelöt linkit \"seuraava\" ja \"edellinen\", sen "
 "sijaan pääset seuraavalle sivulle <strong>klikkamalla mihin tahansa oikeassa "
-"marginaalissa</strong> ja edelliselle sivulle <strong>klikkaamalla vasemmassa "
-"marginaalissa</strong>."
+"marginaalissa</strong> ja edelliselle sivulle <strong>klikkaamalla "
+"vasemmassa marginaalissa</strong>."
 
 #: library/templates/reading-mode.html:55
 #: library/templates/reading-mode.html:56
@@ -2647,8 +2686,8 @@ msgid ""
 "hover your mouse pointer over the margin areas, light-gray indicators will "
 "fade in to show that you are in a clickable navigation area."
 msgstr ""
-"Bookworm myös opastaa selaamisessa. Jos liikutat kursoria "
-"marginaalissa himmeän harmaat nuolet näyttävät klikattavan alueen."
+"Bookworm myös opastaa selaamisessa. Jos liikutat kursoria marginaalissa "
+"himmeän harmaat nuolet näyttävät klikattavan alueen."
 
 #: library/templates/reading-mode.html:60
 msgid "Keyboard shortcuts"
@@ -2695,8 +2734,8 @@ msgid ""
 "To exit Reading Mode and return to the main library page, click on the arrow "
 "at the top or bottom next to your book's title."
 msgstr ""
-"Pääset lukunäytöstä perusnäyttöön klikkaamalla nuolta näytön ylä- "
-"tai alareunassa kirjan nimen vieressä"
+"Pääset lukunäytöstä perusnäyttöön klikkaamalla nuolta näytön ylä- tai "
+"alareunassa kirjan nimen vieressä"
 
 #: library/templates/reading-mode.html:85
 msgid "Exit Reading Mode and go back to library"
@@ -2771,8 +2810,8 @@ msgid ""
 "already optimized to be simple.  However, some of the features of Reading "
 "Mode are also available in the mobile version:"
 msgstr ""
-"Lukunäytön <a href=\"http://m.bookworm.oreilly.com/\">omaa mobiilisivua</"
-"a> ei ole. Mobiilisivut on tehty muutenkin mahdollisimman yksinkertaisiksi. "
+"Lukunäytön <a href=\"http://m.bookworm.oreilly.com/\">omaa mobiilisivua</a> "
+"ei ole. Mobiilisivut on tehty muutenkin mahdollisimman yksinkertaisiksi. "
 "Joitakin lukunäytön ominaisuuksia voit valita:"
 
 #: library/templates/reading-mode.html:130
@@ -2789,8 +2828,9 @@ msgstr "iPhonella voit klikkaamalla siirtyä seuraavalle sivulle "
 
 #: library/templates/reading-mode.html:135
 msgid "Font size controls are also available on the mobile version."
-msgstr "Myös mobiilisivulla voit valita kirjasimen koon (S60 -laitteilla "
-"käytä selaimen asetuksia, siellä on viisi kokoa kirjasimille. Näyttöä voit "
+msgstr ""
+"Myös mobiilisivulla voit valita kirjasimen koon (S60 -laitteilla käytä "
+"selaimen asetuksia, siellä on viisi kokoa kirjasimille. Näyttöä voit "
 "suurentaa ja pienentää * ja # -näppäimillä)."
 
 #: library/templates/reading-mode.html:138
@@ -2816,9 +2856,9 @@ msgid ""
 "Liza Daly at threepress.org, a project to expand the reach of open source "
 "software in academic and trade publishing."
 msgstr ""
-"Bookworm on verkossa toimiva ePub-kirjojen lukusovellus. Palvelun "
-"kehitti Liza Daly (threepress.org). Hankkeen tarkoitus on edistää avoimen "
-"koodin sovellusten käyttöä akateemisessa ja teollisessa julkaisutoiminnassa."
+"Bookworm on verkossa toimiva ePub-kirjojen lukusovellus. Palvelun kehitti "
+"Liza Daly (threepress.org). Hankkeen tarkoitus on edistää avoimen koodin "
+"sovellusten käyttöä akateemisessa ja teollisessa julkaisutoiminnassa."
 
 #: library/templates/shell.html:32
 msgid "Online ePub ebook reading"
@@ -2893,7 +2933,10 @@ msgid ""
 "\n"
 "                  From the Bookworm account of %(ruf)s &lt;%(rue)s&gt;\n"
 "                "
-msgstr "\n\n                  Bookworm tililtä %(ruf)s &lt;%(rue)s&gt;"
+msgstr ""
+"\n"
+"\n"
+"                  Bookworm tililtä %(ruf)s &lt;%(rue)s&gt;"
 
 #: library/templates/shell.html:116
 msgid "Privacy policy"
@@ -2906,7 +2949,11 @@ msgid ""
 "        Software by <a href=\"%(tpcurl)s\">Threepress Consulting Inc.</a> "
 "and <a href=\"%(djpurl)s\">Django</a>\n"
 "      "
-msgstr "\n\n        Ohjelmisto: <a href=\"%(tpcurl)s\">Threepress Consulting Inc.</a> ja <a href=\"%(djpurl)s\">Django</a>"
+msgstr ""
+"\n"
+"\n"
+"        Ohjelmisto: <a href=\"%(tpcurl)s\">Threepress Consulting Inc.</a> ja "
+"<a href=\"%(djpurl)s\">Django</a>"
 
 #: library/templates/shell.html:122
 #, python-format
@@ -2914,7 +2961,10 @@ msgid ""
 "\n"
 "\t  Licensed under the <a href=\"%(bsdlicenseurl)s\">BSD License</a>\n"
 "\t"
-msgstr "\n\n\t  Ohjelmistolisenssi: <a href=\"%(bsdlicenseurl)s\">BSD</a>"
+msgstr ""
+"\n"
+"\n"
+"\t  Ohjelmistolisenssi: <a href=\"%(bsdlicenseurl)s\">BSD</a>"
 
 #: library/templates/tour.html:3 library/templates/tour.html.py:14
 msgid "Take a tour of Bookworm"
@@ -2935,7 +2985,8 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"    Tutustu sivuston tärkeimpiin ominaisuuksiin: siirrä ensimmäinen kirjasi,\n"
+"    Tutustu sivuston tärkeimpiin ominaisuuksiin: siirrä ensimmäinen "
+"kirjasi,\n"
 "    lue ja tee haku tekstissä, sekä käytä mobiililaitteilla. \n"
 "    <a href=\"%(signupurl)s\">Luo käyttäjätili</a> kun olet valmis. "
 
@@ -2971,7 +3022,10 @@ msgid ""
 "\n"
 "    Then click the <em>Browse</em> button. \n"
 "    "
-msgstr "\n\n    Klikkaa sitten <em>Selaa</em> näppäintä. "
+msgstr ""
+"\n"
+"\n"
+"    Klikkaa sitten <em>Selaa</em> näppäintä. "
 
 #: library/templates/tour.html:65
 msgid ""
@@ -3093,8 +3147,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"      Jokaisessa kirjassa on nuolet <em>seuraavalle</em> ja <em>edelliselle</em> sivulle siirtymiseksi.\n"
-"\" \"Voit myös hypätä haluamaasi kohtaan luvussa klikkaamalla <em>sisällysluetteloa</em>."
+"      Jokaisessa kirjassa on nuolet <em>seuraavalle</em> ja <em>edelliselle</"
+"em> sivulle siirtymiseksi.\n"
+"\" \"Voit myös hypätä haluamaasi kohtaan luvussa klikkaamalla "
+"<em>sisällysluetteloa</em>."
 
 #: library/templates/tour.html:134
 #, python-format
@@ -3166,7 +3222,8 @@ msgstr ""
 "\n"
 "      Jos puhelimessasi on verkkoyhteys, voit lukea Bookworm -kirjojasi\n"
 "      missä kuljetkin. Mene puhelimen selaimella osoitteeseen\n"
-"      <strong><a href=\"http://m.bookworm.oreilly.com/\">m.bookworm.oreilly.com</a></strong>.\n"
+"      <strong><a href=\"http://m.bookworm.oreilly.com/\">m.bookworm.oreilly."
+"com</a></strong>.\n"
 "      Bookworm sovittaa sivut mobiililaitteiden näytöille."
 
 #: library/templates/tour.html:171
@@ -3188,8 +3245,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"      Jos käytät Safaria iPhonella, Bookworm voi siirtää kirjasi suoraan <a href=\"http://www.lexcycle.com/\">Stanzaan</a>.  Klikkaa &#x21E7; \n"
-"     nuolta otsikon vieressä kokoelmassa ja kirja lisätään     Stanzan kokoelmaan. <a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone\">Ohjeita Stanzan sivuilla.</a>."
+"      Jos käytät Safaria iPhonella, Bookworm voi siirtää kirjasi suoraan <a "
+"href=\"http://www.lexcycle.com/\">Stanzaan</a>.  Klikkaa &#x21E7; \n"
+"     nuolta otsikon vieressä kokoelmassa ja kirja lisätään     Stanzan "
+"kokoelmaan. <a href=\"http://www.lexcycle.com/faq/"
+"how_to_get_books_onto_stanza_iphone\">Ohjeita Stanzan sivuilla.</a>."
 
 #: library/templates/tour.html:180
 msgid "Download to the Sony Reader or iLiad    "
@@ -3207,7 +3267,8 @@ msgstr ""
 "\n"
 "\n"
 "      Klikkaa <em>Siirrä tämä kirja</em> -linkkiä sisällysluettelossa ja\n"
-"      voit ladata alkuperäisen tiedoston milloin haluat. Katso lukulaitteesi\n"
+"      voit ladata alkuperäisen tiedoston milloin haluat. Katso "
+"lukulaitteesi\n"
 "      ohjeista kuinka siirät kirjan laitteeseen."
 
 #: library/templates/tour.html:189
@@ -3242,9 +3303,8 @@ msgid ""
 "bookworm@threepress.org\">bookworm@threepress.org</a> with a description of "
 "the problem."
 msgstr ""
-"Jos saat virheilmoituksen, jota et ymmärrä, <a href="
-"\"mailto:bookworm@threepress.org\">lähetä sähköpostia</a> ja kuvaile "
-"virhe. "
+"Jos saat virheilmoituksen, jota et ymmärrä, <a href=\"mailto:"
+"bookworm@threepress.org\">lähetä sähköpostia</a> ja kuvaile virhe. "
 
 #: library/templates/upload.html:42
 msgid ""
@@ -3279,8 +3339,122 @@ msgstr ""
 msgid "Add an ePub from your computer by clicking on &lsquo;Browse&rsquo;:"
 msgstr "Siirrä tietokoneeltasi ePub klikkaamalla &lsquo;selaa&rsquo;:"
 
+#: library/templates/view.html:7
+#, python-format
+msgid " '%(chaptertitle)s' in "
+msgstr ""
+
+#: library/templates/view.html:7
+#, python-format
+msgid " by %(author)s "
+msgstr ""
+
+#: library/templates/view.html:48
+msgid "Forward"
+msgstr ""
+
+#: library/templates/view.html:77 library/templates/view.html.py:231
+#, fuzzy
+msgid "by <!-- trans written by -->"
+msgstr "Klikkaa"
+
+#: library/templates/view.html:99
+msgid "View in Stanza"
+msgstr "Lue Stanzassa"
+
+#: library/templates/view.html:108
+msgid "To read this book online, select any of the sections to the left."
+msgstr ""
+
+#: library/templates/view.html:115 library/templates/includes/leftnav.html:28
+#: library/templates/includes/leftnav.html:30
+msgid "Book information"
+msgstr "Tietoja kirjasta"
+
+#: library/templates/view.html:121
+#, fuzzy
+msgid "Publisher"
+msgstr "Julkaisijat"
+
+#: library/templates/view.html:128 library/templates/auth/profile.html:103
+msgid "Language"
+msgstr "kieli"
+
+#: library/templates/view.html:134
+#, fuzzy
+msgid "Date added to library"
+msgstr "lisätty kokoelmaasi"
+
+#: library/templates/view.html:139
+msgid "Subjects"
+msgstr ""
+
+#: library/templates/view.html:146
+msgid "Rights"
+msgstr ""
+
+#: library/templates/view.html:153
+msgid "Description"
+msgstr ""
+
+#: library/templates/view.html:159
+msgid "Date published"
+msgstr "Olen julkaisija"
+
+#: library/templates/view.html:164
+#, fuzzy
+msgid "Identifier <!-- trans: unique ID for this book -->"
+msgstr "seuraava"
+
+#: library/templates/view.html:169
+#, fuzzy
+msgid "Download entire book"
+msgstr "Lataa tämä kirja"
+
+#: library/templates/view.html:170
+msgid "ePub format"
+msgstr ""
+
+#: library/templates/view.html:177
+#, fuzzy
+msgid "Reload this book"
+msgstr "Lataa tämä kirja"
+
+#: library/templates/view.html:181
+#, fuzzy
+msgid "Replace this book"
+msgstr "Lataa tämä kirja"
+
+#: library/templates/view.html:187
+msgid "Editions of this work found in Google Books Search"
+msgstr ""
+
+#: library/templates/view.html:189
+msgid ""
+"This title and author were found to have the following entries through the "
+"use of the Google Books Search service. The information listed here may be "
+"inaccurate or incomplete and is not provided by Bookworm."
+msgstr ""
+
+#: library/templates/view.html:199
+msgid "Cover image not available from Google Books"
+msgstr ""
+
+#: library/templates/view.html:205
+msgid "Published by"
+msgstr "Julkaisijat"
+
+#: library/templates/view.html:207
+msgid "No publisher was listed"
+msgstr "Julkaisijoille"
+
+#: library/templates/view.html:233
+#, fuzzy, python-format
+msgid "on <a href=\"%(libraryurl)s\">Bookworm</a>"
+msgstr "Hakuohjeita saat <a href=\"%(search_help_url)s\">täältä</a>."
+
 #: library/templates/auth/language.html:3
-msgid "Change the default languge for"
+msgid "Change the default language for"
 msgstr "Vaihda oletuskieleksi"
 
 #: library/templates/auth/language.html:9
@@ -3295,7 +3469,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"  Bookworm -palvelua voi käyttää eri kielillä. Kun olet kirjautunut palveluun,\n"
+"  Bookworm -palvelua voi käyttää eri kielillä. Kun olet kirjautunut "
+"palveluun,\n"
 "  valitse yksi kielivaihtoehdoista.\n"
 "\n"
 
@@ -3344,8 +3519,9 @@ msgstr "Poista käyttäjätilisi"
 msgid ""
 "Some fields such as email and country have been imported via OpenID and "
 "should be changed with your OpenID provider, rather than with Bookworm."
-msgstr "OpenID:n kautta tuodut tiedot kuten sähköposti ja maa pitää muuttaa"
-"OpenID -tunnusta käyttävällä sivustolla, ei siis Bookworm -sivulla."
+msgstr ""
+"OpenID:n kautta tuodut tiedot kuten sähköposti ja maa pitää muuttaaOpenID -"
+"tunnusta käyttävällä sivustolla, ei siis Bookworm -sivulla."
 
 #: library/templates/auth/profile.html:56
 msgid "User profile and preferences for "
@@ -3371,10 +3547,6 @@ msgstr "sähköposti"
 #: library/templates/auth/profile.html:97
 msgid "Country"
 msgstr "maa"
-
-#: library/templates/auth/profile.html:103
-msgid "Language"
-msgstr "kieli"
 
 #: library/templates/auth/profile.html:104
 msgid "change <!-- trans: change the user's language setting -->"
@@ -3408,7 +3580,10 @@ msgid ""
 "You may change the OpenID URL which is linked with the current logged-in "
 "account.  Make sure you really mean to do this, as you will not be able to "
 "log in with the old URL again."
-msgstr "Voit muuttaa käyttäjätilille kirjatun OpenID URL:n. Varmistu että haluatmuuttaa tiedon, sillä sen jälkeen et enää voi kirjautua vanhalla URL:lla."
+msgstr ""
+"Voit muuttaa käyttäjätilille kirjatun OpenID URL:n. Varmistu että "
+"haluatmuuttaa tiedon, sillä sen jälkeen et enää voi kirjautua vanhalla URL:"
+"lla."
 
 #: library/templates/auth/authopenid/changeopenid.html:17
 #: library/templates/auth/authopenid/sendpw.html:14
@@ -3431,7 +3606,10 @@ msgstr "Muuta salasanasi"
 msgid ""
 "If you're new to Bookworm, link your OpenID with a new account. If you're "
 "already a Bookworm member, link it with your existing account."
-msgstr "Jos avaat käyttäjätilin <strong>Bookworm</strong> -palvelussa, liitä OpenID -tunnuksesi uuteen tiliin. Jos sinulla on jo tili, voit liittää tunnuksesi kyseiseen tiliin."
+msgstr ""
+"Jos avaat käyttäjätilin <strong>Bookworm</strong> -palvelussa, liitä OpenID -"
+"tunnuksesi uuteen tiliin. Jos sinulla on jo tili, voit liittää tunnuksesi "
+"kyseiseen tiliin."
 
 #: library/templates/auth/authopenid/complete.html:17
 msgid "Link an OpenID with your existing Bookworm account"
@@ -3529,13 +3707,16 @@ msgstr "Tee kierros"
 msgid ""
 "You may have created your account with an OpenID, in which case you won't "
 "need your password but should enter your OpenID URL below."
-msgstr "Sinulla saattaa olla jo OpenID -tunnus. Jos on, et tarvitse salasanaa kunkirjaat alle OpenID url:"
+msgstr ""
+"Sinulla saattaa olla jo OpenID -tunnus. Jos on, et tarvitse salasanaa "
+"kunkirjaat alle OpenID url:"
 
 #: library/templates/auth/authopenid/signin.html:63
 msgid ""
 "If you've never created an account, click &lsquo;Sign up&rsquo; on the left."
 msgstr ""
-"Jos et ole tehnyt käyttäjätiliä, klikkaa vasemmalla &lsquo;Luo käyttäjätili&rsquo;."
+"Jos et ole tehnyt käyttäjätiliä, klikkaa vasemmalla &lsquo;Luo "
+"käyttäjätili&rsquo;."
 
 #: library/templates/auth/authopenid/signin.html:71
 msgid "Sign in using a local Bookworm account"
@@ -3707,11 +3888,6 @@ msgstr "Lue auki oleva sivu"
 msgid "Download this book"
 msgstr "Lataa tämä kirja"
 
-#: library/templates/includes/leftnav.html:28
-#: library/templates/includes/leftnav.html:30
-msgid "Book information"
-msgstr "Tietoja kirjasta"
-
 #: library/templates/includes/leftnav.html:36
 msgid "First page"
 msgstr "Ensimmäinen sivu"
@@ -3733,7 +3909,8 @@ msgstr ""
 "\n"
 "\n"
 "        OpenID -tunnus käy moneen eri verkkosivustoon mikä helpottaa\n"
-"        toimintaa verkossa. Standardia käyttävät jo monet sivustot, esim.        Yahoo."
+"        toimintaa verkossa. Standardia käyttävät jo monet sivustot, "
+"esim.        Yahoo."
 
 #: library/templates/includes/openid.html:15
 msgid ""
@@ -3747,7 +3924,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"   Jos olet tehnyt käyttäjätunnuksen johonkin standardia tukevaan sivustoon,\n"
+"   Jos olet tehnyt käyttäjätunnuksen johonkin standardia tukevaan "
+"sivustoon,\n"
 "        sinulla voi jo olla tunnus. Klikkaa nimeä niin saat lisätietoa\n"
 "sivustojen OpenID -palveluista."
 
@@ -3784,7 +3962,10 @@ msgid ""
 "        The official page for OpenID is <a href=\"http://openid.net/"
 "\">http://openid.net/</a>.\n"
 "        "
-msgstr "\n        OpenID:n virallinen sivu on: <a href=\"http://openid.net/\">http://openid.net/</a>."
+msgstr ""
+"\n"
+"        OpenID:n virallinen sivu on: <a href=\"http://openid.net/\">http://"
+"openid.net/</a>."
 
 #: library/templates/includes/pagination.html:4
 #: search/templates/results.html:37
@@ -3855,8 +4036,11 @@ msgid " One result found for <em>&lsquo;%(term)s&rsquo;</em> in your library. "
 msgid_plural ""
 " %(resultscount)s results found for <em>&lsquo;%(term)s&rsquo;</em> in your "
 "library."
-msgstr[0] "Hakusanalle <em>&lsquo;%(term)s&rsquo;</em> vain yksi kohde kokoelmassa. "
-msgstr[1] "Hakusanalla <em>&lsquo;%(term)s&rsquo;</em> %(resultscount)s kohdetta kokoelmassasi."
+msgstr[0] ""
+"Hakusanalle <em>&lsquo;%(term)s&rsquo;</em> vain yksi kohde kokoelmassa. "
+msgstr[1] ""
+"Hakusanalla <em>&lsquo;%(term)s&rsquo;</em> %(resultscount)s kohdetta "
+"kokoelmassasi."
 
 #: search/templates/results.html:22
 msgid "Results are returned starting from the most relevant."
@@ -3886,9 +4070,10 @@ msgid ""
 "If you just added an ePub that you're expecting to search, please wait a few "
 "minutes.  The search engine checks periodically for new material and should "
 "update shortly."
-msgstr "Jos haluat tehdä haun kirjassa, jonka juuri siirsit, odota muutama "
-"minuutti. Hakukone tarkistaa uudet kirjat muutaman minuutin välein ja "
-"tiedot hetken päästä."
+msgstr ""
+"Jos haluat tehdä haun kirjassa, jonka juuri siirsit, odota muutama minuutti. "
+"Hakukone tarkistaa uudet kirjat muutaman minuutin välein ja tiedot hetken "
+"päästä."
 
 #: search/templates/results.html:53
 msgid "Search your ePubs on Bookworm"
@@ -3900,8 +4085,8 @@ msgid ""
 "Enter one or more words on the left to search your library, or get <a href="
 "\"%(search_help_url)s\">help with searching Bookworm</a>."
 msgstr ""
-"Kirjoita hakukenttään vasemmalla yksi tai useampi sana ja paina enter, tai"
-"katso <a href=\"%(search_help_url)s\">hakuohjeita</a>."
+"Kirjoita hakukenttään vasemmalla yksi tai useampi sana ja paina enter, "
+"taikatso <a href=\"%(search_help_url)s\">hakuohjeita</a>."
 
 #: search/templates/search_help.html:7 search/templates/search_help.html:9
 msgid "Full-text search in Bookworm"
@@ -3951,8 +4136,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"  Tammikuuhun 2008 asti Bookworm käytti <a href=\"http://xapian.org/\">Xapian</"
-"a>:a, vapaan lähdekoodin hakukonetta.  Xapian on erinomainen tuote, mutta\n"
+"  Tammikuuhun 2008 asti Bookworm käytti <a href=\"http://xapian.org/"
+"\">Xapian</a>:a, vapaan lähdekoodin hakukonetta.  Xapian on erinomainen "
+"tuote, mutta\n"
 "   vaatii erillisen hakuindeksin. Siitä aiheutui sen verran "
 "ylläpitokustannuksia että yksinkertaisemman MySQL:n käyttö tuli "
 "kannattavaksi."
@@ -3972,8 +4158,8 @@ msgid ""
 msgstr ""
 "\n"
 "  Samoin kuin Googlessa, käytä lainausmerkkejä jos haluat rajoittaa haun\n"
-"  tiettyyn lauseeseen, esim. kirjat joissa on lause \"Valkoinen talo\" "
-" mutta  ei joko \"valkoinen\" tai \"talo\" erikseen.\n"
+"  tiettyyn lauseeseen, esim. kirjat joissa on lause \"Valkoinen talo\"  "
+"mutta  ei joko \"valkoinen\" tai \"talo\" erikseen.\n"
 "  "
 
 #: search/templates/search_help.html:49
@@ -3986,7 +4172,11 @@ msgid ""
 "  All searches are case-insensitive.  This means that \"White\" will find "
 "\"white\" or \"WHITE\".\n"
 "  "
-msgstr "\n\n  Isot ja pienet kirjaimet merkitsevät eri asioita. Jos haku on \"Valkoinen\" niin tulos on \"valkoinen\" tai \"VALKOINEN\"."
+msgstr ""
+"\n"
+"\n"
+"  Isot ja pienet kirjaimet merkitsevät eri asioita. Jos haku on \"Valkoinen"
+"\" niin tulos on \"valkoinen\" tai \"VALKOINEN\"."
 
 #: search/templates/search_help.html:55
 msgid "Boolean operators"
@@ -4065,8 +4255,8 @@ msgstr ""
 "\n"
 "  Hakutulos näytetää relevanssin järjestyksessä. <em>Relevanssi</em> on\n"
 "  todennäköisyys sille että tulos on etsimäsi. Relevanssi lasketaan\n"
-"  algoritmeilla ja tulos ei aina ole niin intuitiivinen kuin "
-"Googlen kaltaisilla massiivisilla hakukoneilla.\n"
+"  algoritmeilla ja tulos ei aina ole niin intuitiivinen kuin Googlen "
+"kaltaisilla massiivisilla hakukoneilla.\n"
 "  "
 
 #: search/templates/search_help.html:83

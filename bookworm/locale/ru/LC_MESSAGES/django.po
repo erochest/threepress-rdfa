@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-19 11:45-0400\n"
+"POT-Creation-Date: 2009-04-21 09:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2721,7 +2721,7 @@ msgid "Download entire book"
 msgstr ""
 
 #: library/templates/view.html:170
-msgid "epub format"
+msgid "ePub format"
 msgstr ""
 
 #: library/templates/view.html:177
@@ -2761,7 +2761,7 @@ msgid "on <a href=\"%(libraryurl)s\">Bookworm</a>"
 msgstr ""
 
 #: library/templates/auth/language.html:3
-msgid "Change the default languge for"
+msgid "Change the default language for"
 msgstr ""
 
 #: library/templates/auth/language.html:9

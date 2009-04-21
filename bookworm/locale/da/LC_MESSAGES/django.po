@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-19 11:45-0400\n"
-"PO-Revision-Date: 2009-04-19 11:38-0400\n"
+"POT-Creation-Date: 2009-04-21 09:54-0400\n"
+"PO-Revision-Date: 2009-04-21 09:58-0400\n"
 "Last-Translator: Marie Bilde Rasmussen <mariebilderas@gmail.com>\n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -3345,7 +3345,6 @@ msgid "Book information"
 msgstr "Boginformation"
 
 #: library/templates/view.html:121
-#, fuzzy
 msgid "Publisher"
 msgstr "Udgivere"
 
@@ -3370,12 +3369,10 @@ msgid "Description"
 msgstr ""
 
 #: library/templates/view.html:159
-#, fuzzy
 msgid "Date published"
 msgstr "Jeg er forlægger"
 
 #: library/templates/view.html:164
-#, fuzzy
 msgid "Identifier <!-- trans: unique ID for this book -->"
 msgstr "næste"
 
@@ -3384,7 +3381,7 @@ msgid "Download entire book"
 msgstr "Download denne bog"
 
 #: library/templates/view.html:170
-msgid "epub format"
+msgid "ePub format"
 msgstr ""
 
 #: library/templates/view.html:177
@@ -3411,12 +3408,10 @@ msgid "Cover image not available from Google Books"
 msgstr ""
 
 #: library/templates/view.html:205
-#, fuzzy
 msgid "Published by"
 msgstr "Udgivere"
 
 #: library/templates/view.html:207
-#, fuzzy
 msgid "No publisher was listed"
 msgstr "For udgivere"
 
@@ -3426,7 +3421,7 @@ msgid "on <a href=\"%(libraryurl)s\">Bookworm</a>"
 msgstr ""
 
 #: library/templates/auth/language.html:3
-msgid "Change the default languge for"
+msgid "Change the default language for"
 msgstr "Her kan du ændre det foretrukne sprog for"
 
 #: library/templates/auth/language.html:9
