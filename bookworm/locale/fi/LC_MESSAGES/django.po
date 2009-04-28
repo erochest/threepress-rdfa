@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 09:54-0400\n"
-"PO-Revision-Date: 2009-04-21 09:58-0400\n"
+"POT-Creation-Date: 2009-04-28 18:24-0400\n"
+"PO-Revision-Date: 2009-04-28 18:26-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -654,7 +654,7 @@ msgstr "Lue digikirjoja missä liikutkin"
 
 #: library/templates/about.html:15
 msgid "Usable on a computer or smartphone such as the iPhone"
-msgstr "Käytettävissä tietokoneella tai mobiililaitteilla kuten S60 -laitteet"
+msgstr "Käytä tietokoneella tai mobiililaitteilla kuten Symbian S60 -laitteet"
 
 #: library/templates/about.html:16
 msgid "Download to Stanza or your Sony Reader"
@@ -816,11 +816,11 @@ msgid ""
 "    on your iPhone (using Bookworm or Stanza) and on the Sony Reader"
 msgstr ""
 "Voit lukea epub -kirjoja kotikoneellasi, (käytä joko Bookworm -palvelua tai "
-"Adobe Digital Editions -lukuohjelmaa, myös Stanza ja Sony Reader käyvät)."
+"Adobe Digital Editions\" -lukuohjelmaa, myös Stanza ja Sony Reader käyvät)."
 
 #: library/templates/about.html:104 library/templates/includes/about.html:8
 msgid "More about ePub"
-msgstr "Lisää ePub -julkaisuista"
+msgstr "ePub -julkaisut"
 
 #: library/templates/about.html:107
 msgid "Can I use Bookworm on my mobile device?"
@@ -842,9 +842,9 @@ msgstr ""
 "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
 "\"right\" style=\"margin-bottom:10px\" width=\"100\"/></a>\n"
-"    Ilman muuta!  Mobiililaitteille (esimerkiksi iPhone tai S60 -laitteet)\n"
+"    Ilman muuta!  Mobiililaitteille (esimerkiksi Symbian S60 -laitteet) \n"
 "on oma sivustonsa osoiteessa: <a href=\"http://m.bookworm.oreilly.com/"
-"\">http://bookworm.oreilly.com/</a>.\n"
+"\">http://m.bookworm.oreilly.com/</a>.\n"
 "    Bookworm -palvelua on testattu myös Blackberry -laitteilla, Opera "
 "Mobile \n"
 "-selaimella sekä Amazonin Kindle Whispernet -palvelussa"
@@ -940,8 +940,9 @@ msgid ""
 "org</a>\n"
 "    and we'll get back to you right away."
 msgstr ""
-"Threepres on julkaisualan palveluyritys, jolla on usean vuoden kokemus\n"
-"toiminnasta julkaisuteollisuudessa. Kun haluat julkaista epub -formaatissa,\n"
+"Threepress on palveluyritys, jolla on usean vuoden kokemus \n"
+"toiminnasta julkaisuteollisuudessa. Kun haluat julkaista epub -"
+"formaatissa, \n"
 "tai kun haluat muokata Boookworm -sivuston julkaisusi tarpeisiin, <a href="
 "\"mailto:bookworm@threepress.org\">ota yhteyttä</a>."
 
@@ -1029,7 +1030,7 @@ msgid ""
 "    Store copies of all your books on your own computers.\n"
 msgstr ""
 "\n"
-"    Kirjoista tehdään varmuuskopiot. Bookworm ei ole kaupallinen palvelu ja\n"
+"    Kirjoista tehdään varmuuskopiot. Bookworm ei ole kaupallinen palvelu \n"
 "    ja sillä on rajalliset taloudelliset ja oikeudelliset resurssit.\n"
 "    Siten emme takaa tiedostojen turvallisuutta tai palvelun "
 "luotettavuutta.\n"
@@ -1051,7 +1052,8 @@ msgid ""
 msgstr ""
 "\n"
 "    Bookworm on vapaasti käytettävissä BSD -lisenssin ehtojen\n"
-"    mukaisesti: <a href=\"http://threepress.org/tools/\">tools page</a>.\n"
+"    mukaisesti: <a href=\"http://threepress.org/tools/\">ks. Threepress</"
+"a>.\n"
 "    Palvelun tuottaa <a href=\"http://threepress.org/\">Threepress</a>,\n"
 "    avoimen koodin julkaisuohjelmien kehittämiseksi ja testaamiseksi.\n"
 "    Sivuston loi <a href=\"http://threepress.org/about/\">Liza Daly</a>\n"
@@ -2113,7 +2115,7 @@ msgstr ""
 "\n"
 "\n"
 "      Digikirjojen lukulaitteita ilmestyy koko ajan,\n"
-"      mutta maaliskuuhun 2009 mennessä "
+"      mutta maaliskuuhun 2009 mennessä laitteita oli:"
 
 #: library/templates/help.html:147
 msgid "Device <!-- trans: e-reading device, should be short -->"
@@ -2300,7 +2302,7 @@ msgstr "Muuta tietojasi"
 
 #: library/templates/index.html:42
 msgid "Books in your library"
-msgstr "Kirjoja kokoelmassasi"
+msgstr "Kokoelmani"
 
 #: library/templates/index.html:46
 #, python-format
@@ -2312,8 +2314,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"      Kokoelman järjestyksen operaattorit: <em>%(order_text)s,</em> <em>%"
-"(order_direction)s:ssä</em> ja %(order_adverb)s ."
+"      Kokoelman järjestys: <em>%(order_text)s,</em> <em>%(order_direction)s:"
+"ssa</em> ja %(order_adverb)s ."
 
 #: library/templates/index.html:56
 msgid ""
@@ -2414,7 +2416,7 @@ msgstr "Lue lisää"
 #: library/templates/auth/authopenid/signup.html:4
 #: library/templates/auth/authopenid/signup.html:75
 msgid "Sign up"
-msgstr "luo käyttäjätili"
+msgstr "Luo käyttäjätili"
 
 #: library/templates/public.html:34
 msgid "Readers"
@@ -2457,11 +2459,11 @@ msgstr "Julkaisijat"
 
 #: library/templates/public.html:51
 msgid "Test your ePub ebooks"
-msgstr "Testaa ePub -julkaisusi"
+msgstr "Testaa"
 
 #: library/templates/public.html:52
 msgid "Need strategy or technical help?"
-msgstr "Tarvitko strategian tai teknistä tukea?"
+msgstr "Tarvitko julkaisutrategian tai teknistä tukea?"
 
 #: library/templates/public.html:53
 msgid "Ebook and ePub consulting services"
@@ -2698,32 +2700,32 @@ msgid "Jump down one page"
 msgstr "Liiku alas sivun verran"
 
 #: library/templates/reading-mode.html:65
-msgid "'n' or Page-Down"
-msgstr "'n' tai Page-Down -näppäin"
+msgid "'j' or Page-Down"
+msgstr "'j' tai Page-Down -näppäin"
 
 #: library/templates/reading-mode.html:68
 msgid "Jump up one page"
 msgstr "Siirry ylös sivun verran"
 
 #: library/templates/reading-mode.html:69
-msgid "'p' or Page-Up"
-msgstr "'p' tai Page-Up -näppäin"
+msgid "'k' or Page-Up"
+msgstr "'k' tai Page-Up -näppäin"
 
 #: library/templates/reading-mode.html:72
 msgid "Go to next chapter"
 msgstr "Siirry seuraavaan lukuun"
 
 #: library/templates/reading-mode.html:73
-msgid "'k' or click on right margin"
-msgstr "'k' tai klikkaa oikeaan marginaaliin"
+msgid "'n' or click on right margin"
+msgstr "'n' tai klikkaa oikeaan marginaaliin"
 
 #: library/templates/reading-mode.html:76
 msgid "Go to previous chapter"
 msgstr "Siirry edelliseen lukuun"
 
 #: library/templates/reading-mode.html:77
-msgid "'j' or click on left margin"
-msgstr "'j' tai klikkaa vasempaan marginaaliin"
+msgid "'p' or click on left margin"
+msgstr "'p' tai klikkaa vasempaan marginaaliin"
 
 #: library/templates/reading-mode.html:81
 msgid "Go back to your library"
@@ -2907,7 +2909,7 @@ msgstr "Kirjautunut"
 
 #: library/templates/shell.html:73
 msgid "edit profile"
-msgstr "muuta tietoja"
+msgstr "käyttäjätiedot"
 
 #: library/templates/shell.html:75
 msgid "admin"
@@ -3293,9 +3295,9 @@ msgid ""
 "\">About</a> pages for more information, or email <a href=\"mailto:"
 "bookworm@threepress.org\">bookworm@threepress.org</a>for assistance."
 msgstr ""
-"Jos haluat lisää ohjeita, klikkaa <a href=\"%(helpurl)s\">tätä</a> tai<a "
-"href=\"%(abouturl)s\">tietoja</a>-sivua tai <a href=\"mailto:"
-"bookworm@threepress.org\">lähetä sähköpostia</a>."
+"Jos haluat lisää ohjeita, lue <a href=\"%(helpurl)s\">Ohjeita</a> tai<a href="
+"\"%(abouturl)s\">tietoja</a>-sivua tai <a href=\"mailto:bookworm@threepress."
+"org\">lähetä sähköpostia</a>."
 
 #: library/templates/upload.html:27
 msgid ""
@@ -3354,7 +3356,6 @@ msgid "Forward"
 msgstr ""
 
 #: library/templates/view.html:77 library/templates/view.html.py:231
-#, fuzzy
 msgid "by <!-- trans written by -->"
 msgstr "Klikkaa"
 
@@ -3372,16 +3373,14 @@ msgid "Book information"
 msgstr "Tietoja kirjasta"
 
 #: library/templates/view.html:121
-#, fuzzy
 msgid "Publisher"
 msgstr "Julkaisijat"
 
 #: library/templates/view.html:128 library/templates/auth/profile.html:103
 msgid "Language"
-msgstr "kieli"
+msgstr "Kieli"
 
 #: library/templates/view.html:134
-#, fuzzy
 msgid "Date added to library"
 msgstr "lisätty kokoelmaasi"
 
@@ -3402,12 +3401,10 @@ msgid "Date published"
 msgstr "Olen julkaisija"
 
 #: library/templates/view.html:164
-#, fuzzy
 msgid "Identifier <!-- trans: unique ID for this book -->"
 msgstr "seuraava"
 
 #: library/templates/view.html:169
-#, fuzzy
 msgid "Download entire book"
 msgstr "Lataa tämä kirja"
 
@@ -3416,12 +3413,10 @@ msgid "ePub format"
 msgstr ""
 
 #: library/templates/view.html:177
-#, fuzzy
 msgid "Reload this book"
 msgstr "Lataa tämä kirja"
 
 #: library/templates/view.html:181
-#, fuzzy
 msgid "Replace this book"
 msgstr "Lataa tämä kirja"
 
@@ -3449,9 +3444,9 @@ msgid "No publisher was listed"
 msgstr "Julkaisijoille"
 
 #: library/templates/view.html:233
-#, fuzzy, python-format
+#, python-format
 msgid "on <a href=\"%(libraryurl)s\">Bookworm</a>"
-msgstr "Hakuohjeita saat <a href=\"%(search_help_url)s\">täältä</a>."
+msgstr "Hakuohjeita saat <a href=\"%(libraryurl)s\">täältä</a>."
 
 #: library/templates/auth/language.html:3
 msgid "Change the default language for"
@@ -3542,11 +3537,11 @@ msgstr "Koko nimi"
 
 #: library/templates/auth/profile.html:92
 msgid "Email address"
-msgstr "sähköposti"
+msgstr "Sähköposti"
 
 #: library/templates/auth/profile.html:97
 msgid "Country"
-msgstr "maa"
+msgstr "Maa"
 
 #: library/templates/auth/profile.html:104
 msgid "change <!-- trans: change the user's language setting -->"
@@ -3737,7 +3732,7 @@ msgstr "Kirjaudu OpenID -tunnuksella"
 #: library/templates/auth/authopenid/signin.html:86
 #: library/templates/auth/authopenid/signup.html:92
 msgid "What's this?"
-msgstr "Mikä tämä on?"
+msgstr "Mikä on OpenID?"
 
 #: library/templates/auth/authopenid/signup.html:21
 msgid "Two ways to join"
@@ -3814,11 +3809,11 @@ msgstr "Tukisivut"
 
 #: library/templates/includes/about.html:9
 msgid "Test your ePubs"
-msgstr "Testaa ePub -julkaisusi"
+msgstr "Testaa"
 
 #: library/templates/includes/about.html:11
 msgid "About full-text search"
-msgstr "Tietoja kokoteksti -hausta"
+msgstr "Kokotekstihaku"
 
 #: library/templates/includes/about.html:12
 msgid "Read the blog"
@@ -3975,7 +3970,7 @@ msgstr "edellinen"
 #: library/templates/includes/pagination.html:5
 #, python-format
 msgid " Page %(page_number)s of %(num_pages)s"
-msgstr "Sivu %(page_number)s %(num_pages)sivusta"
+msgstr "Sivu %(page_number)s %(num_pages)s sivusta"
 
 #: library/templates/includes/pagination.html:6
 #: search/templates/results.html:39
@@ -4028,7 +4023,7 @@ msgstr "Haku tuloksista"
 
 #: search/templates/results.html:12
 msgid "About searching"
-msgstr "Tietoja kokoteksti -hausta"
+msgstr "Hakuohjeita"
 
 #: search/templates/results.html:20
 #, python-format
@@ -4044,7 +4039,7 @@ msgstr[1] ""
 
 #: search/templates/results.html:22
 msgid "Results are returned starting from the most relevant."
-msgstr "Tässä haun tulos, eniten osumia luettelossa ensimmäisenä."
+msgstr "Tässä hakutulos, eniten osumia luettelossa ensimmäisenä."
 
 #: search/templates/results.html:25
 #, python-format
@@ -4085,12 +4080,12 @@ msgid ""
 "Enter one or more words on the left to search your library, or get <a href="
 "\"%(search_help_url)s\">help with searching Bookworm</a>."
 msgstr ""
-"Kirjoita hakukenttään vasemmalla yksi tai useampi sana ja paina enter, "
-"taikatso <a href=\"%(search_help_url)s\">hakuohjeita</a>."
+"Kirjoita hakukenttään vasemmalla yksi tai useampi sana ja paina enter, tai "
+"katso <a href=\"%(search_help_url)s\">hakuohjeita</a>."
 
 #: search/templates/search_help.html:7 search/templates/search_help.html:9
 msgid "Full-text search in Bookworm"
-msgstr "Kokotekstin haku Bookworm -sivustolla"
+msgstr "Kokotekstihaku Bookworm -sivustolla"
 
 #: search/templates/search_help.html:16
 msgid ""
@@ -4109,7 +4104,7 @@ msgstr ""
 
 #: search/templates/search_help.html:24
 msgid "Bookworm uses MySQL full-text search"
-msgstr "Bookworm käyttää MySQL kokoteksti -hakua."
+msgstr "Bookworm käyttää MySQL kokotekstihakua."
 
 #: search/templates/search_help.html:26
 msgid ""
@@ -4122,7 +4117,7 @@ msgstr ""
 "\n"
 "\n"
 "  Haku MySQL -tietokannassa tukee operaattoreita ja lausehakua. Se indeksoi\n"
-"  sisällön useimmilla kielillä, mutta ei tue hakutermien katkaisua."
+"  sisällön useimmilla kielillä, mutta ei tue hakusanojen katkaisua."
 
 #: search/templates/search_help.html:33
 msgid ""

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 09:54-0400\n"
+"POT-Creation-Date: 2009-04-28 18:24-0400\n"
 "PO-Revision-Date: 2009-04-21 09:58-0400\n"
 "Last-Translator: Marie Bilde Rasmussen <mariebilderas@gmail.com>\n"
 "Language-Team: Danish\n"
@@ -2672,7 +2672,8 @@ msgid "Jump down one page"
 msgstr "Hop én side ned"
 
 #: library/templates/reading-mode.html:65
-msgid "'n' or Page-Down"
+#, fuzzy
+msgid "'j' or Page-Down"
 msgstr "'n' eller PageDown"
 
 #: library/templates/reading-mode.html:68
@@ -2680,7 +2681,8 @@ msgid "Jump up one page"
 msgstr "Hop én side op"
 
 #: library/templates/reading-mode.html:69
-msgid "'p' or Page-Up"
+#, fuzzy
+msgid "'k' or Page-Up"
 msgstr "'p' eller PageUp"
 
 #: library/templates/reading-mode.html:72
@@ -2688,7 +2690,8 @@ msgid "Go to next chapter"
 msgstr "Gå til næste kapitel"
 
 #: library/templates/reading-mode.html:73
-msgid "'k' or click on right margin"
+#, fuzzy
+msgid "'n' or click on right margin"
 msgstr "'k' eller klik i højremargin"
 
 #: library/templates/reading-mode.html:76
@@ -2696,7 +2699,8 @@ msgid "Go to previous chapter"
 msgstr "Gå til forrige kapitel"
 
 #: library/templates/reading-mode.html:77
-msgid "'j' or click on left margin"
+#, fuzzy
+msgid "'p' or click on left margin"
 msgstr "'j' eller klik på venstremargin"
 
 #: library/templates/reading-mode.html:81
