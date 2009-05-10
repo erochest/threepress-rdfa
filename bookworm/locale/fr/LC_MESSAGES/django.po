@@ -565,7 +565,7 @@ msgid ""
 "ebook, but consider contacting the publisher or bookseller to ask them about "
 "releasing DRM-free ebooks."
 msgstr ""
-"Vous avez téléchargé un livre qui est protégé par des DRM (Digital Rights Management). Cest un moyen dempêcher les copies illégales, mais cela empêche aussi les propriétaires légitimes de lire leurs ebooks où ils le souhaitent. Vous aurez probablement besoin dAdobe Digital Editions pour lire ce livre, mais estimez-vous libre de contacter léditeur ou le libraire pour leur demander de distribuer des livres sans DRM. "
+"Vous avez téléchargé un livre qui est protégé par des DRM (Digital Rights Management). C'est un moyen d'empêcher les copies illégales, mais cela empêche aussi les propriétaires légitimes de lire leurs ebooks où ils le souhaitent. Vous aurez probablement besoin d'Adobe Digital Editions pour lire ce livre, mais estimez-vous libre de contacter l'éditeur ou le libraire pour leur demander de distribuer des livres sans DRM. "
 
 
 #: library/views.py:517
@@ -575,14 +575,14 @@ msgid ""
 "may be a problem with the way the ePub file was created. The complete error "
 "message is:"
 msgstr ""
-"Le fichier que vous avez téléchargé ressemble à une archive ePub, mais il contient des erreurs qui lempêchent dêtre chargé. Cest peut-être une erreur de Bookworm ou bien cest un problème qui est survenu lors de la création du fichier ePub. Le message derreur complet est :"
+"Le fichier que vous avez téléchargé ressemble à une archive ePub, mais il contient des erreurs qui l'empêchent d'être chargé. C'est peut-être une erreur de Bookworm ou bien c'est un problème qui est survenu lors de la création du fichier ePub. Le message d'erreur complet est :"
 
 #: library/views.py:521
 msgid ""
 "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
 "error)</p>"
 msgstr ""
-"<p>(ePubCheck pense que ce livre est valide, cest donc probablement une erreur de Bookworm)</p>"
+"<p>(ePubCheck pense que ce livre est valide, c'est donc probablement une erreur de Bookworm)</p>"
 
 #: library/views.py:527
 msgid ""
@@ -590,7 +590,7 @@ msgid ""
 "this is not a valid ePub file, so you should check with the publisher or "
 "content creator. It returned:"
 msgstr ""
-"<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> confirme que ce nest pas un fichier ePub valide, vous devirez donc verifier auprès de léditeur ou du créateur de ce fichier. Voici les erreurs : "
+"<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> confirme que ce n'est pas un fichier ePub valide, vous devirez donc verifier auprès de l'éditeur ou du créateur de ce fichier. Voici les erreurs : "
 
 #: library/templates/about.html:3 library/templates/about.html.py:5
 #: library/templates/includes/about.html:5
@@ -788,7 +788,7 @@ msgid ""
 "more\n"
 "    information, see the <a href=\"%(toururl)s#step4\">tour</a>."
 msgstr ""
-"En plus de lire directement les contenus sur Bookworm, les utilisateurs de liPhone peuvent exporter leurs livres Bookworm vers <a href=\"http://www.lexcycle.com/\">Stanza</a>. Pour plus dinformations, consultez la <a href=\"%(toururl)s#step4\">tour</a>."
+"En plus de lire directement les contenus sur Bookworm, les utilisateurs de l'iPhone peuvent exporter leurs livres Bookworm vers <a href=\"http://www.lexcycle.com/\">Stanza</a>. Pour plus d'informations, consultez la <a href=\"%(toururl)s#step4\">tour</a>."
 
 
 #: library/templates/about.html:120
@@ -816,7 +816,7 @@ msgid ""
 "    Bookworm developers are automatically notified and will fix the\n"
 "    problem if possible."
 msgstr ""
-"Il doit y avoir un problème avec lebook (beaucoup déditeurs sont encore en train dapprendre à les produire), ou bien cest une erreur de Bookworm. Si vous rencontrez une erreur lorsque vous déposez ou lisez un livre, les développeurs de Bookworm reçoivent automatiquement une notification par email et corrigeront le problème le cas échéant." 
+"Il doit y avoir un problème avec l'ebook (beaucoup d'éditeurs sont encore en train d'apprendre à les produire), ou bien c'est une erreur de Bookworm. Si vous rencontrez une erreur lorsque vous déposez ou lisez un livre, les développeurs de Bookworm reçoivent automatiquement une notification par email et corrigeront le problème le cas échéant." 
 
 
 #: library/templates/about.html:136
@@ -827,7 +827,7 @@ msgid ""
 "    how to read it (and complain to the publisher that you can't read\n"
 "    your books where you'd like!)"
 msgstr ""
-"Cest peut-être parce que vous avez déposé un livre qui contient des DRM. Bookworm ne peut pas lire les livres protégés par des DRM. Vérifiez sur le site sur lequel vous avez acheté ce livre comment le lire (et plaignez-vous auprès de léditeur de ne pas pouvoir le lire où vous voulez!)"
+"C'est peut-être parce que vous avez déposé un livre qui contient des DRM. Bookworm ne peut pas lire les livres protégés par des DRM. Vérifiez sur le site sur lequel vous avez acheté ce livre comment le lire (et plaignez-vous auprès de l'éditeur de ne pas pouvoir le lire où vous voulez!)"
 
 
 #: library/templates/about.html:144
@@ -855,7 +855,7 @@ msgid ""
 "org</a>\n"
 "    and we'll get back to you right away."
 msgstr ""
-"Threepress est une société de service pour les éditeurs qui a plusieurs années dexpérience dans le développement de produits pour lédition. Nous serions heureux de discuter avec vous du format ePub, de convertir vos livres en ePub, ou même dajouter à Bookworm des fonctionnalités personnalisées pour vos publications. Vous pouvez nous contacter en écrivant à <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
+"Threepress est une société de service pour les éditeurs qui a plusieurs années d'expérience dans le développement de produits pour l'édition. Nous serions heureux de discuter avec vous du format ePub, de convertir vos livres en ePub, ou même d'ajouter à Bookworm des fonctionnalités personnalisées pour vos publications. Vous pouvez nous contacter en écrivant à <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
 "org</a>\n"
 "    et nous vous contacterons dès que possible."
 
@@ -864,7 +864,7 @@ msgstr ""
 msgid ""
 "Will other book formats be supported, such as PDF or mobi? What about DRM "
 "ebooks?"
-msgstr "Est-ce que dautres formats de livres seront supportés, comme le PDF ou le PRC (Mobipocket) ? Quen est-il des ebooks protégés par des DRM ?"
+msgstr "Est-ce que d'autres formats de livres seront supportés, comme le PDF ou le PRC (Mobipocket) ? Qu'en est-il des ebooks protégés par des DRM ?"
 
 #: library/templates/about.html:159
 msgid ""
@@ -872,7 +872,7 @@ msgid ""
 "plans to \n"
 "    support closed formats like mobi or those with limited flexibility like "
 "PDF.  "
-msgstr "Bookworm a été développé pour soutenir ladoption du format ouvert ePub et il nest pas prévu de supporter dautres formats propriétaires comme le PRC ou qui ont une flexibilité limitée comme le PDF."
+msgstr "Bookworm a été développé pour soutenir l'adoption du format ouvert ePub et il n'est pas prévu de supporter d'autres formats propriétaires comme le PRC ou qui ont une flexibilité limitée comme le PDF."
 
 
 #: library/templates/about.html:163
@@ -885,14 +885,14 @@ msgid ""
 "to unlock.\n"
 "    Instead we encourage publishers to explore forms of \"soft\" DRM (such "
 "as watermarking digital books with the name of the purchaser)."
-msgstr "Il a été montré que les DRM (Digital Rights Management) sont des freins à ladoption technologique, quils nempêchent pas de manière efficace la copie illégale, et quils engendrent une expérience utilisateur déplorable.\n Bookworm ne lira jamais les ebooks protégés par des DRM qui requièrent des logiciels spécifiques pour être décryptés. En revanche, nous encourageons les éditeurs à expérimenter des formes de DRM plus \"soft\" (comme le tatouage numérique des livres avec le nom de lacheteur). "
+msgstr "Il a été montré que les DRM (Digital Rights Management) sont des freins à l'adoption technologique, qu'ils n'empêchent pas de manière efficace la copie illégale, et qu'ils engendrent une expérience utilisateur déplorable.\n Bookworm ne lira jamais les ebooks protégés par des DRM qui requièrent des logiciels spécifiques pour être décryptés. En revanche, nous encourageons les éditeurs à expérimenter des formes de DRM plus \"soft\" (comme le tatouage numérique des livres avec le nom de l'acheteur). "
 
 
 #: library/templates/about.html:170
 msgid ""
 "Is it possible to share my books with other Bookworm users, or link to one "
 "of my books?"
-msgstr "Est-il possible de partager mes livres avec dautres utilisateurs de Bookworm, ou faire un lien vers lun de mes livres ?"
+msgstr "Est-il possible de partager mes livres avec d'autres utilisateurs de Bookworm, ou faire un lien vers l'un de mes livres ?"
 
 #: library/templates/about.html:174
 msgid ""
@@ -909,8 +909,8 @@ msgid ""
 "Public books are in a very early beta stage.  To request that a book be made "
 "public, please contact <a href=\"mailto:bookworm@threepress.org"
 "\">bookworm@threepress.org</a> for more information."
-msgstr "Les livres publics sont en version beta. Pour demander quun livre soit public, veuillez contacter <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a> pour plus dinformations."
+msgstr "Les livres publics sont en version beta. Pour demander qu'un livre soit public, veuillez contacter <a href=\"mailto:bookworm@threepress.org"
+"\">bookworm@threepress.org</a> pour plus d'informations."
 
 
 #: library/templates/about.html:182
@@ -926,7 +926,7 @@ msgid ""
 "reliability of the service.\n"
 "    Store copies of all your books on your own computers.\n"
 msgstr ""
-"\n Bien que les livres soient sauvegardés, Bookworm nest pas un produit commercial et a des moyens financiers et juridiques limités. Aucune garantie nest donc assurée quant à la sécurité de vos livres ou la pérennité du service. Conservez des copies de tous vos livres sur votre propre ordinateur.\n"
+"\n Bien que les livres soient sauvegardés, Bookworm n'est pas un produit commercial et a des moyens financiers et juridiques limités. Aucune garantie n'est donc assurée quant à la sécurité de vos livres ou la pérennité du service. Conservez des copies de tous vos livres sur votre propre ordinateur.\n"
 
 
 #: library/templates/about.html:196
@@ -943,7 +943,7 @@ msgid ""
 "    Fahlgren</a>.  Hosting is provided by <a href=\"http://oreilly.com/"
 "\">O'Reilly Media</a>.\n"
 msgstr "\n"
-"Le logiciel Bookworm est gratuit et disponible en téléchargement sous la licence BSD depuis la page <a href=\"http://threepress.org/tools/\">Outils</a>. Cest un produit de la société <a href=\"http://threepress.org/\">Threepress</a>, un lieu dexpérimentation de logiciels dédition open source, et a été développé par <a href=\"http://threepress.org/about/\">Liza Daly</a> avec la contribution de <a href=\"http://kfahlgren.com/blog\">Keith Fahlgren</a>. Lhébergement est fourni par <a href=\"http://oreilly.com/\">O'Reilly Media</a>.\n"
+"Le logiciel Bookworm est gratuit et disponible en téléchargement sous la licence BSD depuis la page <a href=\"http://threepress.org/tools/\">Outils</a>. C'est un produit de la société <a href=\"http://threepress.org/\">Threepress</a>, un lieu d'expérimentation de logiciels d'édition open source, et a été développé par <a href=\"http://threepress.org/about/\">Liza Daly</a> avec la contribution de <a href=\"http://kfahlgren.com/blog\">Keith Fahlgren</a>. L'hébergement est fourni par <a href=\"http://oreilly.com/\">O'Reilly Media</a>.\n"
 
 
 #: library/templates/about.html:210
@@ -963,7 +963,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      Andrew Savikas et le reste de léquipe <a\n"
+"      Andrew Savikas et le reste de l'équipe <a\n"
 "      href=\"http://toc.oreilly.com/\">Tools of Change</a> chez O'Reilly "
 "Media\n"
 "      "
@@ -1009,7 +1009,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    Bookworm nest pas seulement pour les lecteurs.  Les éditeurs peuvent lutiliser pour tester leurs "
+"    Bookworm n'est pas seulement pour les lecteurs.  Les éditeurs peuvent l'utiliser pour tester leurs "
 "fichiers ePub\n"
 "    avant de les commercialiser, et expérimenter des fonctionnalités avancées telles "
 "que\n"
@@ -1046,11 +1046,11 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    <strong>Vérifiez que votre ePub est valide</strong>. Beaucoup doutils de création "
+"    <strong>Vérifiez que votre ePub est valide</strong>. Beaucoup d'outils de création "
 "de fichiers ePub\n"
 "    ne les créent pas avec toutes les spécifications et fichiers requis.\n"
-"    Certains lecteurs dePub acceptent beaucoup de cas de figure, cest pourquoi vérifier vos\n"
-"    fichiers ePub dans Adobe Digital Editions nest pas suffisant pour être certain que "
+"    Certains lecteurs d'ePub acceptent beaucoup de cas de figure, c'est pourquoi vérifier vos\n"
+"    fichiers ePub dans Adobe Digital Editions n'est pas suffisant pour être certain que "
 "votre\n"
 "    ebook sera lisible partout.\n"
 "    "
