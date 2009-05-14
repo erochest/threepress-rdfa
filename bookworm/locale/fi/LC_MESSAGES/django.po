@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 18:32-0400\n"
-"PO-Revision-Date: 2009-04-28 18:26-0400\n"
+"POT-Creation-Date: 2009-05-14 17:19-0400\n"
+"PO-Revision-Date: 2009-05-14 17:21-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -30,11 +30,23 @@ msgstr "Tanska"
 msgid "Finnish"
 msgstr "Suomi"
 
-#: settings.py:141
+#: settings.py:103
+msgid "Italian"
+msgstr ""
+
+#: settings.py:104
+msgid "Spanish"
+msgstr ""
+
+#: settings.py:105
+msgid "French"
+msgstr ""
+
+#: settings.py:143
 msgid "account/"
 msgstr "tili/"
 
-#: settings.py:141
+#: settings.py:143
 msgid "signin/"
 msgstr "kirjaudu/"
 
@@ -2882,10 +2894,13 @@ msgstr "Haku"
 msgid "Blog"
 msgstr "Blogi"
 
-#: library/templates/shell.html:44 library/templates/shell.html.py:45
-#: library/templates/tour.html:14
-msgid "About"
-msgstr "Tietoja"
+#: library/templates/shell.html:44
+msgid "About <span class=\"bw-logo\">Bookworm</span>"
+msgstr ""
+
+#: library/templates/shell.html:45
+msgid "About Threepress"
+msgstr ""
 
 #: library/templates/shell.html:46 library/templates/includes/about.html:7
 msgid "Help"
@@ -2971,6 +2986,10 @@ msgstr ""
 #: library/templates/tour.html:3 library/templates/tour.html.py:14
 msgid "Take a tour of Bookworm"
 msgstr "Tutustu Bookworm -palveluun"
+
+#: library/templates/tour.html:14
+msgid "About"
+msgstr "Tietoja"
 
 #: library/templates/tour.html:22
 #, python-format

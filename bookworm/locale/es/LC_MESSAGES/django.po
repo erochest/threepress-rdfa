@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-09 10:34-0400\n"
+"POT-Creation-Date: 2009-05-14 17:19-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,11 +41,15 @@ msgstr ""
 msgid "Spanish"
 msgstr "dan&eacute;s"
 
-#: settings.py:142
+#: settings.py:105
+msgid "French"
+msgstr ""
+
+#: settings.py:143
 msgid "account/"
 msgstr ""
 
-#: settings.py:142
+#: settings.py:143
 msgid "signin/"
 msgstr ""
 
@@ -2995,10 +2999,13 @@ msgstr "B&uacute;squeda"
 msgid "Blog"
 msgstr "Blog"
 
-#: library/templates/shell.html:44 library/templates/shell.html.py:45
-#: library/templates/tour.html:14
-msgid "About"
-msgstr "&iquest;Qui&eacute;nes somos?"
+#: library/templates/shell.html:44
+msgid "About <span class=\"bw-logo\">Bookworm</span>"
+msgstr ""
+
+#: library/templates/shell.html:45
+msgid "About Threepress"
+msgstr ""
 
 #: library/templates/shell.html:46 library/templates/includes/about.html:7
 msgid "Help"
@@ -3076,6 +3083,10 @@ msgstr "Bajo <a href=\"%(bsdlicenseurl)s\">licencia BSD</a>"
 #: library/templates/tour.html:3 library/templates/tour.html.py:14
 msgid "Take a tour of Bookworm"
 msgstr "Haz un recorrido virtual por Bookworm"
+
+#: library/templates/tour.html:14
+msgid "About"
+msgstr "&iquest;Qui&eacute;nes somos?"
 
 #: library/templates/tour.html:22
 #, python-format

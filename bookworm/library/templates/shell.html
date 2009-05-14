@@ -41,8 +41,8 @@
             <br />
           {% endif %}
           <a href="http://blog.threepress.org">{% trans "Blog" %}</a>
-          <a href="{% url about %}">{% trans "About" %} <span class="bw-logo">Bookworm</span></a>
-          <a href="http://threepress.org/about/">{% trans "About" %} Threepress</a>
+          <a href="{% url about %}">{% blocktrans %}About <span class="bw-logo">Bookworm</span>{% endblocktrans %}</a>
+          <a href="http://threepress.org/about/">{% trans "About Threepress" %}</a>
           <a href="{% url help %}">{% trans "Help" %}</a>
         </p>
       </div>

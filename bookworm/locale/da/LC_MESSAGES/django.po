@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 18:24-0400\n"
-"PO-Revision-Date: 2009-04-28 18:34-0400\n"
+"POT-Creation-Date: 2009-05-14 17:19-0400\n"
+"PO-Revision-Date: 2009-05-14 17:20-0400\n"
 "Last-Translator: Marie Bilde Rasmussen <mariebilderas@gmail.com>\n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -30,11 +30,23 @@ msgstr "dansk"
 msgid "Finnish"
 msgstr "finsk"
 
-#: settings.py:141
+#: settings.py:103
+msgid "Italian"
+msgstr ""
+
+#: settings.py:104
+msgid "Spanish"
+msgstr ""
+
+#: settings.py:105
+msgid "French"
+msgstr ""
+
+#: settings.py:143
 msgid "account/"
 msgstr "konto/"
 
-#: settings.py:141
+#: settings.py:143
 msgid "signin/"
 msgstr "log på/"
 
@@ -2855,10 +2867,13 @@ msgstr "Søg"
 msgid "Blog"
 msgstr "Blog"
 
-#: library/templates/shell.html:44 library/templates/shell.html.py:45
-#: library/templates/tour.html:14
-msgid "About"
-msgstr "Om"
+#: library/templates/shell.html:44
+msgid "About <span class=\"bw-logo\">Bookworm</span>"
+msgstr ""
+
+#: library/templates/shell.html:45
+msgid "About Threepress"
+msgstr ""
 
 #: library/templates/shell.html:46 library/templates/includes/about.html:7
 msgid "Help"
@@ -2944,6 +2959,10 @@ msgstr ""
 #: library/templates/tour.html:3 library/templates/tour.html.py:14
 msgid "Take a tour of Bookworm"
 msgstr "Tag en rundtur på Bookworm"
+
+#: library/templates/tour.html:14
+msgid "About"
+msgstr "Om"
 
 #: library/templates/tour.html:22
 #, python-format
