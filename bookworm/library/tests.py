@@ -1328,6 +1328,11 @@ class TestViews(DjangoTestCase):
         response = self._upload(u'invalid_天.epub')
         self.assertContains(response, 'problems')
 
+    def test_invalid_iso88591(self):
+        '''Exception was being thrown when Django attempted to encode this document as UTF8'''
+        response = self._upload(u'invalid-iso88591.epub')
+        self.assertContains(response, 'There was a problem related to the encoding of one of the documents in your ePub')
+
     def test_invalid_container(self):
         '''Give a helpful message if the container is broken'''
         response = self._upload(u'invalid-no-namespaced-container.epub')

@@ -6,7 +6,7 @@ from django.core.mail import EmailMessage
 
 import logging, sys, urllib, MySQLdb, cStringIO, os.path, unicodedata, traceback
 from zipfile import BadZipfile
-from decimal import Decimal
+from xml.sax.saxutils import escape as xml_escape
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, Http404, HttpResponse
@@ -513,9 +513,9 @@ def upload(request, title=None, key=None):
                 log.error('Non epub zip file uploaded: %s' % document_name)
                 error = e.message
                 if len(error) > 200:
-                    error = error[0:200] + '...'
+                    error = error[0:200] + u'...'
                 message = _(u"The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is:")
-                message +=  "<p style='color:black;font-weight:normal'>%s</p>" % error
+                message +=  u"<p style='color:black;font-weight:normal'>%s</p>" % xml_escape(error)
                 if epubcheck_response is not None:
                     if epubcheck_response.findtext('.//is-valid') == 'True':
                         message += _(u"<p>(epubcheck thinks this file is valid, so this is probably a Bookworm error)</p>")
