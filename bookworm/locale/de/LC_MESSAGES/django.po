@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-14 17:19-0400\n"
-"PO-Revision-Date: 2009-05-14 17:21-0400\n"
+"PO-Revision-Date: 2009-05-16 12:13+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -35,15 +35,15 @@ msgstr "Finnisch"
 
 #: settings.py:103
 msgid "Italian"
-msgstr ""
+msgstr "Italienisch"
 
 #: settings.py:104
 msgid "Spanish"
-msgstr ""
+msgstr "Spanisch"
 
 #: settings.py:105
 msgid "French"
-msgstr ""
+msgstr "Französisch"
 
 #: settings.py:143
 msgid "account/"
@@ -2992,11 +2992,11 @@ msgstr "Blog"
 
 #: library/templates/shell.html:44
 msgid "About <span class=\"bw-logo\">Bookworm</span>"
-msgstr ""
+msgstr "Über <span class=\\\"bw-logo\\\">Bookworm</span>"
 
 #: library/templates/shell.html:45
 msgid "About Threepress"
-msgstr ""
+msgstr "Über Threepress"
 
 #: library/templates/shell.html:46 library/templates/includes/about.html:7
 msgid "Help"
