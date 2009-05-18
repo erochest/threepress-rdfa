@@ -1,9 +1,10 @@
 {% load i18n %}
+
 {% if document %}
    <h4>{% trans "Reload this book" %}</h4>
    <form action="{% url reload document.safe_title document.id %}" method="post" enctype="multipart/form-data">
      <div id="bw-upload_form">
-       <p>{{ form.epub }}</p>
+       <p>{{ context.form.epub }}</p>
        <p><input type="submit" value="{{ _("Replace this book") }}" /></p>
      </div>
    </form>

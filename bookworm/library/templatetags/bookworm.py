@@ -24,7 +24,8 @@ def last_chapter_read(context, document):
 def show_reload(context, document, user):
     '''Is the user in the list of owners of this book?'''
     if user in document.get_owners():
-        return { 'document':document }
+        return { 'document':document,
+                 'context': context }
     return {'document':None}
 
 @register.simple_tag
