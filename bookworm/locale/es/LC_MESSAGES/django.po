@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-14 17:19-0400\n"
+"POT-Creation-Date: 2009-05-18 10:25-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,24 +32,11 @@ msgstr "dan&eacute;s"
 msgid "Finnish"
 msgstr "finland&eacute;s"
 
-#: settings.py:103
-msgid "Italian"
-msgstr ""
-
-#: settings.py:104
-#, fuzzy
-msgid "Spanish"
-msgstr "dan&eacute;s"
-
-#: settings.py:105
-msgid "French"
-msgstr ""
-
-#: settings.py:143
+#: settings.py:141
 msgid "account/"
 msgstr ""
 
-#: settings.py:143
+#: settings.py:141
 msgid "signin/"
 msgstr ""
 
@@ -543,19 +530,25 @@ msgstr "Reg&iacute;strate con OpenID"
 msgid "Sign in with OPENID"
 msgstr "Inicia sesi&oacute;n con OpenID"
 
-#: library/models.py:132
+#: library/models.py:134
 msgid "Untitled"
 msgstr "Sin t&iacute;tulo"
 
-#: library/models.py:1092
+#: library/models.py:678 library/models.py:680
+msgid ""
+"There was a problem related to the encoding of one of the documents in your "
+"ePub. All ePub documents must be in UTF-8."
+msgstr ""
+
+#: library/models.py:1100
 msgid "book title"
 msgstr "t&iacute;tulo del libro"
 
-#: library/models.py:1093
+#: library/models.py:1101
 msgid "first author"
 msgstr "primer autor"
 
-#: library/models.py:1094
+#: library/models.py:1102
 msgid "date added to your library"
 msgstr "fecha en que se agreg&oacute; a tu biblioteca"
 
@@ -877,7 +870,7 @@ msgid "Can I use Bookworm on my mobile device?"
 msgstr "&iquest;Se puede utilizar Bookworm en un dispositivo m&oacute;vil?"
 
 #: library/templates/about.html:109
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
@@ -886,8 +879,8 @@ msgid ""
 "(especially \n"
 "    the iPhone) is available at <a href=\"http://m.bookworm.oreilly.com/"
 "\">http://m.bookworm.oreilly.com/</a>.\n"
-"    Bookworm has also been tested on the Blackberry, Opera Mobile and the "
-"Kindle's Whispernet service."
+"    Bookworm has also been tested on the Blackberry, Opera Mobile, Skyfire "
+"and the Kindle's Whispernet service."
 msgstr ""
 "\n"
 " S&iacute, en efecto. Para una versi&oacute;n especial de este sitio web,\n"
@@ -4145,7 +4138,7 @@ msgstr ""
 msgid ""
 "If you just added an ePub that you're expecting to search, please wait a few "
 "minutes.  The search engine checks periodically for new material and should "
-"update shortly."
+"be updated shortly."
 msgstr ""
 
 #: search/templates/results.html:53
@@ -4382,6 +4375,10 @@ msgstr ""
 "no aparezca\n"
 " inmediatamente en el resultado de la b&uacute;squeda. Ten paciencia; es "
 "s&oacute;lo cuesti&oacute;n de tiempo.\n"
+
+#, fuzzy
+#~ msgid "Spanish"
+#~ msgstr "dan&eacute;s"
 
 #~ msgid "Change the default language for <!-- trans: person name -->"
 #~ msgstr "Cambia el idioma de"
