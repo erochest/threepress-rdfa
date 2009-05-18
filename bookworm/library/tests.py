@@ -850,14 +850,24 @@ class TestViews(DjangoTestCase):
         response = self.client.get('/metadata/test/1/')
         self.assertContains(response, 'Reload this book')
 
-        # Don't allow this if the book is public 
-        # todo allow it if the book is public and the logged-in
-        # user is an owner
         epub = EpubArchive.objects.get(id=1)
         epub.is_public = True
         epub.save()
 
+        # Public books should still be overwriteable by the owner
         response = self.client.get('/metadata/test/1/')
+        self.assertTemplateUsed(response, 'view.html')
+        self.assertContains(response, 'Reload this book')        
+
+        # But not by users who aren't the owner
+        self.client.logout()
+        response = self.client.post('/account/signup/', { 'username':'reload2test',
+                                                          'email':'reload2test@example.com',
+                                                          'password1':'reload2test',
+                                                          'password2':'reload2test'})
+
+        response = self.client.get('/metadata/test/1/')        
+        self.assertTemplateUsed(response, 'view.html')
         self.assertNotContains(response, 'Reload this book')        
 
     def test_no_reload_if_not_owner(self):
@@ -865,18 +875,30 @@ class TestViews(DjangoTestCase):
         response = self._upload('Cory_Doctorow_-_Little_Brother.epub')
         response = self.client.get('/view/Little-Brother/1/')
         self.assertTemplateUsed(response, 'view.html')        
+        epub = EpubArchive.objects.get(id=1)
+
 
         self.client.logout()
         response = self.client.post('/account/signup/', { 'username':'reloadtest',
                                                           'email':'reloadtest@example.com',
                                                           'password1':'reloadtest',
                                                           'password2':'reloadtest'})
+
+
+        # Try viewing it; this should fail
+        response = self.client.get('/view/Little-Brother/1/')
+        self.assertTrue(type(response) == HttpResponseNotFound)
+
+        epub.is_public = True
+        epub.save()
+
+        response = self.client.get('/view/Little-Brother/1/')
+        self.assertTemplateUsed(response, 'view.html')        
         
+        # View the document so we have a UserArchive record but NOT ownership
         fh = _get_filehandle('Pride-and-Prejudice_Jane-Austen.epub')
         response = self.client.post('/reload/Little-Brother/1/', {'epub':fh})
         self.assertTrue(type(response) == HttpResponseNotFound)
-
-        
 
     def test_upload_with_images(self):
         ''' Image uploads should work whether or not their path is specified'''

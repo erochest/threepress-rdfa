@@ -20,6 +20,13 @@ def last_chapter_read(context, document):
              'document':document}
 
 
+@register.inclusion_tag('reload.html', takes_context=True)
+def show_reload(context, document, user):
+    '''Is the user in the list of owners of this book?'''
+    if user in document.get_owners():
+        return { 'document':document }
+    return {'document':None}
+
 @register.simple_tag
 def date_metadata(document, field):
     '''Try some common date formats to get display in a Bookworm-style date,

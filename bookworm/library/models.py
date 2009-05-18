@@ -356,7 +356,15 @@ class EpubArchive(BookwormModel):
 
     def is_owner(self, user):
         '''Is this user an owner of the book?'''
-        return self.user_archive.filter(user=user) and self.user_archive.filter(user=user)[0].owner==True
+        return self.user_archive.filter(user=user,owner=True)
+
+    def get_owners(self):
+        '''Get a list of all owners of this book (usually just one)'''
+        owners = {}
+        for ua in self.user_archive.filter(owner=True):
+            owners[ua.user.id] = ua.user
+        return owners.values()
+            
 
     def set_owner(self, user):
         '''Sets the ownership of ths book to a particular user'''
@@ -419,6 +427,8 @@ class EpubArchive(BookwormModel):
         self._get_content(z, parsed_opf, parsed_toc, items, content_path)
         self._get_stylesheets(z, items, content_path)
         self._get_images(z, items, content_path)
+
+
    
     def _get_nonce(self):
         m = hashlib.sha1()
@@ -660,7 +670,7 @@ class EpubArchive(BookwormModel):
 
     def _create_pages(self, pages):
         for p in pages:
-            log.debug(p['filename'])
+            #log.debug(p['filename'])
             self._create_page(p['title'], p['idref'], p['filename'], p['file'], p['archive'], p['order'])
 
     def _create_page(self, title, idref, filename, f, archive, order):
@@ -838,10 +848,12 @@ class HTMLFile(BookwormFile):
         is the user's actual book and not a public one (otherwise it's effectively
         added to their library).'''
         if UserArchive.objects.filter(archive=self.archive,
-                                      user=user).count() > 0:
+                                      user=user,
+                                      owner=True).count() > 0:
             log.debug("Updating last-read to %s for archive %s, user %s" % (self, self.archive, user))
             UserArchive.objects.create(archive=self.archive,
                                        user=user,
+                                       owner=True,
                                        last_chapter_read=self)
         else:
             log.debug("Skipping creation of UserArchive object for book not owned by %s" % user)

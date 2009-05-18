@@ -139,20 +139,22 @@ def view(request, title, key, first=False, resume=False):
             log.debug("Forcing first chapter")
             # Force an HTTP redirect so we get a clean URL but go to the correct chapter ID
             return HttpResponseRedirect(reverse('view_chapter', kwargs={'title':document.safe_title(), 'key': document.id, 'chapter_id':chapter.filename}))
-    return view_chapter(request, title, key, None, chapter=chapter)
+    return view_chapter(request, title, key, None, chapter=chapter, document=document)
 
 
 # Not cacheable either because it may be a different user
 @never_cache
-def view_chapter(request, title, key, chapter_id, chapter=None, google_books=None, message=None):
+def view_chapter(request, title, key, chapter_id, chapter=None, document=None, google_books=None, message=None):
     if chapter is not None:
         chapter_id = chapter.id
 
     log.debug("Looking up title %s, key %s, chapter %s" % (title, key, chapter_id))    
-    document = _get_document(request, title, key)
+
+    if not document:
+        document = _get_document(request, title, key)
 
     if chapter is None:
-        # Legacy objects may have more than one dupliate representation
+        # Legacy objects may have more than one duplicate representation
         h =  HTMLFile.objects.filter(archive=document, filename=chapter_id)
         if h.count() == 0:
             raise Http404
@@ -413,8 +415,13 @@ def upload(request, title=None, key=None):
                 log.debug("Reloading existing document: '%s'" % document_name) 
                 try:
                     document = EpubArchive.objects.get(id__exact=key)
-                    user_archive = UserArchive.objects.filter(user=request.user, archive=document)
-                    if user_archive.count() == 0:
+                    log.debug(document.title)
+                    log.debug(request.user)
+
+                    # Is thie an owner of the document?
+                    if UserArchive.objects.filter(user=request.user,
+                                                  owner=True,
+                                                  archive=document).count() == 0:
                         raise Http404
 
                     # Save off some metadata about it
@@ -441,6 +448,7 @@ def upload(request, title=None, key=None):
             try:
                 document.explode()
                 document.user_archive.create(archive=document,
+                                             owner=True,
                                              user=request.user)
                 document.save()
 

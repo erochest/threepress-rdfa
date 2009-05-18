@@ -173,15 +173,7 @@
      </tbody>
    </table>
 
-   {% if not document.is_public %}
-   <h4>{% trans "Reload this book" %}</h4>
-   <form action="{% url reload document.safe_title document.id %}" method="post" enctype="multipart/form-data">
-     <div id="bw-upload_form">
-       <p>{{ form.epub }}</p>
-       <p><input type="submit" value="{{ _("Replace this book") }}" /></p>
-     </div>
-   </form>
-   {% endif %}
+   {% show_reload document request.user %}
 
    {% if google_books.entries %}
      <h2>{% trans "Editions of this work found in Google Books Search" %}</h2>
