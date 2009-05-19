@@ -509,10 +509,13 @@ class EpubArchive(BookwormModel):
         images = []
         for item in items:
             if 'image' in item.get('media-type'):
+
+                href = unquote_plus(item.get('href'))
+                
                 try:
-                    content = archive.read("%s%s" % (content_path, item.get('href')))
+                    content = archive.read("%s%s" % (content_path, href))
                 except KeyError:
-                    log.warn("Missing image %s; skipping" % item.get('href'))
+                    log.warn("Missing image %s; skipping" % href)
                     continue
                 data = {}
                 data['data'] = None
@@ -525,8 +528,9 @@ class EpubArchive(BookwormModel):
                     # This is a binary file, like a jpeg
                     data['data'] = content
 
-                (data['path'], data['filename']) = os.path.split(item.get('href'))
-                #log.debug('Got path=%s, filename=%s' % (data['path'], data['filename']))
+                (data['path'], data['filename']) = os.path.split(href)
+                log.debug('Got path=%s, filename=%s' % (data['path'], data['filename']))
+                
                 data['idref'] = item.get('id')
                 data['content_type'] = item.get('media-type')
 

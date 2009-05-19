@@ -1468,6 +1468,13 @@ class TestViews(DjangoTestCase):
         
         response = self.client.get('/view/a/1/image1.gif')
         assert response.status_code == 200        
+        
+    def test_spaces_in_opf_items(self):
+        '''Allow for encoded spaces in hrefs inside <opf:item>'''
+        name = 'images-with-spaces.epub'
+        self._upload(name)
+        response = self.client.get('/view/a/1/graphics/the%20stamp.png')
+        assert response.status_code == 200
 
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
