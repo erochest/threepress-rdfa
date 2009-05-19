@@ -1450,6 +1450,24 @@ class TestViews(DjangoTestCase):
         self.assertRedirects(response, '/library/')
         self.assertEquals(False, UserPref.objects.get(user=self.user).simple_reading_mode)        
 
+    def test_duplicate_images_in_opf(self):
+        '''Don't complain when images are defined multiple times in the OPF, 
+        even though this is an error'''
+        name = 'duplicate-images-in-opf.epub'
+        self._upload(name)
+        response = self.client.get('/view/a/1/image1.gif')
+        assert response.status_code == 200
+
+        archive = EpubArchive.objects.get(id=1)
+
+        # If we force-create duplicates, handle this deprecated case gracefully
+        ImageFile.objects.create(archive=archive, filename='image1.gif')
+        
+        # Make sure we have two now
+        assert ImageFile.objects.filter(archive=archive, filename='image1.gif').count() == 2
+        
+        response = self.client.get('/view/a/1/image1.gif')
+        assert response.status_code == 200        
 
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))

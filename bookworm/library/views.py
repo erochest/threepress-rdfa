@@ -204,10 +204,13 @@ def view_chapter_image(request, title, key, image):
     log.debug("Image request: looking up title %s, key %s, image %s" % (title, key, image))        
     document = _get_document(request, title, key)
     try: 
-        image_obj = get_object_or_404(ImageFile, archive=document, filename=image)
-    except Http404:
+        image_obj = ImageFile.objects.filter(archive=document, filename=image)[0]
+    except IndexError:
         image = os.path.basename(image)
-        image_obj = get_object_or_404(ImageFile, archive=document, filename=image)
+        try:
+            image_obj = ImageFile.objects.filter(archive=document, filename=image)[0]
+        except IndexError:
+            raise Http404
     response = HttpResponse(content_type=str(image_obj.content_type))
     if image_obj.content_type == 'image/svg+xml':
         response.content = image_obj.file

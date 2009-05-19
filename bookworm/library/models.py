@@ -539,6 +539,10 @@ class EpubArchive(BookwormModel):
             f = i['file']
             if f == None:
                 f = ''
+            if self._image_class().objects.filter(filename=i['filename'],
+                                                archive=self).count() > 0:
+                log.warn("Already had an image for archive %s with filename %s; skipping" % (self.name, i['filename']))
+                return
             image = self._image_class()(
                 idref=i['idref'],
                 file=f,

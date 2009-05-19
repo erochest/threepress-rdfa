@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-14 17:19-0400\n"
+"POT-Creation-Date: 2009-05-18 10:25-0400\n"
 "PO-Revision-Date: 2009-05-14 17:20-0400\n"
 "Last-Translator: Marie Bilde Rasmussen <mariebilderas@gmail.com>\n"
 "Language-Team: Danish\n"
@@ -30,23 +30,11 @@ msgstr "dansk"
 msgid "Finnish"
 msgstr "finsk"
 
-#: settings.py:103
-msgid "Italian"
-msgstr ""
-
-#: settings.py:104
-msgid "Spanish"
-msgstr ""
-
-#: settings.py:105
-msgid "French"
-msgstr ""
-
-#: settings.py:143
+#: settings.py:141
 msgid "account/"
 msgstr "konto/"
 
-#: settings.py:143
+#: settings.py:141
 msgid "signin/"
 msgstr "log på/"
 
@@ -516,19 +504,25 @@ msgstr "Tilmelding med OpenID"
 msgid "Sign in with OPENID"
 msgstr "Log in med OPENID"
 
-#: library/models.py:132
+#: library/models.py:134
 msgid "Untitled"
 msgstr "uden navn"
 
-#: library/models.py:1092
+#: library/models.py:678 library/models.py:680
+msgid ""
+"There was a problem related to the encoding of one of the documents in your "
+"ePub. All ePub documents must be in UTF-8."
+msgstr ""
+
+#: library/models.py:1100
 msgid "book title"
 msgstr "bogtitel"
 
-#: library/models.py:1093
+#: library/models.py:1101
 msgid "first author"
 msgstr "hovedforfatter"
 
-#: library/models.py:1094
+#: library/models.py:1102
 msgid "date added to your library"
 msgstr "dato for tilføjelse til dit bibliotek"
 
@@ -838,7 +832,7 @@ msgid "Can I use Bookworm on my mobile device?"
 msgstr "Kan jeg bruge Bookworm på min mobile enhed?"
 
 #: library/templates/about.html:109
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
@@ -847,8 +841,8 @@ msgid ""
 "(especially \n"
 "    the iPhone) is available at <a href=\"http://m.bookworm.oreilly.com/"
 "\">http://m.bookworm.oreilly.com/</a>.\n"
-"    Bookworm has also been tested on the Blackberry, Opera Mobile and the "
-"Kindle's Whispernet service."
+"    Bookworm has also been tested on the Blackberry, Opera Mobile, Skyfire "
+"and the Kindle's Whispernet service."
 msgstr ""
 "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm på iPhone\" class=\"bw-screenshot-page\" align=\"right"
@@ -4051,7 +4045,7 @@ msgstr ""
 msgid ""
 "If you just added an ePub that you're expecting to search, please wait a few "
 "minutes.  The search engine checks periodically for new material and should "
-"update shortly."
+"be updated shortly."
 msgstr ""
 
 #: search/templates/results.html:53

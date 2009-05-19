@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-14 17:19-0400\n"
+"POT-Creation-Date: 2009-05-19 10:40-0400\n"
 "PO-Revision-Date: 2009-05-16 12:13+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
@@ -33,23 +33,11 @@ msgstr "Dänisch"
 msgid "Finnish"
 msgstr "Finnisch"
 
-#: settings.py:103
-msgid "Italian"
-msgstr "Italienisch"
-
-#: settings.py:104
-msgid "Spanish"
-msgstr "Spanisch"
-
-#: settings.py:105
-msgid "French"
-msgstr "Französisch"
-
-#: settings.py:143
+#: settings.py:141
 msgid "account/"
 msgstr "Benutzerkonto"
 
-#: settings.py:143
+#: settings.py:141
 msgid "signin/"
 msgstr "Anmelden"
 
@@ -535,19 +523,25 @@ msgstr "Konto mit OpenID erstellen"
 msgid "Sign in with OPENID"
 msgstr "Mit OpenID anmelden"
 
-#: library/models.py:132
+#: library/models.py:134
 msgid "Untitled"
 msgstr "Ohne Titel"
 
-#: library/models.py:1092
+#: library/models.py:692 library/models.py:694
+msgid ""
+"There was a problem related to the encoding of one of the documents in your "
+"ePub. All ePub documents must be in UTF-8."
+msgstr ""
+
+#: library/models.py:1116
 msgid "book title"
 msgstr "Titel"
 
-#: library/models.py:1093
+#: library/models.py:1117
 msgid "first author"
 msgstr "dem ersten Autor"
 
-#: library/models.py:1094
+#: library/models.py:1118
 msgid "date added to your library"
 msgstr "Datum, an dem das Buch zur Bibliothek hinzugefügt wurde,"
 
@@ -573,7 +567,7 @@ msgstr "nach Datum"
 msgid "There was a problem reading the metadata for this document."
 msgstr "Die Metadaten des Dokumentes konnten nicht gelesen werden."
 
-#: library/views.py:182
+#: library/views.py:184
 msgid ""
 "\n"
 "This book contained content that Bookworm couldn't read.  You may need to "
@@ -587,15 +581,15 @@ msgstr ""
 "den Herausgeber,\n"
 "  ob das ePub Buch entweder XHTML oder DTBook formatierten Inhalt enthält."
 
-#: library/views.py:318
+#: library/views.py:323
 msgid "Your profile has been updated."
 msgstr "Ihr Profil wurde aktualisiert"
 
-#: library/views.py:335 library/views.py:343
+#: library/views.py:340 library/views.py:348
 msgid "There was a problem with your request to delete this profile."
 msgstr "Es gab ein Problem mit der Anforderung dieses Profil zu löschen."
 
-#: library/views.py:450
+#: library/views.py:461
 msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
@@ -603,7 +597,7 @@ msgstr ""
 "Die hochgeladene Datei wurde nicht als ePub Archiv erkannt und konnte \n"
 "Ihrer Bibliothek nicht hinzugefügt werden."
 
-#: library/views.py:457
+#: library/views.py:468
 msgid ""
 "We detected a problem with your ebook that is most likely related to it "
 "being too big to display safely in a web browser. This can happen with very "
@@ -619,7 +613,7 @@ msgstr ""
 "das Buch korrekt formatiert wurde. Sehr lange Seiten laden sehr langsam \n"
 "und sind deshalb in Bookworm nicht erlaubt."
 
-#: library/views.py:483
+#: library/views.py:494
 msgid ""
 "It appears that you've uploaded a book which contains DRM (Digital Rights "
 "Management).  This is a restriction that is meant to prevent illegal copying "
@@ -635,7 +629,7 @@ msgstr ""
 "Digital  Edition. Kontaktieren Sie bitte den Herausgeber, damit er eine DRM-"
 "freie Version herausgibt."
 
-#: library/views.py:517
+#: library/views.py:528
 msgid ""
 "The file you uploaded looks like an ePub archive, but it has some problems "
 "that prevented it from being loaded.  This may be a bug in Bookworm, or it "
@@ -648,7 +642,7 @@ msgstr ""
 "Art und Weise wie die ePub Datei erzeugt wurde. Die komplette \n"
 "Fehlermeldung lautet:"
 
-#: library/views.py:521
+#: library/views.py:532
 msgid ""
 "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
 "error)</p>"
@@ -656,7 +650,7 @@ msgstr ""
 "<p>(für Epubcheck ist Ihre Datei gültig, deshalb ist dies wahrscheinlich ein "
 "Bookworm Fehler)</p>"
 
-#: library/views.py:527
+#: library/views.py:538
 msgid ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that "
 "this is not a valid ePub file, so you should check with the publisher or "
@@ -862,7 +856,7 @@ msgid "Can I use Bookworm on my mobile device?"
 msgstr "Kann ich Bookworm auf meinem mobilen Gerät benutzen?"
 
 #: library/templates/about.html:109
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
@@ -871,8 +865,8 @@ msgid ""
 "(especially \n"
 "    the iPhone) is available at <a href=\"http://m.bookworm.oreilly.com/"
 "\">http://m.bookworm.oreilly.com/</a>.\n"
-"    Bookworm has also been tested on the Blackberry, Opera Mobile and the "
-"Kindle's Whispernet service."
+"    Bookworm has also been tested on the Blackberry, Opera Mobile, Skyfire "
+"and the Kindle's Whispernet service."
 msgstr ""
 "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" \n"
@@ -3489,7 +3483,7 @@ msgstr " von %(author)s "
 msgid "Forward"
 msgstr "Vorwärts"
 
-#: library/templates/view.html:77 library/templates/view.html.py:231
+#: library/templates/view.html:77 library/templates/view.html.py:223
 msgid "by <!-- trans written by -->"
 msgstr "von "
 
@@ -3547,19 +3541,11 @@ msgstr "Buch herunterladen"
 msgid "ePub format"
 msgstr "ePub Format"
 
-#: library/templates/view.html:177
-msgid "Reload this book"
-msgstr "Dieses Buch erneut hochladen"
-
-#: library/templates/view.html:181
-msgid "Replace this book"
-msgstr "Dieses Buch ersetzen"
-
-#: library/templates/view.html:187
+#: library/templates/view.html:179
 msgid "Editions of this work found in Google Books Search"
 msgstr "Gefundene Ausgaben dieses Werkes bei Google Books Suche"
 
-#: library/templates/view.html:189
+#: library/templates/view.html:181
 msgid ""
 "This title and author were found to have the following entries through the "
 "use of the Google Books Search service. The information listed here may be "
@@ -3569,19 +3555,19 @@ msgstr ""
 "Autor. Die gezeigten Informationen können ungenau oder unvollständig \n"
 "sein und stammen nicht von Bookworm."
 
-#: library/templates/view.html:199
+#: library/templates/view.html:191
 msgid "Cover image not available from Google Books"
 msgstr "Titlebild bei Google Books nicht vorhanden"
 
-#: library/templates/view.html:205
+#: library/templates/view.html:197
 msgid "Published by"
 msgstr "Herausgegeben von"
 
-#: library/templates/view.html:207
+#: library/templates/view.html:199
 msgid "No publisher was listed"
 msgstr "Kein Herausgeber angegeben"
 
-#: library/templates/view.html:233
+#: library/templates/view.html:225
 #, python-format
 msgid "on <a href=\"%(libraryurl)s\">Bookworm</a>"
 msgstr "auf <a href=\"%(libraryurl)s\">Bookworm</a>"
@@ -4154,6 +4140,14 @@ msgstr "Serifenschrift"
 msgid "Use a sans-serif font"
 msgstr "Serifenlose Schrift"
 
+#: library/templates/includes/reload.html:4
+msgid "Reload this book"
+msgstr "Dieses Buch erneut hochladen"
+
+#: library/templates/includes/reload.html:8
+msgid "Replace this book"
+msgstr "Dieses Buch ersetzen"
+
 #: library/templates/includes/toggle-reading-mode.html:3
 msgid "Change reading modes"
 msgstr "Lesemodus ändern"
@@ -4215,10 +4209,11 @@ msgid "Get <a href=\"%(search_help_url)s\">help with searching Bookworm</a>."
 msgstr "<a href=\"%(search_help_url)s\">Hilfe zur Suche auf Bookworm</a>."
 
 #: search/templates/results.html:51
+#, fuzzy
 msgid ""
 "If you just added an ePub that you're expecting to search, please wait a few "
 "minutes.  The search engine checks periodically for new material and should "
-"update shortly."
+"be updated shortly."
 msgstr ""
 "Falls Sie gerade ein ePub Buch hinzugefügt haben, das Sie durchsuchen \n"
 "wollen, warten Sie bitte ein paar Minuten. Die Suchsoftware prüft \n"
@@ -4471,6 +4466,15 @@ msgstr ""
 " in der Suche nicht sofort erscheint. Etwas Geduld, es wird bald\n"
 " da sein.\n"
 "  "
+
+#~ msgid "Italian"
+#~ msgstr "Italienisch"
+
+#~ msgid "Spanish"
+#~ msgstr "Spanisch"
+
+#~ msgid "French"
+#~ msgstr "Französisch"
 
 #~ msgid "Change email address for <!-- trans: for person -->"
 #~ msgstr "Email Adresse ändern für "
