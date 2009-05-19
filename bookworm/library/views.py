@@ -160,7 +160,7 @@ def view_chapter(request, title, key, chapter_id, chapter=None, document=None, g
             raise Http404
         chapter = h[0]
 
-    stylesheets = StylesheetFile.objects.filter(archive=document)
+    stylesheets = chapter.stylesheets.all()
     next = _chapter_next_previous(document, chapter, 'next')
     previous = _chapter_next_previous(document, chapter, 'previous')
 

@@ -7,7 +7,6 @@
 {% if chapter.title %}{% blocktrans with chapter.title as chaptertitle %} '{{ chaptertitle }}' in {% endblocktrans %}{% endif %} {{ document.title }} {% if document.author %}{% blocktrans with document.author as author %} by {{ author }} {% endblocktrans %} {% endif %}
 {% endspaceless %}{% endblock title %}
 
-{% block orm_header %}{% endblock orm_header %}
 {% block overridestyles %}{% spaceless %}
 <link rel="stylesheet" href="/static/document.css"></link>
 {% if request.user.get_profile.simple_reading_mode %}
@@ -51,7 +50,10 @@
 {% endblock rightnav %}
 
 {% block localstyles %}{% spaceless %}
-{% for css in stylesheets %}<link rel="stylesheet" href="{% url view_stylesheet document.safe_title,document.key,css.filename %}" />{% endfor %}{% endspaceless %}{% endblock %}
+{% for css in stylesheets %}<link rel="stylesheet" href="{% url view_stylesheet document.safe_title,document.key,css.filename %}" />{% endfor %}
+{# Head styles from the document #}
+{% if chapter and chapter.head_extra %}{{ chapter.head_extra|safe }}{% endif %}
+{% endspaceless %}{% endblock %}
 
 {% block head %}
 {% spaceless %}

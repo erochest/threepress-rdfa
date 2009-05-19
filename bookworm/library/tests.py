@@ -1476,6 +1476,30 @@ class TestViews(DjangoTestCase):
         response = self.client.get('/view/a/1/graphics/the%20stamp.png')
         assert response.status_code == 200
 
+    def test_style_in_head(self):
+        '''<style> blocks declared in the document head should be included in the output'''
+        name ='style-in-head.epub'
+        self._upload(name)
+
+        response = self.client.get('/view/a/1/chapter-1.html')
+
+        # Test that head_extra has been populated
+        html = HTMLFile.objects.filter(archive__pk=1)[0]
+        assert html.head_extra is not None
+
+        # Check for only inline styles and not the external stylesheet
+        assert 'color: red' in response.content
+        assert not 'stylesheet.css' in response.content
+        assert 'font-weight: bold' in response.content
+
+        response = self.client.get('/view/a/1/with-external-link.html')
+
+        # Check for both inline styles and the external stylesheet
+        assert 'color: red' in response.content
+        assert 'stylesheet.css' in response.content
+        assert 'font-weight: bold' in response.content
+
+
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
         
