@@ -41,6 +41,7 @@ count = 1
 for l in po:
     source_line = l
     if count in begin_errors:
+        print "Correcting %s" % source_line
         source_line = source_line.replace('msgstr "', 'msgstr "\\n')
 
     if count in end_errors:

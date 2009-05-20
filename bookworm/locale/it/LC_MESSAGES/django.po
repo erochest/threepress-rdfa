@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bookworm\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-14 17:19-0400\n"
+"POT-Creation-Date: 2009-05-20 11:22-0400\n"
 "PO-Revision-Date: 2009-05-08 09:43+0100\n"
 "Last-Translator: Marco Croella <marco.croella@simplicissimus.it>\n"
 "Language-Team: Italian <marco.croella@simplicissimus.it>\n"
@@ -33,24 +33,11 @@ msgstr "Olandese"
 msgid "Finnish"
 msgstr "Finlandese"
 
-#: settings.py:103
-msgid "Italian"
-msgstr ""
-
-#: settings.py:104
-#, fuzzy
-msgid "Spanish"
-msgstr "Olandese"
-
-#: settings.py:105
-msgid "French"
-msgstr ""
-
-#: settings.py:143
+#: settings.py:141
 msgid "account/"
 msgstr "account/"
 
-#: settings.py:143
+#: settings.py:141
 msgid "signin/"
 msgstr "signin/"
 
@@ -537,19 +524,25 @@ msgstr "Iscrizione con OpenID"
 msgid "Sign in with OPENID"
 msgstr "Entra con OpenID"
 
-#: library/models.py:132
+#: library/models.py:134
 msgid "Untitled"
 msgstr "Senza Titolo"
 
-#: library/models.py:1092
+#: library/models.py:696 library/models.py:698
+msgid ""
+"There was a problem related to the encoding of one of the documents in your "
+"ePub. All ePub documents must be in UTF-8."
+msgstr ""
+
+#: library/models.py:1176
 msgid "book title"
 msgstr "titolo del libro"
 
-#: library/models.py:1093
+#: library/models.py:1177
 msgid "first author"
 msgstr "primo autore"
 
-#: library/models.py:1094
+#: library/models.py:1178
 msgid "date added to your library"
 msgstr "data di inserimento in biblioteca"
 
@@ -573,7 +566,7 @@ msgstr "per data"
 msgid "There was a problem reading the metadata for this document."
 msgstr "C'è stato un problema nell leggere i metadati per questo documento."
 
-#: library/views.py:182
+#: library/views.py:184
 msgid ""
 "\n"
 "This book contained content that Bookworm couldn't read.  You may need to "
@@ -587,15 +580,15 @@ msgstr ""
 "Verifica con l'editore che sia un ePub valido che contiene file\n"
 " in formato XHTML o DTBook."
 
-#: library/views.py:318
+#: library/views.py:323
 msgid "Your profile has been updated."
 msgstr "Il tuo profilo è stato aggiornato."
 
-#: library/views.py:335 library/views.py:343
+#: library/views.py:340 library/views.py:348
 msgid "There was a problem with your request to delete this profile."
 msgstr "C'è stato un problema con la tua richiesta di cancellare il profilo."
 
-#: library/views.py:450
+#: library/views.py:461
 msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
@@ -603,7 +596,7 @@ msgstr ""
 "Il file che hai caricato non è stato riconosciuto come un ePub e non può "
 "essere aggiunto alla tua biblioteca."
 
-#: library/views.py:457
+#: library/views.py:468
 msgid ""
 "We detected a problem with your ebook that is most likely related to it "
 "being too big to display safely in a web browser. This can happen with very "
@@ -619,7 +612,7 @@ msgstr ""
 "richiederebbero molto scrolling e un caricamento molto lento e quindi non si "
 "possono aggiungere a Bookworm."
 
-#: library/views.py:483
+#: library/views.py:494
 msgid ""
 "It appears that you've uploaded a book which contains DRM (Digital Rights "
 "Management).  This is a restriction that is meant to prevent illegal copying "
@@ -635,7 +628,7 @@ msgstr ""
 "questo ebook, ma considera l'opportunità di contattare l'editore o il "
 "bookstore per chiedere loro di vendere ebook senza DRM."
 
-#: library/views.py:517
+#: library/views.py:528
 msgid ""
 "The file you uploaded looks like an ePub archive, but it has some problems "
 "that prevented it from being loaded.  This may be a bug in Bookworm, or it "
@@ -647,7 +640,7 @@ msgstr ""
 "Bookworm o un problema legato alla creazione dell'ePub. Il messaggio di "
 "errore completo è:"
 
-#: library/views.py:521
+#: library/views.py:532
 msgid ""
 "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
 "error)</p>"
@@ -655,7 +648,7 @@ msgstr ""
 "<p>(epubcheck pensa che il file sia valido, quindi forse è un errore di "
 "Bookworm)</p>"
 
-#: library/views.py:527
+#: library/views.py:538
 msgid ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that "
 "this is not a valid ePub file, so you should check with the publisher or "
@@ -852,7 +845,7 @@ msgid "Can I use Bookworm on my mobile device?"
 msgstr "Posso usare Bookworm sul cellulare?"
 
 #: library/templates/about.html:109
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
@@ -861,8 +854,8 @@ msgid ""
 "(especially \n"
 "    the iPhone) is available at <a href=\"http://m.bookworm.oreilly.com/"
 "\">http://m.bookworm.oreilly.com/</a>.\n"
-"    Bookworm has also been tested on the Blackberry, Opera Mobile and the "
-"Kindle's Whispernet service."
+"    Bookworm has also been tested on the Blackberry, Opera Mobile, Skyfire "
+"and the Kindle's Whispernet service."
 msgstr ""
 "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
@@ -2958,99 +2951,91 @@ msgstr ""
 msgid " by %(author)s "
 msgstr ""
 
-#: library/templates/view.html:48
+#: library/templates/view.html:47
 msgid "Forward"
 msgstr ""
 
-#: library/templates/view.html:77 library/templates/view.html.py:231
+#: library/templates/view.html:79 library/templates/view.html.py:225
 msgid "by <!-- trans written by -->"
 msgstr ""
 
-#: library/templates/view.html:99
+#: library/templates/view.html:101
 msgid "View in Stanza"
 msgstr ""
 
-#: library/templates/view.html:108
+#: library/templates/view.html:110
 msgid "To read this book online, select any of the sections to the left."
 msgstr ""
 
-#: library/templates/view.html:115 library/templates/includes/leftnav.html:28
+#: library/templates/view.html:117 library/templates/includes/leftnav.html:28
 #: library/templates/includes/leftnav.html:30
 msgid "Book information"
 msgstr ""
 
-#: library/templates/view.html:121
+#: library/templates/view.html:123
 msgid "Publisher"
 msgstr ""
 
-#: library/templates/view.html:128 library/templates/auth/profile.html:103
+#: library/templates/view.html:130 library/templates/auth/profile.html:103
 msgid "Language"
 msgstr ""
 
-#: library/templates/view.html:134
+#: library/templates/view.html:136
 msgid "Date added to library"
 msgstr ""
 
-#: library/templates/view.html:139
+#: library/templates/view.html:141
 msgid "Subjects"
 msgstr ""
 
-#: library/templates/view.html:146
+#: library/templates/view.html:148
 msgid "Rights"
 msgstr ""
 
-#: library/templates/view.html:153
+#: library/templates/view.html:155
 msgid "Description"
 msgstr ""
 
-#: library/templates/view.html:159
+#: library/templates/view.html:161
 msgid "Date published"
 msgstr ""
 
-#: library/templates/view.html:164
+#: library/templates/view.html:166
 msgid "Identifier <!-- trans: unique ID for this book -->"
 msgstr ""
 
-#: library/templates/view.html:169
+#: library/templates/view.html:171
 msgid "Download entire book"
 msgstr ""
 
-#: library/templates/view.html:170
+#: library/templates/view.html:172
 msgid "ePub format"
 msgstr ""
 
-#: library/templates/view.html:177
-msgid "Reload this book"
-msgstr ""
-
 #: library/templates/view.html:181
-msgid "Replace this book"
-msgstr ""
-
-#: library/templates/view.html:187
 msgid "Editions of this work found in Google Books Search"
 msgstr ""
 
-#: library/templates/view.html:189
+#: library/templates/view.html:183
 msgid ""
 "This title and author were found to have the following entries through the "
 "use of the Google Books Search service. The information listed here may be "
 "inaccurate or incomplete and is not provided by Bookworm."
 msgstr ""
 
-#: library/templates/view.html:199
+#: library/templates/view.html:193
 msgid "Cover image not available from Google Books"
 msgstr ""
 
-#: library/templates/view.html:205
+#: library/templates/view.html:199
 msgid "Published by"
 msgstr ""
 
-#: library/templates/view.html:207
+#: library/templates/view.html:201
 msgid "No publisher was listed"
 msgstr ""
 
-#: library/templates/view.html:233
+#: library/templates/view.html:227
 #, python-format
 msgid "on <a href=\"%(libraryurl)s\">Bookworm</a>"
 msgstr ""
@@ -3553,6 +3538,14 @@ msgstr ""
 msgid "Use a sans-serif font"
 msgstr ""
 
+#: library/templates/includes/reload.html:4
+msgid "Reload this book"
+msgstr ""
+
+#: library/templates/includes/reload.html:8
+msgid "Replace this book"
+msgstr ""
+
 #: library/templates/includes/toggle-reading-mode.html:3
 msgid "Change reading modes"
 msgstr ""
@@ -3613,7 +3606,7 @@ msgstr ""
 msgid ""
 "If you just added an ePub that you're expecting to search, please wait a few "
 "minutes.  The search engine checks periodically for new material and should "
-"update shortly."
+"be updated shortly."
 msgstr ""
 
 #: search/templates/results.html:53
@@ -3787,3 +3780,7 @@ msgid ""
 "  up in the search immediately.  Be patient; it'll be there soon.\n"
 "  "
 msgstr ""
+
+#, fuzzy
+#~ msgid "Spanish"
+#~ msgstr "Olandese"
