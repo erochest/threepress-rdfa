@@ -1485,7 +1485,7 @@ class TestViews(DjangoTestCase):
 
         # Test that head_extra has been populated
         html = HTMLFile.objects.filter(archive__pk=1)[0]
-        assert html.head_extra is not None
+        assert html.head_extra() is not None
 
         # Check for only inline styles and not the external stylesheet
         assert 'color: red' in response.content
