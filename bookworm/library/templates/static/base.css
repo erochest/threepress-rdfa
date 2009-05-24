@@ -9,6 +9,7 @@ body {
     padding:0 !important;
     background-color:white;
 }
+
 a:link { 
     color: #2E4560 !important;
 }
@@ -22,16 +23,6 @@ p {
     line-height: 1.7em;
     text-indent:inherit;
 
-}
-
-#bw-footer { 
-    border-top: 1px solid rgb(200,200,200);
-    padding: 5px 20px 30px 20px;
-}
-
-#bw-footer span, #bw-footer a:link, #bw-footer a:hover, #bw-footer a:visited, #bw-footer a:active {
-    margin:0;padding:0 !important;
-    color: #2E4560 !important;
 }
 
 /* Header */
@@ -72,6 +63,7 @@ p {
     letter-spacing:-1px;    
 
  }
+
 #bw-header_logo h1.bw-logo a:visited, #bw-header_logo h1.bw-logo a:link, #bw-header_logo h1.bw-logo a:hover {
     color: #2E4560 !important;
 }
@@ -79,7 +71,7 @@ p {
 {
     color: #2E4560 !important;
 }
-
+/* Styles for the main nav */
 .bw-three {
     color: #2E4560;
  }
@@ -89,17 +81,46 @@ p {
 .bw-motto {  
     padding:0; margin:0;
  }
+
 #bw-header_logo .bw-motto a:visited, #bw-header_logo .bw-motto a:link, #bw-header_logo .bw-motto a:hover {
     color: rgb(248, 255, 239) !important;
  }
 
+/* The upload field in the nav at the top */
+#bw-upload-box {
+  margin:0;padding:0;
+  width:450px;
+  border-top:none;
+  border-bottom: 1px solid white;
+  border: 5px solid rgb(156, 175, 131); 
+  background:white;
+  position:absolute;
+  right:1em;
+  padding-left:1em;
+  font-size: smallest;
+ }
+#bw-upload-box form {
+  display:inline;
+}
+#bw-upload-box input { 
+  margin: 1em 1em 1em 1em;
+}
 
+#bw-upload-box h3 {
+  display:inline;
+}
+
+/* Default colors for document headers. Often these are overridden by book styles. */
 h2, h3 {
    color: rgb(159, 109, 69);
 }     
 h1 { 
   color: rgb(111, 76, 48);
 }
+
+/* The subheader is the narrow area that falls beneath the main navigation.  It includes the
+login/logout links, and will also contain the title of a book when reading. */
+
 #bw-subheader {
     margin:0;
     padding:0;
@@ -132,6 +153,9 @@ h1 {
     color:#746E53;
     text-decoration:none;
 }
+
+/* The left nav is available on most pages except for all mobile pages, when in Reading Mode, and 
+   special pages like the Tour. */
 
 #bw-leftnav ol.bw-nav {
     list-style-type: none;
@@ -181,7 +205,8 @@ ol.bw-nav a:link, ol.bw-nav a:visited, ol.bw-nav a:hover {
  }
 
 
-/* A TEI line-group (treat as a blockquote) */
+/* A TEI line-group (treat as a blockquote). This is mainly for support of the 
+   default Pride & Prejudice document. */
 div.lg {
     padding: 2em;     
     font-style: italic;
@@ -192,6 +217,7 @@ ul.bw-about {
     line-height: 1.5em;
 }
 
+/* This is a yellow informational message, normally. */
 .bw-note {
   width:100%;
   color: #5F5B4B;
@@ -201,6 +227,8 @@ ul.bw-about {
   border:1px solid #5F5B4B;
 }
 
+/* The "meta" table is displayed on the Book Information page, and includes all the 
+   dc: metadata for the epub */
 table.bw-meta {
   width: 600px;
   margin:2em;
@@ -224,12 +252,13 @@ table.bw-meta th.bw-table_header {
   border: 1px solid #5F5B4B;            
   text-align:center;
 }
+
 li.bw-first {
   font-size:larger;
   font-weight:bold;
 }
 
-
+/* A red error message */
 .bw-message {
   color:darkred;
   background-color: lightyellow;
@@ -240,50 +269,32 @@ li.bw-first {
   font-weight: bold;
   font-size: larger;
 }
-#bw-library th {
-  background:white;
-  border-bottom:1px dotted gray;
-  padding: .5em;
-}
+
 div.bw-generic {
   width: 90%;
   margin:auto;
   padding: 10px;
 }
-#bw-upload-box {
-  margin:0;padding:0;
-  width:450px;
-  border-top:none;
-  border-bottom: 1px solid white;
-  border: 5px solid rgb(156, 175, 131); 
-  background:white;
-  position:absolute;
-  right:1em;
-  padding-left:1em;
-  font-size: smallest;
- }
-#bw-upload-box form {
-  display:inline;
-}
-#bw-upload-box input { 
-  margin: 1em 1em 1em 1em;
-}
 
-#bw-upload-box h3 {
-  display:inline;
-}
+/* The main table enclosing the entire site */
 #bw-shell-table {
   margin-left: 60px; padding: 0 60px 100px 0; background-color:white; 
 }
 #bw-shell-table-content {
    background-color:white;padding-right: 50px;width:100%;
 }
+
 a.bw-help {
   font-size:smaller;
 }
+
+/* This header is displayed only on printed pages and contains the name of the logged-in
+   user, as a simple form of watermarking */
 #bw-printheader {
  display:none;
 }
+
+/* An info box provides help in the form of a callout list */
 div.bw-info-box {
   font-size:larger;
   border: 1px solid rgb(200,200,200) ;
@@ -297,13 +308,18 @@ div.bw-info-box {
 div.bw-info-box  h2 {
   padding:0;margin:1em;
 }
+
+/* The message that appears when the user has uploaded a book */
 h3.bw-upload-message {
  line-height: 1.5em;
 }
+
+/* The main search box that appears on most library pages */
 #bw-search-box form {
  padding:0;
  margin-bottom:20px;
 }
+
 #bw-search-box h3 {
   color: gray;
   font-weight: normal;
@@ -317,15 +333,7 @@ h3.bw-upload-message {
  margin:0;
  width: 140px;
 }
-#bw-search-lang-message {
- font-size: smaller;
- color: gray;
-}
 
-#bw-search-lang-selection {
- font-size: smaller;
- color: gray;
-}
 #bw-search-box ul {
  list-style-type: none;
  margin:0;
@@ -335,7 +343,8 @@ h3.bw-upload-message {
  background-color:white;
 }
 
-
+/* This appears on the public home page, as one of the three blocks describing
+   Bookworm's features */
 .bw-home-block {
   float:left;
   width: 200px;
@@ -366,15 +375,22 @@ h3.bw-upload-message {
   border-left:0;
   clear:both;
 }
+
+/* The main text on the public home page ("A free platform for reading ePub books online...") */
 #bw-text-intro a:visited,
 #bw-text-intro a:link
 {
   color: #2E4560 !important;
 }
+
+/* The public quotations */
 #bw-public-quotes a:visited,
 #bw-text-intro a:link
 {
   color: gray !important;
+}
+#bw-public-quotes {
+  clear:both;
 }
 
 .bw-public {
@@ -385,13 +401,12 @@ h3.bw-upload-message {
 #bw-public-container {
   margin:auto;
 }
-
-#bw-public-quotes {
-  clear:both;
-}
+/* The list of features that appears towards the bottom of the page */
 #bw-public-features {
+  position:relative;
+  top:50px;                    
+  padding-top:10px;
   clear:both;
-  padding-top:40px;
   border-top: 1px solid rgb(210,210,210);
   background-image: url(/static/yellow-gradiant.png);
   background-repeat: repeat-x;
@@ -422,19 +437,6 @@ h3.bw-upload-message {
   padding-left: 20px;
 }
 
-div.bw-info-box {
-  font-size:larger;
-  border: 1px solid rgb(200,200,200) ;
-  padding:1em;
-  background-image: url(/static/yellow-gradiant.png);
-  background-repeat: repeat-x;
-  -moz-border-radius: 20px; 
-  -webkit-border-radius: 20px; 
-
-}
-div.bw-info-box  h2 {
-  padding:0;margin:1em;
-}
 .bw-document_title a { 
     text-decoration: none;
  }
@@ -445,6 +447,8 @@ div.bw-info-box  h2 {
     text-transform: uppercase;
     font-weight: bold;
 }
+/* The status message appears on the library page, listing the number of books currently uploaded
+   and the number of users. */
 .bw-status a { 
     text-decoration:none;
 }
@@ -467,14 +471,13 @@ div.bw-info-box  h2 {
     line-height:1em !important;
  }
 
+/* bw-library is the ID of the table containing the user's library */
 
 #bw-library {
     width:100%;
-    /* background-color: rgb(248, 255, 239); */
     background-color: rgb(254, 255, 254);
     background-image: url(/static/yellow-gradiant-long.png);
     background-repeat: repeat-x;
-
     border-collapse:collapse;
 }
 #bw-library .bw-title, #bw-library .bw-author {
@@ -500,6 +503,59 @@ div.bw-info-box  h2 {
     padding: 7px;
 }
 
+#bw-library td.bw-title-container {
+  width: 50%;
+}
+
+#bw-library td.bw-attribution-container {
+  width: 20%;
+}
+
+#bw-library td.bw-added-container {
+  width: 20%;
+}
+
+#bw-library th {
+  background-color: rgb(228, 235, 219);
+  border:none;
+  margin:0;
+}
+
+/* Date added style in the library listing */
+#bw-library span.bw-added {
+  color: gray;
+}
+/* The title of the book as displayed inside the library listing */
+h2.bw-title {
+  display:inline;
+  font-size: 1em;
+}
+
+table.bw-pagination a {
+   text-decoration: none;
+}
+
+/* Pagination above the library listing */
+table.bw-pagination th {
+  width:33%;
+  color:gray;
+}
+
+.bw-pagination-arrow {
+  color:gray;
+}
+
+.bw-last-read {
+  display:block;
+  font-size:smaller;
+  margin-top: .4em;
+  color:gray;
+}
+.bw-last-read a {
+  text-decoration: underline !important;
+}
+
+
 #bw-library .bw-delete {
   font-size: smaller;
 }
@@ -508,15 +564,18 @@ p.bw-tagline {
     font-size: x-large !important;
     display:inline;
 }
+
 h3.bw-profile a:link, h3.bw-profile a:visited, h3.bw-profile a:hover,
 h2.bw-upload a:link, h2.bw-upload a:visited, h2.bw-upload a:hover {
  
     color: #2E4560 !important;
     font-weight:bold;
 }
+
 #bw-text-intro {
  margin:0; padding:0;
 }
+
 #bw-text-intro p {
  margin:0; padding:0;
  color:gray;
@@ -524,15 +583,22 @@ h2.bw-upload a:link, h2.bw-upload a:visited, h2.bw-upload a:hover {
 #bw-text-intro p a {
  color:gray !important;
 }
+
+/* The generic form input, used on many forms such as the login and profile forms */
 form input { 
   display:inline;
   margin: 1em 1em 1em 1em;
 }
+
 form fieldset {
   border: 1px solid rgb(200,200,200);
   background-color: rgb(248, 255, 239);
   -moz-border-radius: 20px; 
   -webkit-border-radius: 20px; 
+}
+input {
+ -moz-border-radius:10px;
+ -webkit-border-radius: 10px; 
 }
 
 #bw-leftnav ol  {
@@ -554,58 +620,12 @@ form fieldset {
 #bw-lost-password {
   display:block;
 }
-input {
- -moz-border-radius:10px;
-}
+
 table.bw-pagination {
   width:100%;
   padding:1em;
 }
-table.bw-pagination th {
-  width:33%;
-  color:gray;
-}
-#bw-library td.bw-title-container {
-  width: 50%;
-}
 
-#bw-library td.bw-attribution-container {
-  width: 20%;
-}
-
-#bw-library td.bw-added-container {
-  width: 20%;
-}
-#bw-library span.bw-added {
-  color: gray;
-}
-h2.bw-title {
-  display:inline;
-  font-size: 1em;
-}
-
-table.bw-pagination a {
-   text-decoration: none;
-}
-
-#bw-library th {
-  background-color: rgb(228, 235, 219);
-  border:none;
-  margin:0;
-}
-.bw-pagination-arrow {
-  color:gray;
-}
-
-.bw-last-read {
-  display:block;
-  font-size:smaller;
-  margin-top: .4em;
-  color:gray;
-}
-.bw-last-read a {
-  text-decoration: underline !important;
-}
 #bw-content form input { 
   display:block;
   margin: 1em 1em 1em 1em;
@@ -623,6 +643,7 @@ table.bw-pagination a {
 
 }
 
+/* Reading Mode support */
 #bw-content form fieldset {
   border: 1px solid rgb(200,200,200) ;
 }
@@ -642,4 +663,15 @@ table.bw-pagination a {
 }
 .bw-reading-tools {
    padding-top: 3px;
+}
+
+/* Main site footer */
+#bw-footer { 
+    border-top: 1px solid rgb(200,200,200);
+    padding: 5px 20px 30px 20px;
+}
+
+#bw-footer span, #bw-footer a:link, #bw-footer a:hover, #bw-footer a:visited, #bw-footer a:active {
+    margin:0;padding:0 !important;
+    color: #2E4560 !important;
 }

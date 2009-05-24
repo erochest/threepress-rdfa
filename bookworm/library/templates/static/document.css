@@ -1,4 +1,3 @@
-/* These document-level styles should be displayed even with iframes */
 a.svg {
     display:block;
     background-image: url(/static/svg.png);

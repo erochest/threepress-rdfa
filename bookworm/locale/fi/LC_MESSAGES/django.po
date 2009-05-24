@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-20 11:22-0400\n"
-"PO-Revision-Date: 2009-05-14 17:21-0400\n"
+"POT-Creation-Date: 2009-05-24 15:03-0400\n"
+"PO-Revision-Date: 2009-05-24 15:06-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -833,7 +833,7 @@ msgid "Can I use Bookworm on my mobile device?"
 msgstr "Voinko käyttää Bookworm -palvelua mobiililaitteellani?"
 
 #: library/templates/about.html:109
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
@@ -2424,40 +2424,40 @@ msgstr "Lue lisää"
 msgid "Sign up"
 msgstr "Luo käyttäjätili"
 
-#: library/templates/public.html:34
+#: library/templates/public.html:35
 msgid "Readers"
 msgstr "Lukijat"
 
-#: library/templates/public.html:37
+#: library/templates/public.html:38
 msgid "Read and search full-text books online"
 msgstr "Etsi ja lue digikirjoja verkossa"
 
-#: library/templates/public.html:38
+#: library/templates/public.html:39
 msgid "Clutter-free reading mode"
 msgstr "Selkeä lukunäyttö"
 
-#: library/templates/public.html:39
+#: library/templates/public.html:40
 msgid "Download books to your "
 msgstr "Siirrä kirjoja"
 
-#: library/templates/public.html:39
+#: library/templates/public.html:40
 msgid "Sony Reader or iLiad "
 msgstr "Sony Reader tai iLiad -laitteisiin"
 
-#: library/templates/public.html:40 library/templates/reading-mode.html:123
-msgid "Mobile reading"
-msgstr "Lue mobiililaitteella"
-
-#: library/templates/public.html:41
-#, python-format
+#: library/templates/public.html:42
+#, fuzzy, python-format
 msgid ""
-"\n"
-"      online or with <a href=\"%(stanzaurl)s\">Stanza</a> on the iPhone.\n"
-"      "
+"<a href=\"%(toururl)s#step4\">Mobile reading</a>, online or with <a href=\"%"
+"(stanzaurl)s\">Stanza</a> on the iPhone."
 msgstr ""
 "\n"
 "      verkossa tai iPhonen <a href=\"%(stanzaurl)s\">Stanzalla</a>.\n"
 "      "
+
+#: library/templates/public.html:44
+#, python-format
+msgid "Available in <a href=\"%(languageurl)s\">multiple languages</a>."
+msgstr ""
 
 #: library/templates/public.html:49
 msgid "Publishers"
@@ -2479,7 +2479,7 @@ msgstr "Epub- ja digikirjojen asiantuntijapalveluita"
 #, python-format
 msgid ""
 " Details on the <a href=\"%(epuburl)s\">ePub format</a> \n"
-"      "
+"              "
 msgstr ""
 "    Bookworm ja ePub <a href=\"%(epuburl)s\">-esittely yhdellä sivulla</"
 "a>.    "
@@ -2512,14 +2512,14 @@ msgstr ""
 "Seuraa kirjoittelua <a href='http://blog.threepress.org/'>Bookworm -"
 "blogissa</a>"
 
-#: library/templates/public.html:74
+#: library/templates/public.html:75
 msgid ""
 "\n"
-"      A page in Bookworm, showing the\n"
-"      book's table of contents, illustrations, and text. Bookworm supports "
-"CSS styles, images in JPG, GIF, PNG and SVG format,\n"
-"      and full XHTML.\n"
-"      "
+"              A page in Bookworm, showing the\n"
+"              book's table of contents, illustrations, and text. Bookworm "
+"supports CSS styles, images in JPG, GIF, PNG and SVG format,\n"
+"              and full XHTML.\n"
+"              "
 msgstr ""
 "\n"
 "      Esimerkki näyttää kuinka teksti, kuvitus ja sisällysluettelo\n"
@@ -2527,46 +2527,40 @@ msgstr ""
 "SVG muotoisia kuvia\n"
 "      ja kaikkia XHTML -elementtejä."
 
-#: library/templates/public.html:82
+#: library/templates/public.html:83
 msgid "What is Bookworm?"
 msgstr "Mikä on Bookworm"
 
-#: library/templates/public.html:83
+#: library/templates/public.html:84
 msgid ""
-"\n"
-"  Bookworm allows readers to add ePub books to their online\n"
-"  library and read them on their web browser or mobile device.\n"
-"  If you have a portable device that supports ePub (such as the\n"
-"  Sony Reader or iRex iLiad), you can download your books \n"
-"  to put on your e-reader. Bookworm is specially optimized for use in the "
-"iPhone\n"
-"  and can export directly to Stanza.\n"
-"  "
+"Bookworm allows readers to add ePub books to their online library and read "
+"them on their web browser or mobile device. If you have a portable device "
+"that supports ePub (such as the Sony Reader or iRex iLiad), you can download "
+"your books to put on your e-reader. Bookworm is specially optimized for use "
+"in the iPhone aand can export directly to Stanza."
 msgstr ""
-"\n"
 "  Bookworm -sivustolla käyttäjät voivat siirtää ePub -julkaisuja\n"
 "  verkkokokoelmaansa ja lukea niitä www-selaimessa kotona tai liikkeellä.\n"
 "  Jos lukijalaitteesi (esim. Sony Reader tai iRex iLiad) tukee ePub\n"
-"  tiedostoja, voit siirtää kirjasi suoraan laitteeseen. Sivustosta on "
-"mobiili-\n"
-"  laitteille (mm. Symbian S60 ja iPhone) muokattu versio.\n"
-"  "
+"  tiedostoja, voit siirtää kirjasi suoraan laitteeseen. Sivustosta on mobiili-\n"
+"  laitteille (mm. Symbian S60 ja iPhone) muokattu versio.  "
 
-#: library/templates/public.html:92
+#: library/templates/public.html:85
 msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
 msgstr "Mikä on &rsquo;ePub -kirja&rdquo;?"
 
-#: library/templates/public.html:95
+#: library/templates/public.html:88
 #, python-format
 msgid ""
 "\n"
-"    ePub is an ebook format. Your ebook is in ePub format if it\n"
-"    ends with <strong>.epub</strong>.  If so, you can <a href=\"%(helpurl)s"
-"\">read\n"
-"    that ebook on Bookworm</a>. If not, tell the book publisher to start\n"
-"    supporting the only free and open ebook format with strong\n"
-"    industry backing.\n"
-"    "
+"            ePub is an ebook format. Your ebook is in ePub format if it\n"
+"            ends with <strong>.epub</strong>.  If so, you can <a href=\"%"
+"(helpurl)s\">read\n"
+"            that ebook on Bookworm</a>. If not, tell the book publisher to "
+"start\n"
+"            supporting the only free and open ebook format with strong\n"
+"            industry backing.\n"
+"            "
 msgstr ""
 "\n"
 "\n"
@@ -2576,20 +2570,14 @@ msgstr ""
 "    julkaisijaa kannattamaan  digikirjojen ainoaa vapaata koodia, jolla on\n"
 "    selkeä teollisuuden tuki."
 
-#: library/templates/public.html:103
+#: library/templates/public.html:96
 msgid "Try Bookworm out"
 msgstr "Kokeile Bookworm -palvelua"
 
-#: library/templates/public.html:106
+#: library/templates/public.html:99
 #, python-format
-msgid ""
-"\n"
-"    Try the one-page <a href=\"%(toururl)s\">Bookworm and ePub tour</a>.\n"
-"    "
-msgstr ""
-"\n"
-"    Bookworm ja ePub<a href=\"%(toururl)s\">-esittely yhdellä sivulla</"
-"a>.    "
+msgid "Try the one-page <a href=\"%(toururl)s\">Bookworm and ePub tour</a>."
+msgstr " Bookworm ja ePub<a href=\"%(toururl)s\">-esittely yhdellä sivulla</a>."
 
 #: library/templates/reading-mode.html:3 library/templates/reading-mode.html:5
 #: library/templates/tour.html:131 library/templates/includes/about.html:10
@@ -2806,6 +2794,10 @@ msgstr "Lukunäyttö kun käytössä on serif -kirjasin."
 #: library/templates/reading-mode.html:117
 msgid "You can also switch to a serif font, as shown here."
 msgstr "Voit vaihtaa myös serif -kirjasimeen, kuten tässä."
+
+#: library/templates/reading-mode.html:123
+msgid "Mobile reading"
+msgstr "Lue mobiililaitteella"
 
 #: library/templates/reading-mode.html:124
 msgid "Font controls are available on the mobile version of Bookworm"
@@ -4074,7 +4066,6 @@ msgid "Get <a href=\"%(search_help_url)s\">help with searching Bookworm</a>."
 msgstr "Hakuohjeita saat <a href=\"%(search_help_url)s\">täältä</a>."
 
 #: search/templates/results.html:51
-#, fuzzy
 msgid ""
 "If you just added an ePub that you're expecting to search, please wait a few "
 "minutes.  The search engine checks periodically for new material and should "

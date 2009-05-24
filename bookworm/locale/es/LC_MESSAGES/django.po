@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-20 11:22-0400\n"
-"PO-Revision-Date: 2009-05-20 11:24-0400\n"
+"POT-Creation-Date: 2009-05-24 15:03-0400\n"
+"PO-Revision-Date: 2009-05-24 15:08-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -821,9 +821,12 @@ msgid ""
 "    book content on your mobile phone even when you aren't connected to the "
 "internet."
 msgstr ""
-" Ya que tus publicaciones quedan archivadas en Bookworm, puedes utilizar cualquier\n"
-" navegador, y varios dispositivos m&oacute;viles, para acceder tu biblioteca desde cualquier parte del mundo.\n"
-" Actualmente estamos creando nuevas funciones que te permitir&aacute;n leer tus libros en un tel&eacute;fono\n"
+" Ya que tus publicaciones quedan archivadas en Bookworm, puedes utilizar "
+"cualquier\n"
+" navegador, y varios dispositivos m&oacute;viles, para acceder tu biblioteca "
+"desde cualquier parte del mundo.\n"
+" Actualmente estamos creando nuevas funciones que te permitir&aacute;n leer "
+"tus libros en un tel&eacute;fono\n"
 " m&oacute;vil, aunque no est&eacute;s conectado al web."
 
 #: library/templates/about.html:88
@@ -881,13 +884,17 @@ msgid ""
 "    Bookworm has also been tested on the Blackberry, Opera Mobile, Skyfire "
 "and the Kindle's Whispernet service."
 msgstr ""
-" <a href=\\\"%(toururl)s}#step3\\\"><img src=\\\"/static/images/screenshots/iphone.\"\n"
-"\"png\\\" alt=\\\"Bookworm on the iPhone\\\" class=\\\"bw-screenshot-page\\\" align=\"\n"
+" <a href=\\\"%(toururl)s}#step3\\\"><img src=\\\"/static/images/screenshots/"
+"iphone.\"\n"
+"\"png\\\" alt=\\\"Bookworm on the iPhone\\\" class=\\\"bw-screenshot-page\\"
+"\" align=\"\n"
 "\"\\\"right\\\" style=\\\"margin-bottom:10px\\\" width=\\\"100\\\"/></a>\\n\n"
 "S&iacute, en efecto. Para una versi&oacute;n especial de este sitio web,\n"
 " optimizada para dipositivos m&oacute;viles (especialmente el iPhone),\n"
-" dir&iacute;gete a <a href=\"http://m.bookworm.oreilly.com/\">http://m.bookworm.oreilly.com/</a>.\n"
-" Tambi&eacute;n lo hemos evaluado en el Blackberry, Opera Mobile y el servicio\n"
+" dir&iacute;gete a <a href=\"http://m.bookworm.oreilly.com/\">http://m."
+"bookworm.oreilly.com/</a>.\n"
+" Tambi&eacute;n lo hemos evaluado en el Blackberry, Opera Mobile y el "
+"servicio\n"
 " Whispernet del Kindle. "
 
 #: library/templates/about.html:115
@@ -919,10 +926,15 @@ msgid ""
 "    An updated list of ePub bookstores can be found at <a href=\"http://www."
 "epubbooks.com/\">epubbooks.com</a>."
 msgstr ""
-"A partir de marzo del 2009, varias editoriales de publicaciones electr&oacute;nicas\n"
-" han comenzado a adoptar el est&aacute;ndar ePub. O'Reilly, Penguin, Harper-Collins y \n"
-" Random House cuentan entre las que han puesto a la venta t&iacute;tulos en este formato.\n"
-" Visita <a href=\"http://www.epubbooks.com/\">epubbooks.com</a> para ponerte al corriente de  qu&eacute; librer&iacute;as electr&oacute;nicas tienen este material disponible."
+"A partir de marzo del 2009, varias editoriales de publicaciones "
+"electr&oacute;nicas\n"
+" han comenzado a adoptar el est&aacute;ndar ePub. O'Reilly, Penguin, Harper-"
+"Collins y \n"
+" Random House cuentan entre las que han puesto a la venta t&iacute;tulos en "
+"este formato.\n"
+" Visita <a href=\"http://www.epubbooks.com/\">epubbooks.com</a> para ponerte "
+"al corriente de  qu&eacute; librer&iacute;as electr&oacute;nicas tienen este "
+"material disponible."
 
 #: library/templates/about.html:127
 msgid "I'm not able to read this ePub book I uploaded"
@@ -990,10 +1002,15 @@ msgid ""
 "    and we'll get back to you right away."
 msgstr ""
 "Threepress es una corporaci&oacute;n al servicio de empresas editoriales\n"
-" con varios a&ntilde;os de experiencia en esta industria. Estamos a tu disponibilidad\n"
-" para tratar cuestiones de formato, c&oacute;mo adaptar tus publicaciones al est&acute;ndar\n"
-" ePub, e incluso c&oacute;mo extender la funcionalidad de Bookworm seg&uacute;n \n"
-" especificaciones.  Para indagaciones, contacta con <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a> y te responderemos enseguida"
+" con varios a&ntilde;os de experiencia en esta industria. Estamos a tu "
+"disponibilidad\n"
+" para tratar cuestiones de formato, c&oacute;mo adaptar tus publicaciones al "
+"est&acute;ndar\n"
+" ePub, e incluso c&oacute;mo extender la funcionalidad de Bookworm "
+"seg&uacute;n \n"
+" especificaciones.  Para indagaciones, contacta con <a href=\"mailto:"
+"bookworm@threepress.org\">bookworm@threepress.org</a> y te responderemos "
+"enseguida"
 
 #: library/templates/about.html:157
 msgid ""
@@ -1058,8 +1075,10 @@ msgid ""
 "to be public\n"
 "    can all make Bookworm books accessible to the larger internet."
 msgstr ""
-"Hay l&iacute;mites a la hora de compartir libros en Bookworm: S&oacute;lo podr&aacute;n compatirse con el resto\n"
-" de la Internet aquellos libros que formen parte del dominio p&uacute;blico, que hayan sido cargados por\n"
+"Hay l&iacute;mites a la hora de compartir libros en Bookworm: S&oacute;lo "
+"podr&aacute;n compatirse con el resto\n"
+" de la Internet aquellos libros que formen parte del dominio p&uacute;blico, "
+"que hayan sido cargados por\n"
 " su propio autor, o designados por la editorial como obra p&uacute;blica."
 
 #: library/templates/about.html:179
@@ -1068,8 +1087,11 @@ msgid ""
 "public, please contact <a href=\"mailto:bookworm@threepress.org"
 "\">bookworm@threepress.org</a> for more information."
 msgstr ""
-"Los libros p&uacute;blicos se encuentran actualmente en una fase beta de desarrollo. \n"
-" Para solicitar que un libro sea p&uacute;blico, contacta con <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a> para m&aacute;s informaci&oacute;n."
+"Los libros p&uacute;blicos se encuentran actualmente en una fase beta de "
+"desarrollo. \n"
+" Para solicitar que un libro sea p&uacute;blico, contacta con <a href="
+"\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a> para m&aacute;"
+"s informaci&oacute;n."
 
 #: library/templates/about.html:182
 msgid " Are my books securely stored and backed up?"
@@ -2530,41 +2552,41 @@ msgstr "M&aacute;s informaci&oacute;n"
 msgid "Sign up"
 msgstr "Reg&iacute;strate"
 
-#: library/templates/public.html:34
+#: library/templates/public.html:35
 msgid "Readers"
 msgstr "Lectores"
 
-#: library/templates/public.html:37
+#: library/templates/public.html:38
 msgid "Read and search full-text books online"
 msgstr ""
 "Leer y hacer b&uacute;squedas sobre el texto completo de las obras "
 "disponibles en l&iacute;nea"
 
-#: library/templates/public.html:38
+#: library/templates/public.html:39
 msgid "Clutter-free reading mode"
 msgstr "Modalidad de Lectura, sin obst&aacute;culos visuales"
 
-#: library/templates/public.html:39
+#: library/templates/public.html:40
 msgid "Download books to your "
 msgstr "Descarga libros en tu "
 
-#: library/templates/public.html:39
+#: library/templates/public.html:40
 msgid "Sony Reader or iLiad "
 msgstr "Sony Reader o iLiad"
 
-#: library/templates/public.html:40 library/templates/reading-mode.html:123
-msgid "Mobile reading"
-msgstr "Lectura con un dispositivo m&oacute;vil"
-
-#: library/templates/public.html:41
-#, python-format
+#: library/templates/public.html:42
+#, fuzzy, python-format
 msgid ""
-"\n"
-"      online or with <a href=\"%(stanzaurl)s\">Stanza</a> on the iPhone.\n"
-"      "
+"<a href=\"%(toururl)s#step4\">Mobile reading</a>, online or with <a href=\"%"
+"(stanzaurl)s\">Stanza</a> on the iPhone."
 msgstr ""
 "\n"
 "en l&iacute;nea o con <a href=\"%(stanzaurl)s\">Stanza</a> en el iPhone"
+
+#: library/templates/public.html:44
+#, python-format
+msgid "Available in <a href=\"%(languageurl)s\">multiple languages</a>."
+msgstr ""
 
 #: library/templates/public.html:49
 msgid "Publishers"
@@ -2586,7 +2608,7 @@ msgstr "Servicios de consulta sobre ePub y libros electr&oacute;nicos."
 #, python-format
 msgid ""
 " Details on the <a href=\"%(epuburl)s\">ePub format</a> \n"
-"      "
+"              "
 msgstr "Detalles sobre el <a href=\"%(epuburl)s\">formato ePub</a>"
 
 #: library/templates/public.html:62
@@ -2617,14 +2639,14 @@ msgstr ""
 "Mant&eacute;nte actualizado leyendo el <a href='http://blog.threepress."
 "org/'>blog de Bookworm</a>"
 
-#: library/templates/public.html:74
+#: library/templates/public.html:75
 msgid ""
 "\n"
-"      A page in Bookworm, showing the\n"
-"      book's table of contents, illustrations, and text. Bookworm supports "
-"CSS styles, images in JPG, GIF, PNG and SVG format,\n"
-"      and full XHTML.\n"
-"      "
+"              A page in Bookworm, showing the\n"
+"              book's table of contents, illustrations, and text. Bookworm "
+"supports CSS styles, images in JPG, GIF, PNG and SVG format,\n"
+"              and full XHTML.\n"
+"              "
 msgstr ""
 "\n"
 "Ejemplo de una p&aacute;gina en Bookworm, mostrando el &iacute;ndice de "
@@ -2633,49 +2655,40 @@ msgstr ""
 "(CSS),\n"
 " im&aacute;genes en formato JPG, GIF, PNG y SVG, y XHTML por completo."
 
-#: library/templates/public.html:82
+#: library/templates/public.html:83
 msgid "What is Bookworm?"
 msgstr "&iquest;Qu&eacute; es Bookworm?"
 
-#: library/templates/public.html:83
+#: library/templates/public.html:84
 msgid ""
-"\n"
-"  Bookworm allows readers to add ePub books to their online\n"
-"  library and read them on their web browser or mobile device.\n"
-"  If you have a portable device that supports ePub (such as the\n"
-"  Sony Reader or iRex iLiad), you can download your books \n"
-"  to put on your e-reader. Bookworm is specially optimized for use in the "
-"iPhone\n"
-"  and can export directly to Stanza.\n"
-"  "
+"Bookworm allows readers to add ePub books to their online library and read "
+"them on their web browser or mobile device. If you have a portable device "
+"that supports ePub (such as the Sony Reader or iRex iLiad), you can download "
+"your books to put on your e-reader. Bookworm is specially optimized for use "
+"in the iPhone aand can export directly to Stanza."
 msgstr ""
-"\n"
-"Bookworm permite a lectores cargar libros a una biblioteca virtual y "
-"leerlos\n"
-" a trav&eacute;s de un navegador de web o un dispositivo m&oacute;vil. Si "
-"tienes un dispositivo\n"
-" port&acute;til que apoya el formato ePub (por ejemplo, el Sony Reader o el "
-"iRex iLiad), puedes\n"
-" descargar un libro y ponerlo en este lector electr&oacute;nico. Bookworm "
-"est&aacute; especialmente\n"
-" optimizado para el uso con el iPhone, y puede exportar directamente a "
-"Stanza."
+"Bookworm permite a lectores cargar libros a una biblioteca virtual y leerlos\n"
+" a trav&eacute;s de un navegador de web o un dispositivo m&oacute;vil. Si tienes un dispositivo\n"
+" port&acute;til que apoya el formato ePub (por ejemplo, el Sony Reader o el iRex iLiad), puedes\n"
+" descargar un libro y ponerlo en este lector electr&oacute;nico. Bookworm est&aacute; especialmente\n"
+" optimizado para el uso con el iPhone, y puede exportar directamente a Stanza."
 
-#: library/templates/public.html:92
+#: library/templates/public.html:85
 msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
 msgstr "&iquest;Qu&eacute; es un &laquo;libro ePub&raquo;?"
 
-#: library/templates/public.html:95
+#: library/templates/public.html:88
 #, python-format
 msgid ""
 "\n"
-"    ePub is an ebook format. Your ebook is in ePub format if it\n"
-"    ends with <strong>.epub</strong>.  If so, you can <a href=\"%(helpurl)s"
-"\">read\n"
-"    that ebook on Bookworm</a>. If not, tell the book publisher to start\n"
-"    supporting the only free and open ebook format with strong\n"
-"    industry backing.\n"
-"    "
+"            ePub is an ebook format. Your ebook is in ePub format if it\n"
+"            ends with <strong>.epub</strong>.  If so, you can <a href=\"%"
+"(helpurl)s\">read\n"
+"            that ebook on Bookworm</a>. If not, tell the book publisher to "
+"start\n"
+"            supporting the only free and open ebook format with strong\n"
+"            industry backing.\n"
+"            "
 msgstr ""
 "\n"
 "ePub es un formato para libros electr&oacute;nicos. Puedes identificar un "
@@ -2689,18 +2702,14 @@ msgstr ""
 " formato gratis y abierto, que disfruta de un fuerte respaldo en la "
 "industria editorial."
 
-#: library/templates/public.html:103
+#: library/templates/public.html:96
 msgid "Try Bookworm out"
 msgstr "Prueba utilizar Bookworm"
 
-#: library/templates/public.html:106
+#: library/templates/public.html:99
 #, python-format
-msgid ""
-"\n"
-"    Try the one-page <a href=\"%(toururl)s\">Bookworm and ePub tour</a>.\n"
-"    "
+msgid "Try the one-page <a href=\"%(toururl)s\">Bookworm and ePub tour</a>."
 msgstr ""
-"\n"
 "Da este breve recorrido virtual de una p&aacute;gina a trav&eacute;s de \n"
 " <a href=\"%(toururl)s\">ePub y Bookworm</a>."
 
@@ -2942,6 +2951,10 @@ msgid "You can also switch to a serif font, as shown here."
 msgstr ""
 "Tambi&eacute;n puedes seleccionar una fuente con serifas, como se muestra "
 "aqu&iacute;."
+
+#: library/templates/reading-mode.html:123
+msgid "Mobile reading"
+msgstr "Lectura con un dispositivo m&oacute;vil"
 
 #: library/templates/reading-mode.html:124
 msgid "Font controls are available on the mobile version of Bookworm"

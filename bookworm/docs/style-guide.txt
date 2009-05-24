@@ -1,0 +1,80 @@
+.. -*- mode: rst -*-
+
+--------------------
+Bookworm Style Guide
+--------------------
+
+The primary Django application which runs Bookworm is `library`.  This
+app contains all of the site UI and most of its features.
+
+This document assumes some basic knowledge of Django templates, HTML
+and CSS.  Django template reference: 
+Important directories and files::
+
+  library/
+          templates/
+                    static/
+                           base.css
+                           mobile.css
+                           about.css
+                    base.html
+                    shell.html
+                    mobile/
+                           base.html
+
+
+Templates
+---------
+
+shell.html
+==========
+This is the outermost framing template, containing the main <head> and
+<body> (including the top header) for almost every page on the site.
+Modify any site-wide structure here.
+
+This is not used in the mobile version; see
+`library/templates/mobile/base.html` for that template.
+
+base.html
+==========
+This contains the template for the body area, including the
+left-nav and main content area.  It is not used by any pages that do
+not include a left nav, such as the "Take a Tour" page, which uses
+`shell.html` directly.
+
+mobile/base.html
+================
+The top-level template for the mobile version of the site.  It is used
+with `mobile.css` to override styles from the main site.
+
+Stylesheets
+-----------
+
+base.css
+========
+Most of the sites in the site are here.  One item to note is that many
+styles are marked `!important`; this is to prevent them from being
+overridden by imported book styles.
+
+The majority of styles are prefixed with `bw-` to avoid conflicting
+with imported book styles.  This convention should be maintained.
+
+Styles are extensively documented with in-line comments.
+
+mobile.css
+==========
+These styles apply only to the mobile web version of the site.
+
+auth.css
+========
+These are used primarily on login pages.
+
+document.css
+============
+Used only from `view.html` when displaying a book.
+
+simple.css
+==========
+Invoked when Reading Mode is in effect. Overrides many other styles to
+generate the Reading Mode user interface.
+

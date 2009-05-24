@@ -1,28 +1,34 @@
+.. -*- mode: rst -*-
+
+---------------------------
+Bookworm Installation Guide
+---------------------------
+
 Prerequisites
 =============
     
-Django 1.0 release
-
-MySQL or other supported database (should be able to override in local.py)
+1. Django 1.0.2 release
+2. Python 2.5 or 2.6 (virtualenv recommended)
+3. MySQL or other supported database (should be able to override in `local.py`)
 
 Via easy_install:
-
-- cssutils
-- python-openid (2.x)
-- python-yadis
-- twill
-- lxml
-- BeautifulSoup
+  *  cssutils
+  * python-openid (2.x)
+  * python-yadis
+  * twill
+  * lxml
+  * BeautifulSoup
 
 Via subversion:
 
-- django_evolution 
-  + svn checkout http://django-evolution.googlecode.com/svn/trunk/ django-evolution
-  + cd django-evolution
-  + sudo python setup.py install
+  * django_evolution 
+  * svn checkout http://django-evolution.googlecode.com/svn/trunk/ django-evolution
+  * cd django-evolution
+  * sudo python setup.py install
+
 
 Database
---------
+========
 
 The first time you get here, manually create the database 
 and user permissions according to values in ./settings.py
@@ -34,34 +40,34 @@ do not change settings.py. local.py overwrites the default settings.
 
 Then, from the project root:
 
-./manage.py syncdb
-./manage.py test library # Sanity check
+`python manage.py syncdb`
+`python manage.py test library # Sanity check`
 
 You should only need to run syncdb initially, or when the schema changes.
 
-===
+
+Testing
+=======
 
 To test the models and views:
-./manage.py test library 
+`python manage.py test library`
 
-===
-
+Development
+===========
 To run a local development server:
-./manage.py runserver 
-
-(./run.sh is a short-hand, and will put the dev server in the background)
-
-===
+`python manage.py runserver`
 
 To start over with a clean database:
-./clear-db.sh 
+`clear-db.sh`
 
 clear-db takes optional arguments:
 
- - no arguments clears only the 'library' app 
- - 'auth' clears the base Django auth framework
- - 'openid' clears the django_authopenid database
- - 'all' clears all of the above
+  * no arguments clears only the 'library' app 
+  * 'auth' clears the base Django auth framework
+  * 'openid' clears the django_authopenid database
+  * 'all' clears all of the above
+
+Other documentation is in `docs/`
 
 
 
