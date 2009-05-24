@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-20 11:22-0400\n"
-"PO-Revision-Date: 2009-05-20 16:23+0100\n"
+"PO-Revision-Date: 2009-05-24 16:49+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "i-Names werden nicht unterstützt"
 #: django_authopenid/forms.py:76 django_authopenid/forms.py:137
 #, python-format
 msgid "next url \"%s\" is invalid"
-msgstr "die Folgende URL \"%s\" ist ungültig"
+msgstr "die folgende URL \"%s\" ist ungültig"
 
 #: django_authopenid/forms.py:104 django_authopenid/forms.py:160
 #: django_authopenid/forms.py:201
@@ -977,7 +977,7 @@ msgstr ""
 "sogar Bookworm mit speziellen Merkmalen für Ihre Publikationen. \n"
 "Bitte kontaktieren Sie \n"
 "<a href=\"mailto:bookworm@threpress.org\">bookworm@threepress.org</a> \n"
-"und wir werden uns bei Ihnen umgehend melden."
+"und wir werden uns umgehend bei Ihnen melden."
 
 #: library/templates/about.html:157
 msgid ""
@@ -994,11 +994,8 @@ msgid ""
 "    support closed formats like mobi or those with limited flexibility like "
 "PDF.  "
 msgstr ""
-"Bookworm will die Verbreitung des ePub Formates fördern und hat gibt keine "
-"Pläne\n"
-" proprietäre Formate wie mobi oder solche mit eingeschränkter Flexibiltät, "
-"wie z.B. PDF,\n"
-" zu unterstützen."
+"Bookworm will die Verbreitung des ePub Formates fördern und hat gibt keine Pläne\n"
+" proprietäre Formate wie mobi oder solche mit eingeschränkter Flexibiltät, wie z.B. PDF, zu unterstützen."
 
 #: library/templates/about.html:163
 msgid ""
