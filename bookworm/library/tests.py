@@ -1489,7 +1489,10 @@ class TestViews(DjangoTestCase):
 
         # Check for only inline styles and not the external stylesheet
         assert 'color: red' in response.content
-        assert not 'stylesheet.css' in response.content
+        # If no stylesheets are found it will now fall back to displaying all;
+        # so this test no longer applies
+        # assert not 'stylesheet.css' in response.content
+
         assert 'font-weight: bold' in response.content
 
         response = self.client.get('/view/a/1/with-external-link.html')

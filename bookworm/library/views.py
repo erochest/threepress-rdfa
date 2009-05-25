@@ -161,6 +161,11 @@ def view_chapter(request, title, key, chapter_id, chapter=None, document=None, g
         chapter = h[0]
 
     stylesheets = chapter.stylesheets.all()
+
+    # If we got 0 stylesheets, this may be a legacy book
+    if len(stylesheets) == 0:
+        stylesheets = StylesheetFile.objects.filter(archive=document)
+
     next = _chapter_next_previous(document, chapter, 'next')
     previous = _chapter_next_previous(document, chapter, 'previous')
 
