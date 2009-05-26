@@ -73,6 +73,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "bookworm.search.context_processors.search"
 ) 
 
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -128,7 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.humanize',
     'django_authopenid',
-    'django_evolution',
+#    'django_evolution',
     'bookworm.minidetector',
     'bookworm.library',
     'bookworm.search',

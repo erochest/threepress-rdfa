@@ -19,6 +19,8 @@ Via easy_install:
   * lxml
   * BeautifulSoup
 
+Running `setup.py install` will install these packages for you.
+
 Via subversion:
 
   * django_evolution 
