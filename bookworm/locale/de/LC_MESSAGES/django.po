@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-24 15:03-0400\n"
-"PO-Revision-Date: 2009-05-24 15:08-0400\n"
+"PO-Revision-Date: 2009-05-26 19:17+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2526,19 +2526,18 @@ msgid "Sony Reader or iLiad "
 msgstr "Sony Reader oder iLiad "
 
 #: library/templates/public.html:42
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "<a href=\"%(toururl)s#step4\">Mobile reading</a>, online or with <a href=\"%"
 "(stanzaurl)s\">Stanza</a> on the iPhone."
 msgstr ""
-"\n"
-"      Online oder mit <a href=\"%(stanzaurl)s\">Stanza</a> auf dem iPhone.\n"
+"<a href=\"%(toururl)s#step4\">Mobil</a>, Online oder mit <a href=\"%(stanzaurl)s\">Stanza</a> auf dem iPhone.\n"
 "      "
 
 #: library/templates/public.html:44
 #, python-format
 msgid "Available in <a href=\"%(languageurl)s\">multiple languages</a>."
-msgstr ""
+msgstr "Verfügbar in <a href=\"%(languageurl)s\">mehreren Sprachen</a>."
 
 #: library/templates/public.html:49
 msgid "Publishers"
