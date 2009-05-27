@@ -498,7 +498,7 @@ class EpubArchive(BookwormModel):
     def _get_title(self, xml):
         '''Retrieves the title from dc:title in the OPF'''
         title = xml.findtext('.//{%s}%s' % (NS['dc'], constants.DC_TITLE_TAG))
-        if title is None:
+        if title is None or title == '':
             raise InvalidEpubException('This ePub document does not have a title.  According to the ePub specification, all documents must have a title.', archive=self)
         
         return title.strip()
