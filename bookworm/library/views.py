@@ -469,7 +469,7 @@ def upload(request, title=None, key=None):
                                           { 'form':form, 'message':message})
 
             except MySQLdb.OperationalError, e:
-                log.debug("Got operational error %s" % e)
+                log.warn("Got operational error %s" % e)
                 message = _("We detected a problem with your ebook that is most likely related to it being too big to display safely in a web browser. This can happen with very large images, or with extremely long chapters. Please check with the publisher that the book has been formatted correctly.  Very large pages would require a lot of scrolling and load very slowly, so they are not allowed to be added to Bookworm.")
                 try:
                     # Email it to the admins

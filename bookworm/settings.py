@@ -164,6 +164,7 @@ LOG_DIR = '%s/log/' % ROOT_PATH
 LOG_NAME = 'bookworm.log'
 
 TEST_DATABASE_CHARSET = 'utf8'
+TEST_DATABASE_COLLATION='utf8_unicode_ci'
 
 SEARCH_ROOT = os.path.join(ROOT_PATH, 'search', 'dbs')
 
