@@ -21,7 +21,6 @@ from twill import add_wsgi_intercept
 from twill.commands import *
 
 
-
 settings.SITE_ID = 1
 
 # Delete the cache from earlier runs (otherwise some templates
