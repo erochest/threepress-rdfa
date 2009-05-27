@@ -497,11 +497,12 @@ class EpubArchive(BookwormModel):
 
     def _get_title(self, xml):
         '''Retrieves the title from dc:title in the OPF'''
-        title = xml.findtext('.//{%s}%s' % (NS['dc'], constants.DC_TITLE_TAG))
-        if title is None or title == '':
+        title = xml.xpath('/opf:package/opf:metadata//dc:title/text()', namespaces={ 'opf': NS['opf'],
+                                                                                    'dc': NS['dc']})
+        if len(title) == 0:
             raise InvalidEpubException('This ePub document does not have a title.  According to the ePub specification, all documents must have a title.', archive=self)
         
-        return title.strip()
+        return title[0].strip()
 
     def _get_images(self, archive, items, content_path):
         '''Images might be in a variety of formats, from JPEG to SVG.  If they are
