@@ -28,6 +28,14 @@ Via subversion:
   * cd django-evolution
   * sudo python setup.py install
 
+Patching Django
+===============
+
+Bookworm requires one small patch that affects tests only.  It can be
+found in the `patches/` directory and should be applied to your Django
+source folder as:
+
+`patch -p1 < /path/to/bookworm/patches/0002_generate_cache_key.diff`
 
 Database
 ========

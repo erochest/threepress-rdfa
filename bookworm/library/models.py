@@ -697,7 +697,7 @@ class EpubArchive(BookwormModel):
         except _mysql_exceptions.Warning:
             raise InvalidEpubException(_("There was a problem related to the encoding of one of the documents in your ePub. All ePub documents must be in UTF-8."))
         except MySQLdb.OperationalError, e:
-            if 'Incorrect string value' in e.message:
+            if 'Incorrect string value' in str(e):
                 raise InvalidEpubException(_("There was a problem related to the encoding of one of the documents in your ePub. All ePub documents must be in UTF-8."))
             else:
                 raise e

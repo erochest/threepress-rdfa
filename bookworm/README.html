@@ -307,6 +307,7 @@ ul.auto-toc {
 </ul>
 </dd>
 </dl>
+<p>Running <cite>setup.py install</cite> will install these packages for you.</p>
 <p>Via subversion:</p>
 <blockquote>
 <ul class="simple">
@@ -316,6 +317,13 @@ ul.auto-toc {
 <li>sudo python setup.py install</li>
 </ul>
 </blockquote>
+</div>
+<div class="section" id="patching-django">
+<h1>Patching Django</h1>
+<p>Bookworm requires one small patch that affects tests only.  It can be
+found in the <cite>patches/</cite> directory and should be applied to your Django
+source folder as:</p>
+<p><cite>patch -p1 &lt; /path/to/bookworm/patches/0002_generate_cache_key.diff</cite></p>
 </div>
 <div class="section" id="database">
 <h1>Database</h1>
