@@ -5,7 +5,7 @@ from django.utils.encoding import DjangoUnicodeDecodeError
 from lxml import etree
 import lxml
 import lxml.html
-import _mysql_exceptions
+import _mysql_exceptions, MySQLdb
 from zipfile import ZipFile
 from StringIO import StringIO
 import logging, datetime, os, os.path, hashlib
@@ -696,6 +696,11 @@ class EpubArchive(BookwormModel):
             raise InvalidEpubException(_("There was a problem related to the encoding of one of the documents in your ePub. All ePub documents must be in UTF-8."))
         except _mysql_exceptions.Warning:
             raise InvalidEpubException(_("There was a problem related to the encoding of one of the documents in your ePub. All ePub documents must be in UTF-8."))
+        except MySQLdb.OperationalError, e:
+            if 'Incorrect string value' in e.message:
+                raise InvalidEpubException(_("There was a problem related to the encoding of one of the documents in your ePub. All ePub documents must be in UTF-8."))
+            else:
+                raise e
 
     def _get_metadata(self, metadata_tag, opf, plural=False, as_string=False, as_list=False):
         '''Returns a metdata item's text content by tag name, or a list if mulitple names match.
