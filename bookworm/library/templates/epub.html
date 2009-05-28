@@ -44,6 +44,7 @@
       <li><a href="#fonts">{% trans "Fonts" %}</a></li>
       <li><a href="#invalid">{% trans "Invalid ePub handling" %}</a></li>
       <li><a href="#limitations">{% trans "Limitations" %}</a></li>
+      <li><a href="#other-open-source">{% trans "Other open-source ePub" %}</a></li>
     </ol>
 {% include "includes/about.html" %}
 {% endblock leftnav %}
@@ -249,6 +250,10 @@ href="http://code.google.com/p/epubcheck/">epubcheck</a> are reported to the use
       larger than 300Kb in size, for example.)
       {% endblocktrans %}
     </p>
+    <a name="other"></a>
+    <h2>{% trans "Other open-source ePub" %}</h2>
+    <p>{% blocktrans %}There are other open-source readers available that support the ePub format. The most actively developed is <a href="http://www.fbreader.org">FBReader</a>, which is compatible with Windows desktop, Linux (and devices which run it, such as Zaurus and Nokia tablets) and, unofficially, iLiad.  A complete list of open-source ePub tools can be found in the <a href="http://labs.oreilly.com/2009/03/epub-resources-and-guides.html">O'Reilly Labs ePub Resources and Guides</a> article.{% endblocktrans %}</p>
+    
 </div>
 
 {% endblock main %}

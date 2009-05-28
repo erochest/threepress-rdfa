@@ -336,6 +336,26 @@ do not change settings.py. local.py overwrites the default settings.</p>
 <p><cite>python manage.py syncdb</cite>
 <cite>python manage.py test library # Sanity check</cite></p>
 <p>You should only need to run syncdb initially, or when the schema changes.</p>
+<div class="section" id="fulltext-index">
+<h2>Fulltext index</h2>
+<p>You will need to create this manually after setting up the database:</p>
+<p><cite>mysql&gt; create fulltext index epubtext on library_htmlfile (words);</cite></p>
+</div>
+</div>
+<div class="section" id="permissions">
+<h1>Permissions</h1>
+<p>By default, Bookworm expects to be able to write to its log directory
+<cite>$PROJECT_ROOT/log</cite> and to the storage directory
+<cite>$PROJECT_ROOT/library/storage</cite>. You will need to ensure that the web
+server has write access there.</p>
+</div>
+<div class="section" id="cron">
+<h1>Cron</h1>
+<p>There is one required cron job, which updates the indexes and also
+cleans up book metadata:</p>
+<p><cite>$PROJECT_ROOT/search/index.sh</cite></p>
+<p>You can run this at whatever frequency you prefer; I do it on the
+half-hour.</p>
 </div>
 <div class="section" id="testing">
 <h1>Testing</h1>
