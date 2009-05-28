@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-27 09:58-0400\n"
+"POT-Creation-Date: 2009-05-28 15:44-0400\n"
 "PO-Revision-Date: 2009-05-24 15:08-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,21 +15,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:100
+#: local.py:17 settings.py:100
 msgid "German"
 msgstr "alem&aacute;n"
 
-#: settings.py:101
+#: local.py:18 settings.py:101
 msgid "English"
 msgstr "ingl&eacute;s"
 
-#: settings.py:102
+#: local.py:19 settings.py:102
 msgid "Danish"
 msgstr "dan&eacute;s"
 
-#: settings.py:103
+#: local.py:20 settings.py:103
 msgid "Finnish"
 msgstr "finland&eacute;s"
+
+#: local.py:21
+#, fuzzy
+msgid "Spanish"
+msgstr "espa&ntilde;ol"
 
 #: settings.py:142
 msgid "account/"
@@ -659,21 +664,21 @@ msgid "Untitled"
 msgstr "Sin t&iacute;tulo"
 
 #: build/lib/library/models.py:696 build/lib/library/models.py:698
-#: library/models.py:696 library/models.py:698
+#: library/models.py:697 library/models.py:699 library/models.py:702
 msgid ""
 "There was a problem related to the encoding of one of the documents in your "
 "ePub. All ePub documents must be in UTF-8."
 msgstr ""
 
-#: build/lib/library/models.py:1191 library/models.py:1191
+#: build/lib/library/models.py:1191 library/models.py:1197
 msgid "book title"
 msgstr "t&iacute;tulo del libro"
 
-#: build/lib/library/models.py:1192 library/models.py:1192
+#: build/lib/library/models.py:1192 library/models.py:1198
 msgid "first author"
 msgstr "primer autor"
 
-#: build/lib/library/models.py:1193 library/models.py:1193
+#: build/lib/library/models.py:1193 library/models.py:1199
 msgid "date added to your library"
 msgstr "fecha en que se agreg&oacute; a tu biblioteca"
 
@@ -1698,7 +1703,7 @@ msgstr "&Iacute;ndice de materias"
 
 #: build/lib/library/templates/epub.html:39
 #: build/lib/library/templates/epub.html:78 library/templates/epub.html:39
-#: library/templates/epub.html.py:78
+#: library/templates/epub.html.py:79
 msgid "XHTML support"
 msgstr "Respaldo XHTML"
 
@@ -1712,13 +1717,13 @@ msgstr "Conformidad con las especificaciones"
 
 #: build/lib/library/templates/epub.html:42
 #: build/lib/library/templates/epub.html:166 library/templates/epub.html:42
-#: library/templates/epub.html.py:166
+#: library/templates/epub.html.py:167
 msgid "Images and graphics"
 msgstr "Im&aacute;genes y gr&aacute;ficos"
 
 #: build/lib/library/templates/epub.html:44
 #: build/lib/library/templates/epub.html:199 library/templates/epub.html:44
-#: library/templates/epub.html.py:199
+#: library/templates/epub.html.py:200
 msgid "Fonts"
 msgstr "Fuentes tipogr&aacute;ficas"
 
@@ -1728,11 +1733,11 @@ msgstr "&iquest;C&oacute;mo Bookworm procesa un libro ePub inv&aacute;lido?"
 
 #: build/lib/library/templates/epub.html:46
 #: build/lib/library/templates/epub.html:231 library/templates/epub.html:46
-#: library/templates/epub.html.py:231
+#: library/templates/epub.html.py:232
 msgid "Limitations"
 msgstr "Limitaciones"
 
-#: build/lib/library/templates/epub.html:54 library/templates/epub.html:54
+#: build/lib/library/templates/epub.html:54 library/templates/epub.html:55
 msgid ""
 "\n"
 "\n"
@@ -1746,11 +1751,11 @@ msgstr ""
 " y para aquellos a quienes interese la publicaci&oacute;n electr&oacute;"
 "nica, el est&aacute;ndar ePub, y c&oacute;mo se utiliza en Bookworm."
 
-#: build/lib/library/templates/epub.html:62 library/templates/epub.html:62
+#: build/lib/library/templates/epub.html:62 library/templates/epub.html:63
 msgid "Tutorial"
 msgstr "Gu&iacute;a"
 
-#: build/lib/library/templates/epub.html:64 library/templates/epub.html:64
+#: build/lib/library/templates/epub.html:64 library/templates/epub.html:65
 msgid ""
 "\n"
 "      A complete tutorial on using the ePub format is available from IBM "
@@ -1767,7 +1772,7 @@ msgstr ""
 "\"http://www.ibm.com/developerworks/edu/x-dw-x-epubtut.html\">C&oacute;mo se "
 "construye  un libro digital con EPUB</a>."
 
-#: build/lib/library/templates/epub.html:70 library/templates/epub.html:70
+#: build/lib/library/templates/epub.html:70 library/templates/epub.html:71
 msgid ""
 "\n"
 "      A comprehensive list of ePub resource was written by Keith Fahlgren at "
@@ -1781,7 +1786,7 @@ msgstr ""
 "compilada por Keith\n"
 " Fahlgren de O'Reilly Media."
 
-#: build/lib/library/templates/epub.html:80 library/templates/epub.html:80
+#: build/lib/library/templates/epub.html:80 library/templates/epub.html:81
 msgid ""
 "\n"
 "      Because the most common content format for ePub is XHTML, ePub and the "
@@ -1802,19 +1807,19 @@ msgstr ""
 "lectura pueda producir. \n"
 "Por ejemplo:"
 
-#: build/lib/library/templates/epub.html:88 library/templates/epub.html:88
+#: build/lib/library/templates/epub.html:88 library/templates/epub.html:89
 msgid "Tables <!-- trans: HTML tables --> "
 msgstr "Tablas"
 
-#: build/lib/library/templates/epub.html:89 library/templates/epub.html:89
+#: build/lib/library/templates/epub.html:89 library/templates/epub.html:90
 msgid "Lists <!-- trans: HTML lists -->"
 msgstr "Listas"
 
-#: build/lib/library/templates/epub.html:90 library/templates/epub.html:90
+#: build/lib/library/templates/epub.html:90 library/templates/epub.html:91
 msgid "Fixed-width fonts"
 msgstr "Fuentes de ancho fijo"
 
-#: build/lib/library/templates/epub.html:93 library/templates/epub.html:93
+#: build/lib/library/templates/epub.html:93 library/templates/epub.html:94
 msgid ""
 "\n"
 "      These features are especially important in non-fiction works\n"
@@ -1826,11 +1831,11 @@ msgstr ""
 "ficci&oacute;n,\n"
 "  como t&iacute;tulos t&eacute;cnicos y art&iacute;culos cient&iacute;ficos."
 
-#: build/lib/library/templates/epub.html:99 library/templates/epub.html:99
+#: build/lib/library/templates/epub.html:99 library/templates/epub.html:100
 msgid "Cascading Style Sheets (CSS) and JavaScript"
 msgstr "Hojas de estilo en cascada (CSS) y JavaScript"
 
-#: build/lib/library/templates/epub.html:101 library/templates/epub.html:101
+#: build/lib/library/templates/epub.html:101 library/templates/epub.html:102
 msgid ""
 "\n"
 "      Bookworm will render any CSS stylesheets that are packaged with an "
@@ -1848,7 +1853,7 @@ msgstr ""
 " las hojas inclu&iacute;das en un ePub se modificar&aacute;n debidamente "
 "para limitar su efecto sobre el contenido."
 
-#: build/lib/library/templates/epub.html:108 library/templates/epub.html:108
+#: build/lib/library/templates/epub.html:108 library/templates/epub.html:109
 msgid ""
 "\n"
 "      Any external JavaScript files that might be bundled with the ePub are "
@@ -1866,7 +1871,7 @@ msgstr ""
 " medida preventiva para evitar la infiltraci&oacute;n de malware en este "
 "sitio."
 
-#: build/lib/library/templates/epub.html:115 library/templates/epub.html:115
+#: build/lib/library/templates/epub.html:115 library/templates/epub.html:116
 msgid ""
 "\n"
 "      Bookworm includes its own stylesheets specially-formatted for the "
@@ -1883,11 +1888,11 @@ msgstr ""
 " mientras lees un libro ePub, para ver c&oacute;mo aparecer&aacute; una vez "
 "impreso."
 
-#: build/lib/library/templates/epub.html:122 library/templates/epub.html:122
+#: build/lib/library/templates/epub.html:122 library/templates/epub.html:123
 msgid "Table of Contents"
 msgstr "&Iacute;ndice de materias"
 
-#: build/lib/library/templates/epub.html:125 library/templates/epub.html:125
+#: build/lib/library/templates/epub.html:125 library/templates/epub.html:126
 msgid ""
 "\n"
 "      The table of contents metadata contain chunks at levels other than \n"
@@ -1904,7 +1909,7 @@ msgstr ""
 " a sub-cap&iacute;tulos, por ejemplo) creando de esta forma una "
 "jerarqu&iacute;a de elementos encapsulados."
 
-#: build/lib/library/templates/epub.html:133 library/templates/epub.html:133
+#: build/lib/library/templates/epub.html:133 library/templates/epub.html:134
 msgid ""
 "\n"
 "      Bookworm will expand nested items in the Table of Contents \n"
@@ -1915,7 +1920,7 @@ msgstr ""
 "Bookworm expande los elementos en el &iacute;ndice a medida que \n"
 "el lector avanza en la lectura."
 
-#: build/lib/library/templates/epub.html:139 library/templates/epub.html:139
+#: build/lib/library/templates/epub.html:139 library/templates/epub.html:140
 msgid ""
 "\n"
 "      When multiple sub-sections exist, a small arrow will appear next\n"
@@ -1926,11 +1931,11 @@ msgstr ""
 "Cuando existen varias sub-secciones, aparece una flechita indicando \n"
 " la sub-secci&oacute;n que se est&aacute; leyendo."
 
-#: build/lib/library/templates/epub.html:145 library/templates/epub.html:145
+#: build/lib/library/templates/epub.html:145 library/templates/epub.html:146
 msgid "Reading system conformance"
 msgstr "Conformidad con el sistema de lectura"
 
-#: build/lib/library/templates/epub.html:147 library/templates/epub.html:147
+#: build/lib/library/templates/epub.html:147 library/templates/epub.html:148
 msgid ""
 "\n"
 "      In accordance with the ePub specification, Bookworm will &lsquo;"
@@ -1952,7 +1957,7 @@ msgstr ""
 "del libro ePub\n"
 " no ser&aacute; el primer elemento en el archivo NCX."
 
-#: build/lib/library/templates/epub.html:157 library/templates/epub.html:157
+#: build/lib/library/templates/epub.html:157 library/templates/epub.html:158
 msgid ""
 "\n"
 "      Bookworm is not yet a truly conforming reading system;\n"
@@ -1968,7 +1973,7 @@ msgstr ""
 " <a href=\"http://code.google.com/p/threepress/issues/list\">issues</a>\n"
 " para una lista de fallos relacionados con esta falta de conformidad."
 
-#: build/lib/library/templates/epub.html:169 library/templates/epub.html:169
+#: build/lib/library/templates/epub.html:169 library/templates/epub.html:170
 msgid ""
 "\n"
 "      As a browser-based application, \n"
@@ -1991,7 +1996,7 @@ msgstr ""
 "l&iacute;nea\n"
 " tipo <code>&lt;img&gt;</code>."
 
-#: build/lib/library/templates/epub.html:182 library/templates/epub.html:182
+#: build/lib/library/templates/epub.html:182 library/templates/epub.html:183
 msgid ""
 "\n"
 "      The OPS specification indicates that valid ePubs may \n"
@@ -2005,7 +2010,7 @@ msgstr ""
 " puede ser en XHTML o en <a href=\"http://wiki.mobileread.com/wiki/DTBook"
 "\">DTBook</a>."
 
-#: build/lib/library/templates/epub.html:188 library/templates/epub.html:188
+#: build/lib/library/templates/epub.html:188 library/templates/epub.html:189
 msgid ""
 "\n"
 "      Bookworm supports DTBook-formatted ePubs by automatically converting\n"
@@ -2021,7 +2026,7 @@ msgstr ""
 "\"http://daisymfc.sourceforge.net/\">DAISY pipeline</a>.\n"
 "      "
 
-#: build/lib/library/templates/epub.html:194 library/templates/epub.html:194
+#: build/lib/library/templates/epub.html:194 library/templates/epub.html:195
 msgid ""
 "\n"
 "        You can always get back to the original DTBook content by "
@@ -2033,7 +2038,7 @@ msgstr ""
 "al descargar el ePub.\n"
 "      "
 
-#: build/lib/library/templates/epub.html:201 library/templates/epub.html:201
+#: build/lib/library/templates/epub.html:201 library/templates/epub.html:202
 msgid ""
 "\n"
 "      Bookworm will support any font declarations made using CSS 1 or CSS "
@@ -2051,11 +2056,11 @@ msgstr ""
 " ha verificado todav&iacute;a(te agradecer&iacute;amos cualquier ejemplos "
 "que puedas suministrar)."
 
-#: build/lib/library/templates/epub.html:208 library/templates/epub.html:208
+#: build/lib/library/templates/epub.html:208 library/templates/epub.html:209
 msgid "How Bookworm treats invalid ePub"
 msgstr "C&oacute;mo Bookworm procesa un libro ePub inv&aacute;lido"
 
-#: build/lib/library/templates/epub.html:210 library/templates/epub.html:210
+#: build/lib/library/templates/epub.html:210 library/templates/epub.html:211
 msgid ""
 "\n"
 "      One of the design goals of Bookworm is that it should\n"
@@ -2073,7 +2078,7 @@ msgstr ""
 " el programa no pueda interpretar todas las partes del archivo, y que lo "
 "rechaze consecuentemente."
 
-#: build/lib/library/templates/epub.html:219 library/templates/epub.html:219
+#: build/lib/library/templates/epub.html:219 library/templates/epub.html:220
 msgid ""
 "\n"
 "      Any ePub book which is found to be seriously malformed\n"
@@ -2101,7 +2106,7 @@ msgstr ""
 " diagn&oacute;stico de epubcheck y Bookworm le ayuden a identificar el "
 "problema."
 
-#: build/lib/library/templates/epub.html:233 library/templates/epub.html:233
+#: build/lib/library/templates/epub.html:233 library/templates/epub.html:234
 msgid ""
 "\n"
 "      Obviously, Bookworm is limited by the features available in \n"
@@ -2117,7 +2122,7 @@ msgstr ""
 "Firefox, Safari o Chrome,\n"
 " aunque tambi&eacute;n se respalda el uso de Internet Explorer 6 y 7."
 
-#: build/lib/library/templates/epub.html:241 library/templates/epub.html:241
+#: build/lib/library/templates/epub.html:241 library/templates/epub.html:242
 msgid ""
 "\n"
 "      Some extremely long-form ebooks, such as single 'page' comics\n"
@@ -4971,12 +4976,24 @@ msgstr ""
 " inmediatamente en el resultado de la b&uacute;squeda. Ten paciencia; es "
 "s&oacute;lo cuesti&oacute;n de tiempo."
 
+#: library/templates/epub.html:47 library/templates/epub.html.py:254
+#, fuzzy
+msgid "Other open-source ePub"
+msgstr "Otros software de c&oacute;digo abierto para ePub"
+
+#: library/templates/epub.html:255
+msgid ""
+"There are other open-source readers available that support the ePub format. "
+"The most actively developed is <a href=\"http://www.fbreader.org\">FBReader</"
+"a>, which is compatible with Windows desktop, Linux (and devices which run "
+"it, such as Zaurus and Nokia tablets) and, unofficially, iLiad.  A complete "
+"list of open-source ePub tools can be found in the <a href=\"http://labs."
+"oreilly.com/2009/03/epub-resources-and-guides.html\">O'Reilly Labs ePub "
+"Resources and Guides</a> article."
+msgstr ""
+
 #~ msgid "Italian"
 #~ msgstr "italiano"
-
-#, fuzzy
-#~ msgid "Spanish"
-#~ msgstr "espa&ntilde;ol"
 
 #~ msgid "French"
 #~ msgstr "franc&eacute;s"
