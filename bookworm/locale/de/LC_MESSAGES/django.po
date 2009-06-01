@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-28 15:44-0400\n"
-"PO-Revision-Date: 2009-05-26 19:17+0200\n"
+"PO-Revision-Date: 2009-06-01 11:03+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -4887,9 +4887,8 @@ msgstr ""
 "  "
 
 #: library/templates/epub.html:47 library/templates/epub.html.py:254
-#, fuzzy
 msgid "Other open-source ePub"
-msgstr "Mehr Open-Source ePub Software"
+msgstr "Andere Open-Source ePub Software"
 
 #: library/templates/epub.html:255
 msgid ""
@@ -4901,6 +4900,13 @@ msgid ""
 "oreilly.com/2009/03/epub-resources-and-guides.html\">O'Reilly Labs ePub "
 "Resources and Guides</a> article."
 msgstr ""
+"Es stehen weitere Open-Source Reader zur Verfüfung, die das ePub Format \n"
+"unterstützen. Der <a href=\"http://www.fbreader.org\">FBReader</a> befindet \n"
+"sich in sehr aktiver Entwicklung. Er ist kompatibel mit Windows auf dem \n"
+"Desktop, Linux (und Geräten, die dies benutzen, wie z.B. Zaurus und die \n"
+"Nokia Tablets) und - inoffiziell - iLiad. Eine komplette Liste von \n"
+"Open-Source ePub Readern findet sich in dem Artikel  \n"
+"<a href=\"http://labs.oreilly.com/2009/03/epub-resources-and-guides.html\">O'Reilly Labs ePub Resources and Guides</a>"
 
 #~ msgid "Italian"
 #~ msgstr "Italienisch"
