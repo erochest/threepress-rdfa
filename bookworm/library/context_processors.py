@@ -15,7 +15,9 @@ def local_settings(request):
         'CACHE_TEMPLATE_TIMEOUT' : settings.CACHE_TEMPLATE_TIMEOUT,
         'OFFLINE':settings.OFFLINE,
         'ANALYTICS_KEY':settings.ANALYTICS_KEY,
-        'MOBILE_HOST':settings.MOBILE_HOST
+        'MOBILE_HOST':settings.MOBILE_HOST,
+        'HOSTING_CREDIT':settings.HOSTING_CREDIT,
+        'HOSTING_CREDIT_URL':settings.HOSTING_CREDIT_URL,
     }
  
 def nav(request):

@@ -193,7 +193,7 @@
   <h2>
   {% blocktrans %}Who is responsible for Bookworm?{% endblocktrans %}</h2>
   <p>
-{% blocktrans %}
+{% blocktrans with HOSTING_CREDIT as hosting and HOSTING_CREDIT_URL as hostingurl %}
     Bookworm software is free and available for download under the
     terms of the BSD license from the <a
     href="http://threepress.org/tools/">tools page</a>. It
@@ -202,7 +202,7 @@
     experimenting with open source publishing software, and is written
     by <a href="http://threepress.org/about/">Liza Daly</a>
     with contributions from <a href="http://kfahlgren.com/blog">Keith
-    Fahlgren</a>.  Hosting is provided by <a href="http://oreilly.com/">O'Reilly Media</a>.
+    Fahlgren</a>.  Hosting is provided by <a href="{{ hostingurl }}">{{ hosting }}</a>.
 {% endblocktrans %}
 
   </p>

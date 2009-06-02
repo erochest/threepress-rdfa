@@ -159,6 +159,10 @@ FORCE_SCRIPT_NAME = ''
 # Domain which to redirect requests that are coming from a mobile device
 MOBILE_HOST = 'http://m.bookworm.oreilly.com/'
 
+# Hosting credit
+HOSTING_CREDIT = "O'Reilly Media"
+HOSTING_CREDIT_URL = 'http://oreilly.com/'
+
 # Set up logging
 LOG_DIR = '%s/log/' % ROOT_PATH
 LOG_NAME = 'bookworm.log'
