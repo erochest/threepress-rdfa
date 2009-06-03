@@ -165,6 +165,7 @@ HOSTING_CREDIT_URL = 'http://oreilly.com/'
 
 # Email reply-to address
 REPLYTO_EMAIL = 'no-reply@threepress.org'
+DEFAULT_FROM_EMAIL = REPLYTO_EMAIL
 
 # Set up logging
 LOG_DIR = '%s/log/' % ROOT_PATH
