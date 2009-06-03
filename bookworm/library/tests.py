@@ -1502,33 +1502,41 @@ class TestViews(DjangoTestCase):
 
 
     def test_public_pages(self):
-        '''Test that public pages render with 200s'''
+        '''Test that public pages render with 200s in all supported languages'''
 
-        response = self.client.get('/about/')
-        assert response.status_code == 200
+        for lang in settings.LANGUAGES:
+            lang_code = lang[0]
+            log.debug("Testing in %s..." % lang[1])
+            response = self.client.post('/i18n/setlang/',
+                                        { 'language':lang_code})
 
-        response = self.client.get('/help/')
-        assert response.status_code == 200
+            response = self.client.get('/about/')
+            assert response.status_code == 200
+            
+            response = self.client.get('/help/')
+            assert response.status_code == 200
+            
+            response = self.client.get('/about/tour/')
+            assert response.status_code == 200
+            
+            response = self.client.get('/publishers/epub/')
+            assert response.status_code == 200
+            
+            response = self.client.get('/publishers/ebook-testing/')
+            assert response.status_code == 200
+            
+            response = self.client.get('/search/help/')
+            assert response.status_code == 200
+            
+            response = self.client.get('/search/language/')
+            assert response.status_code == 200
+            
+            response = self.client.get('/about/reading-mode/')
+            assert response.status_code == 200
 
-        response = self.client.get('/about/tour/')
-        assert response.status_code == 200
-
-        response = self.client.get('/publishers/epub/')
-        assert response.status_code == 200
-
-        response = self.client.get('/publishers/ebook-testing/')
-        assert response.status_code == 200
-
-        response = self.client.get('/search/help/')
-        assert response.status_code == 200
-
-        response = self.client.get('/search/language/')
-        assert response.status_code == 200
-
-        response = self.client.get('/about/reading-mode/')
-        assert response.status_code == 200
-
-        
+        # Reset to the default language
+        response = self.client.post('/i18n/setlang/',
+                                    { 'language':'en'})        
 
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
