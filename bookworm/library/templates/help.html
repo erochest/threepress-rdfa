@@ -159,9 +159,9 @@
         <td>iPhone</td>
         <td><strong>{% trans "Yes" %}</strong></td>
         <td>
-          {% blocktrans %}
+          {% blocktrans with MOBILE_HOST as mobilehost %}
           Use the mobile web version of Bookworm when online.
-          Point your phone at <a href="http://m.bookworm.oreilly.com">m.bookworm.oreilly.com</a>.
+          Point your phone at <a href="{{ mobilehost }}">{{ mobilehost }}</a>.
           For offline reading, export directly from Bookworm to Stanza. <a href="http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone">More hints on this</a>.
           {% endblocktrans %}
         </td>
@@ -170,9 +170,9 @@
         <td>{% trans "Other web-enabled phone" %}</td>
         <td><strong>{% trans "Yes" %}</strong></td>
         <td>
-          {% blocktrans %}
+          {% blocktrans with MOBILE_HOST as mobilehost %}
           Use the mobile web version of Bookworm when online.
-          Point your phone at <a href="http://m.bookworm.oreilly.com">m.bookworm.oreilly.com</a>.
+          Point your phone at <a href="{{ mobilehost }}">{{ mobilehost }}</a>.
           {% endblocktrans %}
         </td>
       </tr>
@@ -190,10 +190,10 @@
         <td>Amazon Kindle</td>
         <td><strong>{% trans "Indirectly <!-- trans: can be used with this device only partially -->" %}</strong></td>
         <td>
-          {% blocktrans %}
+          {% blocktrans with MOBILE_HOST as mobilehost %}
           The Kindle cannot read ePub files yet, but you can use
           Bookworm's mobile version over the Kindle's Whispernet by pointing its
-          web browser at <a href="http://m.bookworm.oreilly.com">m.bookworm.oreilly.com</a>.
+          web browser at <a href="{{ mobilehost }}">{{ mobilehost }}</a>.
           {% endblocktrans %}
         </td>
       </tr>

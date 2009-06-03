@@ -1525,6 +1525,9 @@ class TestViews(DjangoTestCase):
         response = self.client.get('/search/language/')
         assert response.status_code == 200
 
+        response = self.client.get('/about/reading-mode/')
+        assert response.status_code == 200
+
         
 
     def _login(self):

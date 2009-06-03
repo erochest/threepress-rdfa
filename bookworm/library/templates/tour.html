@@ -160,10 +160,10 @@
     <img src="/static/images/screenshots/iphone.png" width="250" alt="Bookworm on the iPhone" class="bw-screenshot-page" align="right" style="margin-bottom:10px" />
     <h2>    {% blocktrans %}Bookworm on your mobile phone    {% endblocktrans %}</h2>
     <p>
-    {% blocktrans %}
+    {% blocktrans with MOBILE_HOST as mobilehost %}
       If your phone has access to the web, then you can read your
       Bookworm books anywhere.  Just point your phone browser to
-      <strong><a href="http://m.bookworm.oreilly.com/">m.bookworm.oreilly.com</a></strong>.
+      <strong><a href="{{ mobilehost }}">{{ mobilehost }}</a></strong>.
       This version of Bookworm has been specially adapted for
       small devices.
     {% endblocktrans %}
