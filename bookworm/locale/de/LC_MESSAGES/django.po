@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-06-03 13:59-0400\n"
-"PO-Revision-Date: 2009-06-03 18:53+0200\n"
+"PO-Revision-Date: 2009-06-03 21:20+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -719,7 +719,7 @@ msgid "SVG image support"
 msgstr "Unterstützung für SVG Grafiken"
 
 #: library/templates/about.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "For questions or problems with Bookworm, please contact <a href=\"mailto:%"
 "(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>"
@@ -968,7 +968,7 @@ msgid "I'm a publisher and I have questions or feature requests"
 msgstr "Ich bin Herausgeber und habe Fragen oder Anfragen wegen neuer Merkmale"
 
 #: library/templates/about.html:150
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Threepress is a publisher-serving corporation with many years of experience "
 "in building\n"
@@ -984,7 +984,7 @@ msgstr ""
 "Format mit Ihnen, bringen Ihre Bücher in das ePub Format und erweitern \n"
 "sogar Bookworm mit speziellen Merkmalen für Ihre Publikationen. \n"
 "Bitte kontaktieren Sie \n"
-"<a href=\"mailto:bookworm@threpress.org\">%(ADMIN_EMAIL)s</a> \n"
+"<a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> \n"
 "und wir werden uns umgehend bei Ihnen melden."
 
 #: library/templates/about.html:157
@@ -1051,7 +1051,7 @@ msgstr ""
 "zur Verfügung stellen."
 
 #: library/templates/about.html:179
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Public books are in a very early beta stage.  To request that a book be made "
 "public, please contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</"
@@ -1137,7 +1137,7 @@ msgstr ""
 "    "
 
 #: library/templates/about.html:230
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    For problems and feature requests, visit  <a href=\"http://"
@@ -1969,7 +1969,7 @@ msgid "Help using Bookworm"
 msgstr "Hilfe zur Benutzung von Bookworm"
 
 #: library/templates/help.html:27
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Confused about what to do, or having problems?  Check this list for "
@@ -2124,7 +2124,7 @@ msgstr ""
 "   "
 
 #: library/templates/help.html:98
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Whenever an ePub book fails to get added to the library, the Bookworm\n"
@@ -2136,14 +2136,11 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-" Immer wenn ein ePub Buch nicht zu Ihrer Bibliothek hinzugefügt werden "
-"konnte\n"
-" werden die Bookworm Entwickler benachrichtigt. Falls ein Fehler gefunden "
-"wird,\n"
-" wird er normalerweise innerhalb weniger Tage korrigiert. Versuchen Sie es "
-"später \n"
-" noch einmal oder senden eine Email an <a href=\"mailto:bookworm@threepress."
-"org\">%(ADMIN_EMAIL)s</a>,\n"
+" Immer wenn ein ePub Buch nicht zu Ihrer Bibliothek hinzugefügt werden konnte, \n"
+" werden die Bookworm Entwickler benachrichtigt. Falls ein Fehler gefunden wird,\n"
+" wird er normalerweise innerhalb weniger Tage korrigiert. Versuchen Sie es \n"
+" später noch einmal oder senden eine Email an \n"
+"  <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>,\n"
 " um eine Statusmeldung zu erhalten.\n"
 "   "
 
@@ -2373,7 +2370,7 @@ msgstr ""
 "    "
 
 #: library/templates/help.html:228
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Also try our forums on <a href=\"http://getsatisfaction.com/threepress/"
@@ -3469,7 +3466,7 @@ msgid "Need help?"
 msgstr "Benötigen Sie Hilfe?"
 
 #: library/templates/upload.html:25
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Try reading the <a href=\"%(helpurl)s\">Help</a> or <a href=\"%(abouturl)s"
 "\">About</a> pages for more information, or email <a href=\"mailto:%"
@@ -3481,7 +3478,7 @@ msgstr ""
 "weitere Unterstützung."
 
 #: library/templates/upload.html:27
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "If you get an error that you don't understand, please email <a href=\"mailto:"
 "%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> with a description of the problem."
@@ -3649,7 +3646,7 @@ msgstr ""
 "aus.\n"
 
 #: library/templates/auth/language.html:18
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "If you don't see your preferred language, <a href=\"mailto:%(ADMIN_EMAIL)s"
 "\">let us know if you're willing to help translate</a>.  Bookworm can be "
@@ -3658,11 +3655,10 @@ msgid ""
 "Django framework</a>."
 msgstr ""
 "  Falls Sie Ihre bevorzugte Sprache nicht sehen, \n"
-"  <a href=\"mailto:%(ADMIN_EMAIL)s\">lassen Sie uns wissen, ob Sie "
-"beim Übersetzen helfen wollen</a>. \n"
-"  Bookworm kann in <a href=\"http://code.djangoproject.com/browser/django/"
-"trunk/django/conf/global_settings.py#L43\">jede vom Django Framework "
-"unterstützte Sprache übersetzt</a> werden."
+"  <a href=\"mailto:%(ADMIN_EMAIL)s\"> lassen Sie uns wissen, ob Sie beim \n"
+"  Übersetzen helfen wollen</a>. \n"
+"  Bookworm kann in \n"
+"  <a href=\"http://code.djangoproject.com/browser/django/trunk/django/conf/global_settings.py#L43\">jede vom Django Framework unterstützte Sprache übersetzt</a> werden."
 
 #: library/templates/auth/language.html:22
 msgid ""
