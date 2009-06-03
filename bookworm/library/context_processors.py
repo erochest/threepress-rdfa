@@ -18,6 +18,7 @@ def local_settings(request):
         'MOBILE_HOST':settings.MOBILE_HOST,
         'HOSTING_CREDIT':settings.HOSTING_CREDIT,
         'HOSTING_CREDIT_URL':settings.HOSTING_CREDIT_URL,
+        'ADMIN_EMAIL':settings.DISPLAY_ADMIN_EMAIL,
     }
  
 def nav(request):

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 10:08-0400\n"
-"PO-Revision-Date: 2009-05-24 15:06-0400\n"
+"POT-Creation-Date: 2009-06-03 14:00-0400\n"
+"PO-Revision-Date: 2009-06-03 14:33-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,9 +31,8 @@ msgid "Finnish"
 msgstr "Suomi"
 
 #: local.py:21
-#, fuzzy
 msgid "Spanish"
-msgstr "Tanska"
+msgstr ""
 
 #: local.py:22
 msgid "Italian"
@@ -700,12 +699,13 @@ msgid "SVG image support"
 msgstr "Tukee svg -kuvia"
 
 #: library/templates/about.html:32
+#, python-format
 msgid ""
-"For questions or problems with Bookworm, please contact <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>"
+"For questions or problems with Bookworm, please contact <a href=\"mailto:%"
+"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>"
 msgstr ""
 "Jos sinulla on kysymyksiä tai ongelmia, jotka koskevat Bookworm -palvelua, "
-"ota yhteyttä <a href=\"mailto:bookworm@threepress.org\">sähköpostilla</a>."
+"ota yhteyttä <a href=\"mailto:%(ADMIN_EMAIL)s\">sähköpostilla</a>."
 
 #: library/templates/about.html:36
 msgid ""
@@ -842,7 +842,7 @@ msgid "Can I use Bookworm on my mobile device?"
 msgstr "Voinko käyttää Bookworm -palvelua mobiililaitteellani?"
 
 #: library/templates/about.html:109
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
@@ -944,6 +944,7 @@ msgstr ""
 "Olen julkaisija ja minulla on kysyttävää tai sivustoa koskevia pyyntöjä"
 
 #: library/templates/about.html:150
+#, python-format
 msgid ""
 "Threepress is a publisher-serving corporation with many years of experience "
 "in building\n"
@@ -951,15 +952,14 @@ msgid ""
 "getting your books\n"
 "    into ePub and even extending Bookworm with custom features for your "
 "publications.  Please\n"
-"    contact <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
-"org</a>\n"
+"    contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    and we'll get back to you right away."
 msgstr ""
 "Threepress on palveluyritys, jolla on usean vuoden kokemus \n"
 "toiminnasta julkaisuteollisuudessa. Kun haluat julkaista epub -"
 "formaatissa, \n"
 "tai kun haluat muokata Boookworm -sivuston julkaisusi tarpeisiin, <a href="
-"\"mailto:bookworm@threepress.org\">ota yhteyttä</a>."
+"\"mailto:%(ADMIN_EMAIL)s\">ota yhteyttä</a>."
 
 #: library/templates/about.html:157
 msgid ""
@@ -1022,13 +1022,14 @@ msgstr ""
 "kanssa."
 
 #: library/templates/about.html:179
+#, python-format
 msgid ""
 "Public books are in a very early beta stage.  To request that a book be made "
-"public, please contact <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a> for more information."
+"public, please contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</"
+"a> for more information."
 msgstr ""
 "Tiedostojen jakaminen on vielä varhaisessa beta -vaiheessa. Jos haluat "
-"julkaisun vapaaksi, <a href=\"mailto:bookworm@threepress.org\">ota yhteyttä</"
+"julkaisun vapaaksi, <a href=\"mailto:%(ADMIN_EMAIL)s\">ota yhteyttä</"
 "a> ja kerromme lisää."
 
 #: library/templates/about.html:182
@@ -1052,7 +1053,7 @@ msgstr ""
 "    Tee kaikista kirjoistasi kopiot myös omalle koneellesi.\n"
 
 #: library/templates/about.html:196
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Bookworm software is free and available for download under the\n"
@@ -1068,13 +1069,12 @@ msgid ""
 msgstr ""
 "\n"
 "    Bookworm on vapaasti käytettävissä BSD -lisenssin ehtojen\n"
-"    mukaisesti: <a href=\"http://threepress.org/tools/\">ks. Threepress</"
-"a>.\n"
+"    mukaisesti: <a href=\"http://threepress.org/tools/\">ks. Threepress</a>.\n"
 "    Palvelun tuottaa <a href=\"http://threepress.org/\">Threepress</a>,\n"
 "    avoimen koodin julkaisuohjelmien kehittämiseksi ja testaamiseksi.\n"
 "    Sivuston loi <a href=\"http://threepress.org/about/\">Liza Daly</a>\n"
 "    ja avusti <a href=\"http://kfahlgren.com/blog\">Keith Fahlgren</a>.\n"
-"    Palvelimet tarjoaa <a href=\"http://oreilly.com/\">O'Reilly Media</a>.\n"
+"    Palvelimet tarjoaa <a href=\"%(hostingurl)s\">%(hosting)s</a>.\n"
 
 #: library/templates/about.html:210
 msgid ""
@@ -1103,13 +1103,14 @@ msgstr ""
 "      "
 
 #: library/templates/about.html:230
+#, python-format
 msgid ""
 "\n"
 "    For problems and feature requests, visit  <a href=\"http://"
 "getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
 "\">Get Satisfaction</a> \n"
 "    or email <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>.\n"
+"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>.\n"
 "    You can also subscribe to the <a\n"
 "    href=\"http://blog.threepress.org\">blog</a> to follow new "
 "announcements.\n"
@@ -1119,7 +1120,7 @@ msgstr ""
 "getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
 "\">Get Satisfaction</a> \n"
 "    tai <a\n"
-"    href=\"mailto:bookworm@threepress.org\">lähetä sähköpostia </a>.\n"
+"    href=\"mailto:%(ADMIN_EMAIL)s\">lähetä sähköpostia </a>.\n"
 "    Voit lisätä myös sivuston <a\n"
 " href=\"http://blog.threepress.org\">blogin</a> rss-lukijaasi ja pysyt ajan "
 "tasalla.\n"
@@ -1391,7 +1392,7 @@ msgid ""
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
 "    material. Contact <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
+"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    for more details.\n"
 "    "
 msgstr ""
@@ -1400,7 +1401,7 @@ msgstr ""
 "    Bookworm -sivustosta käyttäjälle paikallisen version\n"
 "    jos testattavan aineiston määrä on suuri tai jos se pitää pitää "
 "salaisena.\n"
-"    <a href=\"mailto:bookworm@threepress.org\">Ota yhteyttä</a>\" ja "
+"    <a href=\"mailto:%(ADMIN_EMAIL)s\">Ota yhteyttä</a>\" ja "
 "kerromme lisää."
 
 #: library/templates/epub.html:7 library/templates/epub.html.py:8
@@ -1493,7 +1494,6 @@ msgid "Limitations"
 msgstr "Rajoitukset"
 
 #: library/templates/epub.html:47 library/templates/epub.html.py:254
-#, fuzzy
 msgid "Other open-source ePub"
 msgstr "Muita avoimen koodin ePub -sovelluksia"
 
@@ -1904,17 +1904,18 @@ msgid "Help using Bookworm"
 msgstr "Kuinka käyttää palvelua"
 
 #: library/templates/help.html:27
+#, python-format
 msgid ""
 "\n"
 "    Confused about what to do, or having problems?  Check this list for "
 "common issues,\n"
-"    or email <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
-"org</a> for help.\n"
+"    or email <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> for "
+"help.\n"
 "    "
 msgstr ""
 "\n"
 "      Etkö tiedä miten aloittaa? Seuraavassa on ohjeita, myös \n"
-"      <a href=\"mailto:bookworm@threepress.org\">sähköpostitse</a>.\n"
+"      <a href=\"mailto:%(ADMIN_EMAIL)s\">sähköpostitse</a>.\n"
 "      "
 
 #: library/templates/help.html:33
@@ -2051,13 +2052,14 @@ msgstr ""
 "    Jos niin käy, todennäköisesti julkaisija ei tehnyt kirjaa oikein."
 
 #: library/templates/help.html:98
+#, python-format
 msgid ""
 "\n"
 "    Whenever an ePub book fails to get added to the library, the Bookworm\n"
 "    developer is notified.  If a bug in Bookworm is found, it's usually "
 "fixed in a few days,\n"
-"    so check back or email <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a>\n"
+"    so check back or email <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)"
+"s</a>\n"
 "    for a status.\n"
 "    "
 msgstr ""
@@ -2066,7 +2068,7 @@ msgstr ""
 "tiedon.\n"
 "    Jos palvelussa on virhe, se korjataan yleensä parissa päivässä.\n"
 "    Joten kokeile uudestaan tai lähetä sähköpostia:\n"
-"    <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
+"    <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    "
 
 #: library/templates/help.html:105
@@ -2176,7 +2178,7 @@ msgid "Use <!-- trans: Use this software program -->"
 msgstr "Käytä"
 
 #: library/templates/help.html:162
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "          Use the mobile web version of Bookworm when online.\n"
@@ -2200,7 +2202,7 @@ msgid "Other web-enabled phone"
 msgstr "Muut mobiiliselaimet"
 
 #: library/templates/help.html:173
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "          Use the mobile web version of Bookworm when online.\n"
@@ -2223,7 +2225,7 @@ msgid "Indirectly <!-- trans: can be used with this device only partially -->"
 msgstr "Epäsuorasti"
 
 #: library/templates/help.html:193
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "          The Kindle cannot read ePub files yet, but you can use\n"
@@ -2283,20 +2285,21 @@ msgstr ""
 "     "
 
 #: library/templates/help.html:228
+#, python-format
 msgid ""
 "\n"
 "    Also try our forums on <a href=\"http://getsatisfaction.com/threepress/"
 "topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a> \n"
-"    Feel free to also contact <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a>\n"
+"    Feel free to also contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%"
+"(ADMIN_EMAIL)s</a>\n"
 "    with specific questions.</p>\n"
 "    "
 msgstr ""
 "\n"
 "    Käy myös <a href=\"http://getsatisfaction.com/threepress/topics/"
 "post_ideas_and_questions_about_bookworm\">keskustelusivuilla</a>.\n"
-"    Ota vapaasti yhteyttä <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a> jos sinulla on jokin erityinen kysymys.</p>\n"
+"    Ota vapaasti yhteyttä <a href=\"mailto:%(ADMIN_EMAIL)s"
+"\">%(ADMIN_EMAIL)s</a> jos sinulla on jokin erityinen kysymys.</p>\n"
 "    "
 
 #: library/templates/index.html:6
@@ -2431,7 +2434,6 @@ msgstr "viimeksi luettu"
 
 #: library/templates/openid.html:3 library/templates/openid.html.py:5
 #: library/templates/openid.html:11
-#, fuzzy
 msgid "About OpenID"
 msgstr "OpenID -tunnuksesi on"
 
@@ -2489,14 +2491,11 @@ msgid "Sony Reader or iLiad "
 msgstr "Sony Reader tai iLiad -laitteisiin"
 
 #: library/templates/public.html:42
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "<a href=\"%(toururl)s#step4\">Mobile reading</a>, online or with <a href=\"%"
 "(stanzaurl)s\">Stanza</a> on the iPhone."
-msgstr ""
-"\n"
-"      verkossa tai iPhonen <a href=\"%(stanzaurl)s\">Stanzalla</a>.\n"
-"      "
+msgstr "<a href=\\\"%(toururl)s#step4\\\">Mobile reading</a>, verkossa tai iPhonen <a href=\"%(stanzaurl)s\">Stanzalla</a>.      "
 
 #: library/templates/public.html:44
 #, python-format
@@ -2850,7 +2849,7 @@ msgid "Font controls are available on the mobile version of Bookworm"
 msgstr "Kirjasimen valitsimet ovat käytössä Bookwormin mobiilisivulla"
 
 #: library/templates/reading-mode.html:127
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "There is no specific Reading Mode for the <a href=\"%(mobilehost)s\">mobile "
 "version of Bookworm</a> because the mobile version is already optimized to "
@@ -3262,7 +3261,7 @@ msgid "Bookworm on your mobile phone    "
 msgstr "Bookworm mobiililaitteissa"
 
 #: library/templates/tour.html:163
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "      If your phone has access to the web, then you can read your\n"
@@ -3344,21 +3343,18 @@ msgstr "Tarvitko ohjeita?"
 #, python-format
 msgid ""
 "Try reading the <a href=\"%(helpurl)s\">Help</a> or <a href=\"%(abouturl)s"
-"\">About</a> pages for more information, or email <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>for assistance."
-msgstr ""
-"Jos haluat lisää ohjeita, lue <a href=\"%(helpurl)s\">Ohjeita</a> tai<a href="
-"\"%(abouturl)s\">tietoja</a>-sivua tai <a href=\"mailto:bookworm@threepress."
-"org\">lähetä sähköpostia</a>."
+"\">About</a> pages for more information, or email <a href=\"mailto:%"
+"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> for assistance."
+msgstr "Jos haluat lisää ohjeita, lue <a href=\"%(helpurl)s\">Ohjeita</a> tai<a href=\"%(abouturl)s\">tietoja</a>-sivua tai <a href=\"mailto:%(ADMIN_EMAIL)s\">lähetä sähköpostia</a>."
 
 #: library/templates/upload.html:27
+#, python-format
 msgid ""
 "If you get an error that you don't understand, please email <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a> with a description of "
-"the problem."
+"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> with a description of the problem."
 msgstr ""
 "Jos saat virheilmoituksen, jota et ymmärrä, <a href=\"mailto:"
-"bookworm@threepress.org\">lähetä sähköpostia</a> ja kuvaile virhe. "
+"%(ADMIN_EMAIL)s\">lähetä sähköpostia</a> ja kuvaile virhe. "
 
 #: library/templates/upload.html:42
 msgid ""
@@ -3514,14 +3510,15 @@ msgstr ""
 "\n"
 
 #: library/templates/auth/language.html:18
+#, python-format
 msgid ""
-"If you don't see your preferred language, <a href=\"mailto:"
-"bookworm@threepress.org\">let us know if you're willing to help translate</"
-"a>.  Bookworm can be translated into <a href=\"http://code.djangoproject.com/"
-"browser/django/trunk/django/conf/global_settings.py#L43\">any of the "
-"languages supported by the Django framework</a>."
+"If you don't see your preferred language, <a href=\"mailto:%(ADMIN_EMAIL)s"
+"\">let us know if you're willing to help translate</a>.  Bookworm can be "
+"translated into <a href=\"http://code.djangoproject.com/browser/django/trunk/"
+"django/conf/global_settings.py#L43\">any of the languages supported by the "
+"Django framework</a>."
 msgstr ""
-"Jos et näe mieleistäsi kieltä, <a href=\"mailto:bookworm@threepress.org"
+"Jos et näe mieleistäsi kieltä, <a href=\"mailto:%(ADMIN_EMAIL)s"
 "\">osallistu sivuston kääntämiseen!</"
 
 #: library/templates/auth/language.html:22
@@ -3969,7 +3966,6 @@ msgstr ""
 "sivustojen OpenID -palveluista."
 
 #: library/templates/includes/openid.html:24
-#, fuzzy
 msgid ""
 "AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> "
 msgstr ""

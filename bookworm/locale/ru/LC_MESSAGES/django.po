@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 10:09-0400\n"
+"POT-Creation-Date: 2009-06-03 14:00-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -640,9 +640,10 @@ msgid "SVG image support"
 msgstr ""
 
 #: library/templates/about.html:32
+#, python-format
 msgid ""
-"For questions or problems with Bookworm, please contact <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>"
+"For questions or problems with Bookworm, please contact <a href=\"mailto:%"
+"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>"
 msgstr ""
 
 #: library/templates/about.html:36
@@ -832,6 +833,7 @@ msgid "I'm a publisher and I have questions or feature requests"
 msgstr ""
 
 #: library/templates/about.html:150
+#, python-format
 msgid ""
 "Threepress is a publisher-serving corporation with many years of experience "
 "in building\n"
@@ -839,8 +841,7 @@ msgid ""
 "getting your books\n"
 "    into ePub and even extending Bookworm with custom features for your "
 "publications.  Please\n"
-"    contact <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
-"org</a>\n"
+"    contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    and we'll get back to you right away."
 msgstr ""
 
@@ -886,10 +887,11 @@ msgid ""
 msgstr ""
 
 #: library/templates/about.html:179
+#, python-format
 msgid ""
 "Public books are in a very early beta stage.  To request that a book be made "
-"public, please contact <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a> for more information."
+"public, please contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</"
+"a> for more information."
 msgstr ""
 
 #: library/templates/about.html:182
@@ -940,13 +942,14 @@ msgid ""
 msgstr ""
 
 #: library/templates/about.html:230
+#, python-format
 msgid ""
 "\n"
 "    For problems and feature requests, visit  <a href=\"http://"
 "getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
 "\">Get Satisfaction</a> \n"
 "    or email <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>.\n"
+"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>.\n"
 "    You can also subscribe to the <a\n"
 "    href=\"http://blog.threepress.org\">blog</a> to follow new "
 "announcements.\n"
@@ -1138,7 +1141,7 @@ msgid ""
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
 "    material. Contact <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
+"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    for more details.\n"
 "    "
 msgstr ""
@@ -1505,12 +1508,13 @@ msgid "Help using Bookworm"
 msgstr ""
 
 #: library/templates/help.html:27
+#, python-format
 msgid ""
 "\n"
 "    Confused about what to do, or having problems?  Check this list for "
 "common issues,\n"
-"    or email <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
-"org</a> for help.\n"
+"    or email <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> for "
+"help.\n"
 "    "
 msgstr ""
 
@@ -1615,13 +1619,14 @@ msgid ""
 msgstr ""
 
 #: library/templates/help.html:98
+#, python-format
 msgid ""
 "\n"
 "    Whenever an ePub book fails to get added to the library, the Bookworm\n"
 "    developer is notified.  If a bug in Bookworm is found, it's usually "
 "fixed in a few days,\n"
-"    so check back or email <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a>\n"
+"    so check back or email <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)"
+"s</a>\n"
 "    for a status.\n"
 "    "
 msgstr ""
@@ -1789,12 +1794,13 @@ msgid ""
 msgstr ""
 
 #: library/templates/help.html:228
+#, python-format
 msgid ""
 "\n"
 "    Also try our forums on <a href=\"http://getsatisfaction.com/threepress/"
 "topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a> \n"
-"    Feel free to also contact <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a>\n"
+"    Feel free to also contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%"
+"(ADMIN_EMAIL)s</a>\n"
 "    with specific questions.</p>\n"
 "    "
 msgstr ""
@@ -2672,15 +2678,15 @@ msgstr ""
 #, python-format
 msgid ""
 "Try reading the <a href=\"%(helpurl)s\">Help</a> or <a href=\"%(abouturl)s"
-"\">About</a> pages for more information, or email <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>for assistance."
+"\">About</a> pages for more information, or email <a href=\"mailto:%"
+"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> for assistance."
 msgstr ""
 
 #: library/templates/upload.html:27
+#, python-format
 msgid ""
 "If you get an error that you don't understand, please email <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a> with a description of "
-"the problem."
+"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> with a description of the problem."
 msgstr ""
 
 #: library/templates/upload.html:42
@@ -2823,12 +2829,13 @@ msgid ""
 msgstr ""
 
 #: library/templates/auth/language.html:18
+#, python-format
 msgid ""
-"If you don't see your preferred language, <a href=\"mailto:"
-"bookworm@threepress.org\">let us know if you're willing to help translate</"
-"a>.  Bookworm can be translated into <a href=\"http://code.djangoproject.com/"
-"browser/django/trunk/django/conf/global_settings.py#L43\">any of the "
-"languages supported by the Django framework</a>."
+"If you don't see your preferred language, <a href=\"mailto:%(ADMIN_EMAIL)s"
+"\">let us know if you're willing to help translate</a>.  Bookworm can be "
+"translated into <a href=\"http://code.djangoproject.com/browser/django/trunk/"
+"django/conf/global_settings.py#L43\">any of the languages supported by the "
+"Django framework</a>."
 msgstr ""
 
 #: library/templates/auth/language.html:22

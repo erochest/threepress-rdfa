@@ -22,9 +22,9 @@ li { padding-bottom: .5em; }
 
 <h2>{{ _("Need help?") }}</h2>
 <p>
-  {% blocktrans %}Try reading the <a href="{{ helpurl }}">Help</a> or <a href="{{ abouturl }}">About</a> pages for more information, or email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>for assistance.{% endblocktrans %}
+  {% blocktrans %}Try reading the <a href="{{ helpurl }}">Help</a> or <a href="{{ abouturl }}">About</a> pages for more information, or email <a href="mailto:{{ ADMIN_EMAIL }}">{{ ADMIN_EMAIL }}</a> for assistance.{% endblocktrans %}
 </p>
-<p style="font-size:smaller">{% blocktrans %}If you get an error that you don't understand, please email <a href="mailto:bookworm@threepress.org">bookworm@threepress.org</a> with a description of the problem.{% endblocktrans %}
+<p style="font-size:smaller">{% blocktrans %}If you get an error that you don't understand, please email <a href="mailto:{{ ADMIN_EMAIL }}">{{ ADMIN_EMAIL }}</a> with a description of the problem.{% endblocktrans %}
 </p>
 {% include "includes/about.html" %}
 

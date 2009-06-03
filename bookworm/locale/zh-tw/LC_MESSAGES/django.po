@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 10:09-0400\n"
+"POT-Creation-Date: 2009-06-03 14:00-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -681,14 +681,14 @@ msgid "SVG image support"
 msgstr "SVG圖像支援"
 
 #: library/templates/about.html:32
-#, fuzzy
+#, fuzzy, python-format
 msgid ""
-"For questions or problems with Bookworm, please contact <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>"
+"For questions or problems with Bookworm, please contact <a href=\"mailto:%"
+"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>"
 msgstr ""
 "\n"
-"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a> \n"
+"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:%(ADMIN_EMAIL)s"
+"\">%(ADMIN_EMAIL)s</a> \n"
 
 #: library/templates/about.html:36
 #, fuzzy
@@ -927,7 +927,7 @@ msgid "I'm a publisher and I have questions or feature requests"
 msgstr "我是出版商，且我有問題或要求新功能。"
 
 #: library/templates/about.html:150
-#, fuzzy
+#, fuzzy, python-format
 msgid ""
 "Threepress is a publisher-serving corporation with many years of experience "
 "in building\n"
@@ -935,14 +935,13 @@ msgid ""
 "getting your books\n"
 "    into ePub and even extending Bookworm with custom features for your "
 "publications.  Please\n"
-"    contact <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
-"org</a>\n"
+"    contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    and we'll get back to you right away."
 msgstr ""
 "\n"
 " Threepress是一個出版商服務公司，且對於在出版界發表新產品有多年經驗。我們會很"
 "樂意討論ePub格式，以讓你的書籍能加入ePub，甚至擴展Bookworm的特色以適用你的出"
-"版刊物。請聯絡<a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
+"版刊物。請聯絡<a href=\"mailto:%(ADMIN_EMAIL)s\">bookworm@threepress."
 "org</a>，我們會立即回覆你。\n"
 
 #: library/templates/about.html:157
@@ -1004,15 +1003,15 @@ msgstr ""
 "商授權公開，都可以使Bookworm的書籍能在線上取得。\n"
 
 #: library/templates/about.html:179
-#, fuzzy
+#, fuzzy, python-format
 msgid ""
 "Public books are in a very early beta stage.  To request that a book be made "
-"public, please contact <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a> for more information."
+"public, please contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</"
+"a> for more information."
 msgstr ""
 "\n"
 " 公開書籍還是初始階段。若欲請求書籍公開，請聯繫<a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>獲得更多相關訊息。\n"
+"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>獲得更多相關訊息。\n"
 
 #: library/templates/about.html:182
 msgid " Are my books securely stored and backed up?"
@@ -1082,13 +1081,14 @@ msgstr ""
 "隊。\n"
 
 #: library/templates/about.html:230
+#, fuzzy, python-format
 msgid ""
 "\n"
 "    For problems and feature requests, visit  <a href=\"http://"
 "getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
 "\">Get Satisfaction</a> \n"
 "    or email <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>.\n"
+"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>.\n"
 "    You can also subscribe to the <a\n"
 "    href=\"http://blog.threepress.org\">blog</a> to follow new "
 "announcements.\n"
@@ -1097,7 +1097,7 @@ msgstr ""
 " 任何問題與功能要求，請至<a href=\"http://getsatisfaction.com/threepress/"
 "topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a>，或是電"
 "郵至<a \n"
-" href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>。 你也可"
+" href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>。 你也可"
 "以訂閱<a href=\"http://blog.threepress.org\">blog</a>來獲得最新的消息。\n"
 
 #: library/templates/base.html:12
@@ -1340,14 +1340,14 @@ msgid ""
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
 "    material. Contact <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
+"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    for more details.\n"
 "    "
 msgstr ""
 "\n"
 "\n"
 " 然而，Threepress可以安排Bookworm專用版本來建立大規模的測試，或是針對特別機密"
-"的資料。請聯絡<a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
+"的資料。請聯絡<a href=\"mailto:%(ADMIN_EMAIL)s\">bookworm@threepress."
 "org</a>以獲得更多細節。\n"
 
 #: library/templates/epub.html:7 library/templates/epub.html.py:8
@@ -1822,18 +1822,19 @@ msgid "Help using Bookworm"
 msgstr "協助使用Bookworm"
 
 #: library/templates/help.html:27
+#, fuzzy, python-format
 msgid ""
 "\n"
 "    Confused about what to do, or having problems?  Check this list for "
 "common issues,\n"
-"    or email <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress."
-"org</a> for help.\n"
+"    or email <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> for "
+"help.\n"
 "    "
 msgstr ""
 "\n"
 "\n"
 " 困惑不知如何做，或是遇到問題？查詢常見問題表單，或是電郵<a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>尋求協助。\n"
+"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>尋求協助。\n"
 
 #: library/templates/help.html:33
 msgid "Problems adding a book?"
@@ -1960,13 +1961,14 @@ msgstr ""
 "告知你。如果兩者皆同意此書有問題，那有可能是出版商未將ePub設定正確。\n"
 
 #: library/templates/help.html:98
+#, fuzzy, python-format
 msgid ""
 "\n"
 "    Whenever an ePub book fails to get added to the library, the Bookworm\n"
 "    developer is notified.  If a bug in Bookworm is found, it's usually "
 "fixed in a few days,\n"
-"    so check back or email <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a>\n"
+"    so check back or email <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)"
+"s</a>\n"
 "    for a status.\n"
 "    "
 msgstr ""
@@ -1974,7 +1976,7 @@ msgstr ""
 "\n"
 " 無論何時ePub書籍上載到圖書館失敗時，Bookworm研發者皆會收到通知。如果發現是程"
 "式錯誤，通常數日後就會修復。所以可確認或電郵<a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a> 來查詢修復進度。\n"
+"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> 來查詢修復進度。\n"
 
 #: library/templates/help.html:105
 msgid "Does the book contain DRM (Digital Rights Management)?"
@@ -2186,12 +2188,13 @@ msgstr ""
 " 更多Bookworm相關訊息在<a href=\"%(abouturl)s\">關於</a>網頁。\n"
 
 #: library/templates/help.html:228
+#, fuzzy, python-format
 msgid ""
 "\n"
 "    Also try our forums on <a href=\"http://getsatisfaction.com/threepress/"
 "topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a> \n"
-"    Feel free to also contact <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a>\n"
+"    Feel free to also contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%"
+"(ADMIN_EMAIL)s</a>\n"
 "    with specific questions.</p>\n"
 "    "
 msgstr ""
@@ -2199,8 +2202,8 @@ msgstr ""
 "\n"
 " 也可參考我們的論壇<a href=\"http://getsatisfaction.com/threepress/topics/"
 "post_ideas_and_questions_about_bookworm\">Get Satisfaction</a>。有任何問題，"
-"歡迎隨時聯繫我們 <a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a></p> \n"
+"歡迎隨時聯繫我們 <a href=\"mailto:%(ADMIN_EMAIL)s"
+"\">%(ADMIN_EMAIL)s</a></p> \n"
 
 #: library/templates/index.html:6
 msgid "My epub library"
@@ -3180,23 +3183,25 @@ msgid "Need help?"
 msgstr ""
 
 #: library/templates/upload.html:25
-#, python-format
+#, fuzzy, python-format
 msgid ""
 "Try reading the <a href=\"%(helpurl)s\">Help</a> or <a href=\"%(abouturl)s"
-"\">About</a> pages for more information, or email <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a>for assistance."
-msgstr ""
-
-#: library/templates/upload.html:27
-#, fuzzy
-msgid ""
-"If you get an error that you don't understand, please email <a href=\"mailto:"
-"bookworm@threepress.org\">bookworm@threepress.org</a> with a description of "
-"the problem."
+"\">About</a> pages for more information, or email <a href=\"mailto:%"
+"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> for assistance."
 msgstr ""
 "\n"
-"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:bookworm@threepress.org"
-"\">bookworm@threepress.org</a> \n"
+"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:%(ADMIN_EMAIL)s"
+"\">%(ADMIN_EMAIL)s</a> \n"
+
+#: library/templates/upload.html:27
+#, fuzzy, python-format
+msgid ""
+"If you get an error that you don't understand, please email <a href=\"mailto:"
+"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> with a description of the problem."
+msgstr ""
+"\n"
+"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:%(ADMIN_EMAIL)s"
+"\">%(ADMIN_EMAIL)s</a> \n"
 
 #: library/templates/upload.html:42
 msgid ""
@@ -3351,16 +3356,16 @@ msgstr ""
 "可。\n"
 
 #: library/templates/auth/language.html:18
-#, fuzzy
+#, fuzzy, python-format
 msgid ""
-"If you don't see your preferred language, <a href=\"mailto:"
-"bookworm@threepress.org\">let us know if you're willing to help translate</"
-"a>.  Bookworm can be translated into <a href=\"http://code.djangoproject.com/"
-"browser/django/trunk/django/conf/global_settings.py#L43\">any of the "
-"languages supported by the Django framework</a>."
+"If you don't see your preferred language, <a href=\"mailto:%(ADMIN_EMAIL)s"
+"\">let us know if you're willing to help translate</a>.  Bookworm can be "
+"translated into <a href=\"http://code.djangoproject.com/browser/django/trunk/"
+"django/conf/global_settings.py#L43\">any of the languages supported by the "
+"Django framework</a>."
 msgstr ""
 "\n"
-" 如果看不到喜愛的語言，<a href=\"mailto:bookworm@threepress.org\">想要協助翻"
+" 如果看不到喜愛的語言，<a href=\"mailto:%(ADMIN_EMAIL)s\">想要協助翻"
 "譯，請告知我們</a>。Bookworm可以翻譯成 <a href=\"http://code.djangoproject."
 "com/browser/django/trunk/django/conf/global_settings.py#L43\">Django架構支援"
 "的任何語言</a>。\n"

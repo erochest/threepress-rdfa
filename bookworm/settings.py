@@ -167,6 +167,10 @@ HOSTING_CREDIT_URL = 'http://oreilly.com/'
 REPLYTO_EMAIL = 'no-reply@threepress.org'
 DEFAULT_FROM_EMAIL = REPLYTO_EMAIL
 
+# The admin address that's displayed on the site in help pages
+DISPLAY_ADMIN_EMAIL = 'bookworm@threepress.org'
+
+
 # Set up logging
 LOG_DIR = '%s/log/' % ROOT_PATH
 LOG_NAME = 'bookworm.log'

@@ -1525,7 +1525,8 @@ class TestViews(DjangoTestCase):
             
             response = self.client.get('/help/')
             assert response.status_code == 200
-            
+            assert settings.DISPLAY_ADMIN_EMAIL in response.content
+
             response = self.client.get('/about/tour/')
             assert response.status_code == 200
             
