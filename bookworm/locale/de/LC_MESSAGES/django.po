@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-06-03 10:08-0400\n"
-"PO-Revision-Date: 2009-06-03 09:32-0400\n"
+"PO-Revision-Date: 2009-06-03 18:53+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2519,15 +2519,17 @@ msgstr "Zuletzt gelesen"
 
 #: library/templates/openid.html:3 library/templates/openid.html.py:5
 #: library/templates/openid.html:11
-#, fuzzy
 msgid "About OpenID"
-msgstr "Ihre OpenID lautet"
+msgstr "Über OpenID"
 
 #: library/templates/openid.html:14
 msgid ""
 "Bookworm supports and advocates the use of OpenID, a simple way to manage "
 "your usernames and passwords on the internet."
 msgstr ""
+"Bookworm unterstützt und befürwortet die Benutzung von OpenID, \n"
+"einer einfachen Art und Weise Ihre Benutzernamen und Kennwörter im Internet \n"
+"zu verwalten."
 
 #: library/templates/openid.html:18
 msgid ""
@@ -2535,6 +2537,10 @@ msgid ""
 "personalization to their products. <a href=\"http://toc.oreilly.com/2008/05/"
 "what-openid-can-do-for-educati.html\">Read more</a>."
 msgstr ""
+"Akademische Herausgeber werden ermutigt die Benutzung von OpenID Ihren \n"
+"Produkten zur Personalisierung hinzuzufügen. \n"
+"<a href=\"http://toc.oreilly.com/2008/05/what-openid-can-do-for-educati.html\">\n"
+"Mehr Information</a>."
 
 #: library/templates/public.html:6
 msgid "Read ePub ebooks online"
@@ -4108,22 +4114,21 @@ msgstr ""
 "  "
 
 #: library/templates/includes/openid.html:24
-#, fuzzy
 msgid ""
 "AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> "
-msgstr ""
-"AOL oder AIM Benutzer: Ihre OpenID ist <em>openid.aol.com/ihr-anzeigename</"
-"em>"
+msgstr "AOL oder AIM Benutzer: Ihre OpenID ist <em>openid.aol.com/ihr-anzeigename</em>"
 
 #: library/templates/includes/openid.html:26
 msgid "Basecamp, Highrise  Backpack "
-msgstr ""
+msgstr "Basecamp, Highrise  Backpack "
 
 #: library/templates/includes/openid.html:28
 msgid ""
 "<a href=\"http://www.livejournal.com/openid/\">Livejournal</a>:  Your OpenID "
 "is <em>your-username.livejournal.com</em> "
 msgstr ""
+"<a href=\"http://www.livejournal.com/openid/\">Livejournal</a>:  \n"
+"Ihre OpenID lautet <em>benutzername.livejournal.com</em> "
 
 #: library/templates/includes/openid.html:31
 msgid ""
