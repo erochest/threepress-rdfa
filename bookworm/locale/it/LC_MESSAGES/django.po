@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bookworm\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:55-0400\n"
+"POT-Creation-Date: 2009-06-03 10:08-0400\n"
 "PO-Revision-Date: 2009-06-03 09:28-0400\n"
 "Last-Translator: Marco Croella <marco.croella@simplicissimus.it>\n"
 "Language-Team: Italian <marco.croella@simplicissimus.it>\n"
@@ -2277,7 +2277,6 @@ msgstr ""
 "          "
 
 #: library/templates/help.html:182 library/templates/public.html:22
-#: library/templates/includes/openid.html:25
 msgid "or"
 msgstr "o"
 
@@ -4027,11 +4026,11 @@ msgstr "Scarica ebook"
 msgid "First page"
 msgstr "Prima pagina"
 
-#: library/templates/includes/openid.html:5
+#: library/templates/includes/openid.html:6
 msgid "What is OpenID?"
 msgstr "Cos'è OpenID"
 
-#: library/templates/includes/openid.html:8
+#: library/templates/includes/openid.html:9
 msgid ""
 "\n"
 "        OpenID eliminates the need for multiple usernames across different "
@@ -4048,7 +4047,7 @@ msgstr ""
 "        incluso Yahoo.\n"
 "        "
 
-#: library/templates/includes/openid.html:15
+#: library/templates/includes/openid.html:16
 msgid ""
 "\n"
 "        You may already have an OpenID if you have an account with any of "
@@ -4065,18 +4064,24 @@ msgstr ""
 "        che offrono:\n"
 "        "
 
-#: library/templates/includes/openid.html:23
+#: library/templates/includes/openid.html:24
+#, fuzzy
 msgid ""
-"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</"
-"em>        "
+"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> "
 msgstr ""
 "utenti AOL o AIM: la vostra OpenID è <em>openid.aol.com/nome-utente</em> "
 
-#: library/templates/includes/openid.html:27
-msgid "Your OpenID is"
-msgstr "La tua OpenID è"
+#: library/templates/includes/openid.html:26
+msgid "Basecamp, Highrise  Backpack "
+msgstr ""
 
-#: library/templates/includes/openid.html:30
+#: library/templates/includes/openid.html:28
+msgid ""
+"<a href=\"http://www.livejournal.com/openid/\">Livejournal</a>:  Your OpenID "
+"is <em>your-username.livejournal.com</em> "
+msgstr ""
+
+#: library/templates/includes/openid.html:31
 msgid ""
 "\n"
 "        If you don't have an account with any of these services, or don't "
@@ -4092,7 +4097,7 @@ msgstr ""
 "com/\">MyOpenID</a>.\n"
 "        "
 
-#: library/templates/includes/openid.html:36
+#: library/templates/includes/openid.html:37
 msgid ""
 "\n"
 "        The official page for OpenID is <a href=\"http://openid.net/"
@@ -4459,6 +4464,9 @@ msgstr ""
 "  Questo significa che un libro che hai appena aggiunto potrebbe non \n"
 "  essere mostrato immediatamente nella ricerca. Sii paziente.\n"
 "  "
+
+#~ msgid "Your OpenID is"
+#~ msgstr "La tua OpenID è"
 
 #~ msgid ""
 #~ "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/"

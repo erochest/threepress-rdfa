@@ -2,6 +2,7 @@
     <div id="bw-what-is-openid" style="width:400px;display:none">
       <p>
       <img src="/static/images/openid-large.png" align="right" style="padding-right:2em" width="100"/>
+
       <h1>{% trans "What is OpenID?" %}</h1>
       </p>
       <p>
@@ -20,11 +21,11 @@
       </p>
       <ul>
         <li> <a href="http://openid.yahoo.com/">Yahoo</a>        </li>
-        <li>         {% blocktrans %}AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em>        {% endblocktrans %}</li>
+        <li> {% blocktrans %}AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> {% endblocktrans %}</li>
         <li> <a href="http://faq.wordpress.com/2007/03/06/what-is-openid/">Wordpress</a></li>
-        <li> <a href="http://www.37signals.com/openid/">Basecamp, Highrise {% trans "or" %} Backpack</a></li>
+        <li> <a href="http://www.37signals.com/openid/">{% blocktrans %}Basecamp, Highrise  Backpack {% endblocktrans %}</a></li>
 
-        <li> <a href="http://www.livejournal.com/openid/">Livejournal</a>:         {% blocktrans %}Your OpenID is{% endblocktrans %} <em>your-username.livejournal.com</em></li>
+        <li> {% blocktrans %}<a href="http://www.livejournal.com/openid/">Livejournal</a>:  Your OpenID is <em>your-username.livejournal.com</em> {% endblocktrans %}</li>
       </ul>
       <p>
         {% blocktrans %}
@@ -37,4 +38,5 @@
         The official page for OpenID is <a href="http://openid.net/">http://openid.net/</a>.
         {% endblocktrans %}
       </p>
+
     </div>

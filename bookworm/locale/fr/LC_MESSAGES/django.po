@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:55-0400\n"
+"POT-Creation-Date: 2009-06-03 10:08-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1902,7 +1902,6 @@ msgid ""
 msgstr ""
 
 #: library/templates/help.html:182 library/templates/public.html:22
-#: library/templates/includes/openid.html:25
 msgid "or"
 msgstr ""
 
@@ -3380,11 +3379,11 @@ msgstr "Télécharger ce livre"
 msgid "First page"
 msgstr "Première page"
 
-#: library/templates/includes/openid.html:5
+#: library/templates/includes/openid.html:6
 msgid "What is OpenID?"
 msgstr ""
 
-#: library/templates/includes/openid.html:8
+#: library/templates/includes/openid.html:9
 msgid ""
 "\n"
 "        OpenID eliminates the need for multiple usernames across different "
@@ -3395,7 +3394,7 @@ msgid ""
 "        "
 msgstr ""
 
-#: library/templates/includes/openid.html:15
+#: library/templates/includes/openid.html:16
 msgid ""
 "\n"
 "        You may already have an OpenID if you have an account with any of "
@@ -3406,17 +3405,22 @@ msgid ""
 "        "
 msgstr ""
 
-#: library/templates/includes/openid.html:23
+#: library/templates/includes/openid.html:24
 msgid ""
-"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</"
-"em>        "
+"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> "
 msgstr ""
 
-#: library/templates/includes/openid.html:27
-msgid "Your OpenID is"
+#: library/templates/includes/openid.html:26
+msgid "Basecamp, Highrise  Backpack "
 msgstr ""
 
-#: library/templates/includes/openid.html:30
+#: library/templates/includes/openid.html:28
+msgid ""
+"<a href=\"http://www.livejournal.com/openid/\">Livejournal</a>:  Your OpenID "
+"is <em>your-username.livejournal.com</em> "
+msgstr ""
+
+#: library/templates/includes/openid.html:31
 msgid ""
 "\n"
 "        If you don't have an account with any of these services, or don't "
@@ -3426,7 +3430,7 @@ msgid ""
 "        "
 msgstr ""
 
-#: library/templates/includes/openid.html:36
+#: library/templates/includes/openid.html:37
 msgid ""
 "\n"
 "        The official page for OpenID is <a href=\"http://openid.net/"

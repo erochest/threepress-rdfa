@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:54-0400\n"
+"POT-Creation-Date: 2009-06-03 10:08-0400\n"
 "PO-Revision-Date: 2009-05-24 15:06-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
@@ -2215,7 +2215,6 @@ msgstr ""
 "          "
 
 #: library/templates/help.html:182 library/templates/public.html:22
-#: library/templates/includes/openid.html:25
 msgid "or"
 msgstr "tai"
 
@@ -3932,11 +3931,11 @@ msgstr "Lataa tämä kirja"
 msgid "First page"
 msgstr "Ensimmäinen sivu"
 
-#: library/templates/includes/openid.html:5
+#: library/templates/includes/openid.html:6
 msgid "What is OpenID?"
 msgstr "Mikä on OpenID?"
 
-#: library/templates/includes/openid.html:8
+#: library/templates/includes/openid.html:9
 msgid ""
 "\n"
 "        OpenID eliminates the need for multiple usernames across different "
@@ -3952,7 +3951,7 @@ msgstr ""
 "        toimintaa verkossa. Standardia käyttävät jo monet sivustot, "
 "esim.        Yahoo."
 
-#: library/templates/includes/openid.html:15
+#: library/templates/includes/openid.html:16
 msgid ""
 "\n"
 "        You may already have an OpenID if you have an account with any of "
@@ -3969,18 +3968,24 @@ msgstr ""
 "        sinulla voi jo olla tunnus. Klikkaa nimeä niin saat lisätietoa\n"
 "sivustojen OpenID -palveluista."
 
-#: library/templates/includes/openid.html:23
+#: library/templates/includes/openid.html:24
+#, fuzzy
 msgid ""
-"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</"
-"em>        "
+"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> "
 msgstr ""
 "AOL- tai AIM -käyttäjät: tunnus on <em>openid.aol.com/your-screenname</em>"
 
-#: library/templates/includes/openid.html:27
-msgid "Your OpenID is"
-msgstr "OpenID -tunnuksesi on"
+#: library/templates/includes/openid.html:26
+msgid "Basecamp, Highrise  Backpack "
+msgstr ""
 
-#: library/templates/includes/openid.html:30
+#: library/templates/includes/openid.html:28
+msgid ""
+"<a href=\"http://www.livejournal.com/openid/\">Livejournal</a>:  Your OpenID "
+"is <em>your-username.livejournal.com</em> "
+msgstr ""
+
+#: library/templates/includes/openid.html:31
 msgid ""
 "\n"
 "        If you don't have an account with any of these services, or don't "
@@ -3996,7 +4001,7 @@ msgstr ""
 "a>.\n"
 "        "
 
-#: library/templates/includes/openid.html:36
+#: library/templates/includes/openid.html:37
 msgid ""
 "\n"
 "        The official page for OpenID is <a href=\"http://openid.net/"
@@ -4350,6 +4355,9 @@ msgstr ""
 "  Tämä tarkoittaa, että juuri siirtämäsi kirja ei heti näy hakutuloksissa.\n"
 "  Vähän kärsivällisyyttä ja kirja ilmestyy pian tuloksiin.\n"
 "  "
+
+#~ msgid "Your OpenID is"
+#~ msgstr "OpenID -tunnuksesi on"
 
 #~ msgid ""
 #~ "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/"

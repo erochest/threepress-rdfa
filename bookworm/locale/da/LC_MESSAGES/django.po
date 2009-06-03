@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:54-0400\n"
+"POT-Creation-Date: 2009-06-03 10:08-0400\n"
 "PO-Revision-Date: 2009-05-24 15:07-0400\n"
 "Last-Translator: Marie Bilde Rasmussen <mariebilderas@gmail.com>\n"
 "Language-Team: Danish\n"
@@ -2190,7 +2190,6 @@ msgstr ""
 "på <a href=\"http://%(mobilehost)s\">%(mobilehost)s</a>."
 
 #: library/templates/help.html:182 library/templates/public.html:22
-#: library/templates/includes/openid.html:25
 msgid "or"
 msgstr "eller"
 
@@ -3908,11 +3907,11 @@ msgstr "Download denne bog"
 msgid "First page"
 msgstr "Første side"
 
-#: library/templates/includes/openid.html:5
+#: library/templates/includes/openid.html:6
 msgid "What is OpenID?"
 msgstr "Hvad er OpenID"
 
-#: library/templates/includes/openid.html:8
+#: library/templates/includes/openid.html:9
 msgid ""
 "\n"
 "        OpenID eliminates the need for multiple usernames across different "
@@ -3928,7 +3927,7 @@ msgstr ""
 "websites og gør onlineoplevelsen enklere. Det er en standard, der anvendes "
 "på mange forskellige websites, heriblandt Yahoo."
 
-#: library/templates/includes/openid.html:15
+#: library/templates/includes/openid.html:16
 msgid ""
 "\n"
 "        You may already have an OpenID if you have an account with any of "
@@ -3943,18 +3942,24 @@ msgstr ""
 "Måske har du allerede et OpenID, hvis du er bruger på et af disse websites. "
 "Klik på navnet for at læse mere om et sites OpenID-praksis"
 
-#: library/templates/includes/openid.html:23
+#: library/templates/includes/openid.html:24
+#, fuzzy
 msgid ""
-"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</"
-"em>        "
+"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> "
 msgstr ""
 "For AOL- og AIM-brugere: Dit OpenID er <em>openid.aol.com/dit-skærmnavn</em>"
 
-#: library/templates/includes/openid.html:27
-msgid "Your OpenID is"
-msgstr "Dit OpenID er"
+#: library/templates/includes/openid.html:26
+msgid "Basecamp, Highrise  Backpack "
+msgstr ""
 
-#: library/templates/includes/openid.html:30
+#: library/templates/includes/openid.html:28
+msgid ""
+"<a href=\"http://www.livejournal.com/openid/\">Livejournal</a>:  Your OpenID "
+"is <em>your-username.livejournal.com</em> "
+msgstr ""
+
+#: library/templates/includes/openid.html:31
 msgid ""
 "\n"
 "        If you don't have an account with any of these services, or don't "
@@ -3969,7 +3974,7 @@ msgstr ""
 "ikke ønsker at lad dem administrere din online-identitet, så prøv hér: <a "
 "href=\"https://www.myopenid.com/\">MyOpenID</a>."
 
-#: library/templates/includes/openid.html:36
+#: library/templates/includes/openid.html:37
 msgid ""
 "\n"
 "        The official page for OpenID is <a href=\"http://openid.net/"
@@ -4320,6 +4325,9 @@ msgstr ""
 "\n"
 "Derfor kommer en bog, der lige er tilføjet dit bibliotek, ikke altid til "
 "syne med det samme. Men hold ud: der går ikke lang tid."
+
+#~ msgid "Your OpenID is"
+#~ msgstr "Dit OpenID er"
 
 #~ msgid ""
 #~ "<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/"

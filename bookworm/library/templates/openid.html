@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% load i18n %}
-{% block title %}}{% trans "About OpenID" %}{% endblock title %}
+{% block title %}{% trans "About OpenID" %}{% endblock title %}
 
 {% block header %}{% trans "About OpenID" %}{% endblock header %}
 {% block head %}
@@ -20,7 +20,10 @@
 {% endblock leftnav %}
 
 {% block main %}
-
 {% include "includes/openid.html" %}
+<script type="text/javascript">
+ $('#bw-what-is-openid').show();
+</script>
+
 
 {% endblock main %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:55-0400\n"
+"POT-Creation-Date: 2009-06-03 10:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2116,7 +2116,6 @@ msgstr ""
 "oreilly.com\">%(mobilehost)s</a>。\n"
 
 #: library/templates/help.html:182 library/templates/public.html:22
-#: library/templates/includes/openid.html:25
 msgid "or"
 msgstr "或是"
 
@@ -3788,11 +3787,11 @@ msgstr "下載此書"
 msgid "First page"
 msgstr "第一頁"
 
-#: library/templates/includes/openid.html:5
+#: library/templates/includes/openid.html:6
 msgid "What is OpenID?"
 msgstr "什麼是OpenID?"
 
-#: library/templates/includes/openid.html:8
+#: library/templates/includes/openid.html:9
 msgid ""
 "\n"
 "        OpenID eliminates the need for multiple usernames across different "
@@ -3807,7 +3806,7 @@ msgstr ""
 " OpenID免除需多個使用者名稱以進到不同網址，而其簡化上網程序。很多網址都使用一"
 "種標準模式，如Yahoo雅虎。\n"
 
-#: library/templates/includes/openid.html:15
+#: library/templates/includes/openid.html:16
 msgid ""
 "\n"
 "        You may already have an OpenID if you have an account with any of "
@@ -3822,17 +3821,23 @@ msgstr ""
 " 如果你有這其中之一網址的帳號，那你可能已經有一個OpenID了。點選名稱已取得提供"
 "OpenID相關服務訊息:\n"
 
-#: library/templates/includes/openid.html:23
+#: library/templates/includes/openid.html:24
+#, fuzzy
 msgid ""
-"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</"
-"em>        "
+"AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> "
 msgstr "AOL或是AIM使用者:你的OpenID是<em>openid.aol.com/your-screenname</em>"
 
-#: library/templates/includes/openid.html:27
-msgid "Your OpenID is"
-msgstr "你的OpenID是"
+#: library/templates/includes/openid.html:26
+msgid "Basecamp, Highrise  Backpack "
+msgstr ""
 
-#: library/templates/includes/openid.html:30
+#: library/templates/includes/openid.html:28
+msgid ""
+"<a href=\"http://www.livejournal.com/openid/\">Livejournal</a>:  Your OpenID "
+"is <em>your-username.livejournal.com</em> "
+msgstr ""
+
+#: library/templates/includes/openid.html:31
 msgid ""
 "\n"
 "        If you don't have an account with any of these services, or don't "
@@ -3846,7 +3851,7 @@ msgstr ""
 " 如果你沒有這些服務任一個帳號，或是你不想要使用他們提供的來管理你的線上身分，"
 "那試試<a href=\"https://www.myopenid.com/\">MyOpenID</a>。\n"
 
-#: library/templates/includes/openid.html:36
+#: library/templates/includes/openid.html:37
 msgid ""
 "\n"
 "        The official page for OpenID is <a href=\"http://openid.net/"
@@ -4186,6 +4191,9 @@ msgstr ""
 "\n"
 "　也就是說，你剛剛新增的書籍可能無法立即顯示在你的搜尋中。稍等一會，很快就會"
 "出現了。"
+
+#~ msgid "Your OpenID is"
+#~ msgstr "你的OpenID是"
 
 #, fuzzy
 #~ msgid ""
