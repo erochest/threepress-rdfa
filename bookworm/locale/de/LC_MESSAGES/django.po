@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:31-0400\n"
+"POT-Creation-Date: 2009-06-03 09:54-0400\n"
 "PO-Revision-Date: 2009-06-03 09:32-0400\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
@@ -1096,12 +1096,15 @@ msgid ""
 msgstr ""
 "\n"
 "    Bookworm ist Freie Software unter der BSD Lizenz und kann von der\n"
-"   <a href=\"http://threepress.org/tools/\">Tools Seite</a> heruntergeladen \n"
+"   <a href=\"http://threepress.org/tools/\">Tools Seite</a> "
+"heruntergeladen \n"
 "   werden. Es ist ein Produkt von \n"
-"   <a href=\"http://threepress.org\">Threepress</a>, einem Treffpunkt, um mit \n"
+"   <a href=\"http://threepress.org\">Threepress</a>, einem Treffpunkt, um "
+"mit \n"
 "   Open Source Publishing Software zu experimentieren und wird von \n"
 "   <a href=\"http:/threepress.org/about/\">Liza Daly</a>, \n"
-"   unter Mitwirkung von <a href=\"http://kfahlgren.com/blog\">Keith Fahlgren</a> \n"
+"   unter Mitwirkung von <a href=\"http://kfahlgren.com/blog\">Keith "
+"Fahlgren</a> \n"
 "   geschrieben. \n"
 "   Das Hosting wird von <a href=\"%(hostingurl)s\">%(hosting)s</a> zur\n"
 "   Verfügung gestellt.\n"
@@ -2514,6 +2517,25 @@ msgstr "Hochladen"
 #: library/templates/last-read.html:3
 msgid "last read"
 msgstr "Zuletzt gelesen"
+
+#: library/templates/openid.html:3 library/templates/openid.html.py:5
+#: library/templates/openid.html:11
+#, fuzzy
+msgid "About OpenID"
+msgstr "Ihre OpenID lautet"
+
+#: library/templates/openid.html:14
+msgid ""
+"Bookworm supports and advocates the use of OpenID, a simple way to manage "
+"your usernames and passwords on the internet."
+msgstr ""
+
+#: library/templates/openid.html:18
+msgid ""
+"Academic publishers are encouraged to explore the use of OpenID to add "
+"personalization to their products. <a href=\"http://toc.oreilly.com/2008/05/"
+"what-openid-can-do-for-educati.html\">Read more</a>."
+msgstr ""
 
 #: library/templates/public.html:6
 msgid "Read ePub ebooks online"

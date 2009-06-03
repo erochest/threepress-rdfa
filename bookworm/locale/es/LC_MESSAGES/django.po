@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:31-0400\n"
+"POT-Creation-Date: 2009-06-03 09:54-0400\n"
 "PO-Revision-Date: 2009-06-03 09:50-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -892,11 +892,14 @@ msgid ""
 "    Bookworm has also been tested on the Blackberry, Opera Mobile, Skyfire "
 "and the Kindle's Whispernet service."
 msgstr ""
-" <a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone.png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align=\"right\" style=\"margin-bottom:10px\" width=\"100\"/></a>\n"
+" <a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
+"png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
+"\"right\" style=\"margin-bottom:10px\" width=\"100\"/></a>\n"
 "S&iacute, en efecto. Para una versi&oacute;n especial de este sitio web,\n"
 " optimizada para dipositivos m&oacute;viles (especialmente el iPhone),\n"
 " dir&iacute;gete a <a href=\"%(mobilehost)s\">%(mobilehost)s</a>.\n"
-" Bookworm tambi&eacute;n ha sido evaluado en el Blackberry, Opera Mobile y el servicio\n"
+" Bookworm tambi&eacute;n ha sido evaluado en el Blackberry, Opera Mobile y "
+"el servicio\n"
 " Whispernet del Kindle. "
 
 #: library/templates/about.html:115
@@ -909,8 +912,10 @@ msgid ""
 "    information, see the <a href=\"%(toururl)s#step4\">tour</a>."
 msgstr ""
 " Adem&aacute;s de leer el contenido directamente en Bookworm,\n"
-" los usuarios de iPhone pueden exportar sus libros a <a href=\"http://www.lexcycle.com/\">Stanza</a>.\n"
-" Consulta <a href=\"%(toururl)s#step4\">esta p&aacute;gina</a> para m&aacute;s informaci&oacute;n.\n"
+" los usuarios de iPhone pueden exportar sus libros a <a href=\"http://www."
+"lexcycle.com/\">Stanza</a>.\n"
+" Consulta <a href=\"%(toururl)s#step4\">esta p&aacute;gina</a> para m&aacute;"
+"s informaci&oacute;n.\n"
 " "
 
 #: library/templates/about.html:120
@@ -2547,6 +2552,25 @@ msgstr "cargar"
 #: library/templates/last-read.html:3
 msgid "last read"
 msgstr "&uacute;ltimo le&iacute;do"
+
+#: library/templates/openid.html:3 library/templates/openid.html.py:5
+#: library/templates/openid.html:11
+#, fuzzy
+msgid "About OpenID"
+msgstr "Tu OpenID es"
+
+#: library/templates/openid.html:14
+msgid ""
+"Bookworm supports and advocates the use of OpenID, a simple way to manage "
+"your usernames and passwords on the internet."
+msgstr ""
+
+#: library/templates/openid.html:18
+msgid ""
+"Academic publishers are encouraged to explore the use of OpenID to add "
+"personalization to their products. <a href=\"http://toc.oreilly.com/2008/05/"
+"what-openid-can-do-for-educati.html\">Read more</a>."
+msgstr ""
 
 #: library/templates/public.html:6
 msgid "Read ePub ebooks online"
