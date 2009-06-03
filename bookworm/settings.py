@@ -163,6 +163,9 @@ MOBILE_HOST = 'http://m.bookworm.oreilly.com/'
 HOSTING_CREDIT = "O'Reilly Media"
 HOSTING_CREDIT_URL = 'http://oreilly.com/'
 
+# Email reply-to address
+REPLYTO_EMAIL = 'no-reply@threepress.org'
+
 # Set up logging
 LOG_DIR = '%s/log/' % ROOT_PATH
 LOG_NAME = 'bookworm.log'

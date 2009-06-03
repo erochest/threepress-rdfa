@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # encoding: utf-8
-import shutil, os, re, unittest, logging, datetime, time, sys, shutil
+import shutil, os, re, unittest, logging, datetime, sys, shutil
 from os.path import isfile, isdir
 
 from django.contrib.auth.models import User
 from django.test import TestCase as DjangoTestCase
 from django.conf import settings
 from django.http import HttpResponseNotFound
-import django.utils.translation as translation
+from django.core import mail
 
 from bookworm.search import epubindexer, index
 from bookworm.library.models import *
@@ -661,6 +661,7 @@ class TestModels(unittest.TestCase):
         document.user = self.user
         self.assertRaises(DRMEpubException, document.explode)
 
+
         filename = 'Pride-and-Prejudice_Jane-Austen.epub'
         document = self.create_document(filename)
         document.user = self.user
@@ -810,6 +811,15 @@ class TestViews(DjangoTestCase):
         # Check that we talked to epubcheck too
         self.assertContains(response, 'agrees that')
         self.assertContains(response, 'toc-doesnt-exist.ncx is missing')
+
+    def test_rights_document(self):
+        '''Assert that we correctly recognize a rights-managed epub and email the admin'''
+        filename = 'invalid-rights-managed.epub'
+        self._upload(filename)
+
+        assert len(mail.outbox) == 1
+        assert mail.outbox[0].to[0] == settings.ADMINS[0][1]
+        assert 'DRM' in mail.outbox[0].subject
 
     def test_content_visible(self):
         response = self._upload('Cory_Doctorow_-_Little_Brother.epub')

@@ -473,8 +473,8 @@ def upload(request, title=None, key=None):
                 message = _("We detected a problem with your ebook that is most likely related to it being too big to display safely in a web browser. This can happen with very large images, or with extremely long chapters. Please check with the publisher that the book has been formatted correctly.  Very large pages would require a lot of scrolling and load very slowly, so they are not allowed to be added to Bookworm.")
                 try:
                     # Email it to the admins
-                    email = EmailMessage('[bookworm] Too-large book added: %s' % document_name, e.__str__(), 'no-reply@threepress.org',
-                                         ['liza@threepress.org'])
+                    email = EmailMessage('[bookworm] Too-large book added: %s' % document_name, e.__str__(), settings.REPLYTO_EMAIL,
+                                         [settings.ADMINS[0][1]])
                     email.attach(document_name, data.getvalue(), epub_constants.MIMETYPE)
                     email.send()
                 except Exception, f:
@@ -488,8 +488,8 @@ def upload(request, title=None, key=None):
                 # Delete it first so we don't end up with a broken document in the library
                 try:
                     # Email it to the admins
-                    email = EmailMessage('[bookworm] Got DRM epub as %s' % document_name, tb, 'no-reply@threepress.org',
-                                         ['liza@threepress.org'])
+                    email = EmailMessage('[bookworm] Got DRM epub as %s' % document_name, tb, settings.REPLYTO_EMAIL,
+                                         [settings.ADMINS[0][1]])
                     email.attach(document_name, data.getvalue(), epub_constants.MIMETYPE)
                     email.send()
                 except Exception, f:
@@ -505,8 +505,8 @@ def upload(request, title=None, key=None):
                 # Delete it first so we don't end up with a broken document in the library
                 try:
                     # Email it to the admins
-                    email = EmailMessage('[bookworm] Failed upload for %s' % document_name, tb, 'no-reply@threepress.org',
-                                         ['liza@threepress.org'])
+                    email = EmailMessage('[bookworm] Failed upload for %s' % document_name, tb, settings.REPLYTO_EMAIL,
+                                         [settings.ADMINS[0][1]])
                     email.attach(document_name, data.getvalue(), epub_constants.MIMETYPE)
                     email.send()
                 except Exception, f:
