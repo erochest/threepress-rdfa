@@ -13,7 +13,7 @@
     {% if ORM_MEDIA_URL %}
       <link rel="stylesheet" type="text/css" href="{{ ORM_MEDIA_URL }}css/oreilly.css" ></link>
     {% endif %}
-    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/host.css" ></link>
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}host.css" ></link>
 
     {% block overridestyles %}{% endblock overridestyles %}
     {% if OFFLINE %}
@@ -28,9 +28,7 @@
     {% block orm_header %}
       {% include "orm/header.html" %}
     {% endblock orm_header %}
-    {% block host_header %}
-      {% include "host/header.html" %}
-    {% endblock host_header %}
+    {% include "host-header.html" %}
 
     <!-- Bookworm header -->
     <div id="bw-header">
