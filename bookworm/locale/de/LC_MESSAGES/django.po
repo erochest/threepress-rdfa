@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 13:59-0400\n"
+"POT-Creation-Date: 2009-06-09 18:51-0400\n"
 "PO-Revision-Date: 2009-06-03 21:20+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
@@ -1058,8 +1058,8 @@ msgid ""
 "a> for more information."
 msgstr ""
 "Öffentliche Bücher sind in einem sehr frühen Beta Stadium. Wollen Sie, dass "
-"ein Buch öffentlich gemacht wird, kontaktieren Sie bitte <a href=\"mailto:"
-"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>."
+"ein Buch öffentlich gemacht wird, kontaktieren Sie bitte <a href=\"mailto:%"
+"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>."
 
 #: library/templates/about.html:182
 msgid " Are my books securely stored and backed up?"
@@ -1419,12 +1419,13 @@ msgstr ""
 "  "
 
 #: library/templates/ebooktesting.html:132
+#, fuzzy
 msgid ""
 "\n"
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
 "    material. Contact <a\n"
-"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
+"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
 "    for more details.\n"
 "    "
 msgstr ""
@@ -2136,8 +2137,10 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-" Immer wenn ein ePub Buch nicht zu Ihrer Bibliothek hinzugefügt werden konnte, \n"
-" werden die Bookworm Entwickler benachrichtigt. Falls ein Fehler gefunden wird,\n"
+" Immer wenn ein ePub Buch nicht zu Ihrer Bibliothek hinzugefügt werden "
+"konnte, \n"
+" werden die Bookworm Entwickler benachrichtigt. Falls ein Fehler gefunden "
+"wird,\n"
 " wird er normalerweise innerhalb weniger Tage korrigiert. Versuchen Sie es \n"
 " später noch einmal oder senden eine Email an \n"
 "  <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>,\n"
@@ -2384,8 +2387,8 @@ msgstr ""
 "    Besuchen Sie auch unser Forum <a href=\"http://getsatisfaction.com/"
 "threepress/topics/post_ideas_and_questions_about_bookworm\">Get "
 "Satisfaction</a>.\n"
-"    Für spezielle Fragen kontaktieren Sie bitte <a href=\"mailto:"
-"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>.</p>\n"
+"    Für spezielle Fragen kontaktieren Sie bitte <a href=\"mailto:%"
+"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>.</p>\n"
 "    "
 
 #: library/templates/index.html:6
@@ -2531,7 +2534,8 @@ msgid ""
 "your usernames and passwords on the internet."
 msgstr ""
 "Bookworm unterstützt und befürwortet die Benutzung von OpenID, \n"
-"einer einfachen Art und Weise Ihre Benutzernamen und Kennwörter im Internet \n"
+"einer einfachen Art und Weise Ihre Benutzernamen und Kennwörter im "
+"Internet \n"
 "zu verwalten."
 
 #: library/templates/openid.html:18
@@ -2542,7 +2546,8 @@ msgid ""
 msgstr ""
 "Akademische Herausgeber werden ermutigt die Benutzung von OpenID Ihren \n"
 "Produkten zur Personalisierung hinzuzufügen. \n"
-"<a href=\"http://toc.oreilly.com/2008/05/what-openid-can-do-for-educati.html\">\n"
+"<a href=\"http://toc.oreilly.com/2008/05/what-openid-can-do-for-educati.html"
+"\">\n"
 "Mehr Information</a>."
 
 #: library/templates/public.html:6
@@ -2564,6 +2569,21 @@ msgstr "Erfahren Sie mehr"
 #: library/templates/auth/authopenid/signup.html:75
 msgid "Sign up"
 msgstr "Konto erstellen"
+
+#: library/templates/public.html:27
+msgid ""
+"Bookworm is fabulous. Hands down, a wonderful app. I love how it integrates "
+"with the iPhone for easy offline reading.&rdquo; &mdash; <a href=\"http://"
+"getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
+"\">Customer on Get Satisfaction"
+msgstr ""
+
+#: library/templates/public.html:29
+msgid ""
+"The perfect tool for taking your own book collection anywhere that has an "
+"internet connection&rdquo; &mdash; <a href=\"http://www.jedisaber.com/ebooks/"
+"Readers.asp\">ePub Reader Software reviews"
+msgstr ""
 
 #: library/templates/public.html:35
 msgid "Readers"
@@ -3474,8 +3494,8 @@ msgid ""
 msgstr ""
 "Lesen Sie bitte die <a href=\"%(helpurl)s\">Hilfe</a> oder <a href=\"%"
 "(abouturl)s\">Über</a> Seite für mehr Information oder senden eine Email an "
-"<a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> für "
-"weitere Unterstützung."
+"<a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> für weitere "
+"Unterstützung."
 
 #: library/templates/upload.html:27
 #, python-format
@@ -3658,7 +3678,9 @@ msgstr ""
 "  <a href=\"mailto:%(ADMIN_EMAIL)s\"> lassen Sie uns wissen, ob Sie beim \n"
 "  Übersetzen helfen wollen</a>. \n"
 "  Bookworm kann in \n"
-"  <a href=\"http://code.djangoproject.com/browser/django/trunk/django/conf/global_settings.py#L43\">jede vom Django Framework unterstützte Sprache übersetzt</a> werden."
+"  <a href=\"http://code.djangoproject.com/browser/django/trunk/django/conf/"
+"global_settings.py#L43\">jede vom Django Framework unterstützte Sprache "
+"übersetzt</a> werden."
 
 #: library/templates/auth/language.html:22
 msgid ""
@@ -4119,7 +4141,9 @@ msgstr ""
 #: library/templates/includes/openid.html:24
 msgid ""
 "AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> "
-msgstr "AOL oder AIM Benutzer: Ihre OpenID ist <em>openid.aol.com/ihr-anzeigename</em>"
+msgstr ""
+"AOL oder AIM Benutzer: Ihre OpenID ist <em>openid.aol.com/ihr-anzeigename</"
+"em>"
 
 #: library/templates/includes/openid.html:26
 msgid "Basecamp, Highrise  Backpack "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 14:00-0400\n"
+"POT-Creation-Date: 2009-06-09 18:51-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -705,8 +705,7 @@ msgid ""
 "(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>"
 msgstr ""
 "Si vous avez des questions ou des problèmes avec Bookworm, veuillez "
-"contacter <a href=\"mailto:%(ADMIN_EMAIL)s\">bookworm@threepress."
-"org</a>"
+"contacter <a href=\"mailto:%(ADMIN_EMAIL)s\">bookworm@threepress.org</a>"
 
 #: library/templates/about.html:36
 msgid ""
@@ -1017,8 +1016,8 @@ msgid ""
 "a> for more information."
 msgstr ""
 "Les livres publics sont en version beta. Pour demander qu'un livre soit "
-"public, veuillez contacter <a href=\"mailto:%(ADMIN_EMAIL)s"
-"\">%(ADMIN_EMAIL)s</a> pour plus d'informations."
+"public, veuillez contacter <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)"
+"s</a> pour plus d'informations."
 
 #: library/templates/about.html:182
 msgid " Are my books securely stored and backed up?"
@@ -1307,7 +1306,7 @@ msgid ""
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
 "    material. Contact <a\n"
-"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
+"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
 "    for more details.\n"
 "    "
 msgstr ""
@@ -2119,6 +2118,21 @@ msgstr ""
 #: library/templates/auth/authopenid/signup.html:4
 #: library/templates/auth/authopenid/signup.html:75
 msgid "Sign up"
+msgstr ""
+
+#: library/templates/public.html:27
+msgid ""
+"Bookworm is fabulous. Hands down, a wonderful app. I love how it integrates "
+"with the iPhone for easy offline reading.&rdquo; &mdash; <a href=\"http://"
+"getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
+"\">Customer on Get Satisfaction"
+msgstr ""
+
+#: library/templates/public.html:29
+msgid ""
+"The perfect tool for taking your own book collection anywhere that has an "
+"internet connection&rdquo; &mdash; <a href=\"http://www.jedisaber.com/ebooks/"
+"Readers.asp\">ePub Reader Software reviews"
 msgstr ""
 
 #: library/templates/public.html:35

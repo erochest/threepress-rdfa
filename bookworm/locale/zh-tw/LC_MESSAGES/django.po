@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 14:00-0400\n"
+"POT-Creation-Date: 2009-06-09 18:51-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -687,8 +687,8 @@ msgid ""
 "(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>"
 msgstr ""
 "\n"
-"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:%(ADMIN_EMAIL)s"
-"\">%(ADMIN_EMAIL)s</a> \n"
+"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:%(ADMIN_EMAIL)s\">%"
+"(ADMIN_EMAIL)s</a> \n"
 
 #: library/templates/about.html:36
 #, fuzzy
@@ -941,8 +941,8 @@ msgstr ""
 "\n"
 " Threepress是一個出版商服務公司，且對於在出版界發表新產品有多年經驗。我們會很"
 "樂意討論ePub格式，以讓你的書籍能加入ePub，甚至擴展Bookworm的特色以適用你的出"
-"版刊物。請聯絡<a href=\"mailto:%(ADMIN_EMAIL)s\">bookworm@threepress."
-"org</a>，我們會立即回覆你。\n"
+"版刊物。請聯絡<a href=\"mailto:%(ADMIN_EMAIL)s\">bookworm@threepress.org</"
+"a>，我們會立即回覆你。\n"
 
 #: library/templates/about.html:157
 msgid ""
@@ -1010,8 +1010,8 @@ msgid ""
 "a> for more information."
 msgstr ""
 "\n"
-" 公開書籍還是初始階段。若欲請求書籍公開，請聯繫<a href=\"mailto:"
-"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>獲得更多相關訊息。\n"
+" 公開書籍還是初始階段。若欲請求書籍公開，請聯繫<a href=\"mailto:%"
+"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>獲得更多相關訊息。\n"
 
 #: library/templates/about.html:182
 msgid " Are my books securely stored and backed up?"
@@ -1097,8 +1097,8 @@ msgstr ""
 " 任何問題與功能要求，請至<a href=\"http://getsatisfaction.com/threepress/"
 "topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a>，或是電"
 "郵至<a \n"
-" href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>。 你也可"
-"以訂閱<a href=\"http://blog.threepress.org\">blog</a>來獲得最新的消息。\n"
+" href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>。 你也可以訂閱<a href="
+"\"http://blog.threepress.org\">blog</a>來獲得最新的消息。\n"
 
 #: library/templates/base.html:12
 msgid "Search your library"
@@ -1335,20 +1335,21 @@ msgstr ""
 "務負責因軟體問題而導致電子書 被公開檢閱的責任。\n"
 
 #: library/templates/ebooktesting.html:132
+#, fuzzy
 msgid ""
 "\n"
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
 "    material. Contact <a\n"
-"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
+"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
 "    for more details.\n"
 "    "
 msgstr ""
 "\n"
 "\n"
 " 然而，Threepress可以安排Bookworm專用版本來建立大規模的測試，或是針對特別機密"
-"的資料。請聯絡<a href=\"mailto:%(ADMIN_EMAIL)s\">bookworm@threepress."
-"org</a>以獲得更多細節。\n"
+"的資料。請聯絡<a href=\"mailto:%(ADMIN_EMAIL)s\">bookworm@threepress.org</a>"
+"以獲得更多細節。\n"
 
 #: library/templates/epub.html:7 library/templates/epub.html.py:8
 msgid "Bookworm and the ePub standard"
@@ -1833,8 +1834,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-" 困惑不知如何做，或是遇到問題？查詢常見問題表單，或是電郵<a href=\"mailto:"
-"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>尋求協助。\n"
+" 困惑不知如何做，或是遇到問題？查詢常見問題表單，或是電郵<a href=\"mailto:%"
+"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>尋求協助。\n"
 
 #: library/templates/help.html:33
 msgid "Problems adding a book?"
@@ -1975,8 +1976,8 @@ msgstr ""
 "\n"
 "\n"
 " 無論何時ePub書籍上載到圖書館失敗時，Bookworm研發者皆會收到通知。如果發現是程"
-"式錯誤，通常數日後就會修復。所以可確認或電郵<a href=\"mailto:"
-"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> 來查詢修復進度。\n"
+"式錯誤，通常數日後就會修復。所以可確認或電郵<a href=\"mailto:%(ADMIN_EMAIL)s"
+"\">%(ADMIN_EMAIL)s</a> 來查詢修復進度。\n"
 
 #: library/templates/help.html:105
 msgid "Does the book contain DRM (Digital Rights Management)?"
@@ -2202,8 +2203,8 @@ msgstr ""
 "\n"
 " 也可參考我們的論壇<a href=\"http://getsatisfaction.com/threepress/topics/"
 "post_ideas_and_questions_about_bookworm\">Get Satisfaction</a>。有任何問題，"
-"歡迎隨時聯繫我們 <a href=\"mailto:%(ADMIN_EMAIL)s"
-"\">%(ADMIN_EMAIL)s</a></p> \n"
+"歡迎隨時聯繫我們 <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a></"
+"p> \n"
 
 #: library/templates/index.html:6
 msgid "My epub library"
@@ -2371,6 +2372,21 @@ msgstr "了解更多"
 #: library/templates/auth/authopenid/signup.html:75
 msgid "Sign up"
 msgstr "註冊"
+
+#: library/templates/public.html:27
+msgid ""
+"Bookworm is fabulous. Hands down, a wonderful app. I love how it integrates "
+"with the iPhone for easy offline reading.&rdquo; &mdash; <a href=\"http://"
+"getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
+"\">Customer on Get Satisfaction"
+msgstr ""
+
+#: library/templates/public.html:29
+msgid ""
+"The perfect tool for taking your own book collection anywhere that has an "
+"internet connection&rdquo; &mdash; <a href=\"http://www.jedisaber.com/ebooks/"
+"Readers.asp\">ePub Reader Software reviews"
+msgstr ""
 
 #: library/templates/public.html:35
 msgid "Readers"
@@ -3190,8 +3206,8 @@ msgid ""
 "(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> for assistance."
 msgstr ""
 "\n"
-"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:%(ADMIN_EMAIL)s"
-"\">%(ADMIN_EMAIL)s</a> \n"
+"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:%(ADMIN_EMAIL)s\">%"
+"(ADMIN_EMAIL)s</a> \n"
 
 #: library/templates/upload.html:27
 #, fuzzy, python-format
@@ -3200,8 +3216,8 @@ msgid ""
 "%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> with a description of the problem."
 msgstr ""
 "\n"
-"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:%(ADMIN_EMAIL)s"
-"\">%(ADMIN_EMAIL)s</a> \n"
+"有任何關於Bookworm的問題，請聯繫<a href=\"mailto:%(ADMIN_EMAIL)s\">%"
+"(ADMIN_EMAIL)s</a> \n"
 
 #: library/templates/upload.html:42
 msgid ""
@@ -3365,10 +3381,10 @@ msgid ""
 "Django framework</a>."
 msgstr ""
 "\n"
-" 如果看不到喜愛的語言，<a href=\"mailto:%(ADMIN_EMAIL)s\">想要協助翻"
-"譯，請告知我們</a>。Bookworm可以翻譯成 <a href=\"http://code.djangoproject."
-"com/browser/django/trunk/django/conf/global_settings.py#L43\">Django架構支援"
-"的任何語言</a>。\n"
+" 如果看不到喜愛的語言，<a href=\"mailto:%(ADMIN_EMAIL)s\">想要協助翻譯，請告"
+"知我們</a>。Bookworm可以翻譯成 <a href=\"http://code.djangoproject.com/"
+"browser/django/trunk/django/conf/global_settings.py#L43\">Django架構支援的任"
+"何語言</a>。\n"
 
 #: library/templates/auth/language.html:22
 msgid ""
