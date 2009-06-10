@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-09 20:00-0400\n"
+"POT-Creation-Date: 2009-06-09 20:23-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -168,323 +168,6 @@ msgstr ""
 #: django_authopenid/views.py:861
 #, python-format
 msgid "Password changed for %s. You could now sign in"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changeemail.html:8
-msgid "Account: change email"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changeemail.html:10
-msgid ""
-"This is where you can change the email address associated with your account. "
-"Please keep this email address up to date so we can send you a password-"
-"reset email if you request one."
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changeemail.html:12
-#: django_authopenid/templates/authopenid/changeopenid.html:9
-#: django_authopenid/templates/authopenid/changepw.html:15
-#: django_authopenid/templates/authopenid/complete.html:26
-#: django_authopenid/templates/authopenid/complete.html:36
-#: django_authopenid/templates/authopenid/delete.html:10
-#: django_authopenid/templates/authopenid/delete.html:20
-#: django_authopenid/templates/authopenid/sendpw.html:11
-#: django_authopenid/templates/authopenid/signup.html:15
-#: library/templates/auth/authopenid/complete.html:22
-#: library/templates/auth/authopenid/complete.html:32
-msgid "Please correct errors below:"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changeemail.html:29
-msgid "New email"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changeemail.html:30
-#: django_authopenid/templates/authopenid/complete.html:68
-#: library/templates/auth/authopenid/changeemail.html:34
-#: library/templates/auth/authopenid/complete.html:63
-#: library/templates/auth/authopenid/delete.html:40
-#: library/templates/auth/authopenid/signin.html:74
-#: library/templates/auth/authopenid/signup.html:71
-msgid "Password"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changeemail.html:32
-#: library/templates/auth/authopenid/changeemail.html:35
-msgid "Change email"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changeopenid.html:5
-msgid "Account: change openid url"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changeopenid.html:7
-msgid ""
-"This is where you can change your openid url used to connect to Bookworm. "
-"Make sure you remember it!"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changeopenid.html:24
-msgid "OpenID url:"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changeopenid.html:25
-msgid "Change openid"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changepw.html:11
-msgid "Account: change password"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changepw.html:13
-msgid "This is where you can change your password. Make sure you remember it!"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changepw.html:23
-#: library/templates/auth/authopenid/changepw.html:22
-msgid "Old password"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changepw.html:24
-#: library/templates/auth/authopenid/changepw.html:23
-msgid "New password"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changepw.html:25
-#: library/templates/auth/authopenid/changepw.html:24
-msgid "New password again"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/changepw.html:26
-#: library/templates/auth/profile.html:28
-#: library/templates/auth/authopenid/changepw.html:12
-#: library/templates/auth/authopenid/changepw.html:25
-msgid "Change password"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/complete.html:12
-msgid "Your OpenID is verified! "
-msgstr ""
-
-#: django_authopenid/templates/authopenid/complete.html:13
-msgid ""
-"\n"
-"\t<p>Your OpenID can now be associated with a new or existing membership. "
-"You can change the association later in your preferences</p>\n"
-"\t"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/complete.html:17
-msgid "Associate your OpenID"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/complete.html:18
-msgid ""
-"\n"
-"\t<p>If you're joining <strong>Sitename</strong>, associate your OpenID with "
-"a new account. If you're already a member, associate with your existing "
-"account.</p>\n"
-"\t"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/complete.html:50
-msgid "A new account"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/complete.html:51
-#: django_authopenid/templates/authopenid/complete.html:67
-#: library/templates/auth/authopenid/complete.html:62
-msgid "Screen name"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/complete.html:52
-#: library/templates/auth/authopenid/changeemail.html:33
-#: library/templates/auth/authopenid/complete.html:48
-#: library/templates/auth/authopenid/signup.html:70
-msgid "Email"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/complete.html:66
-msgid "An exisiting account"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/delete.html:6
-msgid "Account: delete account"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/delete.html:8
-msgid ""
-"Note: After deleting your account, anyone will be able to register this "
-"username."
-msgstr ""
-
-#: django_authopenid/templates/authopenid/delete.html:12
-msgid "Check confirm box, if you want delete your account."
-msgstr ""
-
-#: django_authopenid/templates/authopenid/delete.html:15
-msgid "Password:"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/delete.html:27
-msgid "I am sure I want to delete my account."
-msgstr ""
-
-#: django_authopenid/templates/authopenid/delete.html:28
-msgid "Password/ OpenID URL"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/delete.html:28
-msgid "(required for your security)"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/delete.html:30
-msgid "delete account forever"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/sendpw.html:7
-msgid "Account: Send a new password"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/sendpw.html:9
-msgid ""
-"Lost your password ? Here you can ask to reset your password. Enter the "
-"username you use  and you will get a confirm mail with your new password. "
-"This new password will be activated only after you clicked on the link you "
-"will find in the email"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/sendpw.html:24
-#: library/templates/auth/profile.html:68
-#: library/templates/auth/authopenid/complete.html:47
-#: library/templates/auth/authopenid/sendpw.html:27
-#: library/templates/auth/authopenid/signin.html:72
-#: library/templates/auth/authopenid/signup.html:67
-msgid "Username"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/sendpw.html:26
-msgid "Send new password"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:22
-#: library/templates/auth/authopenid/settings.html:22
-msgid "Settings"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:23
-msgid ""
-"\n"
-"    <p>This is where you can make changes to your account.</p>\n"
-"\n"
-"    "
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:33
-#: library/templates/auth/authopenid/settings.html:33
-msgid "Account"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:35
-#: library/templates/auth/authopenid/settings.html:35
-msgid "password/"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:35
-#: library/templates/auth/authopenid/settings.html:35
-msgid "change password"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:36
-#: library/templates/auth/authopenid/settings.html:36
-msgid "Give your  account a new password."
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:37
-#: library/templates/auth/authopenid/settings.html:37
-msgid "email/"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:37
-#: library/templates/auth/authopenid/settings.html:37
-msgid "change email"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:38
-#: library/templates/auth/authopenid/settings.html:38
-msgid "Add or update the email address associated with your account."
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:40
-#: library/templates/auth/authopenid/settings.html:40
-msgid "openid/"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:40
-#: library/templates/auth/authopenid/settings.html:40
-msgid "change openid url"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:41
-#: library/templates/auth/authopenid/settings.html:41
-msgid "Change openid associated to your account"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:44
-#: library/templates/auth/authopenid/settings.html:44
-msgid "delete/"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:44
-#: library/templates/auth/authopenid/settings.html:44
-msgid "delete account"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/settings.html:45
-#: library/templates/auth/authopenid/settings.html:45
-msgid "Erase your username and all your data from website"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/signup.html:7
-msgid ""
-"\n"
-"    <h1>Join</h1>\n"
-"    <p>There are two ways to join: with an email + screen name, or with "
-"OpenID.<br />Enter information only for the type of sign up you want to do.</"
-"p>\n"
-"    "
-msgstr ""
-
-#: django_authopenid/templates/authopenid/signup.html:13
-msgid "Regular Signup"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/signup.html:29
-msgid "Choose a Screen Name:"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/signup.html:31
-msgid "Enter Your Email Address:"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/signup.html:32
-msgid "Choose a Password:"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/signup.html:33
-msgid "Confirm Your Password:"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/signup.html:35
-msgid "JOIN FREE"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/signup.html:39
-msgid "OpenID Signup"
-msgstr ""
-
-#: django_authopenid/templates/authopenid/signup.html:42
-msgid "Sign in with OPENID"
 msgstr ""
 
 #: library/models.py:134
@@ -2878,6 +2561,12 @@ msgstr ""
 msgid "Profile and preferences for"
 msgstr ""
 
+#: library/templates/auth/profile.html:28
+#: library/templates/auth/authopenid/changepw.html:12
+#: library/templates/auth/authopenid/changepw.html:25
+msgid "Change password"
+msgstr ""
+
 #: library/templates/auth/profile.html:32
 #: library/templates/auth/authopenid/changeemail.html:13
 msgid "Change email address"
@@ -2903,6 +2592,15 @@ msgstr ""
 
 #: library/templates/auth/profile.html:63
 msgid "User information"
+msgstr ""
+
+#: library/templates/auth/profile.html:68
+#: library/templates/auth/authopenid/complete.html:47
+#: library/templates/auth/authopenid/confirm_email.txt:6
+#: library/templates/auth/authopenid/sendpw.html:27
+#: library/templates/auth/authopenid/signin.html:72
+#: library/templates/auth/authopenid/signup.html:67
+msgid "Username"
 msgstr ""
 
 #: library/templates/auth/profile.html:83
@@ -2945,6 +2643,25 @@ msgstr ""
 msgid "Please correct the errors below"
 msgstr ""
 
+#: library/templates/auth/authopenid/changeemail.html:33
+#: library/templates/auth/authopenid/complete.html:48
+#: library/templates/auth/authopenid/signup.html:70
+msgid "Email"
+msgstr ""
+
+#: library/templates/auth/authopenid/changeemail.html:34
+#: library/templates/auth/authopenid/complete.html:63
+#: library/templates/auth/authopenid/confirm_email.txt:7
+#: library/templates/auth/authopenid/delete.html:40
+#: library/templates/auth/authopenid/signin.html:74
+#: library/templates/auth/authopenid/signup.html:71
+msgid "Password"
+msgstr ""
+
+#: library/templates/auth/authopenid/changeemail.html:35
+msgid "Change email"
+msgstr ""
+
 #: library/templates/auth/authopenid/changeopenid.html:11
 msgid "Change OpenID URL linked with this account"
 msgstr ""
@@ -2973,6 +2690,18 @@ msgstr ""
 msgid "Change password for <!-- trans: for person -->"
 msgstr ""
 
+#: library/templates/auth/authopenid/changepw.html:22
+msgid "Old password"
+msgstr ""
+
+#: library/templates/auth/authopenid/changepw.html:23
+msgid "New password"
+msgstr ""
+
+#: library/templates/auth/authopenid/changepw.html:24
+msgid "New password again"
+msgstr ""
+
 #: library/templates/auth/authopenid/complete.html:10
 msgid ""
 "If you're new to Bookworm, link your OpenID with a new account. If you're "
@@ -2981,6 +2710,11 @@ msgstr ""
 
 #: library/templates/auth/authopenid/complete.html:17
 msgid "Link an OpenID with your existing Bookworm account"
+msgstr ""
+
+#: library/templates/auth/authopenid/complete.html:22
+#: library/templates/auth/authopenid/complete.html:32
+msgid "Please correct errors below:"
 msgstr ""
 
 #: library/templates/auth/authopenid/complete.html:46
@@ -2995,8 +2729,24 @@ msgstr ""
 msgid "I already have a Bookworm account"
 msgstr ""
 
+#: library/templates/auth/authopenid/complete.html:62
+msgid "Screen name"
+msgstr ""
+
 #: library/templates/auth/authopenid/complete.html:64
 msgid "Associate with my OpenID"
+msgstr ""
+
+#: library/templates/auth/authopenid/confirm_email.txt:2
+msgid "Thank you for registering with Bookworm."
+msgstr ""
+
+#: library/templates/auth/authopenid/confirm_email.txt:4
+msgid "Your account details are"
+msgstr ""
+
+#: library/templates/auth/authopenid/confirm_email.txt:9
+msgid "You can now sign in"
 msgstr ""
 
 #: library/templates/auth/authopenid/delete.html:4
@@ -3043,8 +2793,79 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
+#: library/templates/auth/authopenid/sendpw_email.txt:2
+#, python-format
+msgid ""
+"Someone asked to reset your password on %(site_url)s. \n"
+"If it's not you, please ignore this email. \n"
+"\n"
+"Your new account details are:\n"
+"\n"
+"Username: %(username)s\n"
+"New password: %(password)s\n"
+"\n"
+"To confirm reset of your password go on this url:\n"
+"%(site_url)s%(url_confirm)s?key=%(confirm_key)s\n"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:22
+msgid "Settings"
+msgstr ""
+
 #: library/templates/auth/authopenid/settings.html:23
 msgid "This is where you can make changes to your account."
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:33
+msgid "Account"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:35
+msgid "password/"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:35
+msgid "change password"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:36
+msgid "Give your  account a new password."
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:37
+msgid "email/"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:37
+msgid "change email"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:38
+msgid "Add or update the email address associated with your account."
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:40
+msgid "openid/"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:40
+msgid "change openid url"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:41
+msgid "Change openid associated to your account"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:44
+msgid "delete/"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:44
+msgid "delete account"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:45
+msgid "Erase your username and all your data from website"
 msgstr ""
 
 #: library/templates/auth/authopenid/signin.html:31

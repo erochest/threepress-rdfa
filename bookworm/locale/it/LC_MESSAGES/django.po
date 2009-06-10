@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bookworm\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-09 19:59-0400\n"
+"POT-Creation-Date: 2009-06-09 20:23-0400\n"
 "PO-Revision-Date: 2009-06-03 09:28-0400\n"
 "Last-Translator: Marco Croella <marco.croella@simplicissimus.it>\n"
 "Language-Team: Italian <marco.croella@simplicissimus.it>\n"
@@ -184,354 +184,6 @@ msgstr ""
 #, python-format
 msgid "Password changed for %s. You could now sign in"
 msgstr "Password cambiata per %s. Ora ti puoi connettere"
-
-#: django_authopenid/templates/authopenid/changeemail.html:8
-msgid "Account: change email"
-msgstr "Account: cambia email"
-
-#: django_authopenid/templates/authopenid/changeemail.html:10
-msgid ""
-"This is where you can change the email address associated with your account. "
-"Please keep this email address up to date so we can send you a password-"
-"reset email if you request one."
-msgstr ""
-"Da qui puoi cambiare l'email associata al tuo account. Tieni sempre "
-"aggiornato questo indirizzo in modo che se la richiedi ti possiamo inviare "
-"una mail di azzeramento password."
-
-#: django_authopenid/templates/authopenid/changeemail.html:12
-#: django_authopenid/templates/authopenid/changeopenid.html:9
-#: django_authopenid/templates/authopenid/changepw.html:15
-#: django_authopenid/templates/authopenid/complete.html:26
-#: django_authopenid/templates/authopenid/complete.html:36
-#: django_authopenid/templates/authopenid/delete.html:10
-#: django_authopenid/templates/authopenid/delete.html:20
-#: django_authopenid/templates/authopenid/sendpw.html:11
-#: django_authopenid/templates/authopenid/signup.html:15
-#: library/templates/auth/authopenid/complete.html:22
-#: library/templates/auth/authopenid/complete.html:32
-msgid "Please correct errors below:"
-msgstr "Correggi i seguenti errori:"
-
-#: django_authopenid/templates/authopenid/changeemail.html:29
-msgid "New email"
-msgstr "Nuova email"
-
-#: django_authopenid/templates/authopenid/changeemail.html:30
-#: django_authopenid/templates/authopenid/complete.html:68
-#: library/templates/auth/authopenid/changeemail.html:34
-#: library/templates/auth/authopenid/complete.html:63
-#: library/templates/auth/authopenid/delete.html:40
-#: library/templates/auth/authopenid/signin.html:74
-#: library/templates/auth/authopenid/signup.html:71
-msgid "Password"
-msgstr "Password"
-
-#: django_authopenid/templates/authopenid/changeemail.html:32
-#: library/templates/auth/authopenid/changeemail.html:35
-msgid "Change email"
-msgstr "Cambia email"
-
-#: django_authopenid/templates/authopenid/changeopenid.html:5
-msgid "Account: change openid url"
-msgstr "Account: cambia l'url openid"
-
-#: django_authopenid/templates/authopenid/changeopenid.html:7
-msgid ""
-"This is where you can change your openid url used to connect to Bookworm. "
-"Make sure you remember it!"
-msgstr ""
-"Da qui puoi cambiare la tua url openid utilizzata per connetterti a "
-"Bookworm. Assicurati di ricordarla!"
-
-#: django_authopenid/templates/authopenid/changeopenid.html:24
-msgid "OpenID url:"
-msgstr "OpenID url:"
-
-#: django_authopenid/templates/authopenid/changeopenid.html:25
-msgid "Change openid"
-msgstr "Cambia openid"
-
-#: django_authopenid/templates/authopenid/changepw.html:11
-msgid "Account: change password"
-msgstr "Account: cambia password"
-
-#: django_authopenid/templates/authopenid/changepw.html:13
-msgid "This is where you can change your password. Make sure you remember it!"
-msgstr "Da qui puoi cambiare la tua password. Assicurati di ricordarla!"
-
-#: django_authopenid/templates/authopenid/changepw.html:23
-#: library/templates/auth/authopenid/changepw.html:22
-msgid "Old password"
-msgstr "Vecchia password"
-
-#: django_authopenid/templates/authopenid/changepw.html:24
-#: library/templates/auth/authopenid/changepw.html:23
-msgid "New password"
-msgstr "Nuova password"
-
-#: django_authopenid/templates/authopenid/changepw.html:25
-#: library/templates/auth/authopenid/changepw.html:24
-msgid "New password again"
-msgstr "Ripeti la nuova password"
-
-#: django_authopenid/templates/authopenid/changepw.html:26
-#: library/templates/auth/profile.html:28
-#: library/templates/auth/authopenid/changepw.html:12
-#: library/templates/auth/authopenid/changepw.html:25
-msgid "Change password"
-msgstr "Cambia password"
-
-#: django_authopenid/templates/authopenid/complete.html:12
-msgid "Your OpenID is verified! "
-msgstr "Il tuo OpenID è stato verificato!"
-
-#: django_authopenid/templates/authopenid/complete.html:13
-msgid ""
-"\n"
-"\t<p>Your OpenID can now be associated with a new or existing membership. "
-"You can change the association later in your preferences</p>\n"
-"\t"
-msgstr ""
-"\n"
-"\t<p>Il tuo OpenID può essere ora associato con una nuova o con una "
-"esistente iscrizione. Potrai cambiare l'associazione in seguito nelle tue "
-"opzioni</p>\n"
-"\t"
-
-#: django_authopenid/templates/authopenid/complete.html:17
-msgid "Associate your OpenID"
-msgstr "Associa il tuo OpenID"
-
-#: django_authopenid/templates/authopenid/complete.html:18
-msgid ""
-"\n"
-"\t<p>If you're joining <strong>Sitename</strong>, associate your OpenID with "
-"a new account. If you're already a member, associate with your existing "
-"account.</p>\n"
-"\t"
-msgstr ""
-"\n"
-"\t<p>Se ti stai iscrivendo a <strong>Sitename</strong>, associa il tuo "
-"OpenID con un nuovo account. Se sei già membro, associalo al tuo account.</"
-"p>\n"
-"\t"
-
-#: django_authopenid/templates/authopenid/complete.html:50
-msgid "A new account"
-msgstr "Nuovo account"
-
-#: django_authopenid/templates/authopenid/complete.html:51
-#: django_authopenid/templates/authopenid/complete.html:67
-#: library/templates/auth/authopenid/complete.html:62
-msgid "Screen name"
-msgstr "Nome utente"
-
-#: django_authopenid/templates/authopenid/complete.html:52
-#: library/templates/auth/authopenid/changeemail.html:33
-#: library/templates/auth/authopenid/complete.html:48
-#: library/templates/auth/authopenid/signup.html:70
-msgid "Email"
-msgstr "Email"
-
-#: django_authopenid/templates/authopenid/complete.html:66
-msgid "An exisiting account"
-msgstr "Account esistente"
-
-#: django_authopenid/templates/authopenid/delete.html:6
-msgid "Account: delete account"
-msgstr "Account: cancella account"
-
-#: django_authopenid/templates/authopenid/delete.html:8
-msgid ""
-"Note: After deleting your account, anyone will be able to register this "
-"username."
-msgstr ""
-"Nota: dopo aver cancellato l'account, altre persone potranno registrarsi con "
-"questo nome utente"
-
-#: django_authopenid/templates/authopenid/delete.html:12
-msgid "Check confirm box, if you want delete your account."
-msgstr "Seleziona il box di conferma se vuoi cancellare il tuo account."
-
-#: django_authopenid/templates/authopenid/delete.html:15
-msgid "Password:"
-msgstr "Password:"
-
-#: django_authopenid/templates/authopenid/delete.html:27
-msgid "I am sure I want to delete my account."
-msgstr "Voglio assolutamente cancellare il mio account."
-
-#: django_authopenid/templates/authopenid/delete.html:28
-msgid "Password/ OpenID URL"
-msgstr "Password/ OpenID URL"
-
-#: django_authopenid/templates/authopenid/delete.html:28
-msgid "(required for your security)"
-msgstr "(richiesti per la tua sicurezza)"
-
-#: django_authopenid/templates/authopenid/delete.html:30
-msgid "delete account forever"
-msgstr "cancella l'account per sempre"
-
-#: django_authopenid/templates/authopenid/sendpw.html:7
-msgid "Account: Send a new password"
-msgstr "Account: invia una nuova password"
-
-#: django_authopenid/templates/authopenid/sendpw.html:9
-msgid ""
-"Lost your password ? Here you can ask to reset your password. Enter the "
-"username you use  and you will get a confirm mail with your new password. "
-"This new password will be activated only after you clicked on the link you "
-"will find in the email"
-msgstr ""
-"Hai perso la tua password? Qui puoi chiedere di resettarla. Inserisci il "
-"nome utente che utilizzi  e riceverai una mail di conferma con la tua nuova "
-"password. La nuova password sarà attivata solo dopo che hai cliccato sul "
-"link che troverai nella mail"
-
-#: django_authopenid/templates/authopenid/sendpw.html:24
-#: library/templates/auth/profile.html:68
-#: library/templates/auth/authopenid/complete.html:47
-#: library/templates/auth/authopenid/sendpw.html:27
-#: library/templates/auth/authopenid/signin.html:72
-#: library/templates/auth/authopenid/signup.html:67
-msgid "Username"
-msgstr "Nome utente"
-
-#: django_authopenid/templates/authopenid/sendpw.html:26
-msgid "Send new password"
-msgstr "Nuova password"
-
-#: django_authopenid/templates/authopenid/settings.html:22
-#: library/templates/auth/authopenid/settings.html:22
-msgid "Settings"
-msgstr "Opzioni"
-
-#: django_authopenid/templates/authopenid/settings.html:23
-msgid ""
-"\n"
-"    <p>This is where you can make changes to your account.</p>\n"
-"\n"
-"    "
-msgstr ""
-"\n"
-"    <p>Qui puoi cambiare le opzioni del tuo account.</p>\n"
-"\n"
-"    "
-
-#: django_authopenid/templates/authopenid/settings.html:33
-#: library/templates/auth/authopenid/settings.html:33
-msgid "Account"
-msgstr "Account"
-
-#: django_authopenid/templates/authopenid/settings.html:35
-#: library/templates/auth/authopenid/settings.html:35
-msgid "password/"
-msgstr "password/"
-
-#: django_authopenid/templates/authopenid/settings.html:35
-#: library/templates/auth/authopenid/settings.html:35
-msgid "change password"
-msgstr "cambia password"
-
-#: django_authopenid/templates/authopenid/settings.html:36
-#: library/templates/auth/authopenid/settings.html:36
-msgid "Give your  account a new password."
-msgstr "Cambia la  password."
-
-#: django_authopenid/templates/authopenid/settings.html:37
-#: library/templates/auth/authopenid/settings.html:37
-msgid "email/"
-msgstr "email/"
-
-#: django_authopenid/templates/authopenid/settings.html:37
-#: library/templates/auth/authopenid/settings.html:37
-msgid "change email"
-msgstr "cambia email"
-
-#: django_authopenid/templates/authopenid/settings.html:38
-#: library/templates/auth/authopenid/settings.html:38
-msgid "Add or update the email address associated with your account."
-msgstr "Aggiungi o aggiorna l'indirizzo email associato all'account."
-
-#: django_authopenid/templates/authopenid/settings.html:40
-#: library/templates/auth/authopenid/settings.html:40
-msgid "openid/"
-msgstr "openid/"
-
-#: django_authopenid/templates/authopenid/settings.html:40
-#: library/templates/auth/authopenid/settings.html:40
-msgid "change openid url"
-msgstr "cambia la url openid"
-
-#: django_authopenid/templates/authopenid/settings.html:41
-#: library/templates/auth/authopenid/settings.html:41
-msgid "Change openid associated to your account"
-msgstr "cambia l'openid associato al tuo account"
-
-#: django_authopenid/templates/authopenid/settings.html:44
-#: library/templates/auth/authopenid/settings.html:44
-msgid "delete/"
-msgstr "delete/"
-
-#: django_authopenid/templates/authopenid/settings.html:44
-#: library/templates/auth/authopenid/settings.html:44
-msgid "delete account"
-msgstr "cancella account"
-
-#: django_authopenid/templates/authopenid/settings.html:45
-#: library/templates/auth/authopenid/settings.html:45
-msgid "Erase your username and all your data from website"
-msgstr "Cancella il tuo nome utente e tutti i tuoi dati dal sito"
-
-#: django_authopenid/templates/authopenid/signup.html:7
-msgid ""
-"\n"
-"    <h1>Join</h1>\n"
-"    <p>There are two ways to join: with an email + screen name, or with "
-"OpenID.<br />Enter information only for the type of sign up you want to do.</"
-"p>\n"
-"    "
-msgstr ""
-"\n"
-"    <h1>Iscriviti</h1>\n"
-"    <p>Ci sono due modi per iscriversi: con email + nome utente, o con un "
-"OpenID.<br />Inserisci le informazioni solo per il tipo di iscrizione che "
-"vuoi fare.</p>\n"
-"    "
-
-#: django_authopenid/templates/authopenid/signup.html:13
-msgid "Regular Signup"
-msgstr "Iscrizione regolare"
-
-#: django_authopenid/templates/authopenid/signup.html:29
-msgid "Choose a Screen Name:"
-msgstr "Scegli un Nome Utente:"
-
-#: django_authopenid/templates/authopenid/signup.html:31
-msgid "Enter Your Email Address:"
-msgstr "Inserisci la tua email:"
-
-#: django_authopenid/templates/authopenid/signup.html:32
-msgid "Choose a Password:"
-msgstr "Scegli una Password:"
-
-#: django_authopenid/templates/authopenid/signup.html:33
-msgid "Confirm Your Password:"
-msgstr "Conferma la tua Password:"
-
-#: django_authopenid/templates/authopenid/signup.html:35
-msgid "JOIN FREE"
-msgstr "ISCRIVITI GRATIS"
-
-#: django_authopenid/templates/authopenid/signup.html:39
-msgid "OpenID Signup"
-msgstr "Iscrizione con OpenID"
-
-#: django_authopenid/templates/authopenid/signup.html:42
-msgid "Sign in with OPENID"
-msgstr "Entra con OpenID"
 
 #: library/models.py:134
 msgid "Untitled"
@@ -3667,6 +3319,12 @@ msgstr "Cambia la lingua"
 msgid "Profile and preferences for"
 msgstr "Profilo e opzioni per"
 
+#: library/templates/auth/profile.html:28
+#: library/templates/auth/authopenid/changepw.html:12
+#: library/templates/auth/authopenid/changepw.html:25
+msgid "Change password"
+msgstr "Cambia password"
+
 #: library/templates/auth/profile.html:32
 #: library/templates/auth/authopenid/changeemail.html:13
 msgid "Change email address"
@@ -3695,6 +3353,15 @@ msgstr "Profilo utente e opzioni per"
 #: library/templates/auth/profile.html:63
 msgid "User information"
 msgstr "Informazioni utente"
+
+#: library/templates/auth/profile.html:68
+#: library/templates/auth/authopenid/complete.html:47
+#: library/templates/auth/authopenid/confirm_email.txt:6
+#: library/templates/auth/authopenid/sendpw.html:27
+#: library/templates/auth/authopenid/signin.html:72
+#: library/templates/auth/authopenid/signup.html:67
+msgid "Username"
+msgstr "Nome utente"
 
 #: library/templates/auth/profile.html:83
 #: library/templates/auth/profile.html:93
@@ -3736,6 +3403,25 @@ msgstr "Cambia email per"
 msgid "Please correct the errors below"
 msgstr "Correggi gli errori qui sotto"
 
+#: library/templates/auth/authopenid/changeemail.html:33
+#: library/templates/auth/authopenid/complete.html:48
+#: library/templates/auth/authopenid/signup.html:70
+msgid "Email"
+msgstr "Email"
+
+#: library/templates/auth/authopenid/changeemail.html:34
+#: library/templates/auth/authopenid/complete.html:63
+#: library/templates/auth/authopenid/confirm_email.txt:7
+#: library/templates/auth/authopenid/delete.html:40
+#: library/templates/auth/authopenid/signin.html:74
+#: library/templates/auth/authopenid/signup.html:71
+msgid "Password"
+msgstr "Password"
+
+#: library/templates/auth/authopenid/changeemail.html:35
+msgid "Change email"
+msgstr "Cambia email"
+
 #: library/templates/auth/authopenid/changeopenid.html:11
 msgid "Change OpenID URL linked with this account"
 msgstr "Cambia la URL OpenID collegata all'account"
@@ -3766,6 +3452,18 @@ msgstr "Cambia OpenID"
 msgid "Change password for <!-- trans: for person -->"
 msgstr "Cambia password per"
 
+#: library/templates/auth/authopenid/changepw.html:22
+msgid "Old password"
+msgstr "Vecchia password"
+
+#: library/templates/auth/authopenid/changepw.html:23
+msgid "New password"
+msgstr "Nuova password"
+
+#: library/templates/auth/authopenid/changepw.html:24
+msgid "New password again"
+msgstr "Ripeti la nuova password"
+
 #: library/templates/auth/authopenid/complete.html:10
 msgid ""
 "If you're new to Bookworm, link your OpenID with a new account. If you're "
@@ -3777,6 +3475,11 @@ msgstr ""
 #: library/templates/auth/authopenid/complete.html:17
 msgid "Link an OpenID with your existing Bookworm account"
 msgstr "Collega una OpenID con il tuo account Bookworm"
+
+#: library/templates/auth/authopenid/complete.html:22
+#: library/templates/auth/authopenid/complete.html:32
+msgid "Please correct errors below:"
+msgstr "Correggi i seguenti errori:"
 
 #: library/templates/auth/authopenid/complete.html:46
 msgid "I'm new here"
@@ -3790,9 +3493,26 @@ msgstr "Crea un nuovo account Bookworm"
 msgid "I already have a Bookworm account"
 msgstr "Ho già un account Bookworm"
 
+#: library/templates/auth/authopenid/complete.html:62
+msgid "Screen name"
+msgstr "Nome utente"
+
 #: library/templates/auth/authopenid/complete.html:64
 msgid "Associate with my OpenID"
 msgstr "Associa con la mia OpenID"
+
+#: library/templates/auth/authopenid/confirm_email.txt:2
+#, fuzzy
+msgid "Thank you for registering with Bookworm."
+msgstr "Prova i tuoi ePub con Bookworm"
+
+#: library/templates/auth/authopenid/confirm_email.txt:4
+msgid "Your account details are"
+msgstr ""
+
+#: library/templates/auth/authopenid/confirm_email.txt:9
+msgid "You can now sign in"
+msgstr ""
 
 #: library/templates/auth/authopenid/delete.html:4
 msgid "Delete profile of"
@@ -3848,9 +3568,80 @@ msgstr ""
 msgid "Reset password"
 msgstr "Resetta password"
 
+#: library/templates/auth/authopenid/sendpw_email.txt:2
+#, python-format
+msgid ""
+"Someone asked to reset your password on %(site_url)s. \n"
+"If it's not you, please ignore this email. \n"
+"\n"
+"Your new account details are:\n"
+"\n"
+"Username: %(username)s\n"
+"New password: %(password)s\n"
+"\n"
+"To confirm reset of your password go on this url:\n"
+"%(site_url)s%(url_confirm)s?key=%(confirm_key)s\n"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:22
+msgid "Settings"
+msgstr "Opzioni"
+
 #: library/templates/auth/authopenid/settings.html:23
 msgid "This is where you can make changes to your account."
 msgstr "Da qui puoi cambiare i dati dell'account."
+
+#: library/templates/auth/authopenid/settings.html:33
+msgid "Account"
+msgstr "Account"
+
+#: library/templates/auth/authopenid/settings.html:35
+msgid "password/"
+msgstr "password/"
+
+#: library/templates/auth/authopenid/settings.html:35
+msgid "change password"
+msgstr "cambia password"
+
+#: library/templates/auth/authopenid/settings.html:36
+msgid "Give your  account a new password."
+msgstr "Cambia la  password."
+
+#: library/templates/auth/authopenid/settings.html:37
+msgid "email/"
+msgstr "email/"
+
+#: library/templates/auth/authopenid/settings.html:37
+msgid "change email"
+msgstr "cambia email"
+
+#: library/templates/auth/authopenid/settings.html:38
+msgid "Add or update the email address associated with your account."
+msgstr "Aggiungi o aggiorna l'indirizzo email associato all'account."
+
+#: library/templates/auth/authopenid/settings.html:40
+msgid "openid/"
+msgstr "openid/"
+
+#: library/templates/auth/authopenid/settings.html:40
+msgid "change openid url"
+msgstr "cambia la url openid"
+
+#: library/templates/auth/authopenid/settings.html:41
+msgid "Change openid associated to your account"
+msgstr "cambia l'openid associato al tuo account"
+
+#: library/templates/auth/authopenid/settings.html:44
+msgid "delete/"
+msgstr "delete/"
+
+#: library/templates/auth/authopenid/settings.html:44
+msgid "delete account"
+msgstr "cancella account"
+
+#: library/templates/auth/authopenid/settings.html:45
+msgid "Erase your username and all your data from website"
+msgstr "Cancella il tuo nome utente e tutti i tuoi dati dal sito"
 
 #: library/templates/auth/authopenid/signin.html:31
 msgid "ePub ebook reader"
@@ -4495,6 +4286,176 @@ msgstr ""
 "  Questo significa che un libro che hai appena aggiunto potrebbe non \n"
 "  essere mostrato immediatamente nella ricerca. Sii paziente.\n"
 "  "
+
+#~ msgid "Account: change email"
+#~ msgstr "Account: cambia email"
+
+#~ msgid ""
+#~ "This is where you can change the email address associated with your "
+#~ "account. Please keep this email address up to date so we can send you a "
+#~ "password-reset email if you request one."
+#~ msgstr ""
+#~ "Da qui puoi cambiare l'email associata al tuo account. Tieni sempre "
+#~ "aggiornato questo indirizzo in modo che se la richiedi ti possiamo "
+#~ "inviare una mail di azzeramento password."
+
+#~ msgid "New email"
+#~ msgstr "Nuova email"
+
+#~ msgid "Account: change openid url"
+#~ msgstr "Account: cambia l'url openid"
+
+#~ msgid ""
+#~ "This is where you can change your openid url used to connect to Bookworm. "
+#~ "Make sure you remember it!"
+#~ msgstr ""
+#~ "Da qui puoi cambiare la tua url openid utilizzata per connetterti a "
+#~ "Bookworm. Assicurati di ricordarla!"
+
+#~ msgid "OpenID url:"
+#~ msgstr "OpenID url:"
+
+#~ msgid "Change openid"
+#~ msgstr "Cambia openid"
+
+#~ msgid "Account: change password"
+#~ msgstr "Account: cambia password"
+
+#~ msgid ""
+#~ "This is where you can change your password. Make sure you remember it!"
+#~ msgstr "Da qui puoi cambiare la tua password. Assicurati di ricordarla!"
+
+#~ msgid "Your OpenID is verified! "
+#~ msgstr "Il tuo OpenID è stato verificato!"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t<p>Your OpenID can now be associated with a new or existing membership. "
+#~ "You can change the association later in your preferences</p>\n"
+#~ "\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\t<p>Il tuo OpenID può essere ora associato con una nuova o con una "
+#~ "esistente iscrizione. Potrai cambiare l'associazione in seguito nelle tue "
+#~ "opzioni</p>\n"
+#~ "\t"
+
+#~ msgid "Associate your OpenID"
+#~ msgstr "Associa il tuo OpenID"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t<p>If you're joining <strong>Sitename</strong>, associate your OpenID "
+#~ "with a new account. If you're already a member, associate with your "
+#~ "existing account.</p>\n"
+#~ "\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\t<p>Se ti stai iscrivendo a <strong>Sitename</strong>, associa il tuo "
+#~ "OpenID con un nuovo account. Se sei già membro, associalo al tuo account."
+#~ "</p>\n"
+#~ "\t"
+
+#~ msgid "A new account"
+#~ msgstr "Nuovo account"
+
+#~ msgid "An exisiting account"
+#~ msgstr "Account esistente"
+
+#~ msgid "Account: delete account"
+#~ msgstr "Account: cancella account"
+
+#~ msgid ""
+#~ "Note: After deleting your account, anyone will be able to register this "
+#~ "username."
+#~ msgstr ""
+#~ "Nota: dopo aver cancellato l'account, altre persone potranno registrarsi "
+#~ "con questo nome utente"
+
+#~ msgid "Check confirm box, if you want delete your account."
+#~ msgstr "Seleziona il box di conferma se vuoi cancellare il tuo account."
+
+#~ msgid "Password:"
+#~ msgstr "Password:"
+
+#~ msgid "I am sure I want to delete my account."
+#~ msgstr "Voglio assolutamente cancellare il mio account."
+
+#~ msgid "Password/ OpenID URL"
+#~ msgstr "Password/ OpenID URL"
+
+#~ msgid "(required for your security)"
+#~ msgstr "(richiesti per la tua sicurezza)"
+
+#~ msgid "delete account forever"
+#~ msgstr "cancella l'account per sempre"
+
+#~ msgid "Account: Send a new password"
+#~ msgstr "Account: invia una nuova password"
+
+#~ msgid ""
+#~ "Lost your password ? Here you can ask to reset your password. Enter the "
+#~ "username you use  and you will get a confirm mail with your new password. "
+#~ "This new password will be activated only after you clicked on the link "
+#~ "you will find in the email"
+#~ msgstr ""
+#~ "Hai perso la tua password? Qui puoi chiedere di resettarla. Inserisci il "
+#~ "nome utente che utilizzi  e riceverai una mail di conferma con la tua "
+#~ "nuova password. La nuova password sarà attivata solo dopo che hai "
+#~ "cliccato sul link che troverai nella mail"
+
+#~ msgid "Send new password"
+#~ msgstr "Nuova password"
+
+#~ msgid ""
+#~ "\n"
+#~ "    <p>This is where you can make changes to your account.</p>\n"
+#~ "\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "    <p>Qui puoi cambiare le opzioni del tuo account.</p>\n"
+#~ "\n"
+#~ "    "
+
+#~ msgid ""
+#~ "\n"
+#~ "    <h1>Join</h1>\n"
+#~ "    <p>There are two ways to join: with an email + screen name, or with "
+#~ "OpenID.<br />Enter information only for the type of sign up you want to "
+#~ "do.</p>\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "    <h1>Iscriviti</h1>\n"
+#~ "    <p>Ci sono due modi per iscriversi: con email + nome utente, o con un "
+#~ "OpenID.<br />Inserisci le informazioni solo per il tipo di iscrizione che "
+#~ "vuoi fare.</p>\n"
+#~ "    "
+
+#~ msgid "Regular Signup"
+#~ msgstr "Iscrizione regolare"
+
+#~ msgid "Choose a Screen Name:"
+#~ msgstr "Scegli un Nome Utente:"
+
+#~ msgid "Enter Your Email Address:"
+#~ msgstr "Inserisci la tua email:"
+
+#~ msgid "Choose a Password:"
+#~ msgstr "Scegli una Password:"
+
+#~ msgid "Confirm Your Password:"
+#~ msgstr "Conferma la tua Password:"
+
+#~ msgid "JOIN FREE"
+#~ msgstr "ISCRIVITI GRATIS"
+
+#~ msgid "OpenID Signup"
+#~ msgstr "Iscrizione con OpenID"
+
+#~ msgid "Sign in with OPENID"
+#~ msgstr "Entra con OpenID"
 
 #~ msgid "Download books to your "
 #~ msgstr "Scarica i libri su"

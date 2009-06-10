@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-09 19:59-0400\n"
+"POT-Creation-Date: 2009-06-09 20:23-0400\n"
 "PO-Revision-Date: 2009-06-03 14:33-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
@@ -173,351 +173,6 @@ msgstr "Salasanaa ei voi vaihtaa, koska käyttäjänimeä ei ole tietokannassamm
 #, python-format
 msgid "Password changed for %s. You could now sign in"
 msgstr "Tilin %s salasana on vaihdettu. Nyt voit kirjautua tilillesi."
-
-#: django_authopenid/templates/authopenid/changeemail.html:8
-msgid "Account: change email"
-msgstr "Tili: vaihda sähköposti"
-
-#: django_authopenid/templates/authopenid/changeemail.html:10
-msgid ""
-"This is where you can change the email address associated with your account. "
-"Please keep this email address up to date so we can send you a password-"
-"reset email if you request one."
-msgstr ""
-"Voit vaihtaa käyttäjätiliisi kirjatun sähköpostiosoitteen. Pidä osoite "
-"ajantasalla, jotta tarvittaessa voimme lähettää sinulle sähköpostilla "
-"salasanan muutostiedot."
-
-#: django_authopenid/templates/authopenid/changeemail.html:12
-#: django_authopenid/templates/authopenid/changeopenid.html:9
-#: django_authopenid/templates/authopenid/changepw.html:15
-#: django_authopenid/templates/authopenid/complete.html:26
-#: django_authopenid/templates/authopenid/complete.html:36
-#: django_authopenid/templates/authopenid/delete.html:10
-#: django_authopenid/templates/authopenid/delete.html:20
-#: django_authopenid/templates/authopenid/sendpw.html:11
-#: django_authopenid/templates/authopenid/signup.html:15
-#: library/templates/auth/authopenid/complete.html:22
-#: library/templates/auth/authopenid/complete.html:32
-msgid "Please correct errors below:"
-msgstr "Ole hyvä ja korjaa alla olevat virheet:"
-
-#: django_authopenid/templates/authopenid/changeemail.html:29
-msgid "New email"
-msgstr "Uusi sähköposti"
-
-#: django_authopenid/templates/authopenid/changeemail.html:30
-#: django_authopenid/templates/authopenid/complete.html:68
-#: library/templates/auth/authopenid/changeemail.html:34
-#: library/templates/auth/authopenid/complete.html:63
-#: library/templates/auth/authopenid/delete.html:40
-#: library/templates/auth/authopenid/signin.html:74
-#: library/templates/auth/authopenid/signup.html:71
-msgid "Password"
-msgstr "Salasana"
-
-#: django_authopenid/templates/authopenid/changeemail.html:32
-#: library/templates/auth/authopenid/changeemail.html:35
-msgid "Change email"
-msgstr "Vaihda sähköposti"
-
-#: django_authopenid/templates/authopenid/changeopenid.html:5
-msgid "Account: change openid url"
-msgstr "Tili: vaihda openid url"
-
-#: django_authopenid/templates/authopenid/changeopenid.html:7
-msgid ""
-"This is where you can change your openid url used to connect to Bookworm. "
-"Make sure you remember it!"
-msgstr ""
-"Tässä voit muuttaa tiliisi liitetyn openid url :n jolla pääset Bookworm -"
-"palveluun. Pidä se tallessa!"
-
-#: django_authopenid/templates/authopenid/changeopenid.html:24
-msgid "OpenID url:"
-msgstr "OpenID url:"
-
-#: django_authopenid/templates/authopenid/changeopenid.html:25
-msgid "Change openid"
-msgstr "Vaihda openid -tunnus"
-
-#: django_authopenid/templates/authopenid/changepw.html:11
-msgid "Account: change password"
-msgstr "Tili: vaihda salasana"
-
-#: django_authopenid/templates/authopenid/changepw.html:13
-msgid "This is where you can change your password. Make sure you remember it!"
-msgstr "Tässä voit vaihtaa tilisi salasanan. Muista se myös!"
-
-#: django_authopenid/templates/authopenid/changepw.html:23
-#: library/templates/auth/authopenid/changepw.html:22
-msgid "Old password"
-msgstr "Vanha salasana"
-
-#: django_authopenid/templates/authopenid/changepw.html:24
-#: library/templates/auth/authopenid/changepw.html:23
-msgid "New password"
-msgstr "Uusi salasana"
-
-#: django_authopenid/templates/authopenid/changepw.html:25
-#: library/templates/auth/authopenid/changepw.html:24
-msgid "New password again"
-msgstr "Uusi salasana vielä kerran"
-
-#: django_authopenid/templates/authopenid/changepw.html:26
-#: library/templates/auth/profile.html:28
-#: library/templates/auth/authopenid/changepw.html:12
-#: library/templates/auth/authopenid/changepw.html:25
-msgid "Change password"
-msgstr "Vaihda salasana"
-
-#: django_authopenid/templates/authopenid/complete.html:12
-msgid "Your OpenID is verified! "
-msgstr "OpenID -tunnuksesi on vahvistettu!"
-
-#: django_authopenid/templates/authopenid/complete.html:13
-msgid ""
-"\n"
-"\t<p>Your OpenID can now be associated with a new or existing membership. "
-"You can change the association later in your preferences</p>\n"
-"\t"
-msgstr ""
-"\n"
-"\n"
-"\t<p>Voit nyt liittää OpenID -tunnuksesi olemassaolevaan tai uuteen "
-"käyttäjätiliin. Voit muuttaa tilin ja tunnuksen tietoja asetuksissa.</p>\\t"
-
-#: django_authopenid/templates/authopenid/complete.html:17
-msgid "Associate your OpenID"
-msgstr "Liitä OpenID -tunnuksesi"
-
-#: django_authopenid/templates/authopenid/complete.html:18
-msgid ""
-"\n"
-"\t<p>If you're joining <strong>Sitename</strong>, associate your OpenID with "
-"a new account. If you're already a member, associate with your existing "
-"account.</p>\n"
-"\t"
-msgstr ""
-"\n"
-"\t<p>Jos avaat käyttäjätilin <strong>Bookworm</strong> -palvelussa, liitä "
-"OpenID -tunnuksesi uuteen tiliin. Jos sinulla on jo tili, voit liittää "
-"tunnuksesi kyseiseen tiliin.</p>\n"
-"\t"
-
-#: django_authopenid/templates/authopenid/complete.html:50
-msgid "A new account"
-msgstr "Uusi käyttäjätili"
-
-#: django_authopenid/templates/authopenid/complete.html:51
-#: django_authopenid/templates/authopenid/complete.html:67
-#: library/templates/auth/authopenid/complete.html:62
-msgid "Screen name"
-msgstr "Käyttäjänimi"
-
-#: django_authopenid/templates/authopenid/complete.html:52
-#: library/templates/auth/authopenid/changeemail.html:33
-#: library/templates/auth/authopenid/complete.html:48
-#: library/templates/auth/authopenid/signup.html:70
-msgid "Email"
-msgstr "Sähköposti"
-
-#: django_authopenid/templates/authopenid/complete.html:66
-msgid "An exisiting account"
-msgstr "Käyttäjätili olemassa"
-
-#: django_authopenid/templates/authopenid/delete.html:6
-msgid "Account: delete account"
-msgstr "Poista käyttäjätili"
-
-#: django_authopenid/templates/authopenid/delete.html:8
-msgid ""
-"Note: After deleting your account, anyone will be able to register this "
-"username."
-msgstr ""
-"Huomaa: Kun olet poistanut tilin, tiliin liitetyn käyttäjänimen voi ottaa "
-"kuka tuhansa."
-
-#: django_authopenid/templates/authopenid/delete.html:12
-msgid "Check confirm box, if you want delete your account."
-msgstr "Valitse vahvista, jos haluat poistaa tilisi."
-
-#: django_authopenid/templates/authopenid/delete.html:15
-msgid "Password:"
-msgstr "Salasana:"
-
-#: django_authopenid/templates/authopenid/delete.html:27
-msgid "I am sure I want to delete my account."
-msgstr "Haluan varmasti poistaa tilini."
-
-#: django_authopenid/templates/authopenid/delete.html:28
-msgid "Password/ OpenID URL"
-msgstr "Salasana/ OpenID URL"
-
-#: django_authopenid/templates/authopenid/delete.html:28
-msgid "(required for your security)"
-msgstr "(vaaditaan tietoturvasi vuoksi)"
-
-#: django_authopenid/templates/authopenid/delete.html:30
-msgid "delete account forever"
-msgstr "poista tili kokonaan"
-
-#: django_authopenid/templates/authopenid/sendpw.html:7
-msgid "Account: Send a new password"
-msgstr "Tili: Lähetä uusi salasana"
-
-#: django_authopenid/templates/authopenid/sendpw.html:9
-msgid ""
-"Lost your password ? Here you can ask to reset your password. Enter the "
-"username you use  and you will get a confirm mail with your new password. "
-"This new password will be activated only after you clicked on the link you "
-"will find in the email"
-msgstr ""
-"Salasana hukassa? Poista vanha salasana seuraavasti: Kirjoita käyttämäsi "
-"käyttäjänimi ja saat sähköpostiisi uuden salasanan. Voit kirjautua uudella "
-"salasanalla, kun olet klikannut sähköpostissa olevaa linkkiä."
-
-#: django_authopenid/templates/authopenid/sendpw.html:24
-#: library/templates/auth/profile.html:68
-#: library/templates/auth/authopenid/complete.html:47
-#: library/templates/auth/authopenid/sendpw.html:27
-#: library/templates/auth/authopenid/signin.html:72
-#: library/templates/auth/authopenid/signup.html:67
-msgid "Username"
-msgstr "Käyttäjänimi"
-
-#: django_authopenid/templates/authopenid/sendpw.html:26
-msgid "Send new password"
-msgstr "Lähetä uusi salasana"
-
-#: django_authopenid/templates/authopenid/settings.html:22
-#: library/templates/auth/authopenid/settings.html:22
-msgid "Settings"
-msgstr "Asetukset"
-
-#: django_authopenid/templates/authopenid/settings.html:23
-msgid ""
-"\n"
-"    <p>This is where you can make changes to your account.</p>\n"
-"\n"
-"    "
-msgstr ""
-"\n"
-"<p> Muuta käyttäjätilisi tietoja.</p>\n"
-"\n"
-"    "
-
-#: django_authopenid/templates/authopenid/settings.html:33
-#: library/templates/auth/authopenid/settings.html:33
-msgid "Account"
-msgstr "Käyttäjätili"
-
-#: django_authopenid/templates/authopenid/settings.html:35
-#: library/templates/auth/authopenid/settings.html:35
-msgid "password/"
-msgstr "salasana/"
-
-#: django_authopenid/templates/authopenid/settings.html:35
-#: library/templates/auth/authopenid/settings.html:35
-msgid "change password"
-msgstr "vaihda salasana"
-
-#: django_authopenid/templates/authopenid/settings.html:36
-#: library/templates/auth/authopenid/settings.html:36
-msgid "Give your  account a new password."
-msgstr "Kirjoita uusi salasana"
-
-#: django_authopenid/templates/authopenid/settings.html:37
-#: library/templates/auth/authopenid/settings.html:37
-msgid "email/"
-msgstr "sähköposti"
-
-#: django_authopenid/templates/authopenid/settings.html:37
-#: library/templates/auth/authopenid/settings.html:37
-msgid "change email"
-msgstr "vaihda sähköposti"
-
-#: django_authopenid/templates/authopenid/settings.html:38
-#: library/templates/auth/authopenid/settings.html:38
-msgid "Add or update the email address associated with your account."
-msgstr "Muuta tai päivitä tilisi sähköpostitiedot"
-
-#: django_authopenid/templates/authopenid/settings.html:40
-#: library/templates/auth/authopenid/settings.html:40
-msgid "openid/"
-msgstr "openid"
-
-#: django_authopenid/templates/authopenid/settings.html:40
-#: library/templates/auth/authopenid/settings.html:40
-msgid "change openid url"
-msgstr "vaihda openid url"
-
-#: django_authopenid/templates/authopenid/settings.html:41
-#: library/templates/auth/authopenid/settings.html:41
-msgid "Change openid associated to your account"
-msgstr "Vaihda tiliisi liitetty openid -tunnus"
-
-#: django_authopenid/templates/authopenid/settings.html:44
-#: library/templates/auth/authopenid/settings.html:44
-msgid "delete/"
-msgstr "poista/"
-
-#: django_authopenid/templates/authopenid/settings.html:44
-#: library/templates/auth/authopenid/settings.html:44
-msgid "delete account"
-msgstr "poista tili"
-
-#: django_authopenid/templates/authopenid/settings.html:45
-#: library/templates/auth/authopenid/settings.html:45
-msgid "Erase your username and all your data from website"
-msgstr "Poista käyttäjänimi ja kaikki käyttäjätietosi palvelusta"
-
-#: django_authopenid/templates/authopenid/signup.html:7
-msgid ""
-"\n"
-"    <h1>Join</h1>\n"
-"    <p>There are two ways to join: with an email + screen name, or with "
-"OpenID.<br />Enter information only for the type of sign up you want to do.</"
-"p>\n"
-"    "
-msgstr ""
-"\n"
-"    <h1>Liity</h1>\n"
-"    <p>Kaksi tapaa avata käyttäjätili: sähköpostiosoite + käyttäjänimi tai "
-"OpenID -tunnuksella<br />Kirjaa tiedot vain toiseen vaihtoehdoista.</p>\n"
-"    "
-
-#: django_authopenid/templates/authopenid/signup.html:13
-msgid "Regular Signup"
-msgstr "Normaali kirjautuminen"
-
-#: django_authopenid/templates/authopenid/signup.html:29
-msgid "Choose a Screen Name:"
-msgstr "Valitse käyttäjänimi:"
-
-#: django_authopenid/templates/authopenid/signup.html:31
-msgid "Enter Your Email Address:"
-msgstr "Sähköpostiosoitteesi:"
-
-#: django_authopenid/templates/authopenid/signup.html:32
-msgid "Choose a Password:"
-msgstr "Valitse salasana:"
-
-#: django_authopenid/templates/authopenid/signup.html:33
-msgid "Confirm Your Password:"
-msgstr "Vahvista salasana"
-
-#: django_authopenid/templates/authopenid/signup.html:35
-msgid "JOIN FREE"
-msgstr "LIITY ILMAISEKSI"
-
-#: django_authopenid/templates/authopenid/signup.html:39
-msgid "OpenID Signup"
-msgstr "Liity OpenID -tunnuksella"
-
-#: django_authopenid/templates/authopenid/signup.html:42
-msgid "Sign in with OPENID"
-msgstr "Kirjaudu OpenID -tunnuksella"
 
 #: library/models.py:134
 msgid "Untitled"
@@ -3569,6 +3224,12 @@ msgstr "Muuta kieliasetukset"
 msgid "Profile and preferences for"
 msgstr "Tiedot ja asetukset käyttäjälle:"
 
+#: library/templates/auth/profile.html:28
+#: library/templates/auth/authopenid/changepw.html:12
+#: library/templates/auth/authopenid/changepw.html:25
+msgid "Change password"
+msgstr "Vaihda salasana"
+
 #: library/templates/auth/profile.html:32
 #: library/templates/auth/authopenid/changeemail.html:13
 msgid "Change email address"
@@ -3597,6 +3258,15 @@ msgstr "Käyttäjätiedot ja asetukset:"
 #: library/templates/auth/profile.html:63
 msgid "User information"
 msgstr "Käyttäjätiedot"
+
+#: library/templates/auth/profile.html:68
+#: library/templates/auth/authopenid/complete.html:47
+#: library/templates/auth/authopenid/confirm_email.txt:6
+#: library/templates/auth/authopenid/sendpw.html:27
+#: library/templates/auth/authopenid/signin.html:72
+#: library/templates/auth/authopenid/signup.html:67
+msgid "Username"
+msgstr "Käyttäjänimi"
 
 #: library/templates/auth/profile.html:83
 #: library/templates/auth/profile.html:93
@@ -3638,6 +3308,25 @@ msgstr "Muuta sähköpostiosoite"
 msgid "Please correct the errors below"
 msgstr "Korjaa alla olevat virheet"
 
+#: library/templates/auth/authopenid/changeemail.html:33
+#: library/templates/auth/authopenid/complete.html:48
+#: library/templates/auth/authopenid/signup.html:70
+msgid "Email"
+msgstr "Sähköposti"
+
+#: library/templates/auth/authopenid/changeemail.html:34
+#: library/templates/auth/authopenid/complete.html:63
+#: library/templates/auth/authopenid/confirm_email.txt:7
+#: library/templates/auth/authopenid/delete.html:40
+#: library/templates/auth/authopenid/signin.html:74
+#: library/templates/auth/authopenid/signup.html:71
+msgid "Password"
+msgstr "Salasana"
+
+#: library/templates/auth/authopenid/changeemail.html:35
+msgid "Change email"
+msgstr "Vaihda sähköposti"
+
 #: library/templates/auth/authopenid/changeopenid.html:11
 msgid "Change OpenID URL linked with this account"
 msgstr "Muuta tälle tilille kirjattu OpenID URL."
@@ -3669,6 +3358,18 @@ msgstr "Muuta OpenID linkki"
 msgid "Change password for <!-- trans: for person -->"
 msgstr "Muuta salasanasi"
 
+#: library/templates/auth/authopenid/changepw.html:22
+msgid "Old password"
+msgstr "Vanha salasana"
+
+#: library/templates/auth/authopenid/changepw.html:23
+msgid "New password"
+msgstr "Uusi salasana"
+
+#: library/templates/auth/authopenid/changepw.html:24
+msgid "New password again"
+msgstr "Uusi salasana vielä kerran"
+
 #: library/templates/auth/authopenid/complete.html:10
 msgid ""
 "If you're new to Bookworm, link your OpenID with a new account. If you're "
@@ -3682,6 +3383,11 @@ msgstr ""
 msgid "Link an OpenID with your existing Bookworm account"
 msgstr "Liitä OpenID -tunnus Bookworm -tiliisi"
 
+#: library/templates/auth/authopenid/complete.html:22
+#: library/templates/auth/authopenid/complete.html:32
+msgid "Please correct errors below:"
+msgstr "Ole hyvä ja korjaa alla olevat virheet:"
+
 #: library/templates/auth/authopenid/complete.html:46
 msgid "I'm new here"
 msgstr "Olen uusi näillä sivuilla"
@@ -3694,9 +3400,26 @@ msgstr "Luo uusi Bookworm -käyttäjätili"
 msgid "I already have a Bookworm account"
 msgstr "Minulla on Bookworm -käyttäjänimi"
 
+#: library/templates/auth/authopenid/complete.html:62
+msgid "Screen name"
+msgstr "Käyttäjänimi"
+
 #: library/templates/auth/authopenid/complete.html:64
 msgid "Associate with my OpenID"
 msgstr "Liitä OpenID -tunnuksesi"
+
+#: library/templates/auth/authopenid/confirm_email.txt:2
+#, fuzzy
+msgid "Thank you for registering with Bookworm."
+msgstr "Kokeile kirjaasi palvelussa"
+
+#: library/templates/auth/authopenid/confirm_email.txt:4
+msgid "Your account details are"
+msgstr ""
+
+#: library/templates/auth/authopenid/confirm_email.txt:9
+msgid "You can now sign in"
+msgstr ""
 
 #: library/templates/auth/authopenid/delete.html:4
 msgid "Delete profile of"
@@ -3749,9 +3472,80 @@ msgstr ""
 msgid "Reset password"
 msgstr "Uusi salasana"
 
+#: library/templates/auth/authopenid/sendpw_email.txt:2
+#, python-format
+msgid ""
+"Someone asked to reset your password on %(site_url)s. \n"
+"If it's not you, please ignore this email. \n"
+"\n"
+"Your new account details are:\n"
+"\n"
+"Username: %(username)s\n"
+"New password: %(password)s\n"
+"\n"
+"To confirm reset of your password go on this url:\n"
+"%(site_url)s%(url_confirm)s?key=%(confirm_key)s\n"
+msgstr ""
+
+#: library/templates/auth/authopenid/settings.html:22
+msgid "Settings"
+msgstr "Asetukset"
+
 #: library/templates/auth/authopenid/settings.html:23
 msgid "This is where you can make changes to your account."
 msgstr "Tässä voit muuttaa käyttäjätilisi tietoja."
+
+#: library/templates/auth/authopenid/settings.html:33
+msgid "Account"
+msgstr "Käyttäjätili"
+
+#: library/templates/auth/authopenid/settings.html:35
+msgid "password/"
+msgstr "salasana/"
+
+#: library/templates/auth/authopenid/settings.html:35
+msgid "change password"
+msgstr "vaihda salasana"
+
+#: library/templates/auth/authopenid/settings.html:36
+msgid "Give your  account a new password."
+msgstr "Kirjoita uusi salasana"
+
+#: library/templates/auth/authopenid/settings.html:37
+msgid "email/"
+msgstr "sähköposti"
+
+#: library/templates/auth/authopenid/settings.html:37
+msgid "change email"
+msgstr "vaihda sähköposti"
+
+#: library/templates/auth/authopenid/settings.html:38
+msgid "Add or update the email address associated with your account."
+msgstr "Muuta tai päivitä tilisi sähköpostitiedot"
+
+#: library/templates/auth/authopenid/settings.html:40
+msgid "openid/"
+msgstr "openid"
+
+#: library/templates/auth/authopenid/settings.html:40
+msgid "change openid url"
+msgstr "vaihda openid url"
+
+#: library/templates/auth/authopenid/settings.html:41
+msgid "Change openid associated to your account"
+msgstr "Vaihda tiliisi liitetty openid -tunnus"
+
+#: library/templates/auth/authopenid/settings.html:44
+msgid "delete/"
+msgstr "poista/"
+
+#: library/templates/auth/authopenid/settings.html:44
+msgid "delete account"
+msgstr "poista tili"
+
+#: library/templates/auth/authopenid/settings.html:45
+msgid "Erase your username and all your data from website"
+msgstr "Poista käyttäjänimi ja kaikki käyttäjätietosi palvelusta"
 
 #: library/templates/auth/authopenid/signin.html:31
 msgid "ePub ebook reader"
@@ -4382,6 +4176,175 @@ msgstr ""
 "  Tämä tarkoittaa, että juuri siirtämäsi kirja ei heti näy hakutuloksissa.\n"
 "  Vähän kärsivällisyyttä ja kirja ilmestyy pian tuloksiin.\n"
 "  "
+
+#~ msgid "Account: change email"
+#~ msgstr "Tili: vaihda sähköposti"
+
+#~ msgid ""
+#~ "This is where you can change the email address associated with your "
+#~ "account. Please keep this email address up to date so we can send you a "
+#~ "password-reset email if you request one."
+#~ msgstr ""
+#~ "Voit vaihtaa käyttäjätiliisi kirjatun sähköpostiosoitteen. Pidä osoite "
+#~ "ajantasalla, jotta tarvittaessa voimme lähettää sinulle sähköpostilla "
+#~ "salasanan muutostiedot."
+
+#~ msgid "New email"
+#~ msgstr "Uusi sähköposti"
+
+#~ msgid "Account: change openid url"
+#~ msgstr "Tili: vaihda openid url"
+
+#~ msgid ""
+#~ "This is where you can change your openid url used to connect to Bookworm. "
+#~ "Make sure you remember it!"
+#~ msgstr ""
+#~ "Tässä voit muuttaa tiliisi liitetyn openid url :n jolla pääset Bookworm -"
+#~ "palveluun. Pidä se tallessa!"
+
+#~ msgid "OpenID url:"
+#~ msgstr "OpenID url:"
+
+#~ msgid "Change openid"
+#~ msgstr "Vaihda openid -tunnus"
+
+#~ msgid "Account: change password"
+#~ msgstr "Tili: vaihda salasana"
+
+#~ msgid ""
+#~ "This is where you can change your password. Make sure you remember it!"
+#~ msgstr "Tässä voit vaihtaa tilisi salasanan. Muista se myös!"
+
+#~ msgid "Your OpenID is verified! "
+#~ msgstr "OpenID -tunnuksesi on vahvistettu!"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t<p>Your OpenID can now be associated with a new or existing membership. "
+#~ "You can change the association later in your preferences</p>\n"
+#~ "\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\t<p>Voit nyt liittää OpenID -tunnuksesi olemassaolevaan tai uuteen "
+#~ "käyttäjätiliin. Voit muuttaa tilin ja tunnuksen tietoja asetuksissa.</p>"
+#~ "\\t"
+
+#~ msgid "Associate your OpenID"
+#~ msgstr "Liitä OpenID -tunnuksesi"
+
+#~ msgid ""
+#~ "\n"
+#~ "\t<p>If you're joining <strong>Sitename</strong>, associate your OpenID "
+#~ "with a new account. If you're already a member, associate with your "
+#~ "existing account.</p>\n"
+#~ "\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\t<p>Jos avaat käyttäjätilin <strong>Bookworm</strong> -palvelussa, liitä "
+#~ "OpenID -tunnuksesi uuteen tiliin. Jos sinulla on jo tili, voit liittää "
+#~ "tunnuksesi kyseiseen tiliin.</p>\n"
+#~ "\t"
+
+#~ msgid "A new account"
+#~ msgstr "Uusi käyttäjätili"
+
+#~ msgid "An exisiting account"
+#~ msgstr "Käyttäjätili olemassa"
+
+#~ msgid "Account: delete account"
+#~ msgstr "Poista käyttäjätili"
+
+#~ msgid ""
+#~ "Note: After deleting your account, anyone will be able to register this "
+#~ "username."
+#~ msgstr ""
+#~ "Huomaa: Kun olet poistanut tilin, tiliin liitetyn käyttäjänimen voi ottaa "
+#~ "kuka tuhansa."
+
+#~ msgid "Check confirm box, if you want delete your account."
+#~ msgstr "Valitse vahvista, jos haluat poistaa tilisi."
+
+#~ msgid "Password:"
+#~ msgstr "Salasana:"
+
+#~ msgid "I am sure I want to delete my account."
+#~ msgstr "Haluan varmasti poistaa tilini."
+
+#~ msgid "Password/ OpenID URL"
+#~ msgstr "Salasana/ OpenID URL"
+
+#~ msgid "(required for your security)"
+#~ msgstr "(vaaditaan tietoturvasi vuoksi)"
+
+#~ msgid "delete account forever"
+#~ msgstr "poista tili kokonaan"
+
+#~ msgid "Account: Send a new password"
+#~ msgstr "Tili: Lähetä uusi salasana"
+
+#~ msgid ""
+#~ "Lost your password ? Here you can ask to reset your password. Enter the "
+#~ "username you use  and you will get a confirm mail with your new password. "
+#~ "This new password will be activated only after you clicked on the link "
+#~ "you will find in the email"
+#~ msgstr ""
+#~ "Salasana hukassa? Poista vanha salasana seuraavasti: Kirjoita käyttämäsi "
+#~ "käyttäjänimi ja saat sähköpostiisi uuden salasanan. Voit kirjautua "
+#~ "uudella salasanalla, kun olet klikannut sähköpostissa olevaa linkkiä."
+
+#~ msgid "Send new password"
+#~ msgstr "Lähetä uusi salasana"
+
+#~ msgid ""
+#~ "\n"
+#~ "    <p>This is where you can make changes to your account.</p>\n"
+#~ "\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "<p> Muuta käyttäjätilisi tietoja.</p>\n"
+#~ "\n"
+#~ "    "
+
+#~ msgid ""
+#~ "\n"
+#~ "    <h1>Join</h1>\n"
+#~ "    <p>There are two ways to join: with an email + screen name, or with "
+#~ "OpenID.<br />Enter information only for the type of sign up you want to "
+#~ "do.</p>\n"
+#~ "    "
+#~ msgstr ""
+#~ "\n"
+#~ "    <h1>Liity</h1>\n"
+#~ "    <p>Kaksi tapaa avata käyttäjätili: sähköpostiosoite + käyttäjänimi "
+#~ "tai OpenID -tunnuksella<br />Kirjaa tiedot vain toiseen vaihtoehdoista.</"
+#~ "p>\n"
+#~ "    "
+
+#~ msgid "Regular Signup"
+#~ msgstr "Normaali kirjautuminen"
+
+#~ msgid "Choose a Screen Name:"
+#~ msgstr "Valitse käyttäjänimi:"
+
+#~ msgid "Enter Your Email Address:"
+#~ msgstr "Sähköpostiosoitteesi:"
+
+#~ msgid "Choose a Password:"
+#~ msgstr "Valitse salasana:"
+
+#~ msgid "Confirm Your Password:"
+#~ msgstr "Vahvista salasana"
+
+#~ msgid "JOIN FREE"
+#~ msgstr "LIITY ILMAISEKSI"
+
+#~ msgid "OpenID Signup"
+#~ msgstr "Liity OpenID -tunnuksella"
+
+#~ msgid "Sign in with OPENID"
+#~ msgstr "Kirjaudu OpenID -tunnuksella"
 
 #~ msgid "Download books to your "
 #~ msgstr "Siirrä kirjoja"
