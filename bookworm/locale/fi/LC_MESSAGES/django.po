@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-09 18:51-0400\n"
+"POT-Creation-Date: 2009-06-09 19:59-0400\n"
 "PO-Revision-Date: 2009-06-03 14:33-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
@@ -38,11 +38,11 @@ msgstr ""
 msgid "Italian"
 msgstr ""
 
-#: settings.py:142
+#: settings.py:143
 msgid "account/"
 msgstr "tili/"
 
-#: settings.py:142
+#: settings.py:143
 msgid "signin/"
 msgstr "kirjaudu/"
 
@@ -2307,8 +2307,8 @@ msgstr ""
 msgid "My epub library"
 msgstr "Oma epub -kokoelmani"
 
-#: library/templates/index.html:14 library/templates/shell.html:38
-#: library/templates/shell.html.py:53 library/templates/upload.html:4
+#: library/templates/index.html:14 library/templates/shell.html:43
+#: library/templates/shell.html.py:58 library/templates/upload.html:4
 #: library/templates/upload.html.py:5
 msgid "Add a book"
 msgstr "Siirrä kirja"
@@ -2392,7 +2392,7 @@ msgstr ""
 "  "
 
 #: library/templates/index.html:80 library/templates/shell.html:6
-#: library/templates/shell.html.py:31
+#: library/templates/shell.html.py:36
 msgid "Bookworm"
 msgstr "Bookworm"
 
@@ -2417,7 +2417,18 @@ msgstr "Siirrä uusi ePub -tiedosto"
 msgid "Add your first ePub ebook:"
 msgstr "Siirrä kokoelmaasi ensimmäinen ePub -kirja:"
 
-#: library/templates/index.html:102
+#: library/templates/index.html:96
+msgid ""
+"\n"
+"    If you don't have any ePubs yet, you can start with <a href=\"http://www."
+"threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen.epub\">Pride and "
+"Prejudice</a> by Jane Austen,\n"
+"    or the <a href=\"http://oreilly.com/ebooks/\">technical ePubs available "
+"from O'Reilly</a>.\n"
+"  "
+msgstr ""
+
+#: library/templates/index.html:104
 msgid ""
 "Once you've gotten one of these books on your computer, you can upload them "
 "to your new Bookworm account."
@@ -2425,7 +2436,7 @@ msgstr ""
 "Kun olet siirtänyt yhden tällaisista kirjoista tietokoneellesi, voit siirtää "
 "sen uudelle Bookworm -käyttäjätilillesi."
 
-#: library/templates/index.html:109
+#: library/templates/index.html:111
 msgid "upload"
 msgstr "siirrä"
 
@@ -2498,15 +2509,14 @@ msgstr "Etsi ja lue digikirjoja verkossa"
 msgid "Clutter-free reading mode"
 msgstr "Selkeä lukunäyttö"
 
-#: library/templates/public.html:40
-msgid "Download books to your "
-msgstr "Siirrä kirjoja"
+#: library/templates/public.html:41
+#, python-format
+msgid ""
+"Download books to your <a href=\"%(helpurl)s#devices\">Sony Reader or iLiad</"
+"a> "
+msgstr ""
 
-#: library/templates/public.html:40
-msgid "Sony Reader or iLiad "
-msgstr "Sony Reader tai iLiad -laitteisiin"
-
-#: library/templates/public.html:42
+#: library/templates/public.html:44
 #, python-format
 msgid ""
 "<a href=\"%(toururl)s#step4\">Mobile reading</a>, online or with <a href=\"%"
@@ -2515,28 +2525,28 @@ msgstr ""
 "<a href=\\\"%(toururl)s#step4\\\">Mobile reading</a>, verkossa tai iPhonen "
 "<a href=\"%(stanzaurl)s\">Stanzalla</a>.      "
 
-#: library/templates/public.html:44
+#: library/templates/public.html:46
 #, python-format
 msgid "Available in <a href=\"%(languageurl)s\">multiple languages</a>."
 msgstr ""
 
-#: library/templates/public.html:49
+#: library/templates/public.html:51
 msgid "Publishers"
 msgstr "Julkaisijat"
 
-#: library/templates/public.html:51
+#: library/templates/public.html:53
 msgid "Test your ePub ebooks"
 msgstr "Testaa"
 
-#: library/templates/public.html:52
+#: library/templates/public.html:54
 msgid "Need strategy or technical help?"
 msgstr "Tarvitko julkaisutrategian tai teknistä tukea?"
 
-#: library/templates/public.html:53
+#: library/templates/public.html:55
 msgid "Ebook and ePub consulting services"
 msgstr "Epub- ja digikirjojen asiantuntijapalveluita"
 
-#: library/templates/public.html:55
+#: library/templates/public.html:57
 #, python-format
 msgid ""
 " Details on the <a href=\"%(epuburl)s\">ePub format</a> \n"
@@ -2545,27 +2555,27 @@ msgstr ""
 "    Bookworm ja ePub <a href=\"%(epuburl)s\">-esittely yhdellä sivulla</"
 "a>.    "
 
-#: library/templates/public.html:62
+#: library/templates/public.html:64
 msgid "Developers"
 msgstr "Kehittäjät"
 
-#: library/templates/public.html:64
+#: library/templates/public.html:66
 msgid "Open-source"
 msgstr "Avoimen lähdekoodin"
 
-#: library/templates/public.html:64
+#: library/templates/public.html:66
 msgid "BSD-licensed"
 msgstr "BSD -lisenssi"
 
-#: library/templates/public.html:65
+#: library/templates/public.html:67
 msgid "How Bookworm implements ePub"
 msgstr "Miten Bookworm soveltaa ePub -suositusta?"
 
-#: library/templates/public.html:66
+#: library/templates/public.html:68
 msgid "More open-source ePub software"
 msgstr "Muita avoimen koodin ePub -sovelluksia"
 
-#: library/templates/public.html:67
+#: library/templates/public.html:69
 msgid ""
 "Follow announcements on the <a href='http://blog.threepress.org/'>Bookworm "
 "blog</a>"
@@ -2573,7 +2583,7 @@ msgstr ""
 "Seuraa kirjoittelua <a href='http://blog.threepress.org/'>Bookworm -"
 "blogissa</a>"
 
-#: library/templates/public.html:75
+#: library/templates/public.html:77
 msgid ""
 "\n"
 "              A page in Bookworm, showing the\n"
@@ -2588,11 +2598,11 @@ msgstr ""
 "SVG muotoisia kuvia\n"
 "      ja kaikkia XHTML -elementtejä."
 
-#: library/templates/public.html:83
+#: library/templates/public.html:85
 msgid "What is Bookworm?"
 msgstr "Mikä on Bookworm"
 
-#: library/templates/public.html:84
+#: library/templates/public.html:86
 msgid ""
 "Bookworm allows readers to add ePub books to their online library and read "
 "them on their web browser or mobile device. If you have a portable device "
@@ -2607,11 +2617,11 @@ msgstr ""
 "mobiili-\n"
 "  laitteille (mm. Symbian S60 ja iPhone) muokattu versio.  "
 
-#: library/templates/public.html:85
+#: library/templates/public.html:87
 msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
 msgstr "Mikä on &rsquo;ePub -kirja&rdquo;?"
 
-#: library/templates/public.html:88
+#: library/templates/public.html:90
 #, python-format
 msgid ""
 "\n"
@@ -2632,11 +2642,11 @@ msgstr ""
 "    julkaisijaa kannattamaan  digikirjojen ainoaa vapaata koodia, jolla on\n"
 "    selkeä teollisuuden tuki."
 
-#: library/templates/public.html:96
+#: library/templates/public.html:98
 msgid "Try Bookworm out"
 msgstr "Kokeile Bookworm -palvelua"
 
-#: library/templates/public.html:99
+#: library/templates/public.html:101
 #, python-format
 msgid "Try the one-page <a href=\"%(toururl)s\">Bookworm and ePub tour</a>."
 msgstr ""
@@ -2924,77 +2934,77 @@ msgstr ""
 "Liza Daly (threepress.org). Hankkeen tarkoitus on edistää avoimen koodin "
 "sovellusten käyttöä akateemisessa ja teollisessa julkaisutoiminnassa."
 
-#: library/templates/shell.html:32
+#: library/templates/shell.html:37
 msgid "Online ePub ebook reading"
 msgstr "Lue epub -kirjoja verkossa"
 
-#: library/templates/shell.html:37
+#: library/templates/shell.html:42
 msgid "My books"
 msgstr "Kokoelmani"
 
-#: library/templates/shell.html:39
+#: library/templates/shell.html:44
 msgid "Mobile version"
 msgstr "Mobiilisivut"
 
-#: library/templates/shell.html:40
+#: library/templates/shell.html:45
 msgid "Search"
 msgstr "Haku"
 
-#: library/templates/shell.html:43
+#: library/templates/shell.html:48
 msgid "Blog"
 msgstr "Blogi"
 
-#: library/templates/shell.html:44
+#: library/templates/shell.html:49
 msgid "About <span class=\"bw-logo\">Bookworm</span>"
 msgstr ""
 
-#: library/templates/shell.html:45
+#: library/templates/shell.html:50
 msgid "About Threepress"
 msgstr ""
 
-#: library/templates/shell.html:46 library/templates/includes/about.html:7
+#: library/templates/shell.html:51 library/templates/includes/about.html:7
 msgid "Help"
 msgstr "Ohjeita"
 
-#: library/templates/shell.html:54
+#: library/templates/shell.html:59
 msgid "add"
 msgstr "lisää"
 
-#: library/templates/shell.html:55 library/templates/mobile/base.html:22
+#: library/templates/shell.html:60 library/templates/mobile/base.html:22
 msgid "help"
 msgstr "ohjeita"
 
-#: library/templates/shell.html:62 library/templates/mobile/base.html:39
+#: library/templates/shell.html:67 library/templates/mobile/base.html:39
 msgid "Library"
 msgstr "Kokoelma"
 
-#: library/templates/shell.html:71
+#: library/templates/shell.html:76
 msgid "Signed in as"
 msgstr "Kirjautunut"
 
-#: library/templates/shell.html:73
+#: library/templates/shell.html:78
 msgid "edit profile"
 msgstr "käyttäjätiedot"
 
-#: library/templates/shell.html:75
+#: library/templates/shell.html:80
 msgid "admin"
 msgstr "pääkäyttäjä"
 
-#: library/templates/shell.html:77 library/templates/mobile/base.html:35
+#: library/templates/shell.html:82 library/templates/mobile/base.html:35
 msgid "logout"
 msgstr "poistu"
 
-#: library/templates/shell.html:79
+#: library/templates/shell.html:84
 msgid "language"
 msgstr "kieli"
 
-#: library/templates/shell.html:86
+#: library/templates/shell.html:91
 #: library/templates/auth/authopenid/signin.html:4
 #: library/templates/auth/authopenid/signin.html:75
 msgid "Sign in"
 msgstr "Kirjaudu"
 
-#: library/templates/shell.html:97
+#: library/templates/shell.html:102
 #, python-format
 msgid ""
 "\n"
@@ -3005,11 +3015,11 @@ msgstr ""
 "\n"
 "                  Bookworm tililtä %(ruf)s &lt;%(rue)s&gt;"
 
-#: library/templates/shell.html:116
+#: library/templates/shell.html:121
 msgid "Privacy policy"
 msgstr "Tietosuoja"
 
-#: library/templates/shell.html:117
+#: library/templates/shell.html:122
 #, python-format
 msgid ""
 "\n"
@@ -3022,7 +3032,7 @@ msgstr ""
 "        Ohjelmisto: <a href=\"%(tpcurl)s\">Threepress Consulting Inc.</a> ja "
 "<a href=\"%(djpurl)s\">Django</a>"
 
-#: library/templates/shell.html:122
+#: library/templates/shell.html:127
 #, python-format
 msgid ""
 "\n"
@@ -4372,6 +4382,12 @@ msgstr ""
 "  Tämä tarkoittaa, että juuri siirtämäsi kirja ei heti näy hakutuloksissa.\n"
 "  Vähän kärsivällisyyttä ja kirja ilmestyy pian tuloksiin.\n"
 "  "
+
+#~ msgid "Download books to your "
+#~ msgstr "Siirrä kirjoja"
+
+#~ msgid "Sony Reader or iLiad "
+#~ msgstr "Sony Reader tai iLiad -laitteisiin"
 
 #~ msgid "Your OpenID is"
 #~ msgstr "OpenID -tunnuksesi on"

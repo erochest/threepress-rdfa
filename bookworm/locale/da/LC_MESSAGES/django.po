@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-09 18:51-0400\n"
+"POT-Creation-Date: 2009-06-09 19:59-0400\n"
 "PO-Revision-Date: 2009-06-03 14:33-0400\n"
 "Last-Translator: Marie Bilde Rasmussen <mariebilderas@gmail.com>\n"
 "Language-Team: Danish\n"
@@ -38,11 +38,11 @@ msgstr ""
 msgid "Italian"
 msgstr ""
 
-#: settings.py:142
+#: settings.py:143
 msgid "account/"
 msgstr "konto/"
 
-#: settings.py:142
+#: settings.py:143
 msgid "signin/"
 msgstr "log på/"
 
@@ -2282,8 +2282,8 @@ msgstr ""
 msgid "My epub library"
 msgstr "Mir ePub-bibliotek"
 
-#: library/templates/index.html:14 library/templates/shell.html:38
-#: library/templates/shell.html.py:53 library/templates/upload.html:4
+#: library/templates/index.html:14 library/templates/shell.html:43
+#: library/templates/shell.html.py:58 library/templates/upload.html:4
 #: library/templates/upload.html.py:5
 msgid "Add a book"
 msgstr "Tilføj en bog"
@@ -2370,7 +2370,7 @@ msgstr ""
 "titel."
 
 #: library/templates/index.html:80 library/templates/shell.html:6
-#: library/templates/shell.html.py:31
+#: library/templates/shell.html.py:36
 msgid "Bookworm"
 msgstr "Bookworm"
 
@@ -2395,7 +2395,18 @@ msgstr "Tilføj en ny ePub-ebog:"
 msgid "Add your first ePub ebook:"
 msgstr "Tilføj din første ePub-ebog:"
 
-#: library/templates/index.html:102
+#: library/templates/index.html:96
+msgid ""
+"\n"
+"    If you don't have any ePubs yet, you can start with <a href=\"http://www."
+"threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen.epub\">Pride and "
+"Prejudice</a> by Jane Austen,\n"
+"    or the <a href=\"http://oreilly.com/ebooks/\">technical ePubs available "
+"from O'Reilly</a>.\n"
+"  "
+msgstr ""
+
+#: library/templates/index.html:104
 msgid ""
 "Once you've gotten one of these books on your computer, you can upload them "
 "to your new Bookworm account."
@@ -2403,7 +2414,7 @@ msgstr ""
 "Når du har fået én af disse bøger ned på din computer, kan du oploade den "
 "til din nye Bookworm-konto."
 
-#: library/templates/index.html:109
+#: library/templates/index.html:111
 msgid "upload"
 msgstr "opload"
 
@@ -2476,15 +2487,14 @@ msgstr "Læs og søg online i komplette bøger"
 msgid "Clutter-free reading mode"
 msgstr "støjfri Læsemodus"
 
-#: library/templates/public.html:40
-msgid "Download books to your "
-msgstr "Download bøger til din "
+#: library/templates/public.html:41
+#, python-format
+msgid ""
+"Download books to your <a href=\"%(helpurl)s#devices\">Sony Reader or iLiad</"
+"a> "
+msgstr ""
 
-#: library/templates/public.html:40
-msgid "Sony Reader or iLiad "
-msgstr "Sony Reader eller iLiad"
-
-#: library/templates/public.html:42
+#: library/templates/public.html:44
 #, python-format
 msgid ""
 "<a href=\"%(toururl)s#step4\">Mobile reading</a>, online or with <a href=\"%"
@@ -2493,61 +2503,61 @@ msgstr ""
 "<a href=\\\"%(toururl)s#step4\\\">Mobile reading</a>, online eller med en <a "
 "href=\"%(stanzaurl)s\">Stanza</a>-reader på din iPhone."
 
-#: library/templates/public.html:44
+#: library/templates/public.html:46
 #, python-format
 msgid "Available in <a href=\"%(languageurl)s\">multiple languages</a>."
 msgstr ""
 
-#: library/templates/public.html:49
+#: library/templates/public.html:51
 msgid "Publishers"
 msgstr "Udgivere"
 
-#: library/templates/public.html:51
+#: library/templates/public.html:53
 msgid "Test your ePub ebooks"
 msgstr "Tjek dine ePub-bøger"
 
-#: library/templates/public.html:52
+#: library/templates/public.html:54
 msgid "Need strategy or technical help?"
 msgstr "Har du brug for strategisk eller teknisk hjælp?"
 
-#: library/templates/public.html:53
+#: library/templates/public.html:55
 msgid "Ebook and ePub consulting services"
 msgstr "Konsulentydelser vedr. ebøger og ePub-formatet"
 
-#: library/templates/public.html:55
+#: library/templates/public.html:57
 #, python-format
 msgid ""
 " Details on the <a href=\"%(epuburl)s\">ePub format</a> \n"
 "              "
 msgstr "Detaljer om <a href=\"%(epuburl)s\">ePub-formatet</a>"
 
-#: library/templates/public.html:62
+#: library/templates/public.html:64
 msgid "Developers"
 msgstr "Udviklere"
 
-#: library/templates/public.html:64
+#: library/templates/public.html:66
 msgid "Open-source"
 msgstr "Open-source"
 
-#: library/templates/public.html:64
+#: library/templates/public.html:66
 msgid "BSD-licensed"
 msgstr "med BSD-licens"
 
-#: library/templates/public.html:65
+#: library/templates/public.html:67
 msgid "How Bookworm implements ePub"
 msgstr "Sådan er ePub implementeret i Bookworm"
 
-#: library/templates/public.html:66
+#: library/templates/public.html:68
 msgid "More open-source ePub software"
 msgstr "Mere open-source ePub-software"
 
-#: library/templates/public.html:67
+#: library/templates/public.html:69
 msgid ""
 "Follow announcements on the <a href='http://blog.threepress.org/'>Bookworm "
 "blog</a>"
 msgstr "Få nyheder på <a href='http://blog.threepress.org/'>Bookworms blog</a>"
 
-#: library/templates/public.html:75
+#: library/templates/public.html:77
 msgid ""
 "\n"
 "              A page in Bookworm, showing the\n"
@@ -2562,11 +2572,11 @@ msgstr ""
 "tekst. Bookworm understøtter CSS-styles, billeder i JPG-, GIF-, PNG- og SVG-"
 "format, samt fuld XHTML."
 
-#: library/templates/public.html:83
+#: library/templates/public.html:85
 msgid "What is Bookworm?"
 msgstr "Hvad er Bookworm?"
 
-#: library/templates/public.html:84
+#: library/templates/public.html:86
 msgid ""
 "Bookworm allows readers to add ePub books to their online library and read "
 "them on their web browser or mobile device. If you have a portable device "
@@ -2581,11 +2591,11 @@ msgstr ""
 "ebogslæser. Bookworm er optimeret til brug på en iPhone, og du kan "
 "eksportere bøgerne direkte til Stanza-readeren."
 
-#: library/templates/public.html:85
+#: library/templates/public.html:87
 msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
 msgstr "Hvad er en &ldquo;ePub-bog&rdquo;?"
 
-#: library/templates/public.html:88
+#: library/templates/public.html:90
 #, python-format
 msgid ""
 "\n"
@@ -2605,11 +2615,11 @@ msgstr ""
 "understøtte det eneste gratis og åbne ebogsformat der nyder stærk opbakning "
 "i branchen"
 
-#: library/templates/public.html:96
+#: library/templates/public.html:98
 msgid "Try Bookworm out"
 msgstr "Prøv Bookworm"
 
-#: library/templates/public.html:99
+#: library/templates/public.html:101
 #, python-format
 msgid "Try the one-page <a href=\"%(toururl)s\">Bookworm and ePub tour</a>."
 msgstr ""
@@ -2899,77 +2909,77 @@ msgstr ""
 "af Liza Daly hos threepress.org, som et projekt der skal udbrede open source-"
 "software inden for akademisk og kommerciel udgivervirksomhed."
 
-#: library/templates/shell.html:32
+#: library/templates/shell.html:37
 msgid "Online ePub ebook reading"
 msgstr "Læs ePub-bøger online"
 
-#: library/templates/shell.html:37
+#: library/templates/shell.html:42
 msgid "My books"
 msgstr "Mine bøger"
 
-#: library/templates/shell.html:39
+#: library/templates/shell.html:44
 msgid "Mobile version"
 msgstr "Mobilversion"
 
-#: library/templates/shell.html:40
+#: library/templates/shell.html:45
 msgid "Search"
 msgstr "Søg"
 
-#: library/templates/shell.html:43
+#: library/templates/shell.html:48
 msgid "Blog"
 msgstr "Blog"
 
-#: library/templates/shell.html:44
+#: library/templates/shell.html:49
 msgid "About <span class=\"bw-logo\">Bookworm</span>"
 msgstr ""
 
-#: library/templates/shell.html:45
+#: library/templates/shell.html:50
 msgid "About Threepress"
 msgstr ""
 
-#: library/templates/shell.html:46 library/templates/includes/about.html:7
+#: library/templates/shell.html:51 library/templates/includes/about.html:7
 msgid "Help"
 msgstr "Hjælp"
 
-#: library/templates/shell.html:54
+#: library/templates/shell.html:59
 msgid "add"
 msgstr "Tilføj"
 
-#: library/templates/shell.html:55 library/templates/mobile/base.html:22
+#: library/templates/shell.html:60 library/templates/mobile/base.html:22
 msgid "help"
 msgstr "Hjælp"
 
-#: library/templates/shell.html:62 library/templates/mobile/base.html:39
+#: library/templates/shell.html:67 library/templates/mobile/base.html:39
 msgid "Library"
 msgstr "Bibliotek"
 
-#: library/templates/shell.html:71
+#: library/templates/shell.html:76
 msgid "Signed in as"
 msgstr "Logget ind som"
 
-#: library/templates/shell.html:73
+#: library/templates/shell.html:78
 msgid "edit profile"
 msgstr "Redigér profil"
 
-#: library/templates/shell.html:75
+#: library/templates/shell.html:80
 msgid "admin"
 msgstr "administrator"
 
-#: library/templates/shell.html:77 library/templates/mobile/base.html:35
+#: library/templates/shell.html:82 library/templates/mobile/base.html:35
 msgid "logout"
 msgstr "log af"
 
-#: library/templates/shell.html:79
+#: library/templates/shell.html:84
 msgid "language"
 msgstr "Sprog"
 
-#: library/templates/shell.html:86
+#: library/templates/shell.html:91
 #: library/templates/auth/authopenid/signin.html:4
 #: library/templates/auth/authopenid/signin.html:75
 msgid "Sign in"
 msgstr "Log ind"
 
-#: library/templates/shell.html:97
+#: library/templates/shell.html:102
 #, python-format
 msgid ""
 "\n"
@@ -2980,11 +2990,11 @@ msgstr ""
 "\n"
 "Fra Bookwormkontoen for %(ruf)s &amp;lt;%(rue)s&amp;gt;"
 
-#: library/templates/shell.html:116
+#: library/templates/shell.html:121
 msgid "Privacy policy"
 msgstr "Beskyttelse af privatliv"
 
-#: library/templates/shell.html:117
+#: library/templates/shell.html:122
 #, python-format
 msgid ""
 "\n"
@@ -2997,7 +3007,7 @@ msgstr ""
 "Software ved <a href=\"%(tpcurl)s\">Threepress Consulting Inc.</a> og <a "
 "href=\"%(djpurl)s\">Django</a>"
 
-#: library/templates/shell.html:122
+#: library/templates/shell.html:127
 #, python-format
 msgid ""
 "\n"
@@ -4341,6 +4351,12 @@ msgstr ""
 "\n"
 "Derfor kommer en bog, der lige er tilføjet dit bibliotek, ikke altid til "
 "syne med det samme. Men hold ud: der går ikke lang tid."
+
+#~ msgid "Download books to your "
+#~ msgstr "Download bøger til din "
+
+#~ msgid "Sony Reader or iLiad "
+#~ msgstr "Sony Reader eller iLiad"
 
 #~ msgid "Your OpenID is"
 #~ msgstr "Dit OpenID er"

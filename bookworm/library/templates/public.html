@@ -37,7 +37,9 @@
             <ul>
               <li>{{ _("Read and search full-text books online") }}</li>
               <li>{{ _("Clutter-free reading mode")}}</li>
-              <li>{{ _("Download books to your ") }}<a href="{% url help %}#devices">{{ _("Sony Reader or iLiad ") }}</a></li>
+              {% url help as helpurl %}
+              <li>{% blocktrans %}Download books to your <a href="{{ helpurl }}#devices">Sony Reader or iLiad</a> {% endblocktrans %}</li>
+
               <li>{% url tour as toururl %}
               {% blocktrans with "http://www.lexcycle.com/" as stanzaurl %}<a href="{{ toururl }}#step4">Mobile reading</a>, online or with <a href="{{ stanzaurl }}">Stanza</a> on the iPhone.{% endblocktrans %}
               </li>
