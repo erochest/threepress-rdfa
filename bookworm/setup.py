@@ -13,7 +13,7 @@ setup(
                         'cssutils',
                         'python-openid',
                         'twill',
-                        'lxml',
+                        'lxml >2.0',
                         'BeautifulSoup'],
     include_package_data = True
 )
