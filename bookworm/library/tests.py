@@ -1549,6 +1549,12 @@ class TestViews(DjangoTestCase):
         response = self.client.post('/i18n/setlang/',
                                     { 'language':'en'})        
 
+    def test_account_page(self):
+        '''This page should redirect to our profile page'''
+        self._login()
+        response = self.client.get('/account/')
+        self.assertTemplateUsed(response, 'auth/profile.html')
+
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
         

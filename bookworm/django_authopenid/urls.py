@@ -13,9 +13,12 @@ urlpatterns = patterns('django_authopenid.views',
                            name='user_confirmchangepw'),
 
                        # manage account settings
-                       url(r'^$', 'account_settings', name='user_account_settings'),
                        url(r'^%s$' % 'password/', 'changepw', name='user_changepw'),
                        url(r'^%s$' % 'email/', 'changeemail', name='user_changeemail'),
                        url(r'^%s$' % 'openid/', 'changeopenid', name='user_changeopenid'),
                        url(r'^%s$' % 'delete/', 'delete', name='user_delete'),
+)
+
+urlpatterns += patterns('bookworm.library.views',
+                        url(r'^$', 'profile', name='profile'),
 )
