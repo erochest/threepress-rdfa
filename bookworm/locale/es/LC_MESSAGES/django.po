@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-22 20:28-0400\n"
+"POT-Creation-Date: 2009-06-22 21:58-0400\n"
 "PO-Revision-Date: 2009-06-03 09:50-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -382,7 +382,7 @@ msgid "SVG image support"
 msgstr "Respalda im&aacute;genes en formato SVG"
 
 #: library/templates/about.html:32
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "For questions or problems with Bookworm, please contact <a href=\"mailto:%"
 "(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>"
@@ -646,7 +646,7 @@ msgstr ""
 " sugerencias para ampliar la funcionalidad de Bookworm"
 
 #: library/templates/about.html:150
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Threepress is a publisher-serving corporation with many years of experience "
 "in building\n"
@@ -737,7 +737,7 @@ msgstr ""
 " su propio autor, o designados por la editorial como obra p&uacute;blica."
 
 #: library/templates/about.html:179
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Public books are in a very early beta stage.  To request that a book be made "
 "public, please contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</"
@@ -827,7 +827,7 @@ msgstr ""
 "\">Tools of Change</a>  de O'Reilly Media"
 
 #: library/templates/about.html:230
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    For problems and feature requests, visit  <a href=\"http://"
@@ -922,7 +922,7 @@ msgstr ""
 
 #: library/templates/ebooktesting.html:44
 msgid "Validating with EpubCheck <!-- trans: do not translate epubcheck -->"
-msgstr "Validando con EpubCheck"
+msgstr "Validaci&oacute;n a trav&eacute;s de EpubCheck"
 
 #: library/templates/ebooktesting.html:46
 msgid ""
@@ -1110,7 +1110,6 @@ msgstr ""
 " que resulten en la exposici&oacute;n p&uacute;blica de una obra."
 
 #: library/templates/ebooktesting.html:132
-#, fuzzy
 msgid ""
 "\n"
 "    However, Threepress can arrange for a private version of Bookworm\n"
@@ -1439,11 +1438,11 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Seg&uacute;n la especificaci&oacute;n ePub, Bookworm, al &lsquo;"
-"abrir&rsquo;\n"
+"Seg&uacute;n la especificaci&oacute;n ePub, Bookworm, al &laquo;"
+"abrir&raquo;\n"
 " el documento, va al primer elemento que en el archivo NCX lleva el "
 "atributo\n"
-" <code>linear</code> con el valor de &lsquo;yes&rsquo;. Esto quiere decir, "
+" <code>linear</code> con el valor de &laquo;yes&raquo;. Esto quiere decir, "
 "aunque parezca\n"
 " contradictorio, que en algunos t&iacute;tulos la p&aacute;gina por defecto "
 "del libro ePub\n"
@@ -1545,12 +1544,12 @@ msgstr ""
 " En teor&iacute;a tambi&eacute;n puede respaldar fuentes embebidas "
 "especificadas\n"
 " con CSS 3, siempre que el navegador lo permita. Sin embargo, esto no se\n"
-" ha verificado todav&iacute;a(te agradecer&iacute;amos cualquier ejemplos "
+" ha verificado todav&iacute;a (te agradecer&iacute;amos cualquier ejemplos "
 "que puedas suministrar)."
 
 #: library/templates/epub.html:209
 msgid "How Bookworm treats invalid ePub"
-msgstr "C&oacute;mo Bookworm procesa un libro ePub inv&aacute;lido"
+msgstr "C&oacute;mo Bookworm procesa un libro ePub que no es v&aacute;lido"
 
 #: library/templates/epub.html:211
 msgid ""
@@ -1631,7 +1630,7 @@ msgid ""
 msgstr ""
 "\n"
 "Existen publicaciones electr&oacute;nicas con un formato muy extenso\n"
-" que no son apropiadas para la lectura basada en un navegador de web (por "
+" que no son apropiadas para la lectura basada en navegador de web (por "
 "ejemplo,\n"
 " comics de una sola &laquo;p&aacute;gina&raquo;, o el texto, sin "
 "interrupci&oacute;n, de\n"
@@ -1667,7 +1666,7 @@ msgid "Help using Bookworm"
 msgstr "P&aacute;gina de asistencia"
 
 #: library/templates/help.html:27
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Confused about what to do, or having problems?  Check this list for "
@@ -1677,7 +1676,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"&iquest;No sabes qu&eacute; hacer, o tienes alg&uacute;n problema? Consulta "
+"Si no sabes c&oacute;mo proseguir o tienes alg&uacute;n problema, consulta "
 "esta lista de\n"
 " temas usuales, o para asistencia contacta con <a href=\"mailto:%"
 "(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>."
@@ -1724,8 +1723,9 @@ msgid ""
 msgstr ""
 "\n"
 "Para m&aacute;s informaci&oacute;n, consulta la p&aacute;gina\n"
-"<a href=\"%(abouturl)s\">Qui&eacute;nes somos</a>, para hacerte una idea\n"
-" del prop&oacute;sito y ventajas de utilizar Bookworm."
+"<a href=\"%(abouturl)s\">&iquest;Qu&eacute; es Bookworm?</a>, para hacerte "
+"una idea\n"
+" del prop&oacute;sito y ventajas de utilizar esta aplicaci&oacute;n."
 
 #: library/templates/help.html:58
 msgid "I'm having problems adding a book"
@@ -1819,7 +1819,7 @@ msgstr ""
 " un documento correcto."
 
 #: library/templates/help.html:98
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Whenever an ePub book fails to get added to the library, the Bookworm\n"
@@ -1831,7 +1831,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Cuando surge un error a la hora de cargar un libro a tu biblioteca, \n"
+"Cuando surge un error a la hora de cargar un libro a la biblioteca, \n"
 " el equipo de desarrollo de Bookworm recibe un mensaje y procede a corregir "
 "cualquier\n"
 " fallo de software que se haya identificado. En tal caso, vuelve a verificar "
@@ -1894,9 +1894,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Hay libros que son demasiado grandes para poder ser almacenados y para poder "
-"ser\n"
-" le&iacute;dos en Bookworm. Un libro en exceso de 30 megabytes se considera "
+"Hay libros que son demasiado grandes para poder ser almacenados y \n"
+"  le&iacute;dos en Bookworm. Un libro en exceso de 30 megabytes se considera "
 "demasiado\n"
 " grande para esta aplicaci&oacute;n y ser&aacute; consecuentemente rechazado."
 
@@ -2066,7 +2065,7 @@ msgstr ""
 " p&aacute;gina <a href=\"%(abouturl)s\">&iquest;Qu&eacute; es Bookworm?</a>"
 
 #: library/templates/help.html:228
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Also try our forums on <a href=\"http://getsatisfaction.com/threepress/"
@@ -2238,9 +2237,8 @@ msgstr "&uacute;ltimo le&iacute;do"
 
 #: library/templates/openid.html:3 library/templates/openid.html.py:5
 #: library/templates/openid.html:11
-#, fuzzy
 msgid "About OpenID"
-msgstr "Tu OpenID es"
+msgstr "Informaci&oacute;n sobre el OpenID"
 
 #: library/templates/openid.html:14
 msgid ""
@@ -2338,7 +2336,7 @@ msgstr ""
 #: library/templates/public.html:46
 #, python-format
 msgid "Available in <a href=\"%(languageurl)s\">multiple languages</a>."
-msgstr "Disponible en <a href=\"%(languageurl)s\">varios idiomas</a>."
+msgstr "Disponible en <a href=\"%(languageurl)s\">varios idiomas</a>"
 
 #: library/templates/public.html:51
 msgid "Publishers"
@@ -3230,7 +3228,7 @@ msgid "Need help?"
 msgstr "&iquest;Necesitas ayuda?"
 
 #: library/templates/upload.html:25
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Try reading the <a href=\"%(helpurl)s\">Help</a> or <a href=\"%(abouturl)s"
 "\">About</a> pages for more information, or email <a href=\"mailto:%"
@@ -3242,13 +3240,13 @@ msgstr ""
 "<a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> para otras consultas."
 
 #: library/templates/upload.html:27
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "If you get an error that you don't understand, please email <a href=\"mailto:"
 "%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> with a description of the problem."
 msgstr ""
 "Si recibes un error que no comprendes, env&iacute;anos un correo "
-"electr&oacute;nico a a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> "
+"electr&oacute;nico a <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> "
 "con una descripci&oacute;n del problema."
 
 #: library/templates/upload.html:42
@@ -3428,8 +3426,8 @@ msgid ""
 msgstr ""
 " Si no ves el idioma de tu preferencia en esta lista, y est&aacute;s "
 "dispuesto a\n"
-" ayudarnos con una traducci&oacute;n, <a href=\"mailto:bookworm@threepress."
-"org\">contacta con\n"
+" ayudarnos con la traducci&oacute;n, <a href=\"mailto:bookworm@threepress.org"
+"\">contacta con\n"
 " nosotros. Bookworm se puede traducir a <a href=\"http://code.djangoproject."
 "com/browser/django/trunk/django/conf/global_settings.py#L43\">cualquier "
 "idioma respaldado en el framework Django</a>."
@@ -4009,7 +4007,6 @@ msgstr ""
 "respecto a los servicios de OpenID que ofrecen."
 
 #: library/templates/includes/openid.html:24
-#, fuzzy
 msgid ""
 "AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> "
 msgstr ""
@@ -4385,7 +4382,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"Dicho de otro modo, ePubs con mayor incidencia del t&eacute;rmino de "
+"Dicho de forma simple, ePubs con mayor incidencia del t&eacute;rmino de "
 "b&uacute;squeda\n"
 " aparecer&aacute;n primero en la lista de resultados."
 
@@ -4425,7 +4422,6 @@ msgstr ""
 " inmediatamente en el resultado de la b&uacute;squeda. Ten paciencia; es "
 "s&oacute;lo cuesti&oacute;n de tiempo."
 
-#, fuzzy
 #~ msgid "Thank you for registering with Bookworm."
 #~ msgstr "Verificando el formato de tus libros ePub en Bookworm"
 
