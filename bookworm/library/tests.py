@@ -566,6 +566,47 @@ class TestModels(unittest.TestCase):
         b2.delete()
         self.assert_(not os.path.exists(storage))        
 
+    def test_binary_deprecated(self):
+        '''Force an old filesystem path and make sure it still works'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        epub = _get_file(filename)
+
+        b2 = MockEpubBlob.objects.get(archive=document)
+
+        self.assert_(b2.get_data())
+
+        # Assert that we can read the file, and it's the same
+        self.assertEquals(epub, b2.get_data())
+
+        # Assert that it's physically in the storage directory
+        storage = b2._get_file()
+        self.assert_(os.path.exists(storage))        
+
+        # Check that it's a new-style path
+        assert '_' in storage 
+        
+        # Move the file out from under it to the old path
+        paths = storage.split('/')
+        assert '_' in paths[-3]
+
+        new_storage = os.path.join('/'.join(paths[:-3]), paths[-2], paths[-1])
+        print new_storage
+        os.makedirs(new_storage)
+        
+        b2._get_storage = lambda : new_storage
+
+        shutil.move(storage, new_storage)
+        # Now re-get the content and check that it's there
+        self.assert_(b2.get_data())
+
+        # Assert that we can read the file, and it's the same
+        self.assertEquals(epub, b2.get_data())
+        
+                 
+
     def test_safe_deletion_when_epub_gone(self):
         '''If an epub binary is deleted, we should still allow deletion from the database'''
         filename = 'Pride-and-Prejudice_Jane-Austen.epub'

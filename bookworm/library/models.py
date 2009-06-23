@@ -34,7 +34,7 @@ log = logging.getLogger('library.models')
 
 # Functions
 def safe_name(name):
-    '''Return a name that can be used safely in a URL'''
+    '''Return a name t hat can be used safely in a URL'''
     quote = urlquote_plus(name.encode(ENC))
     return quote
  
@@ -615,12 +615,7 @@ class EpubArchive(BookwormModel):
 
         nav_map = {}
         item_map = {}
-        metas = toc.getiterator('{%s}meta' % (NS['ncx']))
       
-        for m in metas:
-            if m.get('name') == 'db:depth':
-                depth = int(m.get('content'))
-
         for item in items:
             item_map[item.get('id')] = item.get('href')
              
@@ -1111,7 +1106,7 @@ class BinaryBlob(BookwormFile):
         storage = self._get_storage()
   
         if not os.path.exists(storage):
-            os.mkdir(storage)
+            os.makedirs(storage)
         f = self._get_file()
         if os.path.exists(f.encode('utf8')):
             log.warn('File %s with document %s already exists; saving anyway' % (self.filename, self.archive.name))
@@ -1167,11 +1162,13 @@ class BinaryBlob(BookwormFile):
         return os.path.join(storage, self.filename)
 
     def _get_storage(self):
-        return os.path.join(self._get_storage_dir(), unicode(self.archive.id))
+        '''Storage should be storage/top-level-dir/archive-id, where top-level-dir is the archive-id divided by 1,000'''
+        top_dir = int(int(self.archive.id) / 1000)
+        return os.path.join(self._get_storage_dir(), "_" + unicode(top_dir), unicode(self.archive.id))
 
     def _get_storage_deprecated(self):
-        log.warn('Using old method of file retrieval; this should be removed!')
-        return os.path.join(self._get_storage_dir(), self.archive.name)
+        '''Original method of file retrieval: storage/archive-id'''
+        return os.path.join(self._get_storage_dir(), unicode(self.archive.id))
 
     class Meta:
         abstract = True
