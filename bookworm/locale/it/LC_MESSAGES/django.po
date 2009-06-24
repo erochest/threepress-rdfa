@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bookworm\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-06-24 10:22-0400\n"
-"PO-Revision-Date: 2009-06-03 09:28-0400\n"
+"PO-Revision-Date: 2009-06-24 10:26-0400\n"
 "Last-Translator: Marco Croella <marco.croella@simplicissimus.it>\n"
 "Language-Team: Italian <marco.croella@simplicissimus.it>\n"
 "MIME-Version: 1.0\n"
@@ -2251,7 +2251,7 @@ msgstr ""
 #: library/templates/public.html:46
 #, python-format
 msgid "Available in <a href=\"%(languageurl)s\">multiple languages</a>."
-msgstr ""
+msgstr "Disponibile in <a href=\"%(languageurl)s\">molte lingue</a>."
 
 #: library/templates/public.html:51
 msgid "Publishers"
