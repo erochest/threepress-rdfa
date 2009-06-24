@@ -101,6 +101,7 @@ LANGUAGES = (
   ('en', ugettext('English')),
   ('da', ugettext('Danish')),
   ('fi', ugettext('Finnish')),
+  ('it', ugettext('Italian')),
 #  ('es', ugettext('Spanish')),
 #  ('zh-tw', ugettext('Simplified Chinese')),
 #  ('he', ugettext('Hebrew')),
