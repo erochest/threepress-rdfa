@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Bookworm\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-06-24 10:22-0400\n"
-"PO-Revision-Date: 2009-06-24 10:26-0400\n"
+"PO-Revision-Date: 2009-06-24 10:30-0400\n"
 "Last-Translator: Marco Croella <marco.croella@simplicissimus.it>\n"
 "Language-Team: Italian <marco.croella@simplicissimus.it>\n"
 "MIME-Version: 1.0\n"
@@ -2682,11 +2682,11 @@ msgstr "Blog"
 
 #: library/templates/shell.html:49
 msgid "About <span class=\"bw-logo\">Bookworm</span>"
-msgstr ""
+msgstr "<msgstr \"Info su <span class=\"bw-logo\">Bookworm</span>\""
 
 #: library/templates/shell.html:50
 msgid "About Threepress"
-msgstr ""
+msgstr "msgstr \"Info su Threepress\""
 
 #: library/templates/shell.html:51 library/templates/includes/about.html:7
 msgid "Help"
