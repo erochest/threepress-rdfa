@@ -8,7 +8,6 @@
 {% block header %}{% trans "For publishers" %} : {% trans "Testing your ePubs with Bookworm" %}{% endblock header %}
 
 {% block leftnav %}
-{% include "includes/about.html" %}
 
 {% endblock leftnav %}
 
@@ -113,7 +112,7 @@
       <strong>Are all special or foreign characters displaying correctly?</strong>
       ePub books complying with the specification must be encoded with
       either UTF-8 or UTF-16, but Bookworm supports only UTF-8.  (Bidirectional text is supported
-      but you will need to include that directive in the CSS.)
+           but you will need to include that directive in the CSS.)
       {% endblocktrans %}
     </li>
   </ol>
@@ -133,7 +132,7 @@
     However, Threepress can arrange for a private version of Bookworm
     to be set up for large-scale testing or especially-sensitive
     material. Contact <a
-    href="mailto:bookworm@threepress.org">bookworm@threepress.org</a>
+    href="mailto:{{ ADMIN_EMAIL }}">{{ ADMIN_EMAIL }}</a>
     for more details.
     {% endblocktrans %}
   </p>
