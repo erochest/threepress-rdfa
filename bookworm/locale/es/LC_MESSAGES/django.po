@@ -7,43 +7,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-22 21:58-0400\n"
-"PO-Revision-Date: 2009-06-03 09:50-0400\n"
+"POT-Creation-Date: 2009-06-29 21:28-0400\n"
+"PO-Revision-Date: 2009-06-29 19:42-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: local.py:17 settings.py:100
+#: local.py:8 settings.py:100
 msgid "German"
 msgstr "alem&aacute;n"
 
-#: local.py:18 settings.py:101
+#: local.py:9 settings.py:101
 msgid "English"
 msgstr "ingl&eacute;s"
 
-#: local.py:19 settings.py:102
+#: local.py:10 settings.py:102
 msgid "Danish"
 msgstr "dan&eacute;s"
 
-#: local.py:20 settings.py:103
+#: local.py:11 settings.py:103
 msgid "Finnish"
 msgstr "finland&eacute;s"
 
-#: local.py:21
+#: local.py:12
 msgid "Spanish"
 msgstr "espa&ntilde;ol"
 
-#: local.py:22
+#: local.py:13 settings.py:104
 msgid "Italian"
 msgstr "italiano"
 
-#: settings.py:143
+#: settings.py:144
 msgid "account/"
 msgstr ""
 
-#: settings.py:143
+#: settings.py:144
 msgid "signin/"
 msgstr ""
 
@@ -55,6 +55,12 @@ msgstr "No se respaldan i-names"
 #, python-format
 msgid "next url \"%s\" is invalid"
 msgstr "el siguiente url \"%s\" es inv&aacute;lido"
+
+#: django_authopenid/forms.py:77 django_authopenid/forms.py:138
+#: library/templates/includes/pagination.html:6
+#: search/templates/results.html:39
+msgid "next"
+msgstr "siguiente"
 
 #: django_authopenid/forms.py:104 django_authopenid/forms.py:160
 #: django_authopenid/forms.py:201
@@ -200,15 +206,15 @@ msgstr ""
 "uno de los documentos del ePub. Todos los documentos han de estar "
 "codificados bajo el formato UTF-8."
 
-#: library/models.py:1192
+#: library/models.py:1194
 msgid "book title"
 msgstr "t&iacute;tulo del libro"
 
-#: library/models.py:1193
+#: library/models.py:1195
 msgid "first author"
 msgstr "primer autor"
 
-#: library/models.py:1194
+#: library/models.py:1196
 msgid "date added to your library"
 msgstr "fecha en que se agreg&oacute; a tu biblioteca"
 
@@ -865,7 +871,7 @@ msgstr "Verificando el formato de tus libros ePub en Bookworm"
 msgid "For publishers"
 msgstr "Para editoriales"
 
-#: library/templates/ebooktesting.html:20
+#: library/templates/ebooktesting.html:19
 msgid ""
 "\n"
 "    Bookworm isn't just for readers.  Publishers can use it to test their "
@@ -883,23 +889,23 @@ msgstr ""
 " m&aacute;s avanzadas, como hojas de estilo y <em>Scalable Vector Graphics</"
 "em> (SVG)."
 
-#: library/templates/ebooktesting.html:27
+#: library/templates/ebooktesting.html:26
 msgid "Validate <!-- trans: the ePub against the spec -->"
 msgstr "Validar"
 
-#: library/templates/ebooktesting.html:29
+#: library/templates/ebooktesting.html:28
 msgid "Checklist <!-- trans: of things to check when producing an ePub -->"
 msgstr "Lista de tareas para producir un libro ePub"
 
-#: library/templates/ebooktesting.html:31
+#: library/templates/ebooktesting.html:30
 msgid "Security"
 msgstr "Seguridad"
 
-#: library/templates/ebooktesting.html:34
+#: library/templates/ebooktesting.html:33
 msgid "Be sure that your ePubs are correct"
 msgstr "Verifica que tus libros ePub sean correctos"
 
-#: library/templates/ebooktesting.html:36
+#: library/templates/ebooktesting.html:35
 msgid ""
 "\n"
 "    <strong>Verify that your ePub is valid</strong>. Many tools creating "
@@ -920,11 +926,11 @@ msgstr ""
 "Editions</em> para cerciorarse de que sea \n"
 " legible en cualquier plataforma."
 
-#: library/templates/ebooktesting.html:44
+#: library/templates/ebooktesting.html:43
 msgid "Validating with EpubCheck <!-- trans: do not translate epubcheck -->"
 msgstr "Validaci&oacute;n a trav&eacute;s de EpubCheck"
 
-#: library/templates/ebooktesting.html:46
+#: library/templates/ebooktesting.html:45
 msgid ""
 "\n"
 "    While developers can download and install their own copy of Adobe's <a "
@@ -945,7 +951,7 @@ msgstr ""
 "proceso de validaci&oacute;n de\n"
 " epubcheck mediante una interfaz de web m&aacute;s pr&aacute;ctica."
 
-#: library/templates/ebooktesting.html:53
+#: library/templates/ebooktesting.html:52
 msgid ""
 "\n"
 "    Although Bookworm will accept many kinds of ePubs which are not "
@@ -964,11 +970,11 @@ msgstr ""
 " ePub bien formado sea legible en un lector electr&oacute;nico creado en el "
 "futuro."
 
-#: library/templates/ebooktesting.html:59
+#: library/templates/ebooktesting.html:58
 msgid "How to test ePubs with Bookworm"
 msgstr "&iquest;C&oacute;mo evaluar un libro ePub en Bookworm?"
 
-#: library/templates/ebooktesting.html:63
+#: library/templates/ebooktesting.html:62
 #, python-format
 msgid ""
 "\n"
@@ -982,7 +988,7 @@ msgstr ""
 "\">registrarte</a>\n"
 " y <a href=\"%(toururl)s#step1\">a&ntilde;adir un libro</a>."
 
-#: library/templates/ebooktesting.html:70
+#: library/templates/ebooktesting.html:69
 msgid ""
 "\n"
 "  \n"
@@ -995,11 +1001,11 @@ msgstr ""
 "verifica que  todo est&eacute; en orden. S&iacute;rvete de estas sugerencias "
 "para comprobarlo:"
 
-#: library/templates/ebooktesting.html:78
+#: library/templates/ebooktesting.html:77
 msgid "Testing checklist"
 msgstr "Lista de verificaci&oacute;n"
 
-#: library/templates/ebooktesting.html:80
+#: library/templates/ebooktesting.html:79
 msgid ""
 "\n"
 "    <strong>Is the metadata correct?</strong> You can view a book's\n"
@@ -1013,7 +1019,7 @@ msgstr ""
 "libro</strong>\n"
 " disponible a trav&eacute;s del &iacute;ndice de materias."
 
-#: library/templates/ebooktesting.html:87
+#: library/templates/ebooktesting.html:86
 msgid ""
 "\n"
 "      <strong>Is the copyright information in the metadata present and \n"
@@ -1033,7 +1039,7 @@ msgstr ""
 "limitados estipulados en la licencia\n"
 " Creative Commons."
 
-#: library/templates/ebooktesting.html:95
+#: library/templates/ebooktesting.html:94
 msgid ""
 "\n"
 "      <strong>Is the table of contents correct and in the right order?</"
@@ -1049,7 +1055,7 @@ msgstr ""
 "orden de los elementos\n"
 " en el TOC."
 
-#: library/templates/ebooktesting.html:102
+#: library/templates/ebooktesting.html:101
 msgid ""
 "\n"
 "      <strong>Are all images appearing?</strong> \n"
@@ -1068,7 +1074,7 @@ msgstr ""
 "enlazadas directamente desde el TOC,\n"
 " o de im&aacute;genes marcadas con etiquetas y esparcidas por el texto."
 
-#: library/templates/ebooktesting.html:112
+#: library/templates/ebooktesting.html:111
 msgid ""
 "\n"
 "      <strong>Are all special or foreign characters displaying correctly?</"
@@ -1076,7 +1082,7 @@ msgid ""
 "      ePub books complying with the specification must be encoded with\n"
 "      either UTF-8 or UTF-16, but Bookworm supports only UTF-8.  "
 "(Bidirectional text is supported\n"
-"      but you will need to include that directive in the CSS.)\n"
+"           but you will need to include that directive in the CSS.)\n"
 "      "
 msgstr ""
 "\n"
@@ -1088,11 +1094,11 @@ msgstr ""
 "siempre que esta especificaci&oacute;n se haya\n"
 " incluido en la hoja de estilo (CSS).)"
 
-#: library/templates/ebooktesting.html:122
+#: library/templates/ebooktesting.html:121
 msgid "Are ePub files on Bookworm secure?"
 msgstr "&iquest;Est&aacute;n protegidos los archivos en Bookworm?"
 
-#: library/templates/ebooktesting.html:124
+#: library/templates/ebooktesting.html:123
 msgid ""
 "\n"
 "    Although Bookworm is designed to prevent file sharing and\n"
@@ -1109,13 +1115,14 @@ msgstr ""
 "software\n"
 " que resulten en la exposici&oacute;n p&uacute;blica de una obra."
 
-#: library/templates/ebooktesting.html:132
+#: library/templates/ebooktesting.html:131
+#, python-format
 msgid ""
 "\n"
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
 "    material. Contact <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
+"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    for more details.\n"
 "    "
 msgstr ""
@@ -3416,7 +3423,7 @@ msgstr ""
 "traducciones siguientes.\n"
 
 #: library/templates/auth/language.html:18
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "If you don't see your preferred language, <a href=\"mailto:%(ADMIN_EMAIL)s"
 "\">let us know if you're willing to help translate</a>.  Bookworm can be "
@@ -3424,13 +3431,9 @@ msgid ""
 "django/conf/global_settings.py#L43\">any of the languages supported by the "
 "Django framework</a>."
 msgstr ""
-" Si no ves el idioma de tu preferencia en esta lista, y est&aacute;s "
-"dispuesto a\n"
-" ayudarnos con la traducci&oacute;n, <a href=\"mailto:bookworm@threepress.org"
-"\">contacta con\n"
-" nosotros. Bookworm se puede traducir a <a href=\"http://code.djangoproject."
-"com/browser/django/trunk/django/conf/global_settings.py#L43\">cualquier "
-"idioma respaldado en el framework Django</a>."
+" Si no ves el idioma de tu preferencia en esta lista, y est&aacute;s dispuesto a\n"
+" ayudarnos con la traducci&oacute;n, <a href=\"mailto:%(ADMIN_EMAIL)s\">contacta con\n"
+" nosotros. Bookworm se puede traducir a <a href=\"http://code.djangoproject.com/browser/django/trunk/django/conf/global_settings.py#L43\">cualquier idioma respaldado en el framework Django</a>."
 
 #: library/templates/auth/language.html:22
 msgid ""
@@ -4059,11 +4062,6 @@ msgstr "anterior"
 #, python-format
 msgid " Page %(page_number)s of %(num_pages)s"
 msgstr " P&aacute;gina %(page_number)s de %(num_pages)s"
-
-#: library/templates/includes/pagination.html:6
-#: search/templates/results.html:39
-msgid "next"
-msgstr "siguiente"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Size"

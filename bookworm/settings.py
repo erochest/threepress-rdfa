@@ -171,7 +171,7 @@ DEFAULT_FROM_EMAIL = REPLYTO_EMAIL
 
 # The admin address that's displayed on the site in help pages
 DISPLAY_ADMIN_EMAIL = 'bookworm@threepress.org'
-
+ADMIN_EMAIL = DISPLAY_ADMIN_EMAIL
 
 # Set up logging
 LOG_DIR = '%s/log/' % ROOT_PATH
