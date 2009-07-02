@@ -7,43 +7,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-29 21:28-0400\n"
-"PO-Revision-Date: 2009-06-29 19:42-0700\n"
+"POT-Creation-Date: 2009-06-22 21:58-0400\n"
+"PO-Revision-Date: 2009-06-03 09:50-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: local.py:8 settings.py:100
+#: local.py:17 settings.py:100
 msgid "German"
-msgstr "alem&aacute;n"
+msgstr "alemán"
 
-#: local.py:9 settings.py:101
+#: local.py:18 settings.py:101
 msgid "English"
-msgstr "ingl&eacute;s"
+msgstr "inglés"
 
-#: local.py:10 settings.py:102
+#: local.py:19 settings.py:102
 msgid "Danish"
-msgstr "dan&eacute;s"
+msgstr "danés"
 
-#: local.py:11 settings.py:103
+#: local.py:20 settings.py:103
 msgid "Finnish"
-msgstr "finland&eacute;s"
+msgstr "finlandés"
 
-#: local.py:12
+#: local.py:21
 msgid "Spanish"
-msgstr "espa&ntilde;ol"
+msgstr "español"
 
-#: local.py:13 settings.py:104
+#: local.py:22
 msgid "Italian"
 msgstr "italiano"
 
-#: settings.py:144
+#: settings.py:143
 msgid "account/"
 msgstr ""
 
-#: settings.py:144
+#: settings.py:143
 msgid "signin/"
 msgstr ""
 
@@ -54,13 +54,7 @@ msgstr "No se respaldan i-names"
 #: django_authopenid/forms.py:76 django_authopenid/forms.py:137
 #, python-format
 msgid "next url \"%s\" is invalid"
-msgstr "el siguiente url \"%s\" es inv&aacute;lido"
-
-#: django_authopenid/forms.py:77 django_authopenid/forms.py:138
-#: library/templates/includes/pagination.html:6
-#: search/templates/results.html:39
-msgid "next"
-msgstr "siguiente"
+msgstr "el siguiente url \"%s\" no es válido"
 
 #: django_authopenid/forms.py:104 django_authopenid/forms.py:160
 #: django_authopenid/forms.py:201
@@ -68,25 +62,25 @@ msgid ""
 "Usernames can only contain                     letters, numbers and "
 "underscores"
 msgstr ""
-"el nombre de usuario puede s&oacute;lamente contener letras, n&uacute;meros "
-"y el gui&oacute;n bajo"
+"el nombre de usuario puede solamente contener letras, números "
+"y el guión bajo"
 
 #: django_authopenid/forms.py:111
 msgid "There is no account with this username."
-msgstr "No existe cuenta asociado con este nombre de usuario"
+msgstr "No existe cuenta asociada con este nombre de usuario"
 
 #: django_authopenid/forms.py:123 django_authopenid/forms.py:221
 msgid ""
 "Please enter a correct                     username and password. Note that "
 "both fields are                     case-sensitive."
 msgstr ""
-"Introduce un nombre de usuario y una contrase&ntilde; v&aacute;lidos. Ten en "
-"cuenta que la contrase&ntilde; distingue may&uacute;sculas de min&uacute;"
+"Introduce un nombre de usuario y una contraseña válidos. Ten en "
+"cuenta que la contraseñ distingue mayúsculas de minú"
 "sculas."
 
 #: django_authopenid/forms.py:127 django_authopenid/forms.py:225
 msgid "This account is inactive."
-msgstr "Esta cuenta no est&aacute; activa"
+msgstr "Esta cuenta no está activa"
 
 #: django_authopenid/forms.py:168
 msgid "This username is already                 taken. Please choose another."
@@ -97,7 +91,7 @@ msgid ""
 "This email is already                 registered in our database. Please "
 "choose another."
 msgstr ""
-"Esta direcci&oacute;n de correo electr&oacute;nico ya est&aacute; registrada "
+"Esta dirección de correo electrónico ya está registrada "
 "en la base de datos. Por favor escoge otra."
 
 #: django_authopenid/forms.py:208
@@ -109,12 +103,12 @@ msgstr "Este nombre de usuario no existe. Por favor escoge otro"
 msgid ""
 "Old password is wrong.                     Please enter a valid password."
 msgstr ""
-"La contrase&ntilde;a anterior es incorrecta. Por favor introduce una "
-"contrase&ntilde;a v&aacute;lida."
+"La contraseña anterior es incorrecta. Por favor introduce una "
+"contraseña válida."
 
 #: django_authopenid/forms.py:324
 msgid "new passwords do not match each other"
-msgstr "Las contrase&ntilde;as introducidas no concuerdan"
+msgstr "Las contraseñas introducidas no concuerdan"
 
 #: django_authopenid/forms.py:400
 msgid "Incorrect username."
@@ -122,7 +116,7 @@ msgstr "Nombre de usuario incorrecto"
 
 #: django_authopenid/views.py:114
 msgid "The password or OpenID was invalid"
-msgstr "El identificador OpenID o contrase&ntilde;a es inv&aacute;lido"
+msgstr "El identificador OpenID o contraseña no es válida"
 
 #: django_authopenid/views.py:437
 msgid "Welcome"
@@ -130,11 +124,11 @@ msgstr "Bienvenido"
 
 #: django_authopenid/views.py:528
 msgid "Password changed."
-msgstr "Hemos actualizado la contrase&ntilde;a"
+msgstr "Hemos actualizado la contraseña"
 
 #: django_authopenid/views.py:561 django_authopenid/views.py:604
 msgid "Email changed."
-msgstr "Hemos actualizado la direcci&oacute;n de correo electr&oacute;nico"
+msgstr "Hemos actualizado la dirección de correo electrónico"
 
 #: django_authopenid/views.py:592
 msgid "No OpenID was found in our database"
@@ -143,12 +137,12 @@ msgstr "No hemos encontrado este identificador OpenID en la base de datos"
 #: django_authopenid/views.py:596 django_authopenid/views.py:759
 msgid "This OpenID isn't associated with the current logged-in user"
 msgstr ""
-"Este OpenID no est&aacute; vinculado al usuario que ha iniciado esta "
-"sesi&oacute;n"
+"Este OpenID no está vinculado al usuario que ha iniciado esta "
+"sesión"
 
 #: django_authopenid/views.py:680
 msgid "This OpenID is already associated with another account."
-msgstr "Este OpenID ya est&acute; vinculado con otra cuenta existente"
+msgstr "Este OpenID ya está vinculado con otra cuenta existente"
 
 #: django_authopenid/views.py:685
 msgid "This OpenID is now associated with your account."
@@ -156,7 +150,7 @@ msgstr "Hemos vinculado el identificador OpenID a tu cuenta Bookworm"
 
 #: django_authopenid/views.py:752
 msgid "This OpenID isn't associated in the system."
-msgstr "Este OpenID no est&aacute; vinculado a ninguna cuenta en este sistema"
+msgstr "Este OpenID no está vinculado a ninguna cuenta en este sistema"
 
 #: django_authopenid/views.py:761
 msgid "Account deleted."
@@ -164,12 +158,12 @@ msgstr "Cuenta borrada"
 
 #: django_authopenid/views.py:801
 msgid "Request for a new password"
-msgstr "Solicita una nueva contrase&ntilde;a"
+msgstr "Solicita una nueva contraseña"
 
 #: django_authopenid/views.py:814
 msgid "A new password has been sent to your email"
 msgstr ""
-"Te hemos enviado una nueva contrase&ntilde;a a tu direcci&oacute;n de correo."
+"Te hemos enviado una nueva contraseña a tu dirección de correo."
 
 #: django_authopenid/views.py:844
 #, python-format
@@ -177,46 +171,46 @@ msgid ""
 "Can not change password. Confirmation key '%s'                isn't "
 "registered."
 msgstr ""
-"No se puede cambiar la contrase&ntilde;a. La clave de confirmaci&oacute;n  '%"
-"s' no est&aacute; registrada"
+"No se puede cambiar la contraseña. La clave de confirmación  '%"
+"s' no está registrada"
 
 #: django_authopenid/views.py:853
 msgid "Cannot change password, as this user doesn't exist in the database."
 msgstr ""
-"No se puede cambiar la contrase&ntilde;a ya que este nombre de usuario no "
+"No se puede cambiar la contraseña ya que este nombre de usuario no "
 "existe en la base de datos"
 
 #: django_authopenid/views.py:861
 #, python-format
 msgid "Password changed for %s. You could now sign in"
 msgstr ""
-"La contrase&ntilde;a de %s ha sido cambiada. Ahora puedes iniciar una "
-"sesi&oacute;n"
+"La contraseña de %s ha sido cambiada. Ahora puedes iniciar una "
+"sesión"
 
 #: library/models.py:134
 msgid "Untitled"
-msgstr "Sin t&iacute;tulo"
+msgstr "Sin título"
 
 #: library/models.py:692 library/models.py:694 library/models.py:697
 msgid ""
 "There was a problem related to the encoding of one of the documents in your "
 "ePub. All ePub documents must be in UTF-8."
 msgstr ""
-"Hemos hallado un error en el formato de codificaci&oacute;n de caracteres en "
+"Hemos hallado un error en el formato de codificación de caracteres en "
 "uno de los documentos del ePub. Todos los documentos han de estar "
 "codificados bajo el formato UTF-8."
 
-#: library/models.py:1194
+#: library/models.py:1192
 msgid "book title"
-msgstr "t&iacute;tulo del libro"
+msgstr "título del libro"
 
-#: library/models.py:1195
+#: library/models.py:1193
 msgid "first author"
 msgstr "primer autor"
 
-#: library/models.py:1196
+#: library/models.py:1194
 msgid "date added to your library"
-msgstr "fecha en que se agreg&oacute; a tu biblioteca"
+msgstr "fecha en que se agregó a tu biblioteca"
 
 #: library/views.py:93
 msgid "ascending"
@@ -228,11 +222,11 @@ msgstr "en orden descendente"
 
 #: library/views.py:94
 msgid "alphabetically"
-msgstr "alfab&eacute;ticamente"
+msgstr "alfabéticamente"
 
 #: library/views.py:94
 msgid "by date value"
-msgstr "seg&uacute;n la fecha en que se agreg&oacute;"
+msgstr "según la fecha en que se agregó"
 
 #: library/views.py:133
 msgid "There was a problem reading the metadata for this document."
@@ -249,9 +243,9 @@ msgid ""
 msgstr ""
 "\n"
 "Bookworm no ha podido procesar el contenido de este libro. Te sugerimos que\n"
-" te cerciores con la editorial de que el libro es un documento ePub v&aacute;"
+" te cerciores con la editorial de que el libro es un documento ePub vá"
 "lido\n"
-" que contiene XHTML o que se ajusta al formate DTBook."
+" que contiene XHTML o que se ajusta al formato DTBook."
 
 #: library/views.py:328
 msgid "Your profile has been updated."
@@ -268,8 +262,8 @@ msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
 msgstr ""
-"El libro que has cargado no se reconoce como archivo ePub v&aacute;lido y "
-"no  se ha a&ntilde;adido a tu biblioteca."
+"El libro que has cargado no se reconoce como archivo ePub válido y "
+"no  se ha añadido a tu biblioteca."
 
 #: library/views.py:473
 msgid ""
@@ -281,12 +275,12 @@ msgid ""
 "allowed to be added to Bookworm."
 msgstr ""
 "Hemos detectado un problema en tu libro, debido probablemente a que el "
-"tama&ntilde;o excede lo que se puede visualizar correctamente en un "
-"navegador web. Esto ocurre con im&aacute;genes grandes o con cap&iacute;"
+"tamaño excede lo que se puede visualizar correctamente en un "
+"navegador web. Esto ocurre con imágenes grandes o con capí"
 "tulos muy largos. Verifica con la editorial que el formato del libro sea "
-"apropriado. P&aacute;ginas demasiado largas requieren constante uso de las "
+"apropriado. Páginas demasiado largas requieren constante uso de las "
 "barras de desplazamiento para la lectura y demoran en cargar y, por esa "
-"raz&oacute;n, no se permiten en Bookworm."
+"razón, no se permiten en Bookworm."
 
 #: library/views.py:499
 msgid ""
@@ -298,12 +292,12 @@ msgid ""
 "releasing DRM-free ebooks."
 msgstr ""
 "Al parecer has cargado un libro que tiene el acceso restringido por la "
-"gesti&oacute;n digital de derechos (DRM). &Eacute;sta es una "
-"restricci&oacute;n que impide la reproducci&oacute;n ilegal, pero que a la "
-"vez conlleva a impedirle al leg&iacute;timo propietario del documento que "
+"gestión digital de derechos (DRM). Ésta es una "
+"restricción que impide la reproducción ilegal, pero que a la "
+"vez conlleva a impedirle al legítimo propietario del documento que "
 "pueda leerlo donde quiera. Es probable que necesites Adobe Digital Editions "
 "para leer este libro, pero te recomendamos que le sugieras a la editorial, o "
-"al vendedor, que publiquen sin este tipo de restricci&oacute;n."
+"al vendedor, que publiquen sin este tipo de restricción."
 
 #: library/views.py:533
 msgid ""
@@ -322,7 +316,7 @@ msgid ""
 "<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
 "error)</p>"
 msgstr ""
-"<p>(hemos verificado con epubcheck que se trata de un archivo v&aacute;lido; "
+"<p>(hemos verificado con epubcheck que se trata de un archivo válido; "
 "el error es probablemente un fallo en Bookworm)</p>"
 
 #: library/views.py:543
@@ -332,18 +326,18 @@ msgid ""
 "content creator. It returned:"
 msgstr ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> ha verificado "
-"que este documento no es un archivo ePub v&aacute;lido. Te recomendamos que "
+"que este documento no es un archivo ePub válido. Te recomendamos que "
 "consultes con la editorial o el creador del libro. El mensaje del "
 "verificador es el siguiente:"
 
 #: library/templates/about.html:3 library/templates/about.html.py:5
 #: library/templates/includes/about.html:5
 msgid "About Bookworm"
-msgstr "&iquest;Qu&eacute; es Bookworm?"
+msgstr "¿Qué es Bookworm?"
 
 #: library/templates/about.html:12
 msgid "Features"
-msgstr "Caracter&iacute;sticas"
+msgstr "Características"
 
 #: library/templates/about.html:14
 msgid "Read your e-books from anywhere in the world"
@@ -352,7 +346,7 @@ msgstr "Lee tus libros digitales en cualquier parte del mundo"
 #: library/templates/about.html:15
 msgid "Usable on a computer or smartphone such as the iPhone"
 msgstr ""
-"Se puede utilizar en un computador o en un tel&eacute;fono inteligente, como "
+"Se puede utilizar en un computador o en un teléfono inteligente, como "
 "el iPhone"
 
 #: library/templates/about.html:16
@@ -361,7 +355,7 @@ msgstr "Descarga a Stanza o a Sony Reader"
 
 #: library/templates/about.html:19
 msgid "Technical details"
-msgstr "Detalles t&eacute;cnicos"
+msgstr "Detalles técnicos"
 
 #: library/templates/about.html:22
 msgid "Faithfully renders all levels of HTML"
@@ -370,22 +364,22 @@ msgstr "Reproduce correctamente todos los niveles de HTML"
 #: library/templates/about.html:23
 msgid "Automatically-generated TOC based on document metadata"
 msgstr ""
-"&Iacute;ndice de materias TOC, creado autom&aacute;ticamente a partir de "
+"Índice de materias TOC, creado automáticamente a partir de "
 "metadatos en el documento"
 
 #: library/templates/about.html:24
 msgid "Supports all levels of the CSS specification available to your browser"
 msgstr ""
-"Respalda todos los niveles de especificaci&oacute;n para hojas de estilo "
+"Respalda todos los niveles de especificación para hojas de estilo "
 "disponibles en tu navegador"
 
 #: library/templates/about.html:25
 msgid "Inline image support: PNG, JPG, GIF"
-msgstr "Admite im&aacute;genes en l&iacute;nea, bajo el formato PNG, JPG, GIF"
+msgstr "Admite imágenes en línea, bajo el formato PNG, JPG, GIF"
 
 #: library/templates/about.html:26
 msgid "SVG image support"
-msgstr "Respalda im&aacute;genes en formato SVG"
+msgstr "Respalda imágenes en formato SVG"
 
 #: library/templates/about.html:32
 #, python-format
@@ -401,7 +395,7 @@ msgid ""
 "For more information about Threepress, please visit our <a href=\"http://"
 "threepress.org/about/\">About</a> page."
 msgstr ""
-"Para m&aacute;s informaci&oacute;n sobre Threepress, visita la p&aacute;gina "
+"Para más información sobre Threepress, visita la página "
 "<a href=\"http://threepress.org/about/\">Threepress</a>"
 
 #: library/templates/about.html:44
@@ -410,23 +404,23 @@ msgid ""
 "reading ePub-format books online."
 msgstr ""
 "<strong>Bookworm</strong> es una plataforma experimental para archivar y "
-"leer libros electr&oacute;nicos en l&iacute;nea"
+"leer libros electrónicos en línea"
 
 #: library/templates/about.html:47
 msgid "How do I use Bookworm?"
-msgstr "&iquest;C&oacute;mo se usa Bookworm?"
+msgstr "¿Cómo se usa Bookworm?"
 
 #: library/templates/about.html:49 library/templates/about.html.py:92
 msgid "What is ePub?"
-msgstr "&iquest;Qu&eacute; es ePub?"
+msgstr "¿Qué es ePub?"
 
 #: library/templates/about.html:51
 msgid "Does it work on a mobile phone?"
-msgstr "&iquest;C&oacute;mo funciona en un tel&eacute;fono m&oacute;vil?"
+msgstr "¿Cómo funciona en un teléfono móvil?"
 
 #: library/templates/about.html:53
 msgid "Where can I get ePub books?"
-msgstr "&iquest;D&oacute;nde puedo obtener libros ePub?"
+msgstr "¿Dónde puedo obtener libros ePub?"
 
 #: library/templates/about.html:55
 msgid "I'm having a problem"
@@ -442,31 +436,31 @@ msgstr "Otros formatos"
 
 #: library/templates/about.html:61
 msgid "Can I share my ePubs?"
-msgstr "&iquest;Puedo compartir mis libros ePub?"
+msgstr "¿Puedo compartir mis libros ePub?"
 
 #: library/templates/about.html:63
 msgid "Are my books safe?"
-msgstr "&iquest;Est&aacute;n protegidos mis libros?"
+msgstr "¿Están protegidos mis libros?"
 
 #: library/templates/about.html:65 library/templates/about.html.py:194
 msgid "Who is responsible for Bookworm?"
-msgstr "&iquest;Qui&eacute;n es el encargado de Bookworm?"
+msgstr "¿Quién es el encargado de Bookworm?"
 
 #: library/templates/about.html:69
 msgid "How does it work?  What do I download?"
-msgstr "&iquest;C&oacute;mo funciona? &iquest;Qu&eacute; tengo que descargar?"
+msgstr "¿Cómo funciona? ¿Qué tengo que descargar?"
 
 #: library/templates/about.html:71
 msgid ""
 "The great thing about Bookworm is there's nothing to download!  Here's how "
 "it works:"
 msgstr ""
-"&iexcl;Lo bueno de Bookworm es que no hay nada que descargar! Funciona "
-"as&iacute;:"
+"¡Lo bueno de Bookworm es que no hay nada que descargar! Funciona "
+"así:"
 
 #: library/templates/about.html:75
 msgid "Create a Bookworm account and log in"
-msgstr "Crea una cuenta en Bookworm y autentif&iacute;cate"
+msgstr "Crea una cuenta en Bookworm y autentifícate"
 
 #: library/templates/about.html:76
 msgid "Upload an ePub book"
@@ -475,7 +469,7 @@ msgstr "Carga un libro ePub"
 #: library/templates/about.html:77
 msgid "Start reading by just clicking on the book title in your library!"
 msgstr ""
-"Comienza a leer haciendo clic sobre el t&iacute;tulo de un libro en tu "
+"Comienza a leer haciendo clic sobre el título de un libro en tu "
 "biblioteca"
 
 #: library/templates/about.html:82
@@ -489,11 +483,11 @@ msgid ""
 msgstr ""
 " Ya que tus publicaciones quedan archivadas en Bookworm, puedes utilizar "
 "cualquier\n"
-" navegador, y varios dispositivos m&oacute;viles, para acceder tu biblioteca "
+" navegador, y varios dispositivos móviles, para acceder tu biblioteca "
 "desde cualquier parte del mundo.\n"
-" Actualmente estamos creando nuevas funciones que te permitir&aacute;n leer "
-"tus libros en un tel&eacute;fono\n"
-" m&oacute;vil, aunque no est&eacute;s conectado al web."
+" Actualmente estamos creando nuevas funciones que te permitirán leer "
+"tus libros en un teléfono\n"
+" móvil, aunque no estés conectado al web."
 
 #: library/templates/about.html:88
 #, python-format
@@ -502,7 +496,7 @@ msgid ""
 "action."
 msgstr ""
 "Haz este <a href=\"%(toururl)s\">recorrido virtual</a> para ver un ejemplo "
-"que muestra c&oacute;mo funciona Bookworm"
+"que muestra cómo funciona Bookworm"
 
 #: library/templates/about.html:94
 msgid ""
@@ -513,9 +507,9 @@ msgid ""
 "to\n"
 "    be read on web browsers. "
 msgstr ""
-" ePub es el est&aacute;ndar abierto para libros electr&oacute;nicos creado\n"
+" ePub es el estándar abierto para libros electrónicos creado\n"
 " por el <a href=\"http://www.idpf.org/\">International Digital Publishing\n"
-" Forum</a> (<acronym>IDPF</acronym>). Se basa en varios otros est&aacute;"
+" Forum</a> (<acronym>IDPF</acronym>). Se basa en varios otros está"
 "ndares abiertos,\n"
 " como el XHTML, lo cual facilita la lectura en navegadores web."
 
@@ -526,16 +520,16 @@ msgid ""
 "    on your iPhone (using Bookworm or Stanza) and on the Sony Reader"
 msgstr ""
 " Los libros ePub se pueden leer en un computador (utilizando Bookworm,\n"
-" Adobe Digital Editions o Stanza), en un tel&eacute;fono iPhone\n"
+" Adobe Digital Editions o Stanza), en un teléfono iPhone\n"
 " (utilizando Bookworm o Stanza) o en un Sony Reader."
 
 #: library/templates/about.html:104 library/templates/includes/about.html:8
 msgid "More about ePub"
-msgstr "M&aacute;s detalles acerca de ePub"
+msgstr "Más detalles acerca de ePub"
 
 #: library/templates/about.html:107
 msgid "Can I use Bookworm on my mobile device?"
-msgstr "&iquest;Se puede utilizar Bookworm en un dispositivo m&oacute;vil?"
+msgstr "¿Se puede utilizar Bookworm en un dispositivo móvil?"
 
 #: library/templates/about.html:109
 #, python-format
@@ -553,10 +547,10 @@ msgstr ""
 " <a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
 "\"right\" style=\"margin-bottom:10px\" width=\"100\"/></a>\n"
-"S&iacute, en efecto. Para una versi&oacute;n especial de este sitio web,\n"
-" optimizada para dipositivos m&oacute;viles (especialmente el iPhone),\n"
-" dir&iacute;gete a <a href=\"%(mobilehost)s\">%(mobilehost)s</a>.\n"
-" Bookworm tambi&eacute;n ha sido evaluado en el Blackberry, Opera Mobile y "
+"Sí en efecto. Para una versión especial de este sitio web,\n"
+" optimizada para dipositivos móviles (especialmente el iPhone),\n"
+" dirígete a <a href=\"%(mobilehost)s\">%(mobilehost)s</a>.\n"
+" Bookworm también ha sido evaluado en el Blackberry, Opera Mobile y "
 "el servicio\n"
 " Whispernet del Kindle. "
 
@@ -569,16 +563,16 @@ msgid ""
 "more\n"
 "    information, see the <a href=\"%(toururl)s#step4\">tour</a>."
 msgstr ""
-" Adem&aacute;s de leer el contenido directamente en Bookworm,\n"
+" Además de leer el contenido directamente en Bookworm,\n"
 " los usuarios de iPhone pueden exportar sus libros a <a href=\"http://www."
 "lexcycle.com/\">Stanza</a>.\n"
-" Consulta <a href=\"%(toururl)s#step4\">esta p&aacute;gina</a> para m&aacute;"
-"s informaci&oacute;n.\n"
+" Consulta <a href=\"%(toururl)s#step4\">esta página</a> para má"
+"s información.\n"
 " "
 
 #: library/templates/about.html:120
 msgid "Where can I get ePubs?"
-msgstr "&iquest;D&oacute;nde puedo obtener libros ePub?"
+msgstr "¿Dónde puedo obtener libros ePub?"
 
 #: library/templates/about.html:122
 msgid ""
@@ -589,13 +583,13 @@ msgid ""
 "epubbooks.com/\">epubbooks.com</a>."
 msgstr ""
 "A partir de marzo del 2009, varias editoriales de publicaciones "
-"electr&oacute;nicas\n"
-" han comenzado a adoptar el est&aacute;ndar ePub. O'Reilly, Penguin, Harper-"
+"electrónicas\n"
+" han comenzado a adoptar el estándar ePub. O'Reilly, Penguin, Harper-"
 "Collins y \n"
-" Random House cuentan entre las que han puesto a la venta t&iacute;tulos en "
+" Random House cuentan entre las que han puesto a la venta títulos en "
 "este formato.\n"
 " Visita <a href=\"http://www.epubbooks.com/\">epubbooks.com</a> para ponerte "
-"al corriente de  qu&eacute; librer&iacute;as electr&oacute;nicas tienen este "
+"al corriente de  qué librerías electrónicas tienen este "
 "material disponible."
 
 #: library/templates/about.html:127
@@ -612,13 +606,13 @@ msgid ""
 msgstr ""
 "Es posible que exista un problema con el libro ya que que varias "
 "editoriales\n"
-" est&aacute;n a&uacute;n aprendiendo a producir este tipo de formato. O es "
+" están aún aprendiendo a producir este tipo de formato. O es "
 "posible que\n"
 " haya habido un fallo en el programa de Bookworm. En caso de error al cargar "
 "un libro,\n"
-" el sistema informa autom&aacute;ticamente a los desarrolladores de "
+" el sistema informa automáticamente a los desarrolladores de "
 "Bookworm,\n"
-" quienes intentar&aacute;n remediar el fallo en la medida posible."
+" quienes intentarán remediar el fallo en la medida posible."
 
 #: library/templates/about.html:136
 msgid ""
@@ -628,10 +622,10 @@ msgid ""
 "    how to read it (and complain to the publisher that you can't read\n"
 "    your books where you'd like!)"
 msgstr ""
-"Tambi&eacute;n es posible que hayas cargado un libro protegido por la\n"
-" gesti&oacute;n digital de derechos (Digital Rights Management, o DRM).\n"
+"También es posible que hayas cargado un libro protegido por la\n"
+" gestión digital de derechos (Digital Rights Management, o DRM).\n"
 " Bookworm no respalda libros con este control de acceso. Verifica en el \n"
-" sitio donde adquiriste el libro c&oacute;mo se puede leer (y, de paso,\n"
+" sitio donde adquiriste el libro cómo se puede leer (y, de paso,\n"
 " menciona a la editorial que no te es posible leer el libro donde has "
 "elegido)."
 
@@ -641,14 +635,14 @@ msgid ""
 "Please also see the <a href=\"%(helpurl)s\">Help</a> page for more\n"
 "    tips on troubleshooting Bookworm."
 msgstr ""
-"Para diagnosticar y resolver otros problemas en Bookworm, dir&iacute;gete \n"
-" a la p&aacute;gina\n"
+"Para diagnosticar y resolver otros problemas en Bookworm, dirígete \n"
+" a la página\n"
 " de <a href=\"%(helpurl)s\">Asistencia</a>"
 
 #: library/templates/about.html:148
 msgid "I'm a publisher and I have questions or feature requests"
 msgstr ""
-"Soy un editor de publicaciones electr&oacute;nicas con preguntas o \n"
+"Soy un editor de publicaciones electrónicas con preguntas o \n"
 " sugerencias para ampliar la funcionalidad de Bookworm"
 
 #: library/templates/about.html:150
@@ -663,13 +657,13 @@ msgid ""
 "    contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    and we'll get back to you right away."
 msgstr ""
-"Threepress es una corporaci&oacute;n al servicio de empresas editoriales\n"
-" con varios a&ntilde;os de experiencia en esta industria. Estamos a tu "
+"Threepress es una corporación al servicio de empresas editoriales\n"
+" con varios años de experiencia en esta industria. Estamos a tu "
 "disponibilidad\n"
-" para tratar cuestiones de formato, c&oacute;mo adaptar tus publicaciones al "
-"est&acute;ndar\n"
-" ePub, e incluso c&oacute;mo extender la funcionalidad de Bookworm "
-"seg&uacute;n \n"
+" para tratar cuestiones de formato, cómo adaptar tus publicaciones al "
+"estándar\n"
+" ePub, e incluso cómo extender la funcionalidad de Bookworm "
+"según \n"
 " especificaciones.  Para indagaciones, contacta con <a href=\"mailto:%"
 "(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> y te responderemos enseguida"
 
@@ -678,8 +672,8 @@ msgid ""
 "Will other book formats be supported, such as PDF or mobi? What about DRM "
 "ebooks?"
 msgstr ""
-"&iquest;Se respaldar&aacute;n otros formatos, como el PDF o mobi?\n"
-" &iquest;Cu&aacute;l es la postura con respecto a la gesti&oacute;n digital "
+"¿Se respaldarán otros formatos, como el PDF o mobi?\n"
+" ¿Cuál es la postura con respecto a la gestión digital "
 "de derechos (Digital Rights Management, o DRM)?"
 
 #: library/templates/about.html:159
@@ -689,7 +683,7 @@ msgid ""
 "    support closed formats like mobi or those with limited flexibility like "
 "PDF.  "
 msgstr ""
-"La intenci&oacute;n de Bookworm es abogar por la adopci&oacute;n del formato "
+"La intención de Bookworm es abogar por la adopción del formato "
 "ePub y\n"
 " no existen por lo tanto planes para apoyar formatos cerrados, como mobi, o "
 "formatos de\n"
@@ -706,18 +700,18 @@ msgid ""
 "    Instead we encourage publishers to explore forms of \"soft\" DRM (such "
 "as watermarking digital books with the name of the purchaser)."
 msgstr ""
-"La gesti&oacute;n digital de derechos (DRM), se ha demostrado ya, es "
+"La gestión digital de derechos (DRM), se ha demostrado ya, es "
 "perjudicial\n"
-" a la adopci&oacute;n de una nueva tecnolog&iacute;a, no reduce la "
-"pirater&iacute;a digital\n"
+" a la adopción de una nueva tecnología, no reduce la "
+"piratería digital\n"
 " de modo significativo, y da lugar a una desagradable experiencia desde el "
 "punto de vista del usuario.\n"
-" En Bookworm nuestra postura es no respaldar nunca libros electr&oacute;"
+" En Bookworm nuestra postura es no respaldar nunca libros electró"
 "nicos que requieran, bajo DRM,\n"
 " software especial para permitir el acceso. En su lugar, exhortamos a las "
 "editoriales a que investiguen \n"
-" m&eacute;todos m&aacute;s &laquo;graduales&raquo; para autenticar "
-"autor&iacute;a (como, por ejemplo, marcas de agua digitales\n"
+" métodos más «graduales» para autenticar "
+"autoría (como, por ejemplo, marcas de agua digitales\n"
 " con el nombre de la editorial)."
 
 #: library/templates/about.html:170
@@ -725,7 +719,7 @@ msgid ""
 "Is it possible to share my books with other Bookworm users, or link to one "
 "of my books?"
 msgstr ""
-"&iquest;Es posible compartir mis libros con otros usuarios de Bookworm, o "
+"¿Es posible compartir mis libros con otros usuarios de Bookworm, o "
 "crear un enlace a uno de mis libros?"
 
 #: library/templates/about.html:174
@@ -736,11 +730,11 @@ msgid ""
 "to be public\n"
 "    can all make Bookworm books accessible to the larger internet."
 msgstr ""
-"Hay l&iacute;mites a la hora de compartir libros en Bookworm: S&oacute;lo "
-"podr&aacute;n compatirse con el resto\n"
-" de la Internet aquellos libros que formen parte del dominio p&uacute;blico, "
+"Hay límites a la hora de compartir libros en Bookworm: Sólo "
+"podrán compatirse con el resto\n"
+" de la Internet aquellos libros que formen parte del dominio público, "
 "que hayan sido cargados por\n"
-" su propio autor, o designados por la editorial como obra p&uacute;blica."
+" su propio autor, o designados por la editorial como obra pública."
 
 #: library/templates/about.html:179
 #, python-format
@@ -749,16 +743,16 @@ msgid ""
 "public, please contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</"
 "a> for more information."
 msgstr ""
-"Los libros p&uacute;blicos se encuentran actualmente en una fase beta de "
+"Los libros públicos se encuentran actualmente en una fase beta de "
 "desarrollo. \n"
-" Para solicitar que un libro sea p&uacute;blico, contacta con <a href="
-"\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> para m&aacute;s "
-"informaci&oacute;n."
+" Para solicitar que un libro sea público, contacta con <a href="
+"\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> para más "
+"información."
 
 #: library/templates/about.html:182
 msgid " Are my books securely stored and backed up?"
 msgstr ""
-"&iquest;Estar&aacute;n mis libros archivados de forma segura y respaldados "
+"¿Estarán mis libros archivados de forma segura y respaldados "
 "con copias de seguridad?"
 
 #: library/templates/about.html:185
@@ -771,10 +765,10 @@ msgid ""
 "    Store copies of all your books on your own computers.\n"
 msgstr ""
 "\n"
-"Aunque se har&aacute;n copias de respaldo, Bookworm no es un producto "
+"Aunque se harán copias de respaldo, Bookworm no es un producto "
 "comercial y tiene\n"
 " por lo tanto limitados recursos financieros y legales. No se ofrecen "
-"garant&iacute;as respecto\n"
+"garantías respecto\n"
 " a la seguridad de tus libros o a la consistencia de este servicio, y se "
 "recomienda que archives copias\n"
 " de los libros en tu propio disco.\n"
@@ -795,16 +789,16 @@ msgid ""
 "(hosting)s</a>.\n"
 msgstr ""
 "\n"
-"El software de Bookworm es gratis, disponible bajo los t&eacute;rminos de la "
+"El software de Bookworm es gratis, disponible bajo los términos de la "
 "licencia BSD,\n"
-" y se puede descargar a trav&eacute;s de la <href=\"http://threepress.org/"
-"tools/\">p&aacute;gina de herramientas</a>.\n"
+" y se puede descargar a través de la <href=\"http://threepress.org/"
+"tools/\">página de herramientas</a>.\n"
 " Es un producto de <a href=\"http://threepress.org/\">Threepress</a>, una "
 "iniciativa que se propone\n"
-" experimentar en el &aacute;mbito de la publicaci&oacute;n a base de "
-"software de c&oacute;digo abierto, y ha sido creado por\n"
+" experimentar en el ámbito de la publicación a base de "
+"software de código abierto, y ha sido creado por\n"
 " <a href=\"http://threepress.org/about/\">Liza Daly</a>, con la "
-"contribuci&oacute;n de <a href=\"http://kfahlgren.com/blog\">Keith\n"
+"contribución de <a href=\"http://kfahlgren.com/blog\">Keith\n"
 " Fahlgren</a>. <a href=\"%(hostingurl)s\">%(hosting)s</a> ha proporcionado "
 "el servicio de alojamiento web.\n"
 
@@ -817,7 +811,7 @@ msgid ""
 msgstr ""
 "\n"
 "Bookworm ha sido posible gracias al esfuerzo de varias personas que han "
-"contribuido a la evaluaci&oacute;n y han respaldado el proyecto desde su "
+"contribuido a la evaluación y han respaldado el proyecto desde su "
 "inicio:"
 
 #: library/templates/about.html:216
@@ -846,18 +840,18 @@ msgid ""
 "announcements.\n"
 msgstr ""
 "\n"
-"Para sugerirnos c&oacute;mo ampliar la funcionalidad de este sitio o para "
-"reportar fallos, visita la p&aacute;gina \n"
+"Para sugerirnos cómo ampliar la funcionalidad de este sitio o para "
+"reportar fallos, visita la página \n"
 " <a href=\"http://getsatisfaction.com/threepress/topics/"
 "post_ideas_and_questions_about_bookworm\">Get Satisfaction</a>\n"
-" o env&iacute;a correo electr&oacute;nico a <a href=\"mailto:%(ADMIN_EMAIL)s"
+" o envía correo electrónico a <a href=\"mailto:%(ADMIN_EMAIL)s"
 "\">%(ADMIN_EMAIL)s</a>\n"
-" Tambi&eacute;n puedes suscribirte al <a href=\"http://blog.threepress.org"
+" También puedes suscribirte al <a href=\"http://blog.threepress.org"
 "\">blog</a> para mantenerte actualizado.\n"
 
 #: library/templates/base.html:12
 msgid "Search your library"
-msgstr "Efectuar b&uacute;squeda en tu biblioteca"
+msgstr "Efectuar búsqueda en tu biblioteca"
 
 #: library/templates/base.html:16
 msgid "search"
@@ -871,7 +865,7 @@ msgstr "Verificando el formato de tus libros ePub en Bookworm"
 msgid "For publishers"
 msgstr "Para editoriales"
 
-#: library/templates/ebooktesting.html:19
+#: library/templates/ebooktesting.html:20
 msgid ""
 "\n"
 "    Bookworm isn't just for readers.  Publishers can use it to test their "
@@ -882,30 +876,30 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Bookworm no es s&oacute;lo para lectores. Editoriales de libros "
-"electr&oacute;nicos pueden hacer uso\n"
+"Bookworm no es sólo para lectores. Editoriales de libros "
+"electrónicos pueden hacer uso\n"
 " del sitio para verificar el formato de publicaciones antes de "
 "distribuirlas, y para experimentar con funciones\n"
-" m&aacute;s avanzadas, como hojas de estilo y <em>Scalable Vector Graphics</"
+" más avanzadas, como hojas de estilo y <em>Scalable Vector Graphics</"
 "em> (SVG)."
 
-#: library/templates/ebooktesting.html:26
+#: library/templates/ebooktesting.html:27
 msgid "Validate <!-- trans: the ePub against the spec -->"
 msgstr "Validar"
 
-#: library/templates/ebooktesting.html:28
+#: library/templates/ebooktesting.html:29
 msgid "Checklist <!-- trans: of things to check when producing an ePub -->"
 msgstr "Lista de tareas para producir un libro ePub"
 
-#: library/templates/ebooktesting.html:30
+#: library/templates/ebooktesting.html:31
 msgid "Security"
 msgstr "Seguridad"
 
-#: library/templates/ebooktesting.html:33
+#: library/templates/ebooktesting.html:34
 msgid "Be sure that your ePubs are correct"
 msgstr "Verifica que tus libros ePub sean correctos"
 
-#: library/templates/ebooktesting.html:35
+#: library/templates/ebooktesting.html:36
 msgid ""
 "\n"
 "    <strong>Verify that your ePub is valid</strong>. Many tools creating "
@@ -918,19 +912,19 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"<strong>Verifica que un libro ePub est&eacute; bien formado</strong>. "
+"<strong>Verifica que un libro ePub esté bien formado</strong>. "
 "Existen herramientas que crean libros ePub sin todos los atributos y "
-"ficheros requeridos, y que resultan legibles por lectores ePub poco "
+"ficheros requeridos, y que resultan legibles por lectores de ePub poco "
 "estrictos.\n"
 " Sin embargo, no es suficiente verificar un ePub con <em>Adobe Digital "
-"Editions</em> para cerciorarse de que sea \n"
+"Editions</em> para asegurarse de que sea \n"
 " legible en cualquier plataforma."
 
-#: library/templates/ebooktesting.html:43
+#: library/templates/ebooktesting.html:44
 msgid "Validating with EpubCheck <!-- trans: do not translate epubcheck -->"
-msgstr "Validaci&oacute;n a trav&eacute;s de EpubCheck"
+msgstr "Validación a través de EpubCheck"
 
-#: library/templates/ebooktesting.html:45
+#: library/templates/ebooktesting.html:46
 msgid ""
 "\n"
 "    While developers can download and install their own copy of Adobe's <a "
@@ -941,17 +935,17 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Aunque programadores pueden descargar e instalar una versi&oacute;n propia "
+"Aunque programadores pueden descargar e instalar una versión propia "
 "de\n"
 " la herramienta <a href=\"http://code.google.com/p/epubcheck/\">epubcheck</"
 "a> de Adobe,\n"
-" quiz&aacute; resulte m&aacute;s f&aacute;cil <a href=\"http://www."
+" quizá resulte más fácil <a href=\"http://www."
 "threepress.org/document/epub-validate/\">validar el documento</a>\n"
-" a trav&eacute;s de Bookworm, utilizando una herramienta que encapsula el "
-"proceso de validaci&oacute;n de\n"
-" epubcheck mediante una interfaz de web m&aacute;s pr&aacute;ctica."
+" a través de Bookworm, utilizando una herramienta que encapsula el "
+"proceso de validación de\n"
+" epubcheck mediante una interfaz de web más práctica."
 
-#: library/templates/ebooktesting.html:52
+#: library/templates/ebooktesting.html:53
 msgid ""
 "\n"
 "    Although Bookworm will accept many kinds of ePubs which are not "
@@ -964,17 +958,17 @@ msgid ""
 msgstr ""
 "\n"
 "Aunque Bookworm acepta varios tipos de ePub que no son estrictamente "
-"v&aacute;lidos,\n"
-" se aconseja verificarlos siempre antes de cargarlos ya que es m&aacute;s "
+"válidos,\n"
+" se aconseja verificarlos siempre antes de cargarlos ya que es más "
 "probable que un libro\n"
-" ePub bien formado sea legible en un lector electr&oacute;nico creado en el "
+" ePub bien formado sea legible en un lector electrónico creado en el "
 "futuro."
 
-#: library/templates/ebooktesting.html:58
+#: library/templates/ebooktesting.html:59
 msgid "How to test ePubs with Bookworm"
-msgstr "&iquest;C&oacute;mo evaluar un libro ePub en Bookworm?"
+msgstr "¿Cómo evaluar un libro ePub en Bookworm?"
 
-#: library/templates/ebooktesting.html:62
+#: library/templates/ebooktesting.html:63
 #, python-format
 msgid ""
 "\n"
@@ -984,11 +978,11 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Antes de comenzar, s&oacute;lo tienes que <a href=\"%(signupurl)s"
+"Antes de comenzar, sólo tienes que <a href=\"%(signupurl)s"
 "\">registrarte</a>\n"
-" y <a href=\"%(toururl)s#step1\">a&ntilde;adir un libro</a>."
+" y <a href=\"%(toururl)s#step1\">añadir un libro</a>."
 
-#: library/templates/ebooktesting.html:69
+#: library/templates/ebooktesting.html:70
 msgid ""
 "\n"
 "  \n"
@@ -997,15 +991,15 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Una vez que hayas a&ntilde;adido un libro, haz clic en los enlaces y "
-"verifica que  todo est&eacute; en orden. S&iacute;rvete de estas sugerencias "
+"Una vez que hayas añadido un libro, haz clic en los enlaces y "
+"verifica que  todo esté en orden. Sírvete de estas sugerencias "
 "para comprobarlo:"
 
-#: library/templates/ebooktesting.html:77
+#: library/templates/ebooktesting.html:78
 msgid "Testing checklist"
-msgstr "Lista de verificaci&oacute;n"
+msgstr "Lista de verificación"
 
-#: library/templates/ebooktesting.html:79
+#: library/templates/ebooktesting.html:80
 msgid ""
 "\n"
 "    <strong>Is the metadata correct?</strong> You can view a book's\n"
@@ -1015,11 +1009,11 @@ msgid ""
 msgstr ""
 "\n"
 "<strong>Que los metadatos sean correctos:</strong> Puedes ver los\n"
-" metadatos de un libro en la p&aacute;gina de <strong>informaci&oacute;n del "
+" metadatos de un libro en la página de <strong>información del "
 "libro</strong>\n"
-" disponible a trav&eacute;s del &iacute;ndice de materias."
+" disponible a través del índice de materias."
 
-#: library/templates/ebooktesting.html:86
+#: library/templates/ebooktesting.html:87
 msgid ""
 "\n"
 "      <strong>Is the copyright information in the metadata present and \n"
@@ -1031,15 +1025,15 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"<strong>Que la informaci&oacute;n de derechos de autor aparezca en los "
+"<strong>Que la información de derechos de autor aparezca en los "
 "metadatos y sea correcta:</strong>\n"
-" Lectores electr&oacute;nicos necesitan saber si el libro es una obra "
+" Lectores electrónicos necesitan saber si el libro es una obra "
 "protegida por derechos de autor,\n"
-" si pertenece al dominio p&uacute;blico, o si se distribuye con derechos "
+" si pertenece al dominio público, o si se distribuye con derechos "
 "limitados estipulados en la licencia\n"
 " Creative Commons."
 
-#: library/templates/ebooktesting.html:94
+#: library/templates/ebooktesting.html:95
 msgid ""
 "\n"
 "      <strong>Is the table of contents correct and in the right order?</"
@@ -1049,13 +1043,13 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"<strong>Que el &iacute;ndice de materias sea correcto y aparezca en el orden "
+"<strong>Que el índice de materias sea correcto y aparezca en el orden "
 "apropiado:</strong>\n"
 " Bookworm utiliza el atributo <code>playOrder</code> del archivo NCX y el "
 "orden de los elementos\n"
 " en el TOC."
 
-#: library/templates/ebooktesting.html:101
+#: library/templates/ebooktesting.html:102
 msgid ""
 "\n"
 "      <strong>Are all images appearing?</strong> \n"
@@ -1068,13 +1062,13 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"<strong>Que todas las im&aacute;genes aparezcan:</strong> Bookworm admite "
+"<strong>Que todas las imágenes resulten visibles:</strong> Bookworm admite "
 "una amplia\n"
-" variedad de formas de enlaces, tr&aacute;tese bien de im&aacute;genes "
+" variedad de formas de enlaces, trátese bien de imágenes "
 "enlazadas directamente desde el TOC,\n"
-" o de im&aacute;genes marcadas con etiquetas y esparcidas por el texto."
+" o de imágenes marcadas con etiquetas y esparcidas por el texto."
 
-#: library/templates/ebooktesting.html:111
+#: library/templates/ebooktesting.html:112
 msgid ""
 "\n"
 "      <strong>Are all special or foreign characters displaying correctly?</"
@@ -1082,23 +1076,23 @@ msgid ""
 "      ePub books complying with the specification must be encoded with\n"
 "      either UTF-8 or UTF-16, but Bookworm supports only UTF-8.  "
 "(Bidirectional text is supported\n"
-"           but you will need to include that directive in the CSS.)\n"
+"      but you will need to include that directive in the CSS.)\n"
 "      "
 msgstr ""
 "\n"
-"<strong>Que todos los caracteres especiales o for&aacute;neos se muestren "
+"<strong>Que todos los caracteres especiales o foráneos se muestren "
 "correctamente:</strong>\n"
-" Libros ePub que cumplen con la especificaci&oacute;n han de estar "
-"codificados seg&uacute;n la norma UTF-8 o UTF-16,\n"
+" Libros ePub que cumplen con la especificación han de estar "
+"codificados según la norma UTF-8 o UTF-16,\n"
 " pero Bookworm solamente admite UTF-8. (Texto bidireccional se admite "
-"siempre que esta especificaci&oacute;n se haya\n"
+"siempre que esta especificación se haya\n"
 " incluido en la hoja de estilo (CSS).)"
 
-#: library/templates/ebooktesting.html:121
+#: library/templates/ebooktesting.html:122
 msgid "Are ePub files on Bookworm secure?"
-msgstr "&iquest;Est&aacute;n protegidos los archivos en Bookworm?"
+msgstr "¿Están protegidos los archivos en Bookworm?"
 
-#: library/templates/ebooktesting.html:123
+#: library/templates/ebooktesting.html:124
 msgid ""
 "\n"
 "    Although Bookworm is designed to prevent file sharing and\n"
@@ -1108,39 +1102,38 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Aunque Bookworm se ha dise&ntilde;ado con el prop&oacute;sito de\n"
-" impedir la diseminaci&oacute;n de archivos y evitar que se d&eacute; libre "
+"Aunque Bookworm se ha diseñado con el propósito de\n"
+" impedir la diseminación de archivos y evitar que se dé libre "
 "acceso\n"
 " a libros de forma accidental, no aceptamos responsabilidad por fallos de "
 "software\n"
-" que resulten en la exposici&oacute;n p&uacute;blica de una obra."
+" que resulten en la exposición pública de una obra."
 
-#: library/templates/ebooktesting.html:131
-#, python-format
+#: library/templates/ebooktesting.html:132
 msgid ""
 "\n"
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
 "    material. Contact <a\n"
-"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
+"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
 "    for more details.\n"
 "    "
 msgstr ""
 "\n"
-"Sin embargo, Threpress puede disponer una versi&oacute;n privada de "
+"Sin embargo, Threpress puede disponer una versión privada de "
 "Bookworm\n"
 " para efectuar pruebas a gran escala, o para material que sea "
 "particularmente susceptible.\n"
 " Contacta con  <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> para "
-"obtener m&aacute;s detalles."
+"obtener más detalles."
 
 #: library/templates/epub.html:7 library/templates/epub.html.py:8
 msgid "Bookworm and the ePub standard"
-msgstr "Bookworm y el est&aacute;ndar ePub."
+msgstr "Bookworm y el estándar ePub."
 
 #: library/templates/epub.html:12
 msgid "About ePub"
-msgstr "&iquest;Qu&eacute; es el ePub?"
+msgstr "¿Qué es el ePub?"
 
 #: library/templates/epub.html:14
 msgid ""
@@ -1154,7 +1147,7 @@ msgstr ""
 "\n"
 "El ePub es un formato abierto del <em>International Digital Publishing "
 "Forum</em> (IDPF)\n"
-" basado en el XML y el XHTML, y que hace uso de est&aacute;ndares de libros "
+" basado en el XML y el XHTML, y que hace uso de estándares de libros "
 "digitales ya existentes."
 
 #: library/templates/epub.html:21
@@ -1165,8 +1158,8 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Detalles t&eacute;cnicos y especificaciones se encuentran  disponibles a "
-"trav&eacute;s de\n"
+"Detalles técnicos y especificaciones se encuentran  disponibles a "
+"través de\n"
 " <a href=\"http://openebook.org/\">http://openebook.org/</a>"
 
 #: library/templates/epub.html:26
@@ -1179,11 +1172,11 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Visita la p&aacute;gina de <a href=\"http://www.epubbooks.com/\">Libros "
+"Visita la página de <a href=\"http://www.epubbooks.com/\">Libros "
 "ePub</a>\n"
-" para obtener informaci&oacute;n actualizada sobre d&oacute;nde obtener "
+" para obtener información actualizada sobre dónde obtener "
 "ePubs \n"
-" y qu&eacute; tipo de dispositivo electr&oacute;nico y software respaldan "
+" y qué tipo de dispositivo electrónico y software respaldan "
 "este formato."
 
 #: library/templates/epub.html:32
@@ -1196,11 +1189,11 @@ msgstr ""
 "\n"
 "<a href=\"http://www.threepress.org/epub/logos\">Logos de ePub</a> que se "
 "encuentran en el dominio \n"
-" p&uacute;blico est&aacute;n disponibles a trav&eacute;s de threepress.org"
+" público están disponibles a través de threepress.org"
 
 #: library/templates/epub.html:37
 msgid "Table of contents"
-msgstr "&Iacute;ndice de materias"
+msgstr "Índice de materias"
 
 #: library/templates/epub.html:39 library/templates/epub.html.py:79
 msgid "XHTML support"
@@ -1208,7 +1201,7 @@ msgstr "Respaldo XHTML"
 
 #: library/templates/epub.html:40
 msgid "NCX Table of Contents"
-msgstr "&Iacute;ndice de Materias NCX"
+msgstr "Índice de Materias NCX"
 
 #: library/templates/epub.html:41
 msgid "Conformance <!-- trans: to the specification -->"
@@ -1216,15 +1209,15 @@ msgstr "Conformidad con las especificaciones"
 
 #: library/templates/epub.html:42 library/templates/epub.html.py:167
 msgid "Images and graphics"
-msgstr "Im&aacute;genes y gr&aacute;ficos"
+msgstr "Imágenes y gráficos"
 
 #: library/templates/epub.html:44 library/templates/epub.html.py:200
 msgid "Fonts"
-msgstr "Fuentes tipogr&aacute;ficas"
+msgstr "Fuentes tipográficas"
 
 #: library/templates/epub.html:45
 msgid "Invalid ePub handling"
-msgstr "&iquest;C&oacute;mo Bookworm procesa un libro ePub inv&aacute;lido?"
+msgstr "¿Cómo Bookworm procesa un libro ePub que no es válido?"
 
 #: library/templates/epub.html:46 library/templates/epub.html.py:232
 msgid "Limitations"
@@ -1232,7 +1225,7 @@ msgstr "Limitaciones"
 
 #: library/templates/epub.html:47 library/templates/epub.html.py:254
 msgid "Other open-source ePub"
-msgstr "Otros software de c&oacute;digo abierto para ePub"
+msgstr "Otros software de código abierto para ePub"
 
 #: library/templates/epub.html:55
 msgid ""
@@ -1244,13 +1237,13 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"&Eacute;sta es una p&aacute;gina para programadores y editores,\n"
-" y para aquellos a quienes interese la publicaci&oacute;n electr&oacute;"
-"nica, el est&aacute;ndar ePub, y c&oacute;mo se utiliza en Bookworm."
+"Ésta es una página para programadores y editores,\n"
+" y para aquellos a quienes interese la publicación electró"
+"nica, el estándar ePub, y cómo se utiliza en Bookworm."
 
 #: library/templates/epub.html:63
 msgid "Tutorial"
-msgstr "Gu&iacute;a"
+msgstr "Guía"
 
 #: library/templates/epub.html:65
 msgid ""
@@ -1262,11 +1255,11 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Una gu&iacute;a completa que ilustra c&oacute;mo se utiliza el formato ePub, "
+"Una guía completa que ilustra cómo se utiliza el formato ePub, "
 "y que\n"
-" contiene ejemplos basados en Bookworkm, est&aacute;\n"
-" disponible a trav&eacute;s de <em>IBM DeveloperWorks</em>:  <a href="
-"\"http://www.ibm.com/developerworks/edu/x-dw-x-epubtut.html\">C&oacute;mo se "
+" contiene ejemplos basados en Bookworkm, está\n"
+" disponible a través de <em>IBM DeveloperWorks</em>:  <a href="
+"\"http://www.ibm.com/developerworks/edu/x-dw-x-epubtut.html\">Cómo se "
 "construye  un libro digital con EPUB</a>."
 
 #: library/templates/epub.html:71
@@ -1279,7 +1272,7 @@ msgid ""
 msgstr ""
 "\n"
 "Una extensa lista de <a href=\"http://labs.oreilly.com/2009/03/epub-"
-"resources-and-guides.html\">recursos y gu&iacute;as sobre ePub</a> ha sido "
+"resources-and-guides.html\">recursos y guías sobre ePub</a> ha sido "
 "compilada por Keith\n"
 " Fahlgren de O'Reilly Media."
 
@@ -1296,11 +1289,11 @@ msgstr ""
 "\n"
 " Un navegador web proporciona un entorno propicio para la lectura de "
 "libros \n"
-"ePub, ya que el contenido del mismo se ajusta al formato XHTML en la "
-"mayor&iacute;a de los casos. \n"
-"Esto permite que Bookworm pueda respaldar un dise&ntilde;o avanzado y un "
+"ePub, ya que el contenido de un ePub se ajusta al formato XHTML en la "
+"mayoría de los casos. \n"
+"Esto permite que Bookworm pueda respaldar un diseño avanzado y un "
 "lenguaje de marcado \n"
-"que van m&aacute;s all&aacute; de lo que un software aut&oacute;nomo de "
+"que van más allá de lo que un software autónomo de "
 "lectura pueda producir. \n"
 "Por ejemplo:"
 
@@ -1325,8 +1318,8 @@ msgid ""
 msgstr ""
 "\n"
 "Estos elementos son particularmente importantes para obras de no-"
-"ficci&oacute;n,\n"
-"  como t&iacute;tulos t&eacute;cnicos y art&iacute;culos cient&iacute;ficos."
+"ficción,\n"
+"  como títulos técnicos y artículos científicos."
 
 #: library/templates/epub.html:100
 msgid "Cascading Style Sheets (CSS) and JavaScript"
@@ -1345,9 +1338,9 @@ msgstr ""
 "\n"
 "Por defecto Bookworm genera cualquier hoja de estilo CSS que venga "
 "especificada dentro de una \n"
-" publicaci&oacute;n electr&oacute;nica. Para evitar interferencia con las "
+" publicación electrónica. Para evitar interferencia con las "
 "hojas de estilo propias de Bookworm,\n"
-" las hojas inclu&iacute;das en un ePub se modificar&aacute;n debidamente "
+" las hojas incluídas en un ePub se modificarán debidamente "
 "para limitar su efecto sobre el contenido."
 
 #: library/templates/epub.html:109
@@ -1361,11 +1354,11 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Ning&uacute;n archivo de JavaScript que venga inclu&iacute;do en un ePub "
-"ser&aacute; cargado;\n"
+"Ningún archivo de JavaScript que venga incluído en un ePub "
+"será cargado;\n"
 " y todas las etiquetas de tipo &lt;script&gt; embebidas en el contenido del "
-"libro ser&aacute;n eliminadas como\n"
-" medida preventiva para evitar la infiltraci&oacute;n de malware en este "
+"libro serán eliminadas como\n"
+" medida preventiva para evitar la infiltración de malware en este "
 "sitio."
 
 #: library/templates/epub.html:116
@@ -1379,15 +1372,15 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Bookworm incluye sus propias p&aacute;ginas de estilo, calibradas "
-"especialmente para la p&aacute;gina impresa. Prueba a utilizar la "
-"funci&oacute;n &laquo;Print Preview&raquo; en tu navegador\n"
-" mientras lees un libro ePub, para ver c&oacute;mo aparecer&aacute; una vez "
+"Bookworm incluye sus propias páginas de estilo, calibradas "
+"especialmente para la página impresa. Prueba a utilizar la "
+"función «Print Preview» en tu navegador\n"
+" mientras lees un libro ePub, para ver cómo aparecerá una vez "
 "impreso."
 
 #: library/templates/epub.html:123
 msgid "Table of Contents"
-msgstr "&Iacute;ndice de materias"
+msgstr "Índice de materias"
 
 #: library/templates/epub.html:126
 msgid ""
@@ -1399,12 +1392,12 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Los metadatos del &iacute;ndice de materias contienen fragmentos no s&oacute;"
+"Los metadatos del índice de materias contienen fragmentos no só"
 "lo a nivel\n"
-" de cap&iacute;tulo. Tambi&eacute;n pueden contener fragmentos que se "
-"refieren a otras unidades (a &laquo;partes&raquo; o\n"
-" a sub-cap&iacute;tulos, por ejemplo) creando de esta forma una "
-"jerarqu&iacute;a de elementos encapsulados."
+" de capítulo. También pueden contener fragmentos que se "
+"refieren a otras unidades (a «partes» o\n"
+" a sub-capítulos, por ejemplo) creando de esta forma una "
+"jerarquía de elementos encapsulados."
 
 #: library/templates/epub.html:134
 msgid ""
@@ -1414,7 +1407,7 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Bookworm expande los elementos en el &iacute;ndice a medida que \n"
+"Bookworm expande los elementos en el índice a medida que \n"
 "el lector avanza en la lectura."
 
 #: library/templates/epub.html:140
@@ -1426,7 +1419,7 @@ msgid ""
 msgstr ""
 "\n"
 "Cuando existen varias sub-secciones, aparece una flechita indicando \n"
-" la sub-secci&oacute;n que se est&aacute; leyendo."
+" la sub-sección que se está leyendo."
 
 #: library/templates/epub.html:146
 msgid "Reading system conformance"
@@ -1445,15 +1438,15 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Seg&uacute;n la especificaci&oacute;n ePub, Bookworm, al &laquo;"
-"abrir&raquo;\n"
+"Según la especificación ePub, Bookworm, al «"
+"abrir»\n"
 " el documento, va al primer elemento que en el archivo NCX lleva el "
 "atributo\n"
-" <code>linear</code> con el valor de &laquo;yes&raquo;. Esto quiere decir, "
+" <code>linear</code> con el valor de «yes». Esto quiere decir, "
 "aunque parezca\n"
-" contradictorio, que en algunos t&iacute;tulos la p&aacute;gina por defecto "
+" contradictorio, que en algunos títulos la página por defecto "
 "del libro ePub\n"
-" no ser&aacute; el primer elemento en el archivo NCX."
+" no será el primer elemento en el archivo NCX."
 
 #: library/templates/epub.html:158
 msgid ""
@@ -1466,8 +1459,8 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"El sistema de lectura en Bookworm a&uacute;n no se conforma\n"
-" totalmente a la especificaci&oacute;n ePub. Consulta la p&aacute;gina de\n"
+"El sistema de lectura en Bookworm aún no se conforma\n"
+" totalmente a la especificación ePub. Consulta la página de\n"
 " <a href=\"http://code.google.com/p/threepress/issues/list\">issues</a>\n"
 " para una lista de fallos relacionados con esta falta de conformidad."
 
@@ -1484,14 +1477,14 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Dado que es una aplicaci&oacute;n basada en navegador,\n"
+"Dado que es una aplicación basada en navegador,\n"
 " Bookworm respalda ilustraciones y fotos en todos los formatos respaldados\n"
-" por ePub: <em>JPEG</em>, <em>GIF</em> y <em>PNG</em>. Tambi&eacute;n\n"
-" las im&aacute;genes en formato <em>Scalable Vector Graphics</em> (<em>SVG</"
+" por ePub: <em>JPEG</em>, <em>GIF</em> y <em>PNG</em>. También\n"
+" las imágenes en formato <em>Scalable Vector Graphics</em> (<em>SVG</"
 "em>)\n"
-" son posibles mediante un enlace a un archivo SVG exterior, ya que varios\n"
-" navegadores no respaldan este formato a trav&eacute;s de una etiqueta en "
-"l&iacute;nea\n"
+" son posibles mediante un enlace a un fichero SVG exterior, ya que varios\n"
+" navegadores no respaldan este formato a través de una etiqueta en "
+"línea\n"
 " tipo <code>&lt;img&gt;</code>."
 
 #: library/templates/epub.html:183
@@ -1503,8 +1496,8 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"La especificaci&oacute;n OPS establece que el contenido de un libro ePub "
-"v&aacute;lido\n"
+"La especificación OPS establece que el contenido de un libro ePub "
+"válido\n"
 " puede ser en XHTML o en <a href=\"http://wiki.mobileread.com/wiki/DTBook"
 "\">DTBook</a>."
 
@@ -1518,8 +1511,8 @@ msgid ""
 msgstr ""
 "\n"
 "      Bookworm respalda ePubs en formato DTBook, convirtiendo el contenido "
-"automaticamente\n"
-"      a XHTML. Esta conversi&oacute;n se efect&uacute;a a trav&eacute;s de "
+"automáticamente\n"
+"      a XHTML. Esta conversión se efectúa a través de "
 "transformaciones XSL (XSLT)       y las herramientas del proyecto <a href="
 "\"http://daisymfc.sourceforge.net/\">DAISY pipeline</a>.\n"
 "      "
@@ -1548,15 +1541,15 @@ msgid ""
 msgstr ""
 "\n"
 "Bookworm respalda fuentes especificadas con CSS 1 o CSS 2.\n"
-" En teor&iacute;a tambi&eacute;n puede respaldar fuentes embebidas "
+" En teoría también puede respaldar fuentes embebidas "
 "especificadas\n"
 " con CSS 3, siempre que el navegador lo permita. Sin embargo, esto no se\n"
-" ha verificado todav&iacute;a (te agradecer&iacute;amos cualquier ejemplos "
+" ha verificado todavía (te agradeceríamos cualquier ejemplos "
 "que puedas suministrar)."
 
 #: library/templates/epub.html:209
 msgid "How Bookworm treats invalid ePub"
-msgstr "C&oacute;mo Bookworm procesa un libro ePub que no es v&aacute;lido"
+msgstr "¿Cómo Bookworm procesa un libro ePub que no es válido?"
 
 #: library/templates/epub.html:211
 msgid ""
@@ -1569,9 +1562,9 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Al dise&ntilde;ar Bookworm se ha tenido como objetivo que &eacute;ste "
+"Al diseñar Bookworm se ha tenido como objetivo que éste "
 "procese documentos\n"
-" ePub que no se ajustan completamente a la especificaci&oacute;n. Sin "
+" ePub que no se ajustan completamente a la especificación. Sin "
 "embargo, es posible que en tal caso\n"
 " el programa no pueda interpretar todas las partes del archivo, y que lo "
 "rechaze consecuentemente."
@@ -1592,16 +1585,16 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Cuando se determine que un libro ePub est&aacute; seriamente malformado,\n"
+"Cuando se determine que un libro ePub está seriamente malformado,\n"
 " el <a href=\"http://www.threepress.org/document/epub-validate/\">servicio "
 "epubcheck\n"
-" de threepress.org</a> se encargar&aacute; de procesar el documento. Los "
+" de threepress.org</a> se encargará de procesar el documento. Los "
 "resultados\n"
-" de la herramienta de validaci&oacute;n <a href=\"http://code.google.com/p/"
+" de la herramienta de validación <a href=\"http://code.google.com/p/"
 "epubcheck/\">epubcheck</a>\n"
-" se transmitir&aacute;n al usuario que intenta cargar el libro con el "
-"prop&oacute;sito de que el\n"
-" diagn&oacute;stico de epubcheck y Bookworm le ayuden a identificar el "
+" se transmitirán al usuario que intenta cargar el libro con el "
+"propósito de que el\n"
+" diagnóstico de epubcheck y Bookworm le ayuden a identificar el "
 "problema."
 
 #: library/templates/epub.html:234
@@ -1616,9 +1609,9 @@ msgstr ""
 "\n"
 "El uso de Bookworm se encuentra obviamente limitado por las funciones del "
 "navegador\n"
-" que se utilice. Se recomienda el uso de una versi&oacute;n reciente de "
+" que se utilice. Se recomienda el uso de una versión reciente de "
 "Firefox, Safari o Chrome,\n"
-" aunque tambi&eacute;n se respalda el uso de Internet Explorer 6 y 7."
+" aunque también se respalda el uso de Internet Explorer 6 y 7."
 
 #: library/templates/epub.html:242
 msgid ""
@@ -1636,17 +1629,17 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"Existen publicaciones electr&oacute;nicas con un formato muy extenso\n"
+"Existen publicaciones electrónicas con un formato muy extenso\n"
 " que no son apropiadas para la lectura basada en navegador de web (por "
 "ejemplo,\n"
-" comics de una sola &laquo;p&aacute;gina&raquo;, o el texto, sin "
-"interrupci&oacute;n, de\n"
+" comics de una sola «página», o el texto, sin "
+"interrupción, de\n"
 " una novela). Siempre que sea apropiado, se recomienda que los autores "
 "distribuyan la totalidad\n"
 " de un texto en archivos XHTML individuales. Esto es de particular "
 "importancia para dispositivos\n"
-" de lectura m&oacute;viles, que no suelen acomodar archivos de gran "
-"tama&ntilde;o. (El Sony Reader,\n"
+" de lectura móviles, que no suelen acomodar archivos de gran "
+"tamaño. (El Sony Reader,\n"
 " por ejemplo, no acomoda archivos que excedan 300Kb.)"
 
 #: library/templates/epub.html:255
@@ -1659,18 +1652,18 @@ msgid ""
 "oreilly.com/2009/03/epub-resources-and-guides.html\">O'Reilly Labs ePub "
 "Resources and Guides</a> article."
 msgstr ""
-"Existen otros lectores de c&oacute;digo abierto que respaldan el formato "
-"ePub. El m&aacute;s desarrollado entre ellos es el <a href=\"http://www."
+"Existen otros lectores de código abierto que respaldan el formato "
+"ePub. El más desarrollado entre ellos es el <a href=\"http://www."
 "fbreader.org\">FBReader</a>, un lector compatible con Windows, Linux (y "
 "dispositivos que funcionan con este sistema operativo, como Zaurus y Nokia "
-"tablets) y, de forma no oficial, el iLiad. Consulta el art&iacute;culo <a "
+"tablets) y, de forma no oficial, el iLiad. Consulta el artículo <a "
 "href=\"http://labs.oreilly.com/2009/03/epub-resources-and-guides.html"
 "\">O'Reilly Labs ePub Resources and Guides</a> para una lista completa de "
-"herramientas de c&oacute;digo abierto para ePubs."
+"herramientas de código abierto para ePubs."
 
 #: library/templates/help.html:3 library/templates/help.html.py:5
 msgid "Help using Bookworm"
-msgstr "P&aacute;gina de asistencia"
+msgstr "Página de asistencia"
 
 #: library/templates/help.html:27
 #, python-format
@@ -1683,30 +1676,30 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Si no sabes c&oacute;mo proseguir o tienes alg&uacute;n problema, consulta "
+"Si no sabes cómo proseguir o tienes algún problema, consulta "
 "esta lista de\n"
 " temas usuales, o para asistencia contacta con <a href=\"mailto:%"
 "(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>."
 
 #: library/templates/help.html:33
 msgid "Problems adding a book?"
-msgstr "&iquest;Problemas a la hora de a&ntilde;adir un libro?"
+msgstr "¿Problemas a la hora de añadir un libro?"
 
 #: library/templates/help.html:35 library/templates/help.html.py:129
 msgid "Can I use Bookworm with my e-reader?"
-msgstr "&iquest;Puedo utilizar Bookworm con mi lector electr&oacute;nico?"
+msgstr "¿Puedo utilizar Bookworm con mi lector electrónico?"
 
 #: library/templates/help.html:37
 msgid "Do I need an OpenID to use Bookworm?"
-msgstr "&iquest;Me hace falta un OpenID para utilizar Bookworm?"
+msgstr "¿Me hace falta un OpenID para utilizar Bookworm?"
 
 #: library/templates/help.html:39
 msgid "More questions"
-msgstr "&iquest;Otras preguntas?"
+msgstr "¿Otras preguntas?"
 
 #: library/templates/help.html:43
 msgid "What do I do first? <!-- trans: to use Bookworm -->"
-msgstr "&iquest;C&oacute;mo comienzo?"
+msgstr "¿Cómo comienzo?"
 
 #: library/templates/help.html:46
 #, python-format
@@ -1717,8 +1710,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"La forma m&aacute;s f&aacute;cil de familiarizarse con Bookworm\n"
-" es a trav&eacute;s de este <a href=\"%(toururl)s\">recorrido virtual</a>. "
+"La forma más fácil de familiarizarse con Bookworm\n"
+" es a través de este <a href=\"%(toururl)s\">recorrido virtual</a>. "
 
 #: library/templates/help.html:52
 #, python-format
@@ -1729,22 +1722,22 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Para m&aacute;s informaci&oacute;n, consulta la p&aacute;gina\n"
-"<a href=\"%(abouturl)s\">&iquest;Qu&eacute; es Bookworm?</a>, para hacerte "
+"Para más información, consulta la página\n"
+"<a href=\"%(abouturl)s\">¿Qué es Bookworm?</a>, para hacerte "
 "una idea\n"
-" del prop&oacute;sito y ventajas de utilizar esta aplicaci&oacute;n."
+" del propósito y ventajas de utilizar esta aplicación."
 
 #: library/templates/help.html:58
 msgid "I'm having problems adding a book"
-msgstr "Problemas a la hora de a&ntilde;adir un libro"
+msgstr "Problemas a la hora de añadir un libro"
 
 #: library/templates/help.html:60
 msgid "Here are some common things to check"
-msgstr "Aqu&iacute; tienes una lista de diagn&oacute;stico"
+msgstr "Aquí tienes una lista de diagnóstico"
 
 #: library/templates/help.html:62
 msgid "Is the book in &lsquo;ePub&rsquo; format?"
-msgstr "&iquest;El libro est&aacute; en formato &lsquo;ePub&rsquo;?"
+msgstr "¿El libro está en formato &lsquo;ePub&rsquo;?"
 
 #: library/templates/help.html:64
 msgid ""
@@ -1759,24 +1752,24 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Bookworm s&oacute;lo acepta libros en formato ePub. Libros en este formato "
+"Bookworm sólo acepta libros en formato ePub. Libros en este formato "
 "se\n"
-" pueden reconocer a trav&eacute;s del nombre del documento, que termina con "
-"la extensi&oacute;n\n"
+" pueden reconocer a través del nombre del documento, que termina con "
+"la extensión\n"
 " <strong>.epub</strong>. En caso contrario, el libro es probablemente un "
-"documento PDF o alg&uacute;n\n"
-" otro tipo de libro electr&oacute;nico. Dir&iacute;gete al sitio donde "
+"documento PDF o algún\n"
+" otro tipo de libro electrónico. Dirígete al sitio donde "
 "obtuviste el documento para\n"
-" indagar qu&eacute; tipo de software de lectura debes utilizar."
+" indagar qué tipo de software de lectura debes utilizar."
 
 #: library/templates/help.html:71
 msgid "Did Bookworm tell you there was a problem with the book?"
-msgstr "&iquest;Bookworm se queja de que hay problemas con este libro?"
+msgstr "¿Bookworm te informa que hay problemas con el libro?"
 
 #: library/templates/help.html:73
 msgid "You might get an error message like this when you add a book"
 msgstr ""
-"Al a&ntilde;adir un libro, puedes recibir uno de los siguientes errores"
+"Al añadir un libro, puedes recibir uno de los siguientes errores"
 
 #: library/templates/help.html:77
 msgid "click to enlarge "
@@ -1791,8 +1784,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"El formato ePub es de reciente creaci&oacute;n y no todos los libros\n"
-" se conforman apropiadamente a la especificaci&oacute;n. Bookworm intenta "
+"El formato ePub es de reciente creación y no todos los libros\n"
+" se conforman apropiadamente a la especificación. Bookworm intenta "
 "aceptar una variedad de publicaciones\n"
 " ePub, pero a veces no logra procesar documentos que son muy inusuales."
 
@@ -1812,16 +1805,16 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Bookworm tambi&eacute;n es de reciente creaci&oacute;n y a&uacute;n "
+"Bookworm también es de reciente creación y aún "
 "contiene\n"
-" errores. Si surgi&oacute; un fallo a la hora de cargar un libro, Bookworm "
-"contact&oacute;\n"
+" errores. Si surgió un fallo a la hora de cargar un libro, Bookworm "
+"contactó\n"
 " con el <a href=\"http://www.threepress.org/document/epub-validate/"
-"\">servicio de validaci&oacute;n ePub</a>, que hace uso de la herramienta "
+"\">servicio de validación ePub</a>, que hace uso de la herramienta "
 "&lsquo;epubcheck&rsquo; de Adobe.\n"
-" Bookworm te informar&aacute; en caso que epubcheck tambi&eacute;n haya "
+" Bookworm te informará en caso que epubcheck también haya "
 "encontrado fallos en el documento y,\n"
-" si los dos est&aacute;n de acuerdo, lo m&aacute;s probable es que la "
+" si los dos coinciden, lo más probable es que la "
 "editorial no haya producido\n"
 " un documento correcto."
 
@@ -1849,7 +1842,7 @@ msgstr ""
 #: library/templates/help.html:105
 msgid "Does the book contain DRM (Digital Rights Management)?"
 msgstr ""
-"&iquest;El libro tiene acceso regido por la gesti&oacute;n digital de "
+"¿El libro tiene acceso regido por la gestión digital de "
 "derechos (<em>DRM</em>)?"
 
 #: library/templates/help.html:107
@@ -1863,13 +1856,13 @@ msgid ""
 msgstr ""
 "\n"
 "Algunos documentos ePub tienen restricciones que impiden la lectura en\n"
-" dispositivos no autorizados. Bookworm no respalda ning&uacute;n tipo de "
-"restricci&oacute;n\n"
-" estipulada bajo la gesti&oacute;n digital de derechos (DRM), y los "
+" dispositivos no autorizados. Bookworm no respalda ningún tipo de "
+"restricción\n"
+" estipulada bajo la gestión digital de derechos (DRM), y los "
 "desarrolladores de este software\n"
-" adoptan la posici&oacute;n que tal restricci&oacute;n no contribuye a "
-"disuadir la pirater&iacute;a\n"
-" digital, a tal punto que justifique limitar d&oacute;nde se pueda leer el "
+" adoptan la posición que tal restricción no contribuye a "
+"disuadir la piratería\n"
+" digital, a tal punto que justifique limitar dónde se pueda leer el "
 "libro."
 
 #: library/templates/help.html:115
@@ -1881,15 +1874,15 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Consulta con la librer&iacute;a donde obtuviste el libro o la editorial para "
+"Consulta con la librería donde obtuviste el libro o la editorial para "
 "obtener\n"
-" informaci&oacute;n sobre qu&eacute; tipo de software debes utilizar para "
+" información respecto al tipo de software que debes utilizar para "
 "leerlo."
 
 #: library/templates/help.html:120
 msgid "Is the ebook very large, or contain large images?"
 msgstr ""
-"&iquest;Es el libro demasiado grande, o contiene im&aacute;genes muy amplias?"
+"¿Es el libro demasiado grande, o contiene imágenes muy amplias?"
 
 #: library/templates/help.html:122
 msgid ""
@@ -1901,10 +1894,10 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Hay libros que son demasiado grandes para poder ser almacenados y \n"
-"  le&iacute;dos en Bookworm. Un libro en exceso de 30 megabytes se considera "
+"Hay libros que son demasiado grandes para el almacenamiento y \n"
+"  lectura en Bookworm. Un libro en exceso de 30 megabytes se considera "
 "demasiado\n"
-" grande para esta aplicaci&oacute;n y ser&aacute; consecuentemente rechazado."
+" grande para esta aplicación y será consecuentemente rechazado."
 
 #: library/templates/help.html:131
 msgid ""
@@ -1917,12 +1910,12 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"S&iacute;, siempra que tu lector electr&oacute;nico te permita abrir libros "
+"Sí, siempra que tu lector electrónico te permita abrir libros "
 "en formato ePub.\n"
-" En cada caso, deber&aacute;s bajar el libro a tu computador y a&ntilde;"
+" En cada caso, deberás bajar el libro a tu computador y añ"
 "adirlo a una de estas\n"
-" aplicaciones, o utilizar la versi&oacute;n m&oacute;vil de Bookworm con un "
-"dispositivo en l&iacute;nea."
+" aplicaciones, o utilizar la versión móvil de Bookworm con un "
+"dispositivo en línea."
 
 #: library/templates/help.html:139
 msgid ""
@@ -1932,7 +1925,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"El n&uacute;mero de lectores electr&oacute;nicos disponible cambia "
+"El número de lectores electrónicos disponible cambia "
 "constantemente. Esta tabla refleja un inventorio hacia marzo del 2009:"
 
 #: library/templates/help.html:147
@@ -1941,7 +1934,7 @@ msgstr "Dispositivo"
 
 #: library/templates/help.html:148
 msgid "Supports ePub? <!-- trans: Should be short phrase -->"
-msgstr "&iquest;Respalda formato ePub?"
+msgstr "¿Respalda formato ePub?"
 
 #: library/templates/help.html:149
 msgid "How-to <!-- trans: How to use Bookworm with this e-reader --> "
@@ -1955,7 +1948,7 @@ msgstr "iPod Touch"
 #: library/templates/help.html:171 library/templates/help.html.py:181
 #: library/templates/help.html:186
 msgid "Yes"
-msgstr "S&iacute;"
+msgstr "Sí"
 
 #: library/templates/help.html:156
 msgid "Use <!-- trans: Use this software program -->"
@@ -1974,18 +1967,18 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"Utiliza la versi&oacute;n m&oacute;vil de web cuando te encuentres en "
-"l&iacute;nea,\n"
-" dirigi&eacute;ndote a <a href=\"%(mobilehost)s\">%(mobilehost)s</a>\n"
-" con tu tel&eacute;fono m&oacute;vil. Para leer sin necesitar una "
-"conexi&oacute;n a la red, exporta directamente\n"
-" de Bookworm a Stanza.  Aqu&iacute; encontrar&aacute;s otras \n"
+"Utiliza la versión móvil de web cuando te encuentres en "
+"línea,\n"
+" dirigiéndote a <a href=\"%(mobilehost)s\">%(mobilehost)s</a>\n"
+" con tu teléfono móvil. Para leer sin necesitar una "
+"conexión a la red, exporta directamente\n"
+" de Bookworm a Stanza.  Aquí encontrarás otras \n"
 " <a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone"
 "\">sugerencias</a>"
 
 #: library/templates/help.html:170
 msgid "Other web-enabled phone"
-msgstr "Otros tel&eacute;fonos con capacidad de acceso a la Web"
+msgstr "Otros teléfonos con capacidad de acceso a la Web"
 
 #: library/templates/help.html:173
 #, python-format
@@ -1997,10 +1990,10 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"Utiliza la versi&oacute;n m&oacute;vil de web cuando te encuentres en "
-"l&iacute;nea dirigi&eacute;ndote a <a href=\"http://%(mobilehost)s\">%"
+"Utiliza la versión móvil de web cuando te encuentres en "
+"línea dirigiéndote a <a href=\"http://%(mobilehost)s\">%"
 "(mobilehost)s</a>\n"
-" con tu tel&eacute;fono m&oacute;vil."
+" con tu teléfono móvil."
 
 #: library/templates/help.html:182 library/templates/public.html:22
 msgid "or"
@@ -2021,10 +2014,10 @@ msgid ""
 "          "
 msgstr ""
 "\n"
-"El Kindle a&uacute;n no puede leer archivos en formato ePub, pero \n"
-" puedes utilizar la versi&oacute;n m&oacute;vil de Bookworm a trav&eacute;s "
+"El Kindle aún no puede leer archivos en formato ePub, pero \n"
+" puedes utilizar la versión móvil de Bookworm a través "
 "de la\n"
-" funci&oacute;n Whispernet del Kindle, utilizando el navegador del Kindle "
+" función Whispernet del Kindle, utilizando el navegador del Kindle "
 "para acceder\n"
 " <a href=\"http://%(mobilehost)s\">%(mobilehost)s</a>."
 
@@ -2037,8 +2030,8 @@ msgid ""
 "    Do I need one? \n"
 "    "
 msgstr ""
-"En la p&aacute;gina de <a href=\"%(signupurl)s\">registro</a> se menciona\n"
-" el OpenID. &iquest;Me hace falta uno?"
+"En la página de <a href=\"%(signupurl)s\">registro</a> se menciona\n"
+" el OpenID. ¿Me hace falta uno?"
 
 #: library/templates/help.html:212
 #, python-format
@@ -2051,8 +2044,8 @@ msgid ""
 "    "
 msgstr ""
 "Para utilizar Bookworm no hace falta un OpenID, pero te recomendamos que\n"
-" configures uno. De hecho, es posible que incluso ya tengas uno.\n"
-" Consulta esta p&aacute;gina para m&aacute;s informaci&oacute;n sobre el\n"
+" configures uno. De hecho, es posible que incluso ya lo tengas.\n"
+" Consulta esta página para más información sobre el\n"
 " <a href=\"%(openidurl)s\">OpenID</a>."
 
 #: library/templates/help.html:218
@@ -2068,8 +2061,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Encontrar&aacute;s m&aacute;s informaci&oacute;n sobre Bookworm en la\n"
-" p&aacute;gina <a href=\"%(abouturl)s\">&iquest;Qu&eacute; es Bookworm?</a>"
+"Encontrarás más información sobre Bookworm en la\n"
+" página <a href=\"%(abouturl)s\">¿Qué es Bookworm?</a>"
 
 #: library/templates/help.html:228
 #, python-format
@@ -2083,12 +2076,12 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Tambi&eacute;n puedes utilizar uno de los foros que se encuentran en el "
+"También puedes utilizar uno de los foros que se encuentran en el "
 "apartado de\n"
 " <a href=\"http://getsatisfaction.com/threepress/topics/"
-"post_ideas_and_questions_about_bookworm\">Satisfacci&oacute;n</a>. S&iacute;"
-"rvete tambi&eacute;n contactar con <a href=\"mailto:%(ADMIN_EMAIL)s\">%"
-"(ADMIN_EMAIL)s</a> para cualquier consulta espec&iacute;fica."
+"post_ideas_and_questions_about_bookworm\">Satisfacción</a>. Sí"
+"rvete también contactar con <a href=\"mailto:%(ADMIN_EMAIL)s\">%"
+"(ADMIN_EMAIL)s</a> para cualquier consulta específica."
 
 #: library/templates/index.html:6
 msgid "My epub library"
@@ -2098,7 +2091,7 @@ msgstr "Mi biblioteca ePub"
 #: library/templates/shell.html.py:58 library/templates/upload.html:4
 #: library/templates/upload.html.py:5
 msgid "Add a book"
-msgstr "A&ntilde;ade un libro"
+msgstr "Añade un libro"
 
 #: library/templates/index.html:18
 msgid "Status"
@@ -2109,14 +2102,14 @@ msgstr "Estatus"
 msgid "There is one reader "
 msgid_plural "There are more than %(counter)s readers"
 msgstr[0] "Hay un lector"
-msgstr[1] "Hay m&aacute;s de %(counter)s lectores"
+msgstr[1] "Hay más de %(counter)s lectores"
 
 #: library/templates/index.html:22
 #, python-format
 msgid " and only one individual book."
 msgid_plural " and over %(counter)s individual books."
-msgstr[0] "y s&oacute;lo un libro"
-msgstr[1] "y m&aacute;s de %(counter)s libros"
+msgstr[0] "y sólo un libro"
+msgstr[1] "y más de %(counter)s libros"
 
 #: library/templates/index.html:28
 msgid "Edit your profile"
@@ -2135,7 +2128,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      Los libros aparecen enumerados seg&uacute;n el <em>%(order_text)s</em>,"
+"      Los libros aparecen enumerados según el <em>%(order_text)s</em>,"
 "%(order_adverb)s, en orden <em>%(order_direction)s</em>\n"
 "    "
 
@@ -2144,7 +2137,7 @@ msgid ""
 "You can re-order your books by clicking on  &quot;title&quot;, &quot;"
 "author&quot; or &quot;date added&quot;."
 msgstr ""
-"Los libros se pueden reorganizar haciendo clic sobre &quot;t&iacute;"
+"Los libros se pueden reorganizar haciendo clic sobre &quot;tí"
 "tulo&quot;, &quot;autor&quot; o &quot;fecha&quot;."
 
 #: library/templates/index.html:57
@@ -2160,8 +2153,8 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"Has configurado tu cuenta para comenzar siempre con el &uacute;ltimo "
-"cap&iacute;tulo le&iacute;do\n"
+"Has configurado tu cuenta para comenzar siempre con el último "
+"capítulo leído\n"
 " en el libro. (<a href=\"%(urlprofile)s\">Cambia esto</a>)."
 
 #: library/templates/index.html:69
@@ -2174,11 +2167,11 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"Existe una opci&oacute;n en tu <a href=\"%(urlprofile)s\">perfil de usuario</"
+"Existe una opción en tu <a href=\"%(urlprofile)s\">perfil de usuario</"
 "a> \n"
-" que, una vez activada, te permitir&aacute; dirigirte al &uacute;ltimo "
-"cap&iacute;tulo que hayas\n"
-" le&iacute;do en libro, al hacer clic sobre el t&iacute;tulo."
+" que, una vez activada, te permitirá dirigirte al último "
+"capítulo que hayas\n"
+" leído en libro, al hacer clic sobre el título."
 
 #: library/templates/index.html:80 library/templates/shell.html:6
 #: library/templates/shell.html.py:36
@@ -2191,21 +2184,21 @@ msgid ""
 "A free platform for reading ePub books online. <a href='%(abouturl)s'>Learn "
 "more</a>."
 msgstr ""
-"Una plataforma gratis para leer libros electr&oacute;nicos en l&iacute;nea.\n"
-" <a href='%(abouturl)s'>M&aacute;s informaci&oacute;n</a>."
+"Una plataforma gratis para leer libros electrónicos en línea.\n"
+" <a href='%(abouturl)s'>Más información</a>."
 
 #: library/templates/index.html:86
 msgid "To add a new book, log in using your computer."
 msgstr ""
-"Para a&ntilde;adir un libro, inicia una sesi&oacute;n desde tu computador"
+"Para añadir un libro, inicia una sesión desde tu computador"
 
 #: library/templates/index.html:91
 msgid "Add a new ePub ebook:"
-msgstr "A&ntilde;ade un nuevo libro ePub"
+msgstr "Añade un nuevo libro ePub"
 
 #: library/templates/index.html:93
 msgid "Add your first ePub ebook:"
-msgstr "A&ntilde;ade tu primer libro ePub"
+msgstr "Añade tu primer libro ePub"
 
 #: library/templates/index.html:96
 msgid ""
@@ -2218,11 +2211,11 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"    Si todav&iacute;a no tienes un ePub puedes comenzar con a href=\"http://"
+"    Si todavía no tienes un ePub puedes comenzar con a href=\"http://"
 "www.threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen.epub\">Pride "
 "and Prejudice</a> de Jane Austen,\n"
-"    o con uno de los a href=\"http://oreilly.com/ebooks/\">t&iacute;tulos "
-"t&eacute;cnicos disponibles a trav&eacute;s de O'Reilly</a>.\n"
+"    o con uno de los a href=\"http://oreilly.com/ebooks/\">títulos "
+"técnicos disponibles a través de O'Reilly</a>.\n"
 "   "
 
 #: library/templates/index.html:104
@@ -2240,20 +2233,20 @@ msgstr "cargar"
 
 #: library/templates/last-read.html:3
 msgid "last read"
-msgstr "&uacute;ltimo le&iacute;do"
+msgstr "último leído"
 
 #: library/templates/openid.html:3 library/templates/openid.html.py:5
 #: library/templates/openid.html:11
 msgid "About OpenID"
-msgstr "Informaci&oacute;n sobre el OpenID"
+msgstr "Información sobre el OpenID"
 
 #: library/templates/openid.html:14
 msgid ""
 "Bookworm supports and advocates the use of OpenID, a simple way to manage "
 "your usernames and passwords on the internet."
 msgstr ""
-"Bookworm respalda y recomienda el uso del OpenID, como simple soluci&oacute;"
-"n para administrar todos tus nombres de usuarios y contrase&ntilde;as en la "
+"Bookworm respalda y recomienda el uso del OpenID, como simple solució"
+"n para administrar todos tus nombres de usuarios y contraseñas en la "
 "Internet."
 
 #: library/templates/openid.html:18
@@ -2262,22 +2255,22 @@ msgid ""
 "personalization to their products. <a href=\"http://toc.oreilly.com/2008/05/"
 "what-openid-can-do-for-educati.html\">Read more</a>."
 msgstr ""
-"Exhortamos a editoriales acad&eacute;micas a que exploren el uso del OpenID "
+"Exhortamos a editoriales académicas a que exploren el uso del OpenID "
 "para personalizar sus productos. <a href=\"http://toc.oreilly.com/2008/05/"
-"what-openid-can-do-for-educati.html\">M&aacute;s informaci&oacute;n "
-"aqu&iacute;</a>."
+"what-openid-can-do-for-educati.html\">Más información "
+"aquí</a>."
 
 #: library/templates/public.html:6
 msgid "Read ePub ebooks online"
-msgstr "Lee libros ePub en l&iacute;nea"
+msgstr "Lee libros ePub en línea"
 
 #: library/templates/public.html:21
 msgid "A free platform for reading ePub books online."
-msgstr "Una plataforma gratis para la lectura de libros ePub en l&iacute;nea"
+msgstr "Una plataforma gratis para la lectura de libros ePub en línea"
 
 #: library/templates/public.html:22
 msgid "Learn more"
-msgstr "Obt&eacute;n m&aacute;s informaci&oacute;n"
+msgstr "Obtén más información"
 
 #: library/templates/public.html:23
 #: library/templates/auth/authopenid/signin.html:43
@@ -2285,7 +2278,7 @@ msgstr "Obt&eacute;n m&aacute;s informaci&oacute;n"
 #: library/templates/auth/authopenid/signup.html:4
 #: library/templates/auth/authopenid/signup.html:75
 msgid "Sign up"
-msgstr "reg&iacute;strate"
+msgstr "regístrate"
 
 #: library/templates/public.html:27
 msgid ""
@@ -2294,9 +2287,9 @@ msgid ""
 "getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
 "\">Customer on Get Satisfaction"
 msgstr ""
-"Bookworm es fant&aacute;stico. Una gran aplicaci&oacute;n, sin duda alguna. "
+"Bookworm es fantástico. Una gran aplicación, sin duda alguna. "
 "Me gusta la facilidad con la que se puede integrar con el iPhone para leer "
-"sin necesitar estar conectado al Web. &mdash; <a href=\"http://"
+"sin necesidad de estar conectado al Web. &mdash; <a href=\"http://"
 "getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
 "\">Comentario de un usuario en Get Satisfaction"
 
@@ -2306,8 +2299,8 @@ msgid ""
 "internet connection&rdquo; &mdash; <a href=\"http://www.jedisaber.com/ebooks/"
 "Readers.asp\">ePub Reader Software reviews"
 msgstr ""
-"&Eacute;sta es la herramienta ideal para llevar tu colecci&oacute;n de "
-"libros a cualquier sitio en el que tengas acceso al Internet. mdash; <a href="
+"Ésta es la herramienta ideal para llevar tu colección de "
+"libros a cualquier sitio en el que tengas acceso al Internet. &mdash; <a href="
 "\"http://www.jedisaber.com/ebooks/Readers.asp\">ePub Reader Software"
 
 #: library/templates/public.html:35
@@ -2317,11 +2310,11 @@ msgstr "Lectores"
 #: library/templates/public.html:38
 msgid "Read and search full-text books online"
 msgstr ""
-"Leer y buscar en el texto completo de las obras disponibles en l&iacute;nea"
+"Leer y buscar en el texto completo de las obras disponibles en línea"
 
 #: library/templates/public.html:39
 msgid "Clutter-free reading mode"
-msgstr "Modalidad de Lectura, sin obst&aacute;culos visuales"
+msgstr "Modalidad de Lectura, sin obstáculos visuales"
 
 #: library/templates/public.html:41
 #, python-format
@@ -2337,8 +2330,8 @@ msgid ""
 "<a href=\"%(toururl)s#step4\">Mobile reading</a>, online or with <a href=\"%"
 "(stanzaurl)s\">Stanza</a> on the iPhone."
 msgstr ""
-"Lectura en <a href=\"%(toururl)s#step4\">dispositivo m&oacute;vil</a> en "
-"l&iacute;nea o con <a href=\"%(stanzaurl)s\">Stanza</a> en el iPhone"
+"Lectura en <a href=\"%(toururl)s#step4\">dispositivo móvil</a> en "
+"línea o con <a href=\"%(stanzaurl)s\">Stanza</a> en el iPhone"
 
 #: library/templates/public.html:46
 #, python-format
@@ -2355,11 +2348,11 @@ msgstr "Validar libros en formato ePub"
 
 #: library/templates/public.html:54
 msgid "Need strategy or technical help?"
-msgstr "&iquest;Sugerencias o asistencia t&eacute;cnica?"
+msgstr "¿Sugerencias o asistencia técnica?"
 
 #: library/templates/public.html:55
 msgid "Ebook and ePub consulting services"
-msgstr "Servicios de consulta sobre ePub y libros electr&oacute;nicos."
+msgstr "Servicios de consulta sobre ePub y libros electrónicos."
 
 #: library/templates/public.html:57
 #, python-format
@@ -2374,7 +2367,7 @@ msgstr "Desarrolladores"
 
 #: library/templates/public.html:66
 msgid "Open-source"
-msgstr "C&oacute;digo abierto"
+msgstr "Código abierto"
 
 #: library/templates/public.html:66
 msgid "BSD-licensed"
@@ -2382,18 +2375,18 @@ msgstr "bajo licencia BSD"
 
 #: library/templates/public.html:67
 msgid "How Bookworm implements ePub"
-msgstr "C&oacute;mo Bookworm implementa el formato ePub"
+msgstr "Cómo Bookworm implementa el formato ePub"
 
 #: library/templates/public.html:68
 msgid "More open-source ePub software"
-msgstr "Otros software de c&oacute;digo abierto para ePub"
+msgstr "Otros software de código abierto para ePub"
 
 #: library/templates/public.html:69
 msgid ""
 "Follow announcements on the <a href='http://blog.threepress.org/'>Bookworm "
 "blog</a>"
 msgstr ""
-"Mant&eacute;nte actualizado leyendo el <a href='http://blog.threepress."
+"Manténte actualizado leyendo el <a href='http://blog.threepress."
 "org/'>blog de Bookworm</a>"
 
 #: library/templates/public.html:77
@@ -2406,15 +2399,15 @@ msgid ""
 "              "
 msgstr ""
 "\n"
-"Ejemplo de una p&aacute;gina en Bookworm, mostrando el &iacute;ndice de "
+"Ejemplo de una página en Bookworm, mostrando el índice de "
 "materias del libro,\n"
 " ilustraciones, y texto. Bookworm respalda hojas de estilo en cascada "
 "(CSS),\n"
-" im&aacute;genes en formato JPG, GIF, PNG y SVG, y el XHTML por completo."
+" imágenes en formato JPG, GIF, PNG y SVG, y el XHTML por completo."
 
 #: library/templates/public.html:85
 msgid "What is Bookworm?"
-msgstr "&iquest;Qu&eacute; es Bookworm?"
+msgstr "¿Qué es Bookworm?"
 
 #: library/templates/public.html:86
 msgid ""
@@ -2426,18 +2419,18 @@ msgid ""
 msgstr ""
 "Bookworm le permite al lector cargar libros a una biblioteca virtual y "
 "leerlos\n"
-" a trav&eacute;s de un navegador de web o un dispositivo m&oacute;vil. Si "
+" a través de un navegador de web o un dispositivo móvil. Si "
 "tienes un dispositivo\n"
-" port&aacute;til que respalda el formato ePub (por ejemplo, el Sony Reader o "
+" portátil que respalda el formato ePub (por ejemplo, el Sony Reader o "
 "el iRex iLiad), puedes\n"
-" descargar un libro y ponerlo en este lector electr&oacute;nico. Bookworm "
-"est&aacute; especialmente\n"
+" descargar un libro y ponerlo en este lector electrónico. Bookworm "
+"está especialmente\n"
 " optimizado para el uso con el iPhone, y puede exportar directamente a "
 "Stanza."
 
 #: library/templates/public.html:87
 msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
-msgstr "&iquest;Qu&eacute; es un &laquo;libro ePub&raquo;?"
+msgstr "¿Qué es un «libro ePub»?"
 
 #: library/templates/public.html:90
 #, python-format
@@ -2453,14 +2446,14 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"ePub es un formato para libros electr&oacute;nicos. Se puede identificar un "
+"ePub es un formato para libros electrónicos. Se puede identificar un "
 "libro en\n"
-" este formato si el archivo termina en la extensi&oacute;n <strong>.epub</"
+" este formato si el archivo termina en la extensión <strong>.epub</"
 "strong>. En este\n"
 " caso, puedes <a href=\"%(helpurl)s\">leer el libro en Bookworm</a>. En caso "
 "contrario,\n"
 " ofrece a la editorial la sugerencia de apoyar este formato, actualmente el "
-"&uacute;nico\n"
+"único\n"
 " formato gratis y abierto, que disfruta de un fuerte respaldo en la "
 "industria editorial."
 
@@ -2472,7 +2465,7 @@ msgstr "Prueba utilizar Bookworm"
 #, python-format
 msgid "Try the one-page <a href=\"%(toururl)s\">Bookworm and ePub tour</a>."
 msgstr ""
-"Da este breve recorrido virtual de una p&aacute;gina a trav&eacute;s de \n"
+"Da este breve recorrido virtual de una página a través de \n"
 " <a href=\"%(toururl)s\">ePub y Bookworm</a>."
 
 #: library/templates/reading-mode.html:3 library/templates/reading-mode.html:5
@@ -2486,33 +2479,33 @@ msgid ""
 "without the clutter and customized to your preferences"
 msgstr ""
 "La Modalidad de Lectura te ofrece una interfaz adecuada para la lectura,  "
-"libre de intrusi&oacute;n visual, y personalizada seg&uacute;n tus "
+"libre de intrusión visual, y personalizada según tus "
 "preferencias."
 
 #: library/templates/reading-mode.html:28
 msgid "Choose a serif or sans-serif font"
-msgstr "Selecciona una fuente tipogr&aacute;fica con o sin serifas"
+msgstr "Selecciona una fuente tipográfica con o sin serifas"
 
 #: library/templates/reading-mode.html:29
 msgid "Change the font size"
-msgstr "Cambia el tama&ntilde;o de la fuente"
+msgstr "Cambia el tamaño de la fuente"
 
 #: library/templates/reading-mode.html:30
 msgid ""
 "Use keyboard shortcuts to page up or page down, or go next and previous "
 "through chapters"
 msgstr ""
-"Utiliza atajos de teclado para acceso a la p&agina, o cap&iacute;tulo, "
+"Utiliza atajos de teclado para acceso a la página, o capítulo, "
 "anterior o siguiente"
 
 #: library/templates/reading-mode.html:31
 msgid "Enhanced mobile reading experience"
-msgstr "Una experiencia que mejora la lectura m&oacute;vil"
+msgstr "Una experiencia que mejora la lectura móvil"
 
 #: library/templates/reading-mode.html:36
 #: library/templates/reading-mode.html:39
 msgid "How to turn on Reading Mode"
-msgstr "C&oacute;mo activar la Modalidad de Lectura"
+msgstr "Cómo activar la Modalidad de Lectura"
 
 #: library/templates/reading-mode.html:37
 msgid ""
@@ -2522,7 +2515,7 @@ msgid ""
 msgstr ""
 "La Modalidad de Lectura se puede activar haciendo clic sobre el icono que "
 "muestra un conjunto de folios apilados. Este icono aparece en todas las "
-"p&aacute;ginas de un libro, en la parte superior derecha."
+"páginas de un libro, en la parte superior derecha."
 
 #: library/templates/reading-mode.html:41
 msgid "Turning off Reading Mode"
@@ -2534,18 +2527,18 @@ msgid ""
 "in the Reading Mode layout.  It will also appear in the upper right of the "
 "screen."
 msgstr ""
-"Para regresar a la modalidad normal de presentaci&oacute;n, haz clic sobre "
-"el mismo icono, que tambi&eacute;n aparece en la parte superior derecha de "
+"Para regresar a la modalidad normal de presentación, haz clic sobre "
+"el mismo icono, que también aparece en la parte superior derecha de "
 "la pantalla en la Modalidad de Lectura"
 
 #: library/templates/reading-mode.html:45
 #: library/templates/reading-mode.html:93
 msgid "How to turn off Reading Mode"
-msgstr "C&oacute;mo desactivar la Modalidad de Lectura"
+msgstr "Cómo desactivar la Modalidad de Lectura"
 
 #: library/templates/reading-mode.html:47
 msgid "Navigating Reading Mode"
-msgstr "Navegaci&oacute;n en Modalidad de Lectura"
+msgstr "Navegación en Modalidad de Lectura"
 
 #: library/templates/reading-mode.html:51
 msgid ""
@@ -2554,8 +2547,8 @@ msgid ""
 "the center of the screen with ample whitespace to let you focus on reading."
 msgstr ""
 "En la Modalidad de Lectura desaparece gran parte del encabezado y pie de "
-"p&aacute;gina, y se omite el &iacute;ndice de materias. El contenido "
-"aparece, en su lugar, desplegado en el centro de la p&aacute;gina, con "
+"página, y se omite el índice de materias. El contenido "
+"aparece, en su lugar, desplegado en el centro de la página, con "
 "amplio espacio en blanco para permitirte el enfoque sobre la lectura."
 
 #: library/templates/reading-mode.html:53
@@ -2565,16 +2558,16 @@ msgid ""
 "strong>, and <strong> click anywhere in the left margin to turn to the "
 "previous page</strong>."
 msgstr ""
-"En lugar de enlaces para acceder la p&aacute;gina \"anterior\" o \"siguiente"
-"\", la Modalidad de Lectura te permite <strong>hacer clic sobre cualquier "
-"porci&oacute;n del margen derecho para avanzar a la siguiente p&aacute;gina</"
-"strong>, y <strong>hacer clic sobre cualquier porci&oacute;n del margen "
-"izquierdo para regresar a la p&aacute;gina anterior</strong>."
+"En lugar de enlaces para acceder la página «anterior» o «siguiente"
+"», la Modalidad de Lectura te permite <strong>hacer clic sobre cualquier "
+"porción del margen derecho para avanzar a la siguiente página</"
+"strong>, y <strong>hacer clic sobre cualquier porción del margen "
+"izquierdo para regresar a la página anterior</strong>."
 
 #: library/templates/reading-mode.html:55
 #: library/templates/reading-mode.html:56
 msgid "This control moves forward one page"
-msgstr "Este control te permite avanzar una p&aacute;gina"
+msgstr "Este control te permite avanzar una página"
 
 #: library/templates/reading-mode.html:58
 msgid ""
@@ -2582,10 +2575,10 @@ msgid ""
 "hover your mouse pointer over the margin areas, light-gray indicators will "
 "fade in to show that you are in a clickable navigation area."
 msgstr ""
-"Bookworm te ofrece algunas sugerencias para facilitar la navegaci&oacute;n "
-"sin llamar demasiado la atenci&oacute;n. Por ejemplo, si pasas el puntero "
-"del rat&oacute;n sobre un margen, aparecer&aacute; un indicador en gris "
-"claro, indic&aacute;ndote que te encuentras en un &aacute;rea navegable (en "
+"Bookworm te ofrece algunas sugerencias para facilitar la navegación "
+"sin llamar demasiado la atención. Por ejemplo, si pasas el puntero "
+"del ratón sobre un margen, aparecerá un indicador en gris "
+"claro, indicándote que te encuentras en un área navegable (en "
 "la que puedes hacer clic)."
 
 #: library/templates/reading-mode.html:60
@@ -2594,23 +2587,23 @@ msgstr "Atajos de teclado"
 
 #: library/templates/reading-mode.html:64
 msgid "Jump down one page"
-msgstr "Retrocede una p&aacute;gina"
+msgstr "Retrocede una página"
 
 #: library/templates/reading-mode.html:65
 msgid "'j' or Page-Down"
-msgstr "'n' o pasa a la p&aacute;gina anterior"
+msgstr "'n' o la tecla Page-Down"
 
 #: library/templates/reading-mode.html:68
 msgid "Jump up one page"
-msgstr "Avanza una p&aacute;gina"
+msgstr "Avanza una página"
 
 #: library/templates/reading-mode.html:69
 msgid "'k' or Page-Up"
-msgstr "'p' o pasa a la siguiente p&aacute;gina"
+msgstr "'p' o la tecla Page-Up"
 
 #: library/templates/reading-mode.html:72
 msgid "Go to next chapter"
-msgstr "Ve al cap&iacute;tulo siguiente"
+msgstr "Ve al capítulo siguiente"
 
 #: library/templates/reading-mode.html:73
 msgid "'n' or click on right margin"
@@ -2618,7 +2611,7 @@ msgstr "'k' o haz clic sobre el margen derecho"
 
 #: library/templates/reading-mode.html:76
 msgid "Go to previous chapter"
-msgstr "Ve al cap&iacute;tulo anterior"
+msgstr "Ve al capítulo anterior"
 
 #: library/templates/reading-mode.html:77
 msgid "'p' or click on left margin"
@@ -2633,9 +2626,9 @@ msgid ""
 "To exit Reading Mode and return to the main library page, click on the arrow "
 "at the top or bottom next to your book's title."
 msgstr ""
-"Para desactivar la Modalidad de Lectura y regresar a la p&aacute;gina "
+"Para desactivar la Modalidad de Lectura y regresar a la página "
 "principal de tu biblioteca, haz clic sobre la flecha en la parte superior o "
-"inferior, junto al t&iacute;tulo del libro."
+"inferior, junto al título del libro."
 
 #: library/templates/reading-mode.html:85
 msgid "Exit Reading Mode and go back to library"
@@ -2647,7 +2640,7 @@ msgstr "Bookworm recuerda si prefieres utilizar la Modalidad de Lectura o no."
 
 #: library/templates/reading-mode.html:89
 msgid "Customizations"
-msgstr "Personalizaci&oacute;n"
+msgstr "Personalización"
 
 #: library/templates/reading-mode.html:91
 msgid ""
@@ -2658,13 +2651,13 @@ msgid ""
 "override whatever fonts and sizes were specified in the stylesheet that came "
 "with the ePub."
 msgstr ""
-"Tanto la modalidad est&aacute;ndar como la de lectura te permiten "
-"personalizar el tipo de fuente tipogr&aacute;fica, y su tama&ntilde;o, para "
-"leer libros electr&oacute;nicos. Puedes escoger una fuente con o sin "
-"serifas, y puedes aumentar o disminuir su tama&ntilde;o. <strong>Bookworm "
-"recordar&aacute; tu preferencia tipogr&aacute;fica</strong>. Esta "
-"preferencia  reemplazar&aacute; cualquier tipo de fuente y tama&ntilde;o "
-"especificados en la hoja de estilo que acompa&ntilde;a a la publicaci&oacute;"
+"Tanto la modalidad estándar como la de lectura te permiten "
+"personalizar el tipo de fuente tipográfica, y su tamaño, para "
+"leer libros electrónicos. Puedes escoger una fuente con o sin "
+"serifas, y puedes aumentar o disminuir su tamaño. <strong>Bookworm "
+"recordará tu preferencia tipográfica</strong>. Esta "
+"preferencia  reemplazará cualquier tipo de fuente y tamaño "
+"especificados en la hoja de estilo que acompaña a la publicació"
 "n."
 
 #: library/templates/reading-mode.html:95
@@ -2674,57 +2667,57 @@ msgid ""
 "will use your preferred font by default while in Reading Mode. Use your "
 "browser's preferences menu to assign your favorite font as the default."
 msgstr ""
-"Para mantener una interfaz de f&aacute;cil uso, Bookworm no permite una "
-"especificaci&oacute;n tipogr&aacute;fica m&aacute;s avanzada (por ejemplo, "
-"seleccionar una fuente tipogr&aacute;fica de una familia espec&iacute;fica). "
-"Sin embargo, dentro de la Modalidad de Lectura, Bookworm utilizar&aacute; "
-"autom&aacute;ticamente la fuente por defecto seleccionada en el navegador. "
-"Puedes, por lo tanto, especificar tu fuente preferida a trav&eacute;s  del "
-"men&uacute; de preferencias del navegador."
+"Para mantener una interfaz de fácil uso, Bookworm no permite una "
+"especificación tipográfica más avanzada (por ejemplo, "
+"seleccionar una fuente tipográfica de una familia específica). "
+"Sin embargo, dentro de la Modalidad de Lectura, Bookworm utilizará "
+"automáticamente la fuente por defecto seleccionada en el navegador. "
+"Puedes, por lo tanto, especificar tu fuente preferida a través  del "
+"menú de preferencias del navegador."
 
 #: library/templates/reading-mode.html:101
 msgid "Reading Mode shown using a small font"
 msgstr ""
-"P&aacute;gina en Modalidad de Lectura, con fuente tipogr&aacute;fica de "
-"tama&ntilde;o peque&ntilde;o."
+"Página en Modalidad de Lectura, con fuente tipográfica de "
+"tamaño pequeño."
 
 #: library/templates/reading-mode.html:103
 msgid "This page is displayed using the default font size and family."
 msgstr ""
-"Esta p&aacute;gina se muestra utilizando los valores por defecto de la "
-"familia tipogr&aacute;fica, y tama&ntilde;o de fuente."
+"Esta página se muestra utilizando los valores por defecto de la "
+"familia tipográfica, y tamaño de fuente."
 
 #: library/templates/reading-mode.html:107
 msgid "Reading Mode shown using a larger font"
 msgstr ""
-"P&aacute;gina en Modalidad de Lectura, con una fuente tipogr&aacute;fica "
-"m&aacute;s grande."
+"Página en Modalidad de Lectura, con una fuente tipográfica "
+"más grande."
 
 #: library/templates/reading-mode.html:109
 msgid "The same page after the font size is increased."
-msgstr "La misma p&aacute;gina al aumentar el tama&ntilde;o de la fuente"
+msgstr "La misma página al aumentar el tamaño de la fuente"
 
 #: library/templates/reading-mode.html:115
 msgid "Reading Mode shown using a serif font"
 msgstr ""
-"P&aacute;gina en Modalidad de Lectura, con una fuente tipogr&aacute;fica con "
+"Página en Modalidad de Lectura, con una fuente tipográfica con "
 "serifas"
 
 #: library/templates/reading-mode.html:117
 msgid "You can also switch to a serif font, as shown here."
 msgstr ""
-"Tambi&eacute;n puedes seleccionar una fuente con serifas, como se muestra "
-"aqu&iacute;."
+"También puedes seleccionar una fuente con serifas, como se muestra "
+"aquí."
 
 #: library/templates/reading-mode.html:123
 msgid "Mobile reading"
-msgstr "Lectura en dispositivo m&oacute;vil"
+msgstr "Lectura en dispositivo móvil"
 
 #: library/templates/reading-mode.html:124
 msgid "Font controls are available on the mobile version of Bookworm"
 msgstr ""
-"Controles de fuentes tipogr&aacute;ficas est&aacute;n disponibles en la "
-"versi&oacute;n m&oacute;vil de Bookworm"
+"Controles de fuentes tipográficas están disponibles en la "
+"versión móvil de Bookworm"
 
 #: library/templates/reading-mode.html:127
 #, python-format
@@ -2734,29 +2727,29 @@ msgid ""
 "be simple.  However, some of the features of Reading Mode are also available "
 "in the mobile version:"
 msgstr ""
-"No existe una Modalidad de Lectura espec&iacute;fica para la <a href="
-"\"http://%(mobilehost)s/\">versi&oacute;n m&oacute;vil de Bookworm</a> ya "
-"que la versi&oacute;n m&oacute;vil ha sido dise&ntilde;ada teniendo en "
+"No existe una Modalidad de Lectura específica para la <a href="
+"\"http://%(mobilehost)s/\">versión móvil de Bookworm</a> ya "
+"que la versión móvil ha sido diseñada teniendo en "
 "cuenta la sencillez. Sin embargo, algunas de las funciones de esta modalidad "
-"est&aacute;n disponibles en la versi&oacute;n m&oacute;vil:"
+"están disponibles en la versión móvil:"
 
 #: library/templates/reading-mode.html:130
 msgid "Font size adjustment"
-msgstr "Cambio de tama&ntilde;o de fuente tipogr&aacute;fica."
+msgstr "Cambio de tamaño de fuente tipográfica."
 
 #: library/templates/reading-mode.html:131
 msgid "Font family adjustment"
-msgstr "Cambio de familia tipogr&aacute;fica"
+msgstr "Cambio de familia tipográfica"
 
 #: library/templates/reading-mode.html:132
 msgid "Click to jump to the next page (iPhone)"
-msgstr "Avance a la p&aacute;gina siguiente haciendo clic (iPhone)"
+msgstr "Avance a la página siguiente haciendo clic (iPhone)"
 
 #: library/templates/reading-mode.html:135
 msgid "Font size controls are also available on the mobile version."
 msgstr ""
-"La regulaci&oacute;n del tama&ntilde;o de fuente tambi&eacute;n est&aacute; "
-"disponible en la versi&oacute;n m&oacute;vil."
+"La regulación del tamaño de fuente también está "
+"disponible en la versión móvil."
 
 #: library/templates/reading-mode.html:138
 msgid ""
@@ -2766,13 +2759,13 @@ msgid ""
 "preferable to scrolling for some people. <em>This feature should be "
 "considered experimental</em>. "
 msgstr ""
-"En el iPhone tambi&eacute;n existe la opci&oacute;n de <strong>hacer avanzar "
-"la p&aacute;gina hacia abajo haciendo clic sobre el dispositivo</strong>. "
-"Aunque esta soluci&oacute;n no es comparable a la de leer el ePub en un "
-"lector que procesa las p&aacute;ginas individualmente (por ejemplo, <a href="
+"En el iPhone también existe la opción de <strong>hacer avanzar "
+"la página hacia abajo haciendo clic sobre el dispositivo</strong>. "
+"Aunque esta solución no es comparable a la de leer el ePub en un "
+"lector que procesa las páginas individualmente (por ejemplo, <a href="
 "\"http://lexcycle.com/\">Stanza</a>), es posible que algunos usuarios la "
-"prefieran a otro modo de desplazamiento. &Eacute;sta es actualmente una "
-"funci&oacute;n en fase de desarrollo."
+"prefieran a otro modo de desplazamiento. Ésta es actualmente una "
+"función en fase de desarrollo."
 
 #: library/templates/shell.html:6
 msgid "Bookworm ePub reader"
@@ -2784,16 +2777,16 @@ msgid ""
 "Liza Daly at threepress.org, a project to expand the reach of open source "
 "software in academic and trade publishing."
 msgstr ""
-"Bookworm es el lector electr&oacute;nico de libros ePub, basado en navegador "
+"Bookworm es el lector electrónico de libros ePub, basado en navegador "
 "de web.\n"
 " Bookworm fue creado por Liza Daly para threepress.org, un proyecto que se "
-"propone expander\n"
-" el uso de software de c&oacute;digo abierto en el mundo editorial "
-"acad&eacute;mico y comercial."
+"propone expandir\n"
+" el uso de software de código abierto en el mundo editorial "
+"académico y comercial."
 
 #: library/templates/shell.html:37
 msgid "Online ePub ebook reading"
-msgstr "Lectura de libros ePub en l&iacute;nea"
+msgstr "Lectura de libros ePub en línea"
 
 #: library/templates/shell.html:42
 msgid "My books"
@@ -2801,11 +2794,11 @@ msgstr "Mis libros"
 
 #: library/templates/shell.html:44
 msgid "Mobile version"
-msgstr "Versi&oacute;n m&oacute;vil"
+msgstr "Versión móvil"
 
 #: library/templates/shell.html:45
 msgid "Search"
-msgstr "B&uacute;squeda"
+msgstr "Búsqueda"
 
 #: library/templates/shell.html:48
 msgid "Blog"
@@ -2813,11 +2806,11 @@ msgstr "Blog"
 
 #: library/templates/shell.html:49
 msgid "About <span class=\"bw-logo\">Bookworm</span>"
-msgstr "&iquest;Qu&eacute; es <span class=\"bw-logo\">Bookworm</span>?"
+msgstr "¿Qué es <span class=\"bw-logo\">Bookworm</span>?"
 
 #: library/templates/shell.html:50
 msgid "About Threepress"
-msgstr "&iquest;Qu&eacute; es Threepress?"
+msgstr "¿Qué es Threepress?"
 
 #: library/templates/shell.html:51 library/templates/includes/about.html:7
 msgid "Help"
@@ -2825,7 +2818,7 @@ msgstr "Asistencia"
 
 #: library/templates/shell.html:59
 msgid "add"
-msgstr "A&ntilde;ade un libro."
+msgstr "Añade un libro."
 
 #: library/templates/shell.html:60 library/templates/mobile/base.html:22
 msgid "help"
@@ -2837,7 +2830,7 @@ msgstr "Biblioteca"
 
 #: library/templates/shell.html:76
 msgid "Signed in as"
-msgstr "Sesi&oacute;n iniciada por usuario: "
+msgstr "Sesión iniciada por usuario: "
 
 #: library/templates/shell.html:78
 msgid "edit profile"
@@ -2859,7 +2852,7 @@ msgstr "idioma"
 #: library/templates/auth/authopenid/signin.html:4
 #: library/templates/auth/authopenid/signin.html:75
 msgid "Sign in"
-msgstr "Iniciar sesi&oacute;n"
+msgstr "Iniciar sesión"
 
 #: library/templates/shell.html:102
 #, python-format
@@ -2873,7 +2866,7 @@ msgstr ""
 
 #: library/templates/shell.html:121
 msgid "Privacy policy"
-msgstr "Pol&iacute;tica de privacidad"
+msgstr "Política de privacidad"
 
 #: library/templates/shell.html:122
 #, python-format
@@ -2903,7 +2896,7 @@ msgstr "Haz un recorrido virtual por Bookworm"
 
 #: library/templates/tour.html:14
 msgid "About"
-msgstr "&iquest;Qu&eacute; es Bookworm?"
+msgstr "¿Qué es Bookworm?"
 
 #: library/templates/tour.html:22
 #, python-format
@@ -2920,30 +2913,30 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"    Este breve recorrido virtual te mostrar&aacute; las principales "
+"    Este breve recorrido virtual te mostrará las principales "
 "funciones de\n"
-"    Bookworm; por ejemplo, c&oacute;mo a&ntilde;adir un libro, c&oacute;mo "
+"    Bookworm; por ejemplo, cómo añadir un libro, cómo "
 "leerlo y \n"
-"    efectuar una b&uacute;squeda en el mismo, y c&oacute;mo \n"
-"    descargarlo a un dispositivo m&oacute;vil. <a href=\"%(signupurl)s"
-"\">Reg&iacute;strate</a> \n"
-"    una vez que lo hayas conclu&iacute;do."
+"    efectuar una búsqueda en el mismo, y cómo \n"
+"    descargarlo a un dispositivo móvil. <a href=\"%(signupurl)s"
+"\">Regístrate</a> \n"
+"    una vez que lo hayas concluído."
 
 #: library/templates/tour.html:33 library/templates/tour.html.py:45
 msgid "Step 1: Adding a book"
-msgstr "1: C&oacute;mo a&ntilde;adir un libro"
+msgstr "1: Cómo añadir un libro"
 
 #: library/templates/tour.html:35
 msgid "Step 2: Reading a book"
-msgstr "2: C&oacute;mo leer un libro"
+msgstr "2: Cómo leer un libro"
 
 #: library/templates/tour.html:39
 msgid "Step 3: Searching your library"
-msgstr "3: C&oacute;mo efectuar b&uacute;squeda en los archivos"
+msgstr "3: Cómo efectuar búsqueda en los archivos"
 
 #: library/templates/tour.html:41
 msgid "Step 4: Take your book on the road"
-msgstr "4: C&oacute;mo leer un libro en dispositivo port&aacute;til"
+msgstr "4: Cómo leer un libro en dispositivo portátil"
 
 #: library/templates/tour.html:51
 msgid ""
@@ -2953,9 +2946,9 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Selecciona el enlace <em>A&ntilde;adir libro</em> situado en la parte "
+"Selecciona el enlace <em>Añadir libro</em> situado en la parte "
 "superior derecha\n"
-" de cada p&aacute;gina de Bookworm."
+" de cada página de Bookworm."
 
 #: library/templates/tour.html:60
 msgid ""
@@ -2964,7 +2957,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Entonces haz clic sobre el bot&oacute;n <em>Navegar</em>"
+"Entonces haz clic sobre el botón <em>Navegar</em>"
 
 #: library/templates/tour.html:65
 msgid ""
@@ -2975,9 +2968,9 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"El computador te pedir&aacute; que escojas un fichero para cargar.\n"
-" Este fichero ha de corresponder a un libro electr&oacute;nico con\n"
-" la extensi&oacute;n <em>.epub</em>"
+"El computador te pedirá que escojas un fichero para cargar.\n"
+" Este fichero ha de corresponder a un libro electrónico con\n"
+" la extensión <em>.epub</em>"
 
 #: library/templates/tour.html:71
 msgid "Click <!-- trans: imperative verb -->"
@@ -2985,11 +2978,11 @@ msgstr "Haz clic sobre"
 
 #: library/templates/tour.html:71 library/templates/upload.html:58
 msgid "Add to my library"
-msgstr "A&ntilde;adir a mi biblioteca"
+msgstr "Añadir a mi biblioteca"
 
 #: library/templates/tour.html:78
 msgid "    Your book is now available!     "
-msgstr "   Tu libro ya est&aacute; disponible "
+msgstr "   Tu libro ya está disponible "
 
 #: library/templates/tour.html:80
 msgid ""
@@ -2997,22 +2990,22 @@ msgid ""
 "    you've added, re-sort it by date, title or author, and delete\n"
 "    unwanted books.    "
 msgstr ""
-" Partiendo de la p&aacute;gina central de la biblioteca\n"
-" puedes verificar la lista entera de los libros que has a&ntilde;adido,\n"
-" reorganizarla seg&uacute;n fecha, t&iacute;tulo o autor, y borrar libros "
+" Partiendo de la página central de la biblioteca\n"
+" puedes verificar la lista entera de los libros que has añadido,\n"
+" reorganizarla según fecha, título o autor, y borrar libros "
 "que ya no quieras."
 
 #: library/templates/tour.html:86
 msgid "Step 2: Reading a book    "
-msgstr "2: C&oacute;mo leer un libro"
+msgstr "2: Cómo leer un libro"
 
 #: library/templates/tour.html:89
 msgid "Click on the book's title from your library.    "
-msgstr "Una vez en tu biblioteca, haz clic sobre el t&iacute;tulo del libro"
+msgstr "Una vez en tu biblioteca, haz clic sobre el título del libro"
 
 #: library/templates/tour.html:91
 msgid "The book will automatically open to the first page."
-msgstr "El libro se abrir&aacute; automaticamente en la primera p&aacute;gina"
+msgstr "El libro se abrirá automaticamente en la primera página"
 
 #: library/templates/tour.html:94
 msgid ""
@@ -3023,10 +3016,10 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"La parte izquierda de la pantalla te mostrar&aacute; el <em>&Iacute;ndice de "
+"La parte izquierda de la pantalla te mostrará el <em>Índice de "
 "Materias</em>\n"
-" del libro. El cap&iacute;tulo que lees actualmente estar&aacute; marcado en "
-"gris, en tipograf&iacute;a grande."
+" del libro. El capítulo que lees actualmente estará marcado en "
+"gris, en tipografía grande."
 
 #: library/templates/tour.html:100
 msgid ""
@@ -3039,16 +3032,16 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Partiendo del &Iacute;ndice de Materias, puedes hacer clic para "
+"Partiendo del Índice de Materias, puedes hacer clic para "
 "<em>Descargar</em>\n"
-" el libro en su formato original, o hacer clic sobre la <em>Informaci&oacute;"
+" el libro en su formato original, o hacer clic sobre la <em>Informació"
 "n</em> para ver\n"
 " detalles sobre derechos de autor, editorial y otras ediciones disponibles "
-"en l&iacute;nea."
+"en línea."
 
 #: library/templates/tour.html:109
 msgid "The Book Information page"
-msgstr "P&aacute;gina de informaci&oacute;n sobre el libro"
+msgstr "Página de información sobre el libro"
 
 #: library/templates/tour.html:112
 msgid ""
@@ -3058,9 +3051,9 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Aqu&iacute; se podr&aacute; leer informaci&oacute;n respecto a la editorial, "
+"Aquí se podrá leer información respecto a la editorial, "
 "idioma,\n"
-"derechos de autor, y otros datos provistos con el libro."
+"derechos de autor, y otros datos que han sido suministrados con el libro."
 
 #: library/templates/tour.html:118
 msgid ""
@@ -3070,12 +3063,12 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Bookworm tambi&eacute;n se encargar&aacute; de buscar otras ediciones del "
+"Bookworm también se encargará de buscar otras ediciones del "
 "libro en Google Book Search."
 
 #: library/templates/tour.html:123
 msgid "Moving through a book    "
-msgstr "C&oacute;mo se avanza a trav&eacute;s del libro"
+msgstr "Cómo se avanza a través del libro"
 
 #: library/templates/tour.html:125
 msgid ""
@@ -3088,11 +3081,11 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"En cada p&aacute;gina del libro se muestran dos flechas, marcadas\n"
+"En cada página del libro se muestran dos flechas, marcadas\n"
 " <em>Siguiente</em> y <em>Anterior</em>, que te permiten moverte entre\n"
-" p&aacute;ginas consecutivas. Para acceder otra parte o cap&iacute;tulo del "
+" páginas consecutivas. Para acceder otra parte o capítulo del "
 "libro, haz\n"
-" clic sobre esa secci&oacute;n en el <em>&Iacute;ndice de Materias</em>."
+" clic sobre esa sección en el <em>Índice de Materias</em>."
 
 #: library/templates/tour.html:134
 #, python-format
@@ -3101,12 +3094,12 @@ msgid ""
 "experience even better. <a href=\"%(reading_mode_url)s\">Find out more</a>."
 msgstr ""
 "Utiliza la <a href=\"%(reading_mode_url)s\">Modalidad de Lectura</a> para "
-"una mejor experiencia. Consulta esta p&aacute;gina para <a href=\"%"
-"(reading_mode_url)s\">m&aacute;s detalles</a>."
+"una mejor experiencia. Consulta esta página para <a href=\"%"
+"(reading_mode_url)s\">más detalles</a>."
 
 #: library/templates/tour.html:138
 msgid "Step 3: Searching your library    "
-msgstr "3: C&oacute;mo realizar una b&uacute;squeda en los archivos"
+msgstr "3: Cómo realizar una búsqueda en los archivos"
 
 #: library/templates/tour.html:141
 msgid ""
@@ -3119,9 +3112,9 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-" Si ya has cargado libros a tu biblioteca, ver&aacute;s, en la mayor&iacute;"
+" Si ya has cargado libros a tu biblioteca, verás, en la mayorí"
 "a de las\n"
-" p&aacute;ginas de Bookworm, una  casilla de b&uacute;squeda  en la parte "
+" páginas de Bookworm, una  casilla de búsqueda  en la parte "
 "izquierda superior.\n"
 " Escribe una palabra o frase en la casilla para buscar todas las incidencias "
 "en tu biblioteca."
@@ -3137,20 +3130,20 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-" Cap&iacute;tulos que contengan el t&eacute;rmino aparecer&aacute;n\n"
-" en la p&aacute;gina siguiente con el t&eacute;rmino o frase de b&uacute;"
+" Capítulos que contengan el término aparecerán\n"
+" en la página siguiente con el término o frase de bú"
 "squeda en negrita.\n"
-" Haz clic sobre el t&iacute;tulo del libro para acceder el cap&iacute;tulo "
+" Haz clic sobre el título del libro para acceder el capítulo "
 "correspondiente."
 
 #: library/templates/tour.html:159
 msgid ""
 "Step 4: Take your book on the road  <!-- trans: e.g. on a mobile device -->  "
-msgstr "4: C&oacute;mo leer un libro en dispositivo port&aacute;til"
+msgstr "4: Cómo leer un libro en dispositivo portátil"
 
 #: library/templates/tour.html:161
 msgid "Bookworm on your mobile phone    "
-msgstr "Bookworm en tu tel&eacute;fono m&oacute;vil   "
+msgstr "Bookworm en tu teléfono móvil   "
 
 #: library/templates/tour.html:163
 #, python-format
@@ -3164,12 +3157,12 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-" Si tu tel&eacute;fono tiene acceso web, puedes leer libros en cualquier "
+" Si tu teléfono tiene acceso web, puedes leer libros en cualquier "
 "sitio.\n"
 "Dirige tu navegador a <strong><a href=\"%(mobilehost)s\">%(mobilehost)s</a></"
 "strong>\n"
-" para una versi&oacute;n de Bookworm que ha sido especialmente adaptada para "
-"dispositivos port&aacute;tiles."
+" para una versión de Bookworm que ha sido especialmente adaptada a "
+"dispositivos portátiles."
 
 #: library/templates/tour.html:171
 msgid "Stanza on the iPhone    "
@@ -3191,10 +3184,10 @@ msgstr ""
 "\n"
 "Bookworm puede exportar tus libros directamente a <a href=\"http://www."
 "lexcycle.com/\">Stanza</a>\n"
-" a trav&eacute;s del navegador Safari en el iPhone. Partiendo de tu "
+" a través del navegador Safari en el iPhone. Partiendo de tu "
 "biblioteca, haz clic\n"
-" sobra la flecha &#x21E7; al lado de un t&iacute;tulo para exportarlo a tu "
-"biblioteca personal en Stanza. Aqu&iacute; se hallan \n"
+" sobra la flecha &#x21E7; al lado de un título para exportarlo a tu "
+"biblioteca personal en Stanza. Aquí se hallan \n"
 " <a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone"
 "\">instrucciones detalladas paso a paso en el sitio web de Stanza</a>."
 
@@ -3212,12 +3205,12 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Al hacer clic sobr el enlace <em>Descarga este libro</em> en el &Iacute;"
+"Al hacer clic sobr el enlace <em>Descarga este libro</em> en el Í"
 "ndice de\n"
-" Materias, puedes recuperar la versi&oacute;n original del libro.\n"
-"  Consulta las instrucciones de tu lector electr&oacute;nico para determinar "
-"c&oacute;mo\n"
-" se a&ntilde;ade un libro a tu dispositivo."
+" Materias, puedes recuperar la versión original del libro.\n"
+"  Consulta las instrucciones de tu lector electrónico para determinar "
+"cómo\n"
+" se añade un libro a tu dispositivo."
 
 #: library/templates/tour.html:189
 msgid "The Amazon Kindle cannot read ePub books at this time.    "
@@ -3228,11 +3221,11 @@ msgstr "Actualmente, el Kindle de Amazon no puede leer libros ePub"
 msgid ""
 "Ready to <a href=\"%(signupurl)s\">sign up</a>?  <!-- trans: sign-up to use "
 "Bookworm -->  "
-msgstr "<a href=\"%(signupurl)s\">Reg&iacute;strate</a> para utilizar Bookworm"
+msgstr "<a href=\"%(signupurl)s\">Regístrate</a> para utilizar Bookworm"
 
 #: library/templates/upload.html:23
 msgid "Need help?"
-msgstr "&iquest;Necesitas ayuda?"
+msgstr "¿Necesitas ayuda?"
 
 #: library/templates/upload.html:25
 #, python-format
@@ -3241,9 +3234,9 @@ msgid ""
 "\">About</a> pages for more information, or email <a href=\"mailto:%"
 "(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> for assistance."
 msgstr ""
-"Para m&aacute;s detalles, consulta la p&aacute;gina de <a href=\"%(helpurl)s"
-"\">Asistencia</a> o de <a href=\"%(abouturl)s\">Informaci&oacute;n sobre "
-"Bookworm</a>. Tambi&eacute;n puedes enviarnos un correo electr&oacute;nico a "
+"Para más detalles, consulta la página de <a href=\"%(helpurl)s"
+"\">Asistencia</a> o de <a href=\"%(abouturl)s\">Información sobre "
+"Bookworm</a>. También puedes enviarnos un correo electrónico a "
 "<a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> para otras consultas."
 
 #: library/templates/upload.html:27
@@ -3252,9 +3245,9 @@ msgid ""
 "If you get an error that you don't understand, please email <a href=\"mailto:"
 "%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> with a description of the problem."
 msgstr ""
-"Si recibes un error que no comprendes, env&iacute;anos un correo "
-"electr&oacute;nico a <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> "
-"con una descripci&oacute;n del problema."
+"Si recibes un error que no comprendes, envíanos un correo "
+"electrónico a <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> "
+"con una descripción del problema."
 
 #: library/templates/upload.html:42
 msgid ""
@@ -3263,9 +3256,9 @@ msgid ""
 "computer. Use this form to add it to Bookworm."
 msgstr ""
 "Para leer un libro en Bookworm, debes haberlo comprado o adquirido "
-"primeramente a trav&eacute;s de una editorial o provedor de libros "
-"electr&oacute;nicos, y haberlo descargado a tu computador. Utiliza este "
-"formulario web para a&ntilde;adirlo a Bookworm."
+"primeramente a través de una editorial o provedor de libros "
+"electrónicos, y haberlo descargado a tu computador. Utiliza este "
+"formulario web para añadirlo a Bookworm."
 
 #: library/templates/upload.html:45
 #, python-format
@@ -3274,23 +3267,23 @@ msgid ""
 "epub</strong>.If you don't know what that is, please see the <a href=\"%"
 "(abouturl)s\">About</a> page for more information."
 msgstr ""
-"El libro electr&oacute;nico tiene que seguir el formato ePub, y el nombre "
-"del fichero ha de terminar en <strong>.epub</strong>. Para m&aacute;s "
-"detalles sobre este tema, consulta la p&aacute;gina <a href=\"%(abouturl)s"
-"\">&iquest;Qu&eacute; es Bookworm</a>."
+"El libro electrónico tiene que seguir el formato ePub, y el nombre "
+"del fichero ha de terminar en <strong>.epub</strong>. Para más "
+"detalles sobre este tema, consulta la página <a href=\"%(abouturl)s"
+"\">¿Qué es Bookworm</a>."
 
 #: library/templates/upload.html:49
 msgid ""
 "You need to click on the &lsquo;Browse&rsquo; button and select an ebook to "
 "add."
 msgstr ""
-"Tienes que hacer clic sobre el bot&oacute;n marcado &lsquo;Navegar&rsquo; "
-"para a&ntilde;adir un libro."
+"Tienes que hacer clic sobre el botón marcado &lsquo;Navegar&rsquo; "
+"para añadir un libro."
 
 #: library/templates/upload.html:56
 msgid "Add an ePub from your computer by clicking on &lsquo;Browse&rsquo;:"
 msgstr ""
-"A&ntilde;ade un libro ePub desde tu computador haciendo clic sobre &lsquo;"
+"Añade un libro ePub desde tu computador haciendo clic sobre &lsquo;"
 "Navegar&rsquo;:"
 
 #: library/templates/view.html:7
@@ -3318,13 +3311,13 @@ msgstr "Leer en Stanza"
 #: library/templates/view.html:110
 msgid "To read this book online, select any of the sections to the left."
 msgstr ""
-"Para leer este libro en l&iacute;nea, escoge una de las secciones a la "
+"Para leer este libro en línea, escoge una de las secciones a la "
 "izquierda"
 
 #: library/templates/view.html:117 library/templates/includes/leftnav.html:28
 #: library/templates/includes/leftnav.html:30
 msgid "Book information"
-msgstr "Informaci&oacute;n sobre el libro"
+msgstr "Información sobre el libro"
 
 #: library/templates/view.html:123
 msgid "Publisher"
@@ -3336,7 +3329,7 @@ msgstr "Idioma"
 
 #: library/templates/view.html:136
 msgid "Date added to library"
-msgstr "Fecha a&ntilde;adido a la biblioteca"
+msgstr "Fecha añadido a la biblioteca"
 
 #: library/templates/view.html:141
 msgid "Subjects"
@@ -3348,11 +3341,11 @@ msgstr "Derechos"
 
 #: library/templates/view.html:155
 msgid "Description"
-msgstr "Descripci&oacute;n"
+msgstr "Descripción"
 
 #: library/templates/view.html:161
 msgid "Date published"
-msgstr "Fecha de publicaci&oacute;n"
+msgstr "Fecha de publicación"
 
 #: library/templates/view.html:166
 msgid "Identifier <!-- trans: unique ID for this book -->"
@@ -3369,7 +3362,7 @@ msgstr "el formato ePub"
 #: library/templates/view.html:181
 msgid "Editions of this work found in Google Books Search"
 msgstr ""
-"Ediciones de esta obra que hemos encontrado a trav&eacute;s de una b&uacute;"
+"Ediciones de esta obra que hemos encontrado a través de una bú"
 "squeda en Google Books"
 
 #: library/templates/view.html:183
@@ -3378,15 +3371,15 @@ msgid ""
 "use of the Google Books Search service. The information listed here may be "
 "inaccurate or incomplete and is not provided by Bookworm."
 msgstr ""
-"Hemos hallado los siguientes resultados relacionados con este t&iacute;tulo "
-"y este autor a trav&eacute;s del servicio de b&uacute;squeda de Google "
-"Books. Esta informaci&oacute;n puede ser imprecisa o incompleta y no es "
+"Hemos hallado los siguientes resultados relacionados con este título "
+"y este autor a través del servicio de búsqueda de Google "
+"Books. Esta información puede ser imprecisa o incompleta y no es "
 "proporcionado por Bookworm."
 
 #: library/templates/view.html:193
 msgid "Cover image not available from Google Books"
 msgstr ""
-"La im&aacute;gen de car&aacute;tula no est&aacute; disponible a trav&eacute;"
+"La imágen de carátula no está disponible a travé"
 "s de Google Books"
 
 #: library/templates/view.html:199
@@ -3395,7 +3388,7 @@ msgstr "Publicado por"
 
 #: library/templates/view.html:201
 msgid "No publisher was listed"
-msgstr "No existe informaci&oacute;n disponible sobre la editorial"
+msgstr "No existe información disponible sobre la editorial"
 
 #: library/templates/view.html:227
 #, python-format
@@ -3404,11 +3397,11 @@ msgstr "en <a href=\"%(libraryurl)s\">Bookworm</a>"
 
 #: library/templates/auth/language.html:3
 msgid "Change the default language for"
-msgstr "Personaliza tu cuenta con otra selecci&oacute;n de idioma"
+msgstr "Personaliza tu cuenta con otra selección de idioma"
 
 #: library/templates/auth/language.html:9
 msgid "Change your Bookworm language"
-msgstr "Cambia la configuraci&oacute;n de idioma en Bookworm"
+msgstr "Cambia la configuración de idioma en Bookworm"
 
 #: library/templates/auth/language.html:12
 msgid ""
@@ -3417,13 +3410,13 @@ msgid ""
 "  used when you log in, select from one of the translations listed here.\n"
 msgstr ""
 "\n"
-"Bookworm est&aacute; disponible en varios idomas. Para personalizar el "
+"Bookworm está disponible en varios idomas. Para personalizar el "
 "idioma\n"
-"que se utiliza una vez que haz iniciado una sesi&oacute;n, escoge una de las "
+"que se utiliza una vez que haz iniciado una sesión, escoge una de las "
 "traducciones siguientes.\n"
 
 #: library/templates/auth/language.html:18
-#, python-format
+#, , python-format
 msgid ""
 "If you don't see your preferred language, <a href=\"mailto:%(ADMIN_EMAIL)s"
 "\">let us know if you're willing to help translate</a>.  Bookworm can be "
@@ -3431,9 +3424,13 @@ msgid ""
 "django/conf/global_settings.py#L43\">any of the languages supported by the "
 "Django framework</a>."
 msgstr ""
-" Si no ves el idioma de tu preferencia en esta lista, y est&aacute;s dispuesto a\n"
-" ayudarnos con la traducci&oacute;n, <a href=\"mailto:%(ADMIN_EMAIL)s\">contacta con\n"
-" nosotros. Bookworm se puede traducir a <a href=\"http://code.djangoproject.com/browser/django/trunk/django/conf/global_settings.py#L43\">cualquier idioma respaldado en el framework Django</a>."
+" Si no ves el idioma de tu preferencia en esta lista, y estás "
+"dispuesto a\n"
+" ayudarnos con la traducción, <a href=\"mailto:%(ADMIN_EMAIL)s"
+"\">contacta con\n"
+" nosotros. Bookworm se puede traducir a <a href=\"http://code.djangoproject."
+"com/browser/django/trunk/django/conf/global_settings.py#L43\">cualquier "
+"idioma respaldado en el framework Django</a>."
 
 #: library/templates/auth/language.html:22
 msgid ""
@@ -3441,8 +3438,8 @@ msgid ""
 "oreilly.com/2009/03/how-to-contribute-translations-to-bookworm.html"
 "\">O'Reilly Labs</a>"
 msgstr ""
-"Informaci&oacute;n respecto a la traducci&oacute;n de Bookworm est&aacute; "
-"disponible a trav&eacute;s de a href=\"http://labs.oreilly.com/2009/03/how-"
+"Información respecto a la traducción de Bookworm está "
+"disponible a través de a href=\"http://labs.oreilly.com/2009/03/how-"
 "to-contribute-translations-to-bookworm.html\">O'Reilly Labs</a>"
 
 #: library/templates/auth/language.html:32
@@ -3457,12 +3454,12 @@ msgstr "Perfil y preferencias de usuario"
 #: library/templates/auth/authopenid/changepw.html:12
 #: library/templates/auth/authopenid/changepw.html:25
 msgid "Change password"
-msgstr "Cambiar la contrase&ntilde;a"
+msgstr "Cambiar la contraseña"
 
 #: library/templates/auth/profile.html:32
 #: library/templates/auth/authopenid/changeemail.html:13
 msgid "Change email address"
-msgstr "Cambia la direcci&oacute;n de correo electr&oacute;nico"
+msgstr "Cambia la dirección de correo electrónico"
 
 #: library/templates/auth/profile.html:35
 msgid "Change linked OpenID"
@@ -3477,9 +3474,9 @@ msgid ""
 "Some fields such as email and country have been imported via OpenID and "
 "should be changed with your OpenID provider, rather than with Bookworm."
 msgstr ""
-"Hay datos, como la direcci&oacute;n de correo electr&oacute;nico y pa&iacute;"
-"s, que hemos importado directamente a trav&eacute;s de tu OpenID. Para "
-"actualizar esta informaci&oacute;n, registra los cambios necesarios "
+"Hay datos, como la dirección de correo electrónico y paí"
+"s, que hemos importado directamente a través de tu OpenID. Para "
+"actualizar esta información, registra los cambios necesarios "
 "directamente con tu proveedor de OpenID, no con Bookworm."
 
 #: library/templates/auth/profile.html:56
@@ -3488,7 +3485,7 @@ msgstr "Perfil y preferencias del usuario "
 
 #: library/templates/auth/profile.html:63
 msgid "User information"
-msgstr "Informaci&oacute;n de usuario"
+msgstr "Información de usuario"
 
 #: library/templates/auth/profile.html:68
 #: library/templates/auth/authopenid/complete.html:47
@@ -3509,20 +3506,20 @@ msgstr "Nombre completo"
 
 #: library/templates/auth/profile.html:92
 msgid "Email address"
-msgstr "Direcci&oacute;n de correo electr&oacute;nico"
+msgstr "Dirección de correo electrónico"
 
 #: library/templates/auth/profile.html:97
 msgid "Country"
-msgstr "Pa&iacute;s"
+msgstr "País"
 
 #: library/templates/auth/profile.html:104
 msgid "change <!-- trans: change the user's language setting -->"
-msgstr "Actualiza tu configuraci&oacute;n de usuario"
+msgstr "Actualiza tu configuración de usuario"
 
 #: library/templates/auth/profile.html:108
 msgid "Open to last-read chapter when reading a book?"
 msgstr ""
-"&iquest;Deseas comenzar a partir del &uacute;ltimo cap&iacute;tulo le&iacute;"
+"¿Deseas comenzar a partir del último capítulo leí"
 "do?"
 
 #: library/templates/auth/profile.html:115
@@ -3531,20 +3528,20 @@ msgstr "Actualiza tu perfil de usuario"
 
 #: library/templates/auth/authopenid/changeemail.html:4
 msgid "Change email address for"
-msgstr "Cambia la direcci&oacute;n de correo electr&oacute;nico"
+msgstr "Cambia la dirección de correo electrónico"
 
 #: library/templates/auth/authopenid/changeemail.html:16
 #: library/templates/auth/authopenid/changepw.html:15
 #: library/templates/auth/authopenid/delete.html:26
 #: library/templates/auth/authopenid/delete.html:31
 msgid "Please correct the errors below"
-msgstr "Corrige por favor los errores a continuaci&oacute;n"
+msgstr "Corrige por favor los errores a continuación"
 
 #: library/templates/auth/authopenid/changeemail.html:33
 #: library/templates/auth/authopenid/complete.html:48
 #: library/templates/auth/authopenid/signup.html:70
 msgid "Email"
-msgstr "Correo electr&oacute;nico"
+msgstr "Correo electrónico"
 
 #: library/templates/auth/authopenid/changeemail.html:34
 #: library/templates/auth/authopenid/complete.html:63
@@ -3552,11 +3549,11 @@ msgstr "Correo electr&oacute;nico"
 #: library/templates/auth/authopenid/signin.html:74
 #: library/templates/auth/authopenid/signup.html:71
 msgid "Password"
-msgstr "Contrase&ntilde;a"
+msgstr "Contraseña"
 
 #: library/templates/auth/authopenid/changeemail.html:35
 msgid "Change email"
-msgstr "Actualizar la direcci&oacute;n de correo electr&oacute;nico"
+msgstr "Actualizar la dirección de correo electrónico"
 
 #: library/templates/auth/authopenid/changeopenid.html:11
 msgid "Change OpenID URL linked with this account"
@@ -3569,14 +3566,14 @@ msgid ""
 "log in with the old URL again."
 msgstr ""
 "Puedes cambiar el URL del identificador OpenID asociado con la cuenta "
-"actualmente activada en esta sesi&oacute;n. Ten presente que una vez "
-"actualizado, no podr&aacute;s volver a iniciar una sesi&oacute;n con el URL "
+"actualmente activada en esta sesión. Ten presente que una vez "
+"actualizado, no podrás volver a iniciar una sesión con el URL "
 "previo."
 
 #: library/templates/auth/authopenid/changeopenid.html:17
 #: library/templates/auth/authopenid/sendpw.html:14
 msgid "Please correct the errors below:"
-msgstr "Corrige por favor los errores a continuaci&oacute;n"
+msgstr "Corrige por favor los errores a continuación"
 
 #: library/templates/auth/authopenid/changeopenid.html:30
 msgid "OpenID URL"
@@ -3588,19 +3585,19 @@ msgstr "Selecciona otro identificador OpenID"
 
 #: library/templates/auth/authopenid/changepw.html:4
 msgid "Change password for <!-- trans: for person -->"
-msgstr "Cambia la contrase&ntilde;a de"
+msgstr "Cambia la contraseña de"
 
 #: library/templates/auth/authopenid/changepw.html:22
 msgid "Old password"
-msgstr "Contrase&ntilde; actual"
+msgstr "Contraseña actual"
 
 #: library/templates/auth/authopenid/changepw.html:23
 msgid "New password"
-msgstr "Nueva contrase&ntilde;a"
+msgstr "Nueva contraseña"
 
 #: library/templates/auth/authopenid/changepw.html:24
 msgid "New password again"
-msgstr "Repite la contrase&ntilde;a"
+msgstr "Repite la contraseña"
 
 #: library/templates/auth/authopenid/complete.html:10
 msgid ""
@@ -3618,7 +3615,7 @@ msgstr "Vincula un OpenID con una cuenta de Bookworm ya existente"
 #: library/templates/auth/authopenid/complete.html:22
 #: library/templates/auth/authopenid/complete.html:32
 msgid "Please correct errors below:"
-msgstr "Por favor corrige los errores a continuaci&oacute;n:"
+msgstr "Por favor corrige los errores a continuación:"
 
 #: library/templates/auth/authopenid/complete.html:46
 msgid "I'm new here"
@@ -3658,17 +3655,17 @@ msgid ""
 msgstr ""
 "\n"
 " Puedes <strong>borrar todos los datos personales</strong> \n"
-" de esta aplicaci&oacute;n, incluyendo toda la informaci&oacute;n archivada "
+" de esta aplicación, incluyendo toda la información archivada "
 "en tu perfil de usuario, y\n"
 " todos tus libros."
 
 #: library/templates/auth/authopenid/delete.html:23
 msgid "This action cannot be undone.      "
-msgstr "Esta acci&oacute;n es irreversible.    "
+msgstr "Esta acción es irreversible.    "
 
 #: library/templates/auth/authopenid/delete.html:44
 msgid "I'm sure I want to delete all my personal information and books."
-msgstr "S&iacute;, quiero borrar todos mis datos personales y libros"
+msgstr "Sí, quiero borrar todos mis datos personales y libros"
 
 #: library/templates/auth/authopenid/delete.html:47
 msgid "Delete my profile"
@@ -3676,7 +3673,7 @@ msgstr "Borrar mi perfil de usuario"
 
 #: library/templates/auth/authopenid/sendpw.html:9
 msgid "Reset your password"
-msgstr "Cambiar contrase&ntilde;a"
+msgstr "Cambiar contraseña"
 
 #: library/templates/auth/authopenid/sendpw.html:11
 msgid ""
@@ -3684,22 +3681,22 @@ msgid ""
 "you a new one.  The password won't be activated until you click on the link "
 "you see in the email."
 msgstr ""
-"Si se te ha olvidado tu contrase&ntilde;a, introduce tu nombre de usuario en "
-"la casilla y te enviaremos una contrase&ntilde;a nueva en un correo "
-"electr&oacute;nico. Para activarla, haz de hace clic sobre el enlace que "
+"Si se te ha olvidado tu contraseña, introduce tu nombre de usuario en "
+"la casilla y te enviaremos una contraseña nueva en un correo "
+"electrónico. Para activarla, haz de hace clic sobre el enlace que "
 "aparece el en mensaje que te enviemos."
 
 #: library/templates/auth/authopenid/sendpw.html:28
 msgid "Reset password"
-msgstr "Cambiar contrase&ntilde;a"
+msgstr "Cambiar contraseña"
 
 #: library/templates/auth/authopenid/settings.html:22
 msgid "Settings"
-msgstr "Configuraci&oacute;n"
+msgstr "Configuración"
 
 #: library/templates/auth/authopenid/settings.html:23
 msgid "This is where you can make changes to your account."
-msgstr "Aqu&iacute; puedes actualizar tu cuenta"
+msgstr "Aquí puedes actualizar tu cuenta"
 
 #: library/templates/auth/authopenid/settings.html:33
 msgid "Account"
@@ -3711,11 +3708,11 @@ msgstr ""
 
 #: library/templates/auth/authopenid/settings.html:35
 msgid "change password"
-msgstr "Cambiar la contrase&ntilde;a"
+msgstr "Cambiar la contraseña"
 
 #: library/templates/auth/authopenid/settings.html:36
 msgid "Give your  account a new password."
-msgstr "Escoge una nueva contrase&ntilde;a para tu cuenta"
+msgstr "Escoge una nueva contraseña para tu cuenta"
 
 #: library/templates/auth/authopenid/settings.html:37
 msgid "email/"
@@ -3723,12 +3720,12 @@ msgstr ""
 
 #: library/templates/auth/authopenid/settings.html:37
 msgid "change email"
-msgstr "Cambia tu direcci&oacute;n de correo electr&oacute;nico"
+msgstr "Cambia tu dirección de correo electrónico"
 
 #: library/templates/auth/authopenid/settings.html:38
 msgid "Add or update the email address associated with your account."
 msgstr ""
-"A&ntilde;ade o actualiza la direcci&oacute;n de correo electr&oacute;nico "
+"Añade o actualiza la dirección de correo electrónico "
 "vinculada a tu cuenta"
 
 #: library/templates/auth/authopenid/settings.html:40
@@ -3757,15 +3754,15 @@ msgstr "Borra tu nombre de usuario, y todos tus datos, de este sitio web"
 
 #: library/templates/auth/authopenid/signin.html:31
 msgid "ePub ebook reader"
-msgstr "Lector de libros electr&oacute;nicos ePub"
+msgstr "Lector de libros electrónicos ePub"
 
 #: library/templates/auth/authopenid/signin.html:33
 msgid "Sign in to Bookworm"
-msgstr "Iniciar sesi&oacute;n"
+msgstr "Iniciar sesión"
 
 #: library/templates/auth/authopenid/signin.html:40
 msgid "New to Bookworm?"
-msgstr "&iquest;Eres un nuevo usuario?"
+msgstr "¿Eres un nuevo usuario?"
 
 #: library/templates/auth/authopenid/signin.html:42
 #: library/templates/includes/about.html:6
@@ -3778,36 +3775,36 @@ msgid ""
 "need your password but should enter your OpenID URL below."
 msgstr ""
 "Si has creado tu cuenta con un identificador OpendID, no necesitas "
-"contrase&ntilde;a, pero tienes que proporcionar el URL de tu OpenID a "
-"continuaci&oacute;n."
+"contraseña, pero tienes que proporcionar el URL de tu OpenID a "
+"continuación."
 
 #: library/templates/auth/authopenid/signin.html:63
 msgid ""
 "If you've never created an account, click &lsquo;Sign up&rsquo; on the left."
 msgstr ""
-"Si nunca has creado una cuenta, haz clic sobre lsquo;Registraci&oacute;"
+"Si nunca has creado una cuenta, haz clic sobre lsquo;Registració"
 "n&rsquo; a la izquierda."
 
 #: library/templates/auth/authopenid/signin.html:71
 msgid "Sign in using a local Bookworm account"
-msgstr "Inicia sesi&oacute;n a trav&eacute;s de tu cuenta Bookworm local"
+msgstr "Inicia sesión a través de tu cuenta Bookworm local"
 
 #: library/templates/auth/authopenid/signin.html:76
 msgid "Lost your password?"
-msgstr "&iquest;Has perdido la contrase&ntilde;a?"
+msgstr "¿Has perdido la contraseña?"
 
 #: library/templates/auth/authopenid/signin.html:83
 msgid "Sign in using your OpenID"
-msgstr "Inicia sesi&oacute;n a trav&eacute;s de tu OpenID"
+msgstr "Inicia sesión a través de tu OpenID"
 
 #: library/templates/auth/authopenid/signin.html:85
 msgid "Sign in with OpenID"
-msgstr "Inicia sesi&oacute;n a trav&eacute;s de tu OpenID"
+msgstr "Inicia sesión a través de tu OpenID"
 
 #: library/templates/auth/authopenid/signin.html:86
 #: library/templates/auth/authopenid/signup.html:92
 msgid "What's this?"
-msgstr "&iquest;Qu&eacute; es esto?"
+msgstr "¿Qué es esto?"
 
 #: library/templates/auth/authopenid/signup.html:21
 msgid "Two ways to join"
@@ -3824,18 +3821,18 @@ msgstr ""
 
 #: library/templates/auth/authopenid/signup.html:25
 msgid "What is OpenID"
-msgstr "&iquest;Qu&eacute; es el OpenID?"
+msgstr "¿Qué es el OpenID?"
 
 #: library/templates/auth/authopenid/signup.html:26
 msgid "Don't have an OpenID?"
-msgstr "&iquest;No tienes un OpenID?"
+msgstr "¿No tienes un OpenID?"
 
 #: library/templates/auth/authopenid/signup.html:27
 msgid ""
 "Sign up with a username and password just for Bookworm. <!-- trans: instead "
 "of using OpenID -->"
 msgstr ""
-"Reg&iacute;strate con un nombre de usuario y contrase&ntilde;a exclusivos "
+"Regístrate con un nombre de usuario y contraseña exclusivos "
 "para Bookworm"
 
 #: library/templates/auth/authopenid/signup.html:37
@@ -3851,28 +3848,28 @@ msgstr ""
 
 #: library/templates/auth/authopenid/signup.html:44
 msgid "Please correct errors below"
-msgstr "Corrige por favor los errores a continuaci&oacute;n"
+msgstr "Corrige por favor los errores a continuación"
 
 #: library/templates/auth/authopenid/signup.html:59
 msgid "If you're not sure what to do, just fill out this form"
 msgstr ""
-"Si no est&aacute;s seguro qu&eacute; debes hacer, rellena este simple "
+"Si no estás seguro qué debes hacer, rellena este simple "
 "formulario"
 
 #: library/templates/auth/authopenid/signup.html:65
 msgid ""
 "Sign up locally <!-- trans: on Bookworm itself rather than via OpenID -->"
 msgstr ""
-"Reg&iacute;strate con Bookworm (escoge esta opci&oacute;n si prefieres no "
+"Regístrate con Bookworm (escoge esta opción si prefieres no "
 "utilizar tu OpenID)"
 
 #: library/templates/auth/authopenid/signup.html:72
 msgid "Confirm password"
-msgstr "Confirma la contrase&ntilde;a"
+msgstr "Confirma la contraseña"
 
 #: library/templates/auth/authopenid/signup.html:85
 msgid "If you have an OpenID, sign up here"
-msgstr "Si tienes un OpenID, reg&iacute;strate aqu&iacute;"
+msgstr "Si tienes un OpenID, regístrate aquí"
 
 #: library/templates/auth/authopenid/signup.html:88
 msgid "Use my OpenID"
@@ -3880,13 +3877,13 @@ msgstr "Utilizar mi OpenID"
 
 #: library/templates/auth/authopenid/signup.html:90
 msgid "Sign up with OpenID"
-msgstr "Reg&iacute;strate utilizando tu OpenID"
+msgstr "Regístrate utilizando tu OpenID"
 
 #: library/templates/auth/authopenid/signup.html:91
 msgid "If you have a Yahoo account, try typing <em>yahoo.com</em> here."
 msgstr ""
 "Si tienes una cuenta de Yahoo, prueba a escribir <em>yahoo.com</em> "
-"aqu&iacute; "
+"aquí "
 
 #: library/templates/includes/about.html:2
 msgid "Resources <!-- trans: for learning more about Bookworm -->"
@@ -3898,7 +3895,7 @@ msgstr "Verifica tus ePubs"
 
 #: library/templates/includes/about.html:11
 msgid "About full-text search"
-msgstr "B&uacute;squeda de texto completo"
+msgstr "Búsqueda de texto completo"
 
 #: library/templates/includes/about.html:12
 msgid "Read the blog"
@@ -3922,7 +3919,7 @@ msgstr "anterior"
 
 #: library/templates/includes/chapter_next_previous.html:8
 msgid "Contents <!-- trans: table of contents -->"
-msgstr "&Iacute;ndice"
+msgstr "Índice"
 
 #: library/templates/includes/chapter_next_previous.html:11
 msgid "next <!-- trans: next chapter in the book -->"
@@ -3938,11 +3935,11 @@ msgstr "borrar"
 
 #: library/templates/includes/document_list.html:39
 msgid "Are you sure?"
-msgstr "&iquest;Est&aacute;s seguro?"
+msgstr "¿Estás seguro?"
 
 #: library/templates/includes/document_list_controls.html:3
 msgid "Title"
-msgstr "T&iacute;tulo"
+msgstr "Título"
 
 #: library/templates/includes/document_list_controls.html:6
 msgid "Author"
@@ -3950,11 +3947,11 @@ msgstr "Autor"
 
 #: library/templates/includes/document_list_controls.html:11
 msgid "Added"
-msgstr "A&ntilde;adido"
+msgstr "Añadido"
 
 #: library/templates/includes/document_list_controls.html:13
 msgid "Date added"
-msgstr "Fecha en que fue a&ntilde;adido"
+msgstr "Fecha en que fue añadido"
 
 #: library/templates/includes/document_list_controls.html:21
 msgid "Read in Stanza"
@@ -3962,7 +3959,7 @@ msgstr "Lee en Stanza"
 
 #: library/templates/includes/leftnav.html:8
 msgid "Read current page"
-msgstr "Lee la p&aacute;gina actual"
+msgstr "Lee la página actual"
 
 #: library/templates/includes/leftnav.html:24
 msgid "Download this book"
@@ -3970,11 +3967,11 @@ msgstr "Descarga este libro"
 
 #: library/templates/includes/leftnav.html:36
 msgid "First page"
-msgstr "Primera p&aacute;gina"
+msgstr "Primera página"
 
 #: library/templates/includes/openid.html:6
 msgid "What is OpenID?"
-msgstr "&iquest;Qu&eacute; es el OpenID?"
+msgstr "¿Qué es el OpenID?"
 
 #: library/templates/includes/openid.html:9
 msgid ""
@@ -3987,10 +3984,10 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-" El OpenID es un est&aacute;ndar que utilizan varios sitios de web, como "
+" El OpenID es un estándar que utilizan varios sitios de web, como "
 "Yahoo, \n"
-" y que conduce a una experiencia virtual m&aacute;s simple al eliminar la "
-"redundancia, a trav&eacute;s de un identificador com&uacute;n, de \n"
+" y que conduce a una experiencia virtual más simple al eliminar la "
+"redundancia, a través de un identificador común, de \n"
 " necesitar nombres de usuarios distintos para diferentes sitios web."
 
 #: library/templates/includes/openid.html:16
@@ -4006,14 +4003,14 @@ msgstr ""
 "\n"
 " Es posible que ya tengas un OpenID si te has registrado en alguno de los "
 "siguientes sitios.\n"
-" Haz clic sobre el nombre para obtener m&aacute;s informaci&oacute;n "
+" Haz clic sobre el nombre para obtener más información "
 "respecto a los servicios de OpenID que ofrecen."
 
 #: library/templates/includes/openid.html:24
 msgid ""
 "AOL or AIM users: Your OpenID is <em>openid.aol.com/your-screenname</em> "
 msgstr ""
-"Atenci&oacute;n, usuario de AOL o AIM: tu OpenID es\n"
+"Atención, usuario de AOL o AIM: tu OpenID es\n"
 " <em>openid.aol.com/your-screenname</em> "
 
 #: library/templates/includes/openid.html:26
@@ -4038,7 +4035,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-" Si no has establecido una cuenta en ning&uacute;no de estos sitios, y "
+" Si no has establecido una cuenta en ningúno de estos sitios, y "
 "prefieres no utilizarlos para manejar tu identidad virtual, intenta utilizar "
 "<a href=\"https://www.myopenid.com/\">MyOpenID</a>."
 
@@ -4050,7 +4047,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-" La p&aacute;gina oficial de OpenID es <a href=\"http://openid.net/\">http://"
+" La página oficial de OpenID es <a href=\"http://openid.net/\">http://"
 "openid.net/</a>."
 
 #: library/templates/includes/pagination.html:4
@@ -4061,23 +4058,28 @@ msgstr "anterior"
 #: library/templates/includes/pagination.html:5
 #, python-format
 msgid " Page %(page_number)s of %(num_pages)s"
-msgstr " P&aacute;gina %(page_number)s de %(num_pages)s"
+msgstr " Página %(page_number)s de %(num_pages)s"
+
+#: library/templates/includes/pagination.html:6
+#: search/templates/results.html:39
+msgid "next"
+msgstr "siguiente"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Size"
-msgstr "Tama&ntilde;o"
+msgstr "Tamaño"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Increase font size"
-msgstr "Aumentar el tama&ntilde;o de la fuente"
+msgstr "Aumentar el tamaño de la fuente"
 
 #: library/templates/includes/reading-tools.html:2
 msgid "Decrease font size"
-msgstr "Reducir el tama&ntilde;o de la fuente"
+msgstr "Reducir el tamaño de la fuente"
 
 #: library/templates/includes/reading-tools.html:3
 msgid "Font"
-msgstr "Fuente tipogr&aacute;fica"
+msgstr "Fuente tipográfica"
 
 #: library/templates/includes/reading-tools.html:3
 msgid "Use a serif font"
@@ -4101,11 +4103,11 @@ msgstr "Cambiar la modalidad de lectura"
 
 #: library/templates/mobile/base.html:20
 msgid "mobile ebooks"
-msgstr "libros electr&oacute;nicos m&oacute;viles"
+msgstr "libros electrónicos móviles"
 
 #: library/templates/mobile/base.html:21
 msgid "about"
-msgstr "&iquest;Qui&eacute;nes somos>"
+msgstr "¿Quiénes somos>"
 
 #: library/templates/mobile/base.html:24
 msgid "my books"
@@ -4113,11 +4115,11 @@ msgstr "mis libros"
 
 #: search/templates/results.html:5
 msgid "Search results"
-msgstr "Resultados de la b&uacute;squeda"
+msgstr "Resultados de la búsqueda"
 
 #: search/templates/results.html:12
 msgid "About searching"
-msgstr "Informaci&oacute;n sobre b&uacute;squedas"
+msgstr "Información sobre búsquedas"
 
 #: search/templates/results.html:20
 #, python-format
@@ -4126,15 +4128,15 @@ msgid_plural ""
 " %(resultscount)s results found for <em>&lsquo;%(term)s&rsquo;</em> in your "
 "library."
 msgstr[0] ""
-"Hemos encontrado un resultado en tu biblioteca para el t&eacute;rmino "
+"Hemos encontrado un resultado en tu biblioteca para el término "
 "<em>&lsquo;%(term)s&rsquo;</em>"
 msgstr[1] ""
 "Hemos encontrado %(resultscount)s resultados en tu biblioteca para el "
-"t&eacute;rmino <em>&lsquo;%(term)s&rsquo;</em>"
+"término <em>&lsquo;%(term)s&rsquo;</em>"
 
 #: search/templates/results.html:22
 msgid "Results are returned starting from the most relevant."
-msgstr "Los resultados aparecen ordenados seg&uacute;n la relevancia"
+msgstr "Los resultados aparecen ordenados según la relevancia"
 
 #: search/templates/results.html:25
 #, python-format
@@ -4149,14 +4151,14 @@ msgstr "No se han hallado resultados"
 #, python-format
 msgid "No results were found for <em>&lsquo;%(term)s&rsquo;</em>."
 msgstr ""
-"No se han hallado resultados que coincidan con el t&eacute;rmino de b&uacute;"
+"No se han hallado resultados que coincidan con el término de bú"
 "squeda <em>&lsquo;%(term)s&rsquo;</em>."
 
 #: search/templates/results.html:48
 #, python-format
 msgid "Get <a href=\"%(search_help_url)s\">help with searching Bookworm</a>."
 msgstr ""
-"<a href=\"%(search_help_url)s\">Asistencia</a> para efectuar una b&uacute;"
+"<a href=\"%(search_help_url)s\">Asistencia</a> para efectuar una bú"
 "squeda en Bookworm"
 
 #: search/templates/results.html:51
@@ -4165,14 +4167,14 @@ msgid ""
 "minutes.  The search engine checks periodically for new material and should "
 "be updated shortly."
 msgstr ""
-"Si acabas de a&ntilde;adir un libro en el que quieres efectuar una b&uacute;"
-"squeda, espera unos pocos minutos. El motor de b&uacute;squeda revisa "
-"periodicamente la existencia de nuevo contenido y ser&aacute; actualizado "
+"Si acabas de añadir un libro en el que quieres efectuar una bú"
+"squeda, espera unos pocos minutos. El motor de búsqueda revisa "
+"periódicamente la existencia de nuevo contenido y será actualizado "
 "brevemente."
 
 #: search/templates/results.html:53
 msgid "Search your ePubs on Bookworm"
-msgstr "Haz una b&uacute;squeda en tus libros en Bookworm"
+msgstr "Haz una búsqueda en tus libros en Bookworm"
 
 #: search/templates/results.html:54
 #, python-format
@@ -4180,13 +4182,13 @@ msgid ""
 "Enter one or more words on the left to search your library, or get <a href="
 "\"%(search_help_url)s\">help with searching Bookworm</a>."
 msgstr ""
-"Introduce uno o varios t&eacute;rminos de consulta a la izquierda para "
-"realizar una b&uacute;squeda, o lee la p&aacute;gina de asistencia para "
-"realizar <a href=\"%(search_help_url)s\">b&uacute;squedas en Bookworm</a>"
+"Introduce uno o varios términos de consulta a la izquierda para "
+"realizar una búsqueda, o lee la página de asistencia para "
+"realizar <a href=\"%(search_help_url)s\">búsquedas en Bookworm</a>"
 
 #: search/templates/search_help.html:7 search/templates/search_help.html:9
 msgid "Full-text search in Bookworm"
-msgstr "B&uacute;squeda de texto completo en Bookworm"
+msgstr "Búsqueda de texto completo en Bookworm"
 
 #: search/templates/search_help.html:16
 msgid ""
@@ -4198,16 +4200,16 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-" La b&uacute;squeda de texto completo en Bookworm te permite hallar\n"
-" t&eacute;rminos en todas tus publicaciones ePub. Puedes seleccionar el "
+" La búsqueda de texto completo en Bookworm te permite hallar\n"
+" términos en todas tus publicaciones ePub. Puedes seleccionar el "
 "idioma de\n"
-" b&uacute;squeda, y efectuar una b&uacute;squeda avanzada de frases con "
-"operaciones l&oacute;gicas\n"
+" búsqueda, y efectuar una búsqueda avanzada de frases con "
+"operaciones lógicas\n"
 " de forma similar a las funciones respaldadas en Google."
 
 #: search/templates/search_help.html:24
 msgid "Bookworm uses MySQL full-text search"
-msgstr "Bookworm utiliza MySQL para la b&uacute;squeda de texto completo"
+msgstr "Bookworm utiliza MySQL para la búsqueda de texto completo"
 
 #: search/templates/search_help.html:26
 msgid ""
@@ -4218,13 +4220,13 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"La b&uacute;squeda en MySQL respalda operaciones l&oacute;gicas y b&uacute;"
+"La búsqueda en MySQL respalda operaciones lógicas y bú"
 "squeda de frases completas.\n"
-" Aunque el motor de b&uacute;squeda puede manejar varios idiomas, la "
-"b&uacute;squeda siempre se basa en el texto exacto,\n"
-" y no produce como resultado t&eacute;rminos que est&eacute;n morfol&oacute;"
+" Aunque el motor de búsqueda puede manejar varios idiomas, la "
+"búsqueda siempre se basa en el texto exacto,\n"
+" y no produce como resultado términos que estén morfoló"
 "gicamente relacionados \n"
-" (por ejemplo, el t&eacute;rmino de b&uacute;squeda <em>libro</em> no "
+" (por ejemplo, el término de búsqueda <em>libro</em> no "
 "produce el resultado <em>libros</em>)."
 
 #: search/templates/search_help.html:33
@@ -4240,16 +4242,16 @@ msgid ""
 msgstr ""
 "\n"
 " Antes de enero del 2008, Bookworm utilizaba <a href=\"http://xapian.org/"
-"\">Xapian</a> como motor de b&uacute;squeda. Xapian es un buscador "
-"excelente, gratis y de c&oacute;digo \n"
-" abierto que, sin embargo, requiere un &iacute;ndice de b&uacute;squeda por "
-"separado. Esto cre&oacute; \n"
-" dificultades de mantenimiento que llevaron a la adopci&oacute;n de un "
-"sistema m&aacute;s simple, como es MySQL."
+"\">Xapian</a> como motor de búsqueda. Xapian es un buscador "
+"excelente, gratis y de código \n"
+" abierto que, sin embargo, requiere un índice de búsqueda por "
+"separado. Esto creó \n"
+" dificultades de mantenimiento que llevaron a la adopción de un "
+"sistema más simple, como es MySQL."
 
 #: search/templates/search_help.html:41
 msgid "Phrase searching"
-msgstr "B&uacute;squeda de frases"
+msgstr "Búsqueda de frases"
 
 #: search/templates/search_help.html:43
 msgid ""
@@ -4261,7 +4263,7 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"Como en Google, encierra una frase en comillas si deseas limitar la b&uacute;"
+"Como en Google, encierra una frase en comillas si deseas limitar la bú"
 "squeda\n"
 " a la frase en particular (por ejemplo, libros que contengan la frase \"Casa "
 "Blanca\" en lugar de aquellos\n"
@@ -4269,7 +4271,7 @@ msgstr ""
 
 #: search/templates/search_help.html:49
 msgid "Case-sensitivity"
-msgstr "Diferencias entre min&uacute;sculas y may&uacute;sculas"
+msgstr "Diferencia entre minúsculas y mayúsculas"
 
 #: search/templates/search_help.html:51
 msgid ""
@@ -4279,14 +4281,14 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"Las b&uacute;squedas no distinguen entre min&uacute;sculas y may&uacute;"
+"Las búsquedas no distinguen entre minúsculas y mayú"
 "sculas.\n"
-" Esto quiere decir que la b&uacute;squeda de \"Blanco\" producir&aacute; los "
+" Esto quiere decir que la búsqueda de \"Blanco\" producirá los "
 "resultados \"blanco\" y \"BLANCO\"."
 
 #: search/templates/search_help.html:55
 msgid "Boolean operators"
-msgstr "Operadores l&oacute;gicos"
+msgstr "Operadores lógicos"
 
 #: search/templates/search_help.html:57
 msgid ""
@@ -4301,16 +4303,16 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-" Como en Google, la funci&oacute;n l&oacute;gica por defecto es Y (AND), lo "
-"cual quiere decir\n"
-" que en una b&uacute;squeda con varios t&eacute;rminos, todos habr&aacute;n "
+" Al igual que en Google, la función lógica por defecto es Y (AND), lo "
+"que quiere decir\n"
+" que en una búsqueda con varios términos, todos habrán "
 "de aparecer en un documento\n"
-" para obtener un resultado. Bookworm maneja esto autom&aacute;ticamente "
-"agregando el car&aacute;cter '+'\n"
-" a todos los t&eacute;rminos de la b&uacute;squeda. Esto se puede cambiar "
-"a&ntilde;adiendo el s&iacute;mbolo\n"
-" '+' o '-' a cada t&eacute;rmino, o incluyendo comillas para invalidar la "
-"configuraci&oacute;n autom&aacute;tica."
+" para obtener un resultado. Bookworm maneja esto automáticamente "
+"agregando el carácter '+'\n"
+" a todos los términos de la búsqueda. Esto se puede cambiar "
+"añadiendo el símbolo\n"
+" '+' o '-' a cada término, o incluyendo comillas para invalidar la "
+"configuración automática."
 
 #: search/templates/search_help.html:66 search/templates/search_help.html:67
 #: search/templates/search_help.html:68 search/templates/search_help.html:69
@@ -4326,7 +4328,7 @@ msgstr "casa"
 
 #: search/templates/search_help.html:66
 msgid "Both terms are required (like Google)."
-msgstr "Se requieren ambos t&eacute;rminos (como en Google)"
+msgstr "Se requieren ambos términos (como en Google)"
 
 #: search/templates/search_help.html:67
 msgid "Same as above."
@@ -4345,8 +4347,8 @@ msgid ""
 "This is a good way to find ePubs that <em>don't</em> contain the phrase "
 "\"White House\" but do contain the word \"white\""
 msgstr ""
-"&Eacute;sta una forma apropiada para encontrar ePubs que <em>no</em> "
-"contengan la frase \"Casa Blanca\" pero s&iacute; la palabra \"blanca\""
+"Ésta una forma apropiada para encontrar ePubs que <em>no</em> "
+"contengan la frase \"Casa Blanca\" pero sí la palabra \"blanca\""
 
 #: search/templates/search_help.html:73
 msgid "Ordering <!-- trans: e.g. alphabetical order -->"
@@ -4363,9 +4365,9 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-" Los resultados se reportan seg&uacute;n el orden de relevancia. Esta "
+" Los resultados se reportan según el orden de relevancia. Esta "
 "<em>relevancia</em>\n"
-" se estima seg&uacute;n la probabilidad de que un resultado en la b&uacute;"
+" se estima según la probabilidad de que un resultado en la bú"
 "squeda corresponda\n"
 " a lo que el usuario buscaba. Los algoritmos para establecer relevancia son "
 "complejos, y el resultado\n"
@@ -4380,13 +4382,13 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"Dicho de forma simple, ePubs con mayor incidencia del t&eacute;rmino de "
-"b&uacute;squeda\n"
-" aparecer&aacute;n primero en la lista de resultados."
+"Dicho de forma simple, ePubs con mayor incidencia del término de "
+"búsqueda\n"
+" aparecerán primero en la lista de resultados."
 
 #: search/templates/search_help.html:89
 msgid "Indexing"
-msgstr "Indexaci&oacute;n"
+msgstr "Indexación"
 
 #: search/templates/search_help.html:91
 msgid ""
@@ -4398,13 +4400,13 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-" Bookworm verifica con frecuencia si se ha a&ntilde;adido una "
-"publicaci&oacute;n.\n"
-" Cuando encuentra un libro nuevo, indexa todos los t&eacute;rminos "
+" Bookworm verifica con frecuencia si se ha añadido una "
+"publicación.\n"
+" Cuando encuentra un libro nuevo, indexa todos los términos "
 "contenidos\n"
-" en el libro y los a&ntilde;ade a la biblioteca de b&uacute;squeda del "
+" en el libro y los añade a la biblioteca de búsqueda del "
 "propietario (no es posible\n"
-" efectuar una b&uacute;squeda en libros que se encuentran solamente en la "
+" efectuar una búsqueda en libros que se encuentran solamente en la "
 "biblioteca personal de otro usuario.)"
 
 #: search/templates/search_help.html:99
@@ -4415,10 +4417,10 @@ msgid ""
 "  "
 msgstr ""
 "\n"
-"Esto quiere decir que es posible que un libro recientemente a&ntilde;adido "
+"Esto quiere decir que es posible que un libro recientemente añadido "
 "no aparezca\n"
-" inmediatamente en el resultado de la b&uacute;squeda. Ten paciencia; es "
-"s&oacute;lo cuesti&oacute;n de tiempo."
+" inmediatamente en el resultado de la búsqueda. Ten paciencia; es "
+"sólo cuestión de tiempo."
 
 #~ msgid "Thank you for registering with Bookworm."
 #~ msgstr "Verificando el formato de tus libros ePub en Bookworm"
@@ -4427,7 +4429,7 @@ msgstr ""
 #~ msgstr "Detalles de tu cuenta"
 
 #~ msgid "You can now sign in"
-#~ msgstr "Ya puedes iniciar sesi&oacute;n"
+#~ msgstr "Ya puedes iniciar sesión"
 
 #~ msgid ""
 #~ "Someone asked to reset your password on %(site_url)s. \n"
@@ -4441,25 +4443,25 @@ msgstr ""
 #~ "To confirm reset of your password go on this url:\n"
 #~ "%(site_url)s%(url_confirm)s?key=%(confirm_key)s\n"
 #~ msgstr ""
-#~ "Para confirmar el cambio de contrase&ntilde;a dir&iacute;gete a este "
+#~ "Para confirmar el cambio de contraseña dirígete a este "
 #~ "url:\n"
 #~ "%(site_url)s%(url_confirm)s?key=%(confirm_key)s\n"
 
 #~ msgid "Account: change email"
-#~ msgstr "Cuenta: cambiar la direcci&oacute;n de correo electr&oacute;nico"
+#~ msgstr "Cuenta: cambiar la dirección de correo electrónico"
 
 #~ msgid ""
 #~ "This is where you can change the email address associated with your "
 #~ "account. Please keep this email address up to date so we can send you a "
 #~ "password-reset email if you request one."
 #~ msgstr ""
-#~ "Aqu&iacute; puedes cambiar la direcci&oacute;n de correo electr&oacute;"
-#~ "nico vinculada a tu cuenta. Por favor, mant&eacute;n esta direcci&oacute;"
-#~ "n actualizada para que te podamos enviar un mensaje de confirmaci&oacute;"
-#~ "n en caso que solicites cambiar tu contrase&ntilde;a"
+#~ "Aquí puedes cambiar la dirección de correo electró"
+#~ "nico vinculada a tu cuenta. Por favor, mantén esta direcció"
+#~ "n actualizada para que te podamos enviar un mensaje de confirmació"
+#~ "n en caso que solicites cambiar tu contraseña"
 
 #~ msgid "New email"
-#~ msgstr "Nueva direcci&oacute;n de correo electr&oacute;nico"
+#~ msgstr "Nueva dirección de correo electrónico"
 
 #~ msgid "Account: change openid url"
 #~ msgstr "Cuenta: Cambiar el URL del OpenID"
@@ -4468,8 +4470,8 @@ msgstr ""
 #~ "This is where you can change your openid url used to connect to Bookworm. "
 #~ "Make sure you remember it!"
 #~ msgstr ""
-#~ "Aqu&iacute; puedes actualizar el identificador URL del OpenID que "
-#~ "utilizas para conectar con Bookworm &iexcl;Intenta recordarlo!"
+#~ "Aquí puedes actualizar el identificador URL del OpenID que "
+#~ "utilizas para conectar con Bookworm ¡Intenta recordarlo!"
 
 #~ msgid "OpenID url:"
 #~ msgstr "URL del OpenID:"
@@ -4478,16 +4480,16 @@ msgstr ""
 #~ msgstr "Cambiar el OpenID"
 
 #~ msgid "Account: change password"
-#~ msgstr "Cuenta: cambiar contrase&ntilde;a"
+#~ msgstr "Cuenta: cambiar contraseña"
 
 #~ msgid ""
 #~ "This is where you can change your password. Make sure you remember it!"
 #~ msgstr ""
-#~ "Aqu&iacute; puedes cambiar tu contrase&ntilde;a. &iexcl;Intenta "
+#~ "Aquí puedes cambiar tu contraseña. ¡Intenta "
 #~ "recordarla!"
 
 #~ msgid "Your OpenID is verified! "
-#~ msgstr "&iexcl;Hemos verificado tu OpenID!"
+#~ msgstr "¡Hemos verificado tu OpenID!"
 
 #~ msgid ""
 #~ "\n"
@@ -4497,7 +4499,7 @@ msgstr ""
 #~ msgstr ""
 #~ "\n"
 #~ "\t<p>Ahora puedes vincular tu OpenID con una cuenta nueva o ya existente. "
-#~ "Puedes cambiar esta asociaci&oacute;n m&aacute;s tarde en tus "
+#~ "Puedes cambiar esta asociación más tarde en tus "
 #~ "preferencias</p>\n"
 #~ "\t"
 
@@ -4513,7 +4515,7 @@ msgstr ""
 #~ msgstr ""
 #~ "\n"
 #~ "\t<p>Si te has inscrito en <strong>Sitename</strong>, vincula tu OpenID "
-#~ "con la cuenta nueva. Si ya eres miembro, as&oacute;ciala con una cuenta "
+#~ "con la cuenta nueva. Si ya eres miembro, asóciala con una cuenta "
 #~ "ya existente</p>\n"
 #~ "\t"
 
@@ -4530,20 +4532,20 @@ msgstr ""
 #~ "Note: After deleting your account, anyone will be able to register this "
 #~ "username."
 #~ msgstr ""
-#~ "Atenci&oacute;n: Una vez que hayas borrado tu cuenta, otra persona "
-#~ "podr&aacute; registrar este nombre de usuario."
+#~ "Atención: Una vez que hayas borrado tu cuenta, otra persona "
+#~ "podrá registrar este nombre de usuario."
 
 #~ msgid "Check confirm box, if you want delete your account."
-#~ msgstr "Marca la casilla de verificaci&oacute;n si quieres borrar tu cuenta"
+#~ msgstr "Marca la casilla de verificación si quieres borrar tu cuenta"
 
 #~ msgid "Password:"
-#~ msgstr "Contrase&ntilde;a:"
+#~ msgstr "Contraseña:"
 
 #~ msgid "I am sure I want to delete my account."
 #~ msgstr "Estoy seguro que quiero borrar mi cuenta"
 
 #~ msgid "Password/ OpenID URL"
-#~ msgstr "Contrase&ntilde;a / URL del OpenID"
+#~ msgstr "Contraseña / URL del OpenID"
 
 #~ msgid "(required for your security)"
 #~ msgstr "(se requiere para tu seguridad)"
@@ -4552,7 +4554,7 @@ msgstr ""
 #~ msgstr "borrar esta cuenta para siempre"
 
 #~ msgid "Account: Send a new password"
-#~ msgstr "Cuenta: Env&iacute;ar una nueva contrase&ntilde;a"
+#~ msgstr "Cuenta: Envíar una nueva contraseña"
 
 #~ msgid ""
 #~ "Lost your password ? Here you can ask to reset your password. Enter the "
@@ -4560,17 +4562,17 @@ msgstr ""
 #~ "This new password will be activated only after you clicked on the link "
 #~ "you will find in the email"
 #~ msgstr ""
-#~ "&iquest;Has olvidado tu contrase&ntilde? Aqu&iacute; puedes solicitar "
+#~ "¿Has olvidado tu contraseñ? Aquí puedes solicitar "
 #~ "modificar tu\n"
-#~ " contrase&ntilde;a. Introduce el nombre de usuario que utilizas y "
-#~ "recibir&aacute;s un mensaje\n"
-#~ " electr&oacute;nico de confirmaci&oacute;n. Podr&aacute;s activar la "
-#~ "nueva contrase&ntilde;a una\n"
-#~ " vez que hayas hecho clic en el enlace que se te env&iacute;a en el "
+#~ " contraseña. Introduce el nombre de usuario que utilizas y "
+#~ "recibirás un mensaje\n"
+#~ " electrónico de confirmación. Podrás activar la "
+#~ "nueva contraseña una\n"
+#~ " vez que hayas hecho clic en el enlace que se te envía en el "
 #~ "mensaje."
 
 #~ msgid "Send new password"
-#~ msgstr "Env&iacute;ar la nueva contrase&ntilde;a"
+#~ msgstr "Envíar la nueva contraseña"
 
 #~ msgid ""
 #~ "\n"
@@ -4579,7 +4581,7 @@ msgstr ""
 #~ "    "
 #~ msgstr ""
 #~ "\n"
-#~ "<p>Aqu&iacute; puedes hacer cambios en tu cuenta"
+#~ "<p>Aquí puedes hacer cambios en tu cuenta"
 
 #~ msgid ""
 #~ "\n"
@@ -4590,36 +4592,36 @@ msgstr ""
 #~ "    "
 #~ msgstr ""
 #~ "\n"
-#~ "<h1>Reg&iacute;strate</h1>\n"
-#~ "<p>Puedes registrarte de dos formas: o bien con una direcci&oacute;n de "
-#~ "correo electr&oacute;nico\n"
+#~ "<h1>Regístrate</h1>\n"
+#~ "<p>Puedes registrarte de dos formas: o bien con una dirección de "
+#~ "correo electrónico\n"
 #~ " y nombre de usuario, o con un OpenId.<br /> Introduce la "
-#~ "informaci&oacute;n que corresponda s&oacute;lo\n"
-#~ " al tipo de inscripci&oacute;n que prefieras.</p>"
+#~ "información que corresponda sólo\n"
+#~ " al tipo de inscripción que prefieras.</p>"
 
 #~ msgid "Regular Signup"
-#~ msgstr "Registraci&oacute;n corriente"
+#~ msgstr "Registración corriente"
 
 #~ msgid "Choose a Screen Name:"
 #~ msgstr "Escoge un nombre de usuario"
 
 #~ msgid "Enter Your Email Address:"
-#~ msgstr "Introduce tu direcci&oacute;n de correo electr&oacute;nico"
+#~ msgstr "Introduce tu dirección de correo electrónico"
 
 #~ msgid "Choose a Password:"
-#~ msgstr "Escoge una contrase&ntilde;a"
+#~ msgstr "Escoge una contraseña"
 
 #~ msgid "Confirm Your Password:"
-#~ msgstr "Confirma tu contrase&ntilde;a "
+#~ msgstr "Confirma tu contraseña "
 
 #~ msgid "JOIN FREE"
-#~ msgstr "REGISTRACI&Oacute;N GRATIS"
+#~ msgstr "REGISTRACIÓN GRATIS"
 
 #~ msgid "OpenID Signup"
-#~ msgstr "Reg&iacute;strate con un identificador OpenID"
+#~ msgstr "Regístrate con un identificador OpenID"
 
 #~ msgid "Sign in with OPENID"
-#~ msgstr "Inicia sesi&oacute;n con OpenID"
+#~ msgstr "Inicia sesión con OpenID"
 
 #~ msgid "Download books to your "
 #~ msgstr "Descargar libros en el "
@@ -4647,11 +4649,11 @@ msgstr ""
 #~ "\\\" align=\"\n"
 #~ "\"\\\"right\\\" style=\\\"margin-bottom:10px\\\" width=\\\"100\\\"/></a>"
 #~ "\\n\n"
-#~ "S&iacute, en efecto. Para una versi&oacute;n especial de este sitio web,\n"
-#~ " optimizada para dipositivos m&oacute;viles (especialmente el iPhone),\n"
-#~ " dir&iacute;gete a <a href=\"http://%(mobilehost)s/\">http://m.bookworm."
+#~ "Sí en efecto. Para una versión especial de este sitio web,\n"
+#~ " optimizada para dipositivos móviles (especialmente el iPhone),\n"
+#~ " dirígete a <a href=\"http://%(mobilehost)s/\">http://m.bookworm."
 #~ "oreilly.com/</a>.\n"
-#~ " Bookworm tambi&eacute;n ha sido evaluado en el Blackberry, Opera Mobile "
+#~ " Bookworm también ha sido evaluado en el Blackberry, Opera Mobile "
 #~ "y el servicio\n"
 #~ " Whispernet del Kindle. "
 
@@ -4669,16 +4671,16 @@ msgstr ""
 #~ "\">O'Reilly Media</a>.\n"
 #~ msgstr ""
 #~ "\n"
-#~ "El software de Bookworm es gratis, disponible bajo los t&eacute;rminos de "
+#~ "El software de Bookworm es gratis, disponible bajo los términos de "
 #~ "la licencia BSD,\n"
-#~ " y se puede descargar a trav&eacute;s de la <href=\"http://threepress.org/"
-#~ "tools/\">p&aacute;gina de herramientas</a>.\n"
+#~ " y se puede descargar a través de la <href=\"http://threepress.org/"
+#~ "tools/\">página de herramientas</a>.\n"
 #~ " Es un producto de <a href=\"http://threepress.org/\">Threepress</a>, una "
 #~ "iniciativa que se propone\n"
-#~ " experimentar en el &aacute;mbito de la publicaci&oacute;n a base de "
-#~ "software de c&oacute;digo abierto, y ha sido creado por\n"
+#~ " experimentar en el ámbito de la publicación a base de "
+#~ "software de código abierto, y ha sido creado por\n"
 #~ " <a href=\"http://threepress.org/about/\">Liza Daly</a>, con la "
-#~ "contribuci&oacute;n de <a href=\"http://kfahlgren.com/blog\">Keith\n"
+#~ "contribución de <a href=\"http://kfahlgren.com/blog\">Keith\n"
 #~ " Fahlgren</a>. <a href=\"http://oreilly.com/\">O'Reilly Media</a> ha "
 #~ "proporcionado el servicio de alojamiento web.\n"
 
@@ -4693,13 +4695,13 @@ msgstr ""
 #~ "          "
 #~ msgstr ""
 #~ "\n"
-#~ "Utiliza la versi&oacute;n m&oacute;vil de web cuando te encuentres en "
-#~ "l&iacute;nea,\n"
-#~ " dirigi&eacute;ndote a <a href=\"http://%(mobilehost)s\">m.bookworm."
+#~ "Utiliza la versión móvil de web cuando te encuentres en "
+#~ "línea,\n"
+#~ " dirigiéndote a <a href=\"http://%(mobilehost)s\">m.bookworm."
 #~ "oreilly.com</a>\n"
-#~ " con tu tel&eacute;fono m&oacute;vil. Para leer sin necesitar una "
-#~ "conexi&oacute;n a la red, exporta directamente\n"
-#~ " de Bookworm a Stanza.  Aqu&iacute; encontrar&aacute;s otras \n"
+#~ " con tu teléfono móvil. Para leer sin necesitar una "
+#~ "conexión a la red, exporta directamente\n"
+#~ " de Bookworm a Stanza.  Aquí encontrarás otras \n"
 #~ " <a href=\"http://www.lexcycle.com/faq/how_to_get_books_onto_stanza_iphone"
 #~ "\">sugerencias</a>"
 
@@ -4711,10 +4713,10 @@ msgstr ""
 #~ "          "
 #~ msgstr ""
 #~ "\n"
-#~ "Utiliza la versi&oacute;n m&oacute;vil de web cuando te encuentres en "
-#~ "l&iacute;nea dirigi&eacute;ndote a <a href=\"http://%(mobilehost)s\">%"
+#~ "Utiliza la versión móvil de web cuando te encuentres en "
+#~ "línea dirigiéndote a <a href=\"http://%(mobilehost)s\">%"
 #~ "(mobilehost)s</a>\n"
-#~ " con tu tel&eacute;fono m&oacute;vil."
+#~ " con tu teléfono móvil."
 
 #~ msgid ""
 #~ "\n"
@@ -4726,10 +4728,10 @@ msgstr ""
 #~ "          "
 #~ msgstr ""
 #~ "\n"
-#~ "El Kindle a&uacute;n no puede leer archivos en formato ePub, pero \n"
-#~ " puedes utilizar la versi&oacute;n m&oacute;vil de Bookworm a trav&eacute;"
+#~ "El Kindle aún no puede leer archivos en formato ePub, pero \n"
+#~ " puedes utilizar la versión móvil de Bookworm a travé"
 #~ "s de la\n"
-#~ " funci&oacute;n Whispernet del Kindle, utilizando el navegador del Kindle "
+#~ " función Whispernet del Kindle, utilizando el navegador del Kindle "
 #~ "para acceder\n"
 #~ " <a href=\"http://%(mobilehost)s\">%(mobilehost)s</a>."
 
@@ -4739,11 +4741,11 @@ msgstr ""
 #~ "is already optimized to be simple.  However, some of the features of "
 #~ "Reading Mode are also available in the mobile version:"
 #~ msgstr ""
-#~ "No existe una Modalidad de Lectura espec&iacute;fica para la <a href="
-#~ "\"http://%(mobilehost)s/\">versi&oacute;n m&oacute;vil de Bookworm</a> ya "
-#~ "que la versi&oacute;n m&oacute;vil ha sido dise&ntilde;ada teniendo en "
+#~ "No existe una Modalidad de Lectura específica para la <a href="
+#~ "\"http://%(mobilehost)s/\">versión móvil de Bookworm</a> ya "
+#~ "que la versión móvil ha sido diseñada teniendo en "
 #~ "cuenta la sencillez. Sin embargo, algunas de las funciones de esta "
-#~ "modalidad est&aacute;n disponibles en la versi&oacute;n m&oacute;vil:"
+#~ "modalidad están disponibles en la versión móvil:"
 
 #~ msgid ""
 #~ "\n"
@@ -4756,21 +4758,21 @@ msgstr ""
 #~ "    "
 #~ msgstr ""
 #~ "\n"
-#~ " Si tu tel&eacute;fono tiene acceso web, puedes leer libros en cualquier "
+#~ " Si tu teléfono tiene acceso web, puedes leer libros en cualquier "
 #~ "sitio.\n"
 #~ "Dirige tu navegador a <strong><a href=\"http://%(mobilehost)s/\">m."
 #~ "bookworm.oreilly.com</a></strong>\n"
-#~ " para una versi&oacute;n de Bookworm que ha sido especialmente adaptada "
-#~ "para dispositivos port&aacute;tiles."
+#~ " para una versión de Bookworm que ha sido especialmente adaptada "
+#~ "para dispositivos portátiles."
 
 #~ msgid "French"
-#~ msgstr "franc&eacute;s"
+#~ msgstr "francés"
 
 #~ msgid "Change the default language for <!-- trans: person name -->"
 #~ msgstr "Cambia el idioma de"
 
 #~ msgid "Change email address for <!-- trans: for person -->"
-#~ msgstr "Cambia la direcci&oacute;n de correo de "
+#~ msgstr "Cambia la dirección de correo de "
 
 #~ msgid "Are you sure? <!-- trans: you want to perform that action -->"
-#~ msgstr "&iquest;Est&aacute; seguro?"
+#~ msgstr "¿Está seguro?"
