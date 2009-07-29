@@ -2,6 +2,7 @@ import os
 import logging, logging.handlers
 
 # Live site settings (others should override in locals.py)
+ROOT_PATH = os.path.dirname(__file__)
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -40,7 +41,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(ROOT_PATH, 'library', 'storage')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -109,8 +110,6 @@ LANGUAGES = (
 
 ROOT_URLCONF = 'urls'
 
-ROOT_PATH = os.path.dirname(__file__)
-
 TEMPLATE_DIRS = (
     '%s/library/templates/auth' % ROOT_PATH,    
     '%s/library/templates/host' % ROOT_PATH,
@@ -131,11 +130,11 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.humanize',
     'django_authopenid',
-#    'django_evolution',
     'bookworm.minidetector',
     'bookworm.library',
     'bookworm.search',
     'bookworm.librarything',
+    'bookworm.mobile',
     )
 
 AUTH_PROFILE_MODULE = "library.userpref"
@@ -208,6 +207,22 @@ OFFLINE = False
 
 # Google Analytics key
 ANALYTICS_KEY = 'UA-162955-4'
+
+# The email addresses of the users who should receive an error email 
+# (should be a list)
+ERROR_EMAIL_RECIPIENTS = (ADMINS[0][1], )
+
+# The URL for the epubcheck webservice
+EPUBCHECK_WEBSERVICE = 'http://threepress.org/epubcheck-service/' 
+
+# Apps to test
+TEST_APPS = ('library',)
+
+# Feedbooks OPDS feed
+FEEDBOOKS_OPDS_FEED = 'http://feedbooks.com/books/top.atom'
+
+# Always upload files to the filesystem
+FILE_UPLOAD_HANDLERS = ("django.core.files.uploadhandler.TemporaryFileUploadHandler",)
 
 try:
     from local import *

@@ -4,7 +4,7 @@ jQuery(document).ready(function() {
         $('#bw-upload-link').hover(function() {
                 $("#bw-upload-box").slideDown('fast');
             },
-            function() {} 
+            function() {}
             );
         $('#bw-shell-table').hover(function() {
                 $("#bw-upload-box").slideUp('fast');
@@ -23,6 +23,16 @@ jQuery(document).ready(function() {
                 $("#bw-search-lang-selection").fadeOut('normal');
             }
             );
+
+        $('#bw-feedbooks-toggle').toggle(function() {
+                                             $('#bw-feedbooks').fadeIn('normal');
+                                             $('#bw-feedbooks-toggle').text('Hide');
+                                         },
+                                         function() {
+                                             $('#bw-feedbooks').fadeOut('normal');
+                                             $('#bw-feedbooks-toggle').text('Show');
+                                         }
+                                        );
 
         var main_text = $('#bw-book-content');
         var current_size = get_font_sizing(main_text);
@@ -60,7 +70,7 @@ jQuery(document).ready(function() {
             return false;
         });
 
-        
+
 });
 
 function round_to(n, sig) {
@@ -77,7 +87,7 @@ function get_font_num(current_size) {
 }
 
 function get_font_unit(current_size) {
-    return current_size.slice(-2);        
+    return current_size.slice(-2);
 }
 
 function update_font_size(el, num, unit) {

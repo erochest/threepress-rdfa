@@ -54,7 +54,9 @@ __all__ = ['OpenidSigninForm', 'OpenidAuthForm', 'OpenidVerifyForm',
 class OpenidSigninForm(forms.Form):
     """ signin form """
     openid_url = forms.CharField(max_length=255, 
-            widget=forms.widgets.TextInput(attrs={'class': 'required openid'}))
+            widget=forms.widgets.TextInput(attrs={'class': 'required openid',
+                                                  'autocorrect': 'off',
+                                                  'autocapitalize':'off'}))
     next = forms.CharField(max_length=255, widget=forms.HiddenInput(), 
             required=False)
 
@@ -78,7 +80,9 @@ class OpenidSigninForm(forms.Form):
             return self.cleaned_data['next']
 
 
-attrs_dict = { 'class': 'required login' }
+attrs_dict = { 'class': 'required login',
+               'autocorrect':'off',
+               'autocapitalize':'off'}
 username_re = re.compile(r'^\w+$')
 
 class OpenidAuthForm(forms.Form):

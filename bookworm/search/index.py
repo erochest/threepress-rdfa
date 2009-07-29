@@ -23,8 +23,6 @@ except OSError:
     sys.stderr.write("Shutting down because already running.  Am I stuck?\n")
     sys.exit()
 
-
-
 def index():
 
     to_delete = []

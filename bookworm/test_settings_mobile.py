@@ -1,4 +1,4 @@
-from settings import *
+from settings_mobile import *
 from local import *
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sql$

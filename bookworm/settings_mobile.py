@@ -1,11 +1,12 @@
 from settings import *
 import settings
+import os.path
 
 TEMPLATE_DIRS_BASE = TEMPLATE_DIRS
 
 TEMPLATE_DIRS = (
-    '%s/library/templates/mobile/auth' % ROOT_PATH,    
-    '%s/library/templates/mobile' % ROOT_PATH,    
+    os.path.join(ROOT_PATH, 'mobile', 'templates', 'auth'),
+    os.path.join(ROOT_PATH, 'mobile', 'templates')
 )
 
 TEMPLATE_DIRS += TEMPLATE_DIRS_BASE

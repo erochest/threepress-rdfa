@@ -675,3 +675,15 @@ table.bw-pagination {
     margin:0;padding:0 !important;
     color: #2E4560 !important;
 }
+.upload-errors {
+  color: black;
+  font-weight:normal;
+}
+#bw-feedbooks {
+  display:none;
+}
+#bw-feedbooks ol {
+  font-size: medium;
+  line-height: 1.5em;
+  list-style-type: none;
+}

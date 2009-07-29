@@ -3,16 +3,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import DjangoUnicodeDecodeError
 
 from lxml import etree
-import lxml
-import lxml.html
 import _mysql_exceptions, MySQLdb
 from zipfile import ZipFile
-from StringIO import StringIO
-import logging, datetime, os, os.path, hashlib
+from cStringIO import StringIO
+import logging, datetime, os, os.path, hashlib, cssutils, uuid, lxml, lxml.html, shutil
 from urllib import unquote_plus
 from xml.parsers.expat import ExpatError
-import cssutils
-import uuid
 
 from django.utils.http import urlquote_plus
 from django.db import models
@@ -20,14 +16,13 @@ from django.contrib.auth.models import User
 from django.utils.encoding import smart_str
 from django.conf import settings
 from django.core.urlresolvers import reverse
-from django.db.models import permalink
+from django.core.files.storage import Storage
 
 from bookworm.library.epub import constants, InvalidEpubException
 from bookworm.library.epub.constants import ENC, BW_BOOK_CLASS, STYLESHEET_MIMETYPE, XHTML_MIMETYPE, DTBOOK_MIMETYPE
 from bookworm.library.epub.constants import NAMESPACES as NS
 from bookworm.library.epub.toc import NavPoint, TOC
 from bookworm.search import epubindexer
-
 import bookworm.library.epub.toc as util
 
 log = logging.getLogger('library.models')
@@ -142,7 +137,7 @@ class EpubArchive(BookwormModel):
     def get_content(self):
         blob = self._blob_class()
         epub = blob.objects.get(archive=self)
-        return epub.get_data()
+        return epub.get_data_handler()
   
     def delete(self):
         self.delete_from_filesystem()
@@ -330,7 +325,7 @@ class EpubArchive(BookwormModel):
             self._parsed_toc = TOC(self.toc, self.opf)
         return self._parsed_toc
 
-    @permalink
+    @models.permalink
     def get_absolute_url(self):
         return ('view', (), { 'title':self.safe_title(), 'key': self.id } )
  
@@ -382,9 +377,7 @@ class EpubArchive(BookwormModel):
 
     def explode(self):
         '''Explodes an epub archive'''
-        e = StringIO(self.get_content())
-        z = ZipFile(e)
-
+        z = ZipFile(self.get_content()) # Returns a filehandle
         try:
             container = z.read(self._CONTAINER)
         except KeyError:
@@ -809,7 +802,7 @@ class HTMLFile(BookwormFile):
 
     content_type = models.CharField(max_length=100, default="application/xhtml")
 
-    @permalink
+    @models.permalink
     def get_absolute_url(self):
         return ('view_chapter', (), { 'title':self.archive.safe_title(), 'key': self.archive.id,
                                       'chapter_id': self.filename} )
@@ -965,7 +958,10 @@ class HTMLFile(BookwormFile):
             if element.tag == 'script':
                 p = element.getparent()
                 p.remove(element)
-                
+            # So are links which have javascript: in them
+            if element.get('href') and 'javascript:' in element.get('href'):
+                element.set('href', '#')
+
         return xhtml
 
     _head_extra = None
@@ -986,6 +982,11 @@ class HTMLFile(BookwormFile):
 class StylesheetFile(BookwormFile):
     '''A CSS stylesheet associated with a given book'''
     content_type = models.CharField(max_length=100, default="text/css")
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('view_stylesheet', (self.archive.safe_title(), self.archive.id, self.idref))
+
     class Meta:
         verbose_name_plural = 'CSS'
 
@@ -993,6 +994,10 @@ class ImageFile(BookwormFile):
     '''An image file associated with a given book.  Mime-type will vary.'''
     content_type = models.CharField(max_length=100)
     data = None
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('view_chapter_image', ('view', self.archive.safe_title(), self.archive.id, self.idref))
 
     def __init__(self, *args, **kwargs):
         if kwargs.has_key('data'):
@@ -1080,7 +1085,7 @@ class SystemInfo():
             return int(round(self._total_users, -2))
         return self._total_users
 
-class BinaryBlob(BookwormFile):
+class BinaryBlob(BookwormFile, Storage):
     '''Django doesn't support this natively in the DB model (yet) and quite 
     probably we don't want to store this in the database anyway, for
     possible replacement with an S3-like storage system later.  For now
@@ -1127,11 +1132,21 @@ class BinaryBlob(BookwormFile):
                 if not os.path.exists(d):
                     os.mkdir(d)
         f = open(f.encode('utf8'), 'w')
-        f.write(self.data)
-        f.close()
+
+        # Is this a file-like object or a string of bytes?
+        if hasattr(self.data, 'read'):
+            shutil.copyfileobj(self.data, f)
+        else:
+            f.write(self.data)
+            f.close()
         super(BinaryBlob, self).save(*args, **kwargs)
 
+    def open(self):
+        '''Part of Django Storage API'''
+        return open(self._get_file())
+
     def delete(self):
+        '''Per Django Storage API, does not raise an exception if the file is missing (but will warn)'''
         storage = self._get_storage()
         f = self._get_file()
         try:
@@ -1139,6 +1154,18 @@ class BinaryBlob(BookwormFile):
         except OSError:
             log.warn(u'Tried to delete non-existent file %s in %s' % (self.filename, storage))                         
         super(BinaryBlob, self).delete()
+    
+    def exists(self):
+        '''Part of Django Storage API'''
+        return os.path.exists(self._get_file())
+
+    def size(self):
+        '''Part of Django Storage API'''
+        return os.path.getsize(self._get_file())
+
+    def url(self):
+        '''Part of Django Storage API'''
+        raise Exception("Should be implemented by subclasses")
 
     def get_data(self):
         '''Return the data for this file, as a string of bytes (output from read())'''
@@ -1148,11 +1175,16 @@ class BinaryBlob(BookwormFile):
             return None
         return open(f.encode('utf8')).read()
 
-    def _get_pathname(self):
-        return u'storage'
+    def get_data_handler(self):
+        '''Return the data for this file, as a filehandle'''
+        f = self._get_file()
+        if not os.path.exists(f.encode('utf8')):
+            log.warn(u"Tried to open file %s but it wasn't there (storage dir %s)" % (f, self._get_storage()))
+            return None
+        return open(f.encode('utf8'))
 
     def _get_storage_dir(self):
-        return os.path.join(unicode(os.path.dirname(__file__)), self._get_pathname())   
+        return settings.MEDIA_ROOT
 
 
     def _get_file(self):
@@ -1181,6 +1213,10 @@ class ImageBlob(BinaryBlob):
     '''Storage mechanism for a binary image'''
     image = models.ForeignKey(ImageFile)    
     
+    def url(self):
+        '''Return the computed URL for this image'''
+        return self.image.get_absolute_url()
+
 class InvalidBinaryException(InvalidEpubException):
     pass
 

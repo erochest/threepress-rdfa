@@ -1,0 +1,14 @@
+{% load i18n %}
+<div id="bw-feedbooks">
+{% if books %}
+  <ol>
+  {% for book in books %}
+   <li> <a href="{% url add %}?epub={{ book.link }}">{{ book.title }}</a> by {{ book.author }} </li>
+  {% endfor %}
+  </ol>
+
+    <p>  <a href="http://feedbooks.com/">{% trans "Find more public domain books at Feedbooks" %}</a></p>
+{% else %}
+<p>Sorry, Feedbooks did not respond with a list of books.</p>
+{% endif %}
+</div>

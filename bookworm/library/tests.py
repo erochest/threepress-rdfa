@@ -31,13 +31,13 @@ except:
     pass
 
 # Data for public epub documents
-DATA_DIR = unicode(os.path.abspath('./library/test-data/data'))
+DATA_DIR = unicode(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'test-data/data'))
+
+STORAGE_DIR = settings.MEDIA_ROOT
 
 # Local documents should be added here and will be included in tests,
 # but not in the svn repository
 PRIVATE_DATA_DIR = u'%s/private' % DATA_DIR
-
-STORAGE_DIR = os.path.abspath('./library/test-data/storage')
 
 class TestModels(unittest.TestCase):
 
@@ -466,8 +466,7 @@ class TestModels(unittest.TestCase):
         imagename = 'alice01a.gif'
         image = _get_file(imagename)
 
-        for i in MockImageBlob.objects.filter(idref=imagename):
-            i.delete()
+        [i.delete() for i in MockImageBlob.objects.filter(idref=imagename)]
 
         image_obj = MockImageFile.objects.create(idref=imagename,
                                                  archive=document)
@@ -481,6 +480,93 @@ class TestModels(unittest.TestCase):
         self.assertTrue(i2.get_data() is not None)
         self.assertEquals(image, i2.get_data())
         i2.delete()
+
+    def test_binary_storage_exists(self):
+        '''Test that we correctly implement the required 'exists()' method for Django Storage'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        imagename = 'alice01a.gif'
+        image = _get_file(imagename)
+        [i.delete() for i in MockImageBlob.objects.filter(idref=imagename)]
+        image_obj = MockImageFile.objects.create(idref=imagename,
+                                                 archive=document)
+        i = MockImageBlob.objects.create(archive=document,
+                                         idref=imagename,
+                                         image=image_obj,
+                                         data=image,
+                                         filename=imagename)
+
+        i2 = MockImageBlob.objects.get(idref=imagename)
+        assert i2.exists()
+
+        os.remove(i2._get_file())
+
+        # Now this should fail 
+        assert not i2.exists()                  
+
+    def test_binary_storage_size(self):
+        '''Test that we correctly implement the required 'size()' method for Django Storage'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        imagename = 'alice01a.gif'
+        image = _get_file(imagename)
+        [i.delete() for i in MockImageBlob.objects.filter(idref=imagename)]
+        image_obj = MockImageFile.objects.create(idref=imagename,
+                                                 archive=document)
+        i = MockImageBlob.objects.create(archive=document,
+                                         idref=imagename,
+                                         image=image_obj,
+                                         data=image,
+                                         filename=imagename)
+
+        i2 = MockImageBlob.objects.get(idref=imagename)
+        assert i2.size() == os.path.getsize(_get_filepath(imagename))
+
+    def test_binary_storage_url(self):
+        '''Test that we correctly implement the required 'url()' method for Django Storage'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        imagename = 'alice01a.gif'
+        image = _get_file(imagename)
+        [i.delete() for i in MockImageBlob.objects.filter(idref=imagename)]
+        image_obj = MockImageFile.objects.create(idref=imagename,
+                                                 archive=document)
+        i = MockImageBlob.objects.create(archive=document,
+                                         idref=imagename,
+                                         image=image_obj,
+                                         data=image,
+                                         filename=imagename)
+
+        i2 = MockImageBlob.objects.get(idref=imagename)
+        assert image_obj.get_absolute_url() == i2.url()
+        assert '/view/Pride+and+Prejudice/' in i2.url()
+        assert 'alice01a.gif' in i2.url()
+
+    def test_binary_storage_open(self):
+        '''Test that we correctly implement the required 'open()' method for Django Storage'''
+        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
+        document = self.create_document(filename)
+        document.explode()
+        document.save()
+        imagename = 'alice01a.gif'
+        image = _get_file(imagename)
+        [i.delete() for i in MockImageBlob.objects.filter(idref=imagename)]
+        image_obj = MockImageFile.objects.create(idref=imagename,
+                                                 archive=document)
+        i = MockImageBlob.objects.create(archive=document,
+                                         idref=imagename,
+                                         image=image_obj,
+                                         data=image,
+                                         filename=imagename)
+
+        i2 = MockImageBlob.objects.get(idref=imagename)
+        assert i2.open().read() == _get_filehandle(imagename).read()
 
     def test_binary_image_autosave(self):
         '''Test that an ImageFile creates a blob and can retrieve it'''
@@ -509,29 +595,6 @@ class TestModels(unittest.TestCase):
         self.assertEquals(image, i2.get_data())
         i2.delete()
         
-    def test_binary_image_autodelete(self):
-        '''Test that an ImageFile can delete its associated blob'''
-        filename = 'Pride-and-Prejudice_Jane-Austen.epub'
-        document = self.create_document(filename)
-        document.explode()
-        document.save()
-
-        imagename = 'alice2.gif'
-
-        for i in MockImageFile.objects.filter(idref=imagename):
-            i.delete()
-
-        image = _get_file(imagename)
-        image_obj = MockImageFile.objects.create(idref=imagename,
-                                  archive=document,
-                                  data=image)
-        i2 = MockImageFile.objects.get(idref=imagename)
-        storage = i2._blob()._get_file()
-        self.assert_(storage)
-        i2.delete()
-        self.assert_(not os.path.exists(storage))
-
-
     def test_image_with_path_info(self):
         filename = 'alice-fromAdobe.epub'
         document = self.create_document(filename)
@@ -786,7 +849,19 @@ class TestModels(unittest.TestCase):
         '''Return a proper exception if this OPF has no spine (checked in model)'''
         document = self.create_document('invalid-no-spine.epub')
         self.assertRaises(InvalidEpubException, document.explode)
-        
+
+
+    def test_unsafe_javascript(self):
+        '''Test that Javascript links are not preserved'''
+        document = self.create_document('unsafe-javascript-link.epub')
+        document.explode()
+        c = HTMLFile.objects.get(archive=document,
+                                 filename='chapter-1.html')
+        assert 'javascript:' not in c.render()
+        assert '<a href="#">' in c.render()
+        assert not '<script>' in c.render()
+
+
     def create_document(self, document, identifier=''):
         epub = MockEpubArchive(name=document)
         epub.identifier = identifier
@@ -853,13 +928,14 @@ class TestViews(DjangoTestCase):
         self.assertContains(response, 'agrees that')
         self.assertContains(response, 'toc-doesnt-exist.ncx is missing')
 
-    def test_rights_document(self):
+    def xxx_test_rights_document(self):
         '''Assert that we correctly recognize a rights-managed epub and email the admin'''
+        '''Removed in infrastructure; don't bother sending email now '''
         filename = 'invalid-rights-managed.epub'
         self._upload(filename)
 
         assert len(mail.outbox) == 1
-        assert mail.outbox[0].to[0] == settings.ADMINS[0][1]
+        assert mail.outbox[0].to[0] == settings.ERROR_EMAIL_RECIPIENTS
         assert 'DRM' in mail.outbox[0].subject
 
     def test_content_visible(self):
@@ -1039,6 +1115,24 @@ class TestViews(DjangoTestCase):
         self.assertContains(response, 'by date')
         self.assertContains(response, 'descending')
 
+        # Test that the next page preserves this and generates the right link
+        response = self.client.get('/page/2/order/created_time/dir/desc')
+        self.assertContains(response, 'Page 2 of 2')
+        self.assertContains(response, 'date added')
+        self.assertContains(response, 'by date')
+        self.assertContains(response, 'descending')
+        
+        self.assertContains(response, '<a href="/page/1/order/created_time/dir/desc">← previous </a>')
+
+        # Test that the prev page preserves this and generates the right link
+        response = self.client.get('/page/1/order/created_time/dir/desc')
+        self.assertContains(response, 'Page 1 of 2')
+        self.assertContains(response, 'date added')
+        self.assertContains(response, 'by date')
+        self.assertContains(response, 'descending')
+        
+        self.assertContains(response, '<a href="/page/2/order/created_time/dir/desc">next →</a>')
+
 
 
     def test_upload_with_utf8(self):
@@ -1049,13 +1143,14 @@ class TestViews(DjangoTestCase):
 
         # Make sure it's in the list
         response = self.client.get('/library/')
-        self.assertContains(response, 'Sherlock')
+        self.assertContains(response, '/view/The+Adventures+of+Sherlock')
 
     def test_delete_with_utf8(self):
         response = self._upload('The-Adventures-of-Sherlock-Holmes_Arthur-Conan-Doyle.epub')
         # Make sure it's in the list
         response = self.client.get('/library/')
-        self.assertContains(response, 'Sherlock')
+        self.assertContains(response, '/view/The+Adventures+of+Sherlock')
+
 
         response = self.client.post('/delete/', { 'title':'The+Adventures+of+Sherlock+Holmes',
                                        'key':'1'})
@@ -1063,7 +1158,7 @@ class TestViews(DjangoTestCase):
                              status_code=302, 
                              target_status_code=200)   
         response = self.client.get('/library/')
-        self.assertNotContains(response, 'Sherlock')
+        self.assertNotContains(response, '/view/The+Adventures+of+Sherlock')
 
 
     def test_upload_with_entities(self):
@@ -1595,6 +1690,32 @@ class TestViews(DjangoTestCase):
         self._login()
         response = self.client.get('/account/')
         self.assertTemplateUsed(response, 'auth/profile.html')
+
+    def test_add_by_url(self):
+        '''Test trying to acquire an ePub by URL'''
+        self._login()
+        response = self.client.get('/add/')
+        assert response.status_code == 404
+
+        response = self.client.get('/add/', { 'epub':'http://idontexist-asdasdsad.com/'})
+        assert response.status_code != 404
+        assert 'The address you provided does not ' in response.content
+
+        response = self.client.get('/add/', { 'epub':'http://example.com/test.epub'})
+        assert response.status_code != 404
+        assert 'The address you provided does not ' in response.content
+
+        response = self.client.get('/add/', { 'epub':'http://www.threepress.org/static/epub/Sense-and-Sensibility_Jane-Austen.epub'})
+        assert response.status_code != 404
+        self.assertRedirects(response, '/library/')
+        response = self.client.get('/library/')
+        assert 'Sensibility' in response.content
+
+    def test_feedbooks(self):
+        '''Test that we get a list of feedbooks books from the main page'''
+        self._login()
+        response = self.client.get('/library/')
+        assert 'feedbooks.com/book' in response.content
 
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))

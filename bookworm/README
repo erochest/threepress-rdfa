@@ -21,12 +21,13 @@ Via easy_install:
 
 Running `setup.py install` will install these packages for you.
 
-Via subversion:
+svn externals will install three packages for you:
 
-  * django_evolution 
-  * svn checkout http://django-evolution.googlecode.com/svn/trunk/ django-evolution
-  * cd django-evolution
-  * sudo python setup.py install
+  * django_evolution
+  * minidetector
+  * gdata
+
+You will want to run `python setup.py install` on gdata.
 
 Patching Django
 ===============
@@ -84,6 +85,9 @@ Testing
 
 To test the models and views:
 `python manage.py test library`
+
+To test the mobile version:
+`python manage.py test mobile --settings=test_settings_mobile`
 
 Development
 ===========

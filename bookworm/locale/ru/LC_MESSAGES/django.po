@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-16 10:05-0400\n"
+"POT-Creation-Date: 2009-07-26 12:58-0400\n"
 "PO-Revision-Date: 2009-04-26 20:20-0500\n"
 "Last-Translator: Alex Sergeyev <abc@alexsergeyev.com>\n"
 "Language-Team: Russian <abc@alexsergeyev.com>\n"
@@ -18,27 +18,27 @@ msgstr ""
 "X-Poedit-Language: Russian\n"
 "X-Language: ru\n"
 
-#: local.py:17 settings.py:100
+#: local.py:19 settings.py:101
 msgid "German"
 msgstr ""
 
-#: local.py:18 settings.py:101
+#: local.py:20 settings.py:102
 msgid "English"
 msgstr ""
 
-#: local.py:19 settings.py:102
+#: local.py:21 settings.py:103
 msgid "Danish"
 msgstr ""
 
-#: local.py:20 settings.py:103
+#: local.py:22 settings.py:104
 msgid "Finnish"
 msgstr ""
 
-#: local.py:21
+#: local.py:23 settings.py:106
 msgid "Spanish"
 msgstr ""
 
-#: local.py:22
+#: local.py:24 settings.py:105
 msgid "Italian"
 msgstr ""
 
@@ -50,28 +50,28 @@ msgstr ""
 msgid "signin/"
 msgstr ""
 
-#: django_authopenid/forms.py:68 django_authopenid/views.py:108
+#: django_authopenid/forms.py:70 django_authopenid/views.py:108
 msgid "i-names are not supported"
 msgstr ""
 
-#: django_authopenid/forms.py:76 django_authopenid/forms.py:137
+#: django_authopenid/forms.py:78 django_authopenid/forms.py:141
 #, python-format
 msgid "next url \"%s\" is invalid"
 msgstr "адрес \"%s\" не найден"
 
-#: django_authopenid/forms.py:104 django_authopenid/forms.py:160
-#: django_authopenid/forms.py:201
+#: django_authopenid/forms.py:108 django_authopenid/forms.py:164
+#: django_authopenid/forms.py:205
 msgid ""
 "Usernames can only contain                     letters, numbers and "
 "underscores"
 msgstr ""
 "Имя пользователя может состоять только из букв, цифр и символов подчёркивания"
 
-#: django_authopenid/forms.py:111
+#: django_authopenid/forms.py:115
 msgid "There is no account with this username."
 msgstr "Нет такого пользователя."
 
-#: django_authopenid/forms.py:123 django_authopenid/forms.py:221
+#: django_authopenid/forms.py:127 django_authopenid/forms.py:225
 msgid ""
 "Please enter a correct                     username and password. Note that "
 "both fields are                     case-sensitive."
@@ -79,35 +79,35 @@ msgstr ""
 "Введите имя пользователя и пароль. Обратите внимание, что регистр символов "
 "имеет значение в обоих полях."
 
-#: django_authopenid/forms.py:127 django_authopenid/forms.py:225
+#: django_authopenid/forms.py:131 django_authopenid/forms.py:229
 msgid "This account is inactive."
 msgstr "Имя пользователя неактивно."
 
-#: django_authopenid/forms.py:168
+#: django_authopenid/forms.py:172
 msgid "This username is already                 taken. Please choose another."
 msgstr "Имя пользователя занято. Попробуйте придумать другое."
 
-#: django_authopenid/forms.py:178
+#: django_authopenid/forms.py:182
 msgid ""
 "This email is already                 registered in our database. Please "
 "choose another."
 msgstr "Пользователь с таким адресом уже зарегистрирован."
 
-#: django_authopenid/forms.py:208
+#: django_authopenid/forms.py:212
 msgid ""
 "This username doesn't exist.                         Please choose another."
 msgstr "Нет такого пользователя. Пожалуйста выберите другое."
 
-#: django_authopenid/forms.py:312
+#: django_authopenid/forms.py:316
 msgid ""
 "Old password is wrong.                     Please enter a valid password."
 msgstr "Неверный пароль. Пожалуйста введите текущий пароль."
 
-#: django_authopenid/forms.py:324
+#: django_authopenid/forms.py:328
 msgid "new passwords do not match each other"
 msgstr "Пароли не совпадают друг с другом"
 
-#: django_authopenid/forms.py:400
+#: django_authopenid/forms.py:404
 msgid "Incorrect username."
 msgstr "Неверное имя пользователя."
 
@@ -175,25 +175,25 @@ msgstr "Пользователь не зарегистрирован в сист
 msgid "Password changed for %s. You could now sign in"
 msgstr "Пароль пользователя '%s' изменён и может быть использован для входа "
 
-#: library/models.py:134
+#: library/models.py:129
 msgid "Untitled"
 msgstr "Неозаглавленное"
 
-#: library/models.py:697 library/models.py:699 library/models.py:702
+#: library/models.py:685 library/models.py:687 library/models.py:690
 msgid ""
 "There was a problem related to the encoding of one of the documents in your "
 "ePub. All ePub documents must be in UTF-8."
 msgstr ""
 
-#: library/models.py:1197
+#: library/models.py:1230
 msgid "book title"
 msgstr "названиям"
 
-#: library/models.py:1198
+#: library/models.py:1231
 msgid "first author"
 msgstr "авторам"
 
-#: library/models.py:1199
+#: library/models.py:1232
 msgid "date added to your library"
 msgstr "дате добавления в вашу библиотеку"
 
@@ -239,7 +239,7 @@ msgstr "Ваш профиль был обновлён."
 msgid "There was a problem with your request to delete this profile."
 msgstr "Во время удаления возникла ошибка."
 
-#: library/views.py:466
+#: library/views.py:479
 msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
@@ -247,7 +247,7 @@ msgstr ""
 "Загруженный файл не является ePub книгой и не может быть добавлен в "
 "библиотеку."
 
-#: library/views.py:473
+#: library/views.py:487
 msgid ""
 "We detected a problem with your ebook that is most likely related to it "
 "being too big to display safely in a web browser. This can happen with very "
@@ -262,7 +262,7 @@ msgstr ""
 "сообщить ему о том, чтоб очень большие страницы или изображения в данной "
 "книге делают невозможным её показ в Bookworm."
 
-#: library/views.py:499
+#: library/views.py:492
 msgid ""
 "It appears that you've uploaded a book which contains DRM (Digital Rights "
 "Management).  This is a restriction that is meant to prevent illegal copying "
@@ -278,7 +278,7 @@ msgstr ""
 "Вы так же можете связаться с издателем книги и спросить о его планах выпуска "
 "свободных от DRM книг."
 
-#: library/views.py:533
+#: library/views.py:510
 msgid ""
 "The file you uploaded looks like an ePub archive, but it has some problems "
 "that prevented it from being loaded.  This may be a bug in Bookworm, or it "
@@ -286,17 +286,25 @@ msgid ""
 "message is:"
 msgstr ""
 
-#: library/views.py:537
-msgid ""
-"<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
-"error)</p>"
+#: library/views.py:511
+#, python-format
+msgid "<p class='upload-errors'>%s</p>"
 msgstr ""
 
-#: library/views.py:543
+#: library/views.py:513
+msgid ""
+"<p>(epubcheck thinks this file is valid, so this may be a Bookworm error)</p>"
+msgstr ""
+
+#: library/views.py:515
 msgid ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that "
 "this is not a valid ePub file, so you should check with the publisher or "
 "content creator. It returned:"
+msgstr ""
+
+#: library/views.py:536
+msgid "The address you provided does not point to an ePub book"
 msgstr ""
 
 #: library/templates/about.html:3 library/templates/about.html.py:5
@@ -693,7 +701,7 @@ msgstr "Тестировать свои ePub книги с Bookworm"
 msgid "For publishers"
 msgstr "Для издателей"
 
-#: library/templates/ebooktesting.html:20
+#: library/templates/ebooktesting.html:19
 msgid ""
 "\n"
 "    Bookworm isn't just for readers.  Publishers can use it to test their "
@@ -704,23 +712,23 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/ebooktesting.html:27
+#: library/templates/ebooktesting.html:26
 msgid "Validate <!-- trans: the ePub against the spec -->"
 msgstr "Проверка формата"
 
-#: library/templates/ebooktesting.html:29
+#: library/templates/ebooktesting.html:28
 msgid "Checklist <!-- trans: of things to check when producing an ePub -->"
 msgstr "Что проверяем и почему"
 
-#: library/templates/ebooktesting.html:31
+#: library/templates/ebooktesting.html:30
 msgid "Security"
 msgstr "Безопасность"
 
-#: library/templates/ebooktesting.html:34
+#: library/templates/ebooktesting.html:33
 msgid "Be sure that your ePubs are correct"
 msgstr "Убедитесь что ваши ePub файлы верны"
 
-#: library/templates/ebooktesting.html:36
+#: library/templates/ebooktesting.html:35
 msgid ""
 "\n"
 "    <strong>Verify that your ePub is valid</strong>. Many tools creating "
@@ -733,11 +741,11 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/ebooktesting.html:44
+#: library/templates/ebooktesting.html:43
 msgid "Validating with EpubCheck <!-- trans: do not translate epubcheck -->"
 msgstr "Проверено EpubCheck"
 
-#: library/templates/ebooktesting.html:46
+#: library/templates/ebooktesting.html:45
 msgid ""
 "\n"
 "    While developers can download and install their own copy of Adobe's <a "
@@ -748,7 +756,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/ebooktesting.html:53
+#: library/templates/ebooktesting.html:52
 msgid ""
 "\n"
 "    Although Bookworm will accept many kinds of ePubs which are not "
@@ -760,11 +768,11 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/ebooktesting.html:59
+#: library/templates/ebooktesting.html:58
 msgid "How to test ePubs with Bookworm"
 msgstr "Как проверить ePub файлы через Bookworm"
 
-#: library/templates/ebooktesting.html:63
+#: library/templates/ebooktesting.html:62
 #, python-format
 msgid ""
 "\n"
@@ -774,7 +782,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/ebooktesting.html:70
+#: library/templates/ebooktesting.html:69
 msgid ""
 "\n"
 "  \n"
@@ -783,11 +791,11 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/ebooktesting.html:78
+#: library/templates/ebooktesting.html:77
 msgid "Testing checklist"
 msgstr "Что проверяем и почему"
 
-#: library/templates/ebooktesting.html:80
+#: library/templates/ebooktesting.html:79
 msgid ""
 "\n"
 "    <strong>Is the metadata correct?</strong> You can view a book's\n"
@@ -796,7 +804,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/ebooktesting.html:87
+#: library/templates/ebooktesting.html:86
 msgid ""
 "\n"
 "      <strong>Is the copyright information in the metadata present and \n"
@@ -808,7 +816,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: library/templates/ebooktesting.html:95
+#: library/templates/ebooktesting.html:94
 msgid ""
 "\n"
 "      <strong>Is the table of contents correct and in the right order?</"
@@ -818,7 +826,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: library/templates/ebooktesting.html:102
+#: library/templates/ebooktesting.html:101
 msgid ""
 "\n"
 "      <strong>Are all images appearing?</strong> \n"
@@ -831,7 +839,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: library/templates/ebooktesting.html:112
+#: library/templates/ebooktesting.html:111
 msgid ""
 "\n"
 "      <strong>Are all special or foreign characters displaying correctly?</"
@@ -839,15 +847,15 @@ msgid ""
 "      ePub books complying with the specification must be encoded with\n"
 "      either UTF-8 or UTF-16, but Bookworm supports only UTF-8.  "
 "(Bidirectional text is supported\n"
-"      but you will need to include that directive in the CSS.)\n"
+"           but you will need to include that directive in the CSS.)\n"
 "      "
 msgstr ""
 
-#: library/templates/ebooktesting.html:122
+#: library/templates/ebooktesting.html:121
 msgid "Are ePub files on Bookworm secure?"
 msgstr "Безопасно ли хранить ePub файлы на сервере Bookworm?"
 
-#: library/templates/ebooktesting.html:124
+#: library/templates/ebooktesting.html:123
 msgid ""
 "\n"
 "    Although Bookworm is designed to prevent file sharing and\n"
@@ -857,13 +865,14 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/ebooktesting.html:132
+#: library/templates/ebooktesting.html:131
+#, python-format
 msgid ""
 "\n"
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
 "    material. Contact <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
+"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    for more details.\n"
 "    "
 msgstr ""
@@ -1528,21 +1537,21 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/index.html:6
+#: library/templates/index.html:7
 msgid "My epub library"
 msgstr "Моя ePub библиотека"
 
-#: library/templates/index.html:14 library/templates/shell.html:43
+#: library/templates/index.html:15 library/templates/shell.html:43
 #: library/templates/shell.html.py:58 library/templates/upload.html:4
 #: library/templates/upload.html.py:5
 msgid "Add a book"
 msgstr "Добавить"
 
-#: library/templates/index.html:18
+#: library/templates/index.html:19
 msgid "Status"
 msgstr "Прямо сейчас"
 
-#: library/templates/index.html:20
+#: library/templates/index.html:21
 #, python-format
 msgid "There is one reader "
 msgid_plural "There are more than %(counter)s readers"
@@ -1550,7 +1559,7 @@ msgstr[0] "Читателей: 1; "
 msgstr[1] "Читателей: %(counter)s; "
 msgstr[2] ""
 
-#: library/templates/index.html:22
+#: library/templates/index.html:23
 #, python-format
 msgid " and only one individual book."
 msgid_plural " and over %(counter)s individual books."
@@ -1558,15 +1567,15 @@ msgstr[0] "книг: 1"
 msgstr[1] "книг: %(counter)s"
 msgstr[2] ""
 
-#: library/templates/index.html:28
+#: library/templates/index.html:29
 msgid "Edit your profile"
 msgstr "Настройка"
 
-#: library/templates/index.html:42
+#: library/templates/index.html:43
 msgid "Books in your library"
 msgstr "Книги в вашей библиотеке"
 
-#: library/templates/index.html:46
+#: library/templates/index.html:47
 #, python-format
 msgid ""
 "\n"
@@ -1579,7 +1588,7 @@ msgstr ""
 "s</em> порядке %(order_adverb)s.\n"
 "    "
 
-#: library/templates/index.html:56
+#: library/templates/index.html:57
 msgid ""
 "You can re-order your books by clicking on  &quot;title&quot;, &quot;"
 "author&quot; or &quot;date added&quot;."
@@ -1587,11 +1596,11 @@ msgstr ""
 "Вы можете сортировать список щёлкая на заголовках колонок (&quot;"
 "название&quot;, &quot;автор&quot; или &quot;дата добавления&quot;)."
 
-#: library/templates/index.html:57
+#: library/templates/index.html:58
 msgid "Clicking on the same label twice will reverse the order."
 msgstr "Повторный выбор текущей колонки вызовет сортировку в обратном порядке."
 
-#: library/templates/index.html:62
+#: library/templates/index.html:63
 #, python-format
 msgid ""
 "\n"
@@ -1600,7 +1609,7 @@ msgid ""
 "  "
 msgstr ""
 
-#: library/templates/index.html:69
+#: library/templates/index.html:70
 #, python-format
 msgid ""
 "\n"
@@ -1610,12 +1619,12 @@ msgid ""
 "  "
 msgstr ""
 
-#: library/templates/index.html:80 library/templates/shell.html:6
+#: library/templates/index.html:81 library/templates/shell.html:6
 #: library/templates/shell.html.py:36
 msgid "Bookworm"
 msgstr ""
 
-#: library/templates/index.html:82
+#: library/templates/index.html:83
 #, fuzzy, python-format
 msgid ""
 "A free platform for reading ePub books online. <a href='%(abouturl)s'>Learn "
@@ -1624,38 +1633,44 @@ msgstr ""
 "Свободная платформа для чтения ePub книг.<a href='{{ abouturl }}'>Подробнее "
 "о Bookworm</a>"
 
-#: library/templates/index.html:86
-msgid "To add a new book, log in using your computer."
+#: library/templates/index.html:87
+msgid ""
+"To add a new book, log in using your computer, or add any of these popular "
+"public domain texts from\n"
+"    <a href=\"http://feedbooks.com/\">Feedbooks</a>:"
 msgstr ""
 
-#: library/templates/index.html:91
+#: library/templates/index.html:88
+msgid "Show"
+msgstr ""
+
+#: library/templates/index.html:97
 msgid "Add a new ePub ebook:"
 msgstr "Доабавить новую ePub книгу:"
 
-#: library/templates/index.html:93
+#: library/templates/index.html:99
 msgid "Add your first ePub ebook:"
 msgstr "Добавьте свою первую ePub книгу: "
 
-#: library/templates/index.html:96
+#: library/templates/index.html:108
+msgid "upload"
+msgstr "закачать на сервер"
+
+#: library/templates/index.html:113
 msgid ""
-"\n"
-"    If you don't have any ePubs yet, you can start with <a href=\"http://www."
-"threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen.epub\">Pride and "
-"Prejudice</a> by Jane Austen,\n"
-"    or the <a href=\"http://oreilly.com/ebooks/\">technical ePubs available "
-"from O'Reilly</a>.\n"
-"  "
+"You can also add any of these popular public domain texts from\n"
+"    <a href=\"http://feedbooks.com/\">Feedbooks</a>:"
 msgstr ""
 
-#: library/templates/index.html:104
+#: library/templates/index.html:114
+msgid "Show "
+msgstr ""
+
+#: library/templates/index.html:120
 msgid ""
 "Once you've gotten one of these books on your computer, you can upload them "
 "to your new Bookworm account."
 msgstr ""
-
-#: library/templates/index.html:111
-msgid "upload"
-msgstr "закачать на сервер"
 
 #: library/templates/last-read.html:3
 msgid "last read"
@@ -2128,11 +2143,11 @@ msgstr "Помощь"
 msgid "add"
 msgstr "добавить"
 
-#: library/templates/shell.html:60 library/templates/mobile/base.html:22
+#: library/templates/shell.html:60 mobile/templates/base.html:22
 msgid "help"
 msgstr "помощь"
 
-#: library/templates/shell.html:67 library/templates/mobile/base.html:39
+#: library/templates/shell.html:67 mobile/templates/base.html:39
 msgid "Library"
 msgstr "Моя Библиотека"
 
@@ -2148,7 +2163,7 @@ msgstr "настройка"
 msgid "admin"
 msgstr "администрирование"
 
-#: library/templates/shell.html:82 library/templates/mobile/base.html:35
+#: library/templates/shell.html:82 mobile/templates/base.html:35
 msgid "logout"
 msgstr "выход"
 
@@ -3140,6 +3155,10 @@ msgstr "Дата добавления"
 msgid "Read in Stanza"
 msgstr "Читать в Stanza"
 
+#: library/templates/includes/feedbooks.html:10
+msgid "Find more public domain books at Feedbooks"
+msgstr ""
+
 #: library/templates/includes/leftnav.html:8
 msgid "Read current page"
 msgstr "Перейти на текущую страницу"
@@ -3264,15 +3283,15 @@ msgstr "Скачать книгу"
 msgid "Change reading modes"
 msgstr "Переключить режим чтения"
 
-#: library/templates/mobile/base.html:20
+#: mobile/templates/base.html:20
 msgid "mobile ebooks"
 msgstr ""
 
-#: library/templates/mobile/base.html:21
+#: mobile/templates/base.html:21
 msgid "about"
 msgstr "---about---"
 
-#: library/templates/mobile/base.html:24
+#: mobile/templates/base.html:24
 msgid "my books"
 msgstr "мои книги"
 

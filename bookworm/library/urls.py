@@ -51,6 +51,8 @@ urlpatterns = patterns('bookworm.library.views',
                        url(r'^account/profile/change-font-size/(?P<size>.+)/$', 'profile_change_font_size', name='profile_change_font_size'),
                        url(r'^account/profile/change-font-family/(?P<font>.+)/$', 'profile_change_font_family', name='profile_change_font_family'),
 
+                       # Add-by-URL
+                       url('^add/', 'add_by_url', name='add')
 
 )
 

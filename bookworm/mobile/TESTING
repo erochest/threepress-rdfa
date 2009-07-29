@@ -1,0 +1,3 @@
+To run mobile tests, from the project root run:
+
+$ python manage.py test mobile --settings=test_settings_mobile

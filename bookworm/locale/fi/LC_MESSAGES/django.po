@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-09 20:23-0400\n"
+"POT-Creation-Date: 2009-07-26 12:57-0400\n"
 "PO-Revision-Date: 2009-06-03 14:33-0400\n"
 "Last-Translator: JUSSI TRÄSKILÄ <jussi.traskila@gmail.com>\n"
 "Language-Team: FINNISH <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: local.py:17 settings.py:100
+#: local.py:19 settings.py:101
 msgid "German"
 msgstr "Saksa"
 
-#: local.py:18 settings.py:101
+#: local.py:20 settings.py:102
 msgid "English"
 msgstr "Englanti"
 
-#: local.py:19 settings.py:102
+#: local.py:21 settings.py:103
 msgid "Danish"
 msgstr "Tanska"
 
-#: local.py:20 settings.py:103
+#: local.py:22 settings.py:104
 msgid "Finnish"
 msgstr "Suomi"
 
-#: local.py:21
+#: local.py:23 settings.py:106
 msgid "Spanish"
 msgstr ""
 
-#: local.py:22
+#: local.py:24 settings.py:105
 msgid "Italian"
 msgstr ""
 
@@ -46,17 +46,17 @@ msgstr "tili/"
 msgid "signin/"
 msgstr "kirjaudu/"
 
-#: django_authopenid/forms.py:68 django_authopenid/views.py:108
+#: django_authopenid/forms.py:70 django_authopenid/views.py:108
 msgid "i-names are not supported"
 msgstr "i-nimet eivät ole tuettuja"
 
-#: django_authopenid/forms.py:76 django_authopenid/forms.py:137
+#: django_authopenid/forms.py:78 django_authopenid/forms.py:141
 #, python-format
 msgid "next url \"%s\" is invalid"
 msgstr "seuraava url \"%s\" on väärä"
 
-#: django_authopenid/forms.py:104 django_authopenid/forms.py:160
-#: django_authopenid/forms.py:201
+#: django_authopenid/forms.py:108 django_authopenid/forms.py:164
+#: django_authopenid/forms.py:205
 msgid ""
 "Usernames can only contain                     letters, numbers and "
 "underscores"
@@ -64,11 +64,11 @@ msgstr ""
 "Käyttäjänimessä voi olla vain                      kirjaimia, numeroita ja "
 "alleviivausmerkkejä."
 
-#: django_authopenid/forms.py:111
+#: django_authopenid/forms.py:115
 msgid "There is no account with this username."
 msgstr "Käyttäjänimellä ei ole tiliä."
 
-#: django_authopenid/forms.py:123 django_authopenid/forms.py:221
+#: django_authopenid/forms.py:127 django_authopenid/forms.py:225
 msgid ""
 "Please enter a correct                     username and password. Note that "
 "both fields are                     case-sensitive."
@@ -76,36 +76,36 @@ msgstr ""
 "Kirjoita oikea                     käyttäjänimi ja tunnussana. Huomaa että "
 "isot ja pienet                     kirjaimet merkitsevät eri asioita."
 
-#: django_authopenid/forms.py:127 django_authopenid/forms.py:225
+#: django_authopenid/forms.py:131 django_authopenid/forms.py:229
 msgid "This account is inactive."
 msgstr "Tämä tili ei ole käytössä."
 
-#: django_authopenid/forms.py:168
+#: django_authopenid/forms.py:172
 msgid "This username is already                 taken. Please choose another."
 msgstr "Käyttäjänimi                 on varattu. Ole hyvä ja tee uusi."
 
-#: django_authopenid/forms.py:178
+#: django_authopenid/forms.py:182
 msgid ""
 "This email is already                 registered in our database. Please "
 "choose another."
 msgstr ""
 "Tällä sähköpostiosoitteella                on jo käyttäjä. Ole hyvä tee uusi."
 
-#: django_authopenid/forms.py:208
+#: django_authopenid/forms.py:212
 msgid ""
 "This username doesn't exist.                         Please choose another."
 msgstr "Tätä käyttäjänimeä                         ei ole. Kirjaudu uudestaan."
 
-#: django_authopenid/forms.py:312
+#: django_authopenid/forms.py:316
 msgid ""
 "Old password is wrong.                     Please enter a valid password."
 msgstr "Kirjoitit väärin vanhan salasanan.                    Yritä uudestaan."
 
-#: django_authopenid/forms.py:324
+#: django_authopenid/forms.py:328
 msgid "new passwords do not match each other"
 msgstr "uudet salasanat eivät vastaa toisiaan"
 
-#: django_authopenid/forms.py:400
+#: django_authopenid/forms.py:404
 msgid "Incorrect username."
 msgstr "Käyttäjänimessä on virhe."
 
@@ -174,25 +174,25 @@ msgstr "Salasanaa ei voi vaihtaa, koska käyttäjänimeä ei ole tietokannassamm
 msgid "Password changed for %s. You could now sign in"
 msgstr "Tilin %s salasana on vaihdettu. Nyt voit kirjautua tilillesi."
 
-#: library/models.py:134
+#: library/models.py:129
 msgid "Untitled"
 msgstr "Nimetön"
 
-#: library/models.py:697 library/models.py:699 library/models.py:702
+#: library/models.py:685 library/models.py:687 library/models.py:690
 msgid ""
 "There was a problem related to the encoding of one of the documents in your "
 "ePub. All ePub documents must be in UTF-8."
 msgstr ""
 
-#: library/models.py:1197
+#: library/models.py:1230
 msgid "book title"
 msgstr "kirjan nimi"
 
-#: library/models.py:1198
+#: library/models.py:1231
 msgid "first author"
 msgstr "alkuperäinen kirjoittaja"
 
-#: library/models.py:1199
+#: library/models.py:1232
 msgid "date added to your library"
 msgstr "lisätty kokoelmaasi"
 
@@ -239,7 +239,7 @@ msgstr "Käyttäjätietosi päivitettiin."
 msgid "There was a problem with your request to delete this profile."
 msgstr "Käyttäjätietojen poistaminen ei onnistunut."
 
-#: library/views.py:466
+#: library/views.py:479
 msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
@@ -247,7 +247,7 @@ msgstr ""
 "Palveluun siirrettyä julkaisua ei tunnistettu epub -tiedostoksi ja sitä ei "
 "voitu lisätä kokoelmaasi."
 
-#: library/views.py:473
+#: library/views.py:487
 msgid ""
 "We detected a problem with your ebook that is most likely related to it "
 "being too big to display safely in a web browser. This can happen with very "
@@ -263,7 +263,7 @@ msgstr ""
 "paljon vieritystä ja latautuvat hitaasti, joten Bookworm joutuu kieltämään "
 "vastaavat tiedostot."
 
-#: library/views.py:499
+#: library/views.py:492
 msgid ""
 "It appears that you've uploaded a book which contains DRM (Digital Rights "
 "Management).  This is a restriction that is meant to prevent illegal copying "
@@ -279,7 +279,7 @@ msgstr ""
 "lukuohjelmaaa. Kannattaa myös ottaa yhteys julkaisijaan ja pyytä heiltä DRM -"
 "vapaita tiedostoja."
 
-#: library/views.py:533
+#: library/views.py:510
 msgid ""
 "The file you uploaded looks like an ePub archive, but it has some problems "
 "that prevented it from being loaded.  This may be a bug in Bookworm, or it "
@@ -290,15 +290,20 @@ msgstr ""
 "joiden vuoksi siirto ei onnistunut. Vika voi olla Bookworm -palvelussa tai "
 "tiedostoa ei ole luotu oikein. Koko virheilmoitus:"
 
-#: library/views.py:537
+#: library/views.py:511
+#, python-format
+msgid "<p class='upload-errors'>%s</p>"
+msgstr ""
+
+#: library/views.py:513
+#, fuzzy
 msgid ""
-"<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
-"error)</p>"
+"<p>(epubcheck thinks this file is valid, so this may be a Bookworm error)</p>"
 msgstr ""
 "<p>(epubcheck pitää tiedostoa validina, joten virhe on todennäköisesti "
 "Bookworm -palvelussa)</p>"
 
-#: library/views.py:543
+#: library/views.py:515
 msgid ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that "
 "this is not a valid ePub file, so you should check with the publisher or "
@@ -307,6 +312,10 @@ msgstr ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> ei ilmoita "
 "tiedostoa validiksi epub -julkaisuksi, joten tarkista julkaisijalta tai "
 "sisällön tuottajalta. Virheilmoitus oli:  "
+
+#: library/views.py:536
+msgid "The address you provided does not point to an ePub book"
+msgstr ""
 
 #: library/templates/about.html:3 library/templates/about.html.py:5
 #: library/templates/includes/about.html:5
@@ -797,7 +806,7 @@ msgstr "Kokeile kirjaasi palvelussa"
 msgid "For publishers"
 msgstr "Julkaisijoille"
 
-#: library/templates/ebooktesting.html:20
+#: library/templates/ebooktesting.html:19
 msgid ""
 "\n"
 "    Bookworm isn't just for readers.  Publishers can use it to test their "
@@ -815,23 +824,23 @@ msgstr ""
 "    CSS -tyylisivujen ja SVG -grafiikan toimivuutta.    \n"
 "    "
 
-#: library/templates/ebooktesting.html:27
+#: library/templates/ebooktesting.html:26
 msgid "Validate <!-- trans: the ePub against the spec -->"
 msgstr "Validoi <!--  onko Epub tiedosto oikein muotoiltu -->"
 
-#: library/templates/ebooktesting.html:29
+#: library/templates/ebooktesting.html:28
 msgid "Checklist <!-- trans: of things to check when producing an ePub -->"
 msgstr "Tarkistuslista <!-- muista seuraavat kun luot tiedoston -->"
 
-#: library/templates/ebooktesting.html:31
+#: library/templates/ebooktesting.html:30
 msgid "Security"
 msgstr "Tietoturva"
 
-#: library/templates/ebooktesting.html:34
+#: library/templates/ebooktesting.html:33
 msgid "Be sure that your ePubs are correct"
 msgstr "Varmistu että epub -tiedostot ovat oikein muotoiltuja"
 
-#: library/templates/ebooktesting.html:36
+#: library/templates/ebooktesting.html:35
 msgid ""
 "\n"
 "    <strong>Verify that your ePub is valid</strong>. Many tools creating "
@@ -852,11 +861,11 @@ msgstr ""
 "    että se on oikein muotoiltu ja että muut sovellukset lukevat kirjan.\n"
 "    "
 
-#: library/templates/ebooktesting.html:44
+#: library/templates/ebooktesting.html:43
 msgid "Validating with EpubCheck <!-- trans: do not translate epubcheck -->"
 msgstr "EpubCheck tarkistaa muotoilun"
 
-#: library/templates/ebooktesting.html:46
+#: library/templates/ebooktesting.html:45
 msgid ""
 "\n"
 "    While developers can download and install their own copy of Adobe's <a "
@@ -874,7 +883,7 @@ msgstr ""
 "    Ohjelma on sama, mutta julkaisun siirtäminen on helpompaa sivustolla.\n"
 "    "
 
-#: library/templates/ebooktesting.html:53
+#: library/templates/ebooktesting.html:52
 msgid ""
 "\n"
 "    Although Bookworm will accept many kinds of ePubs which are not "
@@ -893,11 +902,11 @@ msgstr ""
 "    todennäköisemmin myös tulevissa lukijasovelluksissa.\n"
 "    "
 
-#: library/templates/ebooktesting.html:59
+#: library/templates/ebooktesting.html:58
 msgid "How to test ePubs with Bookworm"
 msgstr "Näin testaat ePub -kirjan Bookworm -sivulla"
 
-#: library/templates/ebooktesting.html:63
+#: library/templates/ebooktesting.html:62
 #, python-format
 msgid ""
 "\n"
@@ -912,7 +921,7 @@ msgstr ""
 "    <a href=\"%(signupurl)s\">tee käyttäjätili</a> ja \n"
 "    <a href=\"%(toururl)s#step1\">siirrä kirja palveluun</a>."
 
-#: library/templates/ebooktesting.html:70
+#: library/templates/ebooktesting.html:69
 msgid ""
 "\n"
 "  \n"
@@ -927,11 +936,11 @@ msgstr ""
 "    Tässä vielä muutama vinkki:\n"
 "    "
 
-#: library/templates/ebooktesting.html:78
+#: library/templates/ebooktesting.html:77
 msgid "Testing checklist"
 msgstr "Tarkistuslista muotoilulle:"
 
-#: library/templates/ebooktesting.html:80
+#: library/templates/ebooktesting.html:79
 msgid ""
 "\n"
 "    <strong>Is the metadata correct?</strong> You can view a book's\n"
@@ -945,7 +954,7 @@ msgstr ""
 "    sisälllysluettelossa \n"
 "    "
 
-#: library/templates/ebooktesting.html:87
+#: library/templates/ebooktesting.html:86
 msgid ""
 "\n"
 "      <strong>Is the copyright information in the metadata present and \n"
@@ -966,7 +975,7 @@ msgstr ""
 "       lisenssi on voimassa, esim. Creative Commons? \n"
 "       "
 
-#: library/templates/ebooktesting.html:95
+#: library/templates/ebooktesting.html:94
 msgid ""
 "\n"
 "      <strong>Is the table of contents correct and in the right order?</"
@@ -982,7 +991,7 @@ msgstr ""
 "      ja esittää osat sisällysluettelon järjestyksessä. \n"
 "      "
 
-#: library/templates/ebooktesting.html:102
+#: library/templates/ebooktesting.html:101
 msgid ""
 "\n"
 "      <strong>Are all images appearing?</strong> \n"
@@ -1003,7 +1012,8 @@ msgstr ""
 "esittää \n"
 " - kuten ePub -suosituskin vaatii. "
 
-#: library/templates/ebooktesting.html:112
+#: library/templates/ebooktesting.html:111
+#, fuzzy
 msgid ""
 "\n"
 "      <strong>Are all special or foreign characters displaying correctly?</"
@@ -1011,7 +1021,7 @@ msgid ""
 "      ePub books complying with the specification must be encoded with\n"
 "      either UTF-8 or UTF-16, but Bookworm supports only UTF-8.  "
 "(Bidirectional text is supported\n"
-"      but you will need to include that directive in the CSS.)\n"
+"           but you will need to include that directive in the CSS.)\n"
 "      "
 msgstr ""
 "\n"
@@ -1022,11 +1032,11 @@ msgstr ""
 "tuettu \n"
 "kun sen toteuttamiseksi komento on CSS -tiedostossa)."
 
-#: library/templates/ebooktesting.html:122
+#: library/templates/ebooktesting.html:121
 msgid "Are ePub files on Bookworm secure?"
 msgstr "Ovatko ePUb -kirjat turvassa Bookwormin sivuilla?"
 
-#: library/templates/ebooktesting.html:124
+#: library/templates/ebooktesting.html:123
 msgid ""
 "\n"
 "    Although Bookworm is designed to prevent file sharing and\n"
@@ -1042,14 +1052,14 @@ msgstr ""
 "Bookworm -palvelu ei ota vastuuta sovelluksen virheistä, joiden \n"
 "seurauksena suojattu teos päätyy kaikkien nähtäväksi."
 
-#: library/templates/ebooktesting.html:132
-#, fuzzy
+#: library/templates/ebooktesting.html:131
+#, fuzzy, python-format
 msgid ""
 "\n"
 "    However, Threepress can arrange for a private version of Bookworm\n"
 "    to be set up for large-scale testing or especially-sensitive\n"
 "    material. Contact <a\n"
-"    href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>\n"
+"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
 "    for more details.\n"
 "    "
 msgstr ""
@@ -1958,43 +1968,43 @@ msgstr ""
 "s</a> jos sinulla on jokin erityinen kysymys.</p>\n"
 "    "
 
-#: library/templates/index.html:6
+#: library/templates/index.html:7
 msgid "My epub library"
 msgstr "Oma epub -kokoelmani"
 
-#: library/templates/index.html:14 library/templates/shell.html:43
+#: library/templates/index.html:15 library/templates/shell.html:43
 #: library/templates/shell.html.py:58 library/templates/upload.html:4
 #: library/templates/upload.html.py:5
 msgid "Add a book"
 msgstr "Siirrä kirja"
 
-#: library/templates/index.html:18
+#: library/templates/index.html:19
 msgid "Status"
 msgstr "Status"
 
-#: library/templates/index.html:20
+#: library/templates/index.html:21
 #, python-format
 msgid "There is one reader "
 msgid_plural "There are more than %(counter)s readers"
 msgstr[0] "Palvelussa on yksi lukija"
 msgstr[1] "Palvelussa on yli %(counter)s lukijaa"
 
-#: library/templates/index.html:22
+#: library/templates/index.html:23
 #, python-format
 msgid " and only one individual book."
 msgid_plural " and over %(counter)s individual books."
 msgstr[0] "ja vain yksi kirja"
 msgstr[1] "ja yli %(counter)s yksittäistä nimikettä"
 
-#: library/templates/index.html:28
+#: library/templates/index.html:29
 msgid "Edit your profile"
 msgstr "Muuta tietojasi"
 
-#: library/templates/index.html:42
+#: library/templates/index.html:43
 msgid "Books in your library"
 msgstr "Kokoelmani"
 
-#: library/templates/index.html:46
+#: library/templates/index.html:47
 #, python-format
 msgid ""
 "\n"
@@ -2007,7 +2017,7 @@ msgstr ""
 "      Kokoelman järjestys: <em>%(order_text)s,</em> <em>%(order_direction)s:"
 "ssa</em> ja %(order_adverb)s ."
 
-#: library/templates/index.html:56
+#: library/templates/index.html:57
 msgid ""
 "You can re-order your books by clicking on  &quot;title&quot;, &quot;"
 "author&quot; or &quot;date added&quot;."
@@ -2015,11 +2025,11 @@ msgstr ""
 "Järjestä kokoelma uudelleen klikkaamalla &quot;otsikkoa&quot;,&quot;"
 "tekijää&quot; tai &quot;päivämäärää&quot;."
 
-#: library/templates/index.html:57
+#: library/templates/index.html:58
 msgid "Clicking on the same label twice will reverse the order."
 msgstr "Tuplaklikkaus otsikkoon muuttaa järjestyksen päinvastaiseksi"
 
-#: library/templates/index.html:62
+#: library/templates/index.html:63
 #, python-format
 msgid ""
 "\n"
@@ -2032,7 +2042,7 @@ msgstr ""
 "  Olet laittanut asetuksiin käskyn siirtyä aina viimeksi luettuun\n"
 "  lukuun; muuta asetus<a href=\"%(urlprofile)s\">tästä</a>)."
 
-#: library/templates/index.html:69
+#: library/templates/index.html:70
 #, python-format
 msgid ""
 "\n"
@@ -2046,12 +2056,12 @@ msgstr ""
 "  siirryt aina viimeksi luettuun lukuun, kun klikkaat kirjan nimeä.\n"
 "  "
 
-#: library/templates/index.html:80 library/templates/shell.html:6
+#: library/templates/index.html:81 library/templates/shell.html:6
 #: library/templates/shell.html.py:36
 msgid "Bookworm"
 msgstr "Bookworm"
 
-#: library/templates/index.html:82
+#: library/templates/index.html:83
 #, python-format
 msgid ""
 "A free platform for reading ePub books online. <a href='%(abouturl)s'>Learn "
@@ -2060,40 +2070,46 @@ msgstr ""
 "Avoin verkkopalvelu ePub -kirjojen lukemiseen verkossa.\n"
 " <a href='%(abouturl)s'>Lue lisää.</a>."
 
-#: library/templates/index.html:86
-msgid "To add a new book, log in using your computer."
-msgstr "Kirjaudu tietokoneeltasi ja voit siirtää kirjan."
+#: library/templates/index.html:87
+msgid ""
+"To add a new book, log in using your computer, or add any of these popular "
+"public domain texts from\n"
+"    <a href=\"http://feedbooks.com/\">Feedbooks</a>:"
+msgstr ""
 
-#: library/templates/index.html:91
+#: library/templates/index.html:88
+msgid "Show"
+msgstr ""
+
+#: library/templates/index.html:97
 msgid "Add a new ePub ebook:"
 msgstr "Siirrä uusi ePub -tiedosto"
 
-#: library/templates/index.html:93
+#: library/templates/index.html:99
 msgid "Add your first ePub ebook:"
 msgstr "Siirrä kokoelmaasi ensimmäinen ePub -kirja:"
 
-#: library/templates/index.html:96
+#: library/templates/index.html:108
+msgid "upload"
+msgstr "siirrä"
+
+#: library/templates/index.html:113
 msgid ""
-"\n"
-"    If you don't have any ePubs yet, you can start with <a href=\"http://www."
-"threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen.epub\">Pride and "
-"Prejudice</a> by Jane Austen,\n"
-"    or the <a href=\"http://oreilly.com/ebooks/\">technical ePubs available "
-"from O'Reilly</a>.\n"
-"  "
+"You can also add any of these popular public domain texts from\n"
+"    <a href=\"http://feedbooks.com/\">Feedbooks</a>:"
 msgstr ""
 
-#: library/templates/index.html:104
+#: library/templates/index.html:114
+msgid "Show "
+msgstr ""
+
+#: library/templates/index.html:120
 msgid ""
 "Once you've gotten one of these books on your computer, you can upload them "
 "to your new Bookworm account."
 msgstr ""
 "Kun olet siirtänyt yhden tällaisista kirjoista tietokoneellesi, voit siirtää "
 "sen uudelle Bookworm -käyttäjätilillesi."
-
-#: library/templates/index.html:111
-msgid "upload"
-msgstr "siirrä"
 
 #: library/templates/last-read.html:3
 msgid "last read"
@@ -2625,11 +2641,11 @@ msgstr "Ohjeita"
 msgid "add"
 msgstr "lisää"
 
-#: library/templates/shell.html:60 library/templates/mobile/base.html:22
+#: library/templates/shell.html:60 mobile/templates/base.html:22
 msgid "help"
 msgstr "ohjeita"
 
-#: library/templates/shell.html:67 library/templates/mobile/base.html:39
+#: library/templates/shell.html:67 mobile/templates/base.html:39
 msgid "Library"
 msgstr "Kokoelma"
 
@@ -2645,7 +2661,7 @@ msgstr "käyttäjätiedot"
 msgid "admin"
 msgstr "pääkäyttäjä"
 
-#: library/templates/shell.html:82 library/templates/mobile/base.html:35
+#: library/templates/shell.html:82 mobile/templates/base.html:35
 msgid "logout"
 msgstr "poistu"
 
@@ -3261,7 +3277,6 @@ msgstr "Käyttäjätiedot"
 
 #: library/templates/auth/profile.html:68
 #: library/templates/auth/authopenid/complete.html:47
-#: library/templates/auth/authopenid/confirm_email.txt:6
 #: library/templates/auth/authopenid/sendpw.html:27
 #: library/templates/auth/authopenid/signin.html:72
 #: library/templates/auth/authopenid/signup.html:67
@@ -3316,7 +3331,6 @@ msgstr "Sähköposti"
 
 #: library/templates/auth/authopenid/changeemail.html:34
 #: library/templates/auth/authopenid/complete.html:63
-#: library/templates/auth/authopenid/confirm_email.txt:7
 #: library/templates/auth/authopenid/delete.html:40
 #: library/templates/auth/authopenid/signin.html:74
 #: library/templates/auth/authopenid/signup.html:71
@@ -3408,19 +3422,6 @@ msgstr "Käyttäjänimi"
 msgid "Associate with my OpenID"
 msgstr "Liitä OpenID -tunnuksesi"
 
-#: library/templates/auth/authopenid/confirm_email.txt:2
-#, fuzzy
-msgid "Thank you for registering with Bookworm."
-msgstr "Kokeile kirjaasi palvelussa"
-
-#: library/templates/auth/authopenid/confirm_email.txt:4
-msgid "Your account details are"
-msgstr ""
-
-#: library/templates/auth/authopenid/confirm_email.txt:9
-msgid "You can now sign in"
-msgstr ""
-
 #: library/templates/auth/authopenid/delete.html:4
 msgid "Delete profile of"
 msgstr "Poista käyttäjätietoni"
@@ -3471,21 +3472,6 @@ msgstr ""
 #: library/templates/auth/authopenid/sendpw.html:28
 msgid "Reset password"
 msgstr "Uusi salasana"
-
-#: library/templates/auth/authopenid/sendpw_email.txt:2
-#, python-format
-msgid ""
-"Someone asked to reset your password on %(site_url)s. \n"
-"If it's not you, please ignore this email. \n"
-"\n"
-"Your new account details are:\n"
-"\n"
-"Username: %(username)s\n"
-"New password: %(password)s\n"
-"\n"
-"To confirm reset of your password go on this url:\n"
-"%(site_url)s%(url_confirm)s?key=%(confirm_key)s\n"
-msgstr ""
 
 #: library/templates/auth/authopenid/settings.html:22
 msgid "Settings"
@@ -3741,6 +3727,10 @@ msgstr "Lisättä pvä:nä"
 msgid "Read in Stanza"
 msgstr "Lue Stanzassa"
 
+#: library/templates/includes/feedbooks.html:10
+msgid "Find more public domain books at Feedbooks"
+msgstr ""
+
 #: library/templates/includes/leftnav.html:8
 msgid "Read current page"
 msgstr "Lue auki oleva sivu"
@@ -3884,15 +3874,15 @@ msgstr "Lataa tämä kirja"
 msgid "Change reading modes"
 msgstr "Vaihda lukutapaa"
 
-#: library/templates/mobile/base.html:20
+#: mobile/templates/base.html:20
 msgid "mobile ebooks"
 msgstr "mobiililaitteille"
 
-#: library/templates/mobile/base.html:21
+#: mobile/templates/base.html:21
 msgid "about"
 msgstr "tietoja"
 
-#: library/templates/mobile/base.html:24
+#: mobile/templates/base.html:24
 msgid "my books"
 msgstr "kirjani"
 
@@ -4176,6 +4166,13 @@ msgstr ""
 "  Tämä tarkoittaa, että juuri siirtämäsi kirja ei heti näy hakutuloksissa.\n"
 "  Vähän kärsivällisyyttä ja kirja ilmestyy pian tuloksiin.\n"
 "  "
+
+#~ msgid "To add a new book, log in using your computer."
+#~ msgstr "Kirjaudu tietokoneeltasi ja voit siirtää kirjan."
+
+#, fuzzy
+#~ msgid "Thank you for registering with Bookworm."
+#~ msgstr "Kokeile kirjaasi palvelussa"
 
 #~ msgid "Account: change email"
 #~ msgstr "Tili: vaihda sähköposti"

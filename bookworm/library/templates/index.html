@@ -2,6 +2,7 @@
 {% load humanize %}
 {% load cache %}
 {% load i18n %}
+{% load bookworm %}
 
 {% block title %}{% trans "My epub library" %}{% endblock title %}
 
@@ -83,27 +84,23 @@
 {% endif %}
 
 {% if mobile %}
-  <p>{% trans "To add a new book, log in using your computer." %}</p>
+  <p>{% blocktrans %}To add a new book, log in using your computer, or add any of these popular public domain texts from
+    <a href="http://feedbooks.com/">Feedbooks</a>:{% endblocktrans %} [<a href="#" id="bw-feedbooks-toggle"">{% trans "Show" %}</a>]
+    {% cache 5000 feedbooks request.LANGUAGE_CODE %}
+    {% feedbooks %}
+    {% endcache %}
+  </p>
 {% else %}
 
-  <h3 class="bw-upload-message">
 {% if documents.count %}
+  <h3 class="bw-upload-message">
   {% trans "Add a new ePub ebook:" %}
   {% else %}
   {% trans "Add your first ePub ebook:" %}
-  {% endif %}
-  {% if not documents.count %}
-  {% blocktrans %}
-    If you don't have any ePubs yet, you can start with <a href="http://www.threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen.epub">Pride and Prejudice</a> by Jane Austen,
-    or the <a href="http://oreilly.com/ebooks/">technical ePubs available from O'Reilly</a>.
-  {% endblocktrans %}
-  {% endif %}
   </h3>
-  {% if not documents.count %}
-   <p>
-     {% trans "Once you've gotten one of these books on your computer, you can upload them to your new Bookworm account." %}
-   </p>
-  {% endif %}
+{% endif %}
+
+
 
   <form action="{% url upload %}" method="post" enctype="multipart/form-data" name="upload">
     <div id="bw-upload_form">
@@ -111,6 +108,19 @@
       <input type="submit" value="{% trans "upload" %}" name="submit-upload"/>
     </div>
   </form>
+
+  <h3 class="bw-upload-message">
+  {% blocktrans %}You can also add any of these popular public domain texts from
+    <a href="http://feedbooks.com/">Feedbooks</a>:{% endblocktrans %} [<a href="#" id="bw-feedbooks-toggle"">{% trans "Show " %}</a>]</h3>
+    {% cache 5000 feedbooks request.LANGUAGE_CODE %}
+    {% feedbooks %}
+    {% endcache %}
+{% if not documents.count %}
+   <p>
+     {% trans "Once you've gotten one of these books on your computer, you can upload them to your new Bookworm account." %}
+   </p>
+{% endif %}
+
 {% endif %}
 </div>
 {% endblock %}

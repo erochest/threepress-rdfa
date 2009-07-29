@@ -1,7 +1,10 @@
 import logging
+import urllib2
 from datetime import datetime
-
+import gdata.client
 from django import template
+from django.conf import settings
+  
 log = logging.getLogger('library.templatetags')
 
 register = template.Library()
@@ -28,7 +31,7 @@ def show_reload(context, document, user):
                  'context': context }
     return {'document':None}
 
-@register.simple_tag
+@register.simple_tag 
 def date_metadata(document, field):
     '''Try some common date formats to get display in a Bookworm-style date,
     otherwise give up.'''
@@ -63,3 +66,30 @@ def extra_metadata(document, field):
     except:
         return ""
 
+@register.inclusion_tag('feedbooks.html', takes_context=True)
+def feedbooks(context):
+    # User's current lang
+    lang = context['LANGUAGE_CODE'] or 'en'
+
+    # Check with raw urllib2 if we'll get a response from this
+    try:
+        resp = urllib2.urlopen(settings.FEEDBOOKS_OPDS_FEED, None, 5)
+    except urllib2.URLError:
+        resp = None
+    if resp:
+        client = gdata.client.GDClient()
+        fb = client.get_feed(uri='%s?lang=%s' % (settings.FEEDBOOKS_OPDS_FEED, lang))
+        books = []
+        for f in fb.entry:
+            b = {}
+            b['title'] = f.title.text
+            b['author'] = f.author[0].name.text
+            for l in f.link:
+                if l.type == 'application/epub+zip':
+                    b['link'] = l.href
+            books.append(b)
+    else:
+        log.warn("Feedbooks timed out")
+        books = None
+    return { 'books': books }
+    

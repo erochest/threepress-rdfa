@@ -1,8 +1,8 @@
 {% load i18n %}
 {% if page.has_other_pages %}
   <tr>
-    <th colspan="1" style="text-align:left">&nbsp;{% if page.has_previous %}<a href="{% url library-paginate page.previous_page_number %}">← {% trans "previous" %} </a>{% endif %}</th>
+    <th colspan="1" style="text-align:left">&nbsp;{% if page.has_previous %}<a href="{% url library-reorder page.previous_page_number order dir %}">← {% trans "previous" %} </a>{% endif %}</th>
     <th colspan="2" style="text-align:center">{% blocktrans with page.number as page_number and documents.num_pages as num_pages %} Page {{ page_number }} of {{ num_pages }}{% endblocktrans %}</th>
-    <th colspan="1" style="text-align:right">&nbsp;{% if page.has_next %}<a href="{% url library-paginate page.next_page_number %}">{% trans "next" %} →</a>{% endif %}</th>
+    <th colspan="1" style="text-align:right">&nbsp;{% if page.has_next %}<a href="{% url library-reorder page.next_page_number order dir %}">{% trans "next" %} →</a>{% endif %}</th>
   </tr>
-{% endif %}
+{% endif %}  

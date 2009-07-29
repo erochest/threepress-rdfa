@@ -1,0 +1,4 @@
+[bookworm]
+ minidetector http://minidetector.googlecode.com/svn/trunk/minidetector
+ gdata http://gdata-python-client.googlecode.com/svn/trunk/
+ django_evolution http://django-evolution.googlecode.com/svn/trunk/django_evolution 
