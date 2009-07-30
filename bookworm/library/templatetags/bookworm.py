@@ -77,17 +77,25 @@ def feedbooks(context):
     except urllib2.URLError:
         resp = None
     if resp:
-        client = gdata.client.GDClient()
-        fb = client.get_feed(uri='%s?lang=%s' % (settings.FEEDBOOKS_OPDS_FEED, lang))
-        books = []
-        for f in fb.entry:
-            b = {}
-            b['title'] = f.title.text
-            b['author'] = f.author[0].name.text
-            for l in f.link:
-                if l.type == 'application/epub+zip':
-                    b['link'] = l.href
-            books.append(b)
+        try:
+            client = gdata.client.GDClient()
+            fb = client.get_feed(uri='%s?lang=%s' % (settings.FEEDBOOKS_OPDS_FEED, lang))
+            books = []
+            for f in fb.entry:
+                b = {}
+                if f.title:
+                    b['title'] = f.title.text
+                if f.author and len(f.author) > 0:
+                    b['author'] = f.author[0].name.text
+                for l in f.link:
+                    if l.type == 'application/epub+zip':
+                        b['link'] = l.href
+                if 'title' in b:
+                    books.append(b)
+        except Exception, e:
+            # feedbooks was being weird
+            log.error("Error from feedbooks: %s" % e)
+            books = None
     else:
         log.warn("Feedbooks timed out")
         books = None

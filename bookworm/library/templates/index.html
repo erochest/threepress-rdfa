@@ -86,7 +86,7 @@
 {% if mobile %}
   <p>{% blocktrans %}To add a new book, log in using your computer, or add any of these popular public domain texts from
     <a href="http://feedbooks.com/">Feedbooks</a>:{% endblocktrans %} [<a href="#" id="bw-feedbooks-toggle"">{% trans "Show" %}</a>]
-    {% cache 5000 feedbooks request.LANGUAGE_CODE %}
+    {% cache 5000 feedbooks3 request.LANGUAGE_CODE %}
     {% feedbooks %}
     {% endcache %}
   </p>
@@ -112,7 +112,7 @@
   <h3 class="bw-upload-message">
   {% blocktrans %}You can also add any of these popular public domain texts from
     <a href="http://feedbooks.com/">Feedbooks</a>:{% endblocktrans %} [<a href="#" id="bw-feedbooks-toggle"">{% trans "Show " %}</a>]</h3>
-    {% cache 5000 feedbooks request.LANGUAGE_CODE %}
+    {% cache 5000 feedbooks3 request.LANGUAGE_CODE %}
     {% feedbooks %}
     {% endcache %}
 {% if not documents.count %}
