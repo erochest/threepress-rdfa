@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-26 12:56-0400\n"
-"PO-Revision-Date: 2009-06-10 11:52+0100\n"
+"PO-Revision-Date: 2009-07-30 19:06+0200\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -305,10 +305,9 @@ msgstr ""
 #: library/views.py:511
 #, python-format
 msgid "<p class='upload-errors'>%s</p>"
-msgstr ""
+msgstr "<p class='upload-errors'>%s</p>"
 
 #: library/views.py:513
-#, fuzzy
 msgid ""
 "<p>(epubcheck thinks this file is valid, so this may be a Bookworm error)</p>"
 msgstr ""
@@ -328,7 +327,7 @@ msgstr ""
 
 #: library/views.py:536
 msgid "The address you provided does not point to an ePub book"
-msgstr ""
+msgstr "Die angegebene Adresse zeigt nicht auf ein ePub Buch"
 
 #: library/templates/about.html:3 library/templates/about.html.py:5
 #: library/templates/includes/about.html:5
@@ -1039,7 +1038,6 @@ msgstr ""
 "    zu erscheinen, wie es die ePub Spezifikation erfordert."
 
 #: library/templates/ebooktesting.html:111
-#, fuzzy
 msgid ""
 "\n"
 "      <strong>Are all special or foreign characters displaying correctly?</"
@@ -1052,8 +1050,8 @@ msgid ""
 msgstr ""
 "\n"
 "    <strong>Werden alle speziellen Zeichen richtig angezeigt?</strong>\n"
-"    ePub Bücher müssen enstsprechend der Spezifikation entweder in UTF-8\n"
-"    oder UTF-16 kodiert sein. Bookworm unterstützt nur UTF-8. \n"
+"    ePub Bücher müssen entsprechend der Spezifikation entweder in UTF-8\n"
+"    oder UTF-16 kodiert sein. Bookworm unterstützt allerdings nur UTF-8. \n"
 "    (Bidirektionaler Text wird unterstützt, aber Sie müssen dies in der\n"
 "    CSS-Datei angeben.)\n"
 "    "
@@ -1079,7 +1077,7 @@ msgstr ""
 "  "
 
 #: library/templates/ebooktesting.html:131
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    However, Threepress can arrange for a private version of Bookworm\n"
@@ -1091,9 +1089,9 @@ msgid ""
 msgstr ""
 "\n"
 "  Bookworm kann jedoch eine private Version von Bookworm für Tests \n"
-"  in großem Umfang oder speziell sensitives Material, aufsetzen.\n"
+"  in großem Umfang oder speziell sensitives Material aufsetzen.\n"
 "  Wegen mehr Details kontaktieren Sie bitte\n"
-"  <a href=\"mailto:bookworm@threepress.org\">bookworm@threepress.org</a>.\n"
+"  <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>.\n"
 "  "
 
 #: library/templates/epub.html:7 library/templates/epub.html.py:8
@@ -2160,10 +2158,13 @@ msgid ""
 "public domain texts from\n"
 "    <a href=\"http://feedbooks.com/\">Feedbooks</a>:"
 msgstr ""
+"Um ein Buch hinzuzufügen, melden Sie sich an oder fügen eines dieser \n"
+"bekannten Public Domain Bücher von \n"
+"aa href=\"http://feddbooks.com/\">Feedbooks</a> hinzu:"
 
 #: library/templates/index.html:88
 msgid "Show"
-msgstr ""
+msgstr "Zeige"
 
 #: library/templates/index.html:97
 msgid "Add a new ePub ebook:"
@@ -2182,10 +2183,12 @@ msgid ""
 "You can also add any of these popular public domain texts from\n"
 "    <a href=\"http://feedbooks.com/\">Feedbooks</a>:"
 msgstr ""
+"Sie können auch einen dieser bekannten Public Domain Texte von \n"
+" <a href=\"\"http://feedbooks.com\">Feedbooks</a> hinzufügen:"
 
 #: library/templates/index.html:114
 msgid "Show "
-msgstr ""
+msgstr "Zeige "
 
 #: library/templates/index.html:120
 msgid ""
@@ -3885,7 +3888,7 @@ msgstr "Mit Stanza lesen"
 
 #: library/templates/includes/feedbooks.html:10
 msgid "Find more public domain books at Feedbooks"
-msgstr ""
+msgstr "Mehr Public Domain Bücher finden Sie bei Feedbooks"
 
 #: library/templates/includes/leftnav.html:8
 msgid "Read current page"
