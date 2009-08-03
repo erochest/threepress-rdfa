@@ -1489,6 +1489,13 @@ class TestViews(DjangoTestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTrue('.epub' in response['Content-Disposition'])
 
+    def test_download_size(self):
+        '''Ensure that files are being downloaded that are larger than zero-byte'''
+        self._upload(u'halála.epub')
+        response = self.client.get('/download/epub/halála/1/')        
+        self.assertEquals(response.status_code, 200)
+        assert len(response.content) > 0
+
     def test_invalid_file_with_utf8(self):
         '''Exception was being thrown from error handling on non-ASCII data'''
         response = self._upload(u'invalid_天.epub')

@@ -135,6 +135,7 @@ class EpubArchive(BookwormModel):
         return self.author
 
     def get_content(self):
+        '''Returns the data as a filehandle which must be read()'''
         blob = self._blob_class()
         epub = blob.objects.get(archive=self)
         return epub.get_data_handler()
