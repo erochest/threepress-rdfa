@@ -518,7 +518,6 @@ def _add_data_to_document(request, document, data, form):
             message.append(_(u"<p>(epubcheck thinks this file is valid, so this may be a Bookworm error)</p>"))
         else:
             message.append(_(u"<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned:"))
-            print valid_resp
             errors = u'<br/>'.join([i.text for i in valid_resp])
             message.append(u"<pre class='upload-errors'>%s</pre></p>" % errors)
         
