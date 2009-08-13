@@ -514,7 +514,7 @@ def _add_data_to_document(request, document, data, form):
         if valid_resp is None:
             # We got nothing useful from the validator (oops)
             pass
-        elif valid_resp is True:
+        elif valid_resp:
             message.append(_(u"<p>(epubcheck thinks this file is valid, so this may be a Bookworm error)</p>"))
         else:
             message.append(_(u"<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned:"))
