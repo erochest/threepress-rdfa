@@ -19,17 +19,18 @@ def validate(data, fail_silently=True):
     if hasattr(data, 'read'):
         # This will have already been read, so seek back
         data.seek(0)
-        resp = urllib.urlopen(settings.EPUBCHECK_WEBSERVICE, data.read())
+        resp = urllib.urlopen(settings.EPUBCHECK_WEBSERVICE, data.read()).read()
     else:
-        resp = urllib.urlopen(settings.EPUBCHECK_WEBSERVICE, data)
+        resp = urllib.urlopen(settings.EPUBCHECK_WEBSERVICE, data).read()
     try:
-        epubcheck_response =  toc.xml_from_string(resp.read())
+        
+        epubcheck_response =  toc.xml_from_string(resp)
         if epubcheck_response.findtext('.//is-valid') == 'True':
             return True
         elif epubcheck_response.findtext('.//is-valid') == 'False':
             return epubcheck_response.findall('.//error')
     except Exception, e:
         if fail_silently:
-            log.warn("Failure during epubcheck: %s" % e)
+            log.warn("Failure during epubcheck: %s (response was %s)" % (e, resp))
         else:
             raise e

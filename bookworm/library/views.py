@@ -500,19 +500,25 @@ def _add_data_to_document(request, document, data, form):
         # Delete it first so we don't end up with a broken document in the library
         document.delete()
 
-        # Let's see what's wrong with this by asking epubcheck too, since it will let us know if it's our bug
-        valid_resp = epubcheck.validate(data)
-
         error = e.__unicode__()
         if len(error) > 200:
             error = error[0:200] + u'...'
+
         message = []
         message.append(_(u"The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is:"))
         message.append(_(u"<p class='upload-errors'>%s</p>" % xml_escape(error)))
-        if valid_resp is True:
+
+        # Let's see what's wrong with this by asking epubcheck too, since it will let us know if it's our bug
+        valid_resp = epubcheck.validate(data)
+
+        if valid_resp is None:
+            # We got nothing useful from the validator (oops)
+            pass
+        elif valid_resp is True:
             message.append(_(u"<p>(epubcheck thinks this file is valid, so this may be a Bookworm error)</p>"))
         else:
             message.append(_(u"<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned:"))
+            print valid_resp
             errors = u'<br/>'.join([i.text for i in valid_resp])
             message.append(u"<pre class='upload-errors'>%s</pre></p>" % errors)
         
