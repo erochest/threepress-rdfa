@@ -160,11 +160,11 @@ def view_chapter(request, title, key, chapter_id, chapter=None, document=None, g
             raise Http404
         chapter = h[0]
 
-    stylesheets = chapter.stylesheets.all()
+    stylesheets = chapter.stylesheets.all()[0:settings.MAX_CSS_FILES]
 
     # If we got 0 stylesheets, this may be a legacy book
     if len(stylesheets) == 0:
-        stylesheets = StylesheetFile.objects.filter(archive=document)
+        stylesheets = StylesheetFile.objects.filter(archive=document)[0:settings.MAX_CSS_FILES]
 
     next = _chapter_next_previous(document, chapter, 'next')
     previous = _chapter_next_previous(document, chapter, 'previous')
