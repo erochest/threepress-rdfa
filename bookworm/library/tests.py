@@ -1724,6 +1724,16 @@ class TestViews(DjangoTestCase):
         response = self.client.get('/library/')
         assert 'feedbooks.com/book' in response.content
 
+    def test_limit_css_files(self):
+        '''The site should display no more than settings.MAX_CSS_FILES in a book'''
+        self._login()
+        self._upload('too-many-styles.epub')
+        response = self.client.get('/view/test/1/')
+        assert 'style1.css' in response.content
+        assert 'style2.css' in response.content
+        assert not 'style11.css' in response.content
+        assert not 'style20.css' in response.content
+
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
         

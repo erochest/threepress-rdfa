@@ -26,7 +26,7 @@ def validate(data, fail_silently=True):
         
         epubcheck_response =  toc.xml_from_string(resp)
         if epubcheck_response.findtext('.//is-valid') == 'True':
-            return True
+            return []
         elif epubcheck_response.findtext('.//is-valid') == 'False':
             return epubcheck_response.findall('.//error')
     except Exception, e:

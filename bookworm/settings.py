@@ -224,6 +224,9 @@ FEEDBOOKS_OPDS_FEED = 'http://feedbooks.com/books/top.atom'
 # Always upload files to the filesystem
 FILE_UPLOAD_HANDLERS = ("django.core.files.uploadhandler.TemporaryFileUploadHandler",)
 
+# Maximum number of CSS files to attempt to display at once
+MAX_CSS_FILES = 10
+
 try:
     from local import *
 except:

@@ -557,7 +557,10 @@ class EpubArchive(BookwormModel):
 
     def _get_stylesheets(self, archive, items, content_path):
         stylesheets = []
+        stylesheet_count = 0
         for item in items:
+            if stylesheet_count > settings.MAX_CSS_FILES:
+                break
             if item.get('media-type') == constants.STYLESHEET_MIMETYPE:
                 try:
                     content = archive.read("%s%s" % (content_path, item.get('href')))
@@ -571,6 +574,7 @@ class EpubArchive(BookwormModel):
 
 
                 self.has_stylesheets = True
+            stylesheet_count += 1
         self._create_stylesheets(stylesheets)
 
     def _parse_stylesheet(self, stylesheet):
