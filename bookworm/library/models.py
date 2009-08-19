@@ -851,7 +851,6 @@ class HTMLFile(BookwormFile):
 
         # Find any <style> blocks in the document <head> and add them
         if head is not None:
-
             styles = []
 
             for style in head.findall('.//style'):
@@ -864,7 +863,8 @@ class HTMLFile(BookwormFile):
             for style in styles:
                 if not head_extra:
                     head_extra = ''
-                head_extra += '\n' + self.archive._parse_stylesheet(style.text)
+                if style.text is not None:
+                    head_extra += '\n' + self.archive._parse_stylesheet(style.text)
             
             if head_extra:
                 head_extra = '<style type="text/css">%s</style>' % head_extra
