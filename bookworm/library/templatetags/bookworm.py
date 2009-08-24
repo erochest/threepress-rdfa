@@ -66,6 +66,13 @@ def extra_metadata(document, field):
     except:
         return ""
 
+def urlopen(url, data=None, timeout=None):
+    try:
+        return urllib2.urlopen(url, data, timeout)
+    except TypeError: # Python 2.5
+        return urllib2.urlopen(url, data)
+
+
 @register.inclusion_tag('feedbooks.html', takes_context=True)
 def feedbooks(context):
     # User's current lang
@@ -73,7 +80,7 @@ def feedbooks(context):
 
     # Check with raw urllib2 if we'll get a response from this
     try:
-        resp = urllib2.urlopen(settings.FEEDBOOKS_OPDS_FEED, None, 5)
+        resp = urlopen(settings.FEEDBOOKS_OPDS_FEED, None, 5)
     except urllib2.URLError:
         resp = None
     if resp:
