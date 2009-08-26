@@ -12,23 +12,23 @@ sitemaps = {
 
 urlpatterns = patterns('',
 
-                       (r'^admin/(.*)',  admin.site.root),
-                       ( r'^r/', include('django.conf.urls.shortcut')),
+                       (r'^%sadmin/(.*)' % settings.BASE_URL,  admin.site.root),
+                       ( r'^%sr/' % settings.BASE_URL, include('django.conf.urls.shortcut')),
 
                        # Sitemaps
-                       (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+                       (r'^%ssitemap.xml$' % settings.BASE_URL, 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 
                        # Language setting
-                       (r'^i18n/', include('django.conf.urls.i18n')),
+                       (r'^%si18n/' % settings.BASE_URL, include('django.conf.urls.i18n')),
 
                        # Auth
-                       (r'^account/', include('django_authopenid.urls')),                       
+                       (r'^%saccount/' % settings.BASE_URL, include('django_authopenid.urls')),                       
                        
                        # Library
-                       (r'^', include('bookworm.library.urls')),
+                       (r'^%s' % settings.BASE_URL, include('bookworm.library.urls')),
                        
                        # Search 
-                       (r'^search/', include('bookworm.search.urls')),
+                       (r'^%ssearch/' % settings.BASE_URL, include('bookworm.search.urls')),
 )
 
 if settings.DEBUG:

@@ -16,6 +16,11 @@ DATABASE_PORT = ''
 
 SITE_ID = 1
 
+# base url: leave '' if deployed at webserver root. don't forget the trailing slash
+# Example: 
+# BASE_URL = 'apps/bookworm/'
+BASE_URL = ''
+
 # Django settings for bookworm project.
 
 ADMINS = (
@@ -140,7 +145,7 @@ INSTALLED_APPS = (
 AUTH_PROFILE_MODULE = "library.userpref"
 
 ugettext = lambda s: s
-LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
+LOGIN_URL = '/%s%s%s' %  (BASE_URL, ugettext('account/'), ugettext('signin/'))
 SITE_ID = 2
 
 DEFAULT_NUM_RESULTS = 20
