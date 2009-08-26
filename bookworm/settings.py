@@ -1,7 +1,7 @@
 import os
 import logging, logging.handlers
 
-# Live site settings (others should override in locals.py)
+# Live site settings (others should override in local.py)
 ROOT_PATH = os.path.dirname(__file__)
 
 DEBUG = False
@@ -229,5 +229,5 @@ MAX_CSS_FILES = 10
 
 try:
     from local import *
-except:
+except ImportError:
     pass
