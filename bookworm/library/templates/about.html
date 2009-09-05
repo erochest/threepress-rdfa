@@ -4,7 +4,7 @@
 
 {% block header %}{{ _("About Bookworm") }}{% endblock header %}
 {% block head %}
-<link rel="stylesheet" href="{{ MEDIA_URL }}about.css"></link>
+<link rel="stylesheet" href="/static/about.css"></link>
 {% endblock head %}
 
 {% block leftnav %}
@@ -106,7 +106,7 @@
   <a name="mobile"></a>
   <h2>{{ _("Can I use Bookworm on my mobile device?") }}</h2>
   <p>
-    {% blocktrans with MOBILE_HOST as mobilehost %}<a href="{{ toururl }}#step3"><img src="{{ MEDIA_URL}}images/screenshots/iphone.png" alt="Bookworm on the iPhone" class="bw-screenshot-page" align="right" style="margin-bottom:10px" width="100"/></a>
+    {% blocktrans with MOBILE_HOST as mobilehost %}<a href="{{ toururl }}#step3"><img src="/static/images/screenshots/iphone.png" alt="Bookworm on the iPhone" class="bw-screenshot-page" align="right" style="margin-bottom:10px" width="100"/></a>
     Absolutely!  A special version of the site optimized for mobile devices (especially 
     the iPhone) is available at <a href="{{ mobilehost }}">{{ mobilehost }}</a>.
     Bookworm has also been tested on the Blackberry, Opera Mobile, Skyfire and the Kindle's Whispernet service.{% endblocktrans %}

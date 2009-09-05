@@ -4,8 +4,8 @@
 
 {% block header %}{% trans "Help using Bookworm" %} {% endblock header %}
 {% block head %}
-<link rel="stylesheet" href="{{ MEDIA_URL }}home.css"></link>
-<link rel="stylesheet" href="{{ MEDIA_URL }}about.css"></link>
+<link rel="stylesheet" href="/static/home.css"></link>
+<link rel="stylesheet" href="/static/about.css"></link>
 <style type="text/css">
 #bw-library a:link,#bw-library a:visited  {
  text-decoration:underline;
@@ -72,9 +72,9 @@
   <p>
     {% trans "You might get an error message like this when you add a book" %}:
   </p>
-  <div align="center"><a href="{{ MEDIA_URL }}images/screenshots/upload-error.png"><img src="{{ MEDIA_URL }}images/screenshots/upload-error.png" align="center" class="bw-screenshot-page" width="400"/></a>
+  <div align="center"><a href="/static/images/screenshots/upload-error.png"><img src="/static/images/screenshots/upload-error.png" align="center" class="bw-screenshot-page" width="400"/></a>
   <br />  <br />
-  (<a href="{{ MEDIA_URL }}images/screenshots/upload-error.png">    {% blocktrans %}click to enlarge {% endblocktrans %}</a>)
+  (<a href="/static/images/screenshots/upload-error.png">    {% blocktrans %}click to enlarge {% endblocktrans %}</a>)
   </div>
   <p>
     {% blocktrans %}
