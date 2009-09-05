@@ -162,7 +162,8 @@ def view_chapter(request, title, key, chapter_id, chapter=None, document=None, g
 
     stylesheets = chapter.stylesheets.all()[0:settings.MAX_CSS_FILES]
 
-    # If we got 0 stylesheets, this may be a legacy book
+    # If we got 0 stylesheets, this may be a legacy book or we just haven't
+    # processed yet
     if len(stylesheets) == 0:
         stylesheets = StylesheetFile.objects.filter(archive=document)[0:settings.MAX_CSS_FILES]
 

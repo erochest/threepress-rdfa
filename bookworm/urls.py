@@ -31,9 +31,9 @@ urlpatterns = patterns('',
                        (r'^%ssearch/' % settings.BASE_URL, include('bookworm.search.urls')),
 )
 
-if settings.DEBUG:
+if settings.DEBUG or settings.TESTING:
     urlpatterns += patterns('',
-                            (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.ROOT_PATH + '/library/templates/static'}),
+                            (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:-1], 'django.views.static.serve', {'document_root': settings.ROOT_PATH + '/library/templates/static'}),
                             (r'^orm-media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.ROOT_PATH + '/orm/templates/orm-media'}),
                             (r'(?P<path>sitedown.html)$', 'django.views.static.serve', 
                              {'document_root': settings.ROOT_PATH + '/library/templates/'}),

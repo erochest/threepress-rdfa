@@ -12,7 +12,7 @@ Prerequisites
 3. MySQL or other supported database (should be able to override in `local.py`)
 
 Via easy_install:
-  *  cssutils
+  * cssutils
   * python-openid (2.x)
   * python-yadis
   * twill
@@ -52,7 +52,7 @@ do not change settings.py. local.py overwrites the default settings.
 Then, from the project root:
 
 `python manage.py syncdb`
-`python manage.py test library # Sanity check`
+`python manage.py test library --settings=test_settings # Sanity check`
 
 You should only need to run syncdb initially, or when the schema changes.
 
@@ -84,7 +84,7 @@ Testing
 =======
 
 To test the models and views:
-`python manage.py test library`
+`python manage.py test library --settings=test_settings`
 
 To test the mobile version:
 `python manage.py test mobile --settings=test_settings_mobile`

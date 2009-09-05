@@ -1,7 +1,7 @@
 {% extends "base.html" %} 
 {% load i18n %}
 {% block head %}
-<link rel="stylesheet" href="/static/about.css"></link>
+<link rel="stylesheet" href="{{ MEDIA_URL }}about.css"></link>
 {% endblock head %}
 
 {% block title %}{% trans "Bookworm and the ePub standard" %} {% endblock title %}
@@ -121,7 +121,7 @@
     </p>
     <a name="toc"></a>
     <h2>NCX {% trans "Table of Contents" %}</h2>
-    <img src="/static/images/screenshots/expanded-nav.png" alt="Expanded navigation" class="bw-screenshot-page" align="right" />
+    <img src="{{ MEDIA_URL }}images/screenshots/expanded-nav.png" alt="Expanded navigation" class="bw-screenshot-page" align="right" />
     <p>
       {% blocktrans %}
       The table of contents metadata contain chunks at levels other than 
@@ -165,7 +165,7 @@
 
     <a name="images"></a>
     <h2>{% trans "Images and graphics" %}</h2>
-    <img src="/static/svg.png" alt="SVG logo" align="right"/>
+    <img src="{{ MEDIA_URL }}svg.png" alt="SVG logo" align="right"/>
     <p>
       {% blocktrans %}
       As a browser-based application, 

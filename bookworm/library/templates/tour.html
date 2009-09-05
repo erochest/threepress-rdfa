@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans "Take a tour of Bookworm" %}{% endblock title %}
 {% block head %}
-<link rel="stylesheet" href="/static/about.css"></link>
+<link rel="stylesheet" href="{{ MEDIA_URL }}about.css"></link>
 <style type="text/css">
 #bw-content h2, #bw-content h3 {
  width:400px;
@@ -45,7 +45,7 @@
   <h1>{% trans "Step 1: Adding a book" %}</h1>
 
   <div class="bw-tour-step">
-  <img src="/static/images/screenshots/save-as-button.png" alt="Add a book link" align="right" />
+  <img src="{{ MEDIA_URL }}images/screenshots/save-as-button.png" alt="Add a book link" align="right" />
 
   <h2>
     {% blocktrans %}
@@ -55,7 +55,7 @@
   </h2>
   </div>
   <div class="bw-tour-step">
-  <img src="/static/images/screenshots/upload-box.png" alt="Click to upload a file" align="right" width="400"/>        
+  <img src="{{ MEDIA_URL }}images/screenshots/upload-box.png" alt="Click to upload a file" align="right" width="400"/>        
   <h2>
     {% blocktrans %}
     Then click the <em>Browse</em> button. 
@@ -73,7 +73,7 @@
 
 
   <div class="bw-tour-step">
-  <img src="/static/images/screenshots/loaded-file.png" alt="An ebook loaded into Bookworm" align="right" width="400" />        
+  <img src="{{ MEDIA_URL }}images/screenshots/loaded-file.png" alt="An ebook loaded into Bookworm" align="right" width="400" />        
     <h2>
     {% blocktrans %}    Your book is now available!     {% endblocktrans %}
     </h2>
@@ -85,7 +85,7 @@
   <a name="step2"></a>
   <h1>    {% blocktrans %}Step 2: Reading a book    {% endblocktrans %}</h1>
 
-  <img src="/static/images/screenshots/reading-screenshot.png" alt="Reading screenshot" align="right" class="bw-screenshot-page" width="400" />        
+  <img src="{{ MEDIA_URL }}images/screenshots/reading-screenshot.png" alt="Reading screenshot" align="right" class="bw-screenshot-page" width="400" />        
     <h2>    {% blocktrans %}Click on the book's title from your library.    {% endblocktrans %}</h2>
     <p>
 {% trans "The book will automatically open to the first page." %}
@@ -107,7 +107,7 @@
 
 
     <h2>{% trans "The Book Information page" %}</h2>
-    <img src="/static/images/screenshots/metadata-box.png" alt="Book information" class="bw-screenshot-page" align="right" style="margin-bottom:20px" />
+    <img src="{{ MEDIA_URL }}images/screenshots/metadata-box.png" alt="Book information" class="bw-screenshot-page" align="right" style="margin-bottom:20px" />
     <p>
     {% blocktrans %}
       Publisher, language, copyright and other information supplied
@@ -136,7 +136,7 @@
   <div style="border-top:1px solid rgb(210,210,210);clear:both;">
   <a name="step3"></a>
   <h1>    {% blocktrans %}Step 3: Searching your library    {% endblocktrans %}</h1>
-  <img src="/static/images/screenshots/bookworm-search.png" alt="Bookworm search" class="bw-screenshot-page" align="right" />
+  <img src="{{ MEDIA_URL }}images/screenshots/bookworm-search.png" alt="Bookworm search" class="bw-screenshot-page" align="right" />
   <p>
     {% blocktrans %}
     If you've loaded books into your library, you'll see a search box at the top left
@@ -151,13 +151,13 @@
     to go to the matching chapter.
     {% endblocktrans %}
   </p>
-  <img src="/static/images/screenshots/bookworm-search-results.png" alt="Bookworm search results" class="bw-screenshot-page" align="left" style="margin-bottom:20px"/>
+  <img src="{{ MEDIA_URL }}images/screenshots/bookworm-search-results.png" alt="Bookworm search results" class="bw-screenshot-page" align="left" style="margin-bottom:20px"/>
 
   </div>
   <div style="border-top:1px solid rgb(210,210,210);clear:both">
     <a name="step4"></a>
     <h1>    {% blocktrans %}Step 4: Take your book on the road  <!-- trans: e.g. on a mobile device -->  {% endblocktrans %}</h1>
-    <img src="/static/images/screenshots/iphone.png" width="250" alt="Bookworm on the iPhone" class="bw-screenshot-page" align="right" style="margin-bottom:10px" />
+    <img src="{{ MEDIA_URL }}images/screenshots/iphone.png" width="250" alt="Bookworm on the iPhone" class="bw-screenshot-page" align="right" style="margin-bottom:10px" />
     <h2>    {% blocktrans %}Bookworm on your mobile phone    {% endblocktrans %}</h2>
     <p>
     {% blocktrans with MOBILE_HOST as mobilehost %}

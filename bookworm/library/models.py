@@ -565,7 +565,7 @@ class EpubArchive(BookwormModel):
                 try:
                     content = archive.read("%s%s" % (content_path, item.get('href')))
                 except KeyError:
-                    log.warn("Could not find stylsheet %s; skipping " % item.get('href'))
+                    log.warn("Could not find stylesheet %s; skipping " % item.get('href'))
                     continue
                 parsed_content = self._parse_stylesheet(content)
                 stylesheets.append({'idref':item.get('id'),
@@ -574,7 +574,7 @@ class EpubArchive(BookwormModel):
 
 
                 self.has_stylesheets = True
-            stylesheet_count += 1
+                stylesheet_count += 1
         self._create_stylesheets(stylesheets)
 
     def _parse_stylesheet(self, stylesheet):
@@ -884,17 +884,15 @@ class HTMLFile(BookwormFile):
 
             for link in links:
                 try:
+                    css_basename = os.path.basename(link.get('href'))
                     css = StylesheetFile.objects.get(archive=self.archive,
-                                                     filename=link.get('href'))
+                                                     filename__icontains=css_basename)
                     self.stylesheets.add(css)
                 except StylesheetFile.DoesNotExist:
                     log.warn("CSS %s was declared in the HTML but no matching StylesheetFile was found" % link.get('href'))
 
         else:
             log.warn("No <head> found; this could be a malformed document")
-
-
-        
 
         body = self._clean_xhtml(body)
         div = etree.Element('div')

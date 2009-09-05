@@ -8,7 +8,7 @@
 {% endspaceless %}{% endblock title %}
 
 {% block overridestyles %}{% spaceless %}
-<link rel="stylesheet" href="/static/document.css"></link>
+<link rel="stylesheet" href="{{ MEDIA_URL }}document.css"></link>
 {% if request.user.get_profile.simple_reading_mode %}
   <link rel="stylesheet" href="{{ MEDIA_URL }}simple.css"></link>
 {% endif %}

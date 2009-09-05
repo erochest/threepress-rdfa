@@ -6,7 +6,8 @@ ROOT_PATH = os.path.dirname(__file__)
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-   
+TESTING = False # Override this in test_settings.py
+
 DATABASE_ENGINE = 'mysql' 
 DATABASE_NAME = 'bookworm'
 DATABASE_USER = 'threepress'   

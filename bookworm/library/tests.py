@@ -1644,6 +1644,20 @@ class TestViews(DjangoTestCase):
         assert 'stylesheet.css' in response.content
         assert 'font-weight: bold' in response.content
 
+    def test_style_in_subdir(self):
+        '''Relative paths should be allowed when comparing CSS references in XHTML files and declarations in the OPF'''
+        name ='css-in-subdir.epub'
+        self._upload(name)
+        assert StylesheetFile.objects.count() == 1
+        # This will have zero before we render
+        assert HTMLFile.objects.filter(filename='text/chapter-1.html')[0].stylesheets.count() == 0
+        response = self.client.get('/view/a/1/')
+
+        # The style file should be present
+        assert 'stylesheet.css' in response.content
+        
+        # Now we should have some
+        assert HTMLFile.objects.filter(filename='text/chapter-1.html')[0].stylesheets.count() == 1
 
     def test_public_pages(self):
         '''Test that public pages render with 200s in all supported languages'''
@@ -1724,6 +1738,23 @@ class TestViews(DjangoTestCase):
         assert 'style2.css' in response.content
         assert not 'style11.css' in response.content
         assert not 'style20.css' in response.content
+    
+    def test_deploy_static_files(self):
+        '''Static files should be deployed using the MEDIA_URL variable rather than a hardcoded path'''
+
+        # test_settings.py uses the test-static variable to ensure we're getting the real thing.
+        response = self.client.get('/test-static/about.css')
+        assert response.status_code == 200
+
+        response = self.client.get('/test-static/bookworm.js')
+        assert response.status_code == 200
+
+        response = self.client.get('/static/about.css')
+        assert response.status_code != 200
+
+        # Django will actually try to redirect here
+        response = self.client.get('/static/about.css/')
+        assert response.status_code == 404
 
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))

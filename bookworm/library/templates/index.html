@@ -7,7 +7,7 @@
 {% block title %}{% trans "My epub library" %}{% endblock title %}
 
 {% block head %}
-<link rel="stylesheet" href="/static/home.css"></link>
+<link rel="stylesheet" href="{{ MEDIA_URL }}home.css"></link>
 {% endblock head %}
 
 {% block leftnav %}
@@ -78,7 +78,7 @@
   {% endif %}
 
 {% else %}
-  <h1 id="bw-logo-image-header"><img id="bw-logo-image" src="/static/bookworm-logo.png" alt="{% trans "Bookworm" %}" /></h1> 
+  <h1 id="bw-logo-image-header"><img id="bw-logo-image" src="{{ MEDIA_URL }}bookworm-logo.png" alt="{% trans "Bookworm" %}" /></h1> 
   {% url about as abouturl %}
   <p class="bw-tagline">{% blocktrans %}A free platform for reading ePub books online. <a href='{{ abouturl }}'>Learn more</a>.{% endblocktrans %}</p> 
 {% endif %}

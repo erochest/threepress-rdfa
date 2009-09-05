@@ -14,7 +14,7 @@
   <table id="bw-public-container">
     <tr>
       <td>
-        <h1 id="bw-logo-image-header" style="float:left;padding-right: 1em"><img src="/static/bookworm-logo.png" alt="Bookworm" id="bw-logo-image" /></h1>
+        <h1 id="bw-logo-image-header" style="float:left;padding-right: 1em"><img src="{{ MEDIA_URL }}bookworm-logo.png" alt="Bookworm" id="bw-logo-image" /></h1>
         
         <div id="bw-text-intro" style="padding-top:20px">  
           <p class="bw-tagline">
@@ -72,7 +72,7 @@
 
         <div id="bw-public-features">
           <div class="bw-public-screenshot-holder">
-            <a href="{% url tour %}"><img src="/static/screenshot-alice-sm.png" alt="Screenshot of Bookworm reading page" class="bw-public-screenshot"/></a>
+            <a href="{% url tour %}"><img src="{{ MEDIA_URL }}screenshot-alice-sm.png" alt="Screenshot of Bookworm reading page" class="bw-public-screenshot"/></a>
             <p class="bw-caption">
               {% blocktrans %}
               A page in Bookworm, showing the
