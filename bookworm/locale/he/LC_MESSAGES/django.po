@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-26 12:57-0400\n"
+"POT-Creation-Date: 2009-09-07 09:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,35 +16,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: local.py:19 settings.py:101
+#: settings.py:107
 msgid "German"
 msgstr ""
 
-#: local.py:20 settings.py:102
+#: settings.py:108
 msgid "English"
 msgstr ""
 
-#: local.py:21 settings.py:103
+#: settings.py:109
 msgid "Danish"
 msgstr ""
 
-#: local.py:22 settings.py:104
+#: settings.py:110
 msgid "Finnish"
 msgstr ""
 
-#: local.py:23 settings.py:106
-msgid "Spanish"
-msgstr ""
-
-#: local.py:24 settings.py:105
+#: settings.py:111
 msgid "Italian"
 msgstr ""
 
-#: settings.py:143
+#: settings.py:112
+msgid "Spanish"
+msgstr ""
+
+#: settings.py:149
 msgid "account/"
 msgstr ""
 
-#: settings.py:143
+#: settings.py:149
 msgid "signin/"
 msgstr ""
 
@@ -174,21 +174,21 @@ msgstr ""
 msgid "Untitled"
 msgstr ""
 
-#: library/models.py:685 library/models.py:687 library/models.py:690
+#: library/models.py:690 library/models.py:692 library/models.py:695
 msgid ""
 "There was a problem related to the encoding of one of the documents in your "
 "ePub. All ePub documents must be in UTF-8."
 msgstr ""
 
-#: library/models.py:1230
+#: library/models.py:1233
 msgid "book title"
 msgstr ""
 
-#: library/models.py:1231
+#: library/models.py:1234
 msgid "first author"
 msgstr ""
 
-#: library/models.py:1232
+#: library/models.py:1235
 msgid "date added to your library"
 msgstr ""
 
@@ -212,7 +212,7 @@ msgstr ""
 msgid "There was a problem reading the metadata for this document."
 msgstr ""
 
-#: library/views.py:189
+#: library/views.py:190
 msgid ""
 "\n"
 "This book contained content that Bookworm couldn't read.  You may need to "
@@ -222,21 +222,21 @@ msgid ""
 "content."
 msgstr ""
 
-#: library/views.py:328
+#: library/views.py:329
 msgid "Your profile has been updated."
 msgstr ""
 
-#: library/views.py:345 library/views.py:353
+#: library/views.py:346 library/views.py:354
 msgid "There was a problem with your request to delete this profile."
 msgstr ""
 
-#: library/views.py:479
+#: library/views.py:480
 msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
 msgstr ""
 
-#: library/views.py:487
+#: library/views.py:488
 msgid ""
 "We detected a problem with your ebook that is most likely related to it "
 "being too big to display safely in a web browser. This can happen with very "
@@ -246,7 +246,7 @@ msgid ""
 "allowed to be added to Bookworm."
 msgstr ""
 
-#: library/views.py:492
+#: library/views.py:493
 msgid ""
 "It appears that you've uploaded a book which contains DRM (Digital Rights "
 "Management).  This is a restriction that is meant to prevent illegal copying "
@@ -269,19 +269,19 @@ msgstr ""
 msgid "<p class='upload-errors'>%s</p>"
 msgstr ""
 
-#: library/views.py:513
+#: library/views.py:520
 msgid ""
 "<p>(epubcheck thinks this file is valid, so this may be a Bookworm error)</p>"
 msgstr ""
 
-#: library/views.py:515
+#: library/views.py:522
 msgid ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that "
 "this is not a valid ePub file, so you should check with the publisher or "
 "content creator. It returned:"
 msgstr ""
 
-#: library/views.py:536
+#: library/views.py:544
 msgid "The address you provided does not point to an ePub book"
 msgstr ""
 
@@ -456,7 +456,7 @@ msgstr ""
 #: library/templates/about.html:109
 #, python-format
 msgid ""
-"<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
+"<a href=\"%(toururl)s#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
 "\"right\" style=\"margin-bottom:10px\" width=\"100\"/></a>\n"
 "    Absolutely!  A special version of the site optimized for mobile devices "
