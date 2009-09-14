@@ -9,6 +9,10 @@ log = logging.getLogger('context_processors')
 stanza_browsers = ('iphone', )
 
 def local_settings(request):
+    if hasattr(request.session, 'django_language') and request.session.django_language:
+        current_language = request.session.django_language
+    else:
+        current_language = settings.LANGUAGE_CODE 
     return {
         'MEDIA_URL': settings.MEDIA_URL,
         'ORM_MEDIA_URL': settings.ORM_MEDIA_URL,
@@ -19,6 +23,9 @@ def local_settings(request):
         'HOSTING_CREDIT':settings.HOSTING_CREDIT,
         'HOSTING_CREDIT_URL':settings.HOSTING_CREDIT_URL,
         'ADMIN_EMAIL':settings.DISPLAY_ADMIN_EMAIL,
+        'HOSTNAME':settings.HOSTNAME,
+        'SECURE_HOSTNAME':settings.SECURE_HOSTNAME,
+        'current_language':current_language
     }
  
 def nav(request):

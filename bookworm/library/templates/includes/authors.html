@@ -1,0 +1,1 @@
+{% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 {% load i18n %}
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{ request.session.django_language }}" lang="{{ request.session.django_language }}">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{ current_language }}" lang="{{ current_language }}">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" ></meta>    
     {% spaceless %}<title>{% block title %} {% trans "Bookworm" %} {% endblock title %} : {% trans "Bookworm ePub reader" %}</title>{% endspaceless %}
@@ -118,7 +118,7 @@
       {% block footer_block %}
 
       {% block footer %}{% endblock footer %}
-      <span style="float:left"><a href="/privacy/">{% trans "Privacy policy" %}</a> &mdash;
+      <span style="float:left"><a href="/privacy/">{% trans "Privacy policy" %}</a> —
       {% blocktrans with "http://www.threepress.org" as tpcurl and "http://www.djangoproject.com" as djpurl %}
         Software by <a href="{{ tpcurl }}">Threepress Consulting Inc.</a> and <a href="{{ djpurl }}">Django</a>
       {% endblocktrans %}</span>

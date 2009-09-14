@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Profile and preferences for" %} {{ request.user.username }} {% endblock %}
+
+{% block searcharea %}{% endblock %}
+
+{% block main %}
+
+<h2>{% trans "About the Bookworm API" %}</h2>
+
+<p>
+{% url library as library %}
+{% blocktrans %}The Bookworm API (or Application Programming Interface) allows users and developers to access many of the features of Bookworm from other applications.
+Using the API, a developer can add, download, and list the EPUB content over HTTP in a user's <a href="{{ library }}">Library</a>. This page describes the API in fairly
+low-level detail. This (rather dry) description is intented only for developers.
+{% endblocktrans %}</p>
+
+<h2>{% trans "Authorization" %}</h2>
+<p>
+{% url django_authopenid.views.signup as signupurl %}
+{% blocktrans %}
+You need to <a href="{{ signupurl }}">sign up</a> for Bookworm before using the API, as access is
+limited to existing users. 
+{% endblocktrans %}
+{% url profile as profile%}
+{% blocktrans %}
+After logging in, visit your <a href="{{ profile }}">Profile</a> to find
+your <code>api_key</code>. This <code>api_key</code> is a required parameter for all API requests 
+and each request will be authorized against the <code>api_key</code>.
+{% endblocktrans %}</p>
+
+<p>{% blocktrans %}
+Keep your API key private, like a password. Your API key will change if you update your password.
+{% endblocktrans %}</p>
+
+<p>{% blocktrans %}
+The API is only available over HTTPS.
+{% endblocktrans %}</p>
+
+<a id="librarylisting"></a>
+<h2>{% trans "Library listing" %}</h2>
+<p>
+{% url library as library %}
+{% blocktrans %}An API client may request the list of titles in their <a href="{{ library }}">Library</a> using an authorized <code>HTTP GET</code>.
+The results will be returned as an XHTML page that includes every title in one ordered list. Each list item will include a
+hyperlink to a <em>document address</em>, the <em>Title</em>, <em>Author(s)</em>, and <em>Date added</em>. 
+The list will be ordered by <em>Date added</em>. The list will not be paginated. Here's a sample: {% endblocktrans %}</p>
+<pre>$ curl -ik "https://bookworm_api_test/api/documents/?api_key=your_api_key_here"
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+...
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html; charset=utf-8" &gt;&lt;/meta&gt;    
+    &lt;title&gt;Bookworm API title list&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="content"&gt;
+  
+  &lt;!-- Document list --&gt;
+    &lt;ol&gt;
+      
+      &lt;li&gt; 
+        &lt;span class="document-title"&gt;Painting the Web&lt;/span&gt;
+        &lt;span class="document-authors"&gt;Shelley Powers&lt;/span&gt;
+        &lt;span class="document-date-added"&gt;2008-07-10 16:17:56&lt;/span&gt;
+        &lt;span class="document-address"&gt;
+          &lt;a href="https://bookworm_api_test/api/documents/8/"&gt;
+            https://bookworm_api_test/api/documents/8/&lt;/a&gt;&lt;/span&gt;
+        &lt;!-- Painting the Web by Shelley Powers (book.epub) --&gt;
+      &lt;/li&gt;
+      
+      &lt;li&gt; 
+        &lt;span class="document-title"&gt;iPhone: The Missing Manual&lt;/span&gt;
+        &lt;span class="document-authors"&gt;David Pogue&lt;/span&gt;
+        &lt;span class="document-date-added"&gt;2008-07-31 10:34:49&lt;/span&gt;
+        &lt;span class="document-address"&gt;
+          &lt;a href="https://bookworm_api_test/api/documents/97/"&gt;
+            https://bookworm_api_test/api/documents/97/&lt;/a&gt;&lt;/span&gt;
+        &lt;!-- iPhone: The Missing Manual by David Pogue (9780596153960.epub) --&gt;
+      &lt;/li&gt;
+      &lt;li&gt; 
+        &lt;span class="document-title"&gt;The Way We live Now&lt;/span&gt;
+        &lt;span class="document-authors"&gt;Anthony Trollope&lt;/span&gt;
+        &lt;span class="document-date-added"&gt;2009-03-30 12:36:04&lt;/span&gt;
+        &lt;span class="document-address"&gt;
+          &lt;a href="https://bookworm_api_test/api/documents/15215/"&gt;
+            https://bookworm_api_test/api/documents/15215/&lt;/a&gt;&lt;/span&gt;
+        &lt;!-- The Way We live Now by Anthony Trollope (Penguin_Trollope_WayWeLiveNow.epub) --&gt;
+      &lt;/li&gt;
+      
+      &lt;li&gt; 
+        &lt;span class="document-title"&gt;The Twitter Book&lt;/span&gt;
+        &lt;span class="document-authors"&gt;Tim O&#39;Reilly, Sarah Milstein&lt;/span&gt;
+        &lt;span class="document-date-added"&gt;2009-04-27 09:21:42&lt;/span&gt;
+        &lt;span class="document-address"&gt;
+          &lt;a href="https://bookworm_api_test/api/documents/20258/"&gt;
+            https://bookworm_api_test/api/documents/20258/&lt;/a&gt;&lt;/span&gt;
+        &lt;!-- The Twitter Book by Tim O&#39;Reilly... (conv_house_source.epub) --&gt;
+      &lt;/li&gt;
+      
+      &lt;li&gt; 
+        &lt;span class="document-title"&gt;Unit Test: stamp.001&lt;/span&gt;
+        &lt;span class="document-authors"&gt;Norman Walsh&lt;/span&gt;
+        &lt;span class="document-date-added"&gt;2009-05-01 23:43:59&lt;/span&gt;
+        &lt;span class="document-address"&gt;
+          &lt;a href="https://bookworm_api_test/api/documents/20941/"&gt;
+            https://bookworm_api_test/api/documents/20941/&lt;/a&gt;&lt;/span&gt;
+        &lt;!-- Unit Test: stamp.001 by Norman Walsh (sample.epub) --&gt;
+      &lt;/li&gt;
+      
+    &lt;/ol&gt;
+
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>
+{% url main as api_documents %}
+{% blocktrans %}
+The listing like the above is available via an authorized <code>HTTP GET</code> from <a href="{{ api_documents }}">{{ api_documents }}</a>.
+{% endblocktrans %}</p>
+</p>
+<p>
+<h2>{% trans "Adding titles to your Library" %}</h2>
+<p>
+{% url library as library %}
+{% blocktrans %}
+A new title in EPUB format may be added to your <a href="{{ library }}">Library</a>  using an authorized <code>HTTP POST</code> using either of two techniques:
+directly via EPUB upload or indirectly by EPUB URL reference.
+{% endblocktrans %}</p>
+<p>
+{% url main as api_documents %}
+{% blocktrans %}
+If using direct EPUB upload, the API user will POST a file's contents as <code>multipart/form-data</code> using the 
+parameter <code>epub_data</code> for the EPUB bytes to <a href="{{ api_documents }}">{{ api_documents }}</a> (remember
+your <code>api_key</code> too).  Here's an example of this using <code>curl</code>:
+{% endblocktrans %}</p>
+<pre>
+#!/bin/bash
+
+# Example Bookworm API client implementation to upload a file test.epub
+# using curl.  This script expects two arguments: the Bookworm 
+# installation URL and a valid API key.
+#
+# curl must be installed (surprise).
+# The Bookworm URL should have no trailing slash (e.g.
+# https://bookworm.oreilly.com)
+
+BW=$1
+KEY=$2
+
+# Upload a document
+curl -iF epub_data=@test.epub -F api_key=$KEY $1/api/documents/ -D result.txt
+</pre>
+
+<p>
+{% url main as api_documents %}
+{% blocktrans %}
+If you'd prefer to add a new EPUB by URL reference, the POST a request to <a href="{{ api_documents }}">{{ api_documents }}</a> 
+with an <code>epub_url</code> parameter that references an externally-hosted EPUB document available
+by unauthenticated <code>HTTP GET</code>. The Bookworm server will initiate a request for this EPUB document and
+proceed as normal (maybe).
+{% endblocktrans %}</p>
+
+<p>
+{% url library as library %}
+{% blocktrans %}
+If either upload technique described above succeeds and the new EPUB content is accepted by the Bookworm server, an <code>HTTP 201 Created</code> response 
+(probably following some <code>HTTP 100 Continue</code>s) will be
+returned and the <code>Content-Location</code> header will reference the <em>document address</em> (write that down). The newly-uploaded title will
+now be available in the user's <a href="{{ library }}">Library</a> .
+{% endblocktrans %}</p>
+
+<p class="bw-message">
+{% url library as library %}
+{% blocktrans %}Neither method for adding new EPUBs checks to see if the user already seems
+to have this title in their <a href="{{ library }}">Library</a> . API clients should check the contents of the user's <a href="#librarylisting">Library listing</a>  before adding
+new titles.
+{% endblocktrans %}</p>
+
+<h2>{% trans "Downloading EPUB content from your Library" %}</h2>
+<p>
+{% url library as library %}
+{% blocktrans %}
+API users will be able to download complete EPUB documents from the user's <a href="{{ library }}">Library</a> by
+<em>document address</em>. An authorized <code>HTTP GET</code> of a <em>document address</em> will return the complete content as <code>application/epub+zip</code>.
+{% endblocktrans %}</p>
+
+
+{% endblock main %}

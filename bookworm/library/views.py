@@ -240,6 +240,10 @@ def download_epub(request, title, key, nonce=None):
     off the storage mechanism (usually this happens in development), return
     a 404 instead of a zero-byte download.'''
     document = _get_document(request, title, key, nonce=nonce)
+    if document is None:
+        raise Http404        
+    if document.get_content() is None: # This occurs if the file has been deleted unexpected from the filesystem
+        raise Http404        
     content = document.get_content().read()
     if content is None:
         raise Http404
@@ -449,7 +453,7 @@ def upload(request, title=None, key=None):
                     document = EpubArchive(name=document_name)                    
                     document.save()
 
-            return _add_data_to_document(request, document, open(temp_file), form)
+            return add_data_to_document(request, document, open(temp_file), form)
 
         # The form isn't valid (generally because we didn't actually upload anything)
         return direct_to_template(request, 'upload.html', {'form':form})
@@ -460,9 +464,12 @@ def upload(request, title=None, key=None):
 
     return direct_to_template(request, 'upload.html', {'form':form})
 
-def _add_data_to_document(request, document, data, form):
+def add_data_to_document(request, document, data, form, redirect_success_to_page=True):
     '''Add epub data (as a file-like object) to a document, then explode it.
-       If this returns True, return a successful redirect; otherwise return an error template.'''
+       If this returns True, return a successful redirect; otherwise return an error template.
+       If the redirect_to_page parameter is True (default), the code will redirect
+
+       '''
     successful_redirect = reverse('library')
 
     document.set_content(data)
@@ -501,14 +508,16 @@ def _add_data_to_document(request, document, data, form):
         # Delete it first so we don't end up with a broken document in the library
         document.delete()
 
+        # Let's see what's wrong with this by asking epubcheck too, since it will let us know if it's our bug
+        valid_resp = epubcheck.validate(data)
+
         error = _exception_message(e)
- 
         if len(error) > 200:
             error = error[0:200] + u'...'
 
         message = []
-        message.append(_(u"The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is:"))
-        message.append(_(u"<p class='upload-errors'>%s</p>" % xml_escape(error)))
+        message.append(_(u"<p class='bw-upload-message'>The file you uploaded looks like an ePub archive, but it has some problems that prevented it from being loaded.  This may be a bug in Bookworm, or it may be a problem with the way the ePub file was created. The complete error message is:</p>"))
+        message.append(_(u"<p class='bw-upload-errors'>%s</p>" % xml_escape(error)))
 
         # Let's see what's wrong with this by asking epubcheck too, since it will let us know if it's our bug
         valid_resp = epubcheck.validate(data)
@@ -519,14 +528,18 @@ def _add_data_to_document(request, document, data, form):
         elif len(valid_resp) == 0:
             message.append(_(u"<p>(epubcheck thinks this file is valid, so this may be a Bookworm error)</p>"))
         else:
-            message.append(_(u"<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned:"))
-            errors = u'<br/>'.join([i.text for i in valid_resp])
-            message.append(u"<pre class='upload-errors'>%s</pre></p>" % errors)
+            e = '\n'.join([i.text for i in valid_resp])
+            errors = ['<li>%s</li>' % i.replace('\n', '<br/>')  for i in e.split('ERROR:') if i]
+            message.append(_(u"<p class='bw-upload-message'><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that this is not a valid ePub file, so you should check with the publisher or content creator. It returned <strong id='bw-num-errors'>%d</strong> error(s):</p>" % len(errors)))
+            message.append(u" <ol id='bw-upload-error-list'>%s</ol>" % ''.join(errors))
         
         return direct_to_template(request, 'upload.html', {'form':form, 
                                                            'message':u''.join(message)})                
 
-    return HttpResponseRedirect(successful_redirect)
+    if redirect_success_to_page:
+        return HttpResponseRedirect(successful_redirect)
+    return document
+
 
 @login_required
 @never_cache
@@ -535,8 +548,12 @@ def add_by_url(request):
     to the current logged-in user's library'''
     if not 'epub' in request.GET:
         raise Http404
-    form = EpubValidateForm()
     epub_url = request.GET['epub']
+    return add_by_url_field(request, epub_url, redirect_success_to_page=True)
+
+def add_by_url_field(request, epub_url, redirect_success_to_page):
+    form = EpubValidateForm()
+
     try:
         data = urllib2.urlopen(epub_url).read()
         data = StringIO(data)
@@ -547,7 +564,7 @@ def add_by_url(request):
         
     document = EpubArchive.objects.create(name=os.path.basename(urlparse.urlparse(epub_url).path))
     document.save()
-    return _add_data_to_document(request, document, data, form)
+    return add_data_to_document(request, document, data, form, redirect_success_to_page)
     
 
 def _chapter_next_previous(document, chapter, dir='next'):
@@ -650,13 +667,13 @@ def _report_error(request, document, data, user_message, form, exception, email=
         _email_errors_to_admin(exception, data, document)
 
     return direct_to_template(request, 'upload.html', { 'form':form, 'message':user_message})    
+
                               
 def _email_errors_to_admin(exception, data, document):
     '''Send am email to the users registered to receive these messages (the value of
     settings.ERROR_EMAIL_RECIPIENTS (by default this is the first admin in settings.ADMINS).  
     '''
     # Email it to the admins
-
     message = _exception_message(exception)
 
     email = EmailMessage(u'[bookworm-error] %s (book=%s)' % (message, document.name),
@@ -672,3 +689,6 @@ def _exception_message(exception):
         return exception.__unicode__()     # Python 2.6
     except AttributeError:
         return unicode(exception.message)  # Python 2.5
+
+
+

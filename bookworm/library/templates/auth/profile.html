@@ -41,7 +41,6 @@ form input {
 <p>{% trans "Some fields such as email and country have been imported via OpenID and should be changed with your OpenID provider, rather than with Bookworm." %}</p>
 {% endif %}
 
-
 {% endblock %}
 
 {% block main %}
@@ -108,6 +107,15 @@ form input {
       <th>{% trans "Open to last-read chapter when reading a book?" %}</th>
       <td> {{ form.open_to_last_chapter }}</td>
     </tr>
+    <tr>
+      <th>{% trans "Your API key" %}<br /><a href="{% url api_help %}" id="bw-api-help">{% trans "What's this?" %}</a></th>
+      <td id="bw-api-key">
+        <p><code>{{ request.user.get_profile.get_api_key }}</code></p>
+        <p class="bw-message">Keep your API key private, like a password. Your API key will change if you update your password.</p>
+      </td>
+    </tr>
+
+
 
   </tbody>
 </table>

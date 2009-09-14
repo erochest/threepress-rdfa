@@ -89,6 +89,9 @@ To test the models and views:
 To test the mobile version:
 `python manage.py test mobile --settings=test_settings_mobile`
 
+To test the API:
+`python manage.py test api`
+
 Development
 ===========
 To run a local development server:

@@ -25,7 +25,7 @@ BASE_URL = ''
 # Django settings for bookworm project.
 
 ADMINS = (
-    ('Liza Daly', 'liza@threepress.org'),
+    ('Bookworm', 'bookworm@oreilly.com'),
 )
 
 MANAGERS = ADMINS
@@ -96,7 +96,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
     'bookworm.minidetector.Middleware',
     'bookworm.middleware.Mobile',
-
+    'bookworm.api.middleware.SSLRedirect',
+    'bookworm.api.middleware.APIKeyCheck',
 
 )
 
@@ -141,6 +142,7 @@ INSTALLED_APPS = (
     'bookworm.search',
     'bookworm.librarything',
     'bookworm.mobile',
+    'bookworm.api',
     )
 
 AUTH_PROFILE_MODULE = "library.userpref"
@@ -171,11 +173,11 @@ HOSTING_CREDIT = "O'Reilly Media"
 HOSTING_CREDIT_URL = 'http://oreilly.com/'
 
 # Email reply-to address
-REPLYTO_EMAIL = 'no-reply@threepress.org'
+REPLYTO_EMAIL = 'donotreply@oreilly.com'
 DEFAULT_FROM_EMAIL = REPLYTO_EMAIL
 
 # The admin address that's displayed on the site in help pages
-DISPLAY_ADMIN_EMAIL = 'bookworm@threepress.org'
+DISPLAY_ADMIN_EMAIL = 'bookworm@oreilly.com'
 ADMIN_EMAIL = DISPLAY_ADMIN_EMAIL
 
 # Set up logging
@@ -190,9 +192,6 @@ SEARCH_ROOT = os.path.join(ROOT_PATH, 'search', 'dbs')
 CACHE_BACKEND = 'file:///tmp/bookworm/django_cache'
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 CACHE_TEMPLATE_TIMEOUT = 60 * 60 * 1
-
-XSLT_DIR = os.path.join(ROOT_PATH, 'library', 'xsl')
-DTBOOK2XHTML = os.path.join(XSLT_DIR, 'dtbook2xhtml.xsl')
 
 DATE_FORMAT = "l, N j Y"
 LIBRARYTHING_KEY = ''
@@ -224,6 +223,8 @@ EPUBCHECK_WEBSERVICE = 'http://threepress.org/epubcheck-service/'
 # Apps to test
 TEST_APPS = ('library',)
 
+TESTING = False
+
 # Feedbooks OPDS feed
 FEEDBOOKS_OPDS_FEED = 'http://feedbooks.com/books/top.atom'
 
@@ -232,6 +233,15 @@ FILE_UPLOAD_HANDLERS = ("django.core.files.uploadhandler.TemporaryFileUploadHand
 
 # Maximum number of CSS files to attempt to display at once
 MAX_CSS_FILES = 10
+
+# API key field name
+API_FIELD_NAME = 'api_key'
+
+# Hostname (no trailing slash)
+HOSTNAME = 'http://bookworm.oreilly.com'
+
+# Secure hostname (no trailing slash)
+SECURE_HOSTNAME = 'https://bookworm.oreilly.com'
 
 try:
     from local import *

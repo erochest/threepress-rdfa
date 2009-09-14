@@ -1,0 +1,20 @@
+{% extends "api/base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Bookworm API title list" %}{% endblock title %}
+
+{% block content %}
+
+  {% if documents %}
+  <!-- Document list -->
+    <ol>
+      {% for document in documents %}
+      <li> {{ document }}</li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <!-- Should anything be printed here? -->
+    {% endif %}
+
+{% endblock content %}
+

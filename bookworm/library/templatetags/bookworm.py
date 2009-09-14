@@ -75,7 +75,7 @@ def urlopen(url, data=None, timeout=None):
 
 @register.inclusion_tag('feedbooks.html', takes_context=True)
 def feedbooks(context):
-    # User's current lang
+    '''Display results from Feedbooks based on the user's current language.'''
     lang = context['LANGUAGE_CODE'] or 'en'
 
     # Check with raw urllib2 if we'll get a response from this
@@ -108,3 +108,8 @@ def feedbooks(context):
         books = None
     return { 'books': books }
     
+@register.inclusion_tag('authors.html')
+def authors(document):
+    '''Display the list of authors in a friendly way.'''
+    return { 'document': document }    
+

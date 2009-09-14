@@ -76,7 +76,7 @@
 {% endif %}
 <a href="{% url view_first document.safe_title,document.key %}"><h2 class="bw-title">{{ document.title }}</h2></a> 
 {% if request.user.get_profile.simple_reading_mode %}
-&#160;&#160; {% trans "by <!-- trans written by -->" %} {% for a in document.authors.all %}{{ a }}{% if not forloop.last %}, {% endif %}{% endfor %}
+&#160;&#160; {% trans "by <!-- trans written by -->" %} {% authors document %}
 {% endif %}
 {% endblock header %}
 

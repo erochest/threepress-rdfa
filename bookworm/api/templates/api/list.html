@@ -1,0 +1,26 @@
+{% extends "api/base.html" %}
+{% load i18n %}
+{% load bookworm %}
+
+{% block title %}{% trans "Bookworm API title list" %}{% endblock title %}
+
+{% block content %}
+
+  {% if documents %}
+  <!-- Document list -->
+    <ol>
+      {% for document in documents %}
+      <li> 
+        <span class="document-title">{{ document.title }}</span>
+        <span class="document-authors">{% authors document %}</span>
+        <span class="document-date-added">{{ document.created_time }}</span>
+        <span class="document-address"><a href="{{ SECURE_HOSTNAME }}{% url api_download document.key %}">{{ SECURE_HOSTNAME }}{% url api_download document.key %}</a></span>
+        <!-- {{ document }} -->
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+  {% endif %}
+
+{% endblock content %}
+

@@ -35,7 +35,7 @@ li { padding-bottom: .5em; }
 {% url about as abouturl %}
 
 {% if message %}
-<p class="bw-message"><strong>{{ message|safe }}</strong></p>
+<div class="bw-message">{{ message|safe }}</div>
 {% endif %}
 
 <p id="bw-about-description">
@@ -46,14 +46,14 @@ li { padding-bottom: .5em; }
 </p>
 {% if form.errors %}
 <p class="bw-message">
-  {% blocktrans %}You need to click on the &lsquo;Browse&rsquo; button and select an ebook to add.{% endblocktrans %}
+  {% blocktrans %}You need to click on the ‘Browse’ button and select an ebook to add.{% endblocktrans %}
 </p>
 {% endif %}
 
 <div class="bw-info-box">
 <form action="{% url upload %}" method="post" enctype="multipart/form-data">
   <div id="bw-upload_form">
-    <strong>{% blocktrans %}Add an ePub from your computer by clicking on &lsquo;Browse&rsquo;:{% endblocktrans %}</strong>
+    <strong>{% blocktrans %}Add an ePub from your computer by clicking on ‘Browse’:{% endblocktrans %}</strong>
     <p>{{ form.epub }}</p>
     <p><input type="submit" value="{{ _("Add to my library") }}" /></p>
   </div>

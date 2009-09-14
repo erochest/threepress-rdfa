@@ -36,6 +36,8 @@
     ~ 
     <a href="#openid"> {% trans "Do I need an OpenID to use Bookworm?" %}</a>
     ~ 
+    <a href="#api"> {% trans "Can I upload all my files at once or access Bookworm without a browser?" %}</a>
+    ~ 
     <a href="#additional"> {% trans "More questions" %}</a>
   </div>
 
@@ -59,7 +61,7 @@
   <p>
     {% trans "Here are some common things to check" %}:
   </p>
-  <h3>{% trans "Is the book in &lsquo;ePub&rsquo; format?" %}</h3>
+  <h3>{% trans "Is the book in ‘ePub’ format?" %}</h3>
   <p>
     {% blocktrans %}
     Bookworm only accepts ePub books.  You'll know an ebook is in ePub format
@@ -89,7 +91,7 @@
     On the other hand, Bookworm is also new and still has bugs.  When your
     book was uploaded into Bookworm and a problem was detected, Bookworm contacted
     an <a href="http://www.threepress.org/document/epub-validate/">ePub validation system</a>,
-    which uses a program called &lsquo;epubcheck&rsquo; by Adobe.  
+    which uses a program called ‘epubcheck’ by Adobe.  
     Bookworm will tell you if epubcheck also thought there was a problem with the ebook.
     If they both agree, it's likely that the publisher didn't make the ePub correctly.
     {% endblocktrans %}
@@ -199,6 +201,7 @@
       </tr>
     </tbody>
   </table>
+
   <a name="openid"></a>
   <h2>
     {% url django_authopenid.views.signup as signupurl %}
@@ -214,6 +217,19 @@
     haven't already.  In fact, you probably already have one.  <a href="{{ openidurl }}">Find out more about OpenID</a>.
     {% endblocktrans %}
   </p>
+
+  <a name="api"></a>
+  <h2>{% trans "Can I upload all my files at once or access Bookworm without a browser?" %}</h2>
+  <p>
+    {% url api_help as api_help %}
+    {% blocktrans %}
+    Yes, we implemented the <a href="{{ api_help }}">Bookworm API</a> to help users and developers
+    use Bookworm in ways we hadn't origially imagined. A savvy developer can use the API to upload a number of EPUBs
+    at once or to download all the items in your Library. If you build something with the API, please let us
+    know on <a href="http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm">Get Satisfaction</a> 
+    {% endblocktrans %}
+    </p>
+
   <a name="additional"></a>
   <h2>{% trans "I have additional questions" %}</h2>
   <p>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-22 10:08-0400\n"
-"PO-Revision-Date: 2009-07-22 10:10-0400\n"
+"POT-Creation-Date: 2009-09-14 10:28-0400\n"
+"PO-Revision-Date: 2009-08-16 14:48-0400\n"
 "Last-Translator: mahalo ito <mahalo.ito@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,59 +19,226 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Bookmarks: -1,365,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
-#: settings.py:100
+#: settings.py:108
 msgid "German"
 msgstr "ドイツ語"
 
-#: settings.py:101
+#: settings.py:109
 msgid "English"
 msgstr "英語"
 
-#: settings.py:102
+#: settings.py:110
 msgid "Danish"
 msgstr "デンマーク語"
 
-#: settings.py:103
+#: settings.py:111
 msgid "Finnish"
 msgstr "フィンランド語"
 
-#: settings.py:104
+#: settings.py:112
 msgid "Italian"
 msgstr "イタリア語"
 
-#: settings.py:105
+#: settings.py:113
 msgid "Spanish"
 msgstr "デンマーク語"
 
-#: settings.py:144
+#: settings.py:151
 msgid "account/"
 msgstr "アカウント/"
 
-#: settings.py:144
+#: settings.py:151
 msgid "signin/"
 msgstr "ログイン/"
 
-#: django_authopenid/forms.py:68 django_authopenid/views.py:108
+#: api/list.html:4 api/templates/api/list.html:5
+msgid "Bookworm API title list"
+msgstr ""
+
+#: api/templates/api_help.html:3 library/templates/auth/profile.html:3
+msgid "Profile and preferences for"
+msgstr "プロフィールと設定"
+
+#: api/templates/api_help.html:9
+#, fuzzy
+msgid "About the Bookworm API"
+msgstr "Bookwormについて"
+
+#: api/templates/api_help.html:13
+#, python-format
+msgid ""
+"The Bookworm API (or Application Programming Interface) allows users and "
+"developers to access many of the features of Bookworm from other "
+"applications.\n"
+"Using the API, a developer can add, download, and list the EPUB content over "
+"HTTP in a user's <a href=\"%(library)s\">Library</a>. This page describes "
+"the API in fairly\n"
+"low-level detail. This (rather dry) description is intented only for "
+"developers.\n"
+msgstr ""
+
+#: api/templates/api_help.html:18
+#, fuzzy
+msgid "Authorization"
+msgstr "カスタマイズ"
+
+#: api/templates/api_help.html:21
+#, python-format
+msgid ""
+"\n"
+"You need to <a href=\"%(signupurl)s\">sign up</a> for Bookworm before using "
+"the API, as access is\n"
+"limited to existing users. \n"
+msgstr ""
+
+#: api/templates/api_help.html:26
+#, python-format
+msgid ""
+"\n"
+"After logging in, visit your <a href=\"%(profile)s\">Profile</a> to find\n"
+"your <code>api_key</code>. This <code>api_key</code> is a required parameter "
+"for all API requests \n"
+"and each request will be authorized against the <code>api_key</code>.\n"
+msgstr ""
+
+#: api/templates/api_help.html:32
+msgid ""
+"\n"
+"Keep your API key private, like a password. Your API key will change if you "
+"update your password.\n"
+msgstr ""
+
+#: api/templates/api_help.html:36
+msgid ""
+"\n"
+"The API is only available over HTTPS.\n"
+msgstr ""
+
+#: api/templates/api_help.html:41
+#, fuzzy
+msgid "Library listing"
+msgstr "ライブラリ"
+
+#: api/templates/api_help.html:44
+#, python-format
+msgid ""
+"An API client may request the list of titles in their <a href=\"%(library)s"
+"\">Library</a> using an authorized <code>HTTP GET</code>.\n"
+"The results will be returned as an XHTML page that includes every title in "
+"one ordered list. Each list item will include a\n"
+"hyperlink to a <em>document address</em>, the <em>Title</em>, <em>Author(s)</"
+"em>, and <em>Date added</em>. \n"
+"The list will be ordered by <em>Date added</em>. The list will not be "
+"paginated. Here's a sample: "
+msgstr ""
+
+#: api/templates/api_help.html:124
+#, python-format
+msgid ""
+"\n"
+"The listing like the above is available via an authorized <code>HTTP GET</"
+"code> from <a href=\"%(api_documents)s\">%(api_documents)s</a>.\n"
+msgstr ""
+
+#: api/templates/api_help.html:129
+#, fuzzy
+msgid "Adding titles to your Library"
+msgstr "あなたのライブラリに日付を付ける"
+
+#: api/templates/api_help.html:132
+#, python-format
+msgid ""
+"\n"
+"A new title in EPUB format may be added to your <a href=\"%(library)s"
+"\">Library</a>  using an authorized <code>HTTP POST</code> using either of "
+"two techniques:\n"
+"directly via EPUB upload or indirectly by EPUB URL reference.\n"
+msgstr ""
+
+#: api/templates/api_help.html:138
+#, python-format
+msgid ""
+"\n"
+"If using direct EPUB upload, the API user will POST a file's contents as "
+"<code>multipart/form-data</code> using the \n"
+"parameter <code>epub_data</code> for the EPUB bytes to <a href=\"%"
+"(api_documents)s\">%(api_documents)s</a> (remember\n"
+"your <code>api_key</code> too).  Here's an example of this using <code>curl</"
+"code>:\n"
+msgstr ""
+
+#: api/templates/api_help.html:163
+#, python-format
+msgid ""
+"\n"
+"If you'd prefer to add a new EPUB by URL reference, the POST a request to <a "
+"href=\"%(api_documents)s\">%(api_documents)s</a> \n"
+"with an <code>epub_url</code> parameter that references an externally-hosted "
+"EPUB document available\n"
+"by unauthenticated <code>HTTP GET</code>. The Bookworm server will initiate "
+"a request for this EPUB document and\n"
+"proceed as normal (maybe).\n"
+msgstr ""
+
+#: api/templates/api_help.html:172
+#, python-format
+msgid ""
+"\n"
+"If either upload technique described above succeeds and the new EPUB content "
+"is accepted by the Bookworm server, an <code>HTTP 201 Created</code> "
+"response \n"
+"(probably following some <code>HTTP 100 Continue</code>s) will be\n"
+"returned and the <code>Content-Location</code> header will reference the "
+"<em>document address</em> (write that down). The newly-uploaded title will\n"
+"now be available in the user's <a href=\"%(library)s\">Library</a> .\n"
+msgstr ""
+
+#: api/templates/api_help.html:181
+#, python-format
+msgid ""
+"Neither method for adding new EPUBs checks to see if the user already seems\n"
+"to have this title in their <a href=\"%(library)s\">Library</a> . API "
+"clients should check the contents of the user's <a href=\"#librarylisting"
+"\">Library listing</a>  before adding\n"
+"new titles.\n"
+msgstr ""
+
+#: api/templates/api_help.html:186
+msgid "Downloading EPUB content from your Library"
+msgstr ""
+
+#: api/templates/api_help.html:189
+#, python-format
+msgid ""
+"\n"
+"API users will be able to download complete EPUB documents from the user's "
+"<a href=\"%(library)s\">Library</a> by\n"
+"<em>document address</em>. An authorized <code>HTTP GET</code> of a "
+"<em>document address</em> will return the complete content as "
+"<code>application/epub+zip</code>.\n"
+msgstr ""
+
+#: django_authopenid/forms.py:70 django_authopenid/views.py:108
 msgid "i-names are not supported"
 msgstr "i-namesはサポートされていません。"
 
-#: django_authopenid/forms.py:76 django_authopenid/forms.py:137
+#: django_authopenid/forms.py:78 django_authopenid/forms.py:141
 #, python-format
 msgid "next url \"%s\" is invalid"
 msgstr "次の url \"%s\" は正しくありません。"
 
-#: django_authopenid/forms.py:104 django_authopenid/forms.py:160
-#: django_authopenid/forms.py:201
+#: django_authopenid/forms.py:108 django_authopenid/forms.py:164
+#: django_authopenid/forms.py:205
 msgid ""
 "Usernames can only contain                     letters, numbers and "
 "underscores"
 msgstr "ユーザー名には、英数字とアンダースコア（_）が使用できます。"
 
-#: django_authopenid/forms.py:111
+#: django_authopenid/forms.py:115
 msgid "There is no account with this username."
 msgstr "このユーザー名では、アカウントの登録がありません。"
 
-#: django_authopenid/forms.py:123 django_authopenid/forms.py:221
+#: django_authopenid/forms.py:127 django_authopenid/forms.py:225
 msgid ""
 "Please enter a correct                     username and password. Note that "
 "both fields are                     case-sensitive."
@@ -79,15 +246,15 @@ msgstr ""
 "正しいユーザー名とパスワードを入力してください。どちらも大文字小文字が区別さ"
 "れるので注意してください。"
 
-#: django_authopenid/forms.py:127 django_authopenid/forms.py:225
+#: django_authopenid/forms.py:131 django_authopenid/forms.py:229
 msgid "This account is inactive."
 msgstr "このアカウントは使われていません。"
 
-#: django_authopenid/forms.py:168
+#: django_authopenid/forms.py:172
 msgid "This username is already                 taken. Please choose another."
 msgstr "このユーザー名はすでに使われています。別なものを選んでください。"
 
-#: django_authopenid/forms.py:178
+#: django_authopenid/forms.py:182
 msgid ""
 "This email is already                 registered in our database. Please "
 "choose another."
@@ -95,21 +262,21 @@ msgstr ""
 "このメールアドレスはすでにデータベースに登録されています。別なものを選んでく"
 "ださい。"
 
-#: django_authopenid/forms.py:208
+#: django_authopenid/forms.py:212
 msgid ""
 "This username doesn't exist.                         Please choose another."
 msgstr "このユーザー名は存在していません。別なものを選んでください。"
 
-#: django_authopenid/forms.py:312
+#: django_authopenid/forms.py:316
 msgid ""
 "Old password is wrong.                     Please enter a valid password."
 msgstr "古いパスワードがまちがっています。正しいパスワードを入力してください。"
 
-#: django_authopenid/forms.py:324
+#: django_authopenid/forms.py:328
 msgid "new passwords do not match each other"
 msgstr "新しいパスワードの入力内容が、それぞれ違っています。"
 
-#: django_authopenid/forms.py:400
+#: django_authopenid/forms.py:404
 msgid "Incorrect username."
 msgstr "正しくないユーザー名です。"
 
@@ -178,11 +345,11 @@ msgstr ""
 msgid "Password changed for %s. You could now sign in"
 msgstr "%sのパスワードは変更されました。ログインできます"
 
-#: library/models.py:134
+#: library/models.py:129
 msgid "Untitled"
 msgstr "タイトル未定"
 
-#: library/models.py:692 library/models.py:694 library/models.py:697
+#: library/models.py:690 library/models.py:692 library/models.py:695
 msgid ""
 "There was a problem related to the encoding of one of the documents in your "
 "ePub. All ePub documents must be in UTF-8."
@@ -190,15 +357,15 @@ msgstr ""
 "あなたのePubの中に、エンコーディングに問題のあるドキュメントがありました。"
 "ePubドキュメントのエンコードはUTF-8でなければなりません。"
 
-#: library/models.py:1194
+#: library/models.py:1237
 msgid "book title"
 msgstr "書籍のタイトル"
 
-#: library/models.py:1195
+#: library/models.py:1238
 msgid "first author"
 msgstr "第一著者"
 
-#: library/models.py:1196
+#: library/models.py:1239
 msgid "date added to your library"
 msgstr "あなたのライブラリに日付を付ける"
 
@@ -222,7 +389,7 @@ msgstr "日付順で"
 msgid "There was a problem reading the metadata for this document."
 msgstr "このドキュメントのメタデータを読み出すときに問題が発生しました。"
 
-#: library/views.py:189
+#: library/views.py:190
 msgid ""
 "\n"
 "This book contained content that Bookworm couldn't read.  You may need to "
@@ -236,17 +403,17 @@ msgstr ""
 "のePubファイルは、XTHMLまたはDTBookフォーマットのどちらのコンテンツを含んでい"
 "るかを、版元に確認してみてください。"
 
-#: library/views.py:328
+#: library/views.py:333
 msgid "Your profile has been updated."
 msgstr "あなたのプロフィールは更新されました。"
 
-#: library/views.py:345 library/views.py:353
+#: library/views.py:350 library/views.py:358
 msgid "There was a problem with your request to delete this profile."
 msgstr ""
 "あなたからのリクエストによりこのプロフィールを削除するときに問題が発生しまし"
 "た。"
 
-#: library/views.py:466
+#: library/views.py:487
 msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
@@ -254,7 +421,7 @@ msgstr ""
 "あなたがアップロードしようとしたファイルは、ePub形式のファイルではなかったの"
 "で、ライブラリへは追加できませんでした。"
 
-#: library/views.py:473
+#: library/views.py:495
 msgid ""
 "We detected a problem with your ebook that is most likely related to it "
 "being too big to display safely in a web browser. This can happen with very "
@@ -270,7 +437,7 @@ msgstr ""
 "た動作も非常に重くなります。そのためBookwormにはそのようなebookを追加できませ"
 "ん。"
 
-#: library/views.py:499
+#: library/views.py:500
 msgid ""
 "It appears that you've uploaded a book which contains DRM (Digital Rights "
 "Management).  This is a restriction that is meant to prevent illegal copying "
@@ -286,35 +453,47 @@ msgstr ""
 "とって、DRM-freeの電子書籍を配本してもらえないか問い合わせてみるとよいかもし"
 "れません。"
 
-#: library/views.py:533
+#: library/views.py:519
+#, fuzzy
 msgid ""
-"The file you uploaded looks like an ePub archive, but it has some problems "
-"that prevented it from being loaded.  This may be a bug in Bookworm, or it "
-"may be a problem with the way the ePub file was created. The complete error "
-"message is:"
+"<p class='bw-upload-message'>The file you uploaded looks like an ePub "
+"archive, but it has some problems that prevented it from being loaded.  This "
+"may be a bug in Bookworm, or it may be a problem with the way the ePub file "
+"was created. The complete error message is:</p>"
 msgstr ""
 "あなたがアップロードしたファイルはePub形式のファイルのようですが、ファイルの"
 "ロードを妨げるなんらかの問題がありました。これはBookwormのバグ（問題）かもし"
 "れません。もしくはePubファイルの作成過程で問題があったのかもしれません。エ"
 "ラーメッセージは次の通りです: "
 
-#: library/views.py:537
+#: library/views.py:520
+#, python-format
+msgid "<p class='bw-upload-errors'>%s</p>"
+msgstr ""
+
+#: library/views.py:529
+#, fuzzy
 msgid ""
-"<p>(epubcheck thinks this file is valid, so this is probably a Bookworm "
-"error)</p>"
+"<p>(epubcheck thinks this file is valid, so this may be a Bookworm error)</p>"
 msgstr ""
 "<p>（epubcheck はこのファイルは有効だと判断したので、おそらく問題はBookwormの"
 "エラーにあります）</p>"
 
-#: library/views.py:543
+#: library/views.py:533
+#, fuzzy, python-format
 msgid ""
-"<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a> agrees that "
-"this is not a valid ePub file, so you should check with the publisher or "
-"content creator. It returned:"
+"<p class='bw-upload-message'><a href='http://code.google.com/p/"
+"epubcheck/'>epubcheck</a> agrees that this is not a valid ePub file, so you "
+"should check with the publisher or content creator. It returned <strong "
+"id='bw-num-errors'>%d</strong> error(s):</p>"
 msgstr ""
 "<p><a href='http://code.google.com/p/epubcheck/'>epubcheck</a>はこれは有効な"
 "ePubファイルではないと判断しました。版元またはコンテンツ製作者に確認してくだ"
 "さい。次の内容が返ってきました："
+
+#: library/views.py:561
+msgid "The address you provided does not point to an ePub book"
+msgstr ""
 
 #: library/templates/about.html:3 library/templates/about.html.py:5
 #: library/templates/includes/about.html:5
@@ -507,9 +686,9 @@ msgid "Can I use Bookworm on my mobile device?"
 msgstr "モバイル機器でもBookwormを使えるでしょうか？"
 
 #: library/templates/about.html:109
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"<a href=\"%(toururl)s}#step3\"><img src=\"/static/images/screenshots/iphone."
+"<a href=\"%(toururl)s#step3\"><img src=\"/static/images/screenshots/iphone."
 "png\" alt=\"Bookworm on the iPhone\" class=\"bw-screenshot-page\" align="
 "\"right\" style=\"margin-bottom:10px\" width=\"100\"/></a>\n"
 "    Absolutely!  A special version of the site optimized for mobile devices "
@@ -1299,10 +1478,9 @@ msgstr "読書システムへの適応"
 #: library/templates/epub.html:148
 msgid ""
 "\n"
-"      In accordance with the ePub specification, Bookworm will &lsquo;"
-"open&rsquo;\n"
+"      In accordance with the ePub specification, Bookworm will ‘open’\n"
 "      the ePub to the first item in the NCX file with the attribute\n"
-"      <code>linear</code> set to &lsquo;yes&rsquo;  Counterintuitively,\n"
+"      <code>linear</code> set to ‘yes’  Counterintuitively,\n"
 "      this may mean that in some titles\n"
 "      the default page for the ePub will not be the first item in the\n"
 "      NCX file.\n"
@@ -1310,9 +1488,9 @@ msgid ""
 msgstr ""
 "\n"
 "ePub仕様に適応するために、BookwormはePubを、NCXファイルの最初のアイテムとし"
-"て、<code>linear</code>を&lsquo;yes&rsquoに設定して、&lsquo;オープン&rsquo;に"
-"します。これは次のような意味になります。つまり、ある書籍のePubのデフォルト"
-"ページはNCXファイルの最初のアイテムとはならないということです。      "
+"て、<code>linear</code>を‘yes'oに設定して、‘オープン’にします。これは次のよう"
+"な意味になります。つまり、ある書籍のePubのデフォルトページはNCXファイルの最初"
+"のアイテムとはならないということです。      "
 
 #: library/templates/epub.html:158
 msgid ""
@@ -1528,7 +1706,7 @@ msgstr ""
 msgid "Problems adding a book?"
 msgstr "書籍の追加で問題がありましたか？"
 
-#: library/templates/help.html:35 library/templates/help.html.py:129
+#: library/templates/help.html:35 library/templates/help.html.py:131
 msgid "Can I use Bookworm with my e-reader?"
 msgstr "他の電子ブックリーダーでもBookwormを使えますか？"
 
@@ -1536,15 +1714,19 @@ msgstr "他の電子ブックリーダーでもBookwormを使えますか？"
 msgid "Do I need an OpenID to use Bookworm?"
 msgstr "Bookwormを使うにはOpenIDが必要でしょうか？"
 
-#: library/templates/help.html:39
+#: library/templates/help.html:39 library/templates/help.html.py:222
+msgid "Can I upload all my files at once or access Bookworm without a browser?"
+msgstr ""
+
+#: library/templates/help.html:41
 msgid "More questions"
 msgstr "その他の質問"
 
-#: library/templates/help.html:43
+#: library/templates/help.html:45
 msgid "What do I do first? <!-- trans: to use Bookworm -->"
 msgstr "まず何をすればよいのでしょうか？<!-- trans: to use Bookworm -->"
 
-#: library/templates/help.html:46
+#: library/templates/help.html:48
 #, python-format
 msgid ""
 "\n"
@@ -1556,7 +1738,7 @@ msgstr ""
 "手軽にBookwormを始めたいなら、まずは<a href=\"%(toururl)s\">クイック・ツアー"
 "</a>のページを覗いてみてください。    "
 
-#: library/templates/help.html:52
+#: library/templates/help.html:54
 #, python-format
 msgid ""
 "\n"
@@ -1568,19 +1750,19 @@ msgstr ""
 "詳しい情報は、<a href=\"%(abouturl)s\">Bookwormについてのページ</a>をご覧くだ"
 "さい。Bookwormの目的やメリットなどについて解説しています。    "
 
-#: library/templates/help.html:58
+#: library/templates/help.html:60
 msgid "I'm having problems adding a book"
 msgstr "書籍を追加しようとして問題が発生しました。"
 
-#: library/templates/help.html:60
+#: library/templates/help.html:62
 msgid "Here are some common things to check"
 msgstr "よくある問題については次の質問をチェックしてください。"
 
-#: library/templates/help.html:62
-msgid "Is the book in &lsquo;ePub&rsquo; format?"
-msgstr "書籍は &lsquo;ePub&rsquo; フォーマットになっていますか？"
-
 #: library/templates/help.html:64
+msgid "Is the book in ‘ePub’ format?"
+msgstr "書籍は ‘ePub’ フォーマットになっていますか？"
+
+#: library/templates/help.html:66
 msgid ""
 "\n"
 "    Bookworm only accepts ePub books.  You'll know an ebook is in ePub "
@@ -1599,20 +1781,20 @@ msgstr ""
 "入手先のウェブサイトのヘルプページなどで、どのソフトウェアを使って読むべきか"
 "を確認してみてください。    "
 
-#: library/templates/help.html:71
+#: library/templates/help.html:73
 msgid "Did Bookworm tell you there was a problem with the book?"
 msgstr "Bookwormのシステムは、その書籍には問題があると言っていませんか？"
 
-#: library/templates/help.html:73
+#: library/templates/help.html:75
 msgid "You might get an error message like this when you add a book"
 msgstr ""
 "書籍を追加したときに、きっとこんなエラーメッセージを目にしているはずです。"
 
-#: library/templates/help.html:77
+#: library/templates/help.html:79
 msgid "click to enlarge "
 msgstr "クリックで拡大します"
 
-#: library/templates/help.html:80
+#: library/templates/help.html:82
 msgid ""
 "\n"
 "    The ePub format is still  new, and not all ePub books are made \n"
@@ -1625,7 +1807,7 @@ msgstr ""
 "せん。BookwormはさまざまなePubファイルを受け入れるよう努力をしていますが、"
 "ファイルがあまりにも特殊な場合には、それを扱えないこともあります。    "
 
-#: library/templates/help.html:88
+#: library/templates/help.html:90
 msgid ""
 "\n"
 "    On the other hand, Bookworm is also new and still has bugs.  When your\n"
@@ -1633,7 +1815,7 @@ msgid ""
 "contacted\n"
 "    an <a href=\"http://www.threepress.org/document/epub-validate/\">ePub "
 "validation system</a>,\n"
-"    which uses a program called &lsquo;epubcheck&rsquo; by Adobe.  \n"
+"    which uses a program called ‘epubcheck’ by Adobe.  \n"
 "    Bookworm will tell you if epubcheck also thought there was a problem "
 "with the ebook.\n"
 "    If they both agree, it's likely that the publisher didn't make the ePub "
@@ -1644,12 +1826,12 @@ msgstr ""
 "一方で、Bookwormはまだ新しく、 バグを抱えています。 書籍をアップロードしよう"
 "としたときに問題が発覚すれば、Bookwormは<a href=\"http://www.threepress.org/"
 "document/epub-validate/\">ePub validation system</a>を呼び出します。ePub "
-"validation systemはAdobe製の &lsquo;epubcheck&rsquo;を呼び出しています。"
-"epubcheckによって、やはりebookに問題があると考えられる場合には、Bookwormはそ"
-"れをユーザーに通知します。Bookwormとepubcheckの両方で問題があるようなら、出版"
-"社が正しいePub形式で書籍を作っていない可能性があります。    "
+"validation systemはAdobe製の ‘epubcheck’を呼び出しています。epubcheckによっ"
+"て、やはりebookに問題があると考えられる場合には、Bookwormはそれをユーザーに通"
+"知します。Bookwormとepubcheckの両方で問題があるようなら、出版社が正しいePub形"
+"式で書籍を作っていない可能性があります。    "
 
-#: library/templates/help.html:98
+#: library/templates/help.html:100
 #, python-format
 msgid ""
 "\n"
@@ -1667,11 +1849,11 @@ msgstr ""
 "メールで<a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>へ問い合わせて"
 "みてください。    "
 
-#: library/templates/help.html:105
+#: library/templates/help.html:107
 msgid "Does the book contain DRM (Digital Rights Management)?"
 msgstr "書籍はDRM (Digital Rights Management)を含んでいませんか？"
 
-#: library/templates/help.html:107
+#: library/templates/help.html:109
 msgid ""
 "\n"
 "    Some ePub books have restrictions that prevent them from being read on \n"
@@ -1685,7 +1867,7 @@ msgstr ""
 "られているものがあります。BookwormはDRMをサポートしていません。また、開発者は"
 "書籍がどこで読まれるかを制限する方法としてDRMでは不十分だと感じています。    "
 
-#: library/templates/help.html:115
+#: library/templates/help.html:117
 msgid ""
 "\n"
 "    Consult the bookstore where you purchased the book or the publisher "
@@ -1697,13 +1879,13 @@ msgstr ""
 "書籍を購入した書店や出版社に、読書にはどのソフトウェアを使うべきかを問い合わ"
 "せてみてください。    "
 
-#: library/templates/help.html:120
+#: library/templates/help.html:122
 msgid "Is the ebook very large, or contain large images?"
 msgstr ""
 "ebookのファイルサイズがとても巨大だったり、または大きなイメージを含んでいたり"
 "しませんか？"
 
-#: library/templates/help.html:122
+#: library/templates/help.html:124
 msgid ""
 "\n"
 "    Some ebooks are too large to be safely stored and viewed in Bookworm.\n"
@@ -1717,7 +1899,7 @@ msgstr ""
 "ものがあります。非常に巨大な書籍は拒絶されます。ePubのサイズは、30MBを超える"
 "と大きすぎると思われます。    "
 
-#: library/templates/help.html:131
+#: library/templates/help.html:133
 msgid ""
 "\n"
 "    Yes, if your e-reader can open ePub books.  In each case you will need "
@@ -1732,7 +1914,7 @@ msgstr ""
 "ピュータへダウンロードして電子リーダーへ追加したり、オンライン上にあるデバイ"
 "スでBookwormのモバイル版を使っていたり、などの場合があります。    "
 
-#: library/templates/help.html:139
+#: library/templates/help.html:141
 msgid ""
 "\n"
 "      The number of e-readers out there\n"
@@ -1742,33 +1924,33 @@ msgstr ""
 "\n"
 "電子リーダーの数は増え続けています。以下の数は2009年の春以降のものです。    "
 
-#: library/templates/help.html:147
+#: library/templates/help.html:149
 msgid "Device <!-- trans: e-reading device, should be short -->"
 msgstr "デバイス <!-- trans: e-reading device, should be short -->"
 
-#: library/templates/help.html:148
+#: library/templates/help.html:150
 msgid "Supports ePub? <!-- trans: Should be short phrase -->"
 msgstr "ePubサポート？"
 
-#: library/templates/help.html:149
+#: library/templates/help.html:151
 msgid "How-to <!-- trans: How to use Bookworm with this e-reader --> "
 msgstr "使い方"
 
-#: library/templates/help.html:154
+#: library/templates/help.html:156
 msgid "iPod Touch"
 msgstr "iPodタッチ"
 
-#: library/templates/help.html:155 library/templates/help.html.py:160
-#: library/templates/help.html:171 library/templates/help.html.py:181
-#: library/templates/help.html:186
+#: library/templates/help.html:157 library/templates/help.html.py:162
+#: library/templates/help.html:173 library/templates/help.html.py:183
+#: library/templates/help.html:188
 msgid "Yes"
 msgstr "はい"
 
-#: library/templates/help.html:156
+#: library/templates/help.html:158
 msgid "Use <!-- trans: Use this software program -->"
 msgstr "利用する"
 
-#: library/templates/help.html:162
+#: library/templates/help.html:164
 #, python-format
 msgid ""
 "\n"
@@ -1788,11 +1970,11 @@ msgstr ""
 "how_to_get_books_onto_stanza_iphone\">このリンク</a>を参照してくださ"
 "い。          "
 
-#: library/templates/help.html:170
+#: library/templates/help.html:172
 msgid "Other web-enabled phone"
 msgstr "その他のウェブが使える電話機"
 
-#: library/templates/help.html:173
+#: library/templates/help.html:175
 #, python-format
 msgid ""
 "\n"
@@ -1806,15 +1988,15 @@ msgstr ""
 "バイル機器で<a href=\"%(mobilehost)s\">%(mobilehost)s</a>を開いてくださ"
 "い。          "
 
-#: library/templates/help.html:182 library/templates/public.html:22
+#: library/templates/help.html:184 library/templates/public.html:22
 msgid "or"
 msgstr "または"
 
-#: library/templates/help.html:191
+#: library/templates/help.html:193
 msgid "Indirectly <!-- trans: can be used with this device only partially -->"
 msgstr "間接的に <!-- trans: can be used with this device only partially -->"
 
-#: library/templates/help.html:193
+#: library/templates/help.html:195
 #, python-format
 msgid ""
 "\n"
@@ -1829,7 +2011,7 @@ msgstr ""
 "ば、KindleのWhispernetからブラウザで<a href=\"%(mobilehost)s\">%(mobilehost)"
 "s</a>を開いて読書することができます。          "
 
-#: library/templates/help.html:205
+#: library/templates/help.html:208
 #, python-format
 msgid ""
 " \n"
@@ -1842,7 +2024,7 @@ msgstr ""
 "<a href=\"%(signupurl)s\">サインアップ</a>のページでOpenIDの入力欄をみかけま"
 "した。OpenIDを使わなければならないのでしょうか？     "
 
-#: library/templates/help.html:212
+#: library/templates/help.html:215
 #, python-format
 msgid ""
 " \n"
@@ -1858,11 +2040,26 @@ msgstr ""
 "場合は、<a href=\"%(openidurl)s\">OpenIDについての詳細</a>をご参照くださ"
 "い。    "
 
-#: library/templates/help.html:218
+#: library/templates/help.html:225
+#, python-format
+msgid ""
+"\n"
+"    Yes, we implemented the <a href=\"%(api_help)s\">Bookworm API</a> to "
+"help users and developers\n"
+"    use Bookworm in ways we hadn't origially imagined. A savvy developer can "
+"use the API to upload a number of EPUBs\n"
+"    at once or to download all the items in your Library. If you build "
+"something with the API, please let us\n"
+"    know on <a href=\"http://getsatisfaction.com/threepress/topics/"
+"post_ideas_and_questions_about_bookworm\">Get Satisfaction</a> \n"
+"    "
+msgstr ""
+
+#: library/templates/help.html:234
 msgid "I have additional questions"
 msgstr "追加の質問があります。"
 
-#: library/templates/help.html:221
+#: library/templates/help.html:237
 #, python-format
 msgid ""
 "\n"
@@ -1874,7 +2071,7 @@ msgstr ""
 "Bookwormについての詳細は<a href=\"%(abouturl)s\">Bookwormについて</a>のページ"
 "をご参照ください。      "
 
-#: library/templates/help.html:228
+#: library/templates/help.html:244
 #, python-format
 msgid ""
 "\n"
@@ -1892,43 +2089,43 @@ msgstr ""
 "受け付けています。\n"
 "    "
 
-#: library/templates/index.html:6
+#: library/templates/index.html:7
 msgid "My epub library"
 msgstr "マイePubライブラリ"
 
-#: library/templates/index.html:14 library/templates/shell.html:43
+#: library/templates/index.html:15 library/templates/shell.html:43
 #: library/templates/shell.html.py:58 library/templates/upload.html:4
 #: library/templates/upload.html.py:5
 msgid "Add a book"
 msgstr "書籍を追加する。"
 
-#: library/templates/index.html:18
+#: library/templates/index.html:19
 msgid "Status"
 msgstr "ステータス"
 
-#: library/templates/index.html:20
+#: library/templates/index.html:21
 #, python-format
 msgid "There is one reader "
 msgid_plural "There are more than %(counter)s readers"
 msgstr[0] ""
 msgstr[1] ""
 
-#: library/templates/index.html:22
+#: library/templates/index.html:23
 #, python-format
 msgid " and only one individual book."
 msgid_plural " and over %(counter)s individual books."
 msgstr[0] "そして、書籍は1冊だけ。"
 msgstr[1] "そして、%(counter)s冊以上の書籍。"
 
-#: library/templates/index.html:28
+#: library/templates/index.html:29
 msgid "Edit your profile"
 msgstr "あなたのプロフィールを編集"
 
-#: library/templates/index.html:42
+#: library/templates/index.html:43
 msgid "Books in your library"
 msgstr "あなたのライブラリにある書籍"
 
-#: library/templates/index.html:46
+#: library/templates/index.html:47
 #, python-format
 msgid ""
 "\n"
@@ -1942,7 +2139,7 @@ msgstr ""
 "す。\n"
 "    "
 
-#: library/templates/index.html:56
+#: library/templates/index.html:57
 msgid ""
 "You can re-order your books by clicking on  &quot;title&quot;, &quot;"
 "author&quot; or &quot;date added&quot;."
@@ -1950,11 +2147,11 @@ msgstr ""
 "&quot;タイトル&quot;、&quot;著者名&quot; または&quot;追加日時&quot;をクリック"
 "して、書籍を再注文できます。"
 
-#: library/templates/index.html:57
+#: library/templates/index.html:58
 msgid "Clicking on the same label twice will reverse the order."
 msgstr "注文を無効にするには、同じラベルを2度クリックします。"
 
-#: library/templates/index.html:62
+#: library/templates/index.html:63
 #, python-format
 msgid ""
 "\n"
@@ -1968,7 +2165,7 @@ msgstr ""
 "い。\n"
 "  "
 
-#: library/templates/index.html:69
+#: library/templates/index.html:70
 #, python-format
 msgid ""
 "\n"
@@ -1984,12 +2181,12 @@ msgstr ""
 "す。\n"
 "  "
 
-#: library/templates/index.html:80 library/templates/shell.html:6
+#: library/templates/index.html:81 library/templates/shell.html:6
 #: library/templates/shell.html.py:36
 msgid "Bookworm"
 msgstr "Bookworm"
 
-#: library/templates/index.html:82
+#: library/templates/index.html:83
 #, python-format
 msgid ""
 "A free platform for reading ePub books online. <a href='%(abouturl)s'>Learn "
@@ -1998,47 +2195,46 @@ msgstr ""
 "ePub書籍をオンラインで読むためのフリーなプラットフォーム。<a href='%"
 "(abouturl)s'>詳細はこちらです</a>。"
 
-#: library/templates/index.html:86
-msgid "To add a new book, log in using your computer."
+#: library/templates/index.html:87
+msgid ""
+"To add a new book, log in using your computer, or add any of these popular "
+"public domain texts from\n"
+"    <a href=\"http://feedbooks.com/\">Feedbooks</a>:"
 msgstr ""
-"新しい書籍を追加するには、ご自分のコンピュータを使ってログインしてください。"
 
-#: library/templates/index.html:91
+#: library/templates/index.html:88
+msgid "Show"
+msgstr ""
+
+#: library/templates/index.html:97
 msgid "Add a new ePub ebook:"
 msgstr "新しいePub書籍を追加："
 
-#: library/templates/index.html:93
+#: library/templates/index.html:99
 msgid "Add your first ePub ebook:"
 msgstr "1冊目のePub書籍を追加する："
 
-#: library/templates/index.html:96
-msgid ""
-"\n"
-"    If you don't have any ePubs yet, you can start with <a href=\"http://www."
-"threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen.epub\">Pride and "
-"Prejudice</a> by Jane Austen,\n"
-"    or the <a href=\"http://oreilly.com/ebooks/\">technical ePubs available "
-"from O'Reilly</a>.\n"
-"  "
-msgstr ""
-"\n"
-"まだePub書籍を1冊もお持ちでないなら、Jane Austenの長編小説<a href=\"http://"
-"www.threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen.epub\">Pride "
-"and Prejudice（高慢と偏見）</a>や、O'Reillyが提供している<a href=\"http://"
-"oreilly.com/ebooks/\">technical ePubs available（ePubで読める技術書）</a>を利"
-"用してみてはいかがでしょう。  "
+#: library/templates/index.html:108
+msgid "upload"
+msgstr "アップロード"
 
-#: library/templates/index.html:104
+#: library/templates/index.html:113
+msgid ""
+"You can also add any of these popular public domain texts from\n"
+"    <a href=\"http://feedbooks.com/\">Feedbooks</a>:"
+msgstr ""
+
+#: library/templates/index.html:114
+msgid "Show "
+msgstr ""
+
+#: library/templates/index.html:120
 msgid ""
 "Once you've gotten one of these books on your computer, you can upload them "
 "to your new Bookworm account."
 msgstr ""
 "このようなePub書籍をご自分のコンピュータの中に保存しているなら、それらを"
 "Bookwormのアカウントへアップロードできます。"
-
-#: library/templates/index.html:111
-msgid "upload"
-msgstr "アップロード"
 
 #: library/templates/last-read.html:3
 msgid "last read"
@@ -2090,23 +2286,23 @@ msgstr "サインアップ（登録）する"
 #: library/templates/public.html:27
 msgid ""
 "Bookworm is fabulous. Hands down, a wonderful app. I love how it integrates "
-"with the iPhone for easy offline reading.&rdquo; &mdash; <a href=\"http://"
+"with the iPhone for easy offline reading.&rdquo; — <a href=\"http://"
 "getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
 "\">Customer on Get Satisfaction"
 msgstr ""
 "Bookwormはすばらしい。とっても良くできたアプリ。特に、iPhoneでオフラインで読"
-"書できるように作られている点が気に入っています。&rdquo; &mdash; <a href="
-"\"http://getsatisfaction.com/threepress/topics/"
-"post_ideas_and_questions_about_bookworm\">Customer on Get Satisfaction</a>"
+"書できるように作られている点が気に入っています。&rdquo; — <a href=\"http://"
+"getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
+"\">Customer on Get Satisfaction</a>"
 
 #: library/templates/public.html:29
 msgid ""
 "The perfect tool for taking your own book collection anywhere that has an "
-"internet connection&rdquo; &mdash; <a href=\"http://www.jedisaber.com/ebooks/"
+"internet connection&rdquo; — <a href=\"http://www.jedisaber.com/ebooks/"
 "Readers.asp\">ePub Reader Software reviews"
 msgstr ""
 "インターネット接続があればどこでも自分の書籍が読めるパーフェクトなツールだ。"
-"&rdquo; &mdash; <a href=\"http://www.jedisaber.com/ebooks/Readers.asp\">ePub "
+"&rdquo; — <a href=\"http://www.jedisaber.com/ebooks/Readers.asp\">ePub "
 "Reader Software reviews</a>"
 
 #: library/templates/public.html:35
@@ -2180,14 +2376,19 @@ msgid "BSD-licensed"
 msgstr "BSDライセンス"
 
 #: library/templates/public.html:67
+#, fuzzy
+msgid "How to use Bookworm's API"
+msgstr "Bookwormはどのように使えばよいのですか？"
+
+#: library/templates/public.html:68
 msgid "How Bookworm implements ePub"
 msgstr "BookwormはePubをどのように実装しているのか"
 
-#: library/templates/public.html:68
+#: library/templates/public.html:69
 msgid "More open-source ePub software"
 msgstr "さまざまなオープンソースのePubソフトウェアとツール"
 
-#: library/templates/public.html:69
+#: library/templates/public.html:70
 msgid ""
 "Follow announcements on the <a href='http://blog.threepress.org/'>Bookworm "
 "blog</a>"
@@ -2195,7 +2396,7 @@ msgstr ""
 "<a href='http://blog.threepress.org/'>Bookwormブログ</a>のお知らせをご覧くだ"
 "さい。"
 
-#: library/templates/public.html:77
+#: library/templates/public.html:78
 msgid ""
 "\n"
 "              A page in Bookworm, showing the\n"
@@ -2209,11 +2410,11 @@ msgstr ""
 "CSSスタイルシート、画像フォーマットはJPG、GIF、PNG、SVG、そしてXHTMLをサポー"
 "トしています。      "
 
-#: library/templates/public.html:85
+#: library/templates/public.html:86
 msgid "What is Bookworm?"
 msgstr "Bookwormとは何ですか？"
 
-#: library/templates/public.html:86
+#: library/templates/public.html:87
 msgid ""
 "Bookworm allows readers to add ePub books to their online library and read "
 "them on their web browser or mobile device. If you have a portable device "
@@ -2227,11 +2428,12 @@ msgstr ""
 "ドして自分の電子リーダーで読むことができます。Bookworm は特にiPhone向けに最適"
 "化されており、Stanzaへは直接エクスポートできます。"
 
-#: library/templates/public.html:87
-msgid "What&rsquo;s an &ldquo;ePub book&rdquo;?"
-msgstr "&ldquo;ePub書籍&rdquo;とは何ですか？"
+#: library/templates/public.html:88
+#, fuzzy
+msgid "What's an 'ePub book'?"
+msgstr "ePub書籍をアップロードする。"
 
-#: library/templates/public.html:90
+#: library/templates/public.html:91
 #, python-format
 msgid ""
 "\n"
@@ -2251,11 +2453,11 @@ msgstr ""
 "のフリーでオープンなebookのフォーマットをサポートするよう、出版社にぜひ要望を"
 "出してください。"
 
-#: library/templates/public.html:98
+#: library/templates/public.html:99
 msgid "Try Bookworm out"
 msgstr "Bookwormを使ってみる"
 
-#: library/templates/public.html:101
+#: library/templates/public.html:102
 #, python-format
 msgid "Try the one-page <a href=\"%(toururl)s\">Bookworm and ePub tour</a>."
 msgstr ""
@@ -2587,11 +2789,11 @@ msgstr "ヘルプ"
 msgid "add"
 msgstr "追加"
 
-#: library/templates/shell.html:60 library/templates/mobile/base.html:22
+#: library/templates/shell.html:60 mobile/templates/base.html:22
 msgid "help"
 msgstr "ヘルプ"
 
-#: library/templates/shell.html:67 library/templates/mobile/base.html:39
+#: library/templates/shell.html:67 mobile/templates/base.html:39
 msgid "Library"
 msgstr "ライブラリ"
 
@@ -2607,7 +2809,7 @@ msgstr "プロフィールを編集"
 msgid "admin"
 msgstr "管理者（admin）"
 
-#: library/templates/shell.html:82 library/templates/mobile/base.html:35
+#: library/templates/shell.html:82 mobile/templates/base.html:35
 msgid "logout"
 msgstr "ログアウト"
 
@@ -3015,17 +3217,13 @@ msgstr ""
 "href=\"%(abouturl)s\">詳細について</a> のページをご覧ください。"
 
 #: library/templates/upload.html:49
-msgid ""
-"You need to click on the &lsquo;Browse&rsquo; button and select an ebook to "
-"add."
-msgstr ""
-"書籍を追加するには、&lsquo;Browse&rsquo; ボタンをクリックしてください。"
+msgid "You need to click on the ‘Browse’ button and select an ebook to add."
+msgstr "書籍を追加するには、‘Browse’ ボタンをクリックしてください。"
 
 #: library/templates/upload.html:56
-msgid "Add an ePub from your computer by clicking on &lsquo;Browse&rsquo;:"
+msgid "Add an ePub from your computer by clicking on ‘Browse’:"
 msgstr ""
-"&lsquo;Browse&rsquo;:をクリックしてお使いのコンピュータからePubを追加してくだ"
-"さい。"
+"‘Browse’:をクリックしてお使いのコンピュータからePubを追加してください。"
 
 #: library/templates/view.html:7
 #, python-format
@@ -3063,7 +3261,7 @@ msgstr "書籍情報"
 msgid "Publisher"
 msgstr "出版社"
 
-#: library/templates/view.html:130 library/templates/auth/profile.html:103
+#: library/templates/view.html:130 library/templates/auth/profile.html:102
 msgid "Language"
 msgstr "言語"
 
@@ -3177,10 +3375,6 @@ msgstr ""
 msgid "Change the language setting"
 msgstr "言語設定の変更"
 
-#: library/templates/auth/profile.html:3
-msgid "Profile and preferences for"
-msgstr "プロフィールと設定"
-
 #: library/templates/auth/profile.html:28
 #: library/templates/auth/authopenid/changepw.html:12
 #: library/templates/auth/authopenid/changepw.html:25
@@ -3208,15 +3402,15 @@ msgstr ""
 "メールアドレスや国などいくつかの項目はOpenIDによってインポートされます。それ"
 "ら項目の変更はBookwormではなくOpenIDのプロバイダ側で行われるべきです。"
 
-#: library/templates/auth/profile.html:56
+#: library/templates/auth/profile.html:55
 msgid "User profile and preferences for "
 msgstr "ユーザーのプロフィールと設定"
 
-#: library/templates/auth/profile.html:63
+#: library/templates/auth/profile.html:62
 msgid "User information"
 msgstr "ユーザーの情報"
 
-#: library/templates/auth/profile.html:68
+#: library/templates/auth/profile.html:67
 #: library/templates/auth/authopenid/complete.html:47
 #: library/templates/auth/authopenid/sendpw.html:27
 #: library/templates/auth/authopenid/signin.html:72
@@ -3224,32 +3418,42 @@ msgstr "ユーザーの情報"
 msgid "Username"
 msgstr "ユーザー名"
 
-#: library/templates/auth/profile.html:83
-#: library/templates/auth/profile.html:93
+#: library/templates/auth/profile.html:82
+#: library/templates/auth/profile.html:92
 msgid "change"
 msgstr "変更"
 
-#: library/templates/auth/profile.html:87
+#: library/templates/auth/profile.html:86
 msgid "Full name"
 msgstr "フルネーム"
 
-#: library/templates/auth/profile.html:92
+#: library/templates/auth/profile.html:91
 msgid "Email address"
 msgstr "メールアドレス"
 
-#: library/templates/auth/profile.html:97
+#: library/templates/auth/profile.html:96
 msgid "Country"
 msgstr "国"
 
-#: library/templates/auth/profile.html:104
+#: library/templates/auth/profile.html:103
 msgid "change <!-- trans: change the user's language setting -->"
 msgstr "変更する <!-- trans: change the user's language setting -->"
 
-#: library/templates/auth/profile.html:108
+#: library/templates/auth/profile.html:107
 msgid "Open to last-read chapter when reading a book?"
 msgstr "最後に読んでいた章を開きますか？"
 
-#: library/templates/auth/profile.html:115
+#: library/templates/auth/profile.html:111
+msgid "Your API key"
+msgstr ""
+
+#: library/templates/auth/profile.html:111
+#: library/templates/auth/authopenid/signin.html:86
+#: library/templates/auth/authopenid/signup.html:92
+msgid "What's this?"
+msgstr "これは何でしょうか？"
+
+#: library/templates/auth/profile.html:123
 msgid "Update profile"
 msgstr "プロフィールのアップデート"
 
@@ -3502,11 +3706,10 @@ msgstr ""
 "を使ってアカウントを作成されていただと思われます。"
 
 #: library/templates/auth/authopenid/signin.html:63
-msgid ""
-"If you've never created an account, click &lsquo;Sign up&rsquo; on the left."
+msgid "If you've never created an account, click ‘Sign up’ on the left."
 msgstr ""
-"まだアカウントを作成していないなら、左にある&lsquo;サインアップ&rsquo; をク"
-"リックしてください。"
+"まだアカウントを作成していないなら、左にある‘サインアップ’ をクリックしてくだ"
+"さい。"
 
 #: library/templates/auth/authopenid/signin.html:71
 msgid "Sign in using a local Bookworm account"
@@ -3523,11 +3726,6 @@ msgstr "OpenIDを使ってログインする"
 #: library/templates/auth/authopenid/signin.html:85
 msgid "Sign in with OpenID"
 msgstr "OpenIDを使ったログイン"
-
-#: library/templates/auth/authopenid/signin.html:86
-#: library/templates/auth/authopenid/signup.html:92
-msgid "What's this?"
-msgstr "これは何でしょうか？"
 
 #: library/templates/auth/authopenid/signup.html:21
 msgid "Two ways to join"
@@ -3677,6 +3875,10 @@ msgstr "追加日時"
 msgid "Read in Stanza"
 msgstr "Stanzaで読書する"
 
+#: library/templates/includes/feedbooks.html:10
+msgid "Find more public domain books at Feedbooks"
+msgstr ""
+
 #: library/templates/includes/leftnav.html:8
 msgid "Read current page"
 msgstr "現在のページを読む"
@@ -3819,15 +4021,15 @@ msgstr "この書籍を置き換える"
 msgid "Change reading modes"
 msgstr "読書モードの変更"
 
-#: library/templates/mobile/base.html:20
+#: mobile/templates/base.html:20
 msgid "mobile ebooks"
 msgstr "モバイル用のeBook"
 
-#: library/templates/mobile/base.html:21
+#: mobile/templates/base.html:21
 msgid "about"
 msgstr "詳細について"
 
-#: library/templates/mobile/base.html:24
+#: mobile/templates/base.html:24
 msgid "my books"
 msgstr "私の書籍"
 
@@ -3841,16 +4043,14 @@ msgstr "検索について"
 
 #: search/templates/results.html:20
 #, python-format
-msgid " One result found for <em>&lsquo;%(term)s&rsquo;</em> in your library. "
+msgid " One result found for <em>‘%(term)s’</em> in your library. "
 msgid_plural ""
-" %(resultscount)s results found for <em>&lsquo;%(term)s&rsquo;</em> in your "
-"library."
+" %(resultscount)s results found for <em>‘%(term)s’</em> in your library."
 msgstr[0] ""
-"あなたのライブラリ中に、<em>&lsquo;%(term)s&rsquo;</em>に対する検索結果があり"
-"ました。"
+"あなたのライブラリ中に、<em>‘%(term)s’</em>に対する検索結果がありました。"
 msgstr[1] ""
-"あなたのライブラリ中に、<em>&lsquo;%(term)s&rsquo;</em>に対する検索結果が%"
-"(resultscount)s件ありました。"
+"あなたのライブラリ中に、<em>‘%(term)s’</em>に対する検索結果が%(resultscount)s"
+"件ありました。"
 
 #: search/templates/results.html:22
 msgid "Results are returned starting from the most relevant."
@@ -3858,8 +4058,8 @@ msgstr "検索結果は、もっとも関連性のあるものから順に表示
 
 #: search/templates/results.html:25
 #, python-format
-msgid " Showing results %(startindex)s &mdash; %(endindex)s"
-msgstr "検索結果は %(startindex)s &mdash; %(endindex)s"
+msgid " Showing results %(startindex)s — %(endindex)s"
+msgstr "検索結果は %(startindex)s — %(endindex)s"
 
 #: search/templates/results.html:46
 msgid "No search results were found"
@@ -3867,8 +4067,8 @@ msgstr "検索結果はありませんでした"
 
 #: search/templates/results.html:47
 #, python-format
-msgid "No results were found for <em>&lsquo;%(term)s&rsquo;</em>."
-msgstr "<em>&lsquo;%(term)s&rsquo;</em>に対する検索結果はありませんでした。"
+msgid "No results were found for <em>‘%(term)s’</em>."
+msgstr "<em>‘%(term)s’</em>に対する検索結果はありませんでした。"
 
 #: search/templates/results.html:48
 #, python-format
@@ -4105,6 +4305,30 @@ msgstr ""
 "\n"
 "つまり、新しく追加したばかりの書籍は、検索結果に表れない可能性があるというこ"
 "とです。そんな場合は少し待ってください。必要な処理はすぐに終わります。  "
+
+#~ msgid "To add a new book, log in using your computer."
+#~ msgstr ""
+#~ "新しい書籍を追加するには、ご自分のコンピュータを使ってログインしてくださ"
+#~ "い。"
+
+#~ msgid ""
+#~ "\n"
+#~ "    If you don't have any ePubs yet, you can start with <a href=\"http://"
+#~ "www.threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen.epub"
+#~ "\">Pride and Prejudice</a> by Jane Austen,\n"
+#~ "    or the <a href=\"http://oreilly.com/ebooks/\">technical ePubs "
+#~ "available from O'Reilly</a>.\n"
+#~ "  "
+#~ msgstr ""
+#~ "\n"
+#~ "まだePub書籍を1冊もお持ちでないなら、Jane Austenの長編小説<a href="
+#~ "\"http://www.threepress.org/static/epub/Pride-and-Prejudice_Jane-Austen."
+#~ "epub\">Pride and Prejudice（高慢と偏見）</a>や、O'Reillyが提供している<a "
+#~ "href=\"http://oreilly.com/ebooks/\">technical ePubs available（ePubで読め"
+#~ "る技術書）</a>を利用してみてはいかがでしょう。  "
+
+#~ msgid "What’s an &ldquo;ePub book&rdquo;?"
+#~ msgstr "&ldquo;ePub書籍&rdquo;とは何ですか？"
 
 #~ msgid "Account: change email"
 #~ msgstr "アカウント：メールアドレスの変更"
