@@ -161,16 +161,16 @@ curl -iF epub_data=@test.epub -F api_key=$KEY $1/api/documents/ -D result.txt
 <p>
 {% url main as api_documents %}
 {% blocktrans %}
-If you'd prefer to add a new EPUB by URL reference, the POST a request to <a href="{{ api_documents }}">{{ api_documents }}</a> 
-with an <code>epub_url</code> parameter that references an externally-hosted EPUB document available
-by unauthenticated <code>HTTP GET</code>. The Bookworm server will initiate a request for this EPUB document and
+If you'd prefer to add a new ePub by URL reference, POST a request to <a href="{{ api_documents }}">{{ api_documents }}</a> 
+with an <code>epub_url</code> parameter that references an externally-hosted ePub document available
+by unauthenticated <code>HTTP GET</code>. The Bookworm server will initiate a request for this ePub document and
 proceed as normal (maybe).
 {% endblocktrans %}</p>
 
 <p>
 {% url library as library %}
 {% blocktrans %}
-If either upload technique described above succeeds and the new EPUB content is accepted by the Bookworm server, an <code>HTTP 201 Created</code> response 
+If either upload technique described above succeeds and the new ePub content is accepted by the Bookworm server, an <code>HTTP 201 Created</code> response 
 (probably following some <code>HTTP 100 Continue</code>s) will be
 returned and the <code>Content-Location</code> header will reference the <em>document address</em> (write that down). The newly-uploaded title will
 now be available in the user's <a href="{{ library }}">Library</a> .
@@ -178,16 +178,16 @@ now be available in the user's <a href="{{ library }}">Library</a> .
 
 <p class="bw-message">
 {% url library as library %}
-{% blocktrans %}Neither method for adding new EPUBs checks to see if the user already seems
+{% blocktrans %}Neither method for adding new ePubs checks to see if the user already seems
 to have this title in their <a href="{{ library }}">Library</a> . API clients should check the contents of the user's <a href="#librarylisting">Library listing</a>  before adding
 new titles.
 {% endblocktrans %}</p>
 
-<h2>{% trans "Downloading EPUB content from your Library" %}</h2>
+<h2>{% trans "Downloading ePub content from your Library" %}</h2>
 <p>
 {% url library as library %}
 {% blocktrans %}
-API users will be able to download complete EPUB documents from the user's <a href="{{ library }}">Library</a> by
+API users will be able to download complete ePub documents from the user's <a href="{{ library }}">Library</a> by
 <em>document address</em>. An authorized <code>HTTP GET</code> of a <em>document address</em> will return the complete content as <code>application/epub+zip</code>.
 {% endblocktrans %}</p>
 
