@@ -243,6 +243,9 @@ HOSTNAME = 'http://bookworm.oreilly.com'
 # Secure hostname (no trailing slash)
 SECURE_HOSTNAME = 'https://bookworm.oreilly.com'
 
+XSLT_DIR = os.path.join(ROOT_PATH, 'library', 'xsl')
+DTBOOK2XHTML = os.path.join(XSLT_DIR, 'dtbook2xhtml.xsl')
+
 try:
     from local import *
 except ImportError:
