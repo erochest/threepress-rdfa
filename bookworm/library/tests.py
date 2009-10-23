@@ -647,7 +647,6 @@ class TestModels(unittest.TestCase):
         assert '_' in paths[-3]
 
         new_storage = os.path.join('/'.join(paths[:-3]), paths[-2], paths[-1])
-        print new_storage
         os.makedirs(new_storage)
         
         b2._get_storage = lambda : new_storage
@@ -1639,8 +1638,7 @@ class TestViews(DjangoTestCase):
         name ='css-in-subdir.epub'
         self._upload(name)
         assert StylesheetFile.objects.count() == 1
-        # This will have zero before we render
-        assert HTMLFile.objects.filter(filename='text/chapter-1.html')[0].stylesheets.count() == 0
+
         response = self.client.get('/view/a/1/')
 
         # The style file should be present
@@ -1648,6 +1646,35 @@ class TestViews(DjangoTestCase):
         
         # Now we should have some
         assert HTMLFile.objects.filter(filename='text/chapter-1.html')[0].stylesheets.count() == 1
+
+
+    def test_style_media_type(self):
+        '''CSS files with media types explicitly set as non-screen should be ignored'''
+        name ='non-screen-css.epub'
+        self._upload(name)
+
+        response = self.client.get('/view/a/1/')
+        assert 'It is a truth' in response.content
+        
+        # The style file should be present
+        assert 'book-screen.css' in response.content
+        assert not 'book-print.css' in response.content
+        assert 'book-no-media.css' in response.content
+        assert StylesheetFile.objects.count() == 3 # All stylesheets are in the DB
+        assert HTMLFile.objects.get(id=1).stylesheets.all().count() == 2 # But only two are associated with this doc
+
+    def test_link_not_style(self):
+        '''Don't display <link>s that aren't actually CSS files (@rel="stylesheet")'''
+        name ='non-screen-css.epub'
+        self._upload(name)
+
+        response = self.client.get('/view/a/1/')
+
+        # The style file should be present
+        assert 'book-screen.css' in response.content
+        # The random link shouldn't be
+        assert not 'somewhere' in response.content
+
 
     def test_public_pages(self):
         '''Test that public pages render with 200s in all supported languages'''

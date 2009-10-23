@@ -873,27 +873,29 @@ class HTMLFile(BookwormFile):
                 meta.save()
 
             # Find any CSS references in the <head> and link them to the StylesheetFiles 
-            # identified from the OPF
+            # identified from the OPF (ensure they are really stylesheets)
             links = []
 
-            for link in head.findall('.//link'):
+            for link in head.findall('.//link[@rel="stylesheet"]'):
                 links.append(link)
 
-            for link in head.findall('.//{%s}link' % NS['html']):
+            for link in head.findall('.//{%s}link[@rel="stylesheet"]' % NS['html']):
                 links.append(link)
 
             for link in links:
-                try:
+                if link.get('media') is None or (link.get('media') and link.get('media') == 'screen'):
                     css_basename = os.path.basename(link.get('href'))
-                    css = StylesheetFile.objects.get(archive=self.archive,
-                                                     filename__icontains=css_basename)
-                    self.stylesheets.add(css)
-                except StylesheetFile.DoesNotExist:
-                    log.warn("CSS %s was declared in the HTML but no matching StylesheetFile was found" % link.get('href'))
-
+                    css = StylesheetFile.objects.filter(archive=self.archive,
+                                                    filename__icontains=css_basename)
+                    # If the OPF was sloppy there may be dupes; just pick the first 
+                    # (FIXME this won't work exactly right if there are multiple CSS files at different
+                    # path levels with the sam name, but that seems extremely rare.)
+                    if len(css) > 0:
+                        self.stylesheets.add(css[0])
+                    else:
+                        log.warn("CSS %s was declared in the HTML but no matching StylesheetFile was found" % link.get('href'))
         else:
             log.warn("No <head> found; this could be a malformed document")
-
         body = self._clean_xhtml(body)
         div = etree.Element('div')
         div.attrib['id'] = 'bw-book-content'
