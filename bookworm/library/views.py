@@ -177,19 +177,21 @@ def view_chapter(request, title, key, chapter_id, chapter=None, document=None, g
     # Check whether this will render without throwing an exception
     try:
         chapter.render()
+        stylesheets = chapter.stylesheets.all()[0:settings.MAX_CSS_FILES]
+
+        # If we got 0 stylesheets, this may be a legacy book
+        if len(stylesheets) == 0:
+            stylesheets = StylesheetFile.objects.filter(archive=document)[0:settings.MAX_CSS_FILES]
+
     except InvalidEpubException, e:
         log.error(traceback.format_exc())
         chapter = None
+        stylesheets = None
         message = _('''
 This book contained content that Bookworm couldn't read.  You may need to check with the 
 publisher that this is a valid ePub book that contains either XHTML or DTBook-formatted
 content.''')
 
-    stylesheets = chapter.stylesheets.all()[0:settings.MAX_CSS_FILES]
-
-    # If we got 0 stylesheets, this may be a legacy book
-    if len(stylesheets) == 0:
-        stylesheets = StylesheetFile.objects.filter(archive=document)[0:settings.MAX_CSS_FILES]
 
 
     return direct_to_template(request, 'view.html', {'chapter':chapter,
