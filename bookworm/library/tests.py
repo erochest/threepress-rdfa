@@ -1745,7 +1745,7 @@ class TestViews(DjangoTestCase):
         self._login()
         response = self.client.get('/library/')
         assert 'feedbooks.com/book' in response.content
-
+ 
     def test_limit_css_files(self):
         '''The site should display no more than settings.MAX_CSS_FILES in a book'''
         self._login()
@@ -1755,8 +1755,17 @@ class TestViews(DjangoTestCase):
         assert 'style2.css' in response.content
         assert not 'style11.css' in response.content
         assert not 'style20.css' in response.content
+
+    def test_space_in_filenames(self):
+        '''The site should allow epub files whose internal resources have spaces in their filenames'''
+        self._login()
+        self._upload('space-in-filenames.epub')
+        response = self.client.get('/view/test/1/')
+        assert response.status_code == 200
+        assert 'wife' in response.content
+
     def test_deploy_static_files(self):
-        '''Static files should be deployed using the MEDIA_URL variable rather than a hardcoded path'''
+        '''Static files should be deployed using the MEDIA_URL variable rather than a hardcoded path -- this test will fail if not using test_settings.py'''
 
         # test_settings.py uses the test-static variable to ensure we're getting the real thing.
         response = self.client.get('/test-static/about.css')
