@@ -29,16 +29,10 @@ log = logging.getLogger('library.models')
 
 # Functions
 def safe_name(name):
-    '''Return a name t hat can be used safely in a URL'''
-    quote = urlquote_plus(name.encode(ENC))
+    '''Return a name that can be used safely in a URL'''
+    quote = urlquote_plus(name.encode(ENC).replace('/','_'))
     return quote
  
-def unsafe_name(name):
-    '''Convert from a URL-formatted name to something that will match
-    in the database'''
-    unquote = unquote_plus(name.encode(ENC))
-    return unicode(unquote, ENC)
-
 def get_file_by_item(item, document) :
     '''Accepts an Item and uses that to find the related file in the database'''
     if item.media_type == XHTML_MIMETYPE or item.media_type == DTBOOK_MIMETYPE or 'text' in item.media_type:

@@ -1755,7 +1755,6 @@ class TestViews(DjangoTestCase):
         assert 'style2.css' in response.content
         assert not 'style11.css' in response.content
         assert not 'style20.css' in response.content
-    
     def test_deploy_static_files(self):
         '''Static files should be deployed using the MEDIA_URL variable rather than a hardcoded path'''
 
@@ -1814,6 +1813,16 @@ class TestTwill(DjangoTestCase):
         submit("submit-upload")
         find('Pride and Prejudice')
         go('/account/signout/')
+
+
+    def test_slash_in_title(self):
+        '''Books with slashes in the title should not cause an error (must be done in twill)'''
+        self._register()
+        go(self.url)
+        formfile("upload", "epub", helper.get_filepath('slash-in-title.epub'))
+        submit("submit-upload")
+        follow('Slash/In/Title')
+        code(200)
 
     def _login(self):
         go('/account/signin/')
