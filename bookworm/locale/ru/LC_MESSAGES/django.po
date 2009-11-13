@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-22 08:22-0400\n"
+"POT-Creation-Date: 2009-11-13 15:19-0500\n"
 "PO-Revision-Date: 2009-04-26 20:20-0500\n"
 "Last-Translator: Alex Sergeyev <abc@alexsergeyev.com>\n"
 "Language-Team: Russian <abc@alexsergeyev.com>\n"
@@ -18,28 +18,28 @@ msgstr ""
 "X-Poedit-Language: Russian\n"
 "X-Language: ru\n"
 
-#: settings.py:108
+#: local.py:19 settings.py:108
 msgid "German"
 msgstr ""
 
-#: settings.py:109
+#: local.py:20 settings.py:109
 msgid "English"
 msgstr ""
 
-#: settings.py:110
+#: local.py:21 settings.py:110
 msgid "Danish"
 msgstr ""
 
-#: settings.py:111
+#: local.py:22 settings.py:111
 msgid "Finnish"
 msgstr ""
 
-#: settings.py:112
-msgid "Italian"
+#: local.py:23 settings.py:113
+msgid "Spanish"
 msgstr ""
 
-#: settings.py:113
-msgid "Spanish"
+#: local.py:24 settings.py:112
+msgid "Italian"
 msgstr ""
 
 #: settings.py:151
@@ -343,25 +343,25 @@ msgstr "Пользователь не зарегистрирован в сист
 msgid "Password changed for %s. You could now sign in"
 msgstr "Пароль пользователя '%s' изменён и может быть использован для входа "
 
-#: library/models.py:129
+#: library/models.py:123
 msgid "Untitled"
 msgstr "Неозаглавленное"
 
-#: library/models.py:690 library/models.py:692 library/models.py:695
+#: library/models.py:683 library/models.py:685 library/models.py:688
 msgid ""
 "There was a problem related to the encoding of one of the documents in your "
 "ePub. All ePub documents must be in UTF-8."
 msgstr ""
 
-#: library/models.py:1237
+#: library/models.py:1232
 msgid "book title"
 msgstr "названиям"
 
-#: library/models.py:1238
+#: library/models.py:1233
 msgid "first author"
 msgstr "авторам"
 
-#: library/models.py:1239
+#: library/models.py:1234
 msgid "date added to your library"
 msgstr "дате добавления в вашу библиотеку"
 
@@ -399,15 +399,15 @@ msgstr ""
 "файлы внутри\n"
 "ePub отформатированы неверно и вам придётся обратиться к издателю книги."
 
-#: library/views.py:333
+#: library/views.py:335
 msgid "Your profile has been updated."
 msgstr "Ваш профиль был обновлён."
 
-#: library/views.py:350 library/views.py:358
+#: library/views.py:352 library/views.py:360
 msgid "There was a problem with your request to delete this profile."
 msgstr "Во время удаления возникла ошибка."
 
-#: library/views.py:487
+#: library/views.py:489
 msgid ""
 "The file you uploaded was not recognized as an ePub archive and could not be "
 "added to your library."
@@ -415,7 +415,7 @@ msgstr ""
 "Загруженный файл не является ePub книгой и не может быть добавлен в "
 "библиотеку."
 
-#: library/views.py:495
+#: library/views.py:497
 msgid ""
 "We detected a problem with your ebook that is most likely related to it "
 "being too big to display safely in a web browser. This can happen with very "
@@ -430,7 +430,7 @@ msgstr ""
 "сообщить ему о том, чтоб очень большие страницы или изображения в данной "
 "книге делают невозможным её показ в Bookworm."
 
-#: library/views.py:500
+#: library/views.py:502
 msgid ""
 "It appears that you've uploaded a book which contains DRM (Digital Rights "
 "Management).  This is a restriction that is meant to prevent illegal copying "
@@ -446,7 +446,7 @@ msgstr ""
 "Вы так же можете связаться с издателем книги и спросить о его планах выпуска "
 "свободных от DRM книг."
 
-#: library/views.py:519
+#: library/views.py:525
 msgid ""
 "<p class='bw-upload-message'>The file you uploaded looks like an ePub "
 "archive, but it has some problems that prevented it from being loaded.  This "
@@ -454,17 +454,17 @@ msgid ""
 "was created. The complete error message is:</p>"
 msgstr ""
 
-#: library/views.py:520
+#: library/views.py:526
 #, python-format
 msgid "<p class='bw-upload-errors'>%s</p>"
 msgstr ""
 
-#: library/views.py:529
+#: library/views.py:535
 msgid ""
 "<p>(epubcheck thinks this file is valid, so this may be a Bookworm error)</p>"
 msgstr ""
 
-#: library/views.py:533
+#: library/views.py:539
 #, python-format
 msgid ""
 "<p class='bw-upload-message'><a href='http://code.google.com/p/"
@@ -473,7 +473,7 @@ msgid ""
 "id='bw-num-errors'>%d</strong> error(s):</p>"
 msgstr ""
 
-#: library/views.py:561
+#: library/views.py:567
 msgid "The address you provided does not point to an ePub book"
 msgstr ""
 
@@ -817,11 +817,11 @@ msgid ""
 "    href=\"http://threepress.org/tools/\">tools page</a>. It\n"
 "    is a product of <a\n"
 "    href=\"http://threepress.org/\">Threepress</a>, a venue for\n"
-"    experimenting with open source publishing software, and is written\n"
+"    experimenting with open source publishing software, and was written\n"
 "    by <a href=\"http://threepress.org/about/\">Liza Daly</a>\n"
 "    with contributions from <a href=\"http://kfahlgren.com/blog\">Keith\n"
-"    Fahlgren</a>.  Hosting is provided by <a href=\"%(hostingurl)s\">%"
-"(hosting)s</a>.\n"
+"    Fahlgren</a> and others.  Hosting is provided by <a href=\"%(hostingurl)s"
+"\">%(hosting)s</a>.\n"
 msgstr ""
 
 #: library/templates/about.html:210
@@ -845,14 +845,10 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"    For problems and feature requests, visit  <a href=\"http://"
-"getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
-"\">Get Satisfaction</a> \n"
-"    or email <a\n"
-"    href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>.\n"
-"    You can also subscribe to the <a\n"
-"    href=\"http://blog.threepress.org\">blog</a> to follow new "
-"announcements.\n"
+"    For problems and feature requests, visit  <a href=\"%(custserv)s\">%"
+"(custservname)s</a> or the\n"
+"    <a href=\"http://code.google.com/p/threepress/issues/list\">open source "
+"issue tracker</a>.\n"
 msgstr ""
 
 #: library/templates/base.html:12
@@ -1408,42 +1404,41 @@ msgstr ""
 msgid "Help using Bookworm"
 msgstr "Помощь в использовании Bookworm"
 
-#: library/templates/help.html:27
+#: library/templates/help.html:28
 #, python-format
 msgid ""
 "\n"
 "    Confused about what to do, or having problems?  Check this list for "
 "common issues,\n"
-"    or email <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> for "
-"help.\n"
+"    or visit <a href=\"%(custserv)s\">%(custservname)s</a> for help.\n"
 "    "
 msgstr ""
 
-#: library/templates/help.html:33
+#: library/templates/help.html:34
 msgid "Problems adding a book?"
 msgstr "Проблемы при добавлении книги?"
 
-#: library/templates/help.html:35 library/templates/help.html.py:131
+#: library/templates/help.html:36 library/templates/help.html.py:132
 msgid "Can I use Bookworm with my e-reader?"
 msgstr "Могу я использовать Bookworm с моим устройством чтения?"
 
-#: library/templates/help.html:37
+#: library/templates/help.html:38
 msgid "Do I need an OpenID to use Bookworm?"
 msgstr "Нужен ли мне OpenID, чтобы использовать Bookworm?"
 
-#: library/templates/help.html:39 library/templates/help.html.py:222
+#: library/templates/help.html:40 library/templates/help.html.py:223
 msgid "Can I upload all my files at once or access Bookworm without a browser?"
 msgstr ""
 
-#: library/templates/help.html:41
+#: library/templates/help.html:42
 msgid "More questions"
 msgstr "Больше ответов"
 
-#: library/templates/help.html:45
+#: library/templates/help.html:46
 msgid "What do I do first? <!-- trans: to use Bookworm -->"
 msgstr "Что сделать в самом начале?"
 
-#: library/templates/help.html:48
+#: library/templates/help.html:49
 #, python-format
 msgid ""
 "\n"
@@ -1452,7 +1447,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:54
+#: library/templates/help.html:55
 #, python-format
 msgid ""
 "\n"
@@ -1461,19 +1456,19 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:60
+#: library/templates/help.html:61
 msgid "I'm having problems adding a book"
 msgstr "У меня проблемы при добавлении книги"
 
-#: library/templates/help.html:62
+#: library/templates/help.html:63
 msgid "Here are some common things to check"
 msgstr "Вот основные пункты для проверки"
 
-#: library/templates/help.html:64
+#: library/templates/help.html:65
 msgid "Is the book in ‘ePub’ format?"
 msgstr "Формат книги ‘ePub’?"
 
-#: library/templates/help.html:66
+#: library/templates/help.html:67
 msgid ""
 "\n"
 "    Bookworm only accepts ePub books.  You'll know an ebook is in ePub "
@@ -1486,19 +1481,19 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:73
+#: library/templates/help.html:74
 msgid "Did Bookworm tell you there was a problem with the book?"
 msgstr ""
 
-#: library/templates/help.html:75
+#: library/templates/help.html:76
 msgid "You might get an error message like this when you add a book"
 msgstr ""
 
-#: library/templates/help.html:79
+#: library/templates/help.html:80
 msgid "click to enlarge "
 msgstr "нажмите для увеличения"
 
-#: library/templates/help.html:82
+#: library/templates/help.html:83
 msgid ""
 "\n"
 "    The ePub format is still  new, and not all ePub books are made \n"
@@ -1507,7 +1502,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:90
+#: library/templates/help.html:91
 msgid ""
 "\n"
 "    On the other hand, Bookworm is also new and still has bugs.  When your\n"
@@ -1523,7 +1518,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:100
+#: library/templates/help.html:101
 #, python-format
 msgid ""
 "\n"
@@ -1536,11 +1531,11 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:107
+#: library/templates/help.html:108
 msgid "Does the book contain DRM (Digital Rights Management)?"
 msgstr "Книга защищена DRM (техническими средствами защиты авторских прав)?"
 
-#: library/templates/help.html:109
+#: library/templates/help.html:110
 msgid ""
 "\n"
 "    Some ePub books have restrictions that prevent them from being read on \n"
@@ -1550,7 +1545,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:117
+#: library/templates/help.html:118
 msgid ""
 "\n"
 "    Consult the bookstore where you purchased the book or the publisher "
@@ -1559,11 +1554,11 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:122
+#: library/templates/help.html:123
 msgid "Is the ebook very large, or contain large images?"
 msgstr ""
 
-#: library/templates/help.html:124
+#: library/templates/help.html:125
 msgid ""
 "\n"
 "    Some ebooks are too large to be safely stored and viewed in Bookworm.\n"
@@ -1573,7 +1568,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:133
+#: library/templates/help.html:134
 msgid ""
 "\n"
 "    Yes, if your e-reader can open ePub books.  In each case you will need "
@@ -1584,7 +1579,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:141
+#: library/templates/help.html:142
 msgid ""
 "\n"
 "      The number of e-readers out there\n"
@@ -1592,33 +1587,33 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:149
+#: library/templates/help.html:150
 msgid "Device <!-- trans: e-reading device, should be short -->"
 msgstr "Устройство"
 
-#: library/templates/help.html:150
+#: library/templates/help.html:151
 msgid "Supports ePub? <!-- trans: Should be short phrase -->"
 msgstr "Поддерж. ePub?"
 
-#: library/templates/help.html:151
+#: library/templates/help.html:152
 msgid "How-to <!-- trans: How to use Bookworm with this e-reader --> "
 msgstr "Справка"
 
-#: library/templates/help.html:156
+#: library/templates/help.html:157
 msgid "iPod Touch"
 msgstr "iPod Touch"
 
-#: library/templates/help.html:157 library/templates/help.html.py:162
-#: library/templates/help.html:173 library/templates/help.html.py:183
-#: library/templates/help.html:188
+#: library/templates/help.html:158 library/templates/help.html.py:163
+#: library/templates/help.html:174 library/templates/help.html.py:184
+#: library/templates/help.html:189
 msgid "Yes"
 msgstr "Да"
 
-#: library/templates/help.html:158
+#: library/templates/help.html:159
 msgid "Use <!-- trans: Use this software program -->"
 msgstr ""
 
-#: library/templates/help.html:164
+#: library/templates/help.html:165
 #, python-format
 msgid ""
 "\n"
@@ -1631,11 +1626,11 @@ msgid ""
 "          "
 msgstr ""
 
-#: library/templates/help.html:172
+#: library/templates/help.html:173
 msgid "Other web-enabled phone"
 msgstr ""
 
-#: library/templates/help.html:175
+#: library/templates/help.html:176
 #, python-format
 msgid ""
 "\n"
@@ -1645,15 +1640,15 @@ msgid ""
 "          "
 msgstr ""
 
-#: library/templates/help.html:184 library/templates/public.html:22
+#: library/templates/help.html:185 library/templates/public.html:22
 msgid "or"
 msgstr "или"
 
-#: library/templates/help.html:193
+#: library/templates/help.html:194
 msgid "Indirectly <!-- trans: can be used with this device only partially -->"
 msgstr ""
 
-#: library/templates/help.html:195
+#: library/templates/help.html:196
 #, python-format
 msgid ""
 "\n"
@@ -1664,7 +1659,7 @@ msgid ""
 "          "
 msgstr ""
 
-#: library/templates/help.html:208
+#: library/templates/help.html:209
 #, python-format
 msgid ""
 " \n"
@@ -1674,7 +1669,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:215
+#: library/templates/help.html:216
 #, python-format
 msgid ""
 " \n"
@@ -1685,7 +1680,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: library/templates/help.html:225
+#: library/templates/help.html:226
 #, python-format
 msgid ""
 "\n"
@@ -1695,18 +1690,18 @@ msgid ""
 "can use the API to upload a number of ePubs\n"
 "    at once or to download all the items in your Library. If you build "
 "something with the API, please let us\n"
-"    know on <a href=\"http://getsatisfaction.com/threepress/topics/"
-"post_ideas_and_questions_about_bookworm\">Get Satisfaction</a> \n"
+"    know on <a href=\"%(custserv)s\">%(custservname)s</a> \n"
 "    "
 msgstr ""
 
-#: library/templates/help.html:234
+#: library/templates/help.html:235
 msgid "I have additional questions"
 msgstr ""
 
-#: library/templates/help.html:237
+#: library/templates/help.html:238
 #, python-format
 msgid ""
+"\n"
 "\n"
 "      There's more information about Bookworm on the <a href=\"%(abouturl)s"
 "\">About</a> page.\n"
@@ -1717,11 +1712,11 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"    Also try our forums on <a href=\"http://getsatisfaction.com/threepress/"
-"topics/post_ideas_and_questions_about_bookworm\">Get Satisfaction</a> \n"
-"    Feel free to also contact <a href=\"mailto:%(ADMIN_EMAIL)s\">%"
-"(ADMIN_EMAIL)s</a>\n"
-"    with specific questions.</p>\n"
+"\n"
+"    For problems and feature requests, visit  <a href=\"%(custserv)s\">%"
+"(custservname)s</a> or the\n"
+"    <a href=\"http://code.google.com/p/threepress/issues/list\">open source "
+"issue tracker</a>.\n"
 "    "
 msgstr ""
 
@@ -1906,9 +1901,8 @@ msgstr "регистрируйтесь"
 #: library/templates/public.html:27
 msgid ""
 "Bookworm is fabulous. Hands down, a wonderful app. I love how it integrates "
-"with the iPhone for easy offline reading.&rdquo; — <a href=\"http://"
-"getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
-"\">Customer on Get Satisfaction"
+"with the iPhone for easy offline reading.&rdquo; — Customer on Get "
+"Satisfaction"
 msgstr ""
 
 #: library/templates/public.html:29
@@ -2476,7 +2470,7 @@ msgstr ""
 msgid "Click <!-- trans: imperative verb -->"
 msgstr "Щёлкните "
 
-#: library/templates/tour.html:71 library/templates/upload.html:58
+#: library/templates/tour.html:71 library/templates/upload.html:57
 msgid "Add to my library"
 msgstr "Добавить в мою библиотеку"
 
@@ -2655,33 +2649,26 @@ msgid ""
 "Bookworm -->  "
 msgstr ""
 
-#: library/templates/upload.html:23
+#: library/templates/upload.html:24
 msgid "Need help?"
 msgstr "Нужна помощь?"
 
-#: library/templates/upload.html:25
+#: library/templates/upload.html:26
 #, python-format
 msgid ""
 "Try reading the <a href=\"%(helpurl)s\">Help</a> or <a href=\"%(abouturl)s"
-"\">About</a> pages for more information, or email <a href=\"mailto:%"
-"(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> for assistance."
+"\">About</a> pages for more information, or use our forums on <a href=\"%"
+"(custserv)s\">%(custservname)s</a>."
 msgstr ""
 
-#: library/templates/upload.html:27
-#, python-format
-msgid ""
-"If you get an error that you don't understand, please email <a href=\"mailto:"
-"%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> with a description of the problem."
-msgstr ""
-
-#: library/templates/upload.html:42
+#: library/templates/upload.html:41
 msgid ""
 "To read an ebook on Bookworm, you must have first purchased or acquired it "
 "from a publisher or online book source, and downloaded that book to your "
 "computer. Use this form to add it to Bookworm."
 msgstr ""
 
-#: library/templates/upload.html:45
+#: library/templates/upload.html:44
 #, python-format
 msgid ""
 "The ebook must be in the ePub format and have a filename ending in <strong>."
@@ -2689,11 +2676,11 @@ msgid ""
 "(abouturl)s\">About</a> page for more information."
 msgstr ""
 
-#: library/templates/upload.html:49
+#: library/templates/upload.html:48
 msgid "You need to click on the ‘Browse’ button and select an ebook to add."
 msgstr ""
 
-#: library/templates/upload.html:56
+#: library/templates/upload.html:55
 msgid "Add an ePub from your computer by clicking on ‘Browse’:"
 msgstr ""
 

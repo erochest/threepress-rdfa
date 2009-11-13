@@ -199,10 +199,10 @@
     href="http://threepress.org/tools/">tools page</a>. It
     is a product of <a
     href="http://threepress.org/">Threepress</a>, a venue for
-    experimenting with open source publishing software, and is written
+    experimenting with open source publishing software, and was written
     by <a href="http://threepress.org/about/">Liza Daly</a>
     with contributions from <a href="http://kfahlgren.com/blog">Keith
-    Fahlgren</a>.  Hosting is provided by <a href="{{ hostingurl }}">{{ hosting }}</a>.
+    Fahlgren</a> and others.  Hosting is provided by <a href="{{ hostingurl }}">{{ hosting }}</a>.
 {% endblocktrans %}
 
   </p>
@@ -227,12 +227,9 @@ Bookworm has been made possible by many individuals who have helped with
   </p>
   
   <p>
-{% blocktrans %}
-    For problems and feature requests, visit  <a href="http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm">Get Satisfaction</a> 
-    or email <a
-    href="mailto:{{ ADMIN_EMAIL }}">{{ ADMIN_EMAIL }}</a>.
-    You can also subscribe to the <a
-    href="http://blog.threepress.org">blog</a> to follow new announcements.
+{% blocktrans with CUSTOMER_SERVICE_URL as custserv and CUSTOMER_SERVICE_NAME as custservname %}
+    For problems and feature requests, visit  <a href="{{ custserv }}">{{ custservname }}</a> or the
+    <a href="http://code.google.com/p/threepress/issues/list">open source issue tracker</a>.
 {% endblocktrans %}    
   </p>
 

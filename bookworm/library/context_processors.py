@@ -25,9 +25,11 @@ def local_settings(request):
         'ADMIN_EMAIL':settings.DISPLAY_ADMIN_EMAIL,
         'HOSTNAME':settings.HOSTNAME,
         'SECURE_HOSTNAME':settings.SECURE_HOSTNAME,
+        'CUSTOMER_SERVICE_URL':settings.CUSTOMER_SERVICE_URL,
+        'CUSTOMER_SERVICE_NAME':settings.CUSTOMER_SERVICE_NAME,
         'current_language':current_language
     }
- 
+  
 def nav(request):
     form = EpubValidateForm()
     return {'upload_form': form }

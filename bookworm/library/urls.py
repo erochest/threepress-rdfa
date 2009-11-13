@@ -16,7 +16,7 @@ urlpatterns = patterns('bookworm.library.views',
                        url(r'^reload/(?P<title>[^/]+)/(?P<key>\d+)/$', 'upload', name="reload"),                       
 
                        # Images from within documents
-                       url(r'^(view|chapter)/(?P<title>[^/]+)/(?P<key>\d+)/(first/|resume/)?(?P<image>.*(jpg|gif|png|svg|jpeg)+)$', 
+                       url(r'^(view|chapter)/(?P<title>[^/]+)/(?P<key>\d+)/(first/|resume/)?(?P<image>.*(jpg|gif|png|svg|jpeg|ogv|mpg|mp4|swf)+)$', 
                            'view_chapter_image', name="view_chapter_image"),                       
                        
                        # Document metadata

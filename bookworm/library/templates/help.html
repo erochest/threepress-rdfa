@@ -22,11 +22,12 @@
 {% endblock %}
 
 {% block main %}
+
 <div id="bw-content">
   <p id="bw-about-description">
-    {% blocktrans %}
+    {% blocktrans with CUSTOMER_SERVICE_URL as custserv and CUSTOMER_SERVICE_NAME as custservname %}
     Confused about what to do, or having problems?  Check this list for common issues,
-    or email <a href="mailto:{{ ADMIN_EMAIL }}">{{ ADMIN_EMAIL }}</a> for help.
+    or visit <a href="{{ custserv }}">{{ custservname }}</a> for help.
     {% endblocktrans %}
   </p>
   <div id="bw-tour-toc">
@@ -222,11 +223,11 @@
   <h2>{% trans "Can I upload all my files at once or access Bookworm without a browser?" %}</h2>
   <p>
     {% url api_help as api_help %}
-    {% blocktrans %}
+    {% blocktrans with CUSTOMER_SERVICE_URL as custserv and CUSTOMER_SERVICE_NAME as custservname %}
     Yes, we implemented the <a href="{{ api_help }}">Bookworm API</a> to help users and developers
     use Bookworm in ways we hadn't originally imagined. A savvy developer can use the API to upload a number of ePubs
     at once or to download all the items in your Library. If you build something with the API, please let us
-    know on <a href="http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm">Get Satisfaction</a> 
+    know on <a href="{{ custserv }}">{{ custservname }}</a> 
     {% endblocktrans %}
     </p>
 
@@ -235,16 +236,15 @@
   <p>
     {% url about as abouturl %}
     {% blocktrans %}
+
       There's more information about Bookworm on the <a href="{{ abouturl }}">About</a> page.
     {% endblocktrans %}
   </p>
   <p>
-  <a href="http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"><img alt="Badge_get_help" src="http://getsatisfaction.com/images/badges/badge_get_help.png" border="0" align="right" /></a>
-  
-    {% blocktrans %}
-    Also try our forums on <a href="http://getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm">Get Satisfaction</a> 
-    Feel free to also contact <a href="mailto:{{ ADMIN_EMAIL }}">{{ ADMIN_EMAIL }}</a>
-    with specific questions.</p>
+    {% blocktrans with CUSTOMER_SERVICE_URL as custserv and CUSTOMER_SERVICE_NAME as custservname %}
+
+    For problems and feature requests, visit  <a href="{{ custserv }}">{{ custservname }}</a> or the
+    <a href="http://code.google.com/p/threepress/issues/list">open source issue tracker</a>.
     {% endblocktrans %}
   </div>
 {% endblock %}

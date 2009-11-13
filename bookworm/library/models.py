@@ -45,7 +45,7 @@ def get_file_by_item(item, document) :
         css = StylesheetFile.objects.filter(idref=item.id, archive=document)
         if css is not None and len(css) > 0:
             return css[0]
-    if 'image' in item.media_type:
+    if 'image' or 'video' in item.media_type:
         image = ImageFile.objects.filter(idref=item.id, archive=document)
         if image is not None and len(image) > 0:
             return image[0]
@@ -493,11 +493,11 @@ class EpubArchive(BookwormModel):
         return title[0].strip()
 
     def _get_images(self, archive, items, content_path):
-        '''Images might be in a variety of formats, from JPEG to SVG.  If they are
-        SVG they need to be specially handled as a text type.'''
+        '''Images might be in a variety of formats, from JPEG to SVG.  It may also be a video type, though hopefully the content creator included the required fallback.
+        If they are SVG they need to be specially handled as a text type.'''
         images = []
         for item in items:
-            if 'image' in item.get('media-type'):
+            if 'image' in item.get('media-type') or 'video' in item.get('media-type'):
 
                 href = unquote_plus(item.get('href'))
                 
@@ -519,7 +519,6 @@ class EpubArchive(BookwormModel):
 
                 (data['path'], data['filename']) = os.path.split(href)
                 log.debug('Got path=%s, filename=%s' % (data['path'], data['filename']))
-                
                 data['idref'] = item.get('id')
                 data['content_type'] = item.get('media-type')
 

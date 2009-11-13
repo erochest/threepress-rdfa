@@ -505,6 +505,10 @@ def add_data_to_document(request, document, data, form, redirect_success_to_page
     except Exception, e:
         # We got some unknown error (usually a malformed epub).  We
         # want to know about these since they are sometimes actually Bookworm bugs.
+
+        if settings.SKIP_EPUBCHECK:
+            return direct_to_template(request, 'upload.html', {'form':form, 
+                                                               'message':str(e)})                
         _email_errors_to_admin(e, data, document)
 
         # Delete it first so we don't end up with a broken document in the library

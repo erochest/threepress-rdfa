@@ -246,7 +246,14 @@ SECURE_HOSTNAME = 'https://bookworm.oreilly.com'
 XSLT_DIR = os.path.join(ROOT_PATH, 'library', 'xsl')
 DTBOOK2XHTML = os.path.join(XSLT_DIR, 'dtbook2xhtml.xsl')
 
+# Don't ever try to call epubcheck -- useful in testing offline
+SKIP_EPUBCHECK = False
+
+CUSTOMER_SERVICE_URL = 'http://getsatisfaction.com/oreilly'
+CUSTOMER_SERVICE_NAME = 'Get Satisfaction'
+  
 try:
     from local import *
 except ImportError:
     pass
+ 

@@ -18,13 +18,12 @@ li { padding-bottom: .5em; }
 {% block leftnav %}
 {% url help as helpurl %}
 {% url about as abouturl %}
-
+{% url CUSTOMER_SERVICE_URL as custserv %}
+{% url CUSTOMER_SERVICE_NAME as custservname %}
 
 <h2>{{ _("Need help?") }}</h2>
 <p>
-  {% blocktrans %}Try reading the <a href="{{ helpurl }}">Help</a> or <a href="{{ abouturl }}">About</a> pages for more information, or email <a href="mailto:{{ ADMIN_EMAIL }}">{{ ADMIN_EMAIL }}</a> for assistance.{% endblocktrans %}
-</p>
-<p style="font-size:smaller">{% blocktrans %}If you get an error that you don't understand, please email <a href="mailto:{{ ADMIN_EMAIL }}">{{ ADMIN_EMAIL }}</a> with a description of the problem.{% endblocktrans %}
+  {% blocktrans %}Try reading the <a href="{{ helpurl }}">Help</a> or <a href="{{ abouturl }}">About</a> pages for more information, or use our forums on <a href="{{ custserv }}">{{ custservname }}</a>.{% endblocktrans %}
 </p>
 {% include "includes/about.html" %}
 

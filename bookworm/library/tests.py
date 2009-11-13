@@ -920,9 +920,7 @@ class TestViews(DjangoTestCase):
 
     def test_content_visible(self):
         response = self._upload('Cory_Doctorow_-_Little_Brother.epub')
-
-        id = '1'
-        response = self.client.get('/view/Little-Brother/%s/main5.xml' % id)
+        response = self.client.get('/view/Little-Brother/1/main5.xml')
         self.assertTemplateUsed(response, 'view.html')
 
     def test_upload_with_nested_urls(self):
@@ -1781,6 +1779,31 @@ class TestViews(DjangoTestCase):
         response = self.client.get('/static/about.css/')
         assert response.status_code == 404
 
+
+    def test_flash_video(self):
+        '''Flash video should be supported'''
+        self._login()
+        self._upload('flash-video.epub')
+        response = self.client.get('/view/test/1/')
+        assert response.status_code == 200
+        assert 'object' in response.content
+        response = self.client.get('/view/test/1/Creative_Commons_-_Get_Creative.swf')
+        assert response.status_code == 200
+
+
+    def test_html5_video(self):
+        '''HTML5 video should be supported with the proper fallback'''
+        self._login()
+        self._upload('video.epub')
+        response = self.client.get('/view/test/1/video.html')
+        assert response.status_code == 200
+        assert '<video' in response.content
+        response = self.client.get('/view/test/1/20143.mp4')
+        assert response.status_code == 200
+
+        response = self.client.get('/view/test/1/20143.ogv')
+        assert response.status_code == 200
+        
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
         
