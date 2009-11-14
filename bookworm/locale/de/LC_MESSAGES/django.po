@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: BOOKWORM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-11-13 15:16-0500\n"
-"PO-Revision-Date: 2009-10-30 12:16+0100\n"
+"PO-Revision-Date: 2009-11-14 19:05+0100\n"
 "Last-Translator: Michael Wiedmann <mw@miwie.in-berlin.de>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgid "About the Bookworm API"
 msgstr "Über das Bookworm API"
 
 #: api/templates/api_help.html:13
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "The Bookworm API (or Application Programming Interface) allows users and "
 "developers to access many of the features of Bookworm from other "
@@ -73,14 +73,11 @@ msgid ""
 "low-level detail. This (rather dry) description is intented only for "
 "developers.\n"
 msgstr ""
-"Die Bookworm API (oder Application Programming Interface) erlaubt es "
-"Benutzern und Entwicklern viele der Bookworm Funktionen in anderen "
-"Anwendungen zu benutzen.\n"
-"Mit der API kann ein Entwickler ePub Inhalte einer <a href=\"%(library)s"
-"\">Benutzerbibliothek</a> über HTTP hinzufügen, herunterladen und auflisten. "
-"Diese Seite beschreibt die \n"
-"API im Detail. Diese (ziemlich trockene) Beschreibung ist nur für Entwickler "
-"gedacht.\n"
+"Die Bookworm API (oder Application Programming Interface) erlaubt es Benutzern und Entwicklern viele der Bookworm Funktionen in anderen Anwendungen zu benutzen.\n"
+"Mit der API kann ein Entwickler ePub Inhalte einer \n"
+"<a href=\"%(library)s\">Benutzerbibliothek</a> über HTTP hinzufügen, herunterladen \n"
+"und auflisten. Diese Seite beschreibt die API im Detail. Diese (ziemlich trockene) \n"
+"Beschreibung ist nur für Entwickler gedacht.\n"
 
 #: api/templates/api_help.html:18
 msgid "Authorization"
@@ -175,7 +172,7 @@ msgid "Adding titles to your Library"
 msgstr "Titel Ihrer Bibliothek hinzufügen"
 
 #: api/templates/api_help.html:132
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "A new title in EPUB format may be added to your <a href=\"%(library)s"
@@ -190,7 +187,7 @@ msgstr ""
 "ePub URL Referenz.\n"
 
 #: api/templates/api_help.html:138
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "If using direct EPUB upload, the API user will POST a file's contents as "
@@ -201,14 +198,13 @@ msgid ""
 "code>:\n"
 msgstr ""
 "\n"
-"Falls Sie den direkten ePub Upload benutzen, muss der API Benutzer den "
-"Dateiinhalt als <code>multipart/form-data</code> zu <a href=\"%"
-"(api_documents)s\">%(api_documents)s</a> POSTen und den Parameter "
-"<code>epub_data</code> für die ePub Daten benutzen  (denken Sie an den "
-"code>api_key</code>).  Hier ein Beispiel mit <code>curl</code>:\n"
+"Falls Sie den direkten ePub Upload benutzen, muss der API Benutzer den Dateiinhalt \n"
+"als <code>multipart/form-data</code> zu <a href=\"%(api_documents)s\">%(api_documents)s</a> \n"
+"POSTen und den Parameter <code>epub_data</code> für die ePub Daten benutzen \n"
+"(denken Sie an den <code>api_key</code>).  Hier ein Beispiel mit <code>curl</code>:\n"
 
 #: api/templates/api_help.html:163
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "If you'd prefer to add a new ePub by URL reference, POST a request to <a "
@@ -220,15 +216,12 @@ msgid ""
 "proceed as normal (maybe).\n"
 msgstr ""
 "\n"
-"Falls Sie neue ePub Dateien lieber mit einer URL Referenz hinzufügen "
-"möchten, dann POSTEn Sie eine Anfrage \n"
-"an <a href=\"%(api_documents)s\">%(api_documents)s</a> mit einem "
-"<code>epub_url</code> Parameter, der \n"
-"ein extern bereitgestelltes ePub Dokument referenziert, das durch ein nicht-"
-"authentifiziertes <code>HTTP GET</code> \n"
-"zur Verfügung steht. Der Bookworm Server wird eine Anfrage für dieses ePub "
-"Dokument stellen und \n"
-"normal fortfahren (hoffentlich).\n"
+"Falls Sie neue ePub Dateien lieber mit einer URL Referenz hinzufügen möchten, \n"
+"dann POSTen Sie eine Anfrage an <a href=\"%(api_documents)s\">%(api_documents)s</a> \n"
+"mit einem <code>epub_url</code> Parameter, der ein extern bereitgestelltes ePub \n"
+"Dokument referenziert, das durch ein nicht-authentifiziertes <code>HTTP GET</code> \n"
+"zur Verfügung steht. Der Bookworm Server wird eine Anfrage für dieses ePub \n"
+"Dokument stellen und normal fortfahren (hoffentlich).\n"
 
 #: api/templates/api_help.html:172
 #, python-format
@@ -984,7 +977,7 @@ msgstr ""
 "  Sichern Sie Kopien Ihrer Bücher auf Ihrem eigenen Computer.\n"
 
 #: library/templates/about.html:196
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Bookworm software is free and available for download under the\n"
@@ -1000,16 +993,13 @@ msgid ""
 msgstr ""
 "\n"
 "    Bookworm ist Freie Software unter der BSD Lizenz und kann von der\n"
-"   <a href=\"http://threepress.org/tools/\">Tools Seite</a> "
-"heruntergeladen \n"
+"   <a href=\"http://threepress.org/tools/\">Tools Seite</a> heruntergeladen \n"
 "   werden. Es ist ein Produkt von \n"
-"   <a href=\"http://threepress.org\">Threepress</a>, einem Treffpunkt, um "
-"mit \n"
-"   Open Source Publishing Software zu experimentieren und wird von \n"
+"   <a href=\"http://threepress.org\">Threepress</a>, einem Treffpunkt, um mit \n"
+"   Open Source Publishing Software zu experimentieren und wurde von \n"
 "   <a href=\"http:/threepress.org/about/\">Liza Daly</a>, \n"
-"   unter Mitwirkung von <a href=\"http://kfahlgren.com/blog\">Keith "
-"Fahlgren</a> \n"
-"   geschrieben. \n"
+"   unter Mitwirkung von <a href=\"http://kfahlgren.com/blog\">Keith Fahlgren</a> \n"
+"   und anderen geschrieben. \n"
 "   Das Hosting wird von <a href=\"%(hostingurl)s\">%(hosting)s</a> zur\n"
 "   Verfügung gestellt.\n"
 
@@ -1047,6 +1037,10 @@ msgid ""
 "    <a href=\"http://code.google.com/p/threepress/issues/list\">open source "
 "issue tracker</a>.\n"
 msgstr ""
+"\n"
+" Wegen Problemen und Anfragen bezüglich neuer Merkmale besuchen Sie \n"
+" <a href=\"%(custserv)s\">%(custservname)s</a> oder den \n"
+" <a href=\"http://code.google.com/p/threepress/issues/list\">Open Source Issue Tracker</a>.\n"
 
 #: library/templates/base.html:12
 msgid "Search your library"
@@ -1447,7 +1441,6 @@ msgid "Tutorial"
 msgstr "Tutorium"
 
 #: library/templates/epub.html:65
-#, fuzzy
 msgid ""
 "\n"
 "      A complete tutorial on using the ePub format is available from IBM "
@@ -1457,10 +1450,9 @@ msgid ""
 "      "
 msgstr ""
 "\n"
-"      Ein vollständiges Tutorium, wie man das ePub Format benutzt, ist von "
-"IBM DeveloperWorks: \n"
-"    <a href=\"http://www.ibm.com/developerworks/edu/x-dw-x-epubtut.html"
-"\">Build a digital book with ePub</a>\n"
+"      Ein vollständiges Tutorium, wie man das ePub Format benutzt, ist von \n"
+"      IBM DeveloperWorks: \n"
+"    <a href=\"http://www.ibm.com/developerworks/edu/x-dw-x-epubtut.html\">Build a digital book with ePub</a>\n"
 "      erhältlich. Beispiele von Bookworm sind enthalten.\n"
 "      "
 
@@ -1859,7 +1851,7 @@ msgid "Help using Bookworm"
 msgstr "Hilfe zur Benutzung von Bookworm"
 
 #: library/templates/help.html:28
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Confused about what to do, or having problems?  Check this list for "
@@ -1869,9 +1861,8 @@ msgid ""
 msgstr ""
 "\n"
 "  Sie wissen nicht was Sie tun sollen oder haben Probleme?\n"
-"  Lesen Sie diese Liste zu häufigen Fragen oder senden eine\n"
-"  Email an \n"
-"  <a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a>\n"
+"  Lesen Sie diese Liste zu häufigen Fragen oder besuchen \n"
+"  <a href=\"custserv)s\">%(custservname)s</a>\n"
 "  um Hilfe zu erhalten.\n"
 "  "
 
@@ -2250,7 +2241,7 @@ msgstr ""
 "    "
 
 #: library/templates/help.html:226
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "    Yes, we implemented the <a href=\"%(api_help)s\">Bookworm API</a> to "
@@ -2263,14 +2254,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"  Ja, wir haben die <a href=\"%(api_help)s\">Bookworm API</a> implementiert, "
-"um es Benutzern und Entwicklern  zur ermöglichen, Bookworm in einer Art und "
-"Weise zu benutzen, die wir uns ursprünglich nicht vorgestellt hatten.   Ein "
-"intelligenter Entwickler kann die API benutzen, um eine Anzahl von ePub "
-"Dateien auf einmal hochzuladen oder   alle Inhalte Ihrer Bibliothek "
-"herunterzuladen. Falls Sie eine Anwendung mit der API erstellen, lassen Sie "
-"uns dies  auf <a href=\"http://getsatisfaction.com/threepress/topics/"
-"post_ideas_and_questions_about_bookworm\">Get Satisfaction</a>   wissen.\n"
+"  Ja, wir haben die <a href=\"%(api_help)s\">Bookworm API</a> implementiert, um es Benutzern und Entwicklern  zur ermöglichen, Bookworm in einer Art und Weise zu benutzen, die wir uns ursprünglich nicht vorgestellt hatten.   Ein intelligenter Entwickler kann die API benutzen, um eine Anzahl von ePub Dateien auf einmal hochzuladen oder   alle Inhalte Ihrer Bibliothek herunterzuladen. Falls Sie eine Anwendung mit der API erstellen, lassen Sie uns dies  auf <a href=\"%(custserv)s\">%(custservname)s</a> wissen.\n"
 "    "
 
 #: library/templates/help.html:235
@@ -2278,7 +2262,7 @@ msgid "I have additional questions"
 msgstr "Ich habe zusätzliche Fragen"
 
 #: library/templates/help.html:238
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "\n"
 "\n"
@@ -2302,6 +2286,11 @@ msgid ""
 "issue tracker</a>.\n"
 "    "
 msgstr ""
+"\n"
+" \n"
+" Wegen Problemen und Anfragen bezüglich neuer Merkmale besuchen Sie \n"
+" <a href=\"%(custserv)s\">%(custservname)s</a> oder den \n"
+" <a href=\"http://code.google.com/p/threepress/issues/list\">Open Source Issue Tracker</a>.\n"
 
 #: library/templates/index.html:7
 msgid "My epub library"
@@ -2504,16 +2493,13 @@ msgid "Sign up"
 msgstr "Konto erstellen"
 
 #: library/templates/public.html:27
-#, fuzzy
 msgid ""
 "Bookworm is fabulous. Hands down, a wonderful app. I love how it integrates "
 "with the iPhone for easy offline reading.&rdquo; — Customer on Get "
 "Satisfaction"
 msgstr ""
-"Bookworm is fabulous. Hands down, a wonderful app. I love how it integrates "
-"with the iPhone for easy offline reading.&rdquo; — <a href=\"http://"
-"getsatisfaction.com/threepress/topics/post_ideas_and_questions_about_bookworm"
-"\">Customer on Get Satisfaction"
+"Bookworm is fabulous. Hands down, a wonderful app. I love how it integrates with \n"
+"the iPhone for easy offline reading.&rdquo; — Kunde auf Get Satisfaction"
 
 #: library/templates/public.html:29
 msgid ""
@@ -3432,16 +3418,15 @@ msgid "Need help?"
 msgstr "Benötigen Sie Hilfe?"
 
 #: library/templates/upload.html:26
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Try reading the <a href=\"%(helpurl)s\">Help</a> or <a href=\"%(abouturl)s"
 "\">About</a> pages for more information, or use our forums on <a href=\"%"
 "(custserv)s\">%(custservname)s</a>."
 msgstr ""
-"Lesen Sie bitte die <a href=\"%(helpurl)s\">Hilfe</a> oder <a href=\"%"
-"(abouturl)s\">Über</a> Seite für mehr Information oder senden eine Email an "
-"<a href=\"mailto:%(ADMIN_EMAIL)s\">%(ADMIN_EMAIL)s</a> für weitere "
-"Unterstützung."
+"Lesen Sie bitte die <a href=\"%(helpurl)s\">Hilfe</a> oder \n"
+"<a href=\"%(abouturl)s\">Über</a> Seiten für mehr Information oder benutzen unser \n"
+"Forum <a href=\"%(custserv)s\">%(custservname)s</a>."
 
 #: library/templates/upload.html:41
 msgid ""
