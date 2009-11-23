@@ -1803,6 +1803,16 @@ class TestViews(DjangoTestCase):
 
         response = self.client.get('/view/test/1/20143.ogv')
         assert response.status_code == 200
+
+    def test_zero_length_images(self):
+        '''Images that are zero-length should be gracefully handled with 404 rather than 500 errors'''
+        name ='zero-length-images.epub'
+        self._upload(name)
+
+        response = self.client.get('/view/a/1/test.jpg')
+        assert response.status_code != 500
+        assert response.status_code == 302 # Should be 404 but will auto-redirect
+
         
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))

@@ -223,7 +223,10 @@ def view_chapter_image(request, title, key, image):
     if image_obj.content_type == 'image/svg+xml':
         response.content = image_obj.file
     else:
-        response.content = image_obj.get_data()
+        try:
+            response.content = image_obj.get_data()
+        except AttributeError: # Zero-length image
+            raise Http404
 
     return response
 
