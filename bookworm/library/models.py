@@ -589,12 +589,14 @@ class EpubArchive(BookwormModel):
 
     def _create_stylesheets(self, stylesheets):
         for s in stylesheets:
-            css = StylesheetFile(
-                                 idref=s['idref'],
-                                 filename=s['filename'],
-                                 file=s['file'],
-                                 archive=self)
-            css.save()            
+
+            (css, created) = StylesheetFile.objects.get_or_create(
+                filename=s['filename'],
+                file=s['file'],
+                archive=self)
+            if created:
+                css.idref = idref=s['idref']
+                css.save()            
 
  
     def _get_content(self, archive, opf, toc, items, content_path):

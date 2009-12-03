@@ -235,7 +235,10 @@ def view_chapter_image(request, title, key, image):
 def view_stylesheet(request, title, key, stylesheet_id):
     document = _get_document(request, title, key)
     log.debug('getting stylesheet %s' % stylesheet_id)
-    stylesheet = get_object_or_404(StylesheetFile, archive=document,filename=stylesheet_id)
+    stylesheets = StylesheetFile.objects.filter(archive=document,filename=stylesheet_id)
+    if len(stylesheets) == 0:
+        raise Http404
+    stylesheet = stylesheets[0]
     response = HttpResponse(content=stylesheet.file, content_type='text/css')
     return response
 

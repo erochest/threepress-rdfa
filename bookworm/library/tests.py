@@ -1813,6 +1813,15 @@ class TestViews(DjangoTestCase):
         assert response.status_code != 500
         assert response.status_code == 302 # Should be 404 but will auto-redirect
 
+    def test_duplicate_css_in_opf(self):
+        '''Declaring the same CSS multiple times in the OPF file should result in only one item'''
+        name = 'duplicate-css-in-opf.epub'
+        self._upload(name)        
+        response = self.client.get('/view/a/1/')
+        assert response.status_code == 200
+
+        response = self.client.get('/css/a/1/stylesheet.css')
+        assert 'sans-serif' in response.content
         
     def _login(self):
         self.assertTrue(self.client.login(username='testuser', password='testuser'))
