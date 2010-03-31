@@ -1135,7 +1135,7 @@ class BinaryBlob(BookwormFile, Storage):
                 d += '/' + p
                 if not os.path.exists(d):
                     os.mkdir(d)
-        f = open(f.encode('utf8'), 'w')
+        f = open(f.encode('utf8'), 'wb+')
 
         # Is this a file-like object or a string of bytes?
         if hasattr(self.data, 'read'):
@@ -1147,7 +1147,7 @@ class BinaryBlob(BookwormFile, Storage):
 
     def open(self):
         '''Part of Django Storage API'''
-        return open(self._get_file())
+        return open(self._get_file(), 'rb+')
 
     def delete(self):
         '''Per Django Storage API, does not raise an exception if the file is missing (but will warn)'''
@@ -1177,7 +1177,7 @@ class BinaryBlob(BookwormFile, Storage):
         if not os.path.exists(f.encode('utf8')):
             log.warn(u"Tried to open file %s but it wasn't there (storage dir %s)" % (f, self._get_storage()))
             return None
-        return open(f.encode('utf8')).read()
+        return open(f.encode('utf8'), 'rb+').read()
 
     def get_data_handler(self):
         '''Return the data for this file, as a filehandle'''
@@ -1185,7 +1185,7 @@ class BinaryBlob(BookwormFile, Storage):
         if not os.path.exists(f.encode('utf8')):
             log.warn(u"Tried to open file %s but it wasn't there (storage dir %s)" % (f, self._get_storage()))
             return None
-        return open(f.encode('utf8'))
+        return open(f.encode('utf8'), 'rb+')
 
     def _get_storage_dir(self):
         return settings.MEDIA_ROOT

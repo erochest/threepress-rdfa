@@ -461,7 +461,7 @@ def upload(request, title=None, key=None):
                     document = EpubArchive(name=document_name)                    
                     document.save()
 
-            return add_data_to_document(request, document, open(temp_file), form)
+            return add_data_to_document(request, document, open(temp_file, 'rb+'), form)
 
         # The form isn't valid (generally because we didn't actually upload anything)
         return direct_to_template(request, 'upload.html', {'form':form})
@@ -488,6 +488,8 @@ def add_data_to_document(request, document, data, form, redirect_success_to_page
                                      owner=True,
                                      user=request.user)
         document.save()
+    except Exception, e:
+        log.error(e)
 
     except BadZipfile, e:
         # The user tried to upload something that wasn't a zip
