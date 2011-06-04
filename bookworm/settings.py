@@ -2,23 +2,23 @@ import os
 import logging, logging.handlers
 
 # Live site settings (others should override in local.py)
-ROOT_PATH = os.path.dirname(__file__)
+ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 TESTING = False # Override this in test_settings.py
 
-DATABASE_ENGINE = 'mysql' 
+DATABASE_ENGINE = 'mysql'
 DATABASE_NAME = 'bookworm'
-DATABASE_USER = 'threepress'   
-DATABASE_PASSWORD = '3press'   
-DATABASE_HOST = ''             
-DATABASE_PORT = ''             
+DATABASE_USER = 'threepress'
+DATABASE_PASSWORD = '3press'
+DATABASE_HOST = ''
+DATABASE_PORT = ''
 
 SITE_ID = 1
 
 # base url: leave '' if deployed at webserver root. don't forget the trailing slash
-# Example: 
+# Example:
 # BASE_URL = 'apps/bookworm/'
 BASE_URL = ''
 
@@ -54,6 +54,14 @@ MEDIA_ROOT = os.path.join(ROOT_PATH, 'library', 'storage')
 MEDIA_URL = '/static/'
 ORM_MEDIA_URL = '/orm-media/'
 
+# Handling static files.
+STATICFILES_DIRS = (
+        os.path.join(ROOT_PATH, 'library', 'templates', 'static'),
+        os.path.join(ROOT_PATH, 'library', 'templates'),
+        os.path.join(ROOT_PATH, 'orm', 'templates', 'orm-media'),
+        )
+STATIC_URL = '/'
+
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 ADMIN_MEDIA_PREFIX = '/media/'
@@ -78,7 +86,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "bookworm.library.context_processors.local_settings",
     "bookworm.library.context_processors.profile",
     "bookworm.search.context_processors.search"
-) 
+)
 
 
 MIDDLEWARE_CLASSES = (
@@ -86,12 +94,13 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'bookworm.middleware.Language',    
+    'bookworm.middleware.Language',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django_authopenid.middleware.OpenIDMiddleware',
-    'django.middleware.http.SetRemoteAddrFromForwardedFor',
+    ## TODO: This middleware is no longer supported. Need to find a workaround.
+    # 'django.middleware.http.SetRemoteAddrFromForwardedFor',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'bookworm.minidetector.Middleware',
@@ -118,13 +127,13 @@ LANGUAGES = (
 ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
-    '%s/library/templates/auth' % ROOT_PATH,    
+    '%s/library/templates/auth' % ROOT_PATH,
     '%s/library/templates/host' % ROOT_PATH,
     '%s/library/templates' % ROOT_PATH,
-    '%s/library/templates/includes' % ROOT_PATH,    
-    '%s/search/templates' % ROOT_PATH,    
-    '%s/librarything/templates' % ROOT_PATH,    
-    '%s/orm/templates' % ROOT_PATH,    
+    '%s/library/templates/includes' % ROOT_PATH,
+    '%s/search/templates' % ROOT_PATH,
+    '%s/librarything/templates' % ROOT_PATH,
+    '%s/orm/templates' % ROOT_PATH,
 )
 
 INSTALLED_APPS = (
@@ -149,7 +158,7 @@ AUTH_PROFILE_MODULE = "library.userpref"
 
 ugettext = lambda s: s
 LOGIN_URL = '/%s%s%s' %  (BASE_URL, ugettext('account/'), ugettext('signin/'))
-SITE_ID = 2
+# SITE_ID = 2
 
 DEFAULT_NUM_RESULTS = 20
 DEFAULT_START_PAGE = 1
@@ -213,12 +222,12 @@ OFFLINE = False
 # Google Analytics key
 ANALYTICS_KEY = 'UA-162955-4'
 
-# The email addresses of the users who should receive an error email 
+# The email addresses of the users who should receive an error email
 # (should be a list)
 ERROR_EMAIL_RECIPIENTS = (ADMINS[0][1], )
 
 # The URL for the epubcheck webservice
-EPUBCHECK_WEBSERVICE = 'http://threepress.org/epubcheck-service/' 
+EPUBCHECK_WEBSERVICE = 'http://threepress.org/epubcheck-service/'
 
 # Apps to test
 TEST_APPS = ('library',)
@@ -251,9 +260,9 @@ SKIP_EPUBCHECK = False
 
 CUSTOMER_SERVICE_URL = 'http://getsatisfaction.com/oreilly'
 CUSTOMER_SERVICE_NAME = 'Get Satisfaction'
-  
+
 try:
     from local import *
 except ImportError:
     pass
- 
+
