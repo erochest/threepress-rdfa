@@ -62,13 +62,16 @@ dependencies.
     svn co http://minidetector.googlecode.com/svn/trunk/ minidetector
     cp -r minidetector/minidetector/ threepress-rdfa/bookworm/minidetector
 
-## Setting up Django
+## Setting up Django with SQLite
 
-Initially, we're going to set up Django to use SQLite. Searching won't work,
-but this is very easy to get going, and most everything else seems to work.
-(Instructions for setting up MySQL will come later.)
+If you set up Bookworm to use SQLite databases, searching won't work, but this
+is very easy to get going, and most everything else seems to work.
 
-First, create the file `threepress-rdfa/bookworm/local.py`. It specifies the
+First we'll create a directory for logging:
+
+    mkdir threepress-rdfa/bookworm/log
+
+Next, create the file `threepress-rdfa/bookworm/local.py`. It specifies the
 database settings and turns debugging on. It should contain this:
 
     import settings
@@ -78,10 +81,6 @@ database settings and turns debugging on. It should contain this:
     settings.DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
     settings.DATABASES['default']['NAME'] = 'bookworm.sqlite'
 
-Now we'll create a directory for logging:
-
-    mkdir threepress-rdfa/bookworm/log
-
 And finally, initialize the database:
 
     django-admin.py syncdb
@@ -89,6 +88,59 @@ And finally, initialize the database:
 This will print some warning information (most of this should go away in the
 near future). It will also ask you some questions about settings up a
 superuser. You want to create one; remember the username and password.
+
+## Setting up Django with MySQL
+
+If you want the full capabilities of Bookworm, you need to use MySQL and enable
+full-text searching.
+
+Like above, first create a directory for logging:
+
+    mkdir threepress-rdfa/bookworm/log
+
+Next, create a database in MySQL:
+
+    CREATE DATABASE bookworm DEFAULT character set = UTF8;
+
+You also might want to create a user with permission to create databases and
+tables (for setting up and testing), as well as adding, removing, and viewing
+data.
+
+Next, create the file `threepress-rdfa/bookworm/local.py`. It specifies the
+database settings and turns debugging on. It should look something like this
+(you'll need to insert the right information for the username and password, and
+you may need to change some other settings as well):
+
+    import settings
+    # Local settings for development.
+    DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'bookworm',
+                'USER': '<USERNAME>',
+                'PASSWORD': '<PASSWORD>',
+                'HOST': '127.0.0.1',
+                'PORT': '3306',
+                'OPTIONS': {
+                    'init_command': 'SET storage_engine=MyISAM',
+                    }
+                },
+            }
+
+Now initialize the database:
+
+    django-admin.py syncdb
+
+This will print some warning information (most of this should go away in the
+near future). It will also ask you some questions about settings up a
+superuser. You want to create one; remember the username and password.
+
+Finally, enable full text searching. Again in MySQL, execute this command:
+
+    USE bookworm;
+    CREATE FULLTEXT INDEX epubtext ON library_htmlfile (words);
 
 ## Running the Site
 
