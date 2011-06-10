@@ -1456,6 +1456,14 @@ class TestViews(DjangoTestCase):
     def test_download_utf8_title(self):
         '''Django won't allow content-disposition to contain non-ASCII chars,
         so check that we handle this gracefully'''
+        from django.db import connection
+        cursor = connection.cursor()
+        cursor.execute('show create table library_epubarchive;')
+        for (tname, stmt) in cursor.fetchall():
+            print tname
+            print stmt
+            print
+
         self._upload(u'天.epub')
         response = self.client.get('/download/epub/天/1/')
         self.assertEquals(response.status_code, 200)

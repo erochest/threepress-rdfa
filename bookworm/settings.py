@@ -16,6 +16,8 @@ DATABASES = {
             'PASSWORD': '3press',
             'HOST': '',
             'PORT': '',
+            'TEST_CHARSET': 'UTF8',
+            'TEST_COLLATION': 'UTF8',
             },
         }
 
