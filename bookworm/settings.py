@@ -25,7 +25,7 @@ BASE_URL = ''
 # Django settings for bookworm project.
 
 ADMINS = (
-    ('Bookworm', 'bookworm@oreilly.com'),
+    # ('Your Name', 'your_email@example.com'),
 )
 
 MANAGERS = ADMINS
@@ -175,18 +175,18 @@ MOBILE = False
 FORCE_SCRIPT_NAME = ''
 
 # Domain which to redirect requests that are coming from a mobile device
-MOBILE_HOST = 'http://m.bookworm.oreilly.com/'
+MOBILE_HOST = 'http://m.localhost/'
 
 # Hosting credit
-HOSTING_CREDIT = "O'Reilly Media"
-HOSTING_CREDIT_URL = 'http://oreilly.com/'
+HOSTING_CREDIT = "Me"
+HOSTING_CREDIT_URL = 'http://localhost:8000/'
 
 # Email reply-to address
-REPLYTO_EMAIL = 'donotreply@oreilly.com'
+REPLYTO_EMAIL = 'donotreply@localhost'
 DEFAULT_FROM_EMAIL = REPLYTO_EMAIL
 
 # The admin address that's displayed on the site in help pages
-DISPLAY_ADMIN_EMAIL = 'bookworm@oreilly.com'
+DISPLAY_ADMIN_EMAIL = 'bookworm@localhost'
 ADMIN_EMAIL = DISPLAY_ADMIN_EMAIL
 
 # Set up logging
@@ -224,7 +224,8 @@ ANALYTICS_KEY = 'UA-162955-4'
 
 # The email addresses of the users who should receive an error email
 # (should be a list)
-ERROR_EMAIL_RECIPIENTS = (ADMINS[0][1], )
+# ERROR_EMAIL_RECIPIENTS = (ADMINS[0][1], )
+ERROR_EMAIL_RECIPIENTS = 'error@localhost'
 
 # The URL for the epubcheck webservice
 EPUBCHECK_WEBSERVICE = 'http://threepress.org/epubcheck-service/'
@@ -247,10 +248,10 @@ MAX_CSS_FILES = 10
 API_FIELD_NAME = 'api_key'
 
 # Hostname (no trailing slash)
-HOSTNAME = 'http://bookworm.oreilly.com'
+HOSTNAME = 'http://localhost:8080'
 
 # Secure hostname (no trailing slash)
-SECURE_HOSTNAME = 'https://bookworm.oreilly.com'
+SECURE_HOSTNAME = 'https://localhost:8089'
 
 XSLT_DIR = os.path.join(ROOT_PATH, 'library', 'xsl')
 DTBOOK2XHTML = os.path.join(XSLT_DIR, 'dtbook2xhtml.xsl')
@@ -258,7 +259,7 @@ DTBOOK2XHTML = os.path.join(XSLT_DIR, 'dtbook2xhtml.xsl')
 # Don't ever try to call epubcheck -- useful in testing offline
 SKIP_EPUBCHECK = False
 
-CUSTOMER_SERVICE_URL = 'http://getsatisfaction.com/oreilly'
+CUSTOMER_SERVICE_URL = 'http://localhost'
 CUSTOMER_SERVICE_NAME = 'Get Satisfaction'
 
 try:
