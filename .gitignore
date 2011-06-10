@@ -1,0 +1,7 @@
+*~
+*.pyc
+bookworm/minidetector
+*.sqlite
+*.epub
+bookworm/log
+local.py
