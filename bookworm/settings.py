@@ -8,12 +8,16 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 TESTING = False # Override this in test_settings.py
 
-DATABASE_ENGINE = 'mysql'
-DATABASE_NAME = 'bookworm'
-DATABASE_USER = 'threepress'
-DATABASE_PASSWORD = '3press'
-DATABASE_HOST = ''
-DATABASE_PORT = ''
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'bookworm',
+            'USER': 'threepress',
+            'PASSWORD': '3press',
+            'HOST': '',
+            'PORT': '',
+            },
+        }
 
 SITE_ID = 1
 

@@ -71,11 +71,12 @@ but this is very easy to get going, and most everything else seems to work.
 First, create the file `threepress-rdfa/bookworm/local.py`. It specifies the
 database settings and turns debugging on. It should contain this:
 
+    import settings
     # Local settings for development.
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
-    DATABASE_ENGINE = 'sqlite3'
-    DATABASE_NAME = 'bookworm.sqlite'
+    settings.DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    settings.DATABASES['default']['NAME'] = 'bookworm.sqlite'
 
 Now we'll create a directory for logging:
 
