@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
-import md5, random, sys, os, time
+import hashlib, random, sys, os, time
 
 __all__ = ['Nonce', 'Association', 'UserAssociation', 
         'UserPasswordQueueManager', 'UserPasswordQueue']
@@ -51,7 +51,7 @@ class UserPasswordQueueManager(models.Manager):
         # The random module is seeded when this Apache child is created.
         # Use SECRET_KEY as added salt.
         while 1:
-            confirm_key = md5.new("%s%s%s%s" % (
+            confirm_key = hashlib.md5("%s%s%s%s" % (
                 random.randint(0, sys.maxint - 1), os.getpid(),
                 time.time(), settings.SECRET_KEY)).hexdigest()
             try:
