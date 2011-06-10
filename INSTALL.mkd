@@ -1,0 +1,100 @@
+
+# Installation Instructions
+
+This describes how to set up your system for working on this threepress RDFa
+fork in a [virtualenv](http://pypi.python.org/pypi/virtualenv) environment.
+
+This has been worked through on Mac OS X. Other operating systems will differ.
+If you get it working in any other platforms, please let me know what you had
+to do, so that I can update this information.
+
+## Assumptions
+
+This assumes that you are comfortable with the command line (Terminal) and that
+you have Python and Git already installed. The Python 2.6, which comes with Mac
+OS X, works just fine.
+
+This assumes that you do *not* have `virtualenv` installed. If you do, then
+you'll need to skip some of the steps below as appropriate. Also, if you
+already have some of the Python libraries that threepress depends installed on
+your system, you'll receive an error message when you try to re-install them.
+Don't worry about that; just keep going.
+
+## Setting up the Environment
+
+First, we need to install `virtualenv` and set up a sandbox to install
+threepress RDFa and everything else you'll need. To get started, open up a
+command line window and type the commands **in bold**.
+
+    easy_install virtualenv
+    virtualenv threepress
+    cd threepress
+    echo 'export PYTHONPATH=$VIRTUAL_ENV/threepress:$VIRTUAL_ENV/threepress/bookworm' >> bin/activate
+    echo 'export DJANGO_SETTINGS_MODULE=bookworm.settings' >> bin/activate
+    source bin/activate
+
+## Dependencies
+
+Now, we need to install the dependencies necessary for the threepress site.
+
+    pip install cssutils
+    pip install python-openid
+    pip install twill
+    pip install BeautifulSoup
+    STATIC_DEPS=true easy_install lxml
+    pip install http://django-evolution.googlecode.com/svn/trunk
+    hg clone https://gdata-python-client.googlecode.com/hg gdata-python-client
+    easy_install gdata-python-client
+
+## threepress RDFa
+
+Now get threepress RDFa. The command below is for read-only access to it. If
+you have read-write access, substitute in the correct URL for that (you can
+find it on [the project page](https://github.com/erochest/threepress-rdfa)).
+
+    git clone git://github.com/erochest/threepress-rdfa.git
+
+## More Dependencies
+
+Now that threepress RDFa is in place, you also need to install a few more
+dependencies.
+
+    svn co http://minidetector.googlecode.com/svn/trunk/ minidetector
+    cp -r minidetector/minidetector/ threepress-rdfa/bookworm/minidetector
+
+## Setting up Django
+
+Initially, we're going to set up Django to use SQLite. Searching won't work,
+but this is very easy to get going, and most everything else seems to work.
+(Instructions for setting up MySQL will come later.)
+
+First, create the file `threepress-rdfa/bookworm/local.py`. It specifies the
+database settings and turns debugging on. It should contain this:
+
+    # Local settings for development.
+    DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
+    DATABASE_ENGINE = 'sqlite3'
+    DATABASE_NAME = 'bookworm.sqlite'
+
+Now we'll create a directory for logging:
+
+    mkdir threepress-rdfa/bookworm/log
+
+And finally, initialize the database:
+
+    django-admin.py syncdb
+
+This will print some warning information (most of this should go away in the
+near future). It will also ask you some questions about settings up a
+superuser. You want to create one; remember the username and password.
+
+## Running the Site
+
+The site is set up now. Every time that you want to work on it, you'll need to
+open a command line window and follow these steps:
+
+    cd <YOUR threepress DIRECTORY>
+    source bin/activate
+    django-admin.py runserver
+
